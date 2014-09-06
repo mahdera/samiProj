@@ -10,6 +10,10 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        
+        <table border="1" width="100%">
+            <tr>
+                <td></td>
+            </tr>
+        </table>
     </body>
 </html>
