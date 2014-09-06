@@ -46,65 +46,53 @@ and open the template in the editor.
 <script type='text/javascript'>
     $(document).ready(function(){
         
-        $('#').click(function(){});
+        $('#teamManagementLink').click(function(){
+            $('#mainDetailDiv').load('teammanagementform.php');
+        });
         
-        $('#').click(function(){});
+        $('#responsibilityManagementLink').click(function(){
+            $('#mainDetailDiv').load('responsibilitymanagementform.php');
+        });
         
-        $('#').click(function(){});
+        $('#assessmentManagementLink').click(function(){});
         
-        $('#').click(function(){});
+        $('#thManagementLink').click(function(){});
         
-        $('#').click(function(){});
+        $('#riskManagementLink').click(function(){});
         
-        $('#').click(function(){});
+        $('#goalFirstManagementLink').click(function(){});
         
-        $('#').click(function(){});
+        $('#goalSecondManagementLink').click(function(){});
         
-        $('#').click(function(){});
+        $('#putThActionManagementLink').click(function(){});
         
-        $('#').click(function(){});
+        $('#putFnActionManagementLink').click(function(){});
         
-        $('#').click(function(){});
+        $('#editThActionManagementLink').click(function(){});
         
-        $('#').click(function(){});
+        $('#editFnActionManagementLink').click(function(){});
         
-        $('#').click(function(){});
+        $('#form1ManagementLink').click(function(){});
         
-        $('#').click(function(){});
+        $('#form2ManagementLink').click(function(){});
         
-        $('#').click(function(){});
+        $('#form3ManagementLink').click(function(){});
         
-        $('#').click(function(){});
+        $('#form4ManagementLink').click(function(){});
         
-        $('#').click(function(){});
+        $('#form5ManagementLink').click(function(){});
         
-        $('#').click(function(){});
+        $('#form6ManagementLink').click(function(){});
         
-        $('#').click(function(){});
+        $('#form7ManagementLink').click(function(){});
         
-        $('#').click(function(){});
+        $('#form8ManagementLink').click(function(){});
         
-        $('#').click(function(){});
+        $('#form9ManagementLink').click(function(){});
         
-        $('#').click(function(){});
+        $('#form10ManagementLink').click(function(){});
         
-        $('#').click(function(){});
-        
-        $('#').click(function(){});
-        
-        $('#').click(function(){});
-        
-        $('#').click(function(){});
-        
-        $('#').click(function(){});
-        
-        $('#').click(function(){});
-        
-        $('#').click(function(){});
-        
-        $('#').click(function(){});
-        
-        
+        $('#reportManagementLink').click(function(){});       
         
         
     });//end document.ready function
