@@ -22,10 +22,10 @@
                </div>
             </td>
         </tr>
-        <tr id="thRow">
+        <tr id="thRow1">
             <td>Th1:</td>
             <td>
-                <input type="text1" name="txtth1" id="txtth"/> <a href="#.php">Add More</a>
+                <input type="text1" name="txtth1" id="txtth1" class="thInputRow"/> [ <a href="#.php" id="addMoreThLink">Add More</a> | <a href="#.php" id="removeThRowLink">Remove</a> ]
             </td>
         </tr>
         <tr>
@@ -47,7 +47,20 @@
         
         $('#txtdate').Zebra_DatePicker();
         
+        $('#addMoreThLink').click(function(){
+            var numItems = $('.thInputRow').length;
+            var textBoxId = "txtth"+(numItems+1);
+            var newRow = $("<tr id='thRow"+(numItems+1)+"'><td>Th"+(numItems+1)+":</td><td><input type='text' class='thInputRow' name='"+textBoxId+"' id='"+textBoxId+"'/></td></tr>");
+            $('#thRow'+numItems).after(newRow);
+        });
         
+        $('#removeThRowLink').click(function(){
+            var numItems = $('.thInputRow').length;
+            if(numItems > 1){
+                var thRowId = 'thRow'+numItems;            
+                $('#'+thRowId).remove();
+            }
+        });
         
     });//end document.ready function
 </script>

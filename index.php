@@ -61,9 +61,13 @@ and open the template in the editor.
             $('#mainDetailDiv').load('assessmentmanagementform.php');
         });
         
-        $('#thManagementLink').click(function(){});
+        $('#thManagementLink').click(function(){
+            $('#mainDetailDiv').load('thmanagementform.php');
+        });
         
-        $('#riskManagementLink').click(function(){});
+        $('#riskManagementLink').click(function(){
+            $('#mainDetailDiv').load('riskmanagementform.php');
+        });
         
         $('#goalFirstManagementLink').click(function(){});
         
