@@ -185,3 +185,19 @@ create table tbl_goal_second_g3_obj(
     primary key(id),
     foreign key(goal_second_g3_id) references tbl_goal_second_g3(id)
 );
+
+create table tbl_th_action(
+    id bigint auto_increment,
+    th_id bigint not null,
+    action_text text,
+    primary key(id),
+    foreign key(th_id) references tbl_th(id)
+);
+
+create table tbl_fn_action(
+    id bigint auto_increment,
+    fn_id bigint not null,
+    action_text text,
+    primary key(id),
+    foreign key(fn_id) references tbl_fn(id)
+);
