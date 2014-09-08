@@ -1,37 +1,36 @@
 <?php
-
-    require_once './dbconnection.php';
+    require_once 'dbconnection.php';
     
-    function saveRisk($thId, $mg, $dr, $pr, $wa, $rs){
+    function saveGoalFirstG1($goalFirstId, $g1, $fn){
         try{
-            $query = "insert into tbl_risk values(0, $thId, '$mg', '$dr', '$pr', '$wa', '$rs')";
+            $query = "insert into tbl_goal_first_g1 values(0, $goalFirstId, '$g1', '$fn')";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
     
-    function updateRisk($id, $thId, $mg, $dr, $pr, $wa, $rs){
+    function updateGoalFirstG1($id, $goalFirstId, $g1, $fn){
         try{
-            $query = "update tbl_risk set th_id = , mg = '$mg', dr = '$dr', pr = '$pr', wa = '$wa', rs = '$rs' where id = $id";
+            $query = "update tbl_goal_first_g1 set goal_first_id = $goalFirstId, g1 = '$g1', fn = '$fn' where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
     
-    function deleteRisk($id){
+    function deleteGoalFirstG1($id){
         try{
-            $query = "delete from tbl_risk where id = $id";
+            $query = "delete from tbl_goal_first_g1 where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
     
-    function getAllRisks(){
+    function getAllGoalFirstG1s(){
         try{
-            $query = "select * from tbl_risk";
+            $query = "select * from tbl_goal_first_g1";
             $result = read($query);
             return $result;
         } catch (Exception $ex) {
@@ -39,15 +38,13 @@
         }
     }
     
-    function getRisk($id){
+    function getGoalFirstG1($id){
         try{
-            $query = "select * from tbl_risk where id = $id";
+            $query = "select * from tbl_goal_first_g1 where id = $id";
             $result = read($query);
             return $result;
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
-
 ?>
-

@@ -1,37 +1,36 @@
 <?php
-
     require_once './dbconnection.php';
     
-    function saveRisk($thId, $mg, $dr, $pr, $wa, $rs){
+    function saveFn($fnName){
         try{
-            $query = "insert into tbl_risk values(0, $thId, '$mg', '$dr', '$pr', '$wa', '$rs')";
+            $query = "insert into tbl_fn values(0, '$fnName')";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
     
-    function updateRisk($id, $thId, $mg, $dr, $pr, $wa, $rs){
+    function updateFn($id, $fnName){
         try{
-            $query = "update tbl_risk set th_id = , mg = '$mg', dr = '$dr', pr = '$pr', wa = '$wa', rs = '$rs' where id = $id";
+            $query = "update tbl_fn set fn_name = '$fnName' where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
     
-    function deleteRisk($id){
+    function deleteFn($id){
         try{
-            $query = "delete from tbl_risk where id = $id";
+            $query = "delete from tbl_fn where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
     
-    function getAllRisks(){
+    function getAllFns(){
         try{
-            $query = "select * from tbl_risk";
+            $query = "select * from tbl_fn order by fn_name";
             $result = read($query);
             return $result;
         } catch (Exception $ex) {
@@ -39,15 +38,13 @@
         }
     }
     
-    function getRisk($id){
+    function getFn($id){
         try{
-            $query = "select * from tbl_risk where id = $id";
+            $query = "select * from tbl_fn where id = $id";
             $result = read($query);
             return $result;
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
-
 ?>
-

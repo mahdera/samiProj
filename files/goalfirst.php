@@ -1,37 +1,36 @@
 <?php
-
-    require_once './dbconnection.php';
+    require_once 'dbconnection.php';
     
-    function saveRisk($thId, $mg, $dr, $pr, $wa, $rs){
+    function saveGoalFirst($thId){
         try{
-            $query = "insert into tbl_risk values(0, $thId, '$mg', '$dr', '$pr', '$wa', '$rs')";
+            $query = "insert into tbl_goal_first values(0, $thId)";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
     
-    function updateRisk($id, $thId, $mg, $dr, $pr, $wa, $rs){
+    function updateGoalFirst($id, $thId){
         try{
-            $query = "update tbl_risk set th_id = , mg = '$mg', dr = '$dr', pr = '$pr', wa = '$wa', rs = '$rs' where id = $id";
+            $query = "update tbl_goal_first set th_id = $thId where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
     
-    function deleteRisk($id){
+    function deleteGoalFirst($id){
         try{
-            $query = "delete from tbl_risk where id = $id";
+            $query = "delete from tbl_goal_first where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
     
-    function getAllRisks(){
+    function getAllGoalFirsts(){
         try{
-            $query = "select * from tbl_risk";
+            $query = "select * from tbl_goal_first";
             $result = read($query);
             return $result;
         } catch (Exception $ex) {
@@ -39,15 +38,13 @@
         }
     }
     
-    function getRisk($id){
+    function getGoalFirst($id){
         try{
-            $query = "select * from tbl_risk where id = $id";
+            $query = "select * from tbl_goal_first where id = $id";
             $result = read($query);
             return $result;
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
-
 ?>
-
