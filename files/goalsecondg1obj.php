@@ -1,36 +1,36 @@
 <?php
     require_once 'dbconnection.php';
     
-    function saveGoalFirstG1Obj($goalFirstG1Id, $obj, $fn){
+    function saveGoalSecondG1Obj($goalSecondG1Obj, $obj){
         try{
-            $query = "insert into tbl_goal_first_g1_obj_fn values(0, $goalFirstG1Id, '$obj', '$fn')";
+            $query = "insert into tbl_goal_second_g1_obj values(0, $goalSecondG1Obj, '$obj')";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
     
-    function updateGoalFirstG1Obj($id, $goalFirstG1Id, $obj, $fn){
+    function updateGoalSecondG1Obj($id, $goalSecondG1Obj, $obj){
         try{
-            $query = "update tbl_goal_first_g1_obj_fn set  goal_first_g1_id = $goalFirstG1Id, obj = '$obj', fn = '$fn' where id = $id";
+            $query = "update tbl_goal_second_g1_obj set goal_second_g1_obj = $goalSecondG1Obj, obj='$obj' where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
     
-    function deleteGoalFirstG1Obj($id){
+    function deleteGoalSecondG1Obj($id){
         try{
-            $query = "delete from tbl_goal_first_g1_obj_fn where id = $id";
+            $query = "delete from tbl_goal_second_g1_obj where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
     
-    function getAllGoalFirstG1Objs(){
+    function getAllGoalSecondG1Objs(){
         try{
-            $query = "select * from tbl_goal_first_g1_obj_fn";
+            $query = "select * from tbl_goal_second_g1_obj";
             $result = read($query);
             return $result;
         } catch (Exception $ex) {
@@ -38,9 +38,9 @@
         }
     }
     
-    function getGoalFirstG1Obj($id){
+    function getGoalSecondG1Obj($id){
         try{
-            $query = "select * from tbl_goal_first_g1_obj_fn where id = $id";
+            $query = "select * from tbl_goal_second_g1_obj where id = $id";
             $result = read($query);
             return $result;
         } catch (Exception $ex) {
@@ -48,4 +48,3 @@
         }
     }
 ?>
-
