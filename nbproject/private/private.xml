@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/Applications/MAMP/htdocs/samiProj/responsibilitymanagementform.php</file>
             <file>file:/Applications/MAMP/htdocs/samiProj/files/responsibility.php</file>
@@ -14,5 +15,8 @@
             <file>file:/Applications/MAMP/htdocs/samiProj/files/showlistofassessments.php</file>
             <file>file:/Applications/MAMP/htdocs/samiProj/teammanagementform.php</file>
         </group>
+=======
+        <group/>
+>>>>>>> a906f6ef6297a45fd361b021db5cc2ab79a876c8
     </open-files>
 </project-private>
