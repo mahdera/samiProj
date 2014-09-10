@@ -42,10 +42,14 @@
         </tr>        
     </table>
 </form>
+<hr/>
+<div id="subDetailDiv"></div>
 <script type="text/javascript">
     $(document).ready(function(){        
         
         $('#txtdate').Zebra_DatePicker();
+        
+        showListOfAssessments();
         
         $('#addMoreThLink').click(function(){
             var numItems = $('.thInputRow').length;
@@ -61,6 +65,52 @@
                 $('#'+thRowId).remove();
             }
         });
+        
+        $('#btnsave').click(function(){
+            var assessmentType = $('#slctassessmenttype').val();
+            var assessmentDate = $('#txtdate').val();
+            var numItems = $('.thInputRow').length;
+            var th1 = $('#txtth1').val();
+            var summary = $('#textareasummary').val();
+            
+            if(assessmentType !== "" && assessmentDate !== "" && th1 !== ""){
+                var dataString = "assessmentType="+assessmentType+
+                        "&assessmentDate="+assessmentDate+"&summary="+encodeURIComponent(summary);
+                
+                for(var i=1; i <= numItems; i++){
+                    var textBoxId = "txtth"+i;
+                    var textBoxValue = $('#'+textBoxId).val();
+                    dataString+="&"+textBoxId+"="+encodeURIComponent(textBoxValue);
+                }//end for loop
+                
+                $.ajax({
+                    url: 'files/saveassessment.php',		
+                    data: dataString,
+                    type:'POST',
+                    success:function(response){                        
+                        clearFormInputFields(); 
+                        showListOfAssessments();
+                    },
+                    error:function(error){
+                        alert(error);
+                    }
+                });
+                
+            }else{
+                alert('Please enter all the necessary data values into the form!');
+            }    
+        });   
+        
+        function clearFormInputFields(){
+            $('#slctassessmenttype').val('');
+            $('#txtdate').val('');            
+            $('#txtth1').val('');
+            $('#textareasummary').val('');
+        }
+        
+        function showListOfAssessments(){
+            $('#subDetailDiv').load('files/showlistofassessments.php');
+        }
         
     });//end document.ready function
 </script>

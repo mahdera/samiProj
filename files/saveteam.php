@@ -1,10 +1,10 @@
 <?php
-    $name = $_GET['name'];
-    $title = $_GET['title'];
-    $organization = $_GET['organization'];
-    $email = $_GET['email'];
-    $phone = $_GET['phone'];
-    $interest = $_GET['interest'];
+    $name = $_POST['name'];
+    $title = $_POST['title'];
+    $organization = $_POST['organization'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $interest = $_POST['interest'];
     
     require_once 'team.php';
     

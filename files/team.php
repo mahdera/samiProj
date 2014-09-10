@@ -41,9 +41,10 @@
     
     function getTeam($id){
         try{
-            $query = "select * from tbl_team where id = $id";
+            $query = "select * from tbl_team where id = $id";            
             $result = read($query);
-            return $result;
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
         } catch (Exception $ex) {
             $ex->getMessage();
         }

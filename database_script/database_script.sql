@@ -9,15 +9,8 @@ create table tbl_team(
     organization varchar(70) not null,
     email varchar(70) not null,
     phone varchar(70) not null,
+    interest varchar(70) not null,
     primary key(id)
-);
-
-create table tbl_team_interest(
-    id bigint auto_increment,
-    team_id bigint not null,
-    interest_name varchar(70) not null,
-    primary key(id),
-    foreign key(team_id) references tbl_team(id)
 );
 
 create table tbl_responsibility(

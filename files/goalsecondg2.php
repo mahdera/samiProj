@@ -1,0 +1,50 @@
+<?php
+    require_once 'dbconnection.php';
+    
+    function saveGoalSecondG2($goalSecondId, $g2){
+        try{
+            $query = "insert into tbl_goal_second_g2 values(0, $goalSecondId, '$g2')";
+            save($query);
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+    
+    function updateGoalSecondG2($id, $goalSecondId, $g2){
+        try{
+            $query = "update tbl_goal_second_g2 set goal_second_id = $goalSecondId, g2 = '$g2' where id = $id";
+            save($query);
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+    
+    function deleteGoalSecondG2($id){
+        try{
+            $query = "delete from tbl_goal_second_g2 where id = $id";
+            save($query);
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+    
+    function getAllGoalSecondG2s(){
+        try{
+            $query = "select * from tbl_goal_second_g2";
+            $result = read($query);
+            return $result;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+    
+    function getGoalSecondG2($id){
+        try{
+            $query = "select * from tbl_goal_second_g2 where id = $id";
+            $result = read($query);
+            return $result;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+?>
