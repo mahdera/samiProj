@@ -43,7 +43,8 @@
         try{
             $query = "select * from tbl_assessment where id = $id";
             $result = read($query);
-            return $result;
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
         } catch (Exception $ex) {
             $ex->getMessage();
         }
