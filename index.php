@@ -69,7 +69,9 @@ and open the template in the editor.
             $('#mainDetailDiv').load('riskmanagementform.php');
         });
         
-        $('#goalFirstManagementLink').click(function(){});
+        $('#goalFirstManagementLink').click(function(){
+            $('#mainDetailDiv').load('goalfirstmanagementform.php');
+        });
         
         $('#goalSecondManagementLink').click(function(){});
         

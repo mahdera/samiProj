@@ -1,5 +1,5 @@
 <?php
-    require_once './dbconnection.php';
+    require_once 'dbconnection.php';
     
     function saveTh($thName){
         try{
@@ -30,7 +30,7 @@
     
     function getAllThs(){
         try{
-            $query = "select * from tbl_th order by th_name";
+            $query = "select * from tbl_th order by th_name";                          
             $result = read($query);
             return $result;
         } catch (Exception $ex) {
