@@ -54,12 +54,9 @@
     </table>
 </form>
 <hr/>
-<<<<<<< HEAD
-<div id="subDetailDiv"></div>
-=======
-<div id="teamDetailDiv"></div>
 
->>>>>>> a906f6ef6297a45fd361b021db5cc2ab79a876c8
+<div id="subDetailDiv"></div>
+
 <script type="text/javascript">
     $(document).ready(function(){
         
@@ -105,11 +102,7 @@
         }
         
         function showListOfTeams(){
-<<<<<<< HEAD
             $('#subDetailDiv').load('files/showlistofteams.php');
-=======
-            $('#teamDetailDiv').load('files/showlistofteams.php');
->>>>>>> a906f6ef6297a45fd361b021db5cc2ab79a876c8
         }
         
     });//end document.ready function

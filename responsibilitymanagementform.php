@@ -44,11 +44,9 @@
     </table>
 </form>
 <hr/>
-<<<<<<< HEAD
+
 <div id="subDetailDiv"></div>
-=======
-<div id="responsibilityDetailDiv"></div>
->>>>>>> a906f6ef6297a45fd361b021db5cc2ab79a876c8
+
 <script type="text/javascript">
     $(document).ready(function(){
         showListOfResponsibilities();
@@ -59,11 +57,8 @@
             var responsibility = $('#textarearesponsibility').val();
             
             if(teamId !== "" && role !== "" && responsibility !== ""){
-<<<<<<< HEAD
                 var dataString = "teamId="+teamId+"&role="+encodeURIComponent(role)+"&responsibility="+encodeURIComponent(responsibility);                
-=======
-                var dataString = "teamId="+teamId+"&role="+encodeURIComponent(role)+"&responsibility="+encodeURIComponent(responsibility);
->>>>>>> a906f6ef6297a45fd361b021db5cc2ab79a876c8
+
                 $.ajax({
                     url: 'files/saveresponsibility.php',		
                     data: dataString,
@@ -88,11 +83,7 @@
         }
         
         function showListOfResponsibilities(){
-<<<<<<< HEAD
             $('#subDetailDiv').load('files/showlistofresponsibilities.php');
-=======
-            $('#responsibilityDetailDiv').load('files/showlistofresponsibilities.php');
->>>>>>> a906f6ef6297a45fd361b021db5cc2ab79a876c8
         }
         
     });//end document.ready function
