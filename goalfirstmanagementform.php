@@ -37,7 +37,7 @@
                         $fnList = getAllFns();
                         while($fnRow = mysql_fetch_object($fnList)){
                             ?>
-                                <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
+                                <option value="<?php echo $fnRow->fn_name;?>"><?php echo $fnRow->fn_name;?></option>
                             <?php
                         }//end while loop
                         ?>
@@ -68,7 +68,7 @@
                                     $fnList = getAllFns();
                                     while($fnRow = mysql_fetch_object($fnList)){
                                         ?>
-                                            <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
+                                            <option value="<?php echo $fnRow->fn_name;?>"><?php echo $fnRow->fn_name;?></option>
                                         <?php
                                     }//end while loop
                                     ?>
@@ -101,7 +101,7 @@
                         $fnList = getAllFns();
                         while($fnRow = mysql_fetch_object($fnList)){
                             ?>
-                                <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
+                                <option value="<?php echo $fnRow->fn_name;?>"><?php echo $fnRow->fn_name;?></option>
                             <?php
                         }//end while loop
                         ?>
@@ -132,7 +132,7 @@
                                     $fnList = getAllFns();
                                     while($fnRow = mysql_fetch_object($fnList)){
                                         ?>
-                                            <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
+                                            <option value="<?php echo $fnRow->fn_name;?>"><?php echo $fnRow->fn_name;?></option>
                                         <?php
                                     }//end while loop
                                     ?>
@@ -165,7 +165,7 @@
                         $fnList = getAllFns();
                         while($fnRow = mysql_fetch_object($fnList)){
                             ?>
-                                <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
+                                <option value="<?php echo $fnRow->fn_name;?>"><?php echo $fnRow->fn_name;?></option>
                             <?php
                         }//end while loop
                         ?>
@@ -196,7 +196,7 @@
                                     $fnList = getAllFns();
                                     while($fnRow = mysql_fetch_object($fnList)){
                                         ?>
-                                            <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
+                                            <option value="<?php echo $fnRow->fn_name;?>"><?php echo $fnRow->fn_name;?></option>
                                         <?php
                                     }//end while loop
                                     ?>
@@ -227,36 +227,105 @@
     
     $(document).ready(function(){        
         //show the result back to the user on document.ready
-        showListOfThs();
+        showListOfGoalFirsts();
         
         $('#btnsave').click(function(){
-            var thName = $('#txtth').val();
+            //first get the static form values...
+            var th = $('#slctth').val();
+            var g1 = $('#txtg1').val();
+            var g1Fn = $('#slctg1fn').val();
+            var g1Obj1 = $('#txtg1obj1').val();
+            var g1Fn1 = $('#slctg1fn1').val();
+            var g2 = $('#txtg2').val();
+            var g2Fn = $('#slctg2fn').val();
+            var g2Obj1 = $('#txtg2obj1').val();
+            var g2Fn1 = $('#slctg2fn1').val();
+            var g3 = $('#txtg3').val();
+            var g3Fn = $('#slctg3fn').val();
+            var g3Obj1 = $('#txtg3obj1').val();
+            var g3Fn1 = $('#slctg3fn1').val();
+            var isBlank = false;
             
-            if(thName !== ""){
-                dataString = "thName="+thName;
+            if(th !== "" && g1 !== "" && g1Fn !== "" && g1Obj1 !== "" && g1Fn1 !== "" && g2 !== "" && g2Fn !== "" &&
+                    g2Obj1 !== "" && g2Fn1 !== "" && g3 !== "" && g3Fn !== "" && g3Obj1 !== "" && g3Fn1 !== ""){
+                var dataString = "th="+th+"&g1="+encodeURIComponent(g1)+"&g1Fn="+encodeURIComponent(g1Fn)+"&g1Obj1="+encodeURIComponent(g1Obj1)+"&g1Fn1="+encodeURIComponent(g1Fn1)+"&g2="+encodeURIComponent(g2)+
+                        "&g2Fn="+encodeURIComponent(g2Fn)+"&g2Obj1="+encodeURIComponent(g2Obj1)+"&g2Fn1="+encodeURIComponent(g2Fn1)+"&g3="+encodeURIComponent(g3)+"&g3Fn="+encodeURIComponent(g3Fn)+"&g3Obj1="+encodeURIComponent(g3Obj1)+"&g3Fn1="+encodeURIComponent(g3Fn1);
+                //now I need to count how many new forms are added under G1, G2 and G3.
+                var numItemsG1 = $('.g1Obj').length;
+                var numItemsG2 = $('.g2Obj').length;
+                var numItemsG3 = $('.g3Obj').length;
                 
-                $.ajax({
-                    url: 'files/saveth.php',		
-                    data: dataString,
-                    type:'POST',
-                    success:function(response){                        
-                        clearFormInputField(); 
-                        showListOfThs();
-                    },
-                    error:function(error){
-                        alert(error);
+                for(var i = 2; i <= numItemsG1; i++){
+                    var g1ObjTextBoxId = "txtg1obj" + i;
+                    var g1ObjTextBoxValue = $('#' + g1ObjTextBoxId).val();
+                    var g1FnSelectBoxId = "slctg1fn" + i;
+                    var g1FnSelectBoxValue = $('#' + g1FnSelectBoxId).val();
+                    if(g1ObjTextBoxValue !== "" && g1FnSelectBoxValue !== ""){
+                        dataString += "&" + g1ObjTextBoxId + "=" + encodeURIComponent(g1ObjTextBoxValue) + "&" + g1FnSelectBoxId + "=" + encodeURIComponent(g1FnSelectBoxValue);
+                        
+                    }else{
+                        isBlank = true;
                     }
-                });
+                }//end for loop i
+
+                //now do the same thing for g2...
+                for(var j = 2; j <= numItemsG2; j++){
+                    var g2ObjTextBoxId = "txtg2obj" + j;
+                    var g2ObjTextBoxValue = $('#' + g2ObjTextBoxId).val();
+                    var g2FnSelectBoxId = "slctg2fn" + j;
+                    var g2FnSelectBoxValue = $('#' + g2FnSelectBoxId).val();
+                    if(g2ObjTextBoxValue !== "" && g2FnSelectBoxValue !== ""){
+                        dataString += "&" + g2ObjTextBoxId + "=" + encodeURIComponent(g2ObjTextBoxValue) + "&" + g2FnSelectBoxId + "=" + encodeURIComponent(g2FnSelectBoxValue);
+                        
+                    }else{
+                        isBlank = true;
+                    }
+                }//end for loop j
+
+                //now do the same thing for g3...
+                for(var k = 2; k <= numItemsG3; k++){
+                    var g3ObjTextBoxId = "txtg3obj" + k;
+                    var g3ObjTextBoxValue = $('#' + g3ObjTextBoxId).val();
+                    var g3FnSelectBoxId = "slctg3fn" + k;
+                    var g3FnSelectBoxValue = $('#' + g3FnSelectBoxId).val();
+                    if(g3ObjTextBoxValue !== "" && g3FnSelectBoxValue !== ""){
+                        dataString += "&" + g3ObjTextBoxId + "=" + encodeURIComponent(g3ObjTextBoxValue) + "&" + g3FnSelectBoxId + "=" + encodeURIComponent(g3FnSelectBoxValue);
+                        
+                    }else{
+                        isBlank = true;
+                    }
+                }//end for loop j
+
+                //by now I have everything I need. So make sure the isBlank variable is not true and go ahead and save the information to the database.
+                if(!isBlank){
+                    $.ajax({
+                        url: 'files/saveth.php',        
+                        data: dataString,
+                        type:'POST',
+                        success:function(response){                        
+                            clearFormInputField(); 
+                            showListOfThs();
+                        },
+                        error:function(error){
+                            alert(error);
+                        }
+                    });
+                }else{
+                    alert('Missing data value. You are required to enter all the data values!');
+                }
                 
-            }
+            }else{
+                alert('Please enter all the necessary data values!');
+            }           
+            
         });
         
         function clearFormInputField(){
             $('txtth').val('');
         }
         
-        function showListOfThs(){
-            $('#subDetailDiv').load('files/showlistofths.php');
+        function showListOfGoalFirsts(){
+            $('#subDetailDiv').load('files/showlistofgoalfirsts.php');
         }
         
         $('#slctg1fn').change(function(){

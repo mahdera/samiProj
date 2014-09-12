@@ -1,7 +1,7 @@
 <?php
     require_once 'dbconnection.php';
     
-    function saveGoalFirstG1Obj($goalFirstG1Id, $obj, $fn){
+    function saveGoalFirstG1ObjFn($goalFirstG1Id, $obj, $fn){
         try{
             $query = "insert into tbl_goal_first_g1_obj_fn values(0, $goalFirstG1Id, '$obj', '$fn')";
             save($query);
@@ -10,7 +10,7 @@
         }
     }
     
-    function updateGoalFirstG1Obj($id, $goalFirstG1Id, $obj, $fn){
+    function updateGoalFirstG1ObjFn($id, $goalFirstG1Id, $obj, $fn){
         try{
             $query = "update tbl_goal_first_g1_obj_fn set  goal_first_g1_id = $goalFirstG1Id, obj = '$obj', fn = '$fn' where id = $id";
             save($query);
@@ -19,7 +19,7 @@
         }
     }
     
-    function deleteGoalFirstG1Obj($id){
+    function deleteGoalFirstG1ObjFn($id){
         try{
             $query = "delete from tbl_goal_first_g1_obj_fn where id = $id";
             save($query);
@@ -28,7 +28,7 @@
         }
     }
     
-    function getAllGoalFirstG1Objs(){
+    function getAllGoalFirstG1ObjFns(){
         try{
             $query = "select * from tbl_goal_first_g1_obj_fn";
             $result = read($query);
@@ -38,7 +38,7 @@
         }
     }
     
-    function getGoalFirstG1Obj($id){
+    function getGoalFirstG1ObjFn($id){
         try{
             $query = "select * from tbl_goal_first_g1_obj_fn where id = $id";
             $result = read($query);

@@ -48,4 +48,15 @@
             $ex->getMessage();
         }
     }
+    
+    function getGoalFirstG1Using($goalFirstId, $g1, $g1Fn){
+        try{
+            $query = "select * from tbl_goal_first_g1 where goal_first_id = $goalFirstId and g1 = '$g1' and fn = '$g1Fn'";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
 ?>
