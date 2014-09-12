@@ -43,7 +43,9 @@
     </table>
 </form>
 <hr/>
+
 <div id="subDetailDiv"></div>
+
 <script type="text/javascript">
     $(document).ready(function(){        
         
@@ -75,7 +77,8 @@
             
             if(assessmentType !== "" && assessmentDate !== "" && th1 !== ""){
                 var dataString = "assessmentType="+assessmentType+
-                        "&assessmentDate="+assessmentDate+"&summary="+encodeURIComponent(summary);
+                        "&assessmentDate="+assessmentDate+"&summary="+encodeURIComponent(summary)+
+                        "&numItems="+numItems;
                 
                 for(var i=1; i <= numItems; i++){
                     var textBoxId = "txtth"+i;

@@ -1,3 +1,7 @@
+<?php
+    require_once 'files/th.php';
+    $thList = getAllThs();
+?>
 <h2>Add Risk</h2>
 <form>
     <table border="0" width="100%">
@@ -6,6 +10,13 @@
             <td>
                 <select name="slctth" id="slctth" style="width: 100%">
                     <option value="" selected="selected">--Select--</option>                    
+                    <?php
+                        while($thRow = mysql_fetch_object($thList)){
+                            ?>
+                            <option value="<?php echo $thRow->id;?>"><?php echo $thRow->th_name;?></option>
+                            <?php
+                        }//end while loop
+                    ?>
                 </select>
             </td>
         </tr>
@@ -24,7 +35,7 @@
         <tr>
             <td>DR</td>
             <td>
-                <select name="" id="" style="width: 100%">
+                <select name="slctdr" id="slctdr" style="width: 100%">
                     <option value="" selected="selected">--Select--</option>                    
                     <option value="dr1">dr1</option>
                     <option value="dr2">dr2</option>
@@ -77,3 +88,55 @@
         </tr>
     </table>
 </form>
+<hr/>
+<div id="subDetailDiv"></div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        
+        showListOfRisks();
+        
+        $('#btnsave').click(function(){
+            var thId = $('#slctth').val();
+            var mg = $('#slctmg').val();
+            var dr = $('#slctdr').val();
+            var pr = $('#slctpr').val();
+            var wa = $('#slctwa').val();
+            var rs = $('#slctrs').val();
+            
+            if(thId !== "" && mg !== "" && dr !== "" && pr !== "" && wa !== "" && rs !== ""){
+                var dataString = "thId="+thId+"&mg="+mg+"&dr="+dr+"&pr="+pr+"&wa="+wa+"&rs="+rs;
+                
+                $.ajax({
+                    url: 'files/saverisk.php',		
+                    data: dataString,
+                    type:'POST',
+                    success:function(response){                        
+                        clearFormInputFields(); 
+                        showListOfRisks();
+                    },
+                    error:function(error){
+                        alert(error);
+                    }
+                });
+                
+            }else{
+                alert('Please enter all the values!');
+            }
+            
+        });
+        
+        function showListOfRisks(){
+            $('#subDetailDiv').load('files/showlistofrisks.php');
+        }
+        
+        function clearFormInputFields(){
+            $('#slctth').val('');
+            $('#slctmg').val('');
+            $('#slctdr').val('');
+            $('#slctpr').val('');
+            $('#slctwa').val('');
+            $('#slctrs').val('');
+        }
+        
+    });//end document.ready function
+</script>

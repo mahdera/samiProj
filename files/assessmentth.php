@@ -1,36 +1,37 @@
 <?php
     require_once 'dbconnection.php';
     
-    function saveGoalFirstG2($goalFirstId, $g2, $fn){
+    function saveAssessmentTh($assessmentId, $thId){
         try{
-            $query = "insert into tbl_goal_first_g2 values(0, $goalFirstId, '$g2', '$fn')";
+            $query = "insert into tbl_assessment_th values(0, $assessmentId, $thId)";
+            //echo $query;
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
     
-    function updateGoalFirstG2($id, $goalFirstId, $g2, $fn){
+    function updateAssessmentTh($id, $assessmentId, $thId){
         try{
-            $query = "update tbl_goal_first_g2 set goal_first_id = $goalFirstId, g2 = '$g2', fn = '$fn' where id = $id";
+            $query = "update tbl_assessment_th set assessment_id = $assessmentId, th_id = $thId where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
     
-    function deleteGoalFirstG2($id){
+    function deleteAssessmentTh($id){
         try{
-            $query = "delete from tbl_goal_first_g2 where id = $id";
+            $query = "delete from tbl_assessment_th where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
     
-    function getAllGoalFirstG2s(){
+    function getAllAssessmentThs(){
         try{
-            $query = "select * from tbl_goal_first_g2";
+            $query = "select * from tbl_assessment_th";
             $result = read($query);
             return $result;
         } catch (Exception $ex) {
@@ -38,9 +39,9 @@
         }
     }
     
-    function getGoalFirstG2($id){
+    function getAssessmentTh($id){
         try{
-            $query = "select * from tbl_goal_first_g2 where id = $id";
+            $query = "select * from tbl_assessment_th where id = $id";
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;

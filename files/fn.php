@@ -1,5 +1,5 @@
 <?php
-    require_once './dbconnection.php';
+    require_once 'dbconnection.php';
     
     function saveFn($fnName){
         try{
@@ -42,7 +42,8 @@
         try{
             $query = "select * from tbl_fn where id = $id";
             $result = read($query);
-            return $result;
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
         } catch (Exception $ex) {
             $ex->getMessage();
         }
