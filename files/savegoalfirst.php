@@ -57,5 +57,16 @@
     }//end for loop i
     
     //now do the same thing for G3
+    saveGoalFirstG3($fetchedGoalFirst->id, $g3, $g3Fn);
+    //fetch the value using the above parameters you have used to save the values to the database...
+    $fetchedGoalFirstG3 = getGoalFirstG3Using($fetchedGoalFirst->id, $g3, $g3Fn);
     
+    for($k = 2; $k <= $numItemsG3; $k++){
+        $g3ObjTextBoxId = "txtg3obj" + $j;
+        $g3ObjTextBoxValue = $_POST["$g3ObjTextBoxId"];
+        $g3FnSelectBoxId = "slctg3fn" + $j;
+        $g3FnSelectBoxValue = $_POST["$g3FnSelectBoxId"];
+        //now save the values to the database...
+        saveGoalFirstG3ObjFn($fetchedGoalFirstG3->id, $g3ObjTextBoxValue, $g3FnSelectBoxValue);
+    }//end for loop i
 ?>

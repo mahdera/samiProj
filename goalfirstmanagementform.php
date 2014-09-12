@@ -304,7 +304,7 @@
                         type:'POST',
                         success:function(response){                        
                             clearFormInputField(); 
-                            showListOfThs();
+                            showListOfGoalFirsts();
                         },
                         error:function(error){
                             alert(error);
@@ -321,7 +321,40 @@
         });
         
         function clearFormInputField(){
-            $('txtth').val('');
+            $('#slctth').val('');
+            $('#txtg1').val('');
+            $('#slctg1fn').val('');
+            $('#txtg1obj1').val('');
+            $('#slctg1fn1').val('');
+            $('#txtg2').val('');
+            $('#slctg2fn').val('');
+            $('#txtg2obj1').val('');
+            $('#slctg2fn1').val('');
+            $('#txtg3').val('');
+            $('#slctg3fn').val('');
+            $('#txtg3obj1').val('');
+            $('#slctg3fn1').val('');
+            var numItemsG1 = $('.g1Obj').length;
+            var numItemsG2 = $('.g2Obj').length;
+            var numItemsG3 = $('.g3Obj').length;
+
+            for(var i=2; i <= numItemsG1; i++){
+                var textBoxControlName = "txtg1obj" + i;
+                var selectControlName = "slctg1fn" + i;
+                $('#' + textBoxControlName).val('');
+                $('#' + selectControlName).val('');
+            }
+
+            for(var j=2; j <= numItemsG2; j++){
+                var textBoxControlName = "textg2obj" + j;
+                var selectControlName = "slctg2fn" + j;
+            }
+
+            for(var k=2; k <= numItemsG3; k++){
+                var textBoxControlName = "textg3obj" + j;
+                var selectControlName = "slctg3fn" + j;
+            }
+
         }
         
         function showListOfGoalFirsts(){
