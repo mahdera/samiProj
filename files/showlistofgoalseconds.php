@@ -1,60 +1,56 @@
 <?php
-    require_once 'goalfirst.php';
-    require_once 'th.php';
-    require_once 'goalfirstg1.php';
-    require_once 'goalfirstg1objfn.php';
-    require_once 'goalfirstg2.php';
-    require_once 'goalfirstg2objfn.php';
-    require_once 'goalfirstg3.php';
-    require_once 'goalfirstg3objfn.php';
+    require_once 'goalsecond.php';
+    require_once 'fn.php';
+    require_once 'goalsecondg1.php';
+    require_once 'goalsecondg1obj.php';
+    require_once 'goalsecondg2.php';
+    require_once 'goalsecondg2obj.php';
+    require_once 'goalsecondg3.php';
+    require_once 'goalsecondg3obj.php';
     
-    $goalFirstList = getAllGoalFirsts();
+    $goalSecondList = getAllGoalSeconds();
     
-    if(!empty($goalFirstList)){
+    if(!empty($goalSecondList)){
         ?>
         <table border="1" width="100%">
             <tr style="background: #cccccc">
                 <td>#</td>
-                <td>Th</td> 
-                <td>G1</td>
+                <td>Fn</td> 
+                <td>G1 & Obj</td>                
             </tr>
             <?php
                 $ctr=1;
-                while($goalFirstRow = mysql_fetch_object($goalFirstList)){
-                    $thRow = getTh($goalFirstRow->th_id);
+                while($goalSecondRow = mysql_fetch_object($goalSecondList)){
+                    $fnRow = getFn($goalSecondRow->fn_id);
                     //now get all the goalFirstG1 objects for this particular goalFirstId
-                    $goalFirstG1List = getAllGoalFirstG1ForThisGoalFirstId($goalFirstRow->id);
+                    $goalSecondG1List = getAllGoalSecondG1ForThisGoalSecondId($goalSecondRow->id);
                     ?>
                     <tr>
                         <td><?php echo $ctr++;?></td>
-                        <td><?php echo $thRow->th_name;?></td>  
+                        <td><?php echo $fnRow->fn_name;?></td>  
                         <td>
                             <table border="1" width="100%">
                                 <tr style="background: #eee">
-                                    <td>G1</td>
-                                    <td>Fn</td> 
-                                    <td>Obj & Fn</td>
+                                    <td>G1</td>                                    
+                                    <td>Obj</td>
                                 </tr>
                                 <?php
-                                    while($goalFirstG1Row = mysql_fetch_object($goalFirstG1List)){
+                                    while($goalSecondG1Row = mysql_fetch_object($goalSecondG1List)){
                                         //now get all the goalFirstG1ObjFn associated with this particular goalFirstG1Id
-                                        $goalFirstG1ObjFnList = getAllGoalFirstG1ObjFnsForThisGoalFirstG1Id($goalFirstG1Row->id);
+                                        $goalSecondG1ObjList = getAllGoalSecondG1ObjsForThisGoalSecondG1Id($goalSecondG1Row->id);
                                         ?>
                                         <tr>
-                                            <td><?php echo $goalFirstG1Row->g1;?></td>
-                                            <td><?php echo $goalFirstG1Row->fn;?></td>
+                                            <td><?php echo $goalSecondG1Row->g1;?></td>                                            
                                             <td>
                                                 <table border="0" width="100%">
                                                     <tr style="background: lightblue">
-                                                        <td>Obj</td>
-                                                        <td>Fn</td>
+                                                        <td>Obj</td>                                                        
                                                     </tr>
                                                     <?php
-                                                        while($goalFirstG1ObjFnRow = mysql_fetch_object($goalFirstG1ObjFnList)){
+                                                        while($goalSecondG1ObjRow = mysql_fetch_object($goalSecondG1ObjList)){
                                                             ?>
                                                             <tr>
-                                                                <td><?php echo $goalFirstG1ObjFnRow->obj;?></td>
-                                                                <td><?php echo $goalFirstG1ObjFnRow->fn;?></td>
+                                                                <td><?php echo $goalSecondG1ObjRow->obj;?></td>                                                                
                                                             </tr>
                                                             <?php
                                                         }//end while loop obj & fn
@@ -72,51 +68,47 @@
                 }//end while loop
             ?>
         </table>
-        <!--now do the same for goal first g2-->
+        <!--do the same thing for g2-->
         <table border="1" width="100%">
             <tr style="background: #cccccc">
                 <td>#</td>
-                <td>Th</td> 
-                <td>G2</td>
+                <td>Fn</td> 
+                <td>G2 & Obj</td>                
             </tr>
             <?php
+                $goalSecondList = getAllGoalSeconds();
                 $ctr=1;
-                $goalFirstList = getAllGoalFirsts();
-                while($goalFirstRow = mysql_fetch_object($goalFirstList)){
-                    $thRow = getTh($goalFirstRow->th_id);
+                while($goalSecondRow = mysql_fetch_object($goalSecondList)){
+                    $fnRow = getFn($goalSecondRow->fn_id);
                     //now get all the goalFirstG1 objects for this particular goalFirstId
-                    $goalFirstG2List = getAllGoalFirstG2ForThisGoalFirstId($goalFirstRow->id);
+                    $goalSecondG2List = getAllGoalSecondG2ForThisGoalSecondId($goalSecondRow->id);
                     ?>
                     <tr>
                         <td><?php echo $ctr++;?></td>
-                        <td><?php echo $thRow->th_name;?></td>  
+                        <td><?php echo $fnRow->fn_name;?></td>  
                         <td>
                             <table border="1" width="100%">
                                 <tr style="background: #eee">
-                                    <td>G2</td>
-                                    <td>Fn</td> 
-                                    <td>Obj & Fn</td>
+                                    <td>G2</td>                                    
+                                    <td>Obj</td>
                                 </tr>
                                 <?php
-                                    while($goalFirstG2Row = mysql_fetch_object($goalFirstG2List)){
+                                    while($goalSecondG2Row = mysql_fetch_object($goalSecondG2List)){
                                         //now get all the goalFirstG1ObjFn associated with this particular goalFirstG1Id
-                                        $goalFirstG2ObjFnList = getAllGoalFirstG2ObjFnsForThisGoalFirstG2Id($goalFirstG2Row->id);
+                                        $goalSecondG2ObjList = getAllGoalSecondG2ObjsForThisGoalSecondG2Id($goalSecondG2Row->id);
                                         ?>
                                         <tr>
-                                            <td><?php echo $goalFirstG2Row->g2;?></td>
-                                            <td><?php echo $goalFirstG2Row->fn;?></td>
+                                            <td><?php echo $goalSecondG2Row->g2;?></td>                                            
                                             <td>
                                                 <table border="0" width="100%">
                                                     <tr style="background: lightblue">
-                                                        <td>Obj</td>
-                                                        <td>Fn</td>
+                                                        <td>Obj</td>                                                        
                                                     </tr>
                                                     <?php
-                                                        while($goalFirstG2ObjFnRow = mysql_fetch_object($goalFirstG2ObjFnList)){
+                                                        while($goalSecondG2ObjRow = mysql_fetch_object($goalSecondG2ObjList)){
                                                             ?>
                                                             <tr>
-                                                                <td><?php echo $goalFirstG2ObjFnRow->obj;?></td>
-                                                                <td><?php echo $goalFirstG2ObjFnRow->fn;?></td>
+                                                                <td><?php echo $goalSecondG2ObjRow->obj;?></td>                                                                
                                                             </tr>
                                                             <?php
                                                         }//end while loop obj & fn
@@ -134,51 +126,47 @@
                 }//end while loop
             ?>
         </table>
-        <!--now do the same for goal first g3-->
+        <!--do the same thing for g3-->
         <table border="1" width="100%">
             <tr style="background: #cccccc">
                 <td>#</td>
-                <td>Th</td> 
-                <td>G3</td>
+                <td>Fn</td> 
+                <td>G3 & Obj</td>                
             </tr>
             <?php
+                $goalSecondList = getAllGoalSeconds();
                 $ctr=1;
-                $goalFirstList = getAllGoalFirsts();
-                while($goalFirstRow = mysql_fetch_object($goalFirstList)){
-                    $thRow = getTh($goalFirstRow->th_id);
+                while($goalSecondRow = mysql_fetch_object($goalSecondList)){
+                    $fnRow = getFn($goalSecondRow->fn_id);
                     //now get all the goalFirstG1 objects for this particular goalFirstId
-                    $goalFirstG3List = getAllGoalFirstG3ForThisGoalFirstId($goalFirstRow->id);
+                    $goalSecondG3List = getAllGoalSecondG3ForThisGoalSecondId($goalSecondRow->id);
                     ?>
                     <tr>
                         <td><?php echo $ctr++;?></td>
-                        <td><?php echo $thRow->th_name;?></td>  
+                        <td><?php echo $fnRow->fn_name;?></td>  
                         <td>
                             <table border="1" width="100%">
                                 <tr style="background: #eee">
-                                    <td>G3</td>
-                                    <td>Fn</td> 
-                                    <td>Obj & Fn</td>
+                                    <td>G3</td>                                    
+                                    <td>Obj</td>
                                 </tr>
                                 <?php
-                                    while($goalFirstG3Row = mysql_fetch_object($goalFirstG3List)){
+                                    while($goalSecondG3Row = mysql_fetch_object($goalSecondG3List)){
                                         //now get all the goalFirstG1ObjFn associated with this particular goalFirstG1Id
-                                        $goalFirstG3ObjFnList = getAllGoalFirstG3ObjFnsForThisGoalFirstG3Id($goalFirstG3Row->id);
+                                        $goalSecondG3ObjList = getAllGoalSecondG3ObjsForThisGoalSecondG3Id($goalSecondG3Row->id);
                                         ?>
                                         <tr>
-                                            <td><?php echo $goalFirstG3Row->g3;?></td>
-                                            <td><?php echo $goalFirstG3Row->fn;?></td>
+                                            <td><?php echo $goalSecondG3Row->g3;?></td>                                            
                                             <td>
                                                 <table border="0" width="100%">
                                                     <tr style="background: lightblue">
-                                                        <td>Obj</td>
-                                                        <td>Fn</td>
+                                                        <td>Obj</td>                                                        
                                                     </tr>
                                                     <?php
-                                                        while($goalFirstG3ObjFnRow = mysql_fetch_object($goalFirstG3ObjFnList)){
+                                                        while($goalSecondG3ObjRow = mysql_fetch_object($goalSecondG3ObjList)){
                                                             ?>
                                                             <tr>
-                                                                <td><?php echo $goalFirstG3ObjFnRow->obj;?></td>
-                                                                <td><?php echo $goalFirstG3ObjFnRow->fn;?></td>
+                                                                <td><?php echo $goalSecondG3ObjRow->obj;?></td>                                                                
                                                             </tr>
                                                             <?php
                                                         }//end while loop obj & fn

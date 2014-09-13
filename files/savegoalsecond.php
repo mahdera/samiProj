@@ -3,6 +3,9 @@
     require_once 'goalsecondg1.php';    
     require_once 'goalsecondg2.php';    
     require_once 'goalsecondg3.php';
+    require_once 'goalsecondg1obj.php';
+    require_once 'goalsecondg2obj.php';
+    require_once 'goalsecondg3obj.php';
     
     //get the values...
     $fnId = $_POST['fn'];
@@ -17,7 +20,7 @@
     $numItemsG2 = $_POST['numItemsG2'];
     $numItemsG3 = $_POST['numItemsG3'];
     //save the goalfirst object to the database...
-    saveGoalSecond($thId);
+    saveGoalSecond($fnId);
     //fetch the value just saved using the thId
     $fetchedGoalSecond = getGoalSecondUsingFnId($fnId);
     //now save the goalfirstg1 value...
@@ -34,26 +37,26 @@
     }//end for loop i
     
     //now do the same thing for G2
-    saveGoalSecondG2($fetchedGoalFirst->id, $g2);
+    saveGoalSecondG2($fetchedGoalSecond->id, $g2);
     //fetch the value using the above parameters you have used to save the values to the database...
-    $fetchedGoalSecondG2 = getGoalSecondG2Using($fetchedGoalFirst->id, $g2);
+    $fetchedGoalSecondG2 = getGoalSecondG2Using($fetchedGoalSecond->id, $g2);
     
     for($j = 2; $j <= $numItemsG2; $j++){
         $g2ObjTextBoxId = "txtg2obj" . $j;
         $g2ObjTextBoxValue = $_POST["$g2ObjTextBoxId"];        
         //now save the values to the database...
-        saveGoalSecondG2Obj($fetchedGoalFirstG2->id, $g2ObjTextBoxValue);
+        saveGoalSecondG2Obj($fetchedGoalSecondG2->id, $g2ObjTextBoxValue);
     }//end for loop i
     
     //now do the same thing for G3
-    saveGoalSecondG3($fetchedGoalFirst->id, $g3);
+    saveGoalSecondG3($fetchedGoalSecond->id, $g3);
     //fetch the value using the above parameters you have used to save the values to the database...
-    $fetchedGoalSecondG3 = getGoalSecondG3Using($fetchedGoalFirst->id, $g3);
+    $fetchedGoalSecondG3 = getGoalSecondG3Using($fetchedGoalSecond->id, $g3);
     
     for($k = 2; $k <= $numItemsG3; $k++){
         $g3ObjTextBoxId = "txtg3obj" . $k;
         $g3ObjTextBoxValue = $_POST["$g3ObjTextBoxId"];        
         //now save the values to the database...
-        saveGoalSecondG3ObjFn($fetchedGoalFirstG3->id, $g3ObjTextBoxValue);
+        saveGoalSecondG3Obj($fetchedGoalSecondG3->id, $g3ObjTextBoxValue);
     }//end for loop i
 ?>

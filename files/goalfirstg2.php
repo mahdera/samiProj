@@ -38,6 +38,16 @@
         }
     }
     
+    function getAllGoalFirstG2ForThisGoalFirstId($goalFirstId){
+        try{
+            $query = "select * from tbl_goal_first_g2 where goal_first_id = $goalFirstId";
+            $result = read($query);
+            return $result;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+    
     function getGoalFirstG2($id){
         try{
             $query = "select * from tbl_goal_first_g2 where id = $id";

@@ -38,6 +38,16 @@
         }
     }
     
+    function getAllGoalSecondG3ObjsForThisGoalSecondG3Id($goalSecondG3Id){
+        try{
+            $query = "select * from tbl_goal_second_g3_obj where goal_second_g3_id = $goalSecondG3Id";
+            $result = read($query);
+            return $result;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+    
     function getGoalSecondG3Obj($id){
         try{
             $query = "select * from tbl_goal_second_g3_obj where id = $id";

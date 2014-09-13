@@ -4,6 +4,7 @@
     function saveGoalSecondG3($goalSecondId, $g3){
         try{
             $query = "insert into tbl_goal_second_g3 values(0, $goalSecondId, '$g3')";
+            //echo $query;
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -38,9 +39,31 @@
         }
     }
     
+    function getAllGoalSecondG3ForThisGoalSecondId($goalSecondId){
+        try{
+            $query = "select * from tbl_goal_second_g3 where goal_second_id = $goalSecondId";
+            $result = read($query);
+            return $result;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+    
     function getGoalSecondG3($id){
         try{
             $query = "select * from tbl_goal_second_g3 where id = $id";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+    
+    function getGoalSecondG3Using($goalSecondId, $g3){
+        try{
+            $query = "select * from tbl_goal_second_g3 where goal_second_id = $goalSecondId and g3 = '$g3'";
+            //echo $query;
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;

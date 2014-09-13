@@ -15,7 +15,7 @@
                     <?php                    
                         while($fnRow = mysql_fetch_object($fnList)){
                             ?>
-                                <option value="<?php echo $thRow->id;?>"><?php echo $fnRow->fn_name;?></option>
+                                <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
                             <?php
                         }//end while loop
                     ?>
@@ -92,7 +92,7 @@
     
     $(document).ready(function(){        
         //show the result back to the user on document.ready
-        //showListOfGoalSeconds();
+        showListOfGoalSeconds();
         
         $('#btnsave').click(function(){
             //first get the static form values...
@@ -161,7 +161,7 @@
                         type:'POST',
                         success:function(response){                        
                             clearFormInputField(); 
-                            showListOfGoalFirsts();
+                            showListOfGoalSeconds();
                         },
                         error:function(error){
                             alert(error);
@@ -196,18 +196,18 @@
             }
 
             for(var j=2; j <= numItemsG2; j++){
-                var textBoxControlName = "textg2obj" + j;                
+                var textBoxControlName = "txtg2obj" + j;                
                 $('#' + textBoxControlName).val('');                
             }
 
             for(var k=2; k <= numItemsG3; k++){
-                var textBoxControlName = "textg3obj" + j;                
+                var textBoxControlName = "txtg3obj" + j;                
                 $('#' + textBoxControlName).val('');                
             }
 
         }
         
-        function showListOfGoalFirsts(){
+        function showListOfGoalSeconds(){
             $('#subDetailDiv').load('files/showlistofgoalseconds.php');
         }
         

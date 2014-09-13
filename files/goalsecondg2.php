@@ -38,9 +38,30 @@
         }
     }
     
+    function getAllGoalSecondG2ForThisGoalSecondId($goalSecondId){
+        try{
+            $query = "select * from tbl_goal_second_g2 where goal_second_id = $goalSecondId";
+            $result = read($query);
+            return $result;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+    
     function getGoalSecondG2($id){
         try{
             $query = "select * from tbl_goal_second_g2 where id = $id";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+    
+    function getGoalSecondG2Using($goalSecondId, $g2){
+        try{
+            $query = "select * from tbl_goal_second_g2 where goal_second_id = $goalSecondId and g2 = '$g2'";
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;

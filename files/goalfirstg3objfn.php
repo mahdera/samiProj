@@ -38,6 +38,16 @@
         }
     }
     
+    function getAllGoalFirstG3ObjFnsForThisGoalFirstG3Id($goalFirstG3Id){
+        try{
+            $query = "select * from tbl_goal_first_g3_obj_fn where goal_first_g3_id = $goalFirstG3Id";
+            $result = read($query);
+            return $result;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+    
     function getGoalFirstG3ObjFn($id){
         try{
             $query = "select * from tbl_goal_first_g3_obj_fn where id = $id";

@@ -347,14 +347,14 @@
             }
 
             for(var j=2; j <= numItemsG2; j++){
-                var textBoxControlName = "textg2obj" + j;
+                var textBoxControlName = "txtg2obj" + j;
                 var selectControlName = "slctg2fn" + j;
                 $('#' + textBoxControlName).val('');
                 $('#' + selectControlName).val('');
             }
 
             for(var k=2; k <= numItemsG3; k++){
-                var textBoxControlName = "textg3obj" + j;
+                var textBoxControlName = "txtg3obj" + j;
                 var selectControlName = "slctg3fn" + j;
                 $('#' + textBoxControlName).val('');
                 $('#' + selectControlName).val('');
