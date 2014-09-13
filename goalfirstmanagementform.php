@@ -244,7 +244,7 @@
             var g3Fn = $('#slctg3fn').val();
             var g3Obj1 = $('#txtg3obj1').val();
             var g3Fn1 = $('#slctg3fn1').val();
-            var isBlank = false;
+            var isBlank = false;            
             
             if(th !== "" && g1 !== "" && g1Fn !== "" && g1Obj1 !== "" && g1Fn1 !== "" && g2 !== "" && g2Fn !== "" &&
                     g2Obj1 !== "" && g2Fn1 !== "" && g3 !== "" && g3Fn !== "" && g3Obj1 !== "" && g3Fn1 !== ""){
@@ -298,8 +298,9 @@
 
                 //by now I have everything I need. So make sure the isBlank variable is not true and go ahead and save the information to the database.
                 if(!isBlank){
+                    dataString += "&numItemsG1="+numItemsG1+"&numItemsG2="+numItemsG2+"&numItemsG3="+numItemsG3;
                     $.ajax({
-                        url: 'files/saveth.php',        
+                        url: 'files/savegoalfirst.php',        
                         data: dataString,
                         type:'POST',
                         success:function(response){                        
@@ -348,11 +349,15 @@
             for(var j=2; j <= numItemsG2; j++){
                 var textBoxControlName = "textg2obj" + j;
                 var selectControlName = "slctg2fn" + j;
+                $('#' + textBoxControlName).val('');
+                $('#' + selectControlName).val('');
             }
 
             for(var k=2; k <= numItemsG3; k++){
                 var textBoxControlName = "textg3obj" + j;
                 var selectControlName = "slctg3fn" + j;
+                $('#' + textBoxControlName).val('');
+                $('#' + selectControlName).val('');
             }
 
         }

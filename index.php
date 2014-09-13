@@ -73,7 +73,9 @@ and open the template in the editor.
             $('#mainDetailDiv').load('goalfirstmanagementform.php');
         });
         
-        $('#goalSecondManagementLink').click(function(){});
+        $('#goalSecondManagementLink').click(function(){
+            $('#mainDetailDiv').load('goalsecondmanagementform.php');
+        });
         
         $('#putThActionManagementLink').click(function(){});
         

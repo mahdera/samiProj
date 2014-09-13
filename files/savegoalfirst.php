@@ -20,9 +20,9 @@
     $g3Fn = $_POST['g3Fn'];
     $g3Obj1 = $_POST['g3Obj1'];
     $g3Fn1 = $_POST['g3Fn1'];
-    $numItemsG1 = $_POST['numItemG1'];
-    $numItemsG2 = $_POST['numItemG2'];
-    $numItemsG3 = $_POST['numItemG3'];
+    $numItemsG1 = $_POST['numItemsG1'];
+    $numItemsG2 = $_POST['numItemsG2'];
+    $numItemsG3 = $_POST['numItemsG3'];
     //save the goalfirst object to the database...
     saveGoalFirst($thId);
     //fetch the value just saved using the thId
@@ -34,9 +34,9 @@
     
     
     for($i = 2; $i <= $numItemsG1; $i++){
-        $g1ObjTextBoxId = "txtg1obj" + $i;
+        $g1ObjTextBoxId = "txtg1obj" . $i;
         $g1ObjTextBoxValue = $_POST["$g1ObjTextBoxId"];
-        $g1FnSelectBoxId = "slctg1fn" + $i;
+        $g1FnSelectBoxId = "slctg1fn" . $i;
         $g1FnSelectBoxValue = $_POST["$g1FnSelectBoxId"];
         //now save the values to the database...
         saveGoalFirstG1ObjFn($fetchedGoalFirstG1->id, $g1ObjTextBoxValue, $g1FnSelectBoxValue);
@@ -48,9 +48,9 @@
     $fetchedGoalFirstG2 = getGoalFirstG2Using($fetchedGoalFirst->id, $g2, $g2Fn);
     
     for($j = 2; $j <= $numItemsG2; $j++){
-        $g2ObjTextBoxId = "txtg2obj" + $j;
+        $g2ObjTextBoxId = "txtg2obj" . $j;
         $g2ObjTextBoxValue = $_POST["$g2ObjTextBoxId"];
-        $g2FnSelectBoxId = "slctg2fn" + $j;
+        $g2FnSelectBoxId = "slctg2fn" . $j;
         $g2FnSelectBoxValue = $_POST["$g2FnSelectBoxId"];
         //now save the values to the database...
         saveGoalFirstG2ObjFn($fetchedGoalFirstG2->id, $g2ObjTextBoxValue, $g2FnSelectBoxValue);
@@ -62,9 +62,9 @@
     $fetchedGoalFirstG3 = getGoalFirstG3Using($fetchedGoalFirst->id, $g3, $g3Fn);
     
     for($k = 2; $k <= $numItemsG3; $k++){
-        $g3ObjTextBoxId = "txtg3obj" + $j;
+        $g3ObjTextBoxId = "txtg3obj" . $k;
         $g3ObjTextBoxValue = $_POST["$g3ObjTextBoxId"];
-        $g3FnSelectBoxId = "slctg3fn" + $j;
+        $g3FnSelectBoxId = "slctg3fn" . $k;
         $g3FnSelectBoxValue = $_POST["$g3FnSelectBoxId"];
         //now save the values to the database...
         saveGoalFirstG3ObjFn($fetchedGoalFirstG3->id, $g3ObjTextBoxValue, $g3FnSelectBoxValue);
