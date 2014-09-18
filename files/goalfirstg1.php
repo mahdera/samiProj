@@ -72,7 +72,7 @@
     
     function getGoalFirstG1ForGoalFirst($goalFirstId){
         try{
-            $query = "select * from tbl_goal_first_g1 where goal_first_id = $goalFirstId and g1 = '$g1' and fn = '$g1Fn'";
+            $query = "select * from tbl_goal_first_g1 where goal_first_id = $goalFirstId";
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;
