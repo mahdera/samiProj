@@ -85,6 +85,11 @@
                                 <td>Fn</td>
                                 <td><?php echo $goalFirstG2ObjFnRow->fn;?></td>
                             </tr>
+                            <tr>
+                                <td colspan="3">
+                                    Here goes the action box
+                                </td>
+                            </tr>
                             <?php
                         }//end while loop
                     }//end if condition for goalFirstG1ObjFnList
