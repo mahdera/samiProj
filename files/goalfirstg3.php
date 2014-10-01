@@ -69,4 +69,15 @@
             $ex->getMessage();
         }
     }
+    
+    function getGoalFirstG3ForGoalFirst($goalFirstId){
+        try{
+            $query = "select * from tbl_goal_first_g3 where goal_first_id = $goalFirstId";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
 ?>

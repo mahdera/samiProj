@@ -49,7 +49,11 @@
             $('#' + divId).load('files/showputthactionform.php?thId='+idVal);
         });
         
-        $('.closeActionFormClass').click();
+        $('.closeActionFormClass').click(function(){
+            var idVal = $(this).attr('id');
+            var divId = "actionDiv" + idVal;
+            $('#' + divId).html('');
+        });
         
     });//end document.ready function
 </script>

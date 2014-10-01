@@ -5,6 +5,10 @@
     require_once 'goalfirst.php';
     require_once 'goalfirstg1.php';
     require_once 'goalfirstg1objfn.php';
+    require_once 'goalfirstg2.php';
+    require_once 'goalfirstg2objfn.php';
+    require_once 'goalfirstg3.php';
+    require_once 'goalfirstg3objfn.php';
     
     //now get all goalfirst records associated with this particular thId
     $goalFirstRow = getGoalFirstUsingThId($thId);
@@ -141,6 +145,52 @@
 
             ?>
         </table> 
+        <table border="1" width="100%">
+            <tr>
+                <td>
+                    Add Action
+                </td>
+                <td>
+                    <?php
+                        //the name should be dynamic...
+                        $textAreaId = "thAction_" . $thId;
+                        $buttonId = "thAddAction_" . $thId;
+                    ?>
+                    <textarea name="<?php echo $textAreaId;?>" id="<?php echo $textAreaId;?>" style="width: 100%" rows="3"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="right">
+                    <input type="button" value="Add Action" id="<?php echo $buttonId;?>"/>                    
+                </td>
+            </tr>
+        </table>
         <?php    
     }//end if condition
 ?>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var thId = "<?php echo $thId;?>";
+        var textAreaId = "thAction_" + thId;
+        var buttonId = "thAddAction_" + thId;
+        var divId = "actionDiv" + thId;
+        
+        $('#'+buttonId).click(function(){
+            //now get the value from the textarea...
+            var textAreaValue = $('#'+textAreaId).val();
+            var dataString = "thId="+thId+"&textAreaValue="+textAreaValue;
+            //now save this part and update the div about the status of the save transaction
+            $.ajax({
+                url: 'files/savethaction.php',        
+                data: dataString,
+                type:'POST',
+                success:function(response){                     
+                    $('#'+thId).html(response);
+                },
+                error:function(error){
+                    alert(error);
+                }
+            });
+        });
+    });//end document.ready function
+</script>
