@@ -180,17 +180,21 @@
             var textAreaValue = $('#'+textAreaId).val();
             var dataString = "thId="+thId+"&textAreaValue="+textAreaValue;
             //now save this part and update the div about the status of the save transaction
-            $.ajax({
-                url: 'files/savethaction.php',        
-                data: dataString,
-                type:'POST',
-                success:function(response){                     
-                    $('#'+thId).html(response);
-                },
-                error:function(error){
-                    alert(error);
-                }
-            });
+            if(textAreaValue !== ''){
+                $.ajax({
+                    url: 'files/savethaction.php',        
+                    data: dataString,
+                    type:'POST',
+                    success:function(response){                     
+                        $('#'+divId).html(response);
+                    },
+                    error:function(error){
+                        alert(error);
+                    }
+                });
+            }else{
+                alert('Enter the Th Action text!');
+            }
         });
     });//end document.ready function
 </script>

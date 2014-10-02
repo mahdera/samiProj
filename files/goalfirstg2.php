@@ -3,7 +3,7 @@
     
     function saveGoalFirstG2($goalFirstId, $g2, $fn){
         try{
-            $query = "insert into tbl_goal_first_g2 values(0, $goalFirstId, '$g2', '$fn')";
+            $query = "insert into tbl_goal_first_g2 values(0, $goalFirstId, '$g2', $fn)";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -12,7 +12,7 @@
     
     function updateGoalFirstG2($id, $goalFirstId, $g2, $fn){
         try{
-            $query = "update tbl_goal_first_g2 set goal_first_id = $goalFirstId, g2 = '$g2', fn = '$fn' where id = $id";
+            $query = "update tbl_goal_first_g2 set goal_first_id = $goalFirstId, g2 = '$g2', fn = $fn where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -61,7 +61,7 @@
     
     function getGoalFirstG2Using($goalFirstId, $g2, $g2Fn){
         try{
-            $query = "select * from tbl_goal_first_g2 where goal_first_id = $goalFirstId and g2 = '$g2' and fn = '$g2Fn'";
+            $query = "select * from tbl_goal_first_g2 where goal_first_id = $goalFirstId and g2 = '$g2' and fn = $g2Fn";
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;

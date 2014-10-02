@@ -37,7 +37,7 @@
                         $fnList = getAllFns();
                         while($fnRow = mysql_fetch_object($fnList)){
                             ?>
-                                <option value="<?php echo $fnRow->fn_name;?>"><?php echo $fnRow->fn_name;?></option>
+                                <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
                             <?php
                         }//end while loop
                         ?>
@@ -68,7 +68,7 @@
                                     $fnList = getAllFns();
                                     while($fnRow = mysql_fetch_object($fnList)){
                                         ?>
-                                            <option value="<?php echo $fnRow->fn_name;?>"><?php echo $fnRow->fn_name;?></option>
+                                            <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
                                         <?php
                                     }//end while loop
                                     ?>
@@ -101,7 +101,7 @@
                         $fnList = getAllFns();
                         while($fnRow = mysql_fetch_object($fnList)){
                             ?>
-                                <option value="<?php echo $fnRow->fn_name;?>"><?php echo $fnRow->fn_name;?></option>
+                                <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
                             <?php
                         }//end while loop
                         ?>
@@ -132,7 +132,7 @@
                                     $fnList = getAllFns();
                                     while($fnRow = mysql_fetch_object($fnList)){
                                         ?>
-                                            <option value="<?php echo $fnRow->fn_name;?>"><?php echo $fnRow->fn_name;?></option>
+                                            <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
                                         <?php
                                     }//end while loop
                                     ?>
@@ -165,7 +165,7 @@
                         $fnList = getAllFns();
                         while($fnRow = mysql_fetch_object($fnList)){
                             ?>
-                                <option value="<?php echo $fnRow->fn_name;?>"><?php echo $fnRow->fn_name;?></option>
+                                <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
                             <?php
                         }//end while loop
                         ?>
@@ -196,7 +196,7 @@
                                     $fnList = getAllFns();
                                     while($fnRow = mysql_fetch_object($fnList)){
                                         ?>
-                                            <option value="<?php echo $fnRow->fn_name;?>"><?php echo $fnRow->fn_name;?></option>
+                                            <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
                                         <?php
                                     }//end while loop
                                     ?>

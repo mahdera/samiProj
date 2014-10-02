@@ -3,8 +3,7 @@
     
     function saveGoalSecondG3($goalSecondId, $g3){
         try{
-            $query = "insert into tbl_goal_second_g3 values(0, $goalSecondId, '$g3')";
-            //echo $query;
+            $query = "insert into tbl_goal_second_g3 values(0, $goalSecondId, '$g3')";            
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();

@@ -81,7 +81,9 @@ and open the template in the editor.
             $('#mainDetailDiv').load('putthactionmanagementform.php');
         });
         
-        $('#putFnActionManagementLink').click(function(){});
+        $('#putFnActionManagementLink').click(function(){
+            $('#mainDetailDiv').load('putfnactionmanagementform.php');
+        });
         
         $('#editThActionManagementLink').click(function(){});
         
