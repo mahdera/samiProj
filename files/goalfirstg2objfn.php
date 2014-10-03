@@ -58,4 +58,14 @@
             $ex->getMessage();
         }
     }
+    
+    function getAllGoalFirstG2ObjFnsForFn($fn_id){
+        try{
+            $query = "select * from tbl_goal_first_g2_obj_fn where fn_id = $fn_id";
+            $result = read($query);
+            return $result;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
 ?>
