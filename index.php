@@ -101,21 +101,37 @@ and open the template in the editor.
             $('#mainDetailDiv').load('form2managementform.php');
         });
         
-        $('#form3ManagementLink').click(function(){});
+        $('#form3ManagementLink').click(function(){
+            $('#mainDetailDiv').load('form3managementform.php');
+        });
         
-        $('#form4ManagementLink').click(function(){});
+        $('#form4ManagementLink').click(function(){
+            $('#mainDetailDiv').load('form4managementform.php');
+        });
         
-        $('#form5ManagementLink').click(function(){});
+        $('#form5ManagementLink').click(function(){
+            $('#mainDetailDiv').load('form5managementform.php');
+        });
         
-        $('#form6ManagementLink').click(function(){});
+        $('#form6ManagementLink').click(function(){
+            $('#mainDetailDiv').load('form6managementform.php');
+        });
         
-        $('#form7ManagementLink').click(function(){});
+        $('#form7ManagementLink').click(function(){
+            $('#mainDetailDiv').load('form7managementform.php');
+        });
         
-        $('#form8ManagementLink').click(function(){});
+        $('#form8ManagementLink').click(function(){
+            $('#mainDetailDiv').load('form8managementform.php');
+        });
         
-        $('#form9ManagementLink').click(function(){});
+        $('#form9ManagementLink').click(function(){
+            $('#mainDetailDiv').load('form9managementform.php');
+        });
         
-        $('#form10ManagementLink').click(function(){});
+        $('#form10ManagementLink').click(function(){
+            $('#mainDetailDiv').load('form10managementform.php');
+        });
         
         $('#reportManagementLink').click(function(){});       
         
