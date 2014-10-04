@@ -694,3 +694,60 @@ ALTER TABLE `tbl_team_interest`
 --
 ALTER TABLE `tbl_th_action`
   ADD CONSTRAINT `tbl_th_action_ibfk_1` FOREIGN KEY (`th_id`) REFERENCES `tbl_th` (`id`);
+
+create table tbl_form_2(
+    id bigint auto_increment,
+    q2_1 text not null,
+    q2_2 text not null,
+    q2_3 text not null,
+    q2_4 text not null,
+    primary key(id)
+);
+
+create table tbl_form_3(
+    id bigint auto_increment,
+    q3_1 text not null,
+    primary key(id)
+);
+
+create table tbl_form_4(
+    id bigint auto_increment,
+    q4_1 text not null,
+    primary key(id)
+);
+
+create table tbl_form_5(
+    id bigint auto_increment,
+    q5_1 text not null,
+    primary key(id)
+);
+
+create table tbl_form_6(
+    id bigint auto_increment,
+    q6_1 text not null,
+    primary key(id)
+);
+
+create table tbl_form_7(
+    id bigint auto_increment,
+    q7_1 text not null,
+    primary key(id)
+);
+
+create table tbl_form_8(
+    id bigint auto_increment,
+    q8_1 text not null,
+    primary key(id)
+);
+
+create table tbl_form_9(
+    id bigint auto_increment,
+    q9_1 text not null,
+    primary key(id)
+);
+
+create table tbl_form_10(
+    id bigint auto_increment,
+    q10_1 text not null,
+    primary key(id)
+);

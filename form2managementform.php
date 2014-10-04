@@ -24,13 +24,7 @@
             <td>
                 <textarea name="q2_4" id="q2_4" style="width: 100%" rows="3"></textarea>
             </td>
-        </tr>
-        <tr>
-            <td>Q4:</td>
-            <td>
-                <textarea name="textareaplan" id="textareaplan" style="width: 100%" rows="3"></textarea>
-            </td>
-        </tr>
+        </tr>        
         <tr>
             <td colspan="2" align="right">
                 <input type="button" value="Save" id="btnsave"/>
