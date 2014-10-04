@@ -10,9 +10,9 @@
         }
     }
     
-    function updateThAction($id, $thId, $actionText){
+    function updateThAction($id, $actionText){
         try{
-            $query = "update tbl_th_action set th_id = $thId, action_text = '$actionText' where id = $id";
+            $query = "update tbl_th_action set action_text = '$actionText' where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();

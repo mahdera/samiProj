@@ -16,10 +16,7 @@
         <tr>
             <td>Date:</td>
             <td>
-                <input type="text" name="txtdate" id="txtdate" gldp-id="mydate" />
-                <div gldp-el="mydate"
-                    style="width:400px; height:300px; position:absolute; top:70px; left:100px;">
-               </div>
+                <input type="text" id="datepicker" />
             </td>
         </tr>
         <tr id="thRow1">
@@ -49,7 +46,10 @@
 <script type="text/javascript">
     $(document).ready(function(){        
         
-        $('#txtdate').Zebra_DatePicker();
+        $( "#datepicker" ).datepicker({
+            changeMonth: true,//this option for allowing user to select month
+            changeYear: true //this option for allowing user to select from year range
+        });
         
         showListOfAssessments();
         
@@ -70,7 +70,7 @@
         
         $('#btnsave').click(function(){
             var assessmentType = $('#slctassessmenttype').val();
-            var assessmentDate = $('#txtdate').val();
+            var assessmentDate = $('#datepicker').val();
             var numItems = $('.thInputRow').length;
             var th1 = $('#txtth1').val();
             var summary = $('#textareasummary').val();
@@ -106,7 +106,7 @@
         
         function clearFormInputFields(){
             $('#slctassessmenttype').val('');
-            $('#txtdate').val('');            
+            $('#datepicker').val('');            
             $('#txtth1').val('');
             $('#textareasummary').val('');
         }

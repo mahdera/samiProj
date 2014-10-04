@@ -9,9 +9,9 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title>Sami's Project</title>
         <script type='text/javascript' src="js/jquery-1.11.1.js"></script>
-        <!-- for the datetime picker -->
-	<script type="text/javascript" src="js/zebra/javascript/zebra_datepicker.js"></script>
-	<link rel="stylesheet" href="js/zebra/css/default.css" type="text/css">
+        <!-- for the datetime picker -->	
+        <script type="text/javascript" src="js/jquery-ui.js"></script>	
+        <link href="css/jquery-ui.css" rel="stylesheet">
     </head>
     <body>
         <table border="1" width="100%">
@@ -89,11 +89,17 @@ and open the template in the editor.
             $('#mainDetailDiv').load('editthactionmanagementform.php');
         });
         
-        $('#editFnActionManagementLink').click(function(){});
+        $('#editFnActionManagementLink').click(function(){
+            $('#mainDetailDiv').load('editfnactionmanagementform.php');
+        });
         
-        $('#form1ManagementLink').click(function(){});
+        $('#form1ManagementLink').click(function(){
+            $('#mainDetailDiv').load('form1managementform.php');
+        });
         
-        $('#form2ManagementLink').click(function(){});
+        $('#form2ManagementLink').click(function(){
+            $('#mainDetailDiv').load('form2managementform.php');
+        });
         
         $('#form3ManagementLink').click(function(){});
         

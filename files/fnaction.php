@@ -1,5 +1,5 @@
 <?php
-    require_once './dbconnection.php';
+    require_once 'dbconnection.php';
     
     function saveFnAction($fnId, $actionText){
         try{
@@ -10,9 +10,9 @@
         }
     }
     
-    function updateFnAction($id, $fnId, $actionText){
+    function updateFnAction($id, $actionText){
         try{
-            $query = "update tbl_fn_action set fn_id = $fnId, action_text = '$actionText' where id = $id";
+            $query = "update tbl_fn_action set action_text = '$actionText' where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();

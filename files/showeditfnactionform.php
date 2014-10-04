@@ -1,16 +1,16 @@
 <?php
-    $thActionId = $_GET['id'];
-    require_once 'thaction.php';
-    $thActionObj = getThAction($thActionId);
-    $thEditActionText = "thEditActionText" . $thActionId;
-    $buttonId = "updateThActionButton" . $thActionId;
+    $fnActionId = $_GET['id'];
+    require_once 'fnaction.php';
+    $fnActionObj = getFnAction($fnActionId);
+    $fnEditActionText = "fnEditActionText" . $fnActionId;
+    $buttonId = "updateFnActionButton" . $fnActionId;
 ?>
 <form>
     <table border="0" width="100%">
         <tr>
-            <td width="10%">Th Action:</td>
+            <td width="10%">Fn Action:</td>
             <td>
-                <textarea name="<?php echo $thEditActionText;?>" id="<?php echo $thEditActionText;?>" style="width: 100%" rows="3"><?php echo $thActionObj->action_text;?></textarea>
+                <textarea name="<?php echo $fnEditActionText;?>" id="<?php echo $fnEditActionText;?>" style="width: 100%" rows="3"><?php echo $fnActionObj->action_text;?></textarea>
             </td>
         </tr>
         <tr>
@@ -23,21 +23,21 @@
 </form>
 <script type="text/javascript">
     $(document).ready(function(){
-        var thActionId = "<?php echo $thActionId;?>";
+        var fnActionId = "<?php echo $fnActionId;?>";
         //now create the button id here using the actionId i got...
-        var buttonId = "updateThActionButton" + thActionId;
+        var buttonId = "updateFnActionButton" + fnActionId;
         
         $('#'+buttonId).click(function(){
             //now get the update text value..
-            var textAreaId = "thEditActionText" + thActionId;
+            var textAreaId = "fnEditActionText" + fnActionId;
             //get the value of the textarea using the textId you just created...
             var textAreaValue = $('#'+textAreaId).val();
-            var divId = "editActionTextDiv" + thActionId;
+            var divId = "editActionTextDiv" + fnActionId;
             
             if(textAreaValue !== ""){
-                var dataString = "updatedText="+textAreaValue+"&thActionId="+thActionId;
+                var dataString = "updatedText="+textAreaValue+"&fnActionId="+fnActionId;
                 $.ajax({
-                    url: 'files/updatethaction.php',        
+                    url: 'files/updatefnaction.php',        
                     data: dataString,
                     type:'POST',
                     success:function(response){                     
@@ -48,7 +48,7 @@
                     }
                 });
             }else{
-                alert("You need to enter the th action text!");
+                alert("You need to enter the fn action text!");
             }
         });
     });//end document.ready fucntion
