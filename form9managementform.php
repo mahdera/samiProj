@@ -17,6 +17,29 @@
 </form>
 <script type="text/javascript">
     $(document).ready(function(){       
+        $('#btnsave').click(function(){
+            var q9_1 = $('#q9_1').val();
+                        
+            if(q9_1 !== ""){
+                var dataString = "q9_1="+q9_1;
+                $.ajax({
+                    url: 'files/saveform9.php',        
+                    data: dataString,
+                    type:'POST',
+                    success:function(response){                     
+                        clearInputFields();
+                    },
+                    error:function(error){
+                        alert(error);
+                    }
+                });
+            }else{
+                alert("Please enter value in the input field");
+            }
+        });
         
+        function clearInputFields(){
+            $('#q9_1').val('');            
+        }
     });//end document.ready function
 </script>
