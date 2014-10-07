@@ -35,6 +35,36 @@
 </form>
 <script type="text/javascript">
     $(document).ready(function(){       
+        $('#btnsave').click(function(){
+            var q2_1 = $('#q2_1').val();
+            var q2_2 = $('#q2_2').val();
+            var q2_3 = $('#q2_3').val();
+            var q2_4 = $('#q2_4').val();
+            
+            if(q2_1 !== "" && q2_2 !== "" && q2_3 !== "" && q2_4 !== ""){
+                var dataString = "q2_1="+q2_1+"&q2_2="+q2_2+"&q2_3="+q2_3+
+                        "&q2_4="+q2_4;
+                $.ajax({
+                    url: 'files/saveform2.php',        
+                    data: dataString,
+                    type:'POST',
+                    success:function(response){                     
+                        clearInputFields();
+                    },
+                    error:function(error){
+                        alert(error);
+                    }
+                });
+            }else{
+                alert("Please enter all the input fields");
+            }
+        });
         
+        function clearInputFields(){
+            $('#q2_1').val('');
+            $('#q2_2').val('');
+            $('#q2_3').val('');
+            $('#q2_4').val('');
+        }
     });//end document.ready function
 </script>
