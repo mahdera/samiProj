@@ -22,7 +22,7 @@
         <tr id="thRow1">
             <td>Th1:</td>
             <td>
-                <input type="text1" name="txtth1" id="txtth1" class="thInputRow"/> [ <a href="#.php" id="addMoreThLink">Add More</a> | <a href="#.php" id="removeThRowLink">Remove</a> ]
+                <input type="text" name="txtth1" id="txtth1" class="thInputRow"/> [ <a href="#.php" id="addMoreThLink">Add More</a> | <a href="#.php" id="removeThRowLink">Remove</a> ]
             </td>
         </tr>
         <tr>

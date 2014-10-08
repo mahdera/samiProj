@@ -27,8 +27,20 @@
                                 <td><?php echo $team->team_name;?></td>
                                 <td><?php echo $responsibilityRow->role;?></td>
                                 <td><?php echo $responsibilityRow->responsibility;?></td>                                
-                                <td>Edit</td>
-                                <td>Delete</td>
+                                <td>
+                                    <a href="#.php" id="<?php echo $responsibilityRow->id;?>" class="editLink">Edit</a>
+                                </td>
+                                <td>
+                                    Delete
+                                </td>
+                            </tr>
+                            <?php
+                                $divId = "responsibilityEditDiv" . $responsibilityRow->id;
+                            ?>
+                            <tr>
+                                <td colspan="6">
+                                    <div id="<?php echo $divId;?>"></div>
+                                </td>
                             </tr>
                             <?php
                         }//end while loop
@@ -38,3 +50,14 @@
         }
 ?>
 </div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        
+        $('.editLink').click(function(){
+            var id = $(this).attr('id');
+            var divId = "responsibilityEditDiv" + id;
+            $('#'+divId).load('files/showresponsibilityeditform.php?id='+id);
+        });
+        
+    });//end document.ready function
+</script>
