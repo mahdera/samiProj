@@ -40,6 +40,7 @@
         });
         
         $('.hideThDetailsLink').click(function(){
+            var id = $(this).attr('id');
             var divId = "thEditDiv" + id;
             $('#'+divId).html('');
         });
