@@ -208,7 +208,7 @@
         }
         
         function showListOfGoalSeconds(){
-            $('#subDetailDiv').load('files/showlistofgoalseconds.php');
+            $('#subDetailDiv').load('files/showlistofgoalsecondsnewversion.php');
         }
         
         $('#addMoreG1ObjLink').click(function(){

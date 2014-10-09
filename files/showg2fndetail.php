@@ -1,9 +1,9 @@
 <?php
     $id = $_GET['id'];
-    require_once 'goalfirstg1objfn.php';
+    require_once 'goalfirstg2objfn.php';
     require_once 'fn.php';
     //now get all goalfirstg1objfns for this goalfirstg1 id
-    $goalFirstG1ObjFnList = getAllGoalFirstG1ObjFnsForThisGoalFirstG1Id($id);
+    $goalFirstG2ObjFnList = getAllGoalFirstG2ObjFnsForThisGoalFirstG2Id($id);
     ?>
     <table border="1" width="100%">
         <tr style="background: #eee">
@@ -11,11 +11,11 @@
             <td>Fn</td>
         </tr>
     <?php
-    while($goalFirstG1ObjFnRow = mysql_fetch_object($goalFirstG1ObjFnList)){
-        $fnObj = getFn($goalFirstG1ObjFnRow->fn_id);
+    while($goalFirstG2ObjFnRow = mysql_fetch_object($goalFirstG2ObjFnList)){
+        $fnObj = getFn($goalFirstG2ObjFnRow->fn_id);
         ?>
         <tr>
-            <td><?php echo $goalFirstG1ObjFnRow->obj;?></td>
+            <td><?php echo $goalFirstG2ObjFnRow->obj;?></td>
             <td><?php echo $fnObj->fn_name;?></td>
         </tr>
         <?php

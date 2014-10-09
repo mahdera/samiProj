@@ -59,5 +59,15 @@
             $ex->getMessage();
         }
     }
+    
+    function getAllGoalSecondsUsingFnId($fnId){
+        try{
+            $query = "select * from tbl_goal_second where fn_id = $fnId";
+            $result = read($query);            
+            return $result;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
 ?>
 
