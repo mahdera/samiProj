@@ -13,7 +13,8 @@
     
     function updateRisk($id, $thId, $mg, $dr, $pr, $wa, $rs){
         try{
-            $query = "update tbl_risk set th_id = , mg = '$mg', dr = '$dr', pr = '$pr', wa = '$wa', rs = '$rs' where id = $id";
+            $query = "update tbl_risk set th_id = $thId, mg = '$mg', dr = '$dr', pr = '$pr', wa = '$wa', rs = '$rs' where id = $id";
+            echo $query;
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();

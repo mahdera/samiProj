@@ -363,7 +363,7 @@
         }
         
         function showListOfGoalFirsts(){
-            $('#subDetailDiv').load('files/showlistofgoalfirsts.php');
+            $('#subDetailDiv').load('files/showlistofgoalfirstsnewversion.php');
         }
         
         $('#slctg1fn').change(function(){

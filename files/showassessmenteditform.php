@@ -77,11 +77,13 @@
                         $rowCtr=1;
                         while($thRow = mysql_fetch_object($thList)){
                             $thControlName = "txteditth" . $id . $rowCtr;
+                            $thIdControlName = "txteditthid" . $id . $rowCtr;
                             ?>
                             <tr>
                                 <td><?php echo $rowCtr;?></td>
                                 <td>
                                     <input type="text" name="<?php echo $thControlName;?>" id="<?php echo $thControlName;?>" value="<?php echo $thRow->th_name;?>"/>
+                                    <input type="hidden" name="<?php echo $thIdControlName;?>" id="<?php echo $thIdControlName;?>" value="<?php echo $thRow->id;?>"/>
                                 </td>
                             </tr>
                             <?php
@@ -109,10 +111,23 @@
 <script type="text/javascript">
     $(document).ready(function(){
         
+        
+            
         $( ".datepicker" ).datepicker({
-            changeMonth: true,//this option for allowing user to select month
-            changeYear: true //this option for allowing user to select from year range
+            option:true, 
+            dateFormat: 'yy-mm-dd',
+            changeMonth:true,
+            changeYear:true
         });
+            
+	
+        
+        /*$( ".datepicker" ).datepicker({
+            //format: "YYYY-mm-dd",
+            //changeMonth: true,//this option for allowing user to select month
+            //changeYear: true //this option for allowing user to select from year range
+            "option", "dateFormat", "yy-mm-dd"
+        });*/
         
         var id = "<?php echo $id;?>";
         var buttonId = "btnupdate" + id;
@@ -129,20 +144,23 @@
             var summaryControlValue = $('#'+summaryControlName).val();
             var dataString = "assessmentType="+encodeURIComponent(assessmentTypeControlValue)+
                     "&assessmentDate="+assessmentDateControlValue+"&summary="+encodeURIComponent(summaryControlValue)+
-                    "&id="+id;
+                    "&id="+id+"&ctr="+ctr;
             for(var i=1; i <= ctr; i++){
                 var thControlName = "txteditth" + id + i;
                 var thControlValue = $('#'+thControlName).val();
-                dataString += "&"+thControlName+"="+thControlValue;
+                var thIdControlName = "txteditthid" + id + i;
+                var thIdControlValue = $('#'+thIdControlName).val();
+                dataString += "&"+thControlName+"="+thControlValue+
+                        "&"+thIdControlName+"="+thIdControlValue;
             }
             //now it is looking great...i can continue working on the save part...
+            var divId = "assessmentEditDiv" + id;
             $.ajax({
                 url: 'files/updateassessment.php',		
                 data: dataString,
                 type:'POST',
-                success:function(response){                        
-                    //clearFormInputFields(); 
-                    //showListOfAssessments();
+                success:function(response){                    
+                    $('#'+divId).html(response);
                 },
                 error:function(error){
                     alert(error);

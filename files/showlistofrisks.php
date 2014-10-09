@@ -25,6 +25,7 @@
                         $ctr=1;
                         while($riskRow = mysql_fetch_object($riskList)){
                             $th = getTh($riskRow->th_id);
+                            $divId = "riskEditDiv" . $riskRow->id;
                             ?>
                             <tr>
                                 <td><?php echo $ctr;?></td>
@@ -34,13 +35,18 @@
                                 <td><?php echo $riskRow->pr;?></td>
                                 <td><?php echo $riskRow->wa;?></td>
                                 <td><?php echo $riskRow->rs;?></td>
-                                <td>Edit</td>
+                                <td><a href="#.php" class="riskEditLink" id="<?php echo $riskRow->id;?>">Edit</a></td>
                                 <td>Delete</td>
                                 <td align="center">
                                     <?php
                                         $chkName = "chk_" . $ctr;
                                     ?>
                                     <input type="checkbox" name="<?php echo $chkName;?>" id="<?php echo $chkName;?>" value="<?php echo $riskRow->th_id;?>"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="10">
+                                    <div id="<?php echo $divId;?>"></div>
                                 </td>
                             </tr>
                             <?php
@@ -52,3 +58,14 @@
         }
 ?>
 </div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        
+        $('.riskEditLink').click(function(){
+            var id = $(this).attr('id');
+            var divId = "riskEditDiv" + id;
+            $('#'+divId).load('files/showeditfiedlsofrisk.php?id='+id);
+        });
+        
+    });//end document.ready function
+</script>
