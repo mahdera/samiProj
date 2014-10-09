@@ -17,7 +17,7 @@
                 <td><?php echo $ctr;?></td>
                 <td><?php echo $thRow->th_name;?></td>
                 <td>
-                    [Show | Hide]
+                    [<a href="#.php" class="showThDetailsLink" id="<?php echo $thRow->id;?>">Show</a> | <a href="#.php" class="hideThDetailsLink" id="<?php echo $thRow->id;?>">Hide</a>]
                 </td>
             </tr>
             <tr>
@@ -30,3 +30,19 @@
         }//end while loop
     ?>
 </table>
+<script type="text/javascript">
+    $(document).ready(function(){
+        
+        $('.showThDetailsLink').click(function(){
+            var id = $(this).attr('id');
+            var divId = "thEditDiv" + id;
+            $('#'+divId).load('files/showg1andfnsforthisth.php?id='+id);
+        });
+        
+        $('.hideThDetailsLink').click(function(){
+            var divId = "thEditDiv" + id;
+            $('#'+divId).html('');
+        });
+        
+    });//end document.ready function
+</script>
