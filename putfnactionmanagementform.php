@@ -2,6 +2,7 @@
 <?php
     //first grab all fn record from the database...
     require_once 'files/fn.php';
+    require_once 'files/fnaction.php';
     $fn_list = getAllFns();
 ?>
 <table border="1" width="100%">
@@ -11,9 +12,12 @@
         <td>Action</td>
     </tr>
     <?php
-        $ctr=1;
+        $ctr=1;        
         while($fn_row = mysql_fetch_object($fn_list)){
+            $countVal = 0;
             $divId = "actionDiv" . $fn_row->id;
+            $countVal = doesThisFnAlreadyActionFilledForIt($fn_row->id);
+            if(!$countVal){
             ?>
                 <tr>
                     <td><?php echo $ctr++;?></td>
@@ -28,6 +32,7 @@
                     </td>
                 </tr>
             <?php
+            }//end if condition
         }//end while loop
     ?>
 </table>

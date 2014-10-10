@@ -1,6 +1,7 @@
 <h2>Th Action</h2>
 <?php
     require_once 'files/th.php';
+    require_once 'files/thaction.php';
     $thList = getAllThs();
     
     if(!empty($thList)){
@@ -12,9 +13,12 @@
                 <td>Action</td>
             </tr>
             <?php
-                $ctr=1;
+                $ctr=1;                
                 while($thRow = mysql_fetch_object($thList)){
+                    $countVal = 0;
                     $divId = "actionDiv" . $thRow->id;
+                    $countVal = doesThisThAlreadyActionFilledForIt($thRow->id);
+                    if(!$countVal){
                     ?>
                     <tr>
                         <td><?php echo $ctr;?></td>
@@ -30,6 +34,7 @@
                     </tr>
                     <?php
                     $ctr++;
+                    }
                 }//end while loop
             ?>
         </table>

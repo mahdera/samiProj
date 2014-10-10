@@ -19,6 +19,19 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Table structure for table `tbl_assessment`
 --
 
+create table tbl_user(
+    id int auto_increment,
+    first_name varchar(50) not null,
+    last_name varchar(50) not null,
+    email varchar(70) not null,
+    phone_number varchar(30) not null,
+    member_type varchar(50) not null,
+    modified_by int not null,
+    modification_date date not null,
+    primary key(id),
+    foreign key(modified_by) references tbl_user(id)
+);
+
 CREATE TABLE `tbl_assessment` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `assessment_type` varchar(50) NOT NULL,

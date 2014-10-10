@@ -1,4 +1,5 @@
 <?php
+    //this file should list only those ths now having th action filled for them...
     $thId = $_GET['thId'];
     
     require_once 'th.php';

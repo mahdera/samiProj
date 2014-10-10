@@ -4,72 +4,64 @@
     require_once 'form1q4.php';
     
     $title = $_POST['title'];
-    $form_date = $_POST['formDate'];
-    //$formattedDate = DATE_FORMAT($form_date,'%Y-%m-%d') this should be in MySQL
-    //Mahder, use a manual date formatting just as you have used in the case of ethstar...
-    $selectedDate = $_POST['selectedDate'];
-    $selectedMonth = $_POST['selectedMonth'];
-    $selectedYear = $_POST['selectedYear'];
+    $formDate = $_POST['formDate'];    
     $plan = $_POST['plan'];
     $q1 = $_POST['q1'];
     $q2 = $_POST['q2'];
     $q3NumItems = $_POST['q3NumItems'];
-    $q4NumItems = $_POST['q4NumItems'];
-    //now create a MySQL compatable date variable.
-    if($selectedDate < 10){
-        $selectedDate = "0" . $selectedDate;    
-    }
-    if($selectedMonth < 10){
-        $selectedMonth = "0" . $selectedMonth;
-    }
-    $mysqlFormDate = $selectedYear+"-"+$selectedMonth+"-"+$selectedDate;
+    $q4NumItems = $_POST['q4NumItems'];   
     
     //now save form1 record to the database
-    saveForm1($title, $mysqlFormDate, $plan, $q1, $q2);
+    saveForm1($title, $formDate, $plan, $q1, $q2);
     //now fetch this particular record using the column/field values...
-    $form1Obj = getForm1Using($title, $form_date);
+    $form1Obj = getForm1Using($title, $formDate);
     
     if($form1Obj != null){
         $form1Id = $form1Obj->id;
+        $q3ValueArray = array();
+        $q4ValueArray = array();
         
         for($i=1; $i <= $q3NumItems; $i++){
-            $textBoxQ3Col1 = "txtrowq3" . $i;
-            $textBoxQ3Col2 = "txtrowq3" . ($i+1);
-            $textBoxQ3Col3 = "txtrowq3" . ($i+2);
-            $textBoxQ3Col4 = "txtrowq3" . ($i+3);
-            $textBoxQ3Col5 = "txtrowq3" . ($i+4);
-            $textBoxQ3Col6 = "txtrowq3" . ($i+5);            
-            //now get the values...
-            $textBoxQ3Col1Value = $_POST["$textBoxQ3Col1"];
-            $textBoxQ3Col2Value = $_POST["$textBoxQ3Col2"];
-            $textBoxQ3Col3Value = $_POST["$textBoxQ3Col3"];
-            $textBoxQ3Col4Value = $_POST["$textBoxQ3Col4"];
-            $textBoxQ3Col5Value = $_POST["$textBoxQ3Col5"];
-            $textBoxQ3Col6Value = $_POST["$textBoxQ3Col6"];
-
-            saveForm1Q3($form1Id, $textBoxQ3Col1Value, $textBoxQ3Col2Value, 
-                    $textBoxQ3Col3Value, $textBoxQ3Col4Value, 
-                    $textBoxQ3Col5Value, $textBoxQ3Col6Value);            
+            $textBoxId = "txtrowq3" . $i;
+            $textBoxIdVal = $_POST["$textBoxId"];
+            $q3ValueArray[($i-1)] = $textBoxIdVal;            
+        }//end for loop       
+        
+        //now save the record to form1q3 table using the array as intermidiary storage value...
+        for($k=0; $k < count($q3ValueArray); $k++ ){
+            $index = $k+1;
+            if($index == 1){
+                saveForm1Q3($form1Id, $q3ValueArray[$k], $q3ValueArray[$k+1], 
+                    $q3ValueArray[$k+2], $q3ValueArray[$k+3], 
+                    $q3ValueArray[$k+4], $q3ValueArray[$k+5]);
+            }
+            
+            if($index % 6 == 0){
+                saveForm1Q3($form1Id, $q3ValueArray[$k+1], $q3ValueArray[$k+2], 
+                    $q3ValueArray[$k+3], $q3ValueArray[$k+4], 
+                    $q3ValueArray[$k+5], $q3ValueArray[$k+6]);
+            }
         }//end for loop
         
         for($j=1; $j <= $q4NumItems; $j++){
-            $textBoxQ4Col1 = "txtrowq4" . $j;
-            $textBoxQ4Col2 = "txtrowq4" . ($j+1);
-            $textBoxQ4Col3 = "txtrowq4" . ($j+2);
-            $textBoxQ4Col4 = "txtrowq4" . ($j+3);
-            $textBoxQ4Col5 = "txtrowq4" . ($j+4);
-            $textBoxQ4Col6 = "txtrowq4" . ($j+5);            
-            //now get the values...
-            $textBoxQ4Col1Value = $_POST["$textBoxQ4Col1"];
-            $textBoxQ4Col2Value = $_POST["$textBoxQ4Col2"];
-            $textBoxQ4Col3Value = $_POST["$textBoxQ4Col3"];
-            $textBoxQ4Col4Value = $_POST["$textBoxQ4Col4"];
-            $textBoxQ4Col5Value = $_POST["$textBoxQ4Col5"];
-            $textBoxQ4Col6Value = $_POST["$textBoxQ4Col6"];
-
-            saveForm1Q4($form1Id, $textBoxQ4Col1Value, $textBoxQ4Col2Value, 
-                    $textBoxQ4Col3Value, $textBoxQ4Col4Value, 
-                    $textBoxQ4Col5Value, $textBoxQ4Col6Value);            
+            $textBoxId = "txtrowq4" . $j;
+            $textBoxIdVal = $_POST["$textBoxId"];
+            $q4ValueArray[($i-1)] = $textBoxIdVal;                       
+        }//end for loop
+        
+        for($m=0; $m < count($q4ValueArray); $m++){
+            $index = $m+1;
+            if($index == 1){
+                saveForm1Q4($form1Id, $q4ValueArray[$m], $q4ValueArray[$m+1], 
+                    $q4ValueArray[$m+2], $q4ValueArray[$m+3], 
+                    $q4ValueArray[$m+4], $q4ValueArray[$m+5]);
+            }
+            
+            if($index % 6 == 0){
+                saveForm1Q4($form1Id, $q4ValueArray[$m+1], $q4ValueArray[$m+2], 
+                    $q4ValueArray[$m+3], $q4ValueArray[$m+4], 
+                    $q4ValueArray[$m+5], $q4ValueArray[$m+6]);
+            }
         }//end for loop
         
     }///end if condition...

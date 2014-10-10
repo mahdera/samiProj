@@ -101,6 +101,7 @@
         $('txttitle').focus();
         
         $( "#datepicker" ).datepicker({
+            dateFormat: "yy-mm-dd",
             changeMonth: true,//this option for allowing user to select month
             changeYear: true //this option for allowing user to select from year range
         });
@@ -147,10 +148,7 @@
         
         $('#btnsave').click(function(){
             var title = $('#txttitle').val();
-            var formDate = $('#datepicker').val();
-            var selectedDate = formDate.getDate();
-            var selectedMonth = (formDate.getMonth() + 1);
-            var selectedYear = (formDate.getYear() + 1900);
+            var formDate = $('#datepicker').val();            
             var plan = $('#textareaplan').val();
             var q1 = $('#textareaq1').val();
             var q2 = $('#textareaq2').val();
@@ -159,21 +157,22 @@
             var dataString = "";
             
             if(title !== "" && formDate !== "" && plan !== "" && q1 !== "" && q2 !== ""){
-                dataString += "title="+encodeURIComponent(title)+"&selectedDate="+
-                        selectedDate+"&plan="+encodeURIComponent(plan)+
+                dataString += "title="+encodeURIComponent(title)+"&formDate="+
+                        formDate+"&plan="+encodeURIComponent(plan)+
                         "&q1="+encodeURIComponent(q1)+"&q2="+encodeURIComponent(q2)+
-                        "&q3NumItems="+q3NumItems+"&q4NumItems="+q4NumItems+"&selectedMonth="+
-                        selectedMonth+"&selectedYear="+selectedYear;
+                        "&q3NumItems="+q3NumItems+"&q4NumItems="+q4NumItems;
                 for(var i=1; i <= q3NumItems; i++){
-                    var textBoxId = "txtrowq3"+i;
-                    var textBoxValue = $('#'+textBoxId).val();
-                    dataString += "&"+textBoxId+"="+encodeURIComponent(textBoxValue);
+                    var textBoxId = "txtrowq3"+i;                    
+                    //now get the value...
+                    var textBoxIdVal = $('#'+textBoxId).val();                    
+                    dataString += "&"+textBoxId+"="+encodeURIComponent(textBoxIdVal);
                 }//end for loop
                 
                 for(var j=1; j <= q4NumItems; j++){
-                    var textBoxId = "txtrowq4"+j;
-                    var textBoxValue = $('#'+textBoxId).val();
-                    dataString += "&"+textBoxId+"="+encodeURIComponent(textBoxValue);
+                    var textBoxId = "txtrowq4"+j;                    
+                    //now get the values...
+                    var textBoxIdVal = $('#'+textBoxId).val();                    
+                    dataString += "&"+textBoxId+"="+encodeURIComponent(textBoxIdVal);
                 }
                 //now its time to save the data to the database...
                 $.ajax({
@@ -181,8 +180,7 @@
                     data: dataString,
                     type:'POST',
                     success:function(response){                        
-                        //clearFormInputFields(q3NumItems, q4NumItems); 
-                        //showListOfForm1Records();
+                        clearFormInputFields(q3NumItems, q4NumItems);                         
                     },
                     error:function(error){
                         alert(error);

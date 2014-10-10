@@ -3,7 +3,8 @@
     
     function saveForm1($title, $form_date, $plan, $q1, $q2){
         try{
-            $query = "insert into tbl_form_1 values(0,'$title','$form_date', '$plan', $q1','$q2')";            
+            $query = "insert into tbl_form_1 values(0,'$title','$form_date', '$plan', '$q1','$q2')";            
+            //echo $query;
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -12,7 +13,7 @@
     
     function updateForm1($id, $title, $form_date, $plan, $q1, $q2){
         try{
-            $query = "update tbl_form_1 set title = '$title', form_date = 'DATE_FORMAT($form_date, '%Y-%m-%d')', plan='$plan', q1 = '$q1', q2 = '$q2' where id = $id";
+            $query = "update tbl_form_1 set title = '$title', form_date = '$form_date', plan='$plan', q1 = '$q1', q2 = '$q2' where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();

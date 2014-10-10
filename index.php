@@ -12,6 +12,11 @@ and open the template in the editor.
         <!-- for the datetime picker -->	
         <script type="text/javascript" src="js/jquery-ui.js"></script>	
         <link href="css/jquery-ui.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="css/slidebars.css">        
+        <script type="text/javascript" src="js/modernizr.custom.15150.js" ></script>
+        <script type="text/javascript" src="js/accordion.js" ></script>
+
     </head>
     <body>
         <table border="1" width="100%">
