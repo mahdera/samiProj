@@ -34,10 +34,10 @@
                     <td><?php echo $userRow->user_status;?></td>
                     <td><?php echo $userRow->modification_date;?></td>
                     <td>
-                        Reset Password
+                        <a href="#.php" class="resetUserPasswordLink" id="<?php echo $userRow->id;?>">Reset Password</a>
                     </td>
                     <td>
-                        Modify Status
+                        <a href="#.php" class="modifyUserStatusLink" id="<?php echo $userRow->id;?>">Modify Status</a>
                     </td>
                 </tr>
                 <?php
@@ -50,6 +50,16 @@
     $(document).ready(function(){
         $('#createUserLink').click(function(){
             $('#createUserDiv').load('files/showcreateuserform.php');
+        });
+        
+        $('.resetUserPasswordLink').click(function(){
+            var id = $(this).attr('id');
+            $('#createUserDiv').load('files/showresetuserpasswordform.php?id='+id);
+        });
+        
+        $('.modifyUserStatusLink').click(function(){
+            var id = $(this).attr('id');
+            $('#createUserDiv').load('files/showmodifyuserstatusform.php?id='+id);
         });
     });//end document.ready function
 </script>
