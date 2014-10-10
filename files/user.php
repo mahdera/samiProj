@@ -1,5 +1,5 @@
 <?php
-    require_once './dbconnection.php';
+    require_once 'dbconnection.php';
     
     function saveUser($firstName, $lastName, $email, $userId, $password, $phoneNumber,
             $memberType, $modifiedBy){
@@ -48,6 +48,19 @@
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+    
+    function isThereAUserWithUserIdAndPassword($userId,$password){
+        try{
+            $cnt = 0;
+            $query = "select count(*) as cnt from tbl_user where user_id = '$userId' and password = md5('$password')";
+            //echo $query;
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow->cnt;
         } catch (Exception $ex) {
             $ex->getMessage();
         }
