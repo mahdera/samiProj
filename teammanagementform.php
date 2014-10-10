@@ -2,7 +2,7 @@
 <form>
     <table border="0" width="100%">
         <tr>
-            <td>Name:</td>
+            <td width="20%">Name:</td>
             <td>
                 <input type="text" name="txtname" id="txtname"/>
             </td>

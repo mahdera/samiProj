@@ -1,9 +1,9 @@
 <?php
 	require_once('../files/user.php');
-
-	$userIdEmail = $_GET['userIdEmail'];
-	$userObject = UserDefQuery::getUserUsingUserId($userIdEmail);
-	$userKey =  ContactInfoDef::getUserKeyUsingEmail($userIdEmail);
+        //am sure the user entered the email address
+	$userIdEmail = $_GET['userIdEmail'];	
+	//check if the user exists by the given email address and if so send email
+        $userCount = doesThisUserAccountExistUsingEmail($userIdEmail);
 	$theUserKey = null;
 
 	if(isset($userObject)){

@@ -10,7 +10,7 @@
             <li class="stepNav">
                 <a href="#.php">Step 2</a>
             </li>
-            <li class="stepNav active5">
+            <li class="stepNav">
                 <a href="#.php">Step 3</a>
             </li>
             <li class="stepNav">
@@ -19,7 +19,7 @@
             <li class="stepNav">
                 <a href="#.php">Step 5</a>
             </li>
-            <li class="stepNav">
+            <li class="stepNav active5">
                 <a href="#.php">Step 6</a>
             </li>
         </ul>

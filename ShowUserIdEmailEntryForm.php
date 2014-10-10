@@ -5,7 +5,7 @@
 		</td>
 	</tr>
 	<tr>
-		<td align="right"><strong><span style="color:#59B">Enter your User Id or Email:</span></strong></td>
+		<td align="right"><strong><span style="color:#59B">Enter your Email:</span></strong></td>
 		<td>
 			<input type="text" name="userid_email" id="userid_email" style="color:#59B"/>
 		</td>

@@ -1,6 +1,6 @@
 <div id="step_row">
     <div id="step_title">
-        <h2>Step 1</h2>
+        <h2>Process</h2>
     </div>
     <div id="steps">
         <ul>

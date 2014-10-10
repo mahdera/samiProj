@@ -5,55 +5,50 @@
         </ul>
     </div>
     <div id="slidecontent">
-        <h3 class="clicker">Step 1 <br><span>sample</span></h3>
+        <h3 class="clicker">Step 1</h3>
         <ul class="reveal">
-            <li><a href="#">sample</a></li>
-            <li><a href="#">sample</a></li>
-            <li><a href="#">sample</a></li>
-            <li><a href="#">sample</a></li>
-        </ul>
-        <h3 class="clicker">sample</span></h3>
+            <li><a href="#.php">1-1</a></li>
+            <li><a href="#.php">1-2</a></li>
+            <li><a href="#.php">1-3</a></li>
+            <li><a href="#.php">1-4</a></li>
+        </ul>        
+        <h3 class="clicker">Step 2</h3>
         <ul class="reveal">
-            <li><a href="#">sample</a>
-                <ul>
-                    <li><a href="#">sample</a></li>
-                    <li><a href="#">sample</a></li>
-                    <li><a href="#">sample</a></li>
-                </ul>
-            </li>
-            <li><a href="#">sample</a></li>
+            <li><a href="#.php">2-1</a></li>
+            <li><a href="#.php">2-2</a></li>
+            <li><a href="#.php">2-3</a></li>
+            <li><a href="#.php">2-4</a></li>
         </ul>
-        <h3 class="clicker">Step 3 <br><span>sample</span></h3>
+        <h3 class="clicker">Step 3</h3>
         <ul class="reveal">
-            <li><a href="#">sample</a></li>
-            <li><a href="#">sample</a></li>
-            <li><a href="#">sample</a></li>
+            <li><a href="#.php">3-1</a></li>
+            <li><a href="#.php">3-2</a></li>
+            <li><a href="#.php">3-3</a></li>
+            <li><a href="#.php">3-4</a></li>
         </ul>
-        <h3 class="clicker">Step 4 <br><span>sample</span></h3>
+        <h3 class="clicker">Step 4</h3>
         <ul class="reveal">
-            <li><a href="#">sample</a></li>
-            <li><a href="#">sample</a></li>
-            <li><a href="#">sample</a></li>
+            <li><a href="#.php">4-1</a></li>
+            <li><a href="#.php">4-2</a></li>
+            <li><a href="#.php">4-3</a></li>
+            <li><a href="#.php">4-4</a></li>
         </ul>
-        <h3 class="clicker">Step 5 <br><span>sample</span></h3>
+        <h3 class="clicker">Step 5</h3>
         <ul class="reveal">
-            <li><a href="#">sample</a>
-                <ul>
-                    <li><a href="#">sample</a></li>
-                    <li><a href="#">sample</a></li>
-                    <li><a href="#">sample</a></li>
-                </ul>
-            </li>
-            <li><a href="#">sample</a></li>
-            <li><a href="#">sample</a></li>
+            <li><a href="#.php">5-1</a></li>
+            <li><a href="#.php">5-2</a></li>
+            <li><a href="#.php">5-3</a></li>
+            <li><a href="#.php">5-4</a></li>
         </ul>
-        <h3 class="clicker">Step 6 <br><span>sample</span></h3>
+        <h3 class="clicker">Step 6</h3>
         <ul class="reveal">
-            <li><a href="#">sample</a></li>
-            <li><a href="#">sample</a></li>
-            <li><a href="#">samplen</a></li>
+            <li><a href="#.php">6-1</a></li>
+            <li><a href="#.php">6-2</a></li>
+            <li><a href="#.php">6-3</a></li>
+            <li><a href="#.php">6-4</a></li>
+            <li><a href="#.php">6-5</a></li>
+            <li><a href="#.php">6-6</a></li>
         </ul>
-
     </div>
     <div class="savequit">
         <ul class="sq">
