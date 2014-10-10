@@ -7,7 +7,7 @@
     <div id="slidecontent">
         <h3 class="clicker">Step 1</h3>
         <ul class="reveal">
-            <li><a href="#.php">1-1</a></li>
+            <li><a href="#.php" id="">1-1</a></li>
             <li><a href="#.php">1-2</a></li>
             <li><a href="#.php">1-3</a></li>
             <li><a href="#.php">1-4</a></li>
@@ -92,3 +92,8 @@
         </ul>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        
+    });//end document.ready function
+</script>

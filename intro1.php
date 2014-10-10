@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['USER_ID'])){
+        header("Location: login.php");
+    }
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -16,7 +22,7 @@
     <body id="step5">
         <div id="sb-site">
             <div id="dtool" class="5dcontain">
-                <?php                    
+                <?php                   
                     require 'menurow.php';
                     require 'steprowintroone.php';
                     require 'contentintroone.php';

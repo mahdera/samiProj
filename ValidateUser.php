@@ -8,7 +8,7 @@
   $success = isThereAUserWithUserIdAndPassword($userId,$password);
   
   if($success){
-      $_SESSION['USER_ID'] = $userId;
+      $_SESSION['USER_ID'] = $userId;      
       header('Location: intro1.php');
   }else{
       $_SESSION['messageToUser'] = "Invalid User Id or Password.";
