@@ -89,7 +89,7 @@
     
     function getUserUsingEmailAddress($email){
         try{
-            $query = "select * from tbl_user where email = '$email'";
+            $query = "select * from tbl_user where email = '$email'";            
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;

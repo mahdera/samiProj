@@ -19,7 +19,7 @@
 </table>
 <script type="text/javascript">
 	$('#userIdOrEmailEntered').click(function(){
-    disablePage('Checking our records...')
+    
   	var userIdEmail = $('#userid_email').val();
 
   	if(userIdEmail != ""){
@@ -28,7 +28,7 @@
 	        data:null,
 	        url:'CheckUserUsingUserIdEmailForgotPassword.php?userIdEmail='+userIdEmail,
 	        success:function(data) {
-            enablePage();
+            
             // if html comes back take the whole div area otherwise its an info message
             if (data.indexOf('<') > -1 ) {
               alert(data);

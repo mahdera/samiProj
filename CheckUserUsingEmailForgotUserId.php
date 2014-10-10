@@ -5,9 +5,10 @@
   $email = $_GET['email'];  
   $user = null;
   $user = getUserUsingEmailAddress($email);
-  $userId = $user->user_id;
-  $fullName = $user->first_name." ".$user->last_name;
+  
   if ($user != null){        
+        $userId = $user->user_id;
+        $fullName = $user->first_name." ".$user->last_name;
         $emailFrom = "mahderalem@gmail.com";
         $subject = "Your System User Id";
         $emailMessage = "
@@ -24,8 +25,8 @@
         </body>
         </html>";
         sendEmail($email, $subject, $emailMessage, $emailFrom);
-    echo 'An email containing your User Id has been sent to ', $email, '.';
-	}else{
-    echo $email, ' was not found in our records.';
-  }
+        echo 'An email containing your User Id has been sent to ', $email, '.';
+    }else{
+        echo $email, ' was not found in our records.';
+    }
  ?>
