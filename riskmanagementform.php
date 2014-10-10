@@ -2,7 +2,7 @@
     require_once 'files/th.php';
     $thList = getAllThs();
 ?>
-<h2>Add Risk</h2>
+<h1>Add Risk</h1>
 <form>
     <table border="0" width="100%">
         <tr>
@@ -82,8 +82,7 @@
         </tr>
         <tr>
             <td colspan="2" align="right">
-                <input type="button" value="Save" id="btnsave"/>
-                <input type="reset" value="Clear"/>
+                <input type="button" value="Save" id="btnsave"/>                
             </td>            
         </tr>
     </table>

@@ -4,7 +4,7 @@
     $thList = getAllThs();
     $fnList = getAllFns();
 ?>
-<h2>Add Goal First</h2>
+<h1>Add Goal First</h1>
 <form>
     <table border="0" width="100%">
         <tr>

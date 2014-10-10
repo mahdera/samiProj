@@ -1,4 +1,4 @@
-<h2>Add Team</h2>
+<h1>Add Team</h1>
 <form>
     <table border="0" width="100%">
         <tr>
@@ -47,8 +47,7 @@
         </tr>
         <tr>
             <td colspan="2" align="right">
-                <input type="button" value="Save" id="btnsave"/>
-                <input type="reset" value="Clear"/>
+                <input type="button" value="Save" id="btnsave"/>                
             </td>
         </tr>
     </table>
@@ -103,7 +102,7 @@
         
         function showListOfTeams(){
             $('#subDetailDiv').load('files/showlistofteams.php');
-        }
+        }       
         
     });//end document.ready function
 </script>

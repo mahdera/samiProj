@@ -1,8 +1,8 @@
-<div class="content" id='introOneContent'>
+<div class="content" id='introTwoContent'>
     <!--to be replaced when the next button is clicked-->
     <div id="topcontain">
         <div id="titlearea">
-            <h1 id='currentPageTag'>Intro One</h1>
+            <h1 id='currentPageTag'>Intro Two</h1>
             <h2></h2>
             <h3></h3>
         </div>

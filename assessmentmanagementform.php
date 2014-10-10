@@ -1,6 +1,6 @@
-<h2>Add Assessment</h2>
+<h1>Add Assessment</h1>
 <form>
-    <table border="0" width="100%">
+    <table border="0" width="99%">
         <tr>
             <td>Assessment Type:</td>
             <td>
@@ -33,8 +33,7 @@
         </tr>
         <tr>
             <td colspan="2" align="right">
-                <input type="button" value="Save" id="btnsave"/>
-                <input type="reset" value="Clear"/>
+                <input type="button" value="Save" id="btnsave"/>                
             </td>            
         </tr>        
     </table>

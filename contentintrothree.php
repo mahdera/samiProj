@@ -1,8 +1,8 @@
-<div class="content" id='introOneContent'>
+<div class="content" id='introTwoContent'>
     <!--to be replaced when the next button is clicked-->
     <div id="topcontain">
         <div id="titlearea">
-            <h1 id='currentPageTag'>Intro One</h1>
+            <h1 id='currentPageTag'>Intro Three</h1>
             <h2></h2>
             <h3></h3>
         </div>
@@ -28,6 +28,8 @@
                 window.location.replace("intro2.php");
             }else if(currentPageTag === 'Intro Two'){
                 window.location.replace("intro3.php");
+            }else if(currentPageTag === 'Intro Three'){
+                window.location.replace("step1.php");
             }
         });
         

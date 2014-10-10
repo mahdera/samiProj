@@ -1,8 +1,8 @@
-<div class="content" id='introOneContent'>
+<div class="content" id='step2Content'>
     <!--to be replaced when the next button is clicked-->
     <div id="topcontain">
         <div id="titlearea">
-            <h1 id='currentPageTag'>Intro One</h1>
+            <h1 id='currentPageTag'>Step 2-1</h1>
             <h2></h2>
             <h3></h3>
         </div>
@@ -24,19 +24,15 @@
         
         $('#rightArrowButton').click(function(){            
             var currentPageTag = $('#currentPageTag').html();
-            if(currentPageTag === 'Intro One'){
-                window.location.replace("intro2.php");
-            }else if(currentPageTag === 'Intro Two'){
-                window.location.replace("intro3.php");
+            if(currentPageTag === 'Step 2-1'){
+                $('#step2Content').load('showstep2_2content.php');
             }
         });
         
         $('#leftArrowButton').click(function(){
             var currentPageTag = $('#currentPageTag').html();
-            if(currentPageTag === 'Intro Two'){
-                window.location.replace("intro1.php");
-            }else if(currentPageTag === 'Intro Three'){
-                window.location.replace("intro2.php");
+            if(currentPageTag === 'Step 2-1'){
+                window.location.replace("step1.php");
             }
         });
         

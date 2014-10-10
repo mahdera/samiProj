@@ -7,7 +7,7 @@
         $assessmentList = getAllAssessments();
         if(!empty($assessmentList)){
             ?>
-                <table border="1" width="100%">
+                <table border="0" width="100%">
                     <tr style="background: #ccc">
                         <td>#</td>                        
                         <td>Assessment Type</td>

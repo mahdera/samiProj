@@ -1,4 +1,4 @@
-<h2>Th Action</h2>
+<h1>Th Action</h1>
 <?php
     require_once 'files/th.php';
     require_once 'files/thaction.php';
