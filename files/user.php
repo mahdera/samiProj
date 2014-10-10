@@ -65,4 +65,36 @@
             $ex->getMessage();
         }
     }
+    
+    function doesThisUserAccountExistUsingEmail($email){
+        try{
+            $cnt = 0;
+            $query = "select count(*) as cnt from tbl_user where email = '$email'";            
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow->cnt;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+    
+    function updateUserPasswordUsingEmail($email, $randomValue){
+        try{
+            $query = "update tbl_user set password = md5('$randomValue') where email = '$email'";
+            save($query);
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+    
+    function getUserUsingEmailAddress($email){
+        try{
+            $query = "select * from tbl_user where email = '$email'";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
 ?>
