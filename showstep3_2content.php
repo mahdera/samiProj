@@ -20,7 +20,9 @@
     <div>
         <h1>Th Check Boxes</h1>
     </div>
-
+    <?php
+        require_once 'files/showlistofthselectioncheckboxes.php';
+    ?>
 <script type='text/javascript'>
     $(document).ready(function(){       
         

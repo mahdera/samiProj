@@ -13,11 +13,12 @@
         }
     }
     
-    function updateUser($id,$firstName, $lastName, $email, $userId, $password, $phoneNumber,
+    function updateUser($id,$firstName, $lastName, $email,$phoneNumber,
             $memberType,$userStatus, $modifiedBy){
         try{
             $query = "update tbl_user set first_name='$firstName', last_name='$lastName', email='$email', ".
                     "phone_number = '$phoneNumber', member_type = '$memberType',user_status = '$userStatus', modified_by = $modifiedBy, modification_date = NOW() where id = $id";
+            echo $query;
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -115,6 +116,15 @@
             $query = "select * from tbl_user where member_type != 'Admin'";
             $result = read($query);
             return $result;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+    
+    function resetUserPassword($id, $password){
+        try{
+            $query = "update tbl_user set password = md5('$password') where id = $id";
+            save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }

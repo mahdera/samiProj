@@ -37,7 +37,7 @@
                         <a href="#.php" class="resetUserPasswordLink" id="<?php echo $userRow->id;?>">Reset Password</a>
                     </td>
                     <td>
-                        <a href="#.php" class="modifyUserStatusLink" id="<?php echo $userRow->id;?>">Modify Status</a>
+                        <a href="#.php" class="modifyUserProfileLink" id="<?php echo $userRow->id;?>">Modify Profile</a>
                     </td>
                 </tr>
                 <?php
@@ -57,9 +57,9 @@
             $('#createUserDiv').load('files/showresetuserpasswordform.php?id='+id);
         });
         
-        $('.modifyUserStatusLink').click(function(){
+        $('.modifyUserProfileLink').click(function(){
             var id = $(this).attr('id');
-            $('#createUserDiv').load('files/showmodifyuserstatusform.php?id='+id);
+            $('#createUserDiv').load('files/showmodifyuserprofileform.php?id='+id);
         });
     });//end document.ready function
 </script>

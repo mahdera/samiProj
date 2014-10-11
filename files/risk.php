@@ -1,6 +1,6 @@
 <?php
 
-    require_once './dbconnection.php';
+    require_once 'dbconnection.php';
     
     function saveRisk($thId, $mg, $dr, $pr, $wa, $rs){
         try{

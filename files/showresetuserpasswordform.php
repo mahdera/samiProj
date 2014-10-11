@@ -4,6 +4,8 @@
     require_once 'user.php';
     $userObj = getUser($id);
 ?>
+<hr/>
+<h1>Reset User Password</h1>
 <form>
     <table border="0" width="100%">
         <tr>
@@ -35,7 +37,18 @@
             if(resetPassword !== "" && resetConfirmPassword !== ""){                
                 if(resetPassword === resetConfirmPassword){
                     //now i can reset the user's password
-                    
+                    var dataString = "id="+id+"&resetPassword="+resetPassword;
+                    $.ajax({
+                        url: 'files/resetuserpassword.php',		
+                        data: dataString,
+                        type:'POST',
+                        success:function(response){                    
+                            $('#createUserDiv').html(response);
+                        },
+                        error:function(error){
+                            alert(error);
+                        }
+                    });
                 }else{
                     alert("Please enter identical value for both password and confirm password boxes. Try again!");
                 }
