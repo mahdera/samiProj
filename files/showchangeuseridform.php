@@ -29,7 +29,26 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('#btnchange').click(function(){
-            alert('code to change userid goes here...');
+            var currentUserId = $('#txtcurrentuserid').val();
+            var newUserId = $('#txtnewuserid').val();
+            var password = $('#txtpassword').val();
+            
+
+            if(currentUserId !== "" && newUserId !== "" && password !== ""){
+                var dataString = "currentUserId="+currentUserId+"&newUserId="+newUserId+"&password="+password;
+                $.ajax({
+                    url: 'files/changeuserid.php',        
+                    data: dataString,
+                    type:'POST',
+                    success:function(response){                    
+                        $('#myAccountDiv').html(response);
+                    },
+                    error:function(error){
+                        alert(error);
+                    }
+                });
+            }
+
         });
     });//end document.ready function
 </script>

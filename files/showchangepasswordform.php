@@ -10,7 +10,7 @@
         <tr>
             <td>Enter Current Password:</td>
             <td>
-                <input type="text" name="txtcurrentpassword" id="txtcurrentpassword"/>
+                <input type="password" name="txtcurrentpassword" id="txtcurrentpassword"/>
             </td>
         </tr>
         <tr>
@@ -30,7 +30,25 @@
     $(document).ready(function(){
         //myAccountDiv
         $('#btnchange').click(function(){
-            alert('Code to change password goes here...');
+            var userId = $('#txtuserid').val();
+            var currentPassword = $('#txtcurrentpassword').val();
+            var newPassword = $('#txtnewpassword').val();
+
+            if(userId !== "" && currentPassword !== "" && newPassword !== ""){
+                var dataString = "userId="+userId+"&currentPassword="+currentPassword+"&newPassword="+newPassword;
+                $.ajax({
+                    url: 'files/changepassword.php',        
+                    data: dataString,
+                    type:'POST',
+                    success:function(response){                    
+                        $('#myAccountDiv').html(response);
+                    },
+                    error:function(error){
+                        alert(error);
+                    }
+                });
+            }
+
         });
     });//end document.ready function
 </script>

@@ -129,4 +129,22 @@
             $ex->getMessage();
         }
     }
+
+    function changeUserPasswordForThisUser($userId, $currentPassword, $newPassword){
+        try{
+            $query = "update tbl_user set password = md5('$newPassword'), modification_date = NOW() where user_id = '$userId' and password = md5('$currentPassword')";
+            save($query);
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
+
+    function changeUserUserIdForThisUser($currentUserId, $newUserId, $password){
+        try{
+            $query = "update tbl_user set user_id = '$newUserId', modification_date = NOW() where user_id = '$currentUserId' and password = md5('$password') ";
+            save($query);
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
 ?>
