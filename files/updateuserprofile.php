@@ -11,6 +11,6 @@
     $memberType = $_POST['memberType'];
     $userStatus = $_POST['userStatus'];
     //now I can save this info to the database...
-    updateUser($id, $firstName, $lastName, $email,$phoneNumber, $memberType, $userStatus, $adminUser);
+    updateUser($id, $firstName, $lastName, $email,$phoneNumber, $memberType, $userStatus, $adminUser->id);
     require_once 'showusermanagementlist.php';
 ?>

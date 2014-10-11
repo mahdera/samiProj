@@ -16,9 +16,8 @@
     function updateUser($id,$firstName, $lastName, $email,$phoneNumber,
             $memberType,$userStatus, $modifiedBy){
         try{
-            $query = "update tbl_user set first_name='$firstName', last_name='$lastName', email='$email', ".
-                    "phone_number = '$phoneNumber', member_type = '$memberType',user_status = '$userStatus', modified_by = $modifiedBy, modification_date = NOW() where id = $id";
-            echo $query;
+            $query = "update tbl_user set first_name='$firstName', last_name='$lastName', email='$email', phone_number = '$phoneNumber', member_type = '$memberType',user_status = '$userStatus', modified_by = $modifiedBy, modification_date = NOW() where id = $id";                    
+            //echo $query;
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();

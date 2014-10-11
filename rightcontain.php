@@ -3,12 +3,13 @@
     //is an admin or not and depending on the value the menu bar will change
     //accordingly...
     require_once 'files/user.php';
-    $userObj = getUserUsingUserId($_SESSION['USER_ID']);    
+    $userObj = getUserUsingUserId($_SESSION['USER_ID']);   
+    $fullName = $userObj->first_name." ".$userObj->last_name; 
     if($userObj->member_type == 'Admin'){
         ?>
             <div id="rightcontain">
                 <div id="listdiv">
-                    <ul class="ld">
+                    <ul class="ld">                        
                         <li><a href="#.php" id="accountManagementLink">My Account</a></li>
                         <li><a href="#">Calendar</a></li>
                         <li><a href="#">Process</a></li>

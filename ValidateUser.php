@@ -10,9 +10,14 @@
   if($success){
       //get the userId so that it can be stored in a session and saved in record manipulation
       $loggedInUserObj = getUserUsingUserId($userId);
-      $_SESSION['LOGGED_USER_ID'] = $loggedInUserObj->id;
-      $_SESSION['USER_ID'] = $userId;      
-      header('Location: intro1.php');
+      if($loggedInUserObj->user_status !== 'Blocked'){
+        $_SESSION['LOGGED_USER_ID'] = $loggedInUserObj->id;
+        $_SESSION['USER_ID'] = $userId;      
+        header('Location: intro1.php');
+      }else{
+        $_SESSION['messageToUser'] = "Your account is Blocked. Please contact your account administrator!";
+        header('Location: login.php');
+      }
   }else{
       $_SESSION['messageToUser'] = "Invalid User Id or Password.";
       header('Location: login.php');
