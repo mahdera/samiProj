@@ -3,6 +3,7 @@
     require_once 'files/fn.php';
     $thList = getAllThs();
     $fnList = getAllFns();
+    //var_dump($selectedThIdArray);the array is accessible...i love php Yay
 ?>
 <h1>Add Goal First</h1>
 <form>
@@ -12,12 +13,14 @@
             <td>
                 <select name="slctth" id="slctth" style="width: 100%">
                     <option value="" selected="selected">--Select--</option>                    
-                    <?php                    
-                        while($thRow = mysql_fetch_object($thList)){
+                    <?php  
+                        //loop the array instead...
+                        for($i=0; $i < count($selectedThIdArray); $i++){
+                            $thObj = getTh($selectedThIdArray[$i]);
                             ?>
-                                <option value="<?php echo $thRow->id;?>"><?php echo $thRow->th_name;?></option>
+                                <option value="<?php echo $thObj->id;?>"><?php echo $thObj->th_name;?></option>
                             <?php
-                        }//end while loop
+                        }//end for loop
                     ?>
                 </select>
             </td>
@@ -215,8 +218,7 @@
         </tr>
         <tr>
             <td colspan="2" align="right">
-                <input type="button" value="Save" id="btnsave"/>
-                <input type="reset" value="Clear"/>
+                <input type="button" value="Save" id="btnsave"/>                
             </td>
         </tr>
     </table>

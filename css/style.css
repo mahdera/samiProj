@@ -476,3 +476,7 @@ input[type=button]:hover {
     background: #E6E6E6;
 }
 
+tbody tr:nth-child(odd) {
+   background-color: #eee;
+}
+

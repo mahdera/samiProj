@@ -29,7 +29,23 @@
         $('#rightArrowButton').click(function(){            
             var currentPageTag = $('#currentPageTag').html();
             if(currentPageTag === 'Step 3-2'){
-                $('#step3Content').load('showstep3_3content.php');
+                //now I need some how identify which checkboxes are selected and 
+                //pass the th ids to the coming form
+                var selectedCheckBoxesIdDataString = "";
+                var ctr = 1;
+                $('input:checkbox.checkBoxSelection').each(function () {
+                    var checkBoxName = "thCheckBox" + ctr;
+                    if( this.checked ){
+                        selectedCheckBoxesIdDataString += checkBoxName +"="+ $(this).val()+"&";
+                        ctr++;
+                    }
+                });
+                selectedCheckBoxesIdDataString+="ctr="+(ctr-1);
+                if(ctr === 1){
+                    alert("You need to select at least one th value!");
+                }else{
+                    $('#step3Content').load('showstep3_3content.php?'+selectedCheckBoxesIdDataString);
+                }
             }
         });
         

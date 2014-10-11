@@ -23,9 +23,9 @@
                                 <td><?php echo $thRow->th_name;?></td>                                
                                 <td align="center">
                                     <?php
-                                        $chkName = "chk_" . $thRow->id;
+                                        $chkName = "chk_" . $ctr;
                                     ?>
-                                    <input type="checkbox" name="<?php echo $chkName;?>" id="<?php echo $chkName;?>" value="<?php echo $thRow->id;?>"/>
+                                    <input type="checkbox" class="checkBoxSelection" name="<?php echo $chkName;?>" id="<?php echo $chkName;?>" value="<?php echo $thRow->id;?>"/>
                                 </td>
                             </tr>
                             <?php

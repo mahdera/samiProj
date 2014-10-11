@@ -1,4 +1,12 @@
-
+    <?php
+        $ctr = $_GET['ctr'];
+        $selectedThIdArray = array();
+        for($i=1; $i <= $ctr; $i++){
+            $checkBoxName = "thCheckBox" . $i;
+            //now get the value...
+            $selectedThIdArray[$i-1] = $_GET["$checkBoxName"];
+        }//end for loop        
+    ?>
     <div id="topcontain">
         <div id="titlearea">
             <h1 id='currentPageTag'>Step 3-3</h1>
