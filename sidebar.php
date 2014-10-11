@@ -5,42 +5,42 @@
         </ul>
     </div>
     <div id="slidecontent">
-        <h3 class="clicker">Step 1</h3>
+        <h3 class="clicker" id="stepOneMenuLink">Step 1</h3>
         <ul class="reveal">
             <li><a href="#.php" id="">1-1</a></li>
             <li><a href="#.php">1-2</a></li>
             <li><a href="#.php">1-3</a></li>
             <li><a href="#.php">1-4</a></li>
         </ul>        
-        <h3 class="clicker">Step 2</h3>
+        <h3 class="clicker" id="stepTwoMenuLink">Step 2</h3>
         <ul class="reveal">
             <li><a href="#.php">2-1</a></li>
             <li><a href="#.php">2-2</a></li>
             <li><a href="#.php">2-3</a></li>
             <li><a href="#.php">2-4</a></li>
         </ul>
-        <h3 class="clicker">Step 3</h3>
+        <h3 class="clicker" id="stepThreeMenuLink">Step 3</h3>
         <ul class="reveal">
             <li><a href="#.php">3-1</a></li>
             <li><a href="#.php">3-2</a></li>
             <li><a href="#.php">3-3</a></li>
             <li><a href="#.php">3-4</a></li>
         </ul>
-        <h3 class="clicker">Step 4</h3>
+        <h3 class="clicker" id="stepFourMenuLink">Step 4</h3>
         <ul class="reveal">
             <li><a href="#.php">4-1</a></li>
             <li><a href="#.php">4-2</a></li>
             <li><a href="#.php">4-3</a></li>
             <li><a href="#.php">4-4</a></li>
         </ul>
-        <h3 class="clicker">Step 5</h3>
+        <h3 class="clicker" id="stepFiveMenuLink">Step 5</h3>
         <ul class="reveal">
             <li><a href="#.php">5-1</a></li>
             <li><a href="#.php">5-2</a></li>
             <li><a href="#.php">5-3</a></li>
             <li><a href="#.php">5-4</a></li>
         </ul>
-        <h3 class="clicker">Step 6</h3>
+        <h3 class="clicker" id="stepSixMenuLink">Step 6</h3>
         <ul class="reveal">
             <li><a href="#.php">6-1</a></li>
             <li><a href="#.php">6-2</a></li>
@@ -94,6 +94,28 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function(){
-        
+        $('#stepOneMenuLink').click(function(){
+            window.location.replace('step1.php');
+        });
+
+        $('#stepTwoMenuLink').click(function(){
+            window.location.replace('step2.php');
+        });
+
+        $('#stepThreeMenuLink').click(function(){
+            window.location.replace('step3.php');
+        });
+
+        $('#stepFourMenuLink').click(function(){
+            window.location.replace('step4.php');
+        });
+
+        $('#stepFiveMenuLink').click(function(){
+            window.location.replace('step5.php');
+        });
+
+        $('#stepSixMenuLink').click(function(){
+            window.location.replace('step6.php');
+        });
     });//end document.ready function
 </script>
