@@ -3,7 +3,7 @@
     
     function saveForm10($q10_1, $modifiedBy){
         try{
-            $query = "insert into tbl_form_10 values(0, '$q10_1', $modifiedBy, 'NOW()')";
+            $query = "insert into tbl_form_10 values(0, '$q10_1', $modifiedBy, NOW())";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();

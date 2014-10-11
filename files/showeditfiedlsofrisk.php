@@ -269,8 +269,7 @@
         </tr>
         <tr>
             <td colspan="2" align="right">
-                <input type="button" value="Update" id="<?php echo $buttonId;?>"/>
-                <input type="reset" value="Clear"/>
+                <input type="button" value="Update" id="<?php echo $buttonId;?>"/>                
             </td>            
         </tr>
     </table>

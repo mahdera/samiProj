@@ -28,6 +28,8 @@
 </form>
 <script type="text/javascript">
     $(document).ready(function(){
-        
+        $('#btnchange').click(function(){
+            alert('code to change userid goes here...');
+        });
     });//end document.ready function
 </script>

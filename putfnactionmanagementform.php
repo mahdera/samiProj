@@ -3,7 +3,7 @@
     //first grab all fn record from the database...
     require_once 'files/fn.php';
     require_once 'files/fnaction.php';
-    $fn_list = getAllFns();
+    $fn_list = getAllFnsModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
 <table border="1" width="100%">
     <tr style="background: #ccc">

@@ -70,22 +70,14 @@
         
         $('#btnsave').click(function(){
             var assessmentType = $('#slctassessmenttype').val();
-            var assessmentDate = $('#datepicker').val();
-            //here I need to format the date so that it is compatable to MySQL
-            var dateSplitted = assessmentDate.split("/");
-            var selectedDate = dateSplitted[1];
-            var selectedMonth = dateSplitted[0];
-            var selectedYear = dateSplitted[2];
-            //now form a MySQL date object here and pass it to the next file...
-            var mysqlDateFormat = selectedYear+"-"+selectedMonth+"-"+selectedDate;
-            //alert(mysqlDateFormat);
+            var assessmentDate = $('#datepicker').val();            
             var numItems = $('.thInputRow').length;
             var th1 = $('#txtth1').val();
             var summary = $('#textareasummary').val();
             
             if(assessmentType !== "" && assessmentDate !== "" && th1 !== ""){
                 var dataString = "assessmentType="+assessmentType+
-                        "&assessmentDate="+mysqlDateFormat+"&summary="+encodeURIComponent(summary)+
+                        "&assessmentDate="+assessmentDate+"&summary="+encodeURIComponent(summary)+
                         "&numItems="+numItems;
                 
                 for(var i=1; i <= numItems; i++){

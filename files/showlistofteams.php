@@ -1,9 +1,12 @@
+<?php
+    session_start();
+?>
 <div>
-    <?php
+    <?php        
         //now display the saved data back to the user...
         require_once 'dbconnection.php';
         require_once 'team.php';
-        $teamList = getAllTeams();
+        $teamList = getAllTeamsModifiedBy($_SESSION['LOGGED_USER_ID']);
         if(!empty($teamList)){
             ?>
                 <table border="0" width="100%">

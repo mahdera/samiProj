@@ -3,8 +3,8 @@
     
     function saveAssessmentTh($assessmentId, $thId, $modifiedBy){
         try{
-            $query = "insert into tbl_assessment_th values(0, $assessmentId, $thId, $modifiedBy, 'NOW()')";
-            //echo $query;
+            $query = "insert into tbl_assessment_th values(0, $assessmentId, $thId, $modifiedBy, NOW())";
+            echo $query;
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -13,7 +13,7 @@
     
     function updateAssessmentTh($id, $assessmentId, $thId, $modifiedBy){
         try{
-            $query = "update tbl_assessment_th set assessment_id = $assessmentId, th_id = $thId, modified_by = $modifiedBy, modification_date = 'NOW()' where id = $id";
+            $query = "update tbl_assessment_th set assessment_id = $assessmentId, th_id = $thId, modified_by = $modifiedBy, modification_date = NOW() where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();

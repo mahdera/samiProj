@@ -1,7 +1,8 @@
 <?php
+    session_start();
     require_once 'th.php';
     
-    $thList = getAllThs();
+    $thList = getAllThsModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
 <table border="0" width="100%">
     <tr style="background: #ccc">

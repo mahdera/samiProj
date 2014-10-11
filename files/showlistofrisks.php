@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <div>
     <?php
         //now display the saved data back to the user...
@@ -5,7 +8,7 @@
         require_once 'risk.php';
         require_once 'th.php';
         
-        $riskList = getAllRisks();
+        $riskList = getAllRisksModifiedBy($_SESSION['LOGGED_USER_ID']);
         if(!empty($riskList)){
             ?>
                 <table border="0" width="100%">

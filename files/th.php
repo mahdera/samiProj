@@ -3,7 +3,7 @@
     
     function saveTh($thName, $modifiedBy){
         try{
-            $query = "insert into tbl_th values(0, '$thName', $modifiedBy, 'NOW()')";
+            $query = "insert into tbl_th values(0, '$thName', $modifiedBy, NOW())";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -12,7 +12,7 @@
     
     function updateTh($id, $thName, $modifiedBy){
         try{
-            $query = "update tbl_th set th_name = '$thName', modified_by = $modifiedBy, modification_date = 'NOW()' where id = $id";
+            $query = "update tbl_th set th_name = '$thName', modified_by = $modifiedBy, modification_date = NOW() where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -31,6 +31,16 @@
     function getAllThs(){
         try{
             $query = "select * from tbl_th order by th_name";                          
+            $result = read($query);
+            return $result;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+    
+    function getAllThsModifiedBy($modifiedBy){
+        try{
+            $query = "select * from tbl_th where modified_by = $modifiedBy order by th_name";                          
             $result = read($query);
             return $result;
         } catch (Exception $ex) {

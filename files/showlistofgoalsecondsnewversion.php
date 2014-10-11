@@ -1,6 +1,7 @@
 <?php
+    session_start();
     require_once 'fn.php';
-    $fnList = getAllFns();
+    $fnList = getAllFnsModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
 <table border="1" width="100%">
     <tr style="background: #ccc">

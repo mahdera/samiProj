@@ -2,7 +2,7 @@
 <?php
     require_once 'files/th.php';
     require_once 'files/thaction.php';
-    $thList = getAllThs();
+    $thList = getAllThsModifiedBy($_SESSION['LOGGED_USER_ID']);
     
     if(!empty($thList)){
         ?>

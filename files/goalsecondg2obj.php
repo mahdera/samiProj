@@ -3,7 +3,7 @@
     
     function saveGoalSecondG2Obj($goalSecondG2Id, $obj, $modifiedBy){
         try{
-            $query = "insert into tbl_goal_second_g2_obj values(0, $goalSecondG2Id, '$obj', $modifiedBy, 'NOW()')";
+            $query = "insert into tbl_goal_second_g2_obj values(0, $goalSecondG2Id, '$obj', $modifiedBy, NOW())";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -12,7 +12,7 @@
     
     function updateGoalSecondG2Obj($id, $goalSecondG2Id, $obj, $modifiedBy){
         try{
-            $query = "update tbl_goal_second_g2_obj set goal_second_g2_id = $goalSecondG2Id, obj = '$obj', modified_by = $modifiedBy, modification_date = 'NOW()' where id = $id";
+            $query = "update tbl_goal_second_g2_obj set goal_second_g2_id = $goalSecondG2Id, obj = '$obj', modified_by = $modifiedBy, modification_date = NOW() where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();

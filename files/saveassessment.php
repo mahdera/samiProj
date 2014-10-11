@@ -10,7 +10,7 @@
     require_once 'assessmentth.php';
     
     //then save the assessment in the database
-    saveAssessment($assessmentType, $assessmentDate, $summary);
+    saveAssessment($assessmentType, $assessmentDate, $summary, $_SESSION['LOGGED_USER_ID']);
     //get the saved assessment record back from the database...
     $fetchedAssessment = getAssessmentUsing($assessmentType, $assessmentDate);
     
@@ -19,7 +19,7 @@
         $thControlName = "txtth" . $i;
         $thValue = $_POST["$thControlName"];
         
-        saveTh($thValue);
+        saveTh($thValue, $_SESSION['LOGGED_USER_ID']);
         //get the newly saved th from the database
         $fetchedTh = getThUsing($thValue);
         //now save pk of the two tables to the assessmentth table...

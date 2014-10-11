@@ -3,7 +3,7 @@
     
     function saveFn($fnName, $modifiedBy){
         try{
-            $query = "insert into tbl_fn values(0, '$fnName', $modifiedBy, 'NOW()')";
+            $query = "insert into tbl_fn values(0, '$fnName', $modifiedBy, NOW())";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -12,7 +12,7 @@
     
     function updateFn($id, $fnName, $modifiedBy){
         try{
-            $query = "update tbl_fn set fn_name = '$fnName', modified_by = $modifiedBy, modification_date = 'NOW()' where id = $id";
+            $query = "update tbl_fn set fn_name = '$fnName', modified_by = $modifiedBy, modification_date = NOW() where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -31,6 +31,16 @@
     function getAllFns(){
         try{
             $query = "select * from tbl_fn order by fn_name";
+            $result = read($query);
+            return $result;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+
+    function getAllFnsModifiedBy($modifiedBy){
+        try{
+            $query = "select * from tbl_fn where modified_by = $modifiedBy order by fn_name";
             $result = read($query);
             return $result;
         } catch (Exception $ex) {

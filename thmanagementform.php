@@ -44,7 +44,7 @@
         });
         
         function clearFormInputField(){
-            $('txtth').val('');
+            $('#txtth').val('');
         }
         
         function showListOfThs(){

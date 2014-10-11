@@ -2,7 +2,7 @@
 <?php
     require_once 'files/fnaction.php';
     require_once 'files/fn.php';
-    $fnActionList = getAllFnActions();
+    $fnActionList = getAllFnActionsModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
 <table border="1" width="100%">
     <tr style="background: #ccc">

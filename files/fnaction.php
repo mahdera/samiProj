@@ -3,7 +3,7 @@
     
     function saveFnAction($fnId, $actionText, $modifiedBy){
         try{
-            $query = "insert into tbl_fn_action values(0, $fnId, '$actionText', $modifiedBy, 'NOW()')";
+            $query = "insert into tbl_fn_action values(0, $fnId, '$actionText', $modifiedBy, NOW())";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -12,7 +12,7 @@
     
     function updateFnAction($id, $actionText, $modifiedBy){
         try{
-            $query = "update tbl_fn_action set action_text = '$actionText', modified_by = $modifiedBy, modification_date = 'NOW()' where id = $id";
+            $query = "update tbl_fn_action set action_text = '$actionText', modified_by = $modifiedBy, modification_date = NOW() where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -31,6 +31,16 @@
     function getAllFnActions(){
         try{
             $query = "select * from tbl_fn_action";
+            $result = read($query);
+            return $result;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+
+    function getAllFnActionsModifiedBy($modifiedBy){
+        try{
+            $query = "select * from tbl_fn_action where modified_by = $modifiedBy";
             $result = read($query);
             return $result;
         } catch (Exception $ex) {

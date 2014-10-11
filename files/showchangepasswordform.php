@@ -28,6 +28,9 @@
 </form>
 <script type="text/javascript">
     $(document).ready(function(){
-        
+        //myAccountDiv
+        $('#btnchange').click(function(){
+            alert('Code to change password goes here...');
+        });
     });//end document.ready function
 </script>

@@ -17,7 +17,7 @@
         $thIdControlName = "txteditthid" . $id . $i;
         $thIdControlValue = $_POST["$thIdControlName"];
         //now do the update as per the number of th rows in the assessment form or record...
-        updateTh($thIdControlValue, $thControlValue);
+        updateTh($thIdControlValue, $thControlValue, $_SESSION['LOGGED_USER_ID']);
     }//end for loop
 ?>
 <p style="background:lightgreen">

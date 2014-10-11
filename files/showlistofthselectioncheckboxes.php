@@ -5,7 +5,7 @@
         require_once 'risk.php';
         require_once 'th.php';
         
-        $thList = getAllThs();
+        $thList = getAllThsModifiedBy($_SESSION['LOGGED_USER_ID']);
         if(!empty($thList)){
             ?>
                 <table border="0" width="100%">

@@ -2,7 +2,7 @@
 <?php
     require_once 'files/thaction.php';
     require_once 'files/th.php';
-    $thActionList = getAllThActions();
+    $thActionList = getAllThActionsModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
 <table border="1" width="100%">
     <tr style="background: #ccc">
