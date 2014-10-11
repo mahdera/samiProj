@@ -40,7 +40,8 @@
                         <input class="signin_submit" value="Clear" tabindex="7" type="reset"/>
                     </p>
                     <div id="extraContent"></div>
-                    <p class="forgot"><a href="#" id="forgotUserIdLink">Forgot your User Id?</a> | <a href="#" id="forgotPasswordLink" >Forgot your password?</a>
+                    <p class="forgot"><a href="#" id="forgotUserIdLink">Forgot your User Id?</a> | <a href="#" id="forgotPasswordLink" >Forgot your password?</a> |
+                     <a href="#" id="signupLink">Sign up</a>   
                     <div id="forgotPasswordDiv"></div>
                     <hr style="height: 0px; color: #59B;background-color:#598; width: 100% " />
                     <p style="color:#59B;font-weight: bolder"><font color="red">*</font> Required Field</p>

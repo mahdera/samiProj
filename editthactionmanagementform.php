@@ -25,7 +25,7 @@
                         $editLinkId = $thActionRow->id;
                         $editDivId = "editActionTextDiv" . $thActionRow->id
                     ?>
-                    <a href="#.php" id="<?php echo $editLinkId;?>">Edit</a>
+                    <a href="#.php" id="<?php echo $editLinkId;?>" class="editThActionLink">Edit</a>
                 </td>
             </tr>
             <tr>
@@ -39,10 +39,10 @@
 </table>
 <script type="text/javascript">
     $(document).ready(function(){
-        $('a').click(function(){
+        $('.editThActionLink').click(function(){
             var id = $(this).attr('id');
             var editDivId = "editActionTextDiv" + id;
-            $('#'+editDivId).load('files/showeditthactionform.php?id='+id);
+            $('#'+editDivId).load('files/showeditthactionform.php?thId='+id);
         });
     });//end document.ready function
 </script>

@@ -17,9 +17,7 @@
                         <td>PR</td>
                         <td>WA</td>
                         <td>RS</td>
-                        <td>Edit</td>
-                        <td>Delete</td>
-                        <td>Select</td>
+                        <td>Edit</td>                        
                     </tr>
                     <?php
                         $ctr=1;
@@ -35,14 +33,7 @@
                                 <td><?php echo $riskRow->pr;?></td>
                                 <td><?php echo $riskRow->wa;?></td>
                                 <td><?php echo $riskRow->rs;?></td>
-                                <td><a href="#.php" class="riskEditLink" id="<?php echo $riskRow->id;?>">Edit</a></td>
-                                <td>Delete</td>
-                                <td align="center">
-                                    <?php
-                                        $chkName = "chk_" . $ctr;
-                                    ?>
-                                    <input type="checkbox" name="<?php echo $chkName;?>" id="<?php echo $chkName;?>" value="<?php echo $riskRow->th_id;?>"/>
-                                </td>
+                                <td><a href="#.php" class="riskEditLink" id="<?php echo $riskRow->id;?>">Edit</a></td>                                
                             </tr>
                             <tr>
                                 <td colspan="10">

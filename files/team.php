@@ -1,9 +1,9 @@
 <?php
     require_once 'dbconnection.php';
     
-    function saveTeam($name, $title, $organization, $email, $phone, $interest){
+    function saveTeam($name, $title, $organization, $email, $phone, $interest, $modifiedBy){
         try{
-            $query = "insert into tbl_team values (0,'$name', '$title', '$organization', '$email', '$phone', '$interest')";
+            $query = "insert into tbl_team values (0,'$name', '$title', '$organization', '$email', '$phone', '$interest', $modifiedBy, 'NOW()')";            
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -11,9 +11,9 @@
     }
     
         
-    function updateTeam($id, $name, $title, $organization, $email, $phone, $interest){
+    function updateTeam($id, $name, $title, $organization, $email, $phone, $interest, $modifiedBy){
         try{
-            $query = "update tbl_team set name = '$name', title='$title', organization='$organization', email='$email', phone='$phone', interest='$interest' where id=$id";
+            $query = "update tbl_team set name = '$name', title='$title', organization='$organization', email='$email', phone='$phone', interest='$interest', modified_by = $modifiedBy, modification_date = 'NOW()' where id=$id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();

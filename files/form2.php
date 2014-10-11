@@ -1,18 +1,18 @@
 <?php
     require_once 'dbconnection.php';
     
-    function saveForm2($q2_1, $q2_2, $q2_3, $q2_4){
+    function saveForm2($q2_1, $q2_2, $q2_3, $q2_4, $modifiedBy){
         try{
-            $query = "insert into tbl_form_2 values(0,'$q2_1','$q2_2','$q2_3','$q2_4')";            
+            $query = "insert into tbl_form_2 values(0,'$q2_1','$q2_2','$q2_3','$q2_4', $modifiedBy, 'NOW()')";            
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
     
-    function updateForm2($id, $q2_1, $q2_2, $q2_3, $q2_4){
+    function updateForm2($id, $q2_1, $q2_2, $q2_3, $q2_4, $modifiedBy){
         try{
-            $query = "update tbl_form_2 set q2_1 = '$q2_1', q2_2 = '$$q2_2', q_3 = '$q2_3', q_4 = '$q2_4' where id = $id";
+            $query = "update tbl_form_2 set q2_1 = '$q2_1', q2_2 = '$$q2_2', q_3 = '$q2_3', q_4 = '$q2_4', modified_by = $modifiedBy, modification_date = 'NOW()' where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();

@@ -1,18 +1,18 @@
 <?php
     require_once 'dbconnection.php';
     
-    function saveGoalSecondG1Obj($goalSecondG1Obj, $obj){
+    function saveGoalSecondG1Obj($goalSecondG1Obj, $obj, $modifiedBy){
         try{
-            $query = "insert into tbl_goal_second_g1_obj values(0, $goalSecondG1Obj, '$obj')";
+            $query = "insert into tbl_goal_second_g1_obj values(0, $goalSecondG1Obj, '$obj', $modifiedBy, 'NOW()')";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
     
-    function updateGoalSecondG1Obj($id, $goalSecondG1Obj, $obj){
+    function updateGoalSecondG1Obj($id, $goalSecondG1Obj, $obj, $modifiedBy){
         try{
-            $query = "update tbl_goal_second_g1_obj set goal_second_g1_obj = $goalSecondG1Obj, obj='$obj' where id = $id";
+            $query = "update tbl_goal_second_g1_obj set goal_second_g1_obj = $goalSecondG1Obj, obj='$obj', modified_by = $modifiedBy, modification_date = 'NOW()' where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();

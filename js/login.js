@@ -25,12 +25,12 @@ $(document).ready(function() {
         return false;
     });
 
-    $('#requestNewAccessLink').click(function() {
+    $('#signupLink').click(function() {
         $('#requestNewAccessDiv').html("");
         $.ajax({
             type: 'GET',
             data: null,
-            url: 'ShowRequestNewAccessForm.php',
+            url: 'showcreateuserformsignup.php',
             success: function(data) {
                 setMessage(data);
             }

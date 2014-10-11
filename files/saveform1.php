@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once 'form1.php';
     require_once 'form1q3.php';
     require_once 'form1q4.php';
@@ -12,7 +13,7 @@
     $q4NumItems = $_POST['q4NumItems'];   
     
     //now save form1 record to the database
-    saveForm1($title, $formDate, $plan, $q1, $q2);
+    saveForm1($title, $formDate, $plan, $q1, $q2, $_SESSION['LOGGED_USER_ID']);
     //now fetch this particular record using the column/field values...
     $form1Obj = getForm1Using($title, $formDate);
     
@@ -33,13 +34,13 @@
             if($index == 1){
                 saveForm1Q3($form1Id, $q3ValueArray[$k], $q3ValueArray[$k+1], 
                     $q3ValueArray[$k+2], $q3ValueArray[$k+3], 
-                    $q3ValueArray[$k+4], $q3ValueArray[$k+5]);
+                    $q3ValueArray[$k+4], $q3ValueArray[$k+5], $_SESSION['LOGGED_USER_ID']);
             }
             
             if($index % 6 == 0){
                 saveForm1Q3($form1Id, $q3ValueArray[$k+1], $q3ValueArray[$k+2], 
                     $q3ValueArray[$k+3], $q3ValueArray[$k+4], 
-                    $q3ValueArray[$k+5], $q3ValueArray[$k+6]);
+                    $q3ValueArray[$k+5], $q3ValueArray[$k+6], $_SESSION['LOGGED_USER_ID']);
             }
         }//end for loop
         
@@ -54,13 +55,13 @@
             if($index == 1){
                 saveForm1Q4($form1Id, $q4ValueArray[$m], $q4ValueArray[$m+1], 
                     $q4ValueArray[$m+2], $q4ValueArray[$m+3], 
-                    $q4ValueArray[$m+4], $q4ValueArray[$m+5]);
+                    $q4ValueArray[$m+4], $q4ValueArray[$m+5], $_SESSION['LOGGED_USER_ID']);
             }
             
             if($index % 6 == 0){
                 saveForm1Q4($form1Id, $q4ValueArray[$m+1], $q4ValueArray[$m+2], 
                     $q4ValueArray[$m+3], $q4ValueArray[$m+4], 
-                    $q4ValueArray[$m+5], $q4ValueArray[$m+6]);
+                    $q4ValueArray[$m+5], $q4ValueArray[$m+6], $_SESSION['LOGGED_USER_ID']);
             }
         }//end for loop
         

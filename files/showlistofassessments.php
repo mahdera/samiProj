@@ -9,12 +9,12 @@
             ?>
                 <table border="0" width="100%">
                     <tr style="background: #ccc">
-                        <td>#</td>                        
+                        <td></td>                        
                         <td>Assessment Type</td>
                         <td>Assessment Date</td>
                         <td>Summary</td>                        
                         <td>Edit</td>
-                        <td>Delete</td>
+                        <td></td>
                     </tr>                    
                     <?php
                         $ctr=1;
@@ -22,14 +22,14 @@
                             $divId = "assessmentEditDiv" . $assessmentRow->id;
                             ?>
                             <tr>
-                                <td><?php echo $ctr++;?></td>
+                                <td></td>
                                 <td><?php echo $assessmentRow->assessment_type;?></td>
                                 <td><?php echo $assessmentRow->assessment_date;?></td>
                                 <td><?php echo $assessmentRow->summary;?></td>                                
                                 <td>
                                     <a href="#.php" id="<?php echo $assessmentRow->id;?>" class="editAssessmentLink">Edit</a>
                                 </td>
-                                <td>Delete</td>
+                                <td></td>
                             </tr> 
                             <tr>
                                 <td colspan="6">

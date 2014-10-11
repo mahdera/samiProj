@@ -8,6 +8,9 @@
   $success = isThereAUserWithUserIdAndPassword($userId,$password);
   
   if($success){
+      //get the userId so that it can be stored in a session and saved in record manipulation
+      $loggedInUserObj = getUserUsingUserId($userId);
+      $_SESSION['LOGGED_USER_ID'] = $loggedInUserObj->id;
       $_SESSION['USER_ID'] = $userId;      
       header('Location: intro1.php');
   }else{

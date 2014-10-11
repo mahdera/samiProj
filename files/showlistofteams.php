@@ -8,7 +8,7 @@
             ?>
                 <table border="0" width="100%">
                     <tr style="background: #ccc">
-                        <td>#</td>
+                        <td></td>
                         <td>Name</td>
                         <td>Title</td>
                         <td>Organization</td>
@@ -16,14 +16,14 @@
                         <td>Phone</td>
                         <td>Interest</td>
                         <td>Edit</td>
-                        <td>Delete</td>
+                        <td></td>
                     </tr>
                     <?php
                         $ctr=1;
                         while($teamRow = mysql_fetch_object($teamList)){
                             ?>
                             <tr>
-                                <td><?php echo $ctr++;?></td>
+                                <td></td>
                                 <td><?php echo $teamRow->team_name;?></td>
                                 <td><?php echo $teamRow->title;?></td>
                                 <td><?php echo $teamRow->organization;?></td>
@@ -31,7 +31,7 @@
                                 <td><?php echo $teamRow->phone;?></td>
                                 <td><?php echo $teamRow->interest;?></td>
                                 <td>Edit</td>
-                                <td>Delete</td>
+                                <td></td>
                             </tr>
                             <?php
                         }//end while loop

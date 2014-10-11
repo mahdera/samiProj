@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $assessmentType = $_POST['assessmentType'];
     $assessmentDate = $_POST['assessmentDate'];
     $summary = $_POST['summary'];
@@ -22,7 +23,7 @@
         //get the newly saved th from the database
         $fetchedTh = getThUsing($thValue);
         //now save pk of the two tables to the assessmentth table...
-        saveAssessmentTh($fetchedAssessment->id, $fetchedTh->id);
+        saveAssessmentTh($fetchedAssessment->id, $fetchedTh->id, $_SESSION['LOGGED_USER_ID']);
     }//end for loop
     
     

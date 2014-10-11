@@ -9,6 +9,7 @@
             <div id="rightcontain">
                 <div id="listdiv">
                     <ul class="ld">
+                        <li><a href="#.php" id="accountManagementLink">My Account</a></li>
                         <li><a href="#">Calendar</a></li>
                         <li><a href="#">Process</a></li>
                         <li><a href="#">My Report</a></li>
@@ -24,6 +25,7 @@
             <div id="rightcontain">
                 <div id="listdiv">
                     <ul class="ld">
+                        <li><a href="#.php" id="accountManagementLink">My Account</a></li>
                         <li><a href="#">Calendar</a></li>
                         <li><a href="#">Process</a></li>
                         <li><a href="#">My Report</a></li>
@@ -42,6 +44,10 @@
         
         $('#userManagementLink').click(function(){
             $('.content').load('files/showusermanagementlist.php');
+        });
+        
+        $('#accountManagementLink').click(function(){
+            $('.content').load('files/showmyaccountinnermenu.php');
         });
     });//end document.ready function
 </script>

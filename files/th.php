@@ -1,18 +1,18 @@
 <?php
     require_once 'dbconnection.php';
     
-    function saveTh($thName){
+    function saveTh($thName, $modifiedBy){
         try{
-            $query = "insert into tbl_th values(0, '$thName')";
+            $query = "insert into tbl_th values(0, '$thName', $modifiedBy, 'NOW()')";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
     
-    function updateTh($id, $thName){
+    function updateTh($id, $thName, $modifiedBy){
         try{
-            $query = "update tbl_th set th_name = '$thName' where id = $id";
+            $query = "update tbl_th set th_name = '$thName', modified_by = $modifiedBy, modification_date = 'NOW()' where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();

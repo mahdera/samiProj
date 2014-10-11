@@ -20,8 +20,8 @@
         require_once 'teammanagementform.php';
     ?>
 </div>
-<script type='text/javascript'>
-    $(document).ready(function(){       
+<script type='text/javascript'>    
+    $(document).ready(function(){      
         
         $('#rightArrowButton').click(function(){            
             var currentPageTag = $('#currentPageTag').html();

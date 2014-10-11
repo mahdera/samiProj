@@ -34,15 +34,17 @@
         <tr>
             <td>Interest:</td>
             <td>
-                <select name="slctinterest" id="slctinterest" style="width:100%">
-                    <option value="" selected="selected">--Select--</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                </select>
+                <table border="0" width="100%">
+                    <tr>
+                        <td><input type="checkbox" name="chkinterest1" id="chkinterest1" value="Interest 1"/> Interest 1</td>
+                        <td><input type="checkbox" name="chkinterest2" id="chkinterest2" value="Interest 2"/> Interest 2</td>
+                        <td><input type="checkbox" name="chkinterest3" id="chkinterest3" value="Interest 3"/> Interest 3</td>
+                        <td><input type="checkbox" name="chkinterest4" id="chkinterest4" value="Interest 4"/> Interest 4</td>
+                        <td><input type="checkbox" name="chkinterest5" id="chkinterest5" value="Interest 5"/> Interest 5</td>
+                        <td><input type="checkbox" name="chkinterest6" id="chkinterest6" value="Interest 6"/> Interest 6</td>
+                        <td><input type="checkbox" name="chkinterest7" id="chkinterest7" value="Interest 7"/> Interest 7</td>
+                    </tr>
+                </table>                
             </td>
         </tr>
         <tr>
@@ -67,7 +69,13 @@
             var organization = $('#txtorganization').val();
             var email = $('#txtemail').val();
             var phone = $('#txtphone').val();
-            var interest = $('#slctinterest').val();
+            var interest = "";
+            //get the selected checkboxes here            
+            $('input[type=checkbox]').each(function () {
+                if(this.checked){
+                    interest += $(this).val()+",";
+                }                
+            });
 
             if(name !== "" && title !== "" && organization !== "" && email !== "" &&
                     phone !== "" && interest !== ""){

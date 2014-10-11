@@ -2,6 +2,7 @@
     $fnActionId = $_GET['id'];
     require_once 'fnaction.php';
     $fnActionObj = getFnAction($fnActionId);
+    //var_dump($fnActionObj);
     $fnEditActionText = "fnEditActionText" . $fnActionId;
     $buttonId = "updateFnActionButton" . $fnActionId;
 ?>
@@ -15,8 +16,7 @@
         </tr>
         <tr>
             <td colspan="2" align="right">
-                <input type="button" value="Update" id="<?php echo $buttonId;?>"/>
-                <input type="reset" value="Undo"/>
+                <input type="button" value="Update" id="<?php echo $buttonId;?>"/>                
             </td>
         </tr>
     </table>

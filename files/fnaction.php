@@ -1,18 +1,18 @@
 <?php
     require_once 'dbconnection.php';
     
-    function saveFnAction($fnId, $actionText){
+    function saveFnAction($fnId, $actionText, $modifiedBy){
         try{
-            $query = "insert into tbl_fn_action values(0, $fnId, '$actionText')";
+            $query = "insert into tbl_fn_action values(0, $fnId, '$actionText', $modifiedBy, 'NOW()')";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
     
-    function updateFnAction($id, $actionText){
+    function updateFnAction($id, $actionText, $modifiedBy){
         try{
-            $query = "update tbl_fn_action set action_text = '$actionText' where id = $id";
+            $query = "update tbl_fn_action set action_text = '$actionText', modified_by = $modifiedBy, modification_date = 'NOW()' where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();

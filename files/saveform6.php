@@ -1,6 +1,7 @@
 <?php
+    session_start();
     $q6_1 = $_POST['q6_1'];   
     
     require_once 'form6.php';
-    saveForm6($q6_1);
+    saveForm6($q6_1, $_SESSION['LOGGED_USER_ID']);
 ?>

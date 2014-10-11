@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once 'assessment.php';
     require_once 'th.php';
     
@@ -8,7 +9,7 @@
     $id = $_POST['id'];
     $ctr = $_POST['ctr'];
     //now do the assessment update in here...
-    updateAssessment($id, $assessmentType, $assessmentDate, $summary);
+    updateAssessment($id, $assessmentType, $assessmentDate, $summary, $_SESSION['LOGGED_USER_ID']);
     //now get the iterative values
     for($i=1; $i <= $ctr; $i++){
         $thControlName = "txteditth" . $id . $i;

@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $name = $_POST['name'];
     $title = $_POST['title'];
     $organization = $_POST['organization'];
@@ -8,7 +9,7 @@
     
     require_once 'team.php';
     
-    saveTeam($name, $title, $organization, $email, $phone, $interest);    
+    saveTeam($name, $title, $organization, $email, $phone, $interest, $_SESSION['LOGGED_USER_ID']);    
 ?>
 
 

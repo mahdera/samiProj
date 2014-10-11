@@ -3,15 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Applications/MAMP/htdocs/samiProj/intro1.php</file>
-            <file>file:/Applications/MAMP/htdocs/samiProj/CheckUserUsingEmailForgotUserId.php</file>
-            <file>file:/Applications/MAMP/htdocs/samiProj/index.php</file>
-            <file>file:/Applications/MAMP/htdocs/samiProj/login.php</file>
-            <file>file:/Applications/MAMP/htdocs/samiProj/CheckUserUsingUserIdEmailForgotPassword.php</file>
-            <file>file:/Applications/MAMP/htdocs/samiProj/files/user.php</file>
-            <file>file:/Applications/MAMP/htdocs/samiProj/ShowUserIdEmailEntryForm.php</file>
-            <file>file:/Applications/MAMP/htdocs/samiProj/database_script/database_script.sql</file>
-            <file>file:/Applications/MAMP/htdocs/samiProj/files/ValidateUser.php</file>
+            <file>file:/Applications/MAMP/htdocs/samiProj/files/showchangepasswordform.php</file>
+            <file>file:/Applications/MAMP/htdocs/samiProj/files/showmyaccountinnermenu.php</file>
         </group>
     </open-files>
 </project-private>

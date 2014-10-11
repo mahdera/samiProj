@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once 'goalfirst.php';
     require_once 'goalfirstg1.php';
     require_once 'goalfirstg1objfn.php';
@@ -24,11 +25,11 @@
     $numItemsG2 = $_POST['numItemsG2'];
     $numItemsG3 = $_POST['numItemsG3'];
     //save the goalfirst object to the database...
-    saveGoalFirst($thId);
+    saveGoalFirst($thId, $_SESSION['LOGGED_USER_ID']);
     //fetch the value just saved using the thId
     $fetchedGoalFirst = getGoalFirstUsingThId($thId);
     //now save the goalfirstg1 value...
-    saveGoalFirstG1($fetchedGoalFirst->id, $g1, $g1Fn);
+    saveGoalFirstG1($fetchedGoalFirst->id, $g1, $g1Fn, $_SESSION['LOGGED_USER_ID']);
     //fetch the value using the above parameters you have used to save the values to the database...
     $fetchedGoalFirstG1 = getGoalFirstG1Using($fetchedGoalFirst->id, $g1, $g1Fn);
     
@@ -39,11 +40,11 @@
         $g1FnSelectBoxId = "slctg1fn" . $i;
         $g1FnSelectBoxValue = $_POST["$g1FnSelectBoxId"];
         //now save the values to the database...
-        saveGoalFirstG1ObjFn($fetchedGoalFirstG1->id, $g1ObjTextBoxValue, $g1FnSelectBoxValue);
+        saveGoalFirstG1ObjFn($fetchedGoalFirstG1->id, $g1ObjTextBoxValue, $g1FnSelectBoxValue, $_SESSION['LOGGED_USER_ID']);
     }//end for loop i
     
     //now do the same thing for G2
-    saveGoalFirstG2($fetchedGoalFirst->id, $g2, $g2Fn);
+    saveGoalFirstG2($fetchedGoalFirst->id, $g2, $g2Fn, $_SESSION['LOGGED_USER_ID']);
     //fetch the value using the above parameters you have used to save the values to the database...
     $fetchedGoalFirstG2 = getGoalFirstG2Using($fetchedGoalFirst->id, $g2, $g2Fn);
     
@@ -53,11 +54,11 @@
         $g2FnSelectBoxId = "slctg2fn" . $j;
         $g2FnSelectBoxValue = $_POST["$g2FnSelectBoxId"];
         //now save the values to the database...
-        saveGoalFirstG2ObjFn($fetchedGoalFirstG2->id, $g2ObjTextBoxValue, $g2FnSelectBoxValue);
+        saveGoalFirstG2ObjFn($fetchedGoalFirstG2->id, $g2ObjTextBoxValue, $g2FnSelectBoxValue, $_SESSION['LOGGED_USER_ID']);
     }//end for loop i
     
     //now do the same thing for G3
-    saveGoalFirstG3($fetchedGoalFirst->id, $g3, $g3Fn);
+    saveGoalFirstG3($fetchedGoalFirst->id, $g3, $g3Fn, $_SESSION['LOGGED_USER_ID']);
     //fetch the value using the above parameters you have used to save the values to the database...
     $fetchedGoalFirstG3 = getGoalFirstG3Using($fetchedGoalFirst->id, $g3, $g3Fn);
     
@@ -67,6 +68,6 @@
         $g3FnSelectBoxId = "slctg3fn" . $k;
         $g3FnSelectBoxValue = $_POST["$g3FnSelectBoxId"];
         //now save the values to the database...
-        saveGoalFirstG3ObjFn($fetchedGoalFirstG3->id, $g3ObjTextBoxValue, $g3FnSelectBoxValue);
+        saveGoalFirstG3ObjFn($fetchedGoalFirstG3->id, $g3ObjTextBoxValue, $g3FnSelectBoxValue, $_SESSION['LOGGED_USER_ID']);
     }//end for loop i
 ?>

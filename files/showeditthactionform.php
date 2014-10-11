@@ -1,10 +1,11 @@
 <?php
-    $thActionId = $_GET['id'];
+    $thActionId = $_GET['thId'];
     require_once 'thaction.php';
     $thActionObj = getThAction($thActionId);
     $thEditActionText = "thEditActionText" . $thActionId;
     $buttonId = "updateThActionButton" . $thActionId;
 ?>
+here
 <form>
     <table border="0" width="100%">
         <tr>

@@ -5,10 +5,10 @@
 ?>
 <table border="0" width="100%">
     <tr style="background: #ccc">
-        <td>#</td>
+        <td></td>
         <td>Th Name</td>
         <td>Edit</td>
-        <td>Delete</td>
+        <td></td>
     </tr>
     <?php
         $ctr=1;
@@ -16,10 +16,10 @@
             $divId = "thEditDiv" . $thRow->id;
             ?>
                 <tr>
-                    <td><?php echo $ctr++;?></td>
+                    <td></td>
                     <td><?php echo $thRow->th_name; ?></td>
                     <td><a href="#.php" id="<?php echo $thRow->id;?>" class="editThLink">Edit</a></td>
-                    <td>Delete</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td colspan="4">

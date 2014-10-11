@@ -1,9 +1,9 @@
 <?php
     require_once 'dbconnection.php';
     
-    function saveResponsibility($teamId, $role, $responsibility){
+    function saveResponsibility($teamId, $role, $responsibility, $modifiedBy){
         try{
-            $query = "insert into tbl_responsibility values (0, $teamId, '$role', '$responsibility')";
+            $query = "insert into tbl_responsibility values (0, $teamId, '$role', '$responsibility', $modifiedBy, 'NOW()')";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -11,9 +11,9 @@
     }
     
         
-    function updateResponsibility($id, $teamId, $role, $responsibility){
+    function updateResponsibility($id, $teamId, $role, $responsibility, $modifiedBy){
         try{
-            $query = "update tbl_responsibility set team_id = $teamId, role='$role', responsibility='$responsibility' where id=$id";
+            $query = "update tbl_responsibility set team_id = $teamId, role='$role', responsibility='$responsibility', modified_by = $modifiedBy, modification_date = 'NOW()' where id=$id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();

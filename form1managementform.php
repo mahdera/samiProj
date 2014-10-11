@@ -89,8 +89,7 @@
         </tr>
         <tr>
             <td colspan="2" align="right">
-                <input type="button" value="Save" id="btnsave"/>
-                <input type="reset" value="Clear"/>
+                <input type="button" value="Save" id="btnsave"/>                
             </td>
         </tr>
     </table>

@@ -1,18 +1,18 @@
 <?php
     require_once 'dbconnection.php';
     
-    function saveThAction($thId, $actionText){
+    function saveThAction($thId, $actionText, $modifiedBy){
         try{
-            $query = "insert into tbl_th_action values(0, $thId, '$actionText')";
+            $query = "insert into tbl_th_action values(0, $thId, '$actionText', $modifiedBy, 'NOW()')";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
     
-    function updateThAction($id, $actionText){
+    function updateThAction($id, $actionText, $modifiedBy){
         try{
-            $query = "update tbl_th_action set action_text = '$actionText' where id = $id";
+            $query = "update tbl_th_action set action_text = '$actionText', modified_by = $modifiedBy, modification_date = 'NOW()' where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();

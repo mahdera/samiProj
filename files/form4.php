@@ -1,18 +1,18 @@
 <?php
     require_once 'dbconnection.php';
     
-    function saveForm4($q4_1){
+    function saveForm4($q4_1, $modifiedBy){
         try{
-            $query = "insert into tbl_form_4 values(0, '$q4_1')";
+            $query = "insert into tbl_form_4 values(0, '$q4_1', $modifiedBy, 'NOW()')";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
     
-    function updateForm4($id, $q4_1){
+    function updateForm4($id, $q4_1, $modifiedBy){
         try{
-            $query = "update tbl_form_4 set q4_1 = '$q4_1' where id = $id";
+            $query = "update tbl_form_4 set q4_1 = '$q4_1', modified_by = $modifiedBy, modification_date = 'NOW()' where id = $id";
         } catch (Exception $ex) {
             $ex->getMessage();
         }

@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once 'goalsecond.php';
     require_once 'goalsecondg1.php';    
     require_once 'goalsecondg2.php';    
@@ -20,11 +21,11 @@
     $numItemsG2 = $_POST['numItemsG2'];
     $numItemsG3 = $_POST['numItemsG3'];
     //save the goalfirst object to the database...
-    saveGoalSecond($fnId);
+    saveGoalSecond($fnId, $_SESSION['LOGGED_USER_ID']);
     //fetch the value just saved using the thId
     $fetchedGoalSecond = getGoalSecondUsingFnId($fnId);
     //now save the goalfirstg1 value...
-    saveGoalSecondG1($fetchedGoalSecond->id, $g1);
+    saveGoalSecondG1($fetchedGoalSecond->id, $g1, $_SESSION['LOGGED_USER_ID']);
     //fetch the value using the above parameters you have used to save the values to the database...
     $fetchedGoalSecondG1 = getGoalSecondG1Using($fetchedGoalSecond->id, $g1);
     
@@ -33,11 +34,11 @@
         $g1ObjTextBoxId = "txtg1obj" . $i;
         $g1ObjTextBoxValue = $_POST["$g1ObjTextBoxId"];        
         //now save the values to the database...
-        saveGoalSecondG1Obj($fetchedGoalSecondG1->id, $g1ObjTextBoxValue);
+        saveGoalSecondG1Obj($fetchedGoalSecondG1->id, $g1ObjTextBoxValue, $_SESSION['LOGGED_USER_ID']);
     }//end for loop i
     
     //now do the same thing for G2
-    saveGoalSecondG2($fetchedGoalSecond->id, $g2);
+    saveGoalSecondG2($fetchedGoalSecond->id, $g2, $_SESSION['LOGGED_USER_ID']);
     //fetch the value using the above parameters you have used to save the values to the database...
     $fetchedGoalSecondG2 = getGoalSecondG2Using($fetchedGoalSecond->id, $g2);
     
@@ -45,11 +46,11 @@
         $g2ObjTextBoxId = "txtg2obj" . $j;
         $g2ObjTextBoxValue = $_POST["$g2ObjTextBoxId"];        
         //now save the values to the database...
-        saveGoalSecondG2Obj($fetchedGoalSecondG2->id, $g2ObjTextBoxValue);
+        saveGoalSecondG2Obj($fetchedGoalSecondG2->id, $g2ObjTextBoxValue, $_SESSION['LOGGED_USER_ID']);
     }//end for loop i
     
     //now do the same thing for G3
-    saveGoalSecondG3($fetchedGoalSecond->id, $g3);
+    saveGoalSecondG3($fetchedGoalSecond->id, $g3, $_SESSION['LOGGED_USER_ID']);
     //fetch the value using the above parameters you have used to save the values to the database...
     $fetchedGoalSecondG3 = getGoalSecondG3Using($fetchedGoalSecond->id, $g3);
     
@@ -57,6 +58,6 @@
         $g3ObjTextBoxId = "txtg3obj" . $k;
         $g3ObjTextBoxValue = $_POST["$g3ObjTextBoxId"];        
         //now save the values to the database...
-        saveGoalSecondG3Obj($fetchedGoalSecondG3->id, $g3ObjTextBoxValue);
+        saveGoalSecondG3Obj($fetchedGoalSecondG3->id, $g3ObjTextBoxValue, $_SESSION['LOGGED_USER_ID']);
     }//end for loop i
 ?>

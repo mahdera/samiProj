@@ -1,18 +1,18 @@
 <?php
     require_once 'dbconnection.php';
     
-    function saveForm1Q3($form_1_id, $col1, $col2, $col3, $col4, $col5, $col6){
+    function saveForm1Q3($form_1_id, $col1, $col2, $col3, $col4, $col5, $col6, $modifiedBy){
         try{
-            $query = "insert into tbl_form_1_q3 values(0,'$form_1_id','$col1','$col2','$col3', '$col4', '$col5', '$col6')";            
+            $query = "insert into tbl_form_1_q3 values(0,'$form_1_id','$col1','$col2','$col3', '$col4', '$col5', '$col6', $modifiedBy, 'NOW()')";            
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
     
-    function updateForm1Q3($id, $col1, $col2, $col3, $col4, $col5, $col6){
+    function updateForm1Q3($id, $col1, $col2, $col3, $col4, $col5, $col6, $modifiedBy){
         try{
-            $query = "update tbl_form_1_q3 set col1 = '$col1', col2 = '$col2', col3 = '$col3', col4 = '$col4', col5='$col5', col6='$col6' where id = $id";
+            $query = "update tbl_form_1_q3 set col1 = '$col1', col2 = '$col2', col3 = '$col3', col4 = '$col4', col5='$col5', col6='$col6', modified_by = $modifiedBy, modification_date = 'NOW()' where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
