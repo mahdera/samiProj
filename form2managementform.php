@@ -1,6 +1,6 @@
 <h2>Form 2</h2>
 <form>
-    <table border="1" width="100%">
+    <table border="0" width="100%">
         <tr>
             <td>Q2.1:</td>
             <td>
@@ -32,8 +32,12 @@
         </tr>
     </table>
 </form>
+<div id="form2ManagementDetailDiv"></div>
 <script type="text/javascript">
     $(document).ready(function(){       
+
+        showListOfForm2Records();
+
         $('#btnsave').click(function(){
             var q2_1 = $('#q2_1').val();
             var q2_2 = $('#q2_2').val();
@@ -50,6 +54,7 @@
                     success:function(response){ 
                         alert('Form Two Saved Successfully!');                    
                         clearInputFields();
+                        showListOfForm2Records();
                     },
                     error:function(error){
                         alert(error);
@@ -66,5 +71,12 @@
             $('#q2_3').val('');
             $('#q2_4').val('');
         }
+
+               
+
+        function showListOfForm2Records(){
+            $('#form2ManagementDetailDiv').load('files/showlistofform2records.php');
+        }
+
     });//end document.ready function
 </script>

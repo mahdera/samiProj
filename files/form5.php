@@ -10,9 +10,10 @@
         }
     }
     
-    function updateForm4($id, $q5_1, $modifiedBy){
+    function updateForm5($id, $q5_1, $modifiedBy){
         try{
             $query = "update tbl_form_5 set q5_1 = '$q5_1', modified_by = $modifiedBy, modification_date = NOW() where id = $id";
+            save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
@@ -43,6 +44,16 @@
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+
+    function getAllForm5sModifiedBy($modifiedBy){
+        try{
+            $query = "select * from tbl_form_5 where modified_by = $modifiedBy";
+            $result = read($query);
+            return $result;
         } catch (Exception $ex) {
             $ex->getMessage();
         }

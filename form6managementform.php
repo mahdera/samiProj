@@ -1,6 +1,6 @@
 <h2>Form 6</h2>
 <form>
-    <table border="1" width="100%">
+    <table border="0" width="100%">
         <tr>
             <td>Q6.1:</td>
             <td>
@@ -14,8 +14,12 @@
         </tr>
     </table>
 </form>
+<div id="form6ManagementDetailDiv"></div>
 <script type="text/javascript">
-    $(document).ready(function(){       
+    $(document).ready(function(){ 
+
+        showListOfForm6Records();
+
         $('#btnsave').click(function(){
             var q6_1 = $('#q6_1').val();
                         
@@ -28,6 +32,7 @@
                     success:function(response){ 
                         alert('Form Six Saved Successfully!');                    
                         clearInputFields();
+                        showListOfForm6Records();
                     },
                     error:function(error){
                         alert(error);
@@ -41,5 +46,10 @@
         function clearInputFields(){
             $('#q6_1').val('');            
         }
+
+        function showListOfForm6Records(){
+            $('#form6ManagementDetailDiv').load('files/showlistofform6records.php');
+        }
+
     });//end document.ready function
 </script>

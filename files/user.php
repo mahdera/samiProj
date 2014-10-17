@@ -146,4 +146,13 @@
             $ex->getMessage();
         }
     }
+
+    function activateUserAccountUsingEmail($email){
+        try{
+            $query = "update tbl_user set user_status = 'Active' where email = '$email'";
+            save($query);
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
 ?>

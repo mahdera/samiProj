@@ -12,7 +12,8 @@
     
     function updateForm2($id, $q2_1, $q2_2, $q2_3, $q2_4, $modifiedBy){
         try{
-            $query = "update tbl_form_2 set q2_1 = '$q2_1', q2_2 = '$$q2_2', q_3 = '$q2_3', q_4 = '$q2_4', modified_by = $modifiedBy, modification_date = NOW() where id = $id";
+            $query = "update tbl_form_2 set q2_1 = '$q2_1', q2_2 = '$q2_2', q2_3 = '$q2_3', q2_4 = '$q2_4', modified_by = $modifiedBy, modification_date = NOW() where id = $id";
+            //echo $query;
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -44,6 +45,16 @@
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+
+    function getAllForm2sModifiedBy($modifiedBy){
+        try{
+            $query = "select * from tbl_form_2 where modified_by = $modifiedBy";
+            $result = read($query);
+            return $result;
         } catch (Exception $ex) {
             $ex->getMessage();
         }

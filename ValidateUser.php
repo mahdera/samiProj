@@ -12,8 +12,12 @@
       $loggedInUserObj = getUserUsingUserId($userId);
       if($loggedInUserObj->user_status !== 'Blocked'){
         $_SESSION['LOGGED_USER_ID'] = $loggedInUserObj->id;
-        $_SESSION['USER_ID'] = $userId;      
-        header('Location: intro1.php');
+        $_SESSION['USER_ID'] = $userId;
+        if($loggedInUserObj->member_type === 'Admin'){
+          header('Location: adminhome.php');
+        }else{      
+          header('Location: intro1.php');
+        }
       }else{
         $_SESSION['messageToUser'] = "Your account is Blocked. Please contact your account administrator!";
         header('Location: login.php');

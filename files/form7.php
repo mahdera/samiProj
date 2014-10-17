@@ -13,6 +13,7 @@
     function updateForm7($id, $q7_1, $modifiedBy){
         try{
             $query = "update tbl_form_7 set q7_1 = '$q7_1', modified_by = $modifiedBy, modification_date = 'NOW()' where id = $id";
+            save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }

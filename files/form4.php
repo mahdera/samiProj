@@ -13,6 +13,7 @@
     function updateForm4($id, $q4_1, $modifiedBy){
         try{
             $query = "update tbl_form_4 set q4_1 = '$q4_1', modified_by = $modifiedBy, modification_date = NOW() where id = $id";
+            save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
@@ -43,6 +44,16 @@
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+
+    function getAllForm4sModifiedBy($modifiedBy){
+        try{
+            $query = "select * from tbl_form_4 where modified_by = $modifiedBy";
+            $result = read($query);
+            return $result;
         } catch (Exception $ex) {
             $ex->getMessage();
         }
