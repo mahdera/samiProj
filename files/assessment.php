@@ -23,6 +23,7 @@
     function deleteAssessment($id){
         try{
             $query = "delete from tbl_assessment where id = $id";
+            echo $query;
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();

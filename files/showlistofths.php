@@ -9,7 +9,7 @@
         <td></td>
         <td>Th Name</td>
         <td>Edit</td>
-        <td></td>
+        <td>Delete</td>
     </tr>
     <?php
         $ctr=1;
@@ -20,7 +20,7 @@
                     <td></td>
                     <td><?php echo $thRow->th_name; ?></td>
                     <td><a href="#.php" id="<?php echo $thRow->id;?>" class="editThLink">Edit</a></td>
-                    <td></td>
+                    <td><a href="#.php" id="<?php echo $thRow->id;?>" class="deleteThLink">Delete</a></td>
                 </tr>
                 <tr>
                     <td colspan="4">
@@ -39,6 +39,28 @@
             var divId = "thEditDiv" + id;
             $('#'+divId).load('files/showeditfieldsofth.php?id='+id);
         });
+        
+        $('.deleteThLink').click(function(){
+            var id = $(this).attr('id');
+            if(window.confirm('Are you sure you want to delete this Th?')){
+                var dataString = "id="+id;
+                $.ajax({
+                    url: 'files/deleteth.php',		
+                    data: dataString,
+                    type:'POST',
+                    success:function(response){                                                
+                        showListOfThs();
+                    },
+                    error:function(error){
+                        alert(error);
+                    }
+                });
+            }            
+        });
+        
+        function showListOfThs(){
+            $('#subDetailDiv').load('files/showlistofths.php');
+        }
         
     });//end document.ready function
 </script>

@@ -19,7 +19,7 @@
                         <td>Phone</td>
                         <td>Interest</td>
                         <td>Edit</td>
-                        <td></td>
+                        <td>Delete</td>
                     </tr>
                     <?php
                         $ctr=1;
@@ -33,14 +33,49 @@
                                 <td><?php echo $teamRow->email;?></td>
                                 <td><?php echo $teamRow->phone;?></td>
                                 <td><?php echo $teamRow->interest;?></td>
-                                <td>Edit</td>
-                                <td></td>
+                                <td>
+                                    <a href="#.php" class="teamEditLink" id="<?php echo $teamRow->id;?>">Edit</a>
+                                </td>
+                                <td>
+                                    <a href="#.php" class="teamDeleteLink" id="<?php echo $teamRow->id;?>">Delete</a>
+                                </td>
                             </tr>
                             <?php
                         }//end while loop
                     ?>
                 </table>
+                <div id="teamEditDiv"></div>
             <?php
         }
     ?>
 </div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.teamEditLink').click(function(){
+            var id = $(this).attr('id');
+            $('#teamEditDiv').load('files/showeditfieldsofthisteam.php?id='+id);
+        });
+        
+        $('.teamDeleteLink').click(function(){
+            var id = $(this).attr('id');
+            var dataString = "id="+id;
+            if(window.confirm('Are you sure you want to delete this team?')){
+                $.ajax({
+                    url: 'files/deleteteam.php',		
+                    data: dataString,
+                    type:'POST',
+                    success:function(response){                    
+                        showListOfTeams();
+                    },
+                    error:function(error){
+                        alert(error);
+                    }
+                });
+            }
+        });
+        
+        function showListOfTeams(){
+            $('#subDetailDiv').load('files/showlistofteams.php');
+        }
+    });//end document.ready function
+</script>

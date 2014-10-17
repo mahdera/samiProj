@@ -2,7 +2,7 @@
     require_once 'files/th.php';
     require_once 'files/fn.php';
     
-    $fnList = getAllFns();
+    $fnList = getAllFnsModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
 <h1>Add Goal Second</h1>
 <form>

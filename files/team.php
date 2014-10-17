@@ -13,7 +13,8 @@
         
     function updateTeam($id, $name, $title, $organization, $email, $phone, $interest, $modifiedBy){
         try{
-            $query = "update tbl_team set name = '$name', title='$title', organization='$organization', email='$email', phone='$phone', interest='$interest', modified_by = $modifiedBy, modification_date = NOW() where id=$id";
+            $query = "update tbl_team set team_name = '$name', title='$title', organization='$organization', email='$email', phone='$phone', interest='$interest', modified_by = $modifiedBy, modification_date = NOW() where id=$id";
+            //echo $query;
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();

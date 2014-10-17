@@ -17,7 +17,7 @@
                         <td>Assessment Date</td>
                         <td>Summary</td>                        
                         <td>Edit</td>
-                        <td></td>
+                        <td>Delete</td>
                     </tr>                    
                     <?php
                         $ctr=1;
@@ -32,7 +32,9 @@
                                 <td>
                                     <a href="#.php" id="<?php echo $assessmentRow->id;?>" class="editAssessmentLink">Edit</a>
                                 </td>
-                                <td></td>
+                                <td>
+                                    <a href="#.php" id="<?php echo $assessmentRow->id;?>" class="deleteAssessmentLink">Delete</a>
+                                </td>
                             </tr> 
                             <tr>
                                 <td colspan="6">
@@ -50,12 +52,33 @@
 <script type="text/javascript">
     $(document).ready(function(){
         
-        $('.editAssessmentLink').click(function(){
-            //get the id value
+        $('.editAssessmentLink').click(function(){            
             var id = $(this).attr('id');
             var divId = "assessmentEditDiv" + id;
             $('#'+divId).load('files/showassessmenteditform.php?id='+id);
         });
+        
+        $('.deleteAssessmentLink').click(function(){            
+            var id = $(this).attr('id');
+            if(window.confirm('Are you sure you want to delete this assessment record?')){
+                var dataString = "id="+id;
+                $.ajax({
+                    url: 'files/deleteassessment.php',		
+                    data: dataString,
+                    type:'POST',
+                    success:function(response){                                                
+                        showListOfAssessments();
+                    },
+                    error:function(error){
+                        alert(error);
+                    }
+                });
+            }
+        });
+        
+        function showListOfAssessments(){
+            $('#subDetailDiv').load('files/showlistofassessments.php');
+        }
         
     });//end document.ready function
 </script>

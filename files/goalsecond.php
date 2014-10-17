@@ -38,6 +38,16 @@
         }
     }
     
+    function getAllGoalSecondsModifiedBy($modifiedBy){
+        try{
+            $query = "select * from tbl_goal_second where modified_by = $modifiedBy";
+            $result = read($query);
+            return $result;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }        
+    }
+    
     function getGoalSecond($id){
         try{
             $query = "select * from tbl_goal_second where id = $id";

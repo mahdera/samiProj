@@ -14,7 +14,7 @@
     function updateRisk($id, $thId, $mg, $dr, $pr, $wa, $rs, $modifiedBy){
         try{
             $query = "update tbl_risk set th_id = $thId, mg = '$mg', dr = '$dr', pr = '$pr', wa = '$wa', rs = '$rs', modified_by = $modifiedBy, modification_date = NOW() where id = $id";
-            echo $query;
+            //echo $query;
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();

@@ -8,7 +8,7 @@
 ?>
 <h2>Edit Th</h2>
 <form>
-    <table border="1" width="100%">
+    <table border="0" width="100%">
         <tr>
             <td>Th:</td>
             <td>
@@ -17,8 +17,7 @@
         </tr>
         <tr>
             <td colspan="2" align="right">
-                <input type="button" value="Update" id="<?php echo $buttonId;?>"/>
-                <input type="reset" value="Clear"/>
+                <input type="button" value="Update" id="<?php echo $buttonId;?>"/>                
             </td>
         </tr>
     </table>

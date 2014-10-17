@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <div id="topcontain">
     <div id="titlearea">
         <h1 id='currentPageTag'>Step 3-4</h1>

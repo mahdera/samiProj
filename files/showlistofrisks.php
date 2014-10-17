@@ -20,7 +20,8 @@
                         <td>PR</td>
                         <td>WA</td>
                         <td>RS</td>
-                        <td>Edit</td>                        
+                        <td>Edit</td>  
+                        <td>Delete</td>
                     </tr>
                     <?php
                         $ctr=1;
@@ -37,9 +38,10 @@
                                 <td><?php echo $riskRow->wa;?></td>
                                 <td><?php echo $riskRow->rs;?></td>
                                 <td><a href="#.php" class="riskEditLink" id="<?php echo $riskRow->id;?>">Edit</a></td>                                
+                                <td><a href="#.php" class="riskDeleteLink" id="<?php echo $riskRow->id;?>">Delete</a></td>
                             </tr>
                             <tr>
-                                <td colspan="10">
+                                <td colspan="11">
                                     <div id="<?php echo $divId;?>"></div>
                                 </td>
                             </tr>
@@ -60,6 +62,28 @@
             var divId = "riskEditDiv" + id;
             $('#'+divId).load('files/showeditfiedlsofrisk.php?id='+id);
         });
+        
+        $('.riskDeleteLink').click(function(){
+            var id = $(this).attr('id');
+            if(window.confirm('Are you sure you want to delete this risk record?')){
+                var dataString = "id="+id;
+                $.ajax({
+                    url: 'files/deleterisk.php',		
+                    data: dataString,
+                    type:'POST',
+                    success:function(response){                                                
+                        showListOfRisks();
+                    },
+                    error:function(error){
+                        alert(error);
+                    }
+                });
+            }            
+        });
+        
+        function showListOfRisks(){
+            $('#subDetailDiv').load('files/showlistofrisks.php');
+        }
         
     });//end document.ready function
 </script>

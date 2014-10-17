@@ -1,6 +1,6 @@
-<?php
+<?php    
     require_once 'files/th.php';
-    $thList = getAllThs();
+    $thList = getAllThsModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
 <h1>Add Risk</h1>
 <form>

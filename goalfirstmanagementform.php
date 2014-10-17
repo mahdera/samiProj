@@ -44,7 +44,7 @@
                             <?php
                         }//end while loop
                         ?>
-                                <option value="other">other</option>                        
+                        <option value="other">other</option>                        
                 </select>
             </td>
         </tr>
@@ -75,11 +75,16 @@
                                         <?php
                                     }//end while loop
                                     ?>
-                                            <!--<option value="other">other</option>-->                        
+                                    <option value="other">other</option>
                             </select>
                         </td>
                     </tr>
                 </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div id="g1fnObjOtherDiv"></div>
             </td>
         </tr>
         <tr id="addMoreG1ObjFn">
@@ -139,11 +144,16 @@
                                         <?php
                                     }//end while loop
                                     ?>
-                                            <!--<option value="other">other</option>-->                        
+                                    <option value="other">other</option>
                             </select>
                         </td>
                     </tr>
                 </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div id="g2fnObjOtherDiv"></div>
             </td>
         </tr>
         <tr id="addMoreG2ObjFn">
@@ -203,11 +213,16 @@
                                         <?php
                                     }//end while loop
                                     ?>
-                                            <!--<option value="other">other</option>-->                        
+                                    <option value="other">other</option>
                             </select>
                         </td>
                     </tr>
                 </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div id="g3fnObjOtherDiv"></div>
             </td>
         </tr>
         <tr id="addMoreG3ObjFn">
@@ -377,12 +392,30 @@
             }
         });
         
+        $('#slctg1fn1').change(function(){
+            var fnVal = $(this).val();
+            if(fnVal === "other"){
+                $('#g1fnObjOtherDiv').load('files/showotherfnentryformforg1fn1.php');
+            }else{
+                $('#g1fnObjOtherDiv').html('');
+            }
+        });
+        
         $('#slctg2fn').change(function(){
             var fnVal = $(this).val();
             if(fnVal === "other"){
                 $('#g2fnOtherDiv').load('files/showg2otherfnentryform.php');
             }else{
                 $('#g2fnOtherDiv').html('');
+            }
+        });
+        
+        $('#slctg2fn1').change(function(){
+            var fnVal = $(this).val();
+            if(fnVal === "other"){
+                $('#g2fnObjOtherDiv').load('files/showg2otherfnentryformg2fn1.php');
+            }else{
+                $('#g2fnObjOtherDiv').html('');
             }
         });
         
@@ -395,9 +428,18 @@
             }
         });
         
+        $('#slctg3fn1').change(function(){
+            var fnVal = $(this).val();
+            if(fnVal === "other"){
+                $('#g3fnObjOtherDiv').load('files/showg3otherfnentryformg3fn1.php');
+            }else{
+                $('#g3fnObjOtherDiv').html('');
+            }
+        });
+        
         $('#addMoreG1ObjFnLink').click(function(){
             var numItems = $('.g1Obj').length;
-            var dataString = "numItems="+numItems;            
+            var dataString = "numItems="+numItems;                       
             
             $.ajax({
                 url: 'files/showmoreg1objfnform.php',		
@@ -410,7 +452,7 @@
                     alert(error);
                 }
             });
-                        
+            
         });
         
         $('#addMoreG2ObjFnLink').click(function(){

@@ -6,6 +6,7 @@
     $objControlName = "txtg2obj" . ($numItems + 1);
     $fnSelectControlName = "slctg2fn" . ($numItems + 1);
     $trRowId = "trg2" . ($numItems + 1);
+    $fnOtherDivId = "fnOtherG2ObjFn" . ($numItems + 1);
 ?>
 <tr id="<?php echo $trRowId;?>">
     <td colspan="2">
@@ -19,7 +20,7 @@
             <tr>
                 <td>Fn:</td>
                 <td>
-                    <select name="<?php echo $fnSelectControlName;?>" id="<?php echo $fnSelectControlName;?>" style="width: 100%">
+                    <select name="<?php echo $fnSelectControlName;?>" id="<?php echo $fnSelectControlName;?>" style="width: 100%" onchange="showOtherFnDataEntryForm(this.value, '<?php echo $fnOtherDivId;?>', <?php echo $numItems + 1;?>);">
                         <option value="" selected="selected">--Select--</option>
                         <?php
                             while($fnRow = mysql_fetch_object($fnList)){
@@ -28,10 +29,23 @@
                                 <?php
                             }//end while loop
                             ?>
-                                    <!--<option value="other">other</option>-->                        
+                            <option value="other">other</option>
                     </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div id="<?php echo $fnOtherDivId;?>"><?php echo $fnOtherDivId;?></div>
                 </td>
             </tr>
         </table>
     </td>
 </tr>
+<script type="text/javascript">
+    function showOtherFnDataEntryForm(val, divId, uniqueVal){
+        if(val === 'other'){
+            //now insert the fn data entry form here...
+            $('#'+divId).load('files/showotherfnentryformforuniquevalg2.php?uniqueVal='+uniqueVal);
+        }
+    }
+</script>
