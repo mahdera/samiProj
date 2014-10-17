@@ -1,11 +1,11 @@
 <h1>Form Management</h1>
 <form>
-    <table border="1" width="100%">
+    <table border="0" width="100%">
             <tr style="background: #ccc">
                 <td>Form</td>
                 <td>Action</td>
             </tr>
-            <tr>
+            <tr style="background:#eee">
                 <td>Form 1</td>
                 <td>
                     <a href="#.php" id="showForm1Link">Show</a> | <a href="#.php" id="hideForm1Link">Hide</a>
@@ -16,7 +16,7 @@
                     <div id="form1Div"></div>
                 </td>
             </tr>
-            <tr>
+            <tr style="background:#eee">
                 <td>Form 2</td>
                 <td>
                     <a href="#.php" id="showForm2Link">Show</a> | <a href="#.php" id="hideForm2Link">Hide</a>
@@ -27,7 +27,7 @@
                     <div id="form2Div"></div>
                 </td>
             </tr>
-            <tr>
+            <tr style="background:#eee">
                 <td>Form 3</td>
                 <td>
                     <a href="#.php" id="showForm3Link">Show</a> | <a href="#.php" id="hideForm3Link">Hide</a>
@@ -38,7 +38,7 @@
                     <div id="form3Div"></div>
                 </td>
             </tr>
-            <tr>
+            <tr style="background:#eee">
                 <td>Form 4</td>
                 <td>
                     <a href="#.php" id="showForm4Link">Show</a> | <a href="#.php" id="hideForm4Link">Hide</a>
@@ -49,7 +49,7 @@
                     <div id="form4Div"></div>
                 </td>
             </tr>
-            <tr>
+            <tr style="background:#eee">
                 <td>Form 5</td>
                 <td>
                     <a href="#.php" id="showForm5Link">Show</a> | <a href="#.php" id="hideForm5Link">Hide</a>
@@ -60,7 +60,7 @@
                     <div id="form5Div"></div>
                 </td>
             </tr>
-            <tr>
+            <tr style="background:#eee">
                 <td>Form 6</td>
                 <td>
                     <a href="#.php" id="showForm6Link">Show</a> | <a href="#.php" id="hideForm6Link">Hide</a>
@@ -71,7 +71,7 @@
                     <div id="form6Div"></div>
                 </td>
             </tr>
-            <tr>
+            <tr style="background:#eee">
                 <td>Form 7</td>
                 <td>
                     <a href="#.php" id="showForm7Link">Show</a> | <a href="#.php" id="hideForm7Link">Hide</a>
@@ -82,7 +82,7 @@
                     <div id="form7Div"></div>
                 </td>
             </tr>
-            <tr>
+            <tr style="background:#eee">
                 <td>Form 8</td>
                 <td>
                     <a href="#.php" id="showForm8Link">Show</a> | <a href="#.php" id="hideForm8Link">Hide</a>
@@ -93,7 +93,7 @@
                     <div id="form8Div"></div>
                 </td>
             </tr>
-            <tr>
+            <tr style="background:#eee">
                 <td>Form 9</td>
                 <td>
                     <a href="#.php" id="showForm9Link">Show</a> | <a href="#.php" id="hideForm9Link">Hide</a>
@@ -104,7 +104,7 @@
                     <div id="form9Div"></div>
                 </td>
             </tr>
-            <tr>
+            <tr style="background:#eee">
                 <td>Form 10</td>
                 <td>
                     <a href="#.php" id="showForm10Link">Show</a> | <a href="#.php" id="hideForm10Link">Hide</a>

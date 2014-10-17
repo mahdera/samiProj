@@ -1,5 +1,8 @@
 <h1>Add Team</h1>
-<form>
+<a href="#.php" id="showTeamManagementFormLinkId">Show Form</a>
+|
+<a href="#.php" id="hideTeamManagementFormLinkId">Hide Form</a>
+<form id="teamManagementForm">
     <table border="0" width="100%">
         <tr>
             <td width="20%">Name:</td>
@@ -60,6 +63,16 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
+
+        $('#teamManagementForm').hide();
+
+        $('#showTeamManagementFormLinkId').click(function(){
+            $('#teamManagementForm').show('slow');            
+        });
+
+        $('#hideTeamManagementFormLinkId').click(function(){
+            $('#teamManagementForm').hide('slow');            
+        });        
         
         showListOfTeams();
         

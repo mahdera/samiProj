@@ -2,7 +2,10 @@
     require_once 'files/team.php';
 ?>
 <h2>Add Responsibility</h2>
-<form>
+<a href="#.php" id="showResponsibilityManagementFormLinkId">Show Form</a>
+|
+<a href="#.php" id="hideResponsibilityManagementFormLinkId">Hide Form</a>
+<form id="responsibilityManagementForm">
     <table border="0" width="100%">
         <tr>
             <td>Team:</td>
@@ -49,6 +52,17 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
+
+        $('#responsibilityManagementForm').hide();
+
+        $('#showResponsibilityManagementFormLinkId').click(function(){
+            $('#responsibilityManagementForm').show('slow');            
+        });
+
+        $('#hideResponsibilityManagementFormLinkId').click(function(){
+            $('#responsibilityManagementForm').hide('slow');            
+        });
+
         showListOfResponsibilities();
         
         $('#btnsave').click(function(){

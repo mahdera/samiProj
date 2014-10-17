@@ -1,6 +1,6 @@
 <h2>Form 1</h2>
-<form>
-    <table border="1" width="100%">
+<form style="background:white">
+    <table border="0" width="100%">
         <tr>
             <td>Title</td>
             <td>
@@ -178,7 +178,8 @@
                     url: 'files/saveform1.php',		
                     data: dataString,
                     type:'POST',
-                    success:function(response){                        
+                    success:function(response){  
+                        alert('Form One Saved Successfully!');                      
                         clearFormInputFields(q3NumItems, q4NumItems);                         
                     },
                     error:function(error){

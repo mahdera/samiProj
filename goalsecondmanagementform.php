@@ -5,7 +5,10 @@
     $fnList = getAllFnsModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
 <h1>Add Goal Second</h1>
-<form>
+<a href="#.php" id="showGoalSecondManagementFormLinkId">Show Form</a>
+|
+<a href="#.php" id="hideGoalSecondManagementFormLinkId">Hide Form</a>
+<form id="goalSecondManagementForm">
     <table border="0" width="100%">
         <tr>
             <td>Fn:</td>
@@ -90,7 +93,17 @@
 <script type="text/javascript">
     
     $(document).ready(function(){        
-        //show the result back to the user on document.ready
+        
+        $('#goalSecondManagementForm').hide();
+
+        $('#showGoalSecondManagementFormLinkId').click(function(){
+            $('#goalSecondManagementForm').show('slow');            
+        });
+
+        $('#hideGoalSecondManagementFormLinkId').click(function(){
+            $('#goalSecondManagementForm').hide('slow');            
+        });
+
         showListOfGoalSeconds();
         
         $('#btnsave').click(function(){

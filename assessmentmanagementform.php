@@ -1,5 +1,8 @@
 <h1>Add Assessment</h1>
-<form>
+<a href="#.php" id="showAssessmentManagementFormLinkId">Show Form</a>
+|
+<a href="#.php" id="hideAssessmentManagementFormLinkId">Hide Form</a>
+<form id="assessmentManagementForm">
     <table border="0" width="99%">
         <tr>
             <td>Assessment Type:</td>
@@ -43,7 +46,17 @@
 <div id="subDetailDiv"></div>
 
 <script type="text/javascript">
-    $(document).ready(function(){        
+    $(document).ready(function(){ 
+
+        $('#assessmentManagementForm').hide();
+
+        $('#showAssessmentManagementFormLinkId').click(function(){
+            $('#assessmentManagementForm').show('slow');            
+        });       
+
+        $('#hideAssessmentManagementFormLinkId').click(function(){
+            $('#assessmentManagementForm').hide('slow');            
+        });       
         
         $( ".datepicker" ).datepicker({
             changeMonth: true,//this option for allowing user to select month

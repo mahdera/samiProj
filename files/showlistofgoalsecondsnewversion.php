@@ -37,7 +37,7 @@
         $('.showFnDetailsLink').click(function(){
             var id = $(this).attr('id');
             var divId = "fnEditDiv" + id;
-            $('#'+divId).load('files/showg1andobjsforthisfn.php?id='+id);
+            $('#'+divId).load('files/showg1andobjsforthisgoalsecond.php?id='+id);
         });
         
         $('.hideFnDetailsLink').click(function(){

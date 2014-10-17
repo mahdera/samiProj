@@ -49,7 +49,7 @@
             <td><font color='red'>*</font> User Status:</td>
             <td>
                 <select name="slctuserstatus" id="slctuserstatus" style="width: 100%">
-                    <option value="Active" selected="selected">Active</option>                    
+                    <option value="Pending" selected="selected">Pending</option>                    
                 </select>
             </td>
         </tr>
@@ -86,7 +86,7 @@
                     type:'POST',
                     success:function(response){                    
                         //$('#createUserDiv').html('');                        
-                        $('#extraContent').html('User Account Successfully Created!');
+                        $('#extraContent').html('Your account needs activation. We have sent you an activation link via your email. Please go to your email and click on the link we have sent you!');
                     },
                     error:function(error){
                         alert(error);

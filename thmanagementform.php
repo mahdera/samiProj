@@ -1,5 +1,8 @@
 <h1>Add Th</h1>
-<form>
+<a href="#.php" id="showThManagementFormLinkId">Show Form</a>
+|
+<a href="#.php" id="hideThManagementFormLinkId">Hide Form</a>
+<form id="thManagementForm">
     <table border="0" width="100%">
         <tr>
             <td>Th:</td>
@@ -18,7 +21,17 @@
 <div id="subDetailDiv"></div>
 <script type="text/javascript">
     $(document).ready(function(){
-        //show the result back to the user on document.ready
+        
+        $('#thManagementForm').hide();
+
+        $('#showThManagementFormLinkId').click(function(){
+            $('#thManagementForm').show('slow');            
+        });
+
+        $('#hideThManagementFormLinkId').click(function(){
+            $('#thManagementForm').hide('slow');            
+        });
+
         showListOfThs();
         
         $('#btnsave').click(function(){

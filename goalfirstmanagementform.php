@@ -2,11 +2,13 @@
     require_once 'files/th.php';
     require_once 'files/fn.php';
     $thList = getAllThs();
-    $fnList = getAllFns();
-    //var_dump($selectedThIdArray);the array is accessible...i love php Yay
+    $fnList = getAllFns();    
 ?>
 <h1>Add Goal First</h1>
-<form>
+<a href="#.php" id="showGoalFirstManagementFormLinkId">Show Form</a>
+|
+<a href="#.php" id="hideGoalFirstManagementFormLinkId">Hide Form</a>
+<form id="goalFirstManagementForm">
     <table border="0" width="100%">
         <tr>
             <td>Th:</td>
@@ -243,7 +245,17 @@
 <script type="text/javascript">
     
     $(document).ready(function(){        
-        //show the result back to the user on document.ready
+        
+        $('#goalFirstManagementForm').hide();
+
+        $('#showGoalFirstManagementFormLinkId').click(function(){
+            $('#goalFirstManagementForm').show('slow');            
+        });
+
+        $('#hideGoalFirstManagementFormLinkId').click(function(){
+            $('#goalFirstManagementForm').hide('slow');            
+        });
+
         showListOfGoalFirsts();
         
         $('#btnsave').click(function(){

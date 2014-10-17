@@ -3,7 +3,10 @@
     $thList = getAllThsModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
 <h1>Add Risk</h1>
-<form>
+<a href="#.php" id="showRiskManagementFormLinkId">Show Form</a>
+|
+<a href="#.php" id="hideRiskManagementFormLinkId">Hide Form</a>
+<form id="riskManagementForm">
     <table border="0" width="100%">
         <tr>
             <td>Th:</td>
@@ -91,6 +94,16 @@
 <div id="subDetailDiv"></div>
 <script type="text/javascript">
     $(document).ready(function(){
+
+        $('#riskManagementForm').hide();
+
+        $('#showRiskManagementFormLinkId').click(function(){
+            $('#riskManagementForm').show('slow');            
+        });
+
+        $('#hideRiskManagementFormLinkId').click(function(){
+            $('#riskManagementForm').hide('slow');            
+        });
         
         showListOfRisks();
         
