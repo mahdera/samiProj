@@ -133,7 +133,7 @@
                 var numItemsG2 = $('.g2Obj').length;
                 var numItemsG3 = $('.g3Obj').length;
                 
-                for(var i = 2; i <= numItemsG1; i++){
+                for(var i = 1; i <= numItemsG1; i++){
                     var g1ObjTextBoxId = "txtg1obj" + i;
                     var g1ObjTextBoxValue = $('#' + g1ObjTextBoxId).val();                    
                     
@@ -146,7 +146,7 @@
                 }//end for loop i
 
                 //now do the same thing for g2...
-                for(var j = 2; j <= numItemsG2; j++){
+                for(var j = 1; j <= numItemsG2; j++){
                     var g2ObjTextBoxId = "txtg2obj" + j;
                     var g2ObjTextBoxValue = $('#' + g2ObjTextBoxId).val();                  
                     
@@ -159,7 +159,7 @@
                 }//end for loop j
 
                 //now do the same thing for g3...
-                for(var k = 2; k <= numItemsG3; k++){
+                for(var k = 1; k <= numItemsG3; k++){
                     var g3ObjTextBoxId = "txtg3obj" + k;
                     var g3ObjTextBoxValue = $('#' + g3ObjTextBoxId).val();                   
                     

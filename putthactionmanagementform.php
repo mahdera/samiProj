@@ -46,11 +46,11 @@
 <script type="text/javascript">
     $(document).ready(function(){
         
-        $('.openActionFormClass').click(function(){
+        $('.openActionFormClass').click(function(){            
             var idVal = $(this).attr('id');
             //now create the div element using the id you got in here...
             var divId = "actionDiv" + idVal;
-            
+            alert(divId);
             $('#' + divId).load('files/showputthactionform.php?thId='+idVal);
         });
         

@@ -72,7 +72,7 @@
     
     function getGoalSecondUsingFnIdAndModifiedBy($fnId, $modifiedBy){
         try{
-            $query = "select * from tbl_goal_second where fn_id = $fnId and modified_by = $modifiedBy limit 0,1 order by modification_date desc";
+            $query = "select * from tbl_goal_second where fn_id = $fnId and modified_by = $modifiedBy order by modification_date desc limit 0,1";
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;
