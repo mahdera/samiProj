@@ -20,6 +20,4 @@
         updateTh($thIdControlValue, $thControlValue, $_SESSION['LOGGED_USER_ID']);
     }//end for loop
 ?>
-<p style="background:lightgreen">
-    Assessment Successfully Updated!
-</p>
+<div class="notify notify-green"><span class="symbol icon-tick"></span> Assessment Successfully Updated!</div>

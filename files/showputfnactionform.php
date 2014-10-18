@@ -20,9 +20,9 @@
     //now I got all the result set read from the database...lets do the iteration thing now...
     $fn = getFn($fn_id);
 ?>
-<table border="1" width="100%">
+<table border="0" width="100%">
     <tr>
-        <td>Fn</td>
+        <td width="30%">Fn</td>
         <td>
             <?php echo $fn->fn_name;?>
         </td>

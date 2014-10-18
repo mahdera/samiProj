@@ -11,5 +11,5 @@
     require_once 'team.php';    
     updateTeam($id, $name, $title, $organization, $email, $phone, $interest, $_SESSION['LOGGED_USER_ID']);
 ?>
-
+<div class="notify notify-green"><span class="symbol icon-tick"></span> Team Updated Successfully!</div>
 

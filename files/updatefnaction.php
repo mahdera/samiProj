@@ -5,5 +5,5 @@
     require_once 'fnaction.php';
     updateFnAction($fnActionId, $updatedText, $_SESSION['LOGGED_USER_ID']);
 ?>
-<p style="background: lightgreen">Fn Action Updated Successfully!</p>
+<div class="notify notify-green"><span class="symbol icon-tick"></span> Fn Action Updated Successfully!</div>
 

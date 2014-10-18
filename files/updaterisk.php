@@ -11,4 +11,4 @@
     require_once 'risk.php';
     updateRisk($id, $thId, $mg, $dr, $pr, $wa, $rs, $_SESSION['LOGGED_USER_ID']);
 ?>
-<p style="background: lightgreen">Risk Updated Successfully!</p>
+<div class="notify notify-green"><span class="symbol icon-tick"></span> Risk Updated Successfully!</div>

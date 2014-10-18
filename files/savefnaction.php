@@ -6,6 +6,4 @@
     require_once 'fnaction.php';
     saveFnAction($fnId, $textAreaValue, $_SESSION['LOGGED_USER_ID']);
 ?>
-<p style="background: lightgreen">
-    Fn Action Saved Successfully!
-</p>
+<div class="notify notify-green"><span class="symbol icon-tick"></span> Fn Action Saved Successfully!</div>

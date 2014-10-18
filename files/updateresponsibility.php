@@ -8,6 +8,4 @@
     $responsibility = $_POST['responsibility'];
     updateResponsibility($id, $teamId, $role, $responsibility, $_SESSION['LOGGED_USER_ID']);
 ?>
-<p style="background: lightgreen">
-    Responsibility Updated Successfully!
-</p>
+<div class="notify notify-green"><span class="symbol icon-tick"></span> Responsibility Updated Successfully!</div>

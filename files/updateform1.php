@@ -10,4 +10,4 @@
 	require_once 'form1.php';	
 	updateForm1($id, $titleValue, $dateValue, $planValue, $q1Value, $q2Value, $_SESSION['LOGGED_USER_ID'])
 ?>
-<p style='background:lightgreen'>Form1 Updated Successfully!</p>
+<div class="notify notify-green"><span class="symbol icon-tick"></span> Form1 Updated Successfully!</div>

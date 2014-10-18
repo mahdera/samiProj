@@ -4,4 +4,4 @@
     $fnName = $_POST['fnName'];
     saveFn($fnName, $_SESSION['LOGGED_USER_ID']);
 ?>
-<p style="background: lightgreen">Fn saved successfully!</p>
+<div class="notify notify-green"><span class="symbol icon-tick"></span> Fn saved successfully!</div>

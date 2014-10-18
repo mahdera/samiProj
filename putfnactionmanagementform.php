@@ -3,9 +3,9 @@
     //first grab all fn record from the database...
     require_once 'files/fn.php';
     require_once 'files/fnaction.php';
-    $fn_list = getAllFnsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    $fn_list = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);//getAllFnsModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
-<table border="1" width="100%">
+<table border="0" width="100%">
     <tr style="background: #ccc">
         <td>Ser.No</td>
         <td>Fn</td>
@@ -13,17 +13,19 @@
     </tr>
     <?php
         $ctr=1;        
-        while($fn_row = mysql_fetch_object($fn_list)){
+        //while($fn_row = mysql_fetch_object($fn_list)){
+        foreach($fn_list as $fnId){
+            $fnObj = getFn($fnId);
             $countVal = 0;
-            $divId = "actionDiv" . $fn_row->id;
-            $countVal = doesThisFnAlreadyActionFilledForIt($fn_row->id);
+            $divId = "actionDiv" . $fnId;
+            $countVal = doesThisFnAlreadyActionFilledForIt($fnId);
             if(!$countVal){
             ?>
                 <tr>
-                    <td><?php echo $ctr++;?></td>
-                    <td><?php echo $fn_row->fn_name;?></td>
+                    <td width="10%"><?php echo $ctr++;?></td>
+                    <td width="20%"><?php echo $fnObj->fn_name;?></td>
                     <td>
-                        <a href="#.php" id="<?php echo $fn_row->id;?>" class="openActionFormClass">Show Add Action Form</a> | <a href="#.php" id="<?php echo $fn_row->id;?>" class="closeActionFormClass">Close Add Action Form</a>
+                        <a href="#.php" id="<?php echo $fnId;?>" class="openActionFormClass">Show Add Action Form</a> | <a href="#.php" id="<?php echo $fnId;?>" class="closeActionFormClass">Close Add Action Form</a>
                     </td>
                 </tr>
                 <tr>
@@ -33,7 +35,7 @@
                 </tr>
             <?php
             }//end if condition
-        }//end while loop
+        }//end for each loop
     ?>
 </table>
 <script type="text/javascript">

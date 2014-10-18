@@ -8,4 +8,4 @@
 	require_once 'form2.php';
 	updateForm2($id, $q21Value, $q22Value, $q23Value, $q24Value, $_SESSION['LOGGED_USER_ID']);
 ?>
-<p style='background:lightgreen'>Form2 Updated Successfully!</p>
+<div class="notify notify-green"><span class="symbol icon-tick"></span> Form2 Updated Successfully!</div>
