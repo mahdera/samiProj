@@ -94,8 +94,11 @@
         </tr>
     </table>
 </form>
+<div id="form1ManagementDetailDiv"></div>
 <script type="text/javascript">
     $(document).ready(function(){ 
+
+        showListOfForm1Records();
         
         $('txttitle').focus();
         
@@ -181,6 +184,7 @@
                     success:function(response){  
                         alert('Form One Saved Successfully!');                      
                         clearFormInputFields(q3NumItems, q4NumItems);                         
+                        showListOfForm1Records();
                     },
                     error:function(error){
                         alert(error);
@@ -206,6 +210,10 @@
                 var textBoxId = "txtrowq4"+j;
                 $('#'+textBoxId).val('');
             }
+        }
+
+        function showListOfForm1Records(){
+            $('#form1ManagementDetailDiv').load('files/showlistofform1records.php');
         }
         
     });//end document.ready function

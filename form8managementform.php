@@ -1,6 +1,6 @@
 <h2>Form 8</h2>
 <form>
-    <table border="1" width="100%">
+    <table border="0" width="100%">
         <tr>
             <td>Q8.1:</td>
             <td>
@@ -14,8 +14,12 @@
         </tr>
     </table>
 </form>
+<div id="form8ManagementDetailDiv"></div>
 <script type="text/javascript">
     $(document).ready(function(){       
+
+        showListOfForm8Records();
+
         $('#btnsave').click(function(){
             var q8_1 = $('#q8_1').val();
                         
@@ -28,6 +32,7 @@
                     success:function(response){ 
                         alert('Form Eight Saved Successfully!');                    
                         clearInputFields();
+                        showListOfForm8Records();
                     },
                     error:function(error){
                         alert(error);
@@ -41,5 +46,10 @@
         function clearInputFields(){
             $('#q8_1').val('');            
         }
+
+        function showListOfForm8Records(){
+            $('#form8ManagementDetailDiv').load('files/showlistofform8records.php');
+        }
+
     });//end document.ready function
 </script>

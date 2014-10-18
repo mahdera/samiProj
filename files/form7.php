@@ -19,7 +19,7 @@
         }
     }
     
-    function deleteForm6($id){
+    function deleteForm7($id){
         try{
             $query = "delete from tbl_form_7 where id = $id";
             save($query);
@@ -44,6 +44,16 @@
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+
+    function getAllForm7sModifiedBy($modifiedBy){
+        try{
+            $query = "select * from tbl_form_7 where modified_by = $modifiedBy";
+            $result = read($query);
+            return $result;
         } catch (Exception $ex) {
             $ex->getMessage();
         }

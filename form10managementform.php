@@ -1,6 +1,6 @@
 <h2>Form 10</h2>
 <form>
-    <table border="1" width="100%">
+    <table border="0" width="100%">
         <tr>
             <td>Q10.1:</td>
             <td>
@@ -9,14 +9,17 @@
         </tr>        
         <tr>
             <td colspan="2" align="right">
-                <input type="button" value="Save" id="btnsave"/>
-                <input type="reset" value="Clear"/>
+                <input type="button" value="Save" id="btnsave"/>                
             </td>
         </tr>
     </table>
 </form>
+<div id="form10ManagementDetailDiv"></div>
 <script type="text/javascript">
     $(document).ready(function(){       
+
+        showListOfForm10Records();
+
         $('#btnsave').click(function(){
             var q10_1 = $('#q10_1').val();
                         
@@ -26,8 +29,10 @@
                     url: 'files/saveform10.php',        
                     data: dataString,
                     type:'POST',
-                    success:function(response){                     
+                    success:function(response){   
+                        alert('Form 10 Saved Successfully!');                  
                         clearInputFields();
+                        showListOfForm10Records();
                     },
                     error:function(error){
                         alert(error);
@@ -41,5 +46,10 @@
         function clearInputFields(){
             $('#q10_1').val('');            
         }
+
+        function showListOfForm10Records(){
+            $('#form10ManagementDetailDiv').load('files/showlistofform10records.php');
+        }
+
     });//end document.ready function
 </script>

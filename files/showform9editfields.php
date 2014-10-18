@@ -1,17 +1,17 @@
 <?php
 	$id = $_GET['id'];
-	require_once 'form6.php';
-	$form6Obj = getForm6($id);
+	require_once 'form9.php';
+	$form9Obj = getForm9($id);
 	//define the control names in here...
-	$q61TextAreaControlName = "q6_1" . $id;	
-	$buttonId = "btnupdateform6" . $id;
+	$q91TextAreaControlName = "q9_1" . $id;	
+	$buttonId = "btnupdateform9" . $id;
 ?>
 <form>
     <table border="0" width="100%">
         <tr>
-            <td>Q6.1:</td>
+            <td>Q9.1:</td>
             <td>
-                <textarea name="<?php echo $q61TextAreaControlName;?>" id="<?php echo $q61TextAreaControlName;?>" style="width: 100%" rows="3"><?php echo $form6Obj->q6_1;?></textarea>
+                <textarea name="<?php echo $q91TextAreaControlName;?>" id="<?php echo $q91TextAreaControlName;?>" style="width: 100%" rows="3"><?php echo $form9Obj->q9_1;?></textarea>
             </td>
         </tr>               
         <tr>
@@ -24,16 +24,16 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		var id = "<?php echo $id;?>";
-		var buttonId = "btnupdateform6" + id;
+		var buttonId = "btnupdateform9" + id;
 		
 		$('#'+buttonId).click(function(){			
-			var divId = "form6EditDiv" + id;
-			var q61TextAreaControlName = "q6_1" + id;			
+			var divId = "form9EditDiv" + id;
+			var q91TextAreaControlName = "q9_1" + id;			
 			//now get the values...
-			var q61Value = $('#'+q61TextAreaControlName).val();			
-			var dataString = "id="+id+"&q61Value="+q61Value;
+			var q91Value = $('#'+q91TextAreaControlName).val();			
+			var dataString = "id="+id+"&q91Value="+q91Value;
 			$.ajax({
-                url: 'files/updateform6.php',        
+                url: 'files/updateform9.php',        
                 data: dataString,
                 type:'POST',
                 success:function(response){ 

@@ -38,6 +38,16 @@
             $ex->getMessage();
         }
     }
+
+    function getAllForm1sModifiedBy($modifiedBy){
+        try{
+            $query = "select * from tbl_form_1 where modified_by = $modifiedBy";
+            $result = read($query);
+            return $result;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
     
     function getForm1($id){
         try{
