@@ -40,7 +40,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('.editThActionLink').click(function(){
-            alert('inside editThActionLink click');
+            //alert('inside editThActionLink click');
             var id = $(this).attr('id');
             var editDivId = "editActionTextDiv" + id;
             $('#'+editDivId).load('files/showeditthactionform.php?thId='+id);
