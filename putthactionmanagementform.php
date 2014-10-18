@@ -39,6 +39,9 @@
                             $ctr++;
                         }//end inner...if condition
                     }//end while loop construct                  
+                    if($countVal){
+                        echo '<div class="notify"><span class="symbol icon-info"></span> All Ths Have Action Record !</div>';
+                    }
                 ?>
         </table>
         <?php

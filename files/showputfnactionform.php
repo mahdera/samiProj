@@ -12,6 +12,7 @@
     require_once 'goalfirstg1.php';
     require_once 'goalfirstg2.php';
     require_once 'goalfirstg3.php';
+    require_once 'fnaction.php';
     
     //now get all the records from each table associated with the $fn_id;
     $goal_first_g1_obj_fn_list = getAllGoalFirstG1ObjFnsForFn($fn_id);    
@@ -19,6 +20,9 @@
     $goal_first_g3_obj_fn_list = getAllGoalFirstG3ObjFnsForFn($fn_id);
     //now I got all the result set read from the database...lets do the iteration thing now...
     $fn = getFn($fn_id);
+    $countVal=0;
+    $countVal = doesThisFnAlreadyActionFilledForIt($fn_id);
+    if(!$countVal){
 ?>
 <table border="0" width="100%">
     <tr>
@@ -104,6 +108,11 @@
         </td>
     </tr>
 </table>
+<?php
+}else{
+    echo '<div class="notify notify-yellow"><span class="symbol icon-excl"></span> You Already Added Action to this Fn Record!</div>';
+}
+?>
 <script type="text/javascript">
     $(document).ready(function(){
         var fnId = "<?php echo $fn_id;?>";

@@ -4,7 +4,7 @@
     require_once 'files/th.php';
     $thActionList = getAllThActionsModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
-<table border="1" width="100%">
+<table border="0" width="100%">
     <tr style="background: #ccc">
         <td>Ser.No</td>
         <td>Th</td>
@@ -40,6 +40,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('.editThActionLink').click(function(){
+            alert('inside editThActionLink click');
             var id = $(this).attr('id');
             var editDivId = "editActionTextDiv" + id;
             $('#'+editDivId).load('files/showeditthactionform.php?thId='+id);

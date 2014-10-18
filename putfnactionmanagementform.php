@@ -3,7 +3,9 @@
     //first grab all fn record from the database...
     require_once 'files/fn.php';
     require_once 'files/fnaction.php';
-    $fn_list = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);//getAllFnsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    require_once 'files/goalsecond.php';
+    //$fn_list = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);//getAllFnsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    $goalSecondList = getAllGoalSecondsModifiedBy($_SESSION['LOGGED_USER_ID']);    
 ?>
 <table border="0" width="100%">
     <tr style="background: #ccc">
@@ -13,29 +15,31 @@
     </tr>
     <?php
         $ctr=1;        
-        //while($fn_row = mysql_fetch_object($fn_list)){
-        foreach($fn_list as $fnId){
-            $fnObj = getFn($fnId);
+        while($goalSecondRow = mysql_fetch_object($goalSecondList)){        
+            $fnObj = getFn($goalSecondRow->fn_id);
             $countVal = 0;
-            $divId = "actionDiv" . $fnId;
-            $countVal = doesThisFnAlreadyActionFilledForIt($fnId);
+            $divId = "actionDiv" . $fnObj->id;
+            $countVal = doesThisFnAlreadyActionFilledForIt($fnObj->id);
             if(!$countVal){
-            ?>
-                <tr>
-                    <td width="10%"><?php echo $ctr++;?></td>
-                    <td width="20%"><?php echo $fnObj->fn_name;?></td>
-                    <td>
-                        <a href="#.php" id="<?php echo $fnId;?>" class="openActionFormClass">Show Add Action Form</a> | <a href="#.php" id="<?php echo $fnId;?>" class="closeActionFormClass">Close Add Action Form</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3">
-                        <div id="<?php echo $divId;?>"></div>
-                    </td>
-                </tr>
-            <?php
-            }//end if condition
-        }//end for each loop
+                ?>
+                    <tr>
+                        <td width="10%"><?php echo $ctr++;?></td>
+                        <td width="20%"><?php echo $fnObj->fn_name;?></td>
+                        <td>
+                            <a href="#.php" id="<?php echo $fnObj->id;?>" class="openActionFormClass">Show Add Action Form</a> | <a href="#.php" id="<?php echo $fnObj->id;?>" class="closeActionFormClass">Close Add Action Form</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <div id="<?php echo $divId;?>"></div>
+                        </td>
+                    </tr>
+                <?php
+            }
+        }//end while loop
+        if($countVal){
+            echo '<div class="notify"><span class="symbol icon-info"></span> All Fns Have Action Record !</div>';
+        }
     ?>
 </table>
 <script type="text/javascript">
