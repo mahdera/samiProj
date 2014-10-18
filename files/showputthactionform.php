@@ -11,7 +11,10 @@
     require_once 'goalfirstg3.php';
     require_once 'goalfirstg3objfn.php';
     require_once 'fn.php';
-    
+    require_once 'thaction.php';
+    $countVal = 0;
+    $countVal = doesThisThAlreadyActionFilledForIt($thId);
+    if(!$countVal){
     //now get all goalfirst records associated with this particular thId
     $goalFirstRow = getGoalFirstUsingThId($thId);
     if(!empty($goalFirstRow)){
@@ -172,6 +175,9 @@
     }else{
         echo '<div class="notify notify-red"><span class="symbol icon-error"></span> No Associated Th Record Found!</div>';
     }
+}else{
+    echo '<div class="notify notify-yellow"><span class="symbol icon-excl"></span> You Already Added Action to this Th Record!</div>';
+}
 ?>
 <script type="text/javascript">
     $(document).ready(function(){
