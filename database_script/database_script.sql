@@ -14,6 +14,49 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 create database if not exists db_sami_proj;
 use db_sami_proj;
+
+CREATE TABLE `calendar` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `member_id` int(11) NOT NULL,
+  `title` varchar(55) NOT NULL,
+  `notes` text NOT NULL,
+  `start` datetime NOT NULL,
+  `end` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+--
+-- Dumping data for table `calendar`
+--
+
+INSERT INTO `calendar` VALUES(1, 0, 'First Date', 'Firsts date content goes here', '2012-08-11 07:52:29', '2012-08-11 12:52:33');
+INSERT INTO `calendar` VALUES(2, 0, 'Database Appointment #2', 'Meeting for Juan ', '2012-08-23 08:43:45', '2012-08-23 09:43:50');
+INSERT INTO `calendar` VALUES(3, 0, 'Test title', 'test here', '2012-08-12 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `calendar` VALUES(4, 0, 'test3', '230 test', '2012-08-29 02:30:00', '0000-00-00 00:00:00');
+INSERT INTO `calendar` VALUES(6, 0, 'What a night', 'This is added by the administrator', '2014-10-18 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `calendar` VALUES(8, 0, 'This is in the past days', 'The most important part of the calendary. This line is updated. Again updated for the last time', '2014-10-10 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `calendar` VALUES(9, 0, 'Where is the calendar', 'I dont see the calendary object', '2014-10-18 00:00:00', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `calendar_urls`
+--
+
+CREATE TABLE `calendar_urls` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `member_id` int(11) NOT NULL,
+  `calendar_array` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `calendar_urls`
+--
+
+INSERT INTO `calendar_urls` VALUES(1, 0, '''events.php''');
+INSERT INTO `calendar_urls` VALUES(2, 0, '''https://www.google.com/calendar/feeds/kelchuk68%40gmail.com/public/basic''');
+
 -- --------------------------------------------------------
 
 --
@@ -28,7 +71,7 @@ CREATE TABLE `tbl_assessment` (
   `modified_by` int(11) NOT NULL,
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `tbl_assessment`
@@ -42,6 +85,7 @@ INSERT INTO `tbl_assessment` VALUES(5, 'as2', '2014-10-11', 'Sample summary text
 INSERT INTO `tbl_assessment` VALUES(6, 'as1', '2014-10-11', 'Summary by Abebe', 5, '0000-00-00');
 INSERT INTO `tbl_assessment` VALUES(7, 'as2', '2014-10-11', 'This is the sumamry', 5, '0000-00-00');
 INSERT INTO `tbl_assessment` VALUES(9, 'as1', '2014-10-17', 'This is the summary information', 2, '2014-10-17');
+INSERT INTO `tbl_assessment` VALUES(10, 'as1', '2014-10-18', 'Summary of the Assessment', 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -58,7 +102,7 @@ CREATE TABLE `tbl_assessment_th` (
   PRIMARY KEY (`id`),
   KEY `assessment_id` (`assessment_id`),
   KEY `th_id` (`th_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `tbl_assessment_th`
@@ -72,6 +116,7 @@ INSERT INTO `tbl_assessment_th` VALUES(5, 6, 13, 5, '0000-00-00');
 INSERT INTO `tbl_assessment_th` VALUES(6, 5, 14, 5, '0000-00-00');
 INSERT INTO `tbl_assessment_th` VALUES(8, 9, 18, 2, '2014-10-17');
 INSERT INTO `tbl_assessment_th` VALUES(9, 9, 19, 2, '2014-10-17');
+INSERT INTO `tbl_assessment_th` VALUES(10, 10, 20, 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -117,12 +162,13 @@ CREATE TABLE `tbl_fn_action` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `fn_id` (`fn_id`),
   UNIQUE KEY `fn_id_2` (`fn_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `tbl_fn_action`
 --
 
+INSERT INTO `tbl_fn_action` VALUES(1, 2, 'lkdfkj', 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -140,13 +186,15 @@ CREATE TABLE `tbl_form_1` (
   `modified_by` int(11) NOT NULL,
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `tbl_form_1`
 --
 
 INSERT INTO `tbl_form_1` VALUES(10, 'this is the title', '2014-10-09', 'this is the plan', 'this is question 1', 'this is question 2', 0, '0000-00-00');
+INSERT INTO `tbl_form_1` VALUES(12, 'this is the title', '2014-10-18', 'This is the plan', 'q1', 'q2', 8, '2014-10-18');
+INSERT INTO `tbl_form_1` VALUES(13, 'kj', '2014-10-18', 'kjhjkh', 'jhjh', 'jm', 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -167,7 +215,7 @@ CREATE TABLE `tbl_form_1_q3` (
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `form_1_id` (`form_1_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `tbl_form_1_q3`
@@ -177,6 +225,10 @@ INSERT INTO `tbl_form_1_q3` VALUES(1, 10, '1', '2', '3', '4', '5', '6', 0, '0000
 INSERT INTO `tbl_form_1_q3` VALUES(2, 10, '7', '8', '9', '10', '11', '12', 0, '0000-00-00');
 INSERT INTO `tbl_form_1_q3` VALUES(3, 10, '13', '14', '15', '16', '17', '18', 0, '0000-00-00');
 INSERT INTO `tbl_form_1_q3` VALUES(4, 10, '', '', '', '', '', '', 0, '0000-00-00');
+INSERT INTO `tbl_form_1_q3` VALUES(7, 12, '1', '2', '3', '4', '5', '6', 8, '2014-10-18');
+INSERT INTO `tbl_form_1_q3` VALUES(8, 12, '', '', '', '', '', '', 8, '2014-10-18');
+INSERT INTO `tbl_form_1_q3` VALUES(9, 13, '', '', '', '', '', '', 8, '2014-10-18');
+INSERT INTO `tbl_form_1_q3` VALUES(10, 13, '', '', '', '', '', '', 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -197,13 +249,15 @@ CREATE TABLE `tbl_form_1_q4` (
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `form_1_id` (`form_1_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `tbl_form_1_q4`
 --
 
 INSERT INTO `tbl_form_1_q4` VALUES(1, 10, '', '', '', '', '', '', 0, '0000-00-00');
+INSERT INTO `tbl_form_1_q4` VALUES(3, 12, '', '', '', '', '', '', 8, '2014-10-18');
+INSERT INTO `tbl_form_1_q4` VALUES(4, 13, '', '', '', '', '', '', 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -220,13 +274,15 @@ CREATE TABLE `tbl_form_2` (
   `modified_by` int(11) NOT NULL,
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `tbl_form_2`
 --
 
 INSERT INTO `tbl_form_2` VALUES(1, '1', '2', '3', '4', 0, '0000-00-00');
+INSERT INTO `tbl_form_2` VALUES(5, '1', '2', '3', '6', 8, '2014-10-18');
+INSERT INTO `tbl_form_2` VALUES(6, 'jhg', 'b', 'hkjhh', 'bvb', 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -240,13 +296,15 @@ CREATE TABLE `tbl_form_3` (
   `modified_by` int(11) NOT NULL,
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `tbl_form_3`
 --
 
 INSERT INTO `tbl_form_3` VALUES(1, 'eresd', 0, '0000-00-00');
+INSERT INTO `tbl_form_3` VALUES(3, 'lsdfkj', 8, '2014-10-18');
+INSERT INTO `tbl_form_3` VALUES(4, 'jhkjh', 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -260,13 +318,15 @@ CREATE TABLE `tbl_form_4` (
   `modified_by` int(11) NOT NULL,
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `tbl_form_4`
 --
 
 INSERT INTO `tbl_form_4` VALUES(1, 'dvf', 0, '0000-00-00');
+INSERT INTO `tbl_form_4` VALUES(2, 'What the hell?', 8, '2014-10-17');
+INSERT INTO `tbl_form_4` VALUES(4, 'jhg', 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -280,13 +340,14 @@ CREATE TABLE `tbl_form_5` (
   `modified_by` int(11) NOT NULL,
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `tbl_form_5`
 --
 
 INSERT INTO `tbl_form_5` VALUES(1, 'ddsds', 0, '0000-00-00');
+INSERT INTO `tbl_form_5` VALUES(4, 'jhgjhg', 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -300,13 +361,14 @@ CREATE TABLE `tbl_form_6` (
   `modified_by` int(11) NOT NULL,
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `tbl_form_6`
 --
 
 INSERT INTO `tbl_form_6` VALUES(1, 'ooo', 0, '0000-00-00');
+INSERT INTO `tbl_form_6` VALUES(4, 'jhghjg', 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -320,13 +382,14 @@ CREATE TABLE `tbl_form_7` (
   `modified_by` int(11) NOT NULL,
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `tbl_form_7`
 --
 
 INSERT INTO `tbl_form_7` VALUES(1, '777ygg', 0, '0000-00-00');
+INSERT INTO `tbl_form_7` VALUES(3, 'jghjg', 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -340,13 +403,15 @@ CREATE TABLE `tbl_form_8` (
   `modified_by` int(11) NOT NULL,
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `tbl_form_8`
 --
 
 INSERT INTO `tbl_form_8` VALUES(1, '888', 0, '0000-00-00');
+INSERT INTO `tbl_form_8` VALUES(3, 'qwe', 8, '2014-10-18');
+INSERT INTO `tbl_form_8` VALUES(4, 'ghf', 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -360,13 +425,14 @@ CREATE TABLE `tbl_form_9` (
   `modified_by` int(11) NOT NULL,
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `tbl_form_9`
 --
 
 INSERT INTO `tbl_form_9` VALUES(1, '999', 0, '0000-00-00');
+INSERT INTO `tbl_form_9` VALUES(3, 'jhg', 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -380,7 +446,7 @@ CREATE TABLE `tbl_form_10` (
   `modified_by` int(11) NOT NULL,
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `tbl_form_10`
@@ -401,19 +467,13 @@ CREATE TABLE `tbl_goal_first` (
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `th_id` (`th_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `tbl_goal_first`
 --
 
-INSERT INTO `tbl_goal_first` VALUES(1, 5, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first` VALUES(2, 5, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first` VALUES(3, 5, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first` VALUES(4, 5, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first` VALUES(5, 4, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first` VALUES(6, 16, 2, '2014-10-16');
-INSERT INTO `tbl_goal_first` VALUES(7, 18, 2, '2014-10-17');
+INSERT INTO `tbl_goal_first` VALUES(16, 22, 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -430,18 +490,13 @@ CREATE TABLE `tbl_goal_first_g1` (
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `goal_first_id` (`goal_first_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `tbl_goal_first_g1`
 --
 
-INSERT INTO `tbl_goal_first_g1` VALUES(1, 1, 'hgjhg', 1, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g1` VALUES(2, 1, 'lskdjf', 2, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g1` VALUES(3, 1, 'hgjh', 3, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g1` VALUES(4, 1, 'jhghg', 4, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g1` VALUES(5, 5, 'This is G1', 4, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g1` VALUES(6, 7, 'G1', 10, 2, '2014-10-17');
+INSERT INTO `tbl_goal_first_g1` VALUES(15, 16, 'g1', 10, 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -458,18 +513,13 @@ CREATE TABLE `tbl_goal_first_g1_obj_fn` (
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `goal_first_g1_id` (`goal_first_g1_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `tbl_goal_first_g1_obj_fn`
 --
 
-INSERT INTO `tbl_goal_first_g1_obj_fn` VALUES(1, 2, '', 1, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g1_obj_fn` VALUES(2, 2, '', 1, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g1_obj_fn` VALUES(3, 3, 'jkhkjiu', 2, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g1_obj_fn` VALUES(4, 3, 'kjkjh', 2, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g1_obj_fn` VALUES(5, 4, 'hkjh', 3, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g1_obj_fn` VALUES(6, 4, 'yuhjg', 4, 0, '0000-00-00');
+INSERT INTO `tbl_goal_first_g1_obj_fn` VALUES(7, 15, 'obj1', 3, 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -486,18 +536,13 @@ CREATE TABLE `tbl_goal_first_g2` (
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `goal_first_id` (`goal_first_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `tbl_goal_first_g2`
 --
 
-INSERT INTO `tbl_goal_first_g2` VALUES(1, 1, 'jhhgf', 1, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g2` VALUES(2, 1, 'dlfkjdklj', 2, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g2` VALUES(3, 1, 'hkjhj', 3, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g2` VALUES(4, 1, 'hjgjhg', 4, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g2` VALUES(5, 5, 'This is G2', 2, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g2` VALUES(6, 7, 'G2', 7, 2, '2014-10-17');
+INSERT INTO `tbl_goal_first_g2` VALUES(15, 16, 'g2', 5, 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -514,18 +559,13 @@ CREATE TABLE `tbl_goal_first_g2_obj_fn` (
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `goal_first_g2_id` (`goal_first_g2_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `tbl_goal_first_g2_obj_fn`
 --
 
-INSERT INTO `tbl_goal_first_g2_obj_fn` VALUES(1, 2, '', 1, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g2_obj_fn` VALUES(2, 2, '', 2, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g2_obj_fn` VALUES(3, 3, 'kjhjkh', 3, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g2_obj_fn` VALUES(4, 3, 'ijkhjk', 4, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g2_obj_fn` VALUES(5, 4, 'kjhjkh', 1, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g2_obj_fn` VALUES(6, 4, 'ijkhjk', 2, 0, '0000-00-00');
+INSERT INTO `tbl_goal_first_g2_obj_fn` VALUES(7, 15, 'obj2', 6, 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -542,18 +582,13 @@ CREATE TABLE `tbl_goal_first_g3` (
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `goal_first_id` (`goal_first_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `tbl_goal_first_g3`
 --
 
-INSERT INTO `tbl_goal_first_g3` VALUES(1, 1, 'kguhg', 1, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g3` VALUES(2, 1, 'dfkljdkjf', 2, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g3` VALUES(3, 1, 'iyuiu', 3, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g3` VALUES(4, 1, 'gjhghg', 4, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g3` VALUES(5, 5, 'This is G3', 1, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g3` VALUES(6, 7, 'G3', 8, 2, '2014-10-17');
+INSERT INTO `tbl_goal_first_g3` VALUES(15, 16, 'g3', 8, 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -570,18 +605,13 @@ CREATE TABLE `tbl_goal_first_g3_obj_fn` (
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `goal_first_g3_id` (`goal_first_g3_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `tbl_goal_first_g3_obj_fn`
 --
 
-INSERT INTO `tbl_goal_first_g3_obj_fn` VALUES(1, 2, '', 1, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g3_obj_fn` VALUES(2, 2, '', 2, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g3_obj_fn` VALUES(3, 3, '', 3, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g3_obj_fn` VALUES(4, 3, '', 4, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g3_obj_fn` VALUES(5, 4, 'madew', 1, 0, '0000-00-00');
-INSERT INTO `tbl_goal_first_g3_obj_fn` VALUES(6, 4, 'lkhj', 2, 0, '0000-00-00');
+INSERT INTO `tbl_goal_first_g3_obj_fn` VALUES(7, 15, 'obj3', 2, 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -596,23 +626,14 @@ CREATE TABLE `tbl_goal_second` (
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fn_id` (`fn_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `tbl_goal_second`
 --
 
-INSERT INTO `tbl_goal_second` VALUES(1, 4, 0, '0000-00-00');
-INSERT INTO `tbl_goal_second` VALUES(2, 1, 0, '0000-00-00');
-INSERT INTO `tbl_goal_second` VALUES(3, 3, 0, '0000-00-00');
-INSERT INTO `tbl_goal_second` VALUES(4, 1, 0, '0000-00-00');
-INSERT INTO `tbl_goal_second` VALUES(5, 4, 0, '0000-00-00');
-INSERT INTO `tbl_goal_second` VALUES(6, 3, 0, '0000-00-00');
-INSERT INTO `tbl_goal_second` VALUES(7, 1, 0, '0000-00-00');
-INSERT INTO `tbl_goal_second` VALUES(8, 4, 0, '0000-00-00');
-INSERT INTO `tbl_goal_second` VALUES(9, 4, 0, '0000-00-00');
-INSERT INTO `tbl_goal_second` VALUES(10, 4, 0, '0000-00-00');
-INSERT INTO `tbl_goal_second` VALUES(11, 5, 2, '2014-10-17');
+INSERT INTO `tbl_goal_second` VALUES(18, 5, 8, '2014-10-18');
+INSERT INTO `tbl_goal_second` VALUES(19, 6, 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -628,22 +649,14 @@ CREATE TABLE `tbl_goal_second_g1` (
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `goal_second_id` (`goal_second_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `tbl_goal_second_g1`
 --
 
-INSERT INTO `tbl_goal_second_g1` VALUES(1, 1, 'a', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g1` VALUES(2, 2, 'df', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g1` VALUES(3, 3, 'sdf', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g1` VALUES(4, 1, 'eg', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g1` VALUES(5, 3, 'sadf', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g1` VALUES(6, 2, 'dfg', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g1` VALUES(7, 1, 'd', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g1` VALUES(8, 1, 'g1', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g1` VALUES(9, 1, 'This is the value for G1', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g1` VALUES(10, 11, 'G1', 2, '2014-10-17');
+INSERT INTO `tbl_goal_second_g1` VALUES(15, 18, 'this is g1', 8, '2014-10-18');
+INSERT INTO `tbl_goal_second_g1` VALUES(16, 19, 'this is g1', 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -659,18 +672,16 @@ CREATE TABLE `tbl_goal_second_g1_obj` (
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `goal_second_g1_id` (`goal_second_g1_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `tbl_goal_second_g1_obj`
 --
 
-INSERT INTO `tbl_goal_second_g1_obj` VALUES(1, 4, 'erg', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g1_obj` VALUES(2, 5, 'erg', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g1_obj` VALUES(3, 5, 'tuk', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g1_obj` VALUES(4, 8, 'g1 added obj', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g1_obj` VALUES(5, 8, 'g1 added obj', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g1_obj` VALUES(6, 9, 'Added for G1 Obj', 0, '0000-00-00');
+INSERT INTO `tbl_goal_second_g1_obj` VALUES(9, 15, 'this is obj1', 8, '2014-10-18');
+INSERT INTO `tbl_goal_second_g1_obj` VALUES(10, 16, 'this is obj1', 8, '2014-10-18');
+INSERT INTO `tbl_goal_second_g1_obj` VALUES(11, 16, 'this is obj3', 8, '2014-10-18');
+INSERT INTO `tbl_goal_second_g1_obj` VALUES(12, 16, 'this is obj2', 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -686,20 +697,14 @@ CREATE TABLE `tbl_goal_second_g2` (
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `goal_second_id` (`goal_second_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `tbl_goal_second_g2`
 --
 
-INSERT INTO `tbl_goal_second_g2` VALUES(1, 2, 'fds', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g2` VALUES(2, 1, 'tyrj', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g2` VALUES(3, 3, 'gf', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g2` VALUES(4, 2, 'erthg', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g2` VALUES(5, 1, 'f', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g2` VALUES(6, 1, 'g2', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g2` VALUES(7, 1, 'Value for G2', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g2` VALUES(8, 11, 'G2', 2, '2014-10-17');
+INSERT INTO `tbl_goal_second_g2` VALUES(13, 18, 'this is g2', 8, '2014-10-18');
+INSERT INTO `tbl_goal_second_g2` VALUES(14, 19, 'this is g2', 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -715,18 +720,17 @@ CREATE TABLE `tbl_goal_second_g2_obj` (
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `goal_second_g2_id` (`goal_second_g2_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `tbl_goal_second_g2_obj`
 --
 
-INSERT INTO `tbl_goal_second_g2_obj` VALUES(1, 2, 'aefgwre', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g2_obj` VALUES(2, 3, 'ghj', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g2_obj` VALUES(3, 3, 'tyu', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g2_obj` VALUES(4, 6, 'g2 added obj', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g2_obj` VALUES(5, 6, 'g2 added obj', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g2_obj` VALUES(6, 7, 'Added for G2 Obj', 0, '0000-00-00');
+INSERT INTO `tbl_goal_second_g2_obj` VALUES(9, 13, 'this is obj2', 8, '2014-10-18');
+INSERT INTO `tbl_goal_second_g2_obj` VALUES(10, 14, 'this is obj1', 8, '2014-10-18');
+INSERT INTO `tbl_goal_second_g2_obj` VALUES(11, 14, 'this is obj4', 8, '2014-10-18');
+INSERT INTO `tbl_goal_second_g2_obj` VALUES(12, 14, 'this is obj3', 8, '2014-10-18');
+INSERT INTO `tbl_goal_second_g2_obj` VALUES(13, 14, 'this is obj2', 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -742,16 +746,14 @@ CREATE TABLE `tbl_goal_second_g3` (
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `goal_second_id` (`goal_second_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `tbl_goal_second_g3`
 --
 
-INSERT INTO `tbl_goal_second_g3` VALUES(1, 2, 'vsdv', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g3` VALUES(2, 1, 'g3', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g3` VALUES(3, 1, 'Value for G3', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g3` VALUES(4, 11, 'G3', 2, '2014-10-17');
+INSERT INTO `tbl_goal_second_g3` VALUES(9, 18, 'this is g3', 8, '2014-10-18');
+INSERT INTO `tbl_goal_second_g3` VALUES(10, 19, 'this is g3', 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -767,17 +769,18 @@ CREATE TABLE `tbl_goal_second_g3_obj` (
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `goal_second_g3_id` (`goal_second_g3_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `tbl_goal_second_g3_obj`
 --
 
-INSERT INTO `tbl_goal_second_g3_obj` VALUES(1, 1, 'rht', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g3_obj` VALUES(4, 1, 'sdf', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g3_obj` VALUES(5, 2, 'g3 added obj', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g3_obj` VALUES(6, 2, 'g3 added obj', 0, '0000-00-00');
-INSERT INTO `tbl_goal_second_g3_obj` VALUES(7, 3, 'Added for G3 Obj', 0, '0000-00-00');
+INSERT INTO `tbl_goal_second_g3_obj` VALUES(10, 9, 'this is obj3', 8, '2014-10-18');
+INSERT INTO `tbl_goal_second_g3_obj` VALUES(11, 10, 'this is obj1', 8, '2014-10-18');
+INSERT INTO `tbl_goal_second_g3_obj` VALUES(12, 10, 'this is obj5', 8, '2014-10-18');
+INSERT INTO `tbl_goal_second_g3_obj` VALUES(13, 10, 'this is obj4', 8, '2014-10-18');
+INSERT INTO `tbl_goal_second_g3_obj` VALUES(14, 10, 'this is obj3', 8, '2014-10-18');
+INSERT INTO `tbl_goal_second_g3_obj` VALUES(15, 10, 'this is obj2', 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -821,7 +824,7 @@ CREATE TABLE `tbl_risk` (
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `th_id` (`th_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `tbl_risk`
@@ -832,6 +835,10 @@ INSERT INTO `tbl_risk` VALUES(2, 5, 'mg4', 'dr4', 'pr4', 'wa4', 'rs4', 0, '0000-
 INSERT INTO `tbl_risk` VALUES(3, 11, 'mg3', 'dr2', 'pr3', 'wa1', 'rs4', 5, '2014-10-11');
 INSERT INTO `tbl_risk` VALUES(4, 5, 'mg3', 'dr4', 'pr1', 'wa1', 'rs4', 2, '2014-10-16');
 INSERT INTO `tbl_risk` VALUES(6, 18, 'mg1', 'dr1', 'pr1', 'wa1', 'rs1', 2, '2014-10-17');
+INSERT INTO `tbl_risk` VALUES(7, 20, 'mg1', 'dr1', 'pr1', 'wa1', 'rs1', 8, '2014-10-18');
+INSERT INTO `tbl_risk` VALUES(8, 20, 'mg4', 'dr4', 'pr1', 'wa4', 'rs2', 8, '2014-10-18');
+INSERT INTO `tbl_risk` VALUES(9, 21, 'mg1', 'dr1', 'pr1', 'wa1', 'rs1', 8, '2014-10-18');
+INSERT INTO `tbl_risk` VALUES(10, 22, 'mg1', 'dr1', 'pr1', 'wa4', 'rs3', 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -850,7 +857,7 @@ CREATE TABLE `tbl_team` (
   `modified_by` int(11) NOT NULL,
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `tbl_team`
@@ -862,6 +869,7 @@ INSERT INTO `tbl_team` VALUES(3, 'sdf', 'asdf', 'asdf', 'asdf', 'asdf', '3', 0, 
 INSERT INTO `tbl_team` VALUES(4, 'name', 'title ', 'organization', 'email@isp.com', '099898', 'Interest 1,Interest 3,', 0, '0000-00-00');
 INSERT INTO `tbl_team` VALUES(5, 'sdf', 'sdg', 'defg', 'm@gmail.com', '345', 'Interest 1,Interest 5,Interest 7,', 5, '0000-00-00');
 INSERT INTO `tbl_team` VALUES(7, 'Team Mahder', 'This is the title of the team', 'Organization Info', 'mahdera@yahoo.com', '2023743138', 'Interest 1,Interest 2,', 2, '2014-10-17');
+INSERT INTO `tbl_team` VALUES(8, 'Team Name', 'Title of Team', 'Organization of Team', 'emailteam@gmail.com', '878768766', 'Interest 1,Interest 5,', 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -896,7 +904,7 @@ CREATE TABLE `tbl_th` (
   `modified_by` int(11) NOT NULL,
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `tbl_th`
@@ -920,6 +928,9 @@ INSERT INTO `tbl_th` VALUES(15, 'This is yet another th created by Abebe', 5, '2
 INSERT INTO `tbl_th` VALUES(16, 'This is th1', 2, '2014-10-16');
 INSERT INTO `tbl_th` VALUES(18, 'My Sample Th1', 2, '2014-10-17');
 INSERT INTO `tbl_th` VALUES(19, 'Anoter Sample Th1 By root Yes', 2, '2014-10-17');
+INSERT INTO `tbl_th` VALUES(20, 'Added Th 123', 8, '2014-10-18');
+INSERT INTO `tbl_th` VALUES(21, 'New Th Value', 8, '2014-10-18');
+INSERT INTO `tbl_th` VALUES(22, 'Some Th', 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -935,7 +946,7 @@ CREATE TABLE `tbl_th_action` (
   `modification_date` date NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `th_id` (`th_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `tbl_th_action`
@@ -943,6 +954,7 @@ CREATE TABLE `tbl_th_action` (
 
 INSERT INTO `tbl_th_action` VALUES(1, 5, 'This is the action done for Th action by Mahder Neway. This line is updated.', 0, '0000-00-00');
 INSERT INTO `tbl_th_action` VALUES(2, 4, 'ffggfdg', 0, '0000-00-00');
+INSERT INTO `tbl_th_action` VALUES(3, 22, 'Done', 8, '2014-10-18');
 
 -- --------------------------------------------------------
 
@@ -966,7 +978,7 @@ CREATE TABLE `tbl_user` (
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `user_id` (`user_id`),
   KEY `modified_by` (`modified_by`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `tbl_user`
@@ -977,6 +989,7 @@ INSERT INTO `tbl_user` VALUES(3, 'Lekbir', 'Gebretsadik', 'lekbirgebre@yahoo.com
 INSERT INTO `tbl_user` VALUES(4, 'Yefikir', 'Alemayehu', 'yefi@yahoo.com', 'yefi', '81dc9bdb52d04dc20036dbd8313ed055', '---', 'User', 'Active', 2, '2014-10-10');
 INSERT INTO `tbl_user` VALUES(5, 'Abebe', 'Teka', 'abebe@gmail.com', 'abebe', '202cb962ac59075b964b07152d234b70', '987987', 'User', 'Blocked', 2, '2014-10-11');
 INSERT INTO `tbl_user` VALUES(6, 'Sample', 'Person', 'sample@yahoo.com', 'sample', '202cb962ac59075b964b07152d234b70', '987987', 'User', 'Active', 0, '2014-10-11');
+INSERT INTO `tbl_user` VALUES(8, 'Mahder', 'Neway', 'mahdera@yahoo.com', 'mahder', '0f3fbc595a293952fabc8de77ae840ca', '2023743138', 'User', 'Active', 2, '2014-10-17');
 
 --
 -- Constraints for dumped tables
@@ -999,97 +1012,97 @@ ALTER TABLE `tbl_fn_action`
 -- Constraints for table `tbl_form_1_q3`
 --
 ALTER TABLE `tbl_form_1_q3`
-  ADD CONSTRAINT `tbl_form_1_q3_ibfk_1` FOREIGN KEY (`form_1_id`) REFERENCES `tbl_form_1` (`id`);
+  ADD CONSTRAINT `tbl_form_1_q3_ibfk_1` FOREIGN KEY (`form_1_id`) REFERENCES `tbl_form_1` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_form_1_q4`
 --
 ALTER TABLE `tbl_form_1_q4`
-  ADD CONSTRAINT `tbl_form_1_q4_ibfk_1` FOREIGN KEY (`form_1_id`) REFERENCES `tbl_form_1` (`id`);
+  ADD CONSTRAINT `tbl_form_1_q4_ibfk_1` FOREIGN KEY (`form_1_id`) REFERENCES `tbl_form_1` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_first`
 --
 ALTER TABLE `tbl_goal_first`
-  ADD CONSTRAINT `tbl_goal_first_ibfk_1` FOREIGN KEY (`th_id`) REFERENCES `tbl_th` (`id`);
+  ADD CONSTRAINT `tbl_goal_first_ibfk_1` FOREIGN KEY (`th_id`) REFERENCES `tbl_th` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_first_g1`
 --
 ALTER TABLE `tbl_goal_first_g1`
-  ADD CONSTRAINT `tbl_goal_first_g1_ibfk_1` FOREIGN KEY (`goal_first_id`) REFERENCES `tbl_goal_first` (`id`);
+  ADD CONSTRAINT `tbl_goal_first_g1_ibfk_1` FOREIGN KEY (`goal_first_id`) REFERENCES `tbl_goal_first` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_first_g1_obj_fn`
 --
 ALTER TABLE `tbl_goal_first_g1_obj_fn`
-  ADD CONSTRAINT `tbl_goal_first_g1_obj_fn_ibfk_1` FOREIGN KEY (`goal_first_g1_id`) REFERENCES `tbl_goal_first_g1` (`id`);
+  ADD CONSTRAINT `tbl_goal_first_g1_obj_fn_ibfk_1` FOREIGN KEY (`goal_first_g1_id`) REFERENCES `tbl_goal_first_g1` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_first_g2`
 --
 ALTER TABLE `tbl_goal_first_g2`
-  ADD CONSTRAINT `tbl_goal_first_g2_ibfk_1` FOREIGN KEY (`goal_first_id`) REFERENCES `tbl_goal_first` (`id`);
+  ADD CONSTRAINT `tbl_goal_first_g2_ibfk_1` FOREIGN KEY (`goal_first_id`) REFERENCES `tbl_goal_first` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_first_g2_obj_fn`
 --
 ALTER TABLE `tbl_goal_first_g2_obj_fn`
-  ADD CONSTRAINT `tbl_goal_first_g2_obj_fn_ibfk_1` FOREIGN KEY (`goal_first_g2_id`) REFERENCES `tbl_goal_first_g2` (`id`);
+  ADD CONSTRAINT `tbl_goal_first_g2_obj_fn_ibfk_1` FOREIGN KEY (`goal_first_g2_id`) REFERENCES `tbl_goal_first_g2` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_first_g3`
 --
 ALTER TABLE `tbl_goal_first_g3`
-  ADD CONSTRAINT `tbl_goal_first_g3_ibfk_1` FOREIGN KEY (`goal_first_id`) REFERENCES `tbl_goal_first` (`id`);
+  ADD CONSTRAINT `tbl_goal_first_g3_ibfk_1` FOREIGN KEY (`goal_first_id`) REFERENCES `tbl_goal_first` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_first_g3_obj_fn`
 --
 ALTER TABLE `tbl_goal_first_g3_obj_fn`
-  ADD CONSTRAINT `tbl_goal_first_g3_obj_fn_ibfk_1` FOREIGN KEY (`goal_first_g3_id`) REFERENCES `tbl_goal_first_g3` (`id`);
+  ADD CONSTRAINT `tbl_goal_first_g3_obj_fn_ibfk_1` FOREIGN KEY (`goal_first_g3_id`) REFERENCES `tbl_goal_first_g3` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_second`
 --
 ALTER TABLE `tbl_goal_second`
-  ADD CONSTRAINT `tbl_goal_second_ibfk_1` FOREIGN KEY (`fn_id`) REFERENCES `tbl_fn` (`id`);
+  ADD CONSTRAINT `tbl_goal_second_ibfk_1` FOREIGN KEY (`fn_id`) REFERENCES `tbl_fn` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_second_g1`
 --
 ALTER TABLE `tbl_goal_second_g1`
-  ADD CONSTRAINT `tbl_goal_second_g1_ibfk_1` FOREIGN KEY (`goal_second_id`) REFERENCES `tbl_goal_second` (`id`);
+  ADD CONSTRAINT `tbl_goal_second_g1_ibfk_1` FOREIGN KEY (`goal_second_id`) REFERENCES `tbl_goal_second` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_second_g1_obj`
 --
 ALTER TABLE `tbl_goal_second_g1_obj`
-  ADD CONSTRAINT `tbl_goal_second_g1_obj_ibfk_1` FOREIGN KEY (`goal_second_g1_id`) REFERENCES `tbl_goal_second_g1` (`id`);
+  ADD CONSTRAINT `tbl_goal_second_g1_obj_ibfk_1` FOREIGN KEY (`goal_second_g1_id`) REFERENCES `tbl_goal_second_g1` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_second_g2`
 --
 ALTER TABLE `tbl_goal_second_g2`
-  ADD CONSTRAINT `tbl_goal_second_g2_ibfk_1` FOREIGN KEY (`goal_second_id`) REFERENCES `tbl_goal_second` (`id`);
+  ADD CONSTRAINT `tbl_goal_second_g2_ibfk_1` FOREIGN KEY (`goal_second_id`) REFERENCES `tbl_goal_second` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_second_g2_obj`
 --
 ALTER TABLE `tbl_goal_second_g2_obj`
-  ADD CONSTRAINT `tbl_goal_second_g2_obj_ibfk_1` FOREIGN KEY (`goal_second_g2_id`) REFERENCES `tbl_goal_second_g2` (`id`);
+  ADD CONSTRAINT `tbl_goal_second_g2_obj_ibfk_1` FOREIGN KEY (`goal_second_g2_id`) REFERENCES `tbl_goal_second_g2` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_second_g3`
 --
 ALTER TABLE `tbl_goal_second_g3`
-  ADD CONSTRAINT `tbl_goal_second_g3_ibfk_1` FOREIGN KEY (`goal_second_id`) REFERENCES `tbl_goal_second` (`id`);
+  ADD CONSTRAINT `tbl_goal_second_g3_ibfk_1` FOREIGN KEY (`goal_second_id`) REFERENCES `tbl_goal_second` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_second_g3_obj`
 --
 ALTER TABLE `tbl_goal_second_g3_obj`
-  ADD CONSTRAINT `tbl_goal_second_g3_obj_ibfk_1` FOREIGN KEY (`goal_second_g3_id`) REFERENCES `tbl_goal_second_g3` (`id`);
+  ADD CONSTRAINT `tbl_goal_second_g3_obj_ibfk_1` FOREIGN KEY (`goal_second_g3_id`) REFERENCES `tbl_goal_second_g3` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_responsibility`
