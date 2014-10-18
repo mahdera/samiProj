@@ -28,7 +28,7 @@
                     <ul class="ld">
                         <li><a href="#.php" id="accountManagementLink">My Account</a></li>
                         <li><a href="#">Calendar</a></li>
-                        <li><a href="#">Process</a></li>
+                        <li><a href="step1.php">Process</a></li>
                         <li><a href="#">My Report</a></li>
                         <li><a href="logout.php">Logout</a></li>
                     </ul>

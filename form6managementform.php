@@ -9,7 +9,7 @@
         </tr>        
         <tr>
             <td colspan="2" align="right">
-                <input type="button" value="Save" id="btnsave"/>                
+                <input type="button" value="Save" id="btnsaveform6"/>                
             </td>
         </tr>
     </table>
@@ -20,7 +20,7 @@
 
         showListOfForm6Records();
 
-        $('#btnsave').click(function(){
+        $('#btnsaveform6').click(function(){
             var q6_1 = $('#q6_1').val();
                         
             if(q6_1 !== ""){

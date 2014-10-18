@@ -27,7 +27,7 @@
         </tr>        
         <tr>
             <td colspan="2" align="right">
-                <input type="button" value="Save" id="btnsave"/>                
+                <input type="button" value="Save" id="btnsaveform2"/>                
             </td>
         </tr>
     </table>
@@ -38,7 +38,7 @@
 
         showListOfForm2Records();
 
-        $('#btnsave').click(function(){
+        $('#btnsaveform2').click(function(){
             var q2_1 = $('#q2_1').val();
             var q2_2 = $('#q2_2').val();
             var q2_3 = $('#q2_3').val();

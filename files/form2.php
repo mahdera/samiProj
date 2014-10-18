@@ -4,6 +4,7 @@
     function saveForm2($q2_1, $q2_2, $q2_3, $q2_4, $modifiedBy){
         try{
             $query = "insert into tbl_form_2 values(0,'$q2_1','$q2_2','$q2_3','$q2_4', $modifiedBy, NOW())";            
+            //echo $query;
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();

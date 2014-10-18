@@ -89,7 +89,7 @@
         </tr>
         <tr>
             <td colspan="2" align="right">
-                <input type="button" value="Save" id="btnsave"/>                
+                <input type="button" value="Save" id="btnsaveform1"/>                
             </td>
         </tr>
     </table>
@@ -148,7 +148,7 @@
             }
         });
         
-        $('#btnsave').click(function(){
+        $('#btnsaveform1').click(function(){
             var title = $('#txttitle').val();
             var formDate = $('#datepicker').val();            
             var plan = $('#textareaplan').val();
