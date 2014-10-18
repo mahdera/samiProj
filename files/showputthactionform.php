@@ -17,7 +17,7 @@
     if(!empty($goalFirstRow)){
         //now get all goalfirstg1 records associated with this particualr goalfirstid
         ?>
-        <table border="1" width="100%">           
+        <table border="0" width="100%">           
             <?php                    
             $goalFirstG1Row = getGoalFirstG1ForGoalFirst($goalFirstRow->id);
             
@@ -25,13 +25,13 @@
                 $fn_row = getFn($goalFirstG1Row->fn_id);
                 ?>
                 <tr>
-                    <td width="10%"></td>
-                    <td>G1</td>
+                    <td width="30%"></td>
+                    <td width="30%">G1</td>
                     <td><?php echo $goalFirstG1Row->g1;?></td>                    
                 </tr>
                 <tr>
-                    <td width="10%"></td>
-                    <td>Fn</td>
+                    <td width="30%"></td>
+                    <td width="30%">Fn</td>
                     <td><?php echo $fn_row->fn_name;?></td>
                 </tr>
                 <?php
@@ -42,13 +42,13 @@
                             $fn_row = getFn($goalFirstG1ObjFnRow->fn_id);
                             ?>
                             <tr>
-                                <td width="20%"></td>
-                                <td>Obj</td>
+                                <td width="30%"></td>
+                                <td width="30%">Obj</td>
                                 <td><?php echo $goalFirstG1ObjFnRow->obj;?></td>
                             </tr>
                             <tr>
-                                <td width="20%"></td>
-                                <td>Fn</td>
+                                <td width="30%"></td>
+                                <td width="30%">Fn</td>
                                 <td><?php echo $fn_row->fn_name;?></td>
                             </tr>
                             <?php
@@ -61,7 +61,7 @@
             ?>
         </table>  
         <!--doing the samething for goalfirstg2...-->
-        <table border="1" width="100%">           
+        <table border="0" width="100%">           
             <?php                    
             $goalFirstG2Row = getGoalFirstG2ForGoalFirst($goalFirstRow->id);
             
@@ -69,13 +69,13 @@
                 $fn_row = getFn($goalFirstG2Row->fn_id);
                 ?>
                 <tr>
-                    <td width="10%"></td>
-                    <td>G2</td>
+                    <td width="30%"></td>
+                    <td width="30%">G2</td>
                     <td><?php echo $goalFirstG2Row->g2;?></td>                    
                 </tr>
                 <tr>
-                    <td width="10%"></td>
-                    <td>Fn</td>
+                    <td width="30%"></td>
+                    <td width="30%">Fn</td>
                     <td><?php echo $fn_row->fn_name;?></td>
                 </tr>
                 <?php
@@ -86,13 +86,13 @@
                             $fn_row = getFn($goalFirstG2ObjFnRow->fn_id);
                             ?>
                             <tr>
-                                <td width="20%"></td>
-                                <td>Obj</td>
+                                <td width="30%"></td>
+                                <td width="30%">Obj</td>
                                 <td><?php echo $goalFirstG2ObjFnRow->obj;?></td>
                             </tr>
                             <tr>
-                                <td width="20%"></td>
-                                <td>Fn</td>
+                                <td width="30%"></td>
+                                <td width="30%">Fn</td>
                                 <td><?php echo $fn_row->fn_name;?></td>
                             </tr>                            
                             <?php
@@ -105,7 +105,7 @@
             ?>
         </table> 
         <!--doing the samething for goalfirstg3...-->
-        <table border="1" width="100%">           
+        <table border="0" width="100%">           
             <?php                    
             $goalFirstG3Row = getGoalFirstG3ForGoalFirst($goalFirstRow->id);
             
@@ -113,13 +113,13 @@
                 $fn_row = getFn($goalFirstG3Row->fn_id);
                 ?>
                 <tr>
-                    <td width="10%"></td>
-                    <td>G3</td>
+                    <td width="30%"></td>
+                    <td width="30%">G3</td>
                     <td><?php echo $goalFirstG3Row->g3;?></td>                    
                 </tr>
                 <tr>
-                    <td width="10%"></td>
-                    <td>Fn</td>
+                    <td width="30%"></td>
+                    <td width="30%">Fn</td>
                     <td><?php echo $fn_row->fn_name;?></td>
                 </tr>
                 <?php
@@ -130,13 +130,13 @@
                             $fn_row = getFn($goalFirstG3ObjFnRow->fn_id);
                             ?>
                             <tr>
-                                <td width="20%"></td>
-                                <td>Obj</td>
+                                <td width="30%"></td>
+                                <td width="30%">Obj</td>
                                 <td><?php echo $goalFirstG3ObjFnRow->obj;?></td>
                             </tr>
                             <tr>
-                                <td width="20%"></td>
-                                <td>Fn</td>
+                                <td width="30%"></td>
+                                <td width="30%">Fn</td>
                                 <td><?php echo $fn_row->fn_name;?></td>
                             </tr>
                             <?php
@@ -148,9 +148,9 @@
 
             ?>
         </table> 
-        <table border="1" width="100%">
+        <table border="0" width="100%">
             <tr>
-                <td>
+                <td width="30%">
                     Add Action
                 </td>
                 <td>
@@ -169,7 +169,9 @@
             </tr>
         </table>
         <?php    
-    }//end if condition
+    }else{
+        echo '<div class="notify notify-red"><span class="symbol icon-error"></span> No Associated Th Record Found!</div>';
+    }
 ?>
 <script type="text/javascript">
     $(document).ready(function(){

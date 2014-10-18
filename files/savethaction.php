@@ -6,6 +6,7 @@
     require_once 'thaction.php';
     saveThAction($thId, $textAreaValue, $_SESSION['LOGGED_USER_ID']);
 ?>
-<p style="background: lightgreen">
-    Th Action Saved Successfully!
-</p>
+<div class="notify notify-green">
+	<span class="symbol icon-tick"></span>
+	 	Th Action Saved Successfully!
+</div>
