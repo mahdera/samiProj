@@ -4,6 +4,7 @@
     function saveGoalFirstG1ObjFn($goalFirstG1Id, $obj, $fn, $modifiedBy){
         try{
             $query = "insert into tbl_goal_first_g1_obj_fn values(0, $goalFirstG1Id, '$obj', $fn, $modifiedBy, NOW())";
+            echo $query;
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();

@@ -69,4 +69,15 @@
             $ex->getMessage();
         }
     }
+
+    function getGoalSecondG2UsingAndModifiedBy($goalSecondId, $g2, $modifiedBy){
+        try{
+            $query = "select * from tbl_goal_second_g2 where goal_second_id = $goalSecondId and g2 = '$g2' and modified_by = $modifiedBy";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
 ?>

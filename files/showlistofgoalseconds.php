@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once 'goalsecond.php';
     require_once 'fn.php';
     require_once 'goalsecondg1.php';
@@ -8,7 +9,7 @@
     require_once 'goalsecondg3.php';
     require_once 'goalsecondg3obj.php';
     
-    $goalSecondList = getAllGoalSeconds();
+    $goalSecondList = getAllGoalSecondsModifiedBy($_SESSION['LOGGED_USER_ID']);
     
     if(!empty($goalSecondList)){
         ?>

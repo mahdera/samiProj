@@ -2,7 +2,12 @@
     require_once 'files/th.php';
     require_once 'files/fn.php';
     
-    $fnList = getAllFnsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    //$fnList = getAllFnsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    
+    $fnIdArray = array();
+    //first read fns from tbl_goal_first_g1
+    $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
+    //var_dump($fnIdArray);
 ?>
 <h1>Add Goal Second</h1>
 <a href="#.php" id="showGoalSecondManagementFormLinkId">Show Form</a>
@@ -16,11 +21,13 @@
                 <select name="slctfn" id="slctfn" style="width: 100%">
                     <option value="" selected="selected">--Select--</option>                    
                     <?php                    
-                        while($fnRow = mysql_fetch_object($fnList)){
+                        //while($fnRow = mysql_fetch_object($fnList)){
+                        foreach ($fnIdArray as $fnId) {    
+                            $fnObj = getFn($fnId);                        
                             ?>
-                                <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
+                                <option value="<?php echo $fnId;?>"><?php echo $fnObj->fn_name;?></option>
                             <?php
-                        }//end while loop
+                        }//end foreach loop...
                     ?>
                 </select>
             </td>
@@ -202,17 +209,17 @@
             var numItemsG2 = $('.g2Obj').length;
             var numItemsG3 = $('.g3Obj').length;
 
-            for(var i=2; i <= numItemsG1; i++){
+            for(var i=1; i <= numItemsG1; i++){
                 var textBoxControlName = "txtg1obj" + i;                
                 $('#' + textBoxControlName).val('');                
             }
 
-            for(var j=2; j <= numItemsG2; j++){
+            for(var j=1; j <= numItemsG2; j++){
                 var textBoxControlName = "txtg2obj" + j;                
                 $('#' + textBoxControlName).val('');                
             }
 
-            for(var k=2; k <= numItemsG3; k++){
+            for(var k=1; k <= numItemsG3; k++){
                 var textBoxControlName = "txtg3obj" + j;                
                 $('#' + textBoxControlName).val('');                
             }
@@ -220,7 +227,7 @@
         }
         
         function showListOfGoalSeconds(){
-            $('#subDetailDiv').load('files/showlistofgoalsecondsnewversion.php');
+            $('#subDetailDiv').load('files/showlistofgoalseconds.php');
         }
         
         $('#addMoreG1ObjLink').click(function(){

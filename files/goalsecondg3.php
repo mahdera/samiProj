@@ -61,8 +61,18 @@
     
     function getGoalSecondG3Using($goalSecondId, $g3){
         try{
-            $query = "select * from tbl_goal_second_g3 where goal_second_id = $goalSecondId and g3 = '$g3'";
-            //echo $query;
+            $query = "select * from tbl_goal_second_g3 where goal_second_id = $goalSecondId and g3 = '$g3'";            
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+
+    function getGoalSecondG3UsingAndModifiedBy($goalSecondId, $g3, $modifiedBy){
+        try{
+            $query = "select * from tbl_goal_second_g3 where goal_second_id = $goalSecondId and g3 = '$g3' and modified_by = $modifiedBy";            
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;

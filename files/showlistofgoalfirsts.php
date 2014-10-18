@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once 'goalfirst.php';
     require_once 'th.php';
     require_once 'goalfirstg1.php';
@@ -9,14 +10,13 @@
     require_once 'goalfirstg3objfn.php';
     require_once 'fn.php';
     
-    $goalFirstList = getAllGoalFirsts();
+    $goalFirstList = getAllGoalFirstsModifiedBy($_SESSION['LOGGED_USER_ID']);
     
     if(!empty($goalFirstList)){
         ?>
-        <table border="1" width="100%">
-            <tr style="background: #cccccc">
-                <td>#</td>
-                <td>Th</td> 
+        <table border="0" width="100%">
+            <tr style="background: #cccccc">                
+                <td width="20%">Th</td> 
                 <td>G1</td>
             </tr>
             <?php
@@ -26,15 +26,14 @@
                     //now get all the goalFirstG1 objects for this particular goalFirstId
                     $goalFirstG1List = getAllGoalFirstG1ForThisGoalFirstId($goalFirstRow->id);
                     ?>
-                    <tr>
-                        <td><?php echo $ctr++;?></td>
+                    <tr>                        
                         <td><?php echo $thRow->th_name;?></td>  
                         <td>
-                            <table border="1" width="100%">
+                            <table border="0" width="100%">
                                 <tr style="background: #eee">
-                                    <td>G1</td>
-                                    <td>Fn</td> 
-                                    <td>Obj & Fn</td>
+                                    <td width="20%">G1</td>
+                                    <td width="30%">Fn</td> 
+                                    <td width="50%">Obj & Fn</td>
                                 </tr>
                                 <?php
                                     while($goalFirstG1Row = mysql_fetch_object($goalFirstG1List)){
@@ -49,8 +48,8 @@
                                             <td>
                                                 <table border="0" width="100%">
                                                     <tr style="background: lightblue">
-                                                        <td>Obj</td>
-                                                        <td>Fn</td>
+                                                        <td width="50%">Obj</td>
+                                                        <td width="50%">Fn</td>
                                                     </tr>
                                                     <?php
                                                         while($goalFirstG1ObjFnRow = mysql_fetch_object($goalFirstG1ObjFnList)){
@@ -77,10 +76,9 @@
             ?>
         </table>
         <!--now do the same for goal first g2-->
-        <table border="1" width="100%">
-            <tr style="background: #cccccc">
-                <td>#</td>
-                <td>Th</td> 
+        <table border="0" width="100%">
+            <tr style="background: #cccccc">                
+                <td width="20%">Th</td> 
                 <td>G2</td>
             </tr>
             <?php
@@ -91,15 +89,14 @@
                     //now get all the goalFirstG1 objects for this particular goalFirstId
                     $goalFirstG2List = getAllGoalFirstG2ForThisGoalFirstId($goalFirstRow->id);
                     ?>
-                    <tr>
-                        <td><?php echo $ctr++;?></td>
+                    <tr>                        
                         <td><?php echo $thRow->th_name;?></td>  
                         <td>
-                            <table border="1" width="100%">
+                            <table border="0" width="100%">
                                 <tr style="background: #eee">
-                                    <td>G2</td>
-                                    <td>Fn</td> 
-                                    <td>Obj & Fn</td>
+                                    <td width="20%">G2</td>
+                                    <td width="30%">Fn</td> 
+                                    <td width="50%">Obj & Fn</td>
                                 </tr>
                                 <?php
                                     while($goalFirstG2Row = mysql_fetch_object($goalFirstG2List)){
@@ -113,8 +110,8 @@
                                             <td>
                                                 <table border="0" width="100%">
                                                     <tr style="background: lightblue">
-                                                        <td>Obj</td>
-                                                        <td>Fn</td>
+                                                        <td width="50%">Obj</td>
+                                                        <td width="50%">Fn</td>
                                                     </tr>
                                                     <?php
                                                         while($goalFirstG2ObjFnRow = mysql_fetch_object($goalFirstG2ObjFnList)){
@@ -141,10 +138,9 @@
             ?>
         </table>
         <!--now do the same for goal first g3-->
-        <table border="1" width="100%">
-            <tr style="background: #cccccc">
-                <td>#</td>
-                <td>Th</td> 
+        <table border="0" width="100%">
+            <tr style="background: #cccccc">                
+                <td width="20%">Th</td> 
                 <td>G3</td>
             </tr>
             <?php
@@ -155,15 +151,14 @@
                     //now get all the goalFirstG1 objects for this particular goalFirstId
                     $goalFirstG3List = getAllGoalFirstG3ForThisGoalFirstId($goalFirstRow->id);
                     ?>
-                    <tr>
-                        <td><?php echo $ctr++;?></td>
+                    <tr>                        
                         <td><?php echo $thRow->th_name;?></td>  
                         <td>
-                            <table border="1" width="100%">
+                            <table border="0" width="100%">
                                 <tr style="background: #eee">
-                                    <td>G3</td>
-                                    <td>Fn</td> 
-                                    <td>Obj & Fn</td>
+                                    <td width="20%">G3</td>
+                                    <td width="30%">Fn</td> 
+                                    <td width="50%">Obj & Fn</td>
                                 </tr>
                                 <?php
                                     while($goalFirstG3Row = mysql_fetch_object($goalFirstG3List)){
@@ -177,8 +172,8 @@
                                             <td>
                                                 <table border="0" width="100%">
                                                     <tr style="background: lightblue">
-                                                        <td>Obj</td>
-                                                        <td>Fn</td>
+                                                        <td width="50%">Obj</td>
+                                                        <td width="50%">Fn</td>
                                                     </tr>
                                                     <?php
                                                         while($goalFirstG3ObjFnRow = mysql_fetch_object($goalFirstG3ObjFnList)){
