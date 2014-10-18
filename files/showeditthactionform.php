@@ -17,6 +17,7 @@
     $buttonId = "updateThActionButton" . $thActionId;
     $thObj = getTh($thActionObj->th_id);       
     $goalFirstRow = getGoalFirstUsingThId($thObj->id);
+    $goalFirstId = $goalFirstRow->id;
     //define the control names in here 
     $goalFirstG1Ctr = 1; 
     $goalFirstG2Ctr = 1;
@@ -354,6 +355,7 @@
             var goalFirstG2ObjFnId = "<?php echo $goalFirstG2ObjFnId;?>";
             var goalFirstG3Id = "<?php echo $goalFirstG3Id;?>";
             var goalFirstG3ObjFnId = "<?php echo $goalFirstG3ObjFnId;?>";
+            var goalFirstId = "<?php echo $goalFirstId;?>";
             
             //get the value of the textarea using the textId you just created...
             var textAreaValue = $('#'+textAreaId).val();
@@ -364,7 +366,8 @@
                 "&slctFn1Val="+slctFn1Val+"&txtG2Val="+txtG2Val+"&slctFn2Val="+slctFn2Val+"&txtG3Val="+txtG3Val+
                 "&slctFn3Val="+slctFn3Val+"&goalFirstG1Id="+goalFirstG1Id+"&goalFirstG1ObjFnId="+goalFirstG1ObjFnId+
                 "&goalFirstG2Id="+goalFirstG2Id+"&goalFirstG2ObjFnId="+goalFirstG2ObjFnId+"&goalFirstG3Id="+goalFirstG3Id+
-                "&goalFirstG3ObjFnId="+goalFirstG3ObjFnId;
+                "&goalFirstG3ObjFnId="+goalFirstG3ObjFnId+"&goalFirstG1Ctr="+goalFirstG1Ctr+"&goalFirstG2Ctr="+
+                goalFirstG2Ctr+"&goalFirstG3Ctr="+goalFirstG3Ctr+"&goalFirstId="+goalFirstId;
                 //now get the dynamic values and append it to the dataString variable.
                 for(var i=1; i<=goalFirstG1Ctr; i++){
                     var goalFirstG1ObjControlName = "txtgoalfirstg1obj" + i;
@@ -376,7 +379,7 @@
                         goalFirstG1FnVal;
                 }
 
-                for(var j=1; j<=goalFirstG1Ctr; j++){
+                for(var j=1; j<=goalFirstG2Ctr; j++){
                     var goalFirstG2ObjControlName = "txtgoalfirstg2obj" + j;
                     var goalFirstG2FnControlName = "slctgoalfirstg2fn" + j;
                     var goalFirstG2ObjVal = $('#'+goalFirstG2ObjControlName).val();
@@ -386,7 +389,7 @@
                         goalFirstG2FnVal;
                 }
 
-                for(var k=1; k<=goalFirstG1Ctr; k++){
+                for(var k=1; k<=goalFirstG3Ctr; k++){
                     var goalFirstG3ObjControlName = "txtgoalfirstg3obj" + k;
                     var goalFirstG3FnControlName = "slctgoalfirstg3fn" + k;
                     var goalFirstG3ObjVal = $('#'+goalFirstG3ObjControlName).val();
@@ -394,9 +397,8 @@
                     //append it to the dataString variable...
                     dataString += "&"+goalFirstG3ObjControlName+"="+goalFirstG3ObjVal+"&"+goalFirstG3FnControlName+"="+
                         goalFirstG3FnVal;
-                }   
-
-                alert(dataString);             
+                }
+                             
 
                 $.ajax({
                     url: 'files/updatethaction.php',        

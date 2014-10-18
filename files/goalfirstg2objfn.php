@@ -12,7 +12,7 @@
     
     function updateGoalFirstG2ObjFn($id, $goalFirstG2Id, $obj, $fn, $modifiedBy){
         try{
-            $query = "update tbl_goal_first_g2_obj_fn set goal_first_g2_id = $goalFirstG2Id, obj = '$obj', fn=$fn, modified_by = $modifiedBy, modification_date = NOW() where id = $id";
+            $query = "update tbl_goal_first_g2_obj_fn set goal_first_g2_id = $goalFirstG2Id, obj = '$obj', fn_id = $fn, modified_by = $modifiedBy, modification_date = NOW() where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
