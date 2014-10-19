@@ -25,6 +25,10 @@
     $goalSecondG1Ctr=1;
     $goalSecondG2Ctr=1;
     $goalSecondG3Ctr=1;
+    //defining the control names in here...
+    $goalSecondG1ObjControlName=null;    
+    $goalSecondG2ObjControlName=null;    
+    $goalSecondG3ObjControlName=null;    
 ?>
 <form>
     <table border="0" width="100%">
@@ -44,13 +48,14 @@
                 $goalSecondG1ObjList = getAllGoalSecondG1ObjsForThisGoalSecondG1Id($goalSecondG1Id);
                 if(!empty($goalSecondG1ObjList)){
                     while($goalSecondG1ObjRow = mysql_fetch_object($goalSecondG1ObjList)){
+                        $goalSecondG1ObjControlName = "txtgoalsecondg1obj" . $goalSecondG1Ctr;                            
                         $goalSecondG1ObjId = $goalSecondG1ObjRow->id;
                         ?>
                             <tr>
                                 <td></td>
                                 <td>Obj</td>
                                 <td>
-                                    <input type="text" name="" id="" value="<?php echo $goalSecondG1ObjRow->obj;?>"/>
+                                    <input type="text" name="<?php echo $goalSecondG1ObjControlName;?>" id="<?php echo $goalSecondG1ObjControlName;?>" value="<?php echo $goalSecondG1ObjRow->obj;?>"/>
                                 </td>
                             </tr>
                         <?php
@@ -78,13 +83,14 @@
                 $goalSecondG2ObjList = getAllGoalSecondG2ObjsForThisGoalSecondG2Id($goalSecondG2Id);
                 if(!empty($goalSecondG2ObjList)){
                     while($goalSecondG2ObjRow = mysql_fetch_object($goalSecondG2ObjList)){
+                        $goalSecondG2ObjControlName = "txtgoalsecondg2obj" . $goalSecondG2Ctr;
                         $goalSecondG2ObjId = $goalSecondG2ObjRow->id;
                         ?>
                             <tr>
                                 <td></td>
                                 <td>Obj</td>
                                 <td>
-                                    <input type="text" name="" id="" value="<?php echo $goalSecondG2ObjRow->obj;?>"/>
+                                    <input type="text" name="<?php echo $goalSecondG2ObjControlName;?>" id="<?php echo $goalSecondG2ObjControlName;?>" value="<?php echo $goalSecondG2ObjRow->obj;?>"/>
                                 </td>
                             </tr>
                         <?php
@@ -112,13 +118,14 @@
                 $goalSecondG3ObjList = getAllGoalSecondG3ObjsForThisGoalSecondG3Id($goalSecondG3Id);
                 if(!empty($goalSecondG3ObjList)){
                     while($goalSecondG3ObjRow = mysql_fetch_object($goalSecondG3ObjList)){
+                        $goalSecondG3ObjControlName = "txtgoalsecondg3obj" . $goalSecondG3Ctr;
                         $goalSecondG3ObjId = $goalSecondG3ObjRow->id;
                         ?>
                             <tr>
                                 <td></td>
                                 <td>Obj</td>
                                 <td>
-                                    <input type="text" name="" id="" value="<?php echo $goalSecondG3ObjRow->obj;?>"/>
+                                    <input type="text" name="<?php echo $goalSecondG3ObjControlName;?>" id="<?php echo $goalSecondG3ObjControlName;?>" value="<?php echo $goalSecondG3ObjRow->obj;?>"/>
                                 </td>
                             </tr>
                         <?php
@@ -148,6 +155,12 @@
         var fnActionId = "<?php echo $fnActionId;?>";
         //now create the button id here using the actionId i got...
         var buttonId = "updateFnActionButton" + fnActionId;
+        var goalSecondG1Ctr = "<?php echo $goalSecondG1Ctr;?>"; 
+        var goalSecondG2Ctr = "<?php echo $goalSecondG2Ctr;?>";
+        var goalSecondG3Ctr = "<?php echo $goalSecondG3Ctr;?>";
+        goalSecondG1Ctr--;
+        goalSecondG2Ctr--;
+        goalSecondG3Ctr--;
         
         $('#'+buttonId).click(function(){
             //now get the update text value..
@@ -155,6 +168,22 @@
             //get the value of the textarea using the textId you just created...
             var textAreaValue = $('#'+textAreaId).val();
             var divId = "editActionTextDiv" + fnActionId;
+            //get the counter values for each g1 g2 and g3 now define the control names...
+            var goalSecondG1ObjControlName = null;            
+            var goalSecondG2ObjControlName = null;            
+            var goalSecondG3ObjControlName = null;            
+            //get the static control value here...
+            var txtG1Val = $('#txtg1').val();            
+            var txtG2Val = $('#txtg2').val();            
+            var txtG3Val = $('#txtg3').val();
+            //now grab the ids here
+            var goalSecondG1Id = "<?php echo $goalFirstG1Id;?>";
+            var goalSecondG1ObjId = "<?php echo $goalFirstG1ObjFnId;?>";
+            var goalSecondG2Id = "<?php echo $goalFirstG2Id;?>";
+            var goalSecondG2ObjId = "<?php echo $goalFirstG2ObjFnId;?>";
+            var goalSecondG3Id = "<?php echo $goalFirstG3Id;?>";
+            var goalSecondG3ObjId = "<?php echo $goalFirstG3ObjFnId;?>";
+            var goalSecondId = "<?php echo $goalFirstId;?>";            
             
             if(textAreaValue !== ""){
                 var dataString = "updatedText="+textAreaValue+"&fnActionId="+fnActionId;
