@@ -91,4 +91,14 @@
             $ex->getMessage();
         }
     }
+
+    function getAllGoalFirstG2ForGoalFirstId($goalFirstId){
+        try{
+            $query = "select * from tbl_goal_first_g2 where goal_first_id = $goalFirstId";
+            $result = read($query);
+            return $result;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
 ?>

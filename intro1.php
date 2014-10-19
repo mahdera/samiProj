@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="css/slidebars.css">        
         <script type="text/javascript" src="js/modernizr.custom.15150.js" ></script>
         <script type="text/javascript" src="js/accordion.js" ></script>
+        <link rel="stylesheet" media="print" type="text/css" href="css/print.css"/> 
     </head>
     <body id="step5">
         <div id="sb-site">

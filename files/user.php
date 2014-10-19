@@ -109,6 +109,17 @@
             $ex->getMessage();
         }
     }
+
+    function getUserUsingTheUserId($userId){
+        try{
+            $query = "select * from tbl_user where id = $userId";            
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
     
     function getAllNonAdminUsers(){
         try{

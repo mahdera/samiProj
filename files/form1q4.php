@@ -48,4 +48,14 @@
             $ex->getMessage();
         }
     }
+
+    function getAllForm1Q4ForThisForm1($form1Id){
+        try{
+            $query = "select * from tbl_form_1_q4 where form_1_id = $form1Id";
+            $result = read($query);            
+            return $result;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
 ?>

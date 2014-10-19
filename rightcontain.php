@@ -11,9 +11,8 @@
                 <div id="listdiv">
                     <ul class="ld">                        
                         <li><a href="#.php" id="accountManagementLink">My Account</a></li>
-                        <li><a href="mycalendar.php">Calendar</a></li>
-                        <li><a href="#">Process</a></li>
-                        <li><a href="#">My Report</a></li>
+                        <li><a href="mycalendar.php">Calendar</a></li>                        
+                        <li><a href="#" id="reportManagementLink">My Report</a></li>
                         <li><a href="#.php" id="contentManagementLink">Content</a></li>
                         <li><a href="#.php" id="userManagementLink">User</a></li>                        
                         <li><a href="logout.php">Logout</a></li>
@@ -29,7 +28,7 @@
                         <li><a href="#.php" id="accountManagementLink">My Account</a></li>
                         <li><a href="mycalendar.php">Calendar</a></li>
                         <li><a href="step1.php">Process</a></li>
-                        <li><a href="#">My Report</a></li>
+                        <li><a href="#" id="reportManagementLink">My Report</a></li>
                         <li><a href="logout.php">Logout</a></li>
                     </ul>
                 </div>
@@ -50,5 +49,10 @@
         $('#accountManagementLink').click(function(){
             $('.content').load('files/showmyaccountinnermenu.php');
         });
+
+        $('#reportManagementLink').click(function(){
+            $('.content').load('files/showreportmanagementpage.php');
+        });
+
     });//end document.ready function
 </script>

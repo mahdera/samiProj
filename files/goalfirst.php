@@ -40,7 +40,7 @@
 
     function getAllGoalFirstsModifiedBy($modifiedBy){
         try{
-            $query = "select * from tbl_goal_first where modified_by = $modifiedBy";
+            $query = "select * from tbl_goal_first where modified_by = $modifiedBy order by modification_date desc";
             $result = read($query);
             return $result;
         } catch (Exception $ex) {
@@ -84,6 +84,16 @@
     function getAllGoalFirstsUsingThId($thId){
         try{
             $query = "select * from tbl_goal_first where th_id = $thId";            
+            $result = read($query);
+            return $result;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+
+    function getAllThsForGoalFirst($goalFirstId){
+        try{
+            $query = "select * from tbl_goal_first where id = $goalFirstId";
             $result = read($query);
             return $result;
         } catch (Exception $ex) {

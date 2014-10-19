@@ -59,4 +59,16 @@
             $ex->getMessage();
         }
     }
+
+    function getForm10ModifiedByUserOnThisDate($modifiedBy, $modificationDate){
+        try{
+            $query = "select * from tbl_form_10 where modified_by = $modifiedBy and modification_date = '$modificationDate'";
+            //echo $query;
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
 ?>
