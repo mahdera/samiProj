@@ -177,16 +177,43 @@
             var txtG2Val = $('#txtg2').val();            
             var txtG3Val = $('#txtg3').val();
             //now grab the ids here
-            var goalSecondG1Id = "<?php echo $goalFirstG1Id;?>";
-            var goalSecondG1ObjId = "<?php echo $goalFirstG1ObjFnId;?>";
-            var goalSecondG2Id = "<?php echo $goalFirstG2Id;?>";
-            var goalSecondG2ObjId = "<?php echo $goalFirstG2ObjFnId;?>";
-            var goalSecondG3Id = "<?php echo $goalFirstG3Id;?>";
-            var goalSecondG3ObjId = "<?php echo $goalFirstG3ObjFnId;?>";
-            var goalSecondId = "<?php echo $goalFirstId;?>";            
+            var goalSecondG1Id = "<?php echo $goalSecondG1Id;?>";
+            var goalSecondG1ObjId = "<?php echo $goalSecondG1ObjId;?>";
+            var goalSecondG2Id = "<?php echo $goalSecondG2Id;?>";
+            var goalSecondG2ObjId = "<?php echo $goalSecondG2ObjId;?>";
+            var goalSecondG3Id = "<?php echo $goalSecondG3Id;?>";
+            var goalSecondG3ObjId = "<?php echo $goalSecondG3ObjId;?>";
+            var goalSecondId = "<?php echo $goalSecondId;?>";            
             
             if(textAreaValue !== ""){
-                var dataString = "updatedText="+textAreaValue+"&fnActionId="+fnActionId;
+                var dataString = "updatedText="+textAreaValue+"&fnActionId="+fnActionId+"&txtG1Val="+txtG1Val+
+                "&txtG2Val="+txtG2Val+"&txtG3Val="+txtG3Val+"&goalSecondG1Id="+goalSecondG1Id+"&goalSecondG1ObjId="+
+                goalSecondG1ObjId+"&goalSecondG2Id="+goalSecondG2Id+"&goalSecondG2ObjId="+goalSecondG2ObjId+
+                "&goalSecondG3Id="+goalSecondG3Id+"&goalSecondG3ObjId="+goalSecondG3ObjId+"&goalSecondId="+goalSecondId+
+                "&goalSecondG1Ctr="+goalSecondG1Ctr+"&goalSecondG2Ctr="+goalSecondG2Ctr+"&goalSecondG3Ctr="+goalSecondG3Ctr;
+
+                //now get the dynamic values and append it to the dataString variable.
+                for(var i=1; i<=goalSecondG1Ctr; i++){
+                    var goalSecondG1ObjControlName = "txtgoalsecondg1obj" + i;                    
+                    var goalSecondG1ObjVal = $('#'+goalSecondG1ObjControlName).val();                    
+                    //append it to the dataString variable...
+                    dataString += "&"+goalSecondG1ObjControlName+"="+goalSecondG1ObjVal;
+                }
+
+                for(var j=1; j<=goalSecondG2Ctr; j++){
+                    var goalSecondG2ObjControlName = "txtgoalsecondg2obj" + j;                    
+                    var goalSecondG2ObjVal = $('#'+goalSecondG2ObjControlName).val();                    
+                    //append it to the dataString variable...
+                    dataString += "&"+goalSecondG2ObjControlName+"="+goalSecondG2ObjVal;
+                }
+
+                for(var k=1; k<=goalSecondG3Ctr; k++){
+                    var goalSecondG3ObjControlName = "txtgoalsecondg3obj" + k;                    
+                    var goalSecondG3ObjVal = $('#'+goalSecondG3ObjControlName).val();                    
+                    //append it to the dataString variable...
+                    dataString += "&"+goalSecondG3ObjControlName+"="+goalSecondG3ObjVal;
+                }
+
                 $.ajax({
                     url: 'files/updatefnaction.php',        
                     data: dataString,

@@ -35,8 +35,8 @@
         
         $('#leftArrowButton').click(function(){
             var currentPageTag = $('#currentPageTag').html();
-            if(currentPageTag === 'Step 5-3'){
-                $('#step5Content').load('showstep5_4content.php');
+            if(currentPageTag === 'Step 5-4'){
+                $('#step5Content').load('showstep5_3content.php');
             }
         });
         
