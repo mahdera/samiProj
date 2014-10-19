@@ -10,9 +10,9 @@
     require_once 'goalfirstg3objfn.php';
     require_once 'fn.php';
     
-    $goalFirstList = getAllGoalFirstsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    $goalFirstList = getAllGoalFirstsModifiedBy($_SESSION['LOGGED_USER_ID']);    
     
-    if(!empty($goalFirstList)){
+    if(mysql_num_rows($goalFirstList)){
         ?>
         <table border="0" width="100%">
             <tr style="background: #cccccc">                

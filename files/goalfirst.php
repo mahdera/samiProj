@@ -41,6 +41,7 @@
     function getAllGoalFirstsModifiedBy($modifiedBy){
         try{
             $query = "select * from tbl_goal_first where modified_by = $modifiedBy order by modification_date desc";
+            //echo $query;
             $result = read($query);
             return $result;
         } catch (Exception $ex) {

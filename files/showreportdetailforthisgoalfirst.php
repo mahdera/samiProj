@@ -411,6 +411,8 @@
 			<tr>
 				<td align="right">
 					<a href="#.jsp" onclick="printDiv('printReportDiv')"><img src="images/printer.jpg" align="absmiddle"/> Print</a>
+					|
+					<a href="#.jsp" id="wordReportLinkId"><img src="images/word.jpeg" align="absmiddle"/> Generate Word Doc</a>
 				</td>
 			</tr>
 		</table>
@@ -426,4 +428,11 @@
 	    window.document.getElementById(divName).innerHTML = printContents;
 	    window.print();    
 	}
+
+	$(document).ready(function(){
+		$('#wordReportLinkId').click(function(){
+			var id = "<?php echo $id;?>";
+			window.open('files/exportreporttoword.php?id='+id,'Report Window', 800, 600);
+		});
+	});//end document.ready function
 </script>

@@ -11,7 +11,7 @@
     
     $goalSecondList = getAllGoalSecondsModifiedBy($_SESSION['LOGGED_USER_ID']);
     
-    if(!empty($goalSecondList)){
+    if( mysql_num_rows($goalSecondList) ){
         ?>
         <table border="0" width="100%">
             <tr style="background: #cccccc">                
