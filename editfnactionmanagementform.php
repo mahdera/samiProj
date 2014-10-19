@@ -4,9 +4,9 @@
     require_once 'files/fn.php';
     $fnActionList = getAllFnActionsModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
-<table border="1" width="100%">
+<table border="0" width="100%">
     <tr style="background: #ccc">
-        <td>Ser.No</td>
+        <td width="10%">Ser.No</td>
         <td>Fn</td>
         <td>Fn Action Text</td>
         <td>Action</td>

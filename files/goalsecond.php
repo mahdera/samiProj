@@ -62,6 +62,7 @@
     function getGoalSecondUsingFnId($fnId){
         try{
             $query = "select * from tbl_goal_second where fn_id = $fnId";
+            //echo $query;
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;

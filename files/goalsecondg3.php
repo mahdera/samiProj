@@ -80,4 +80,15 @@
             $ex->getMessage();
         }
     }
+
+    function getGoalSecondG3ForGoalSecondId($goalSecondId){
+        try{
+            $query = "select * from tbl_goal_second_g3 where goal_second_id = $goalSecondId";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
 ?>

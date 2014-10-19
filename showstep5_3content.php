@@ -23,8 +23,7 @@
     require_once 'importjsscripts.php';
 ?>
 <?php
-    require_once 'editthactionmanagementform.php';
-    //require 'editfnactionmanagementform.php';
+    require_once 'editthactionmanagementform.php';    
 ?>
 <script type='text/javascript'>
     $(document).ready(function(){       
