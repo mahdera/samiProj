@@ -47,6 +47,16 @@
             $ex->getMessage();
         }
     }
+
+    function getAllGoalFirstG2ObjFnsForThisGoalFirstG2IdAndModifiedBy($goalFirstG2Id, $modifiedBy){
+        try{
+            $query = "select * from tbl_goal_first_g2_obj_fn where goal_first_g2_id = $goalFirstG2Id and modified_by = $modifiedBy";
+            $result = read($query);
+            return $result;          
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
     
     function getGoalFirstG2ObjFn($id){
         try{

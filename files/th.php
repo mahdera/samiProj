@@ -68,6 +68,17 @@
             $ex->getMessage();
         }
     }
+
+    function getThByIdAndModifiedBy($id, $modifiedBy){
+        try{
+            $query = "select * from tbl_th where id = $id and modified_by = $modifiedBy";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }   
+    }
     
     function getThUsing($thName){
         try{

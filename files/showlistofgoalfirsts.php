@@ -22,9 +22,9 @@
             <?php
                 $ctr=1;
                 while($goalFirstRow = mysql_fetch_object($goalFirstList)){
-                    $thRow = getTh($goalFirstRow->th_id);
+                    $thRow = getThByIdAndModifiedBy($goalFirstRow->th_id, $_SESSION['LOGGED_USER_ID']);
                     //now get all the goalFirstG1 objects for this particular goalFirstId
-                    $goalFirstG1List = getAllGoalFirstG1ForThisGoalFirstId($goalFirstRow->id);
+                    $goalFirstG1List = getAllGoalFirstG1ForThisGoalFirstIdAndModifiedBy($goalFirstRow->id, $_SESSION['LOGGED_USER_ID']);
                     ?>
                     <tr>                        
                         <td><?php echo $thRow->th_name;?></td>  
@@ -38,7 +38,7 @@
                                 <?php
                                     while($goalFirstG1Row = mysql_fetch_object($goalFirstG1List)){
                                         //now get all the goalFirstG1ObjFn associated with this particular goalFirstG1Id
-                                        $goalFirstG1ObjFnList = getAllGoalFirstG1ObjFnsForThisGoalFirstG1Id($goalFirstG1Row->id);
+                                        $goalFirstG1ObjFnList = getAllGoalFirstG1ObjFnsForThisGoalFirstG1IdAndModifiedBy($goalFirstG1Row->id, $_SESSION['LOGGED_USER_ID']);
                                         $fn_id = $goalFirstG1Row->fn_id;
                                         $fn_row = getFn($fn_id);
                                         ?>
@@ -83,11 +83,11 @@
             </tr>
             <?php
                 $ctr=1;
-                $goalFirstList = getAllGoalFirsts();
+                $goalFirstList = getAllGoalFirstsModifiedBy($_SESSION['LOGGED_USER_ID']);
                 while($goalFirstRow = mysql_fetch_object($goalFirstList)){
-                    $thRow = getTh($goalFirstRow->th_id);
+                    $thRow = getThByIdAndModifiedBy($goalFirstRow->th_id, $_SESSION['LOGGED_USER_ID']);
                     //now get all the goalFirstG1 objects for this particular goalFirstId
-                    $goalFirstG2List = getAllGoalFirstG2ForThisGoalFirstId($goalFirstRow->id);
+                    $goalFirstG2List = getAllGoalFirstG2ForThisGoalFirstIdAndModifiedBy($goalFirstRow->id, $_SESSION['LOGGED_USER_ID']);
                     ?>
                     <tr>                        
                         <td><?php echo $thRow->th_name;?></td>  
@@ -101,7 +101,7 @@
                                 <?php
                                     while($goalFirstG2Row = mysql_fetch_object($goalFirstG2List)){
                                         //now get all the goalFirstG1ObjFn associated with this particular goalFirstG1Id
-                                        $goalFirstG2ObjFnList = getAllGoalFirstG2ObjFnsForThisGoalFirstG2Id($goalFirstG2Row->id);
+                                        $goalFirstG2ObjFnList = getAllGoalFirstG2ObjFnsForThisGoalFirstG2IdAndModifiedBy($goalFirstG2Row->id, $_SESSION['LOGGED_USER_ID']);
                                         $fn_row = getFn($goalFirstG2Row->fn_id);
                                         ?>
                                         <tr>
@@ -145,11 +145,11 @@
             </tr>
             <?php
                 $ctr=1;
-                $goalFirstList = getAllGoalFirsts();
+                $goalFirstList = getAllGoalFirstsModifiedBy($_SESSION['LOGGED_USER_ID']);
                 while($goalFirstRow = mysql_fetch_object($goalFirstList)){
-                    $thRow = getTh($goalFirstRow->th_id);
+                    $thRow = getThByIdAndModifiedBy($goalFirstRow->th_id, $_SESSION['LOGGED_USER_ID']);
                     //now get all the goalFirstG1 objects for this particular goalFirstId
-                    $goalFirstG3List = getAllGoalFirstG3ForThisGoalFirstId($goalFirstRow->id);
+                    $goalFirstG3List = getAllGoalFirstG3ForThisGoalFirstIdAndModifiedBy($goalFirstRow->id, $_SESSION['LOGGED_USER_ID']);
                     ?>
                     <tr>                        
                         <td><?php echo $thRow->th_name;?></td>  
@@ -163,7 +163,7 @@
                                 <?php
                                     while($goalFirstG3Row = mysql_fetch_object($goalFirstG3List)){
                                         //now get all the goalFirstG1ObjFn associated with this particular goalFirstG1Id
-                                        $goalFirstG3ObjFnList = getAllGoalFirstG3ObjFnsForThisGoalFirstG3Id($goalFirstG3Row->id);
+                                        $goalFirstG3ObjFnList = getAllGoalFirstG3ObjFnsForThisGoalFirstG3IdAndModifiedBy($goalFirstG3Row->id, $_SESSION['LOGGED_USER_ID']);
                                         $fn_row = getFn($goalFirstG3Row->fn_id);
                                         ?>
                                         <tr>
