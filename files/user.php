@@ -35,12 +35,22 @@
     
     function getAllUsers(){
         try{
-            $query = "select * from tbl_user order first_name, last_name";
+            $query = "select * from tbl_user order by first_name, last_name";
             $result = read($query);
             return $result;
         } catch (Exception $ex) {
             $ex->getMessage();
         }
+    }
+
+    function getAllApprovedUsers(){
+        try{
+            $query = "select * from tbl_user where user_status = 'Active' order by first_name, last_name";            
+            $result = read($query);
+            return $result;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }   
     }
     
     function getUser($id){

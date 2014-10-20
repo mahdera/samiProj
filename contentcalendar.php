@@ -17,6 +17,7 @@
 <div style="float:right; margin-bottom:10px;">
 <form action="" method="post">
 <input type="submit" name="add_event" value="Add Event"/>
+<a href="#.php" id="btnshareevent">Email Event</a>
 </form>
 <p style="display:none">Add Event | Edit Event | Delete Event</p></div>
 </div>
@@ -105,8 +106,17 @@ echo "Successful Insert!";
 }
 }
 ?>
+<div id="shareEventDiv"></div>
+<br/>
 <div style="clear:both;"></div>
 <div id='calendar'></div>
     </div><!-- /col-half --><!-- /col-half -->
     <!--end to be replaced content-->
 </div> <!-- /content -->
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#btnshareevent').click(function(){
+            $('#shareEventDiv').load('files/showeventemailselectionform.php');
+        });
+    });//end document.ready function
+</script>
