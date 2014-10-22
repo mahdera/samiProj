@@ -1,4 +1,5 @@
 <?php
+session_start();
 include ("connect.inc");
 $db=public_db_connect();
 	$year = date('Y');
@@ -78,17 +79,17 @@ $calendarid = mysql_real_escape_string($_GET['calendarid']);
 
 <?php
 if(@$_POST['myupdate']){
-$command_update = "UPDATE calendar SET title='{$_POST['event_title']}', notes='{$_POST['notes']}', start='{$_POST['mydate']}' WHERE id='$calendarid' ";
-$result_update = mysql_query($command_update, $db);
-if($result_update) {
-echo '<div style="margin:20px;">Update successful!</div>';
-}
+	$command_update = "UPDATE calendar SET title='{$_POST['event_title']}', notes='{$_POST['notes']}', start='{$_POST['mydate']}' WHERE id='$calendarid' ";
+	$result_update = mysql_query($command_update, $db);
+	if($result_update) {
+		echo '<div style="margin:20px;">Update successful!</div>';
+	}
 }else if(@$_POST['mydelete']){
-$command_delete = "DELETE FROM calendar WHERE id='$calendarid' ";
-$result_delete = mysql_query($command_delete, $db);
-if($result_delete) {
-echo '<div style="margin:20px;">Deleted successfully!</div>';
-}
+	$command_delete = "DELETE FROM calendar WHERE id='$calendarid' ";
+	$result_delete = mysql_query($command_delete, $db);
+	if($result_delete) {
+		echo '<div style="margin:20px;">Deleted successfully!</div>';
+	}
 
 }
 
@@ -97,27 +98,30 @@ $result = mysql_query($command, $db);
 
 while($row = mysql_fetch_assoc($result)){
 
-$year = date("Y"); 
-$year2= $year + 1;
-$mymonth = date("m"); 
-$day = date("d");?>
-<div style="background-color:grey; width:900px; margin:0 auto;padding-top:20px;padding-bottom:10px; border-radius:15px;">
-<form action="" method="post">
-<div style="float:left;margin-left:10px;">Title: <input style="margin:0 auto; text-align:left;" type="text" name="event_title" value="<?php echo $row['title']; ?>"/>
+		$year = date("Y"); 
+		$year2= $year + 1;
+		$mymonth = date("m"); 
+		$day = date("d");?>
+		<div style="background-color:grey; width:900px; margin:0 auto;padding-top:20px;padding-bottom:10px; border-radius:15px;">
+		<form action="" method="post">
+		<div style="float:left;margin-left:10px;">Title: <input style="margin:0 auto; text-align:left;" type="text" name="event_title" value="<?php echo $row['title']; ?>"/>
 
-<?php echo '<input type="text" name="mydate" value="'.$row['start'].'" />';
+		<?php echo '<input type="text" name="mydate" value="'.$row['start'].'" />';
 
 
-echo'</div>';
-?><br/><br/>
-<div style="float:left;margin-left:10px;margin-bottom:5px;">Notes:</div>
-<textarea name="notes" style="width:880px; margin:0 auto;"><?php echo $row['notes']; ?></textarea><br/>
+		echo'</div>';
+		?><br/><br/>
+		<div style="float:left;margin-left:10px;margin-bottom:5px;">Notes:</div>
+		<textarea name="notes" style="width:880px; margin:0 auto;"><?php echo $row['notes']; ?></textarea><br/>
 
-<?php
-echo '<input style="margin-top:10px;" type="submit" name="myupdate" value="Update Event"/>';
-echo '<input style="margin-top:10px;" type="submit" name="mydelete" value="Delete Event"/></form></div><br/><br/>';
-} 
-}
+		<?php
+		//only the event creator should be allowed to edit and delete an existing event
+		if($_SESSION['LOGGED_USER_ID'] === $row['member_id']){
+			echo '<input style="margin-top:10px;" type="submit" name="myupdate" value="Update Event"/>';
+			echo '<input style="margin-top:10px;" type="submit" name="mydelete" value="Delete Event"/></form></div><br/><br/>';	
+		}
+	}//end while loop
+}//end if get calendar id at the very top of the code
 
 /*if($_POST['adding']) {
 $year = $_POST['year'];
