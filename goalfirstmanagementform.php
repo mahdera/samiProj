@@ -1,4 +1,4 @@
-<?php
+<?php    
     require_once 'files/th.php';
     require_once 'files/fn.php';
     $thList = getAllThs();
@@ -392,7 +392,7 @@
         }
         
         function showListOfGoalFirsts(){
-            $('#subDetailDiv').load('files/showlistofgoalfirsts.php');
+            $('#subDetailDiv').load('files/showlistofgoalfirstsmodified.php');
         }
         
         $('#slctg1fn').change(function(){
