@@ -99,7 +99,7 @@ $hour= $_POST['hour'];
 $minutes= $_POST['minutes'];
 $fulldate = $year."-".$month."-".$day." ".$hour.":".$minutes;
 
-$command = "INSERT INTO calendar VALUES('','0', '{$_POST['event_title']}', '{$_POST['notes']}', '$fulldate','') ";
+$command = "INSERT INTO calendar VALUES('','" . $_SESSION['LOGGED_USER_ID'] . "', '{$_POST['event_title']}', '{$_POST['notes']}', '$fulldate','') ";
 $result = mysql_query($command, $db);
 if($result) {
 echo "Successful Insert!";

@@ -47,6 +47,16 @@
             $ex->getMessage();
         }
     }
+
+    function getAllGoalSecondG1ForThisGoalSecondIdAndModifiedBy($goalSecondId, $modifiedBy){
+        try{
+            $query = "select * from tbl_goal_second_g1 where goal_second_id = $goalSecondId and modified_by = $modifiedBy";
+            $result = read($query);
+            return $result;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }   
+    }
     
     function getGoalSecondG1($id){
         try{

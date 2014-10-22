@@ -1,8 +1,6 @@
 <?php
     require_once 'files/th.php';
-    require_once 'files/fn.php';
-    
-    //$fnList = getAllFnsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    require_once 'files/fn.php';   
     
     $fnIdArray = array();
     //first read fns from tbl_goal_first_g1
@@ -20,8 +18,7 @@
             <td>
                 <select name="slctfn" id="slctfn" style="width: 100%">
                     <option value="" selected="selected">--Select--</option>                    
-                    <?php                    
-                        //while($fnRow = mysql_fetch_object($fnList)){
+                    <?php                        
                         foreach ($fnIdArray as $fnId) {    
                             $fnObj = getFn($fnId);                        
                             ?>
