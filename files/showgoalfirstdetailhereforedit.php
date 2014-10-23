@@ -324,7 +324,7 @@
         goalFirstG2Ctr--;
         goalFirstG3Ctr--;
         //alert(goalFirstG1Ctr+" "+goalFirstG2Ctr+" "+goalFirstG3Ctr);
-
+        //Stopped coding here...
         $('#'+buttonId).click(function(){
             //get the counter values for each g1 g2 and g3 now define the control names...
             var goalFirstG1ObjControlName = null;
