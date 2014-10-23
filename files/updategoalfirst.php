@@ -8,6 +8,7 @@
     require_once 'goalfirstg3.php';
     require_once 'goalfirstg3objfn.php';
 
+    $updatedText = $_POST['updatedText'];
     $thActionId = $_POST['thActionId'];
     $txtG1Val = $_POST['txtG1Val'];
     $slctFn1Val = $_POST['slctFn1Val'];
@@ -56,5 +57,7 @@
         updateGoalFirstG3ObjFn($goalFirstG3ObjFnId, $goalFirstG3Id, $goalFirstG3ObjVal, $goalFirstG3FnVal, $_SESSION['LOGGED_USER_ID']);
     }
 
+
+    updateThAction($thActionId, $updatedText, $_SESSION['LOGGED_USER_ID']);
 ?>
 <div class="notify notify-green"><span class="symbol icon-tick"></span> Goal First Updated Successfully!</div>
