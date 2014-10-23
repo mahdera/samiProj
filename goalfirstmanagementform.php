@@ -1,8 +1,8 @@
-<?php    
+<?php
     require_once 'files/th.php';
     require_once 'files/fn.php';
     $thList = getAllThs();
-    $fnList = getAllFns();    
+    $fnList = getAllFns();
 ?>
 <h1>Add Goal First</h1>
 <a href="#.php" id="showGoalFirstManagementFormLinkId">Show Form</a>
@@ -14,8 +14,8 @@
             <td>Th:</td>
             <td>
                 <select name="slctth" id="slctth" style="width: 100%">
-                    <option value="" selected="selected">--Select--</option>                    
-                    <?php  
+                    <option value="" selected="selected">--Select--</option>
+                    <?php
                         //loop the array instead...
                         for($i=0; $i < count($selectedThIdArray); $i++){
                             $thObj = getTh($selectedThIdArray[$i]);
@@ -46,7 +46,7 @@
                             <?php
                         }//end while loop
                         ?>
-                        <option value="other">other</option>                        
+                        <option value="other">other</option>
                 </select>
             </td>
         </tr>
@@ -62,13 +62,13 @@
                         <td>Obj:</td>
                         <td>
                             <input type="text" id="txtg1obj1" name="txtg1obj1" class="g1Obj"/>
-                        </td>                        
+                        </td>
                     </tr>
                     <tr>
                         <td>Fn:</td>
                         <td>
                             <select name="slctg1fn1" id="slctg1fn1" style="width: 100%">
-                                <option value="" selected="selected">--Select--</option>                                
+                                <option value="" selected="selected">--Select--</option>
                                 <?php
                                     $fnList = getAllFns();
                                     while($fnRow = mysql_fetch_object($fnList)){
@@ -115,7 +115,7 @@
                             <?php
                         }//end while loop
                         ?>
-                                <option value="other">other</option>                        
+                                <option value="other">other</option>
                 </select>
             </td>
         </tr>
@@ -131,7 +131,7 @@
                         <td>Obj:</td>
                         <td>
                             <input type="text" id="txtg2obj1" name="txtg2obj1" class="g2Obj"/>
-                        </td>                        
+                        </td>
                     </tr>
                     <tr>
                         <td>Fn:</td>
@@ -163,7 +163,7 @@
                 <a href="#.php" id="addMoreG2ObjFnLink">[Add More]</a> |
                 <a href="#.php" id="removeG2ThRowLink">[Remove]</a>
             </td>
-        </tr> 
+        </tr>
         <!--now do the same thing for G3-->
         <tr>
             <td>G3:</td>
@@ -184,7 +184,7 @@
                             <?php
                         }//end while loop
                         ?>
-                                <option value="other">other</option>                        
+                                <option value="other">other</option>
                 </select>
             </td>
         </tr>
@@ -200,7 +200,7 @@
                         <td>Obj:</td>
                         <td>
                             <input type="text" id="txtg3obj1" name="txtg3obj1" class="g3Obj"/>
-                        </td>                        
+                        </td>
                     </tr>
                     <tr>
                         <td>Fn:</td>
@@ -235,7 +235,7 @@
         </tr>
         <tr>
             <td colspan="2" align="right">
-                <input type="button" value="Save" id="btnsave"/>                
+                <input type="button" value="Save" id="btnsave"/>
             </td>
         </tr>
     </table>
@@ -243,21 +243,21 @@
 <hr/>
 <div id="subDetailDiv"></div>
 <script type="text/javascript">
-    
-    $(document).ready(function(){        
-        
+
+    $(document).ready(function(){
+
         $('#goalFirstManagementForm').hide();
 
         $('#showGoalFirstManagementFormLinkId').click(function(){
-            $('#goalFirstManagementForm').show('slow');            
+            $('#goalFirstManagementForm').show('slow');
         });
 
         $('#hideGoalFirstManagementFormLinkId').click(function(){
-            $('#goalFirstManagementForm').hide('slow');            
+            $('#goalFirstManagementForm').hide('slow');
         });
 
         showListOfGoalFirsts();
-        
+
         $('#btnsave').click(function(){
             //first get the static form values...
             var th = $('#slctth').val();
@@ -273,8 +273,8 @@
             var g3Fn = $('#slctg3fn').val();
             var g3Obj1 = $('#txtg3obj1').val();
             var g3Fn1 = $('#slctg3fn1').val();
-            var isBlank = false;            
-            
+            var isBlank = false;
+
             if(th !== "" && g1 !== "" && g1Fn !== "" && g1Obj1 !== "" && g1Fn1 !== "" && g2 !== "" && g2Fn !== "" &&
                     g2Obj1 !== "" && g2Fn1 !== "" && g3 !== "" && g3Fn !== "" && g3Obj1 !== "" && g3Fn1 !== ""){
                 var dataString = "th="+th+"&g1="+encodeURIComponent(g1)+"&g1Fn="+encodeURIComponent(g1Fn)+"&g1Obj1="+encodeURIComponent(g1Obj1)+"&g1Fn1="+encodeURIComponent(g1Fn1)+"&g2="+encodeURIComponent(g2)+
@@ -283,7 +283,7 @@
                 var numItemsG1 = $('.g1Obj').length;
                 var numItemsG2 = $('.g2Obj').length;
                 var numItemsG3 = $('.g3Obj').length;
-                
+
                 for(var i = 1; i <= numItemsG1; i++){
                     var g1ObjTextBoxId = "txtg1obj" + i;
                     var g1ObjTextBoxValue = $('#' + g1ObjTextBoxId).val();
@@ -291,7 +291,7 @@
                     var g1FnSelectBoxValue = $('#' + g1FnSelectBoxId).val();
                     if(g1ObjTextBoxValue !== "" && g1FnSelectBoxValue !== ""){
                         dataString += "&" + g1ObjTextBoxId + "=" + encodeURIComponent(g1ObjTextBoxValue) + "&" + g1FnSelectBoxId + "=" + encodeURIComponent(g1FnSelectBoxValue);
-                        
+
                     }else{
                         isBlank = true;
                     }
@@ -305,7 +305,7 @@
                     var g2FnSelectBoxValue = $('#' + g2FnSelectBoxId).val();
                     if(g2ObjTextBoxValue !== "" && g2FnSelectBoxValue !== ""){
                         dataString += "&" + g2ObjTextBoxId + "=" + encodeURIComponent(g2ObjTextBoxValue) + "&" + g2FnSelectBoxId + "=" + encodeURIComponent(g2FnSelectBoxValue);
-                        
+
                     }else{
                         isBlank = true;
                     }
@@ -319,7 +319,7 @@
                     var g3FnSelectBoxValue = $('#' + g3FnSelectBoxId).val();
                     if(g3ObjTextBoxValue !== "" && g3FnSelectBoxValue !== ""){
                         dataString += "&" + g3ObjTextBoxId + "=" + encodeURIComponent(g3ObjTextBoxValue) + "&" + g3FnSelectBoxId + "=" + encodeURIComponent(g3FnSelectBoxValue);
-                        
+
                     }else{
                         isBlank = true;
                     }
@@ -329,11 +329,11 @@
                 if(!isBlank){
                     dataString += "&numItemsG1="+numItemsG1+"&numItemsG2="+numItemsG2+"&numItemsG3="+numItemsG3;
                     $.ajax({
-                        url: 'files/savegoalfirst.php',        
+                        url: 'files/savegoalfirst.php',
                         data: dataString,
                         type:'POST',
-                        success:function(response){                        
-                            clearFormInputField(); 
+                        success:function(response){
+                            clearFormInputField();
                             showListOfGoalFirsts();
                         },
                         error:function(error){
@@ -343,13 +343,13 @@
                 }else{
                     alert('Missing data value. You are required to enter all the data values!');
                 }
-                
+
             }else{
                 alert('Please enter all the necessary data values!');
-            }           
-            
+            }
+
         });
-        
+
         function clearFormInputField(){
             $('#slctth').val('');
             $('#txtg1').val('');
@@ -390,11 +390,11 @@
             }
 
         }
-        
+
         function showListOfGoalFirsts(){
             $('#subDetailDiv').load('files/showlistofgoalfirstsmodified.php');
         }
-        
+
         $('#slctg1fn').change(function(){
             var fnVal = $(this).val();
             if(fnVal === "other"){
@@ -403,7 +403,7 @@
                 $('#g1fnOtherDiv').html('');
             }
         });
-        
+
         $('#slctg1fn1').change(function(){
             var fnVal = $(this).val();
             if(fnVal === "other"){
@@ -412,7 +412,7 @@
                 $('#g1fnObjOtherDiv').html('');
             }
         });
-        
+
         $('#slctg2fn').change(function(){
             var fnVal = $(this).val();
             if(fnVal === "other"){
@@ -421,7 +421,7 @@
                 $('#g2fnOtherDiv').html('');
             }
         });
-        
+
         $('#slctg2fn1').change(function(){
             var fnVal = $(this).val();
             if(fnVal === "other"){
@@ -430,7 +430,7 @@
                 $('#g2fnObjOtherDiv').html('');
             }
         });
-        
+
         $('#slctg3fn').change(function(){
             var fnVal = $(this).val();
             if(fnVal === "other"){
@@ -439,7 +439,7 @@
                 $('#g3fnOtherDiv').html('');
             }
         });
-        
+
         $('#slctg3fn1').change(function(){
             var fnVal = $(this).val();
             if(fnVal === "other"){
@@ -448,85 +448,85 @@
                 $('#g3fnObjOtherDiv').html('');
             }
         });
-        
+
         $('#addMoreG1ObjFnLink').click(function(){
             var numItems = $('.g1Obj').length;
-            var dataString = "numItems="+numItems;                       
-            
+            var dataString = "numItems="+numItems;
+
             $.ajax({
-                url: 'files/showmoreg1objfnform.php',		
+                url: 'files/showmoreg1objfnform.php',
                 data: dataString,
                 type:'POST',
-                success:function(response){                        
+                success:function(response){
                     $('#addMoreG1ObjFn').after(response);
                 },
                 error:function(error){
                     alert(error);
                 }
             });
-            
+
         });
-        
+
         $('#addMoreG2ObjFnLink').click(function(){
             var numItems = $('.g2Obj').length;
-            var dataString = "numItems="+numItems;            
-            
+            var dataString = "numItems="+numItems;
+
             $.ajax({
-                url: 'files/showmoreg2objfnform.php',		
+                url: 'files/showmoreg2objfnform.php',
                 data: dataString,
                 type:'POST',
-                success:function(response){                        
+                success:function(response){
                     $('#addMoreG2ObjFn').after(response);
                 },
                 error:function(error){
                     alert(error);
                 }
             });
-                        
+
         });
-        
+
         $('#addMoreG3ObjFnLink').click(function(){
             var numItems = $('.g3Obj').length;
-            var dataString = "numItems="+numItems;            
-            
+            var dataString = "numItems="+numItems;
+
             $.ajax({
-                url: 'files/showmoreg3objfnform.php',		
+                url: 'files/showmoreg3objfnform.php',
                 data: dataString,
                 type:'POST',
-                success:function(response){                        
+                success:function(response){
                     $('#addMoreG3ObjFn').after(response);
                 },
                 error:function(error){
                     alert(error);
                 }
             });
-                        
+
         });
-        
+
         $('#removeG1ThRowLink').click(function(){
             var numItems = $('.g1Obj').length;
             if(numItems > 1){
-                var thRowId = 'trg1'+numItems;            
+                var thRowId = 'trg1'+numItems;
                 $('#'+thRowId).remove();
             }
         });
-        
+
         $('#removeG2ThRowLink').click(function(){
             var numItems = $('.g2Obj').length;
             if(numItems > 1){
-                var thRowId = 'trg2'+numItems;            
+                var thRowId = 'trg2'+numItems;
                 $('#'+thRowId).remove();
             }
         });
-        
+
         $('#removeG3ThRowLink').click(function(){
             var numItems = $('.g3Obj').length;
             if(numItems > 1){
-                var thRowId = 'trg3'+numItems;            
+                var thRowId = 'trg3'+numItems;
                 $('#'+thRowId).remove();
             }
         });
-        
+
     });//end document.ready function
-    
+
 </script>

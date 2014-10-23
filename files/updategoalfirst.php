@@ -1,6 +1,5 @@
 <?php
     session_start();
-    require_once 'thaction.php';
     require_once 'goalfirstg1.php';
     require_once 'goalfirstg1objfn.php';
     require_once 'goalfirstg2.php';
@@ -8,8 +7,7 @@
     require_once 'goalfirstg3.php';
     require_once 'goalfirstg3objfn.php';
 
-    $updatedText = $_POST['updatedText'];
-    $thActionId = $_POST['thActionId'];
+    $thId = $_POST['thId'];
     $txtG1Val = $_POST['txtG1Val'];
     $slctFn1Val = $_POST['slctFn1Val'];
     $txtG2Val = $_POST['txtG2Val'];
@@ -28,8 +26,8 @@
     $goalFirstId = $_POST['goalFirstId'];
 
     for($i=1; $i<=$goalFirstG1Ctr; $i++){
-        $goalFirstG1ObjControlName = "txtgoalfirstg1obj" . $i;
-        $goalFirstG1FnControlName = "slctgoalfirstg1fn" . $i;
+        $goalFirstG1ObjControlName = "edittxtgoalfirstg1obj" . $thId . $i;
+        $goalFirstG1FnControlName = "editslctgoalfirstg1fn" . $thId . $i;
         $goalFirstG1ObjVal = $_POST["$goalFirstG1ObjControlName"];
         $goalFirstG1FnVal = $_POST["$goalFirstG1FnControlName"];
         //now update the data value...
@@ -38,8 +36,8 @@
     }
 
     for($j=1; $j<=$goalFirstG2Ctr; $j++){
-        $goalFirstG2ObjControlName = "txtgoalfirstg2obj" . $j;
-        $goalFirstG2FnControlName = "slctgoalfirstg2fn" . $j;
+        $goalFirstG2ObjControlName = "edittxtgoalfirstg2obj" . $thId . $j;
+        $goalFirstG2FnControlName = "editslctgoalfirstg2fn" . $thId . $j;
         $goalFirstG2ObjVal = $_POST["$goalFirstG2ObjControlName"];
         $goalFirstG2FnVal = $_POST["$goalFirstG2FnControlName"];
         //now update the data value...
@@ -48,16 +46,13 @@
     }
 
     for($k=1; $k<=$goalFirstG3Ctr; $k++){
-        $goalFirstG3ObjControlName = "txtgoalfirstg3obj" . $k;
-        $goalFirstG3FnControlName = "slctgoalfirstg3fn" . $k;
+        $goalFirstG3ObjControlName = "edittxtgoalfirstg3obj" . $thId . $k;
+        $goalFirstG3FnControlName = "editslctgoalfirstg3fn" . $thId . $k;
         $goalFirstG3ObjVal = $_POST["$goalFirstG3ObjControlName"];
         $goalFirstG3FnVal = $_POST["$goalFirstG3FnControlName"];
         //now update the data value...
         updateGoalFirstG3($goalFirstG3Id, $goalFirstId, $txtG3Val, $slctFn3Val, $_SESSION['LOGGED_USER_ID']);
         updateGoalFirstG3ObjFn($goalFirstG3ObjFnId, $goalFirstG3Id, $goalFirstG3ObjVal, $goalFirstG3FnVal, $_SESSION['LOGGED_USER_ID']);
     }
-
-
-    updateThAction($thActionId, $updatedText, $_SESSION['LOGGED_USER_ID']);
 ?>
 <div class="notify notify-green"><span class="symbol icon-tick"></span> Goal First Updated Successfully!</div>

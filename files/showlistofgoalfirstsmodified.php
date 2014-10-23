@@ -38,7 +38,7 @@
                                     <a href="#.php" id="<?php echo $thObj->id;?>" class="openGoalFirstDetailForEditClass">Edit</a>
                                 </td>
                                 <td>
-                                    <a href="#.php" id="<?php echo $thObj->id;?>" class="deleteGoalFirstDetailClass">Delete</a>
+                                    <a href="#.php" id="<?php echo $goalFirstRow->id;?>" class="deleteGoalFirstDetailClass">Delete</a>
                                 </td>
                             </tr>
                             <tr>
@@ -78,11 +78,28 @@
 
         $('.openGoalFirstDetailForEditClass').click(function(){
             var idVal = $(this).attr('id');
-            var divId = "actionDiv" + idVal;            
+            var divId = "actionDiv" + idVal;
             $('#' + divId).load('files/showgoalfirstdetailhereforedit.php?thId='+idVal);
         });
 
-        //come back later for the delete feature...
+        $('.deleteGoalFirstDetailClass').click(function(){
+          if(window.confirm('Are you sure you want to delete this goal first record?')){
+            var idVal = $(this).attr('id');
+            var divId = "subDetailDiv";
+            var dataString = "goalFirstId=" + idVal;
+            $.ajax({
+                url: 'files/deletegoalfirst.php',
+                data: dataString,
+                type:'POST',
+                success:function(response){
+                    $('#'+divId).html(response);
+                },
+                error:function(error){
+                    alert(error);
+                }
+            });
+          }
+        });
 
     });//end document.ready function
 </script>

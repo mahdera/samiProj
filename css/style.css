@@ -176,7 +176,7 @@ ul.sq {
     padding: 6% 9%;
 }
 .sq a:hover {
-    background: #0173B8;	
+    background: #0173B8;
 }
 .rthead {
     text-align:center;
@@ -297,7 +297,7 @@ ul.sq {
 /*.stepNav a:hover:after {
   position: absolute;
   display: block;
-  content: "";  
+  content: "";
   border-color: #4CA6DB transparent transparent transparent;
   border-style: solid;
   border-width: 10px;
@@ -315,7 +315,7 @@ ul.sq {
 #step1 .active1 a:hover:after, #step2 .active2 a:hover:after, #step3 .active3 a:hover:after, #step4 .active4 a:hover:after, #step5 .active5 a:hover:after, #step6 .active6 a:hover:after {
     position: absolute;
     display: block;
-    content: "";  
+    content: "";
     border-color: #4CA6DB transparent transparent transparent;
     border-style: solid;
     border-width: 10px;
@@ -335,7 +335,7 @@ ul.sq {
 #step1 .active1 a:after, #step2 .active2 a:after, #step3 .active3 a:after, #step4 .active4 a:after, #step5 .active5 a:after, #step6 .active6 a:after {
     position: absolute;
     display: block;
-    content: "";  
+    content: "";
     border-color: #0072B8 transparent transparent transparent;
     border-style: solid;
     border-width: 10px;
@@ -383,19 +383,19 @@ li.active6 {
     margin-bottom: 1em;
 }
 
-.counter ol { 
-    counter-reset: item; 
+.counter ol {
+    counter-reset: item;
     margin-top: 0;
 }
-.counter li { 
-    display: block 
+.counter li {
+    display: block
 }
-.counter li:before { 
-    content: counters(item, ".") ". "; 
+.counter li:before {
+    content: counters(item, ".") ". ";
     counter-increment: item;
 }
-.counter ol.nested-zero li:first-child:before { 
-    content: "1.0. "; 
+.counter ol.nested-zero li:first-child:before {
+    content: "1.0. ";
     counter-increment: none;
 }
 .two-col {
@@ -501,8 +501,8 @@ tbody tr:nth-child(odd) {
 .icon-excl:before { content: '!'; }
 
 .notify {
-    background-color:#e3f7fc; 
-    color:#555; 
+    background-color:#e3f7fc;
+    color:#555;
     border:.1em solid;
     border-color: #8ed9f6;
     border-radius:10px;
@@ -516,4 +516,3 @@ tbody tr:nth-child(odd) {
 .notify-yellow { background: #fff8c4; border-color: #f7deae; }
 .notify-red { background: #ffecec; border-color: #fad9d7; }
 .notify-green { background: #e9ffd9; border-color: #D1FAB6; }
-

@@ -12,8 +12,6 @@
     require_once 'fn.php';
     require_once 'thaction.php';
 
-    //$thActionObj = getThAction($thActionId);
-    $thEditActionText = "thEditActionText" . $thId;
     $buttonId = "updateGoalFirstButton" . $thId;
     $thObj = getTh($thId);
     $goalFirstRow = getGoalFirstUsingThId($thId);
@@ -49,14 +47,20 @@
                     <td width="5%"></td>
                     <td width="5%">G1</td>
                     <td>
-                        <input type="text" name="txtg1" id="txtg1" value="<?php echo $goalFirstG1Row->g1;?>"/>
+                        <?php
+                          $g1ControlName = "edittxtg1" . $thId;
+                        ?>
+                        <input type="text" name="<?php echo $g1ControlName;?>" id="<?php echo $g1ControlName;?>" value="<?php echo $goalFirstG1Row->g1;?>"/>
                     </td>
                 </tr>
                 <tr>
                     <td width="5%"></td>
                     <td width="5%">Fn</td>
                     <td>
-                        <select name="slctfn1" id="slctfn1" style="width:100%">
+                        <?php
+                          $fn1ControlName = "editslctfn1" . $thId;
+                        ?>
+                        <select name="<?php echo $fn1ControlName;?>" id="<?php echo $fn1ControlName;?>" style="width:100%">
                             <option value="" selected="selected">--Select--</option>
                             <?php
                                 foreach ($fnIdArray as $fnId) {
@@ -83,8 +87,8 @@
                             $goalFirstG1ObjFnId = $goalFirstG1ObjFnRow->id;
                             $fn_row = getFn($goalFirstG1ObjFnRow->fn_id);
                             //define the control name in here...
-                            $goalFirstG1ObjControlName = "txtgoalfirstg1obj" . $goalFirstG1Ctr;
-                            $goalFirstG1FnControlName = "slctgoalfirstg1fn" . $goalFirstG1Ctr;
+                            $goalFirstG1ObjControlName = "edittxtgoalfirstg1obj" . $thId . $goalFirstG1Ctr;
+                            $goalFirstG1FnControlName = "editslctgoalfirstg1fn" . $thId . $goalFirstG1Ctr;
                             ?>
                             <tr>
                                 <td width="5%"></td>
@@ -139,14 +143,20 @@
                     <td width="5%"></td>
                     <td width="5%">G2</td>
                     <td>
-                        <input type="text" name="txtg2" id="txtg2" value="<?php echo $goalFirstG2Row->g2;?>"/>
+                        <?php
+                          $g2ControlName = "edittxtg2" . $thId;
+                        ?>
+                        <input type="text" name="<?php echo $g2ControlName;?>" id="<?php echo $g2ControlName;?>" value="<?php echo $goalFirstG2Row->g2;?>"/>
                     </td>
                 </tr>
                 <tr>
                     <td width="5%"></td>
                     <td width="5%">Fn</td>
                     <td>
-                        <select name="slctfn2" id="slctfn2" style="width:100%">
+                        <?php
+                          $fn2ControlName = "editslctfn2" . $thId;
+                        ?>
+                        <select name="<?php echo $fn2ControlName;?>" id="<?php echo $fn2ControlName;?>" style="width:100%">
                             <option value="">--Select--</option>
                             <?php
                                 foreach ($fnIdArray as $fnId) {
@@ -172,8 +182,8 @@
                         while($goalFirstG2ObjFnRow = mysql_fetch_object($goalFirstG2ObjFnList)){
                             $goalFirstG2ObjFnId = $goalFirstG2ObjFnRow->id;
                             $fn_row = getFn($goalFirstG2ObjFnRow->fn_id);
-                            $goalFirstG2ObjControlName = "txtgoalfirstg2obj" . $goalFirstG2Ctr;
-                            $goalFirstG2FnControlName = "slctgoalfirstg2fn" . $goalFirstG2Ctr;
+                            $goalFirstG2ObjControlName = "edittxtgoalfirstg2obj" . $thId . $goalFirstG2Ctr;
+                            $goalFirstG2FnControlName = "editslctgoalfirstg2fn" . $thId . $goalFirstG2Ctr;
                             ?>
                             <tr>
                                 <td width="5%"></td>
@@ -228,14 +238,20 @@
                     <td width="5%"></td>
                     <td width="5%">G3</td>
                     <td>
-                        <input type="text" name="txtg3" id="txtg3" value="<?php echo $goalFirstG3Row->g3;?>"/>
+                        <?php
+                          $g3ControlName = "edittxtg3" . $thId;
+                        ?>
+                        <input type="text" name="<?php echo $g3ControlName;?>" id="<?php echo $g3ControlName;?>" value="<?php echo $goalFirstG3Row->g3;?>"/>
                     </td>
                 </tr>
                 <tr>
                     <td width="5%"></td>
                     <td width="5%">Fn</td>
                     <td>
-                        <select name="slctfn3" id="slctfn3" style="width:100%">
+                        <?php
+                          $fn3ControlName = "editslctfn3" . $thId;
+                        ?>
+                        <select name="<?php echo $fn3ControlName;?>" id="<?php echo $fn3ControlName;?>" style="width:100%">
                             <option value="">--Select--</option>
                             <?php
                                 foreach ($fnIdArray as $fnId) {
@@ -261,8 +277,8 @@
                         while($goalFirstG3ObjFnRow = mysql_fetch_object($goalFirstG3ObjFnList)){
                             $goalFirstG3ObjFnId = $goalFirstG3ObjFnRow->id;
                             $fn_row = getFn($goalFirstG3ObjFnRow->fn_id);
-                            $goalFirstG3ObjControlName = "txtgoalfirstg3obj" . $goalFirstG3Ctr;
-                            $goalFirstG3FnControlName = "slctgoalfirstg3fn" . $goalFirstG3Ctr;
+                            $goalFirstG3ObjControlName = "edittxtgoalfirstg3obj" . $thId . $goalFirstG3Ctr;
+                            $goalFirstG3FnControlName = "editslctgoalfirstg3fn" . $thId . $goalFirstG3Ctr;
                             ?>
                             <tr>
                                 <td width="5%"></td>
@@ -334,12 +350,18 @@
             var goalFirstG3ObjControlName = null;
             var goalFirstG3FnControlName = null;
             //get the static control value here...
-            var txtG1Val = $('#txtg1').val();
-            var slctFn1Val = $('#slctfn1').val();
-            var txtG2Val = $('#txtg2').val();
-            var slctFn2Val = $('#slctfn2').val();
-            var txtG3Val = $('#txtg3').val();
-            var slctFn3Val = $('#slctfn3').val();
+            var g1ControlName = "edittxtg1" + thId;
+            var g2ControlName = "edittxtg2" + thId;
+            var g3ControlName = "edittxtg3" + thId;
+            var fn1ControlName = "editslctfn1" + thId;
+            var fn2ControlName = "editslctfn2" + thId;
+            var fn3ControlName = "editslctfn3" + thId;
+            var txtG1Val = $('#' + g1ControlName).val();
+            var slctFn1Val = $('#' + fn1ControlName).val();
+            var txtG2Val = $('#' + g2ControlName).val();
+            var slctFn2Val = $('#' + fn2ControlName).val();
+            var txtG3Val = $('#' + g3ControlName).val();
+            var slctFn3Val = $('#' + fn3ControlName).val();
             //now grab the ids here
             var goalFirstG1Id = "<?php echo $goalFirstG1Id;?>";
             var goalFirstG1ObjFnId = "<?php echo $goalFirstG1ObjFnId;?>";
@@ -353,7 +375,7 @@
             var divId = "actionDiv" + thId;
 
             if(true){
-                var dataString = "txtG1Val="+txtG1Val+
+                var dataString = "txtG1Val="+txtG1Val+"&thId="+thId+
                 "&slctFn1Val="+slctFn1Val+"&txtG2Val="+txtG2Val+"&slctFn2Val="+slctFn2Val+"&txtG3Val="+txtG3Val+
                 "&slctFn3Val="+slctFn3Val+"&goalFirstG1Id="+goalFirstG1Id+"&goalFirstG1ObjFnId="+goalFirstG1ObjFnId+
                 "&goalFirstG2Id="+goalFirstG2Id+"&goalFirstG2ObjFnId="+goalFirstG2ObjFnId+"&goalFirstG3Id="+goalFirstG3Id+
@@ -361,8 +383,8 @@
                 goalFirstG2Ctr+"&goalFirstG3Ctr="+goalFirstG3Ctr+"&goalFirstId="+goalFirstId;
                 //now get the dynamic values and append it to the dataString variable.
                 for(var i=1; i<=goalFirstG1Ctr; i++){
-                    var goalFirstG1ObjControlName = "txtgoalfirstg1obj" + i;
-                    var goalFirstG1FnControlName = "slctgoalfirstg1fn" + i;
+                    var goalFirstG1ObjControlName = "edittxtgoalfirstg1obj" + thId + i;
+                    var goalFirstG1FnControlName = "editslctgoalfirstg1fn" + thId + i;
                     var goalFirstG1ObjVal = $('#'+goalFirstG1ObjControlName).val();
                     var goalFirstG1FnVal = $('#'+goalFirstG1FnControlName).val();
                     //append it to the dataString variable...
@@ -371,8 +393,8 @@
                 }
 
                 for(var j=1; j<=goalFirstG2Ctr; j++){
-                    var goalFirstG2ObjControlName = "txtgoalfirstg2obj" + j;
-                    var goalFirstG2FnControlName = "slctgoalfirstg2fn" + j;
+                    var goalFirstG2ObjControlName = "edittxtgoalfirstg2obj" + thId + j;
+                    var goalFirstG2FnControlName = "editslctgoalfirstg2fn" + thId + j;
                     var goalFirstG2ObjVal = $('#'+goalFirstG2ObjControlName).val();
                     var goalFirstG2FnVal = $('#'+goalFirstG2FnControlName).val();
                     //append it to the dataString variable...
@@ -381,8 +403,8 @@
                 }
 
                 for(var k=1; k<=goalFirstG3Ctr; k++){
-                    var goalFirstG3ObjControlName = "txtgoalfirstg3obj" + k;
-                    var goalFirstG3FnControlName = "slctgoalfirstg3fn" + k;
+                    var goalFirstG3ObjControlName = "edittxtgoalfirstg3obj" + thId + k;
+                    var goalFirstG3FnControlName = "editslctgoalfirstg3fn" + thId + k;
                     var goalFirstG3ObjVal = $('#'+goalFirstG3ObjControlName).val();
                     var goalFirstG3FnVal = $('#'+goalFirstG3FnControlName).val();
                     //append it to the dataString variable...

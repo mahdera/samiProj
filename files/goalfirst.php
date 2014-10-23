@@ -1,6 +1,6 @@
 <?php
     require_once 'dbconnection.php';
-    
+
     function saveGoalFirst($thId, $modifiedBy){
         try{
             $query = "insert into tbl_goal_first values(0, $thId, $modifiedBy, NOW())";
@@ -9,7 +9,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function updateGoalFirst($id, $thId, $modifiedBy){
         try{
             $query = "update tbl_goal_first set th_id = $thId, modified_by = $modifiedBy, modification_date = NOW() where id = $id";
@@ -18,7 +18,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function deleteGoalFirst($id){
         try{
             $query = "delete from tbl_goal_first where id = $id";
@@ -27,7 +27,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function getAllGoalFirsts(){
         try{
             $query = "select * from tbl_goal_first";
@@ -48,7 +48,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function getGoalFirst($id){
         try{
             $query = "select * from tbl_goal_first where id = $id";
@@ -59,10 +59,10 @@
             $ex->getMessage();
         }
     }
-    
+
     function getGoalFirstUsingThId($thId){
         try{
-            $query = "select * from tbl_goal_first where th_id = $thId";            
+            $query = "select * from tbl_goal_first where th_id = $thId";
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;
@@ -73,7 +73,7 @@
 
     function getGoalFirstUsingThIdAndModifiedBy($thId, $modifiedBy){
         try{
-            $query = "select * from tbl_goal_first where th_id = $thId and modified_by = $modifiedBy";            
+            $query = "select * from tbl_goal_first where th_id = $thId and modified_by = $modifiedBy";
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;
@@ -81,10 +81,10 @@
             $ex->getMessage();
         }
     }
-    
+
     function getAllGoalFirstsUsingThId($thId){
         try{
-            $query = "select * from tbl_goal_first where th_id = $thId";            
+            $query = "select * from tbl_goal_first where th_id = $thId";
             $result = read($query);
             return $result;
         } catch (Exception $ex) {
