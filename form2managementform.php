@@ -24,17 +24,17 @@
             <td>
                 <textarea name="q2_4" id="q2_4" style="width: 100%" rows="3"></textarea>
             </td>
-        </tr>        
+        </tr>
         <tr>
             <td colspan="2" align="right">
-                <input type="button" value="Save" id="btnsaveform2"/>                
+                <input type="button" value="Save" id="btnsaveform2"/>
             </td>
         </tr>
     </table>
 </form>
 <div id="form2ManagementDetailDiv"></div>
 <script type="text/javascript">
-    $(document).ready(function(){       
+    $(document).ready(function(){
 
         showListOfForm2Records();
 
@@ -43,16 +43,17 @@
             var q2_2 = $('#q2_2').val();
             var q2_3 = $('#q2_3').val();
             var q2_4 = $('#q2_4').val();
-            
+
             if(q2_1 !== "" && q2_2 !== "" && q2_3 !== "" && q2_4 !== ""){
                 var dataString = "q2_1="+q2_1+"&q2_2="+q2_2+"&q2_3="+q2_3+
                         "&q2_4="+q2_4;
                 $.ajax({
-                    url: 'files/saveform2.php',        
+                    url: 'files/saveform2.php',
                     data: dataString,
                     type:'POST',
-                    success:function(response){ 
-                        alert('Form Two Saved Successfully!');                    
+                    success:function(response){
+                        //alert('Form Two Saved Successfully!');
+                        $('#form2Div').html('<div class="notify notify-green"><span class="symbol icon-tick"></span> Form Tow Saved Successfully!</div>');
                         clearInputFields();
                         showListOfForm2Records();
                     },
@@ -64,7 +65,7 @@
                 alert("Please enter all the input fields");
             }
         });
-        
+
         function clearInputFields(){
             $('#q2_1').val('');
             $('#q2_2').val('');
@@ -72,7 +73,7 @@
             $('#q2_4').val('');
         }
 
-               
+
 
         function showListOfForm2Records(){
             $('#form2ManagementDetailDiv').load('files/showlistofform2records.php');

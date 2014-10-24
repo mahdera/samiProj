@@ -6,31 +6,32 @@
             <td>
                 <textarea name="q8_1" id="q8_1" style="width: 100%" rows="3"></textarea>
             </td>
-        </tr>        
+        </tr>
         <tr>
             <td colspan="2" align="right">
-                <input type="button" value="Save" id="btnsaveform8"/>                
+                <input type="button" value="Save" id="btnsaveform8"/>
             </td>
         </tr>
     </table>
 </form>
 <div id="form8ManagementDetailDiv"></div>
 <script type="text/javascript">
-    $(document).ready(function(){       
+    $(document).ready(function(){
 
         showListOfForm8Records();
 
         $('#btnsaveform8').click(function(){
             var q8_1 = $('#q8_1').val();
-                        
+
             if(q8_1 !== ""){
                 var dataString = "q8_1="+q8_1;
                 $.ajax({
-                    url: 'files/saveform8.php',        
+                    url: 'files/saveform8.php',
                     data: dataString,
                     type:'POST',
-                    success:function(response){ 
-                        alert('Form Eight Saved Successfully!');                    
+                    success:function(response){
+                        //alert('Form Eight Saved Successfully!');
+                        $('#form8Div').html('<div class="notify notify-green"><span class="symbol icon-tick"></span> Form Eight Saved Successfully!</div>');
                         clearInputFields();
                         showListOfForm8Records();
                     },
@@ -42,9 +43,9 @@
                 alert("Please enter value in the input field");
             }
         });
-        
+
         function clearInputFields(){
-            $('#q8_1').val('');            
+            $('#q8_1').val('');
         }
 
         function showListOfForm8Records(){

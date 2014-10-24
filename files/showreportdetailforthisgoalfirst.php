@@ -1,9 +1,9 @@
 <?php
 	session_start();
 	//require_once('../msdocgenerator/clsMsDocGenerator.php');
-	//$doc = new clsMsDocGenerator();	
+	//$doc = new clsMsDocGenerator();
 	//$doc->setFontFamily('Times New Roman');
-	//$doc->setFontSize('14');	
+	//$doc->setFontSize('14');
 
 	//$doc->startTable(NULL, 'tableGrid');
 
@@ -115,7 +115,7 @@
 		</table>
 
 		<table border="0" width="100%">
-			<?php 
+			<?php
 				$form2Obj = getForm2ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
 			?>
 			<tr>
@@ -137,118 +137,118 @@
 		</table>
 
 		<table border="0" width="100%">
-			<?php 
+			<?php
 				$form3Obj = getForm3ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
 			?>
 			<tr>
 				<td width="20%">Q3.1:</td>
 				<td>
-					<?php 
+					<?php
 						if(!empty($form3Obj))
 							echo $form3Obj->q3_1;
 					?>
 				</td>
-			</tr>			
+			</tr>
 		</table>
 
 		<table border="0" width="100%">
-			<?php 
+			<?php
 				$form4Obj = getForm4ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
 			?>
 			<tr>
 				<td width="20%">Q4.1:</td>
 				<td>
-					<?php 
+					<?php
 						if(!empty($form4Obj))
 							echo $form4Obj->q4_1;
 					?>
 				</td>
-			</tr>			
+			</tr>
 		</table>
 
 		<table border="0" width="100%">
-			<?php 
+			<?php
 				$form5Obj = getForm5ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
 			?>
 			<tr>
 				<td width="20%">Q5.1:</td>
 				<td>
-					<?php 
+					<?php
 						if(!empty($form5Obj))
 							echo $form5Obj->q5_1;
 					?>
 				</td>
-			</tr>			
+			</tr>
 		</table>
 
 		<table border="0" width="100%">
-			<?php 
+			<?php
 				$form6Obj = getForm6ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
 			?>
 			<tr>
 				<td width="20%">Q6.1:</td>
 				<td>
-					<?php 
+					<?php
 						if(!empty($form6Obj))
 							echo $form6Obj->q6_1;
 					?>
 				</td>
-			</tr>			
+			</tr>
 		</table>
 
 		<table border="0" width="100%">
-			<?php 
+			<?php
 				$form7Obj = getForm7ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
 			?>
 			<tr>
 				<td width="20%">Q7.1:</td>
 				<td>
-					<?php 
+					<?php
 						if(!empty($form7Obj))
 							echo $form7Obj->q7_1;
 					?>
 				</td>
-			</tr>			
+			</tr>
 		</table>
 
 		<table border="0" width="100%">
-			<?php 
+			<?php
 				$form8Obj = getForm8ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
 			?>
 			<tr>
 				<td width="20%">Q8.1:</td>
 				<td>
-					<?php 
+					<?php
 						if(!empty($form80Obj))
 							echo $form8Obj->q8_1
 					;?>
 				</td>
-			</tr>			
+			</tr>
 		</table>
 
 		<table border="0" width="100%">
-			<?php 
+			<?php
 				$form9Obj = getForm9ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
 			?>
 			<tr>
 				<td width="20%">Q9.1:</td>
 				<td><?php echo $form9Obj->q9_1;?></td>
-			</tr>			
+			</tr>
 		</table>
 
 		<table border="0" width="100%">
-			<?php 
+			<?php
 				$form10Obj = getForm10ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
 			?>
 			<tr>
 				<td width="20%">Q10.1:</td>
 				<td>
-					<?php 
+					<?php
 						if(!empty($form10Obj))
 							echo $form10Obj->q10_1;
 					?>
 				</td>
-			</tr>			
+			</tr>
 		</table>
 		<table border="0" width="100%">
 		<?php
@@ -260,7 +260,7 @@
 					<tr>
 						<td width="20%">Th</td>
 						<td><?php echo $thObj->th_name;?></td>
-					</tr>					
+					</tr>
 					<?php
 					//now try getting the g1 and fns..
 					$goalFirstG1List = getAllGoalFirstG1ForGoalFirstId($goalFirstId);
@@ -312,7 +312,7 @@
 					<tr>
 						<td width="20%">Th</td>
 						<td><?php echo $thObj->th_name;?></td>
-					</tr>					
+					</tr>
 					<?php
 					//now try getting the g1 and fns..
 					$goalFirstG2List = getAllGoalFirstG2ForGoalFirstId($goalFirstId);
@@ -365,7 +365,7 @@
 					<tr>
 						<td width="20%">Th</td>
 						<td><?php echo $thObj->th_name;?></td>
-					</tr>					
+					</tr>
 					<?php
 					//now try getting the g1 and fns..
 					$goalFirstG3List = getAllGoalFirstG3ForGoalFirstId($goalFirstId);
@@ -412,21 +412,21 @@
 				<td align="right">
 					<a href="#.jsp" onclick="printDiv('printReportDiv')"><img src="images/printer.jpg" align="absmiddle"/> Print</a>
 					|
-					<a href="#.jsp" id="wordReportLinkId"><img src="images/word.jpeg" align="absmiddle"/> Generate Word Doc</a>
+					<a href="files/exportreporttoword.php" target="_blank" id="wordReportLinkId123"><img src="images/word.jpeg" align="absmiddle"/> Generate Word Doc</a>
 				</td>
 			</tr>
 		</table>
-		<?php 
+		<?php
 		//$doc->endTable();
 
 		//$doc->output();
 	}
 ?>
 <script type="text/javascript">
-	function printDiv(divName) {	
-	    var printContents = document.getElementById(divName).innerHTML;    
+	function printDiv(divName) {
+	    var printContents = document.getElementById(divName).innerHTML;
 	    window.document.getElementById(divName).innerHTML = printContents;
-	    window.print();    
+	    window.print();
 	}
 
 	$(document).ready(function(){

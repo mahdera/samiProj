@@ -404,6 +404,11 @@
             }
         });
 
+        $('#slctg1fn').click(function(){
+          //alert('u clicked at ' + $(this));
+          //so the idea is to read from table tbl_fn whenever the user clicks on the dropdown for function.
+        });
+
         $('#slctg1fn1').change(function(){
             var fnVal = $(this).val();
             if(fnVal === "other"){
