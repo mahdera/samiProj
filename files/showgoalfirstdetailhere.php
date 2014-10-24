@@ -1,7 +1,7 @@
 <?php
     //this file should list only those ths now having th action filled for them...
     $thId = $_GET['thId'];
-    
+
     require_once 'th.php';
     require_once 'goalfirst.php';
     require_once 'goalfirstg1.php';
@@ -12,25 +12,24 @@
     require_once 'goalfirstg3objfn.php';
     require_once 'fn.php';
     require_once 'thaction.php';
-    $countVal = 0;
-    $countVal = doesThisThAlreadyActionFilledForIt($thId);
-    if(!$countVal){
+
+    if(true){
     //now get all goalfirst records associated with this particular thId
     $goalFirstRow = getGoalFirstUsingThId($thId);
     if(!empty($goalFirstRow)){
         //now get all goalfirstg1 records associated with this particualr goalfirstid
         ?>
-        <table border="0" width="100%">           
-            <?php                    
+        <table border="0" width="100%">
+            <?php
             $goalFirstG1Row = getGoalFirstG1ForGoalFirst($goalFirstRow->id);
-            
-            if(!empty($goalFirstG1Row)){  
+
+            if(!empty($goalFirstG1Row)){
                 $fn_row = getFn($goalFirstG1Row->fn_id);
                 ?>
                 <tr>
                     <td width="30%"></td>
                     <td width="30%">G1</td>
-                    <td><?php echo $goalFirstG1Row->g1;?></td>                    
+                    <td><?php echo $goalFirstG1Row->g1;?></td>
                 </tr>
                 <tr>
                     <td width="30%"></td>
@@ -58,23 +57,23 @@
                         }//end while loop
                     }//end if condition for goalFirstG1ObjFnList
                 ?>
-                <?php                
+                <?php
             }//end empty checking for goalFirstG1List
 
             ?>
-        </table>  
+        </table>
         <!--doing the samething for goalfirstg2...-->
-        <table border="0" width="100%">           
-            <?php                    
+        <table border="0" width="100%">
+            <?php
             $goalFirstG2Row = getGoalFirstG2ForGoalFirst($goalFirstRow->id);
-            
-            if(!empty($goalFirstG2Row)){    
+
+            if(!empty($goalFirstG2Row)){
                 $fn_row = getFn($goalFirstG2Row->fn_id);
                 ?>
                 <tr>
                     <td width="30%"></td>
                     <td width="30%">G2</td>
-                    <td><?php echo $goalFirstG2Row->g2;?></td>                    
+                    <td><?php echo $goalFirstG2Row->g2;?></td>
                 </tr>
                 <tr>
                     <td width="30%"></td>
@@ -97,28 +96,28 @@
                                 <td width="30%"></td>
                                 <td width="30%">Fn</td>
                                 <td><?php echo $fn_row->fn_name;?></td>
-                            </tr>                            
+                            </tr>
                             <?php
                         }//end while loop
                     }//end if condition for goalFirstG1ObjFnList
                 ?>
-                <?php                
+                <?php
             }//end empty checking for goalFirstG1List
 
             ?>
-        </table> 
+        </table>
         <!--doing the samething for goalfirstg3...-->
-        <table border="0" width="100%">           
-            <?php                    
+        <table border="0" width="100%">
+            <?php
             $goalFirstG3Row = getGoalFirstG3ForGoalFirst($goalFirstRow->id);
-            
-            if(!empty($goalFirstG3Row)){                
+
+            if(!empty($goalFirstG3Row)){
                 $fn_row = getFn($goalFirstG3Row->fn_id);
                 ?>
                 <tr>
                     <td width="30%"></td>
                     <td width="30%">G3</td>
-                    <td><?php echo $goalFirstG3Row->g3;?></td>                    
+                    <td><?php echo $goalFirstG3Row->g3;?></td>
                 </tr>
                 <tr>
                     <td width="30%"></td>
@@ -146,17 +145,17 @@
                         }//end while loop
                     }//end if condition for goalFirstG1ObjFnList
                 ?>
-                <?php                
+                <?php
             }//end empty checking for goalFirstG1List
 
             ?>
-        </table>        
-        <?php    
+        </table>
+        <?php
     }else{
         echo '<div class="notify notify-red"><span class="symbol icon-error"></span> No Associated Th Record Found!</div>';
     }
 }else{
-    echo '<div class="notify notify-yellow"><span class="symbol icon-excl"></span> You Already Added Action to this Th Record!</div>';
+    //echo '<div class="notify notify-yellow"><span class="symbol icon-excl"></span> You Already Added Action to this Th Record!</div>';
 }
 ?>
 <script type="text/javascript">
@@ -165,7 +164,7 @@
         var textAreaId = "thAction_" + thId;
         var buttonId = "thAddAction_" + thId;
         var divId = "actionDiv" + thId;
-        
+
         $('#'+buttonId).click(function(){
             //now get the value from the textarea...
             var textAreaValue = $('#'+textAreaId).val();
@@ -173,10 +172,10 @@
             //now save this part and update the div about the status of the save transaction
             if(textAreaValue !== ''){
                 $.ajax({
-                    url: 'files/savethaction.php',        
+                    url: 'files/savethaction.php',
                     data: dataString,
                     type:'POST',
-                    success:function(response){                     
+                    success:function(response){
                         $('#'+divId).html(response);
                     },
                     error:function(error){

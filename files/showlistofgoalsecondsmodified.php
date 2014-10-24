@@ -24,7 +24,7 @@
             $countVal = 0;
             $divId = "actionDiv" . $fnObj->id;
             $countVal = doesThisFnAlreadyActionFilledForIt($fnObj->id);
-            if(!$countVal){
+            if(true){
                 ?>
                     <tr>
                         <td width="10%"><?php echo $ctr++;?></td>
@@ -46,10 +46,7 @@
                     </tr>
                 <?php
             }
-        }//end while loop
-        if($countVal){
-            echo '<div class="notify"><span class="symbol icon-info"></span> All Fns Have Action Record !</div>';
-        }
+        }//end while loop        
     ?>
 </table>
 <script type="text/javascript">

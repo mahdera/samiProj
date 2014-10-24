@@ -32,8 +32,8 @@
     saveGoalFirstG1($fetchedGoalFirst->id, $g1, $g1Fn, $_SESSION['LOGGED_USER_ID']);
     //fetch the value using the above parameters you have used to save the values to the database...
     $fetchedGoalFirstG1 = getGoalFirstG1UsingAndModifiedBy($fetchedGoalFirst->id, $g1, $g1Fn, $_SESSION['LOGGED_USER_ID']);
-    
-    
+
+
     for($i = 1; $i <= $numItemsG1; $i++){
         $g1ObjTextBoxId = "txtg1obj" . $i;
         $g1ObjTextBoxValue = $_POST["$g1ObjTextBoxId"];
@@ -42,12 +42,12 @@
         //now save the values to the database...
         saveGoalFirstG1ObjFn($fetchedGoalFirstG1->id, $g1ObjTextBoxValue, $g1FnSelectBoxValue, $_SESSION['LOGGED_USER_ID']);
     }//end for loop i
-    
+
     //now do the same thing for G2
     saveGoalFirstG2($fetchedGoalFirst->id, $g2, $g2Fn, $_SESSION['LOGGED_USER_ID']);
     //fetch the value using the above parameters you have used to save the values to the database...
     $fetchedGoalFirstG2 = getGoalFirstG2UsingAndModifiedBy($fetchedGoalFirst->id, $g2, $g2Fn, $_SESSION['LOGGED_USER_ID']);
-    
+
     for($j = 1; $j <= $numItemsG2; $j++){
         $g2ObjTextBoxId = "txtg2obj" . $j;
         $g2ObjTextBoxValue = $_POST["$g2ObjTextBoxId"];
@@ -56,12 +56,12 @@
         //now save the values to the database...
         saveGoalFirstG2ObjFn($fetchedGoalFirstG2->id, $g2ObjTextBoxValue, $g2FnSelectBoxValue, $_SESSION['LOGGED_USER_ID']);
     }//end for loop i
-    
+
     //now do the same thing for G3
     saveGoalFirstG3($fetchedGoalFirst->id, $g3, $g3Fn, $_SESSION['LOGGED_USER_ID']);
     //fetch the value using the above parameters you have used to save the values to the database...
     $fetchedGoalFirstG3 = getGoalFirstG3UsingAndModifiedBy($fetchedGoalFirst->id, $g3, $g3Fn, $_SESSION['LOGGED_USER_ID']);
-    
+
     for($k = 1; $k <= $numItemsG3; $k++){
         $g3ObjTextBoxId = "txtg3obj" . $k;
         $g3ObjTextBoxValue = $_POST["$g3ObjTextBoxId"];

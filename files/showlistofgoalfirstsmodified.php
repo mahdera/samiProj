@@ -25,8 +25,8 @@
                         $thObj = getTh($goalFirstRow->th_id);
                         $countVal = 0;
                         $divId = "actionDiv" . $thObj->id;
-                        $countVal = doesThisThAlreadyActionFilledForIt($thObj->id);
-                        if(!$countVal){
+                        //$countVal = doesThisThAlreadyActionFilledForIt($thObj->id);
+                        if(true){
                             ?>
                             <tr>
                                 <td><?php echo $ctr;?></td>
@@ -50,9 +50,6 @@
                             $ctr++;
                         }//end inner...if condition
                     }//end while loop construct
-                    if($countVal){
-                        //echo '<div class="notify"><span class="symbol icon-info"></span> All Ths Have Action Record !</div>';
-                    }
                 ?>
         </table>
         <?php

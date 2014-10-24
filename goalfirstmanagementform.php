@@ -1,8 +1,8 @@
 <?php
     require_once 'files/th.php';
     require_once 'files/fn.php';
-    $thList = getAllThs();
-    $fnList = getAllFns();
+    //$thList = getAllThs();
+    //$fnList = getAllFns();
 ?>
 <h1>Add Goal First</h1>
 <a href="#.php" id="showGoalFirstManagementFormLinkId">Show Form</a>
