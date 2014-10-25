@@ -240,6 +240,7 @@
         </tr>
     </table>
 </form>
+
 <hr/>
 <div id="subDetailDiv"></div>
 <script type="text/javascript">
@@ -351,6 +352,8 @@
         });
 
         function clearFormInputField(){
+          $('#goalFirstManagementForm')[0].reset();
+          /*
             $('#slctth').val('');
             $('#txtg1').val('');
             $('#slctg1fn').val('');
@@ -388,6 +391,7 @@
                 $('#' + textBoxControlName).val('');
                 $('#' + selectControlName).val('');
             }
+            */
 
         }
 

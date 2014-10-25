@@ -21,7 +21,7 @@
         $('#btnsaveform3').click(function(){
             var q3_1 = $('#q3_1').val();
 
-            if(q3_1 !== ""){
+            if(true){
                 var dataString = "q3_1="+q3_1;
                 $.ajax({
                     url: 'files/saveform3.php',

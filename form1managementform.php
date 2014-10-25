@@ -1,5 +1,5 @@
 <h2>Form 1</h2>
-<form style="background:white">
+<form style="background:white" id="form1Entry">
     <table border="0" width="100%">
         <tr>
             <td>Title</td>
@@ -158,7 +158,7 @@
             var q4NumItems = $('.thInputRowQ4').length;
             var dataString = "";
 
-            if(title !== "" && formDate !== "" && plan !== "" && q1 !== "" && q2 !== ""){
+            if(formDate !== ""){
                 dataString += "title="+encodeURIComponent(title)+"&formDate="+
                         formDate+"&plan="+encodeURIComponent(plan)+
                         "&q1="+encodeURIComponent(q1)+"&q2="+encodeURIComponent(q2)+
@@ -196,6 +196,8 @@
         });//end button.click function
 
         function clearFormInputFields(q3NumItems, q4NumItems){
+            $('#form1Entry')[0].reset();
+            /*
             $('#txttitle').val('');
             $('#datepicker').val('');
             $('#textareaplan').val('');
@@ -210,7 +212,7 @@
             for(var j=1; j <= q4NumItems; j++){
                 var textBoxId = "txtrowq4"+j;
                 $('#'+textBoxId).val('');
-            }
+            }*/
         }
 
         function showListOfForm1Records(){

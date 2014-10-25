@@ -23,7 +23,7 @@
         $('#btnsaveform5').click(function(){
             var q5_1 = $('#q5_1').val();
 
-            if(q5_1 !== ""){
+            if(true){
                 var dataString = "q5_1="+q5_1;
                 $.ajax({
                     url: 'files/saveform5.php',
