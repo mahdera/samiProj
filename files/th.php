@@ -22,6 +22,7 @@
     function deleteTh($id){
         try{
             $query = "delete from tbl_th where id = $id";
+            //echo $query;
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();

@@ -15,7 +15,7 @@
                 <td>Obj:</td>
                 <td>
                     <input type="text" id="<?php echo $objControlName;?>" name="<?php echo $objControlName;?>" class="g3Obj"/>
-                </td>                        
+                </td>
             </tr>
             <tr>
                 <td>Fn:</td>

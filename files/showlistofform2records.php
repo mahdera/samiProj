@@ -2,7 +2,7 @@
 	session_start();
 	//get all form2 values created by the session owner user...
 	require_once 'form2.php';
-	$form2List = getAllForm2sModifiedBy($_SESSION['LOGGED_USER_ID']);	
+	$form2List = getAllForm2sModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
 <table border="0" width="100%">
 	<tr style="background:#ccc">
@@ -25,7 +25,7 @@
 					<a href="#.php" class="form2EditLink" id="<?php echo $form2Row->id;?>">Edit</a>
 				</td>
 				<td>
-					<a href="#.php" class="form2DeleteLink" id="<?php echo $form2Row->id;?>">Delete</a>	
+					<a href="#.php" class="form2DeleteLink" id="<?php echo $form2Row->id;?>">Delete</a>
 				</td>
 			</tr>
 			<?php

@@ -4,6 +4,7 @@
     require_once 'files/th.php';
     $thActionList = getAllThActionsModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
+<div id="thActionDetailDiv">
 <table border="0" width="100%">
     <tr style="background: #ccc">
         <td>Ser.No</td>
@@ -14,7 +15,7 @@
     <?php
         $ctr=1;
         while($thActionRow = mysql_fetch_object($thActionList)){
-            $thObj = getTh($thActionRow->th_id);            
+            $thObj = getTh($thActionRow->th_id);
             ?>
             <tr>
                 <td><?php echo $ctr++;?></td>
@@ -23,9 +24,12 @@
                 <td>
                     <?php
                         $editLinkId = $thActionRow->id;
-                        $editDivId = "editActionTextDiv" . $thActionRow->id
+                        $editDivId = "editActionTextDiv" . $thActionRow->id;
+                        $deleteLinkId = $thActionRow->id;
                     ?>
                     <a href="#.php" id="<?php echo $editLinkId;?>" class="editThActionLink">Edit</a>
+                    |
+                    <a href="#.php" id="<?php echo $deleteLinkId;?>" class="deleteThActionLink">Delete</a>
                 </td>
             </tr>
             <tr>
@@ -37,6 +41,7 @@
         }//end while loop
     ?>
 </table>
+</div>
 <script type="text/javascript">
     $(document).ready(function(){
         $('.editThActionLink').click(function(){
@@ -44,6 +49,14 @@
             var id = $(this).attr('id');
             var editDivId = "editActionTextDiv" + id;
             $('#'+editDivId).load('files/showeditthactionform.php?thId='+id);
+        });
+
+        $('.deleteThActionLink').click(function(){
+            if(window.confirm('Are you sure you want to delete this Th Action Record?')){
+                var id = $(this).attr('id');
+                var editDivId = "editActionTextDiv" + id;
+                $('#thActionDetailDiv').load('files/deletethactionform.php?thActionId='+id);
+            }
         });
     });//end document.ready function
 </script>

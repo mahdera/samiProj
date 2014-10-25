@@ -4,6 +4,7 @@
     require_once 'files/fn.php';
     $fnActionList = getAllFnActionsModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
+<div id="fnActionDetailDiv">
 <table border="0" width="100%">
     <tr style="background: #ccc">
         <td width="10%">Ser.No</td>
@@ -14,7 +15,7 @@
     <?php
         $ctr=1;
         while($fnActionRow = mysql_fetch_object($fnActionList)){
-            $fnObj = getFn($fnActionRow->fn_id);            
+            $fnObj = getFn($fnActionRow->fn_id);
             ?>
             <tr>
                 <td><?php echo $ctr++;?></td>
@@ -23,9 +24,12 @@
                 <td>
                     <?php
                         $editLinkId = $fnActionRow->id;
-                        $editDivId = "editActionTextDiv" . $fnActionRow->id
+                        $editDivId = "editActionTextDiv" . $fnActionRow->id;
+                        $deleteLinkId = $fnActionRow->id;
                     ?>
-                    <a href="#.php" id="<?php echo $editLinkId;?>">Edit</a>
+                    <a href="#.php" id="<?php echo $editLinkId;?> class="editFnActionLinkId">Edit</a>
+                    |
+                    <a href="#.php" id="<?php echo $deleteLinkId;?>" class="deleteFnActionLinkId">Delete</a>
                 </td>
             </tr>
             <tr>
@@ -37,12 +41,21 @@
         }//end while loop
     ?>
 </table>
+</div>
 <script type="text/javascript">
     $(document).ready(function(){
-        $('a').click(function(){
+        $('.editFnActionLinkId').click(function(){
             var id = $(this).attr('id');
             var editDivId = "editActionTextDiv" + id;
             $('#'+editDivId).load('files/showeditfnactionform.php?id='+id);
         });
+
+        $('.deleteFnActionLinkId').click(function(){
+            if(window.confirm('Are you sure you want to delete this Fn Action Record?')){
+              var id = $(this).attr('id');
+              $('#thActionDetailDiv').load('files/deletefnactionform.php?fnActionId='+id);
+            }
+        });
+
     });//end document.ready function
 </script>

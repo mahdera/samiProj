@@ -1,41 +1,47 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.9.2
+-- version 4.2.10
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 17, 2014 at 08:01 AM
--- Server version: 5.5.9
--- PHP Version: 5.3.6
+-- Generation Time: Oct 25, 2014 at 07:32 AM
+-- Server version: 5.5.38
+-- PHP Version: 5.6.2
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 --
 -- Database: `db_sami_proj`
 --
-create database if not exists db_sami_proj;
+create database db_sami_proj;
 use db_sami_proj;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `calendar`
+--
 
 CREATE TABLE `calendar` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `member_id` int(11) NOT NULL,
   `title` varchar(55) NOT NULL,
   `notes` text NOT NULL,
   `start` datetime NOT NULL,
-  `end` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+  `end` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `calendar`
 --
 
-INSERT INTO `calendar` VALUES(1, 0, 'First Date', 'Firsts date content goes here', '2012-08-11 07:52:29', '2012-08-11 12:52:33');
-INSERT INTO `calendar` VALUES(2, 0, 'Database Appointment #2', 'Meeting for Juan ', '2012-08-23 08:43:45', '2012-08-23 09:43:50');
-INSERT INTO `calendar` VALUES(3, 0, 'Test title', 'test here', '2012-08-12 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `calendar` VALUES(4, 0, 'test3', '230 test', '2012-08-29 02:30:00', '0000-00-00 00:00:00');
-INSERT INTO `calendar` VALUES(6, 0, 'What a night', 'This is added by the administrator', '2014-10-18 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `calendar` VALUES(8, 0, 'This is in the past days', 'The most important part of the calendary. This line is updated. Again updated for the last time', '2014-10-10 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `calendar` VALUES(9, 0, 'Where is the calendar', 'I dont see the calendary object', '2014-10-18 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `calendar` (`id`, `member_id`, `title`, `notes`, `start`, `end`) VALUES
+(1, 0, 'First Date', 'Firsts date content goes here', '2012-08-11 07:52:29', '2012-08-11 12:52:33'),
+(2, 0, 'Database Appointment #2', 'Meeting for Juan ', '2012-08-23 08:43:45', '2012-08-23 09:43:50'),
+(3, 0, 'Test title', 'test here', '2012-08-12 00:00:00', '0000-00-00 00:00:00'),
+(4, 0, 'test3', '230 test', '2012-08-29 02:30:00', '0000-00-00 00:00:00'),
+(6, 0, 'What a night', 'This is added by the administrator', '2014-10-18 00:00:00', '0000-00-00 00:00:00'),
+(8, 0, 'This is in the past days', 'The most important part of the calendary. This line is updated. Again updated for the last time', '2014-10-10 00:00:00', '0000-00-00 00:00:00'),
+(9, 0, 'Where is the calendar', 'I dont see the calendary object', '2014-10-18 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -44,18 +50,18 @@ INSERT INTO `calendar` VALUES(9, 0, 'Where is the calendar', 'I dont see the cal
 --
 
 CREATE TABLE `calendar_urls` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `member_id` int(11) NOT NULL,
-  `calendar_array` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `calendar_array` text NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `calendar_urls`
 --
 
-INSERT INTO `calendar_urls` VALUES(1, 0, '''events.php''');
-INSERT INTO `calendar_urls` VALUES(2, 0, '''https://www.google.com/calendar/feeds/kelchuk68%40gmail.com/public/basic''');
+INSERT INTO `calendar_urls` (`id`, `member_id`, `calendar_array`) VALUES
+(1, 0, '''events.php'''),
+(2, 0, '''https://www.google.com/calendar/feeds/kelchuk68%40gmail.com/public/basic''');
 
 -- --------------------------------------------------------
 
@@ -64,28 +70,30 @@ INSERT INTO `calendar_urls` VALUES(2, 0, '''https://www.google.com/calendar/feed
 --
 
 CREATE TABLE `tbl_assessment` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `assessment_type` varchar(50) NOT NULL,
   `assessment_date` date NOT NULL,
   `summary` text,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_assessment`
 --
 
-INSERT INTO `tbl_assessment` VALUES(1, 'as1', '2014-10-08', 'this is the summary', 0, '0000-00-00');
-INSERT INTO `tbl_assessment` VALUES(2, 'as1', '2014-10-05', 'sdfasd', 0, '0000-00-00');
-INSERT INTO `tbl_assessment` VALUES(3, 'as2', '2014-10-08', 'This is the Summary written just before SCRUM lol. I love php more than Java', 0, '0000-00-00');
-INSERT INTO `tbl_assessment` VALUES(4, 'as2', '2014-10-09', 'This is the summary info', 5, '2014-10-11');
-INSERT INTO `tbl_assessment` VALUES(5, 'as2', '2014-10-11', 'Sample summary text', 5, '0000-00-00');
-INSERT INTO `tbl_assessment` VALUES(6, 'as1', '2014-10-11', 'Summary by Abebe', 5, '0000-00-00');
-INSERT INTO `tbl_assessment` VALUES(7, 'as2', '2014-10-11', 'This is the sumamry', 5, '0000-00-00');
-INSERT INTO `tbl_assessment` VALUES(9, 'as1', '2014-10-17', 'This is the summary information', 2, '2014-10-17');
-INSERT INTO `tbl_assessment` VALUES(10, 'as1', '2014-10-18', 'Summary of the Assessment', 8, '2014-10-18');
+INSERT INTO `tbl_assessment` (`id`, `assessment_type`, `assessment_date`, `summary`, `modified_by`, `modification_date`) VALUES
+(1, 'as1', '2014-10-08', 'this is the summary', 0, '0000-00-00 00:00:00'),
+(2, 'as1', '2014-10-05', 'sdfasd', 0, '0000-00-00 00:00:00'),
+(3, 'as2', '2014-10-08', 'This is the Summary written just before SCRUM lol. I love php more than Java', 0, '0000-00-00 00:00:00'),
+(4, 'as2', '2014-10-09', 'This is the summary info', 5, '2014-10-11 00:00:00'),
+(5, 'as2', '2014-10-11', 'Sample summary text', 5, '0000-00-00 00:00:00'),
+(6, 'as1', '2014-10-11', 'Summary by Abebe', 5, '0000-00-00 00:00:00'),
+(7, 'as2', '2014-10-11', 'This is the sumamry', 5, '0000-00-00 00:00:00'),
+(9, 'as1', '2014-10-17', 'This is the summary information', 2, '2014-10-17 00:00:00'),
+(10, 'as1', '2014-10-18', 'Summary of the Assessment', 8, '2014-10-18 00:00:00'),
+(11, 'as3', '2014-10-24', 'This is the summary of the Add Assessment Box', 8, '2014-10-24 00:00:00'),
+(12, 'as4', '2014-10-24', 'The summary for the brand new Th goes in here.', 8, '2014-10-24 16:47:03');
 
 -- --------------------------------------------------------
 
@@ -94,29 +102,30 @@ INSERT INTO `tbl_assessment` VALUES(10, 'as1', '2014-10-18', 'Summary of the Ass
 --
 
 CREATE TABLE `tbl_assessment_th` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `assessment_id` bigint(20) NOT NULL,
   `th_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `assessment_id` (`assessment_id`),
-  KEY `th_id` (`th_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_assessment_th`
 --
 
-INSERT INTO `tbl_assessment_th` VALUES(1, 3, 9, 0, '0000-00-00');
-INSERT INTO `tbl_assessment_th` VALUES(2, 3, 10, 0, '0000-00-00');
-INSERT INTO `tbl_assessment_th` VALUES(3, 6, 11, 5, '0000-00-00');
-INSERT INTO `tbl_assessment_th` VALUES(4, 6, 12, 5, '0000-00-00');
-INSERT INTO `tbl_assessment_th` VALUES(5, 6, 13, 5, '0000-00-00');
-INSERT INTO `tbl_assessment_th` VALUES(6, 5, 14, 5, '0000-00-00');
-INSERT INTO `tbl_assessment_th` VALUES(8, 9, 18, 2, '2014-10-17');
-INSERT INTO `tbl_assessment_th` VALUES(9, 9, 19, 2, '2014-10-17');
-INSERT INTO `tbl_assessment_th` VALUES(10, 10, 20, 8, '2014-10-18');
+INSERT INTO `tbl_assessment_th` (`id`, `assessment_id`, `th_id`, `modified_by`, `modification_date`) VALUES
+(1, 3, 9, 0, '0000-00-00 00:00:00'),
+(2, 3, 10, 0, '0000-00-00 00:00:00'),
+(3, 6, 11, 5, '0000-00-00 00:00:00'),
+(4, 6, 12, 5, '0000-00-00 00:00:00'),
+(5, 6, 13, 5, '0000-00-00 00:00:00'),
+(6, 5, 14, 5, '0000-00-00 00:00:00'),
+(8, 9, 18, 2, '2014-10-17 00:00:00'),
+(9, 9, 19, 2, '2014-10-17 00:00:00'),
+(10, 10, 20, 8, '2014-10-18 00:00:00'),
+(11, 11, 24, 8, '2014-10-24 00:00:00'),
+(12, 11, 25, 8, '2014-10-24 00:00:00'),
+(13, 12, 26, 8, '2014-10-24 16:47:03');
 
 -- --------------------------------------------------------
 
@@ -125,27 +134,27 @@ INSERT INTO `tbl_assessment_th` VALUES(10, 10, 20, 8, '2014-10-18');
 --
 
 CREATE TABLE `tbl_fn` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `fn_name` varchar(70) NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_fn`
 --
 
-INSERT INTO `tbl_fn` VALUES(1, 'sdfdsf', 0, '0000-00-00');
-INSERT INTO `tbl_fn` VALUES(2, 'sdfdf', 0, '0000-00-00');
-INSERT INTO `tbl_fn` VALUES(3, 'dfsf', 0, '0000-00-00');
-INSERT INTO `tbl_fn` VALUES(4, 'this is mahder', 0, '0000-00-00');
-INSERT INTO `tbl_fn` VALUES(5, 'LEKU the FN LOVE', 2, '2014-10-16');
-INSERT INTO `tbl_fn` VALUES(6, 'MAHI love', 2, '2014-10-16');
-INSERT INTO `tbl_fn` VALUES(7, 'YEFI BABES', 2, '2014-10-16');
-INSERT INTO `tbl_fn` VALUES(8, 'SAMI FN', 2, '2014-10-16');
-INSERT INTO `tbl_fn` VALUES(9, 'xxx', 2, '2014-10-16');
-INSERT INTO `tbl_fn` VALUES(10, 'AS is', 2, '2014-10-16');
+INSERT INTO `tbl_fn` (`id`, `fn_name`, `modified_by`, `modification_date`) VALUES
+(1, 'sdfdsf', 0, '0000-00-00 00:00:00'),
+(2, 'sdfdf', 0, '0000-00-00 00:00:00'),
+(3, 'dfsf', 0, '0000-00-00 00:00:00'),
+(4, 'this is mahder', 0, '0000-00-00 00:00:00'),
+(5, 'LEKU the FN LOVE', 2, '2014-10-16 00:00:00'),
+(6, 'MAHI love', 2, '2014-10-16 00:00:00'),
+(7, 'YEFI BABES', 2, '2014-10-16 00:00:00'),
+(8, 'SAMI FN', 2, '2014-10-16 00:00:00'),
+(9, 'xxx', 2, '2014-10-16 00:00:00'),
+(10, 'AS is', 2, '2014-10-16 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -154,21 +163,24 @@ INSERT INTO `tbl_fn` VALUES(10, 'AS is', 2, '2014-10-16');
 --
 
 CREATE TABLE `tbl_fn_action` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `fn_id` bigint(20) NOT NULL,
   `action_text` text,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `fn_id` (`fn_id`),
-  UNIQUE KEY `fn_id_2` (`fn_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_fn_action`
 --
 
-INSERT INTO `tbl_fn_action` VALUES(1, 2, 'lkdfkj', 8, '2014-10-18');
+INSERT INTO `tbl_fn_action` (`id`, `fn_id`, `action_text`, `modified_by`, `modification_date`) VALUES
+(5, 8, 'action 1 for sami', 8, '2014-10-25 01:08:03'),
+(6, 8, 'this is action text for 2', 8, '2014-10-25 01:08:16'),
+(7, 8, 'This is the fn1 action', 8, '2014-10-25 01:29:48'),
+(8, 8, 'this is the second action', 8, '2014-10-25 01:29:59'),
+(9, 5, 'Just to be on the safe side', 8, '2014-10-25 01:30:13'),
+(10, 5, 'another action text goes in erher', 8, '2014-10-25 01:30:26');
 
 -- --------------------------------------------------------
 
@@ -177,24 +189,22 @@ INSERT INTO `tbl_fn_action` VALUES(1, 2, 'lkdfkj', 8, '2014-10-18');
 --
 
 CREATE TABLE `tbl_form_1` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `title` varchar(50) NOT NULL,
   `form_date` date NOT NULL,
   `plan` text NOT NULL,
   `q1` text NOT NULL,
   `q2` text NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_1`
 --
 
-INSERT INTO `tbl_form_1` VALUES(10, 'this is the title', '2014-10-09', 'this is the plan', 'this is question 1', 'this is question 2', 0, '0000-00-00');
-INSERT INTO `tbl_form_1` VALUES(12, 'this is the title', '2014-10-18', 'This is the plan', 'q1', 'q2', 8, '2014-10-18');
-INSERT INTO `tbl_form_1` VALUES(13, 'kj', '2014-10-18', 'kjhjkh', 'jhjh', 'jm', 8, '2014-10-18');
+INSERT INTO `tbl_form_1` (`id`, `title`, `form_date`, `plan`, `q1`, `q2`, `modified_by`, `modification_date`) VALUES
+(19, 'This is the title', '2014-10-24', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 8, '2014-10-24 19:36:21');
 
 -- --------------------------------------------------------
 
@@ -203,7 +213,7 @@ INSERT INTO `tbl_form_1` VALUES(13, 'kj', '2014-10-18', 'kjhjkh', 'jhjh', 'jm', 
 --
 
 CREATE TABLE `tbl_form_1_q3` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `form_1_id` bigint(20) NOT NULL,
   `col1` varchar(70) DEFAULT NULL,
   `col2` varchar(70) DEFAULT NULL,
@@ -212,23 +222,16 @@ CREATE TABLE `tbl_form_1_q3` (
   `col5` varchar(70) DEFAULT NULL,
   `col6` varchar(70) DEFAULT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `form_1_id` (`form_1_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_1_q3`
 --
 
-INSERT INTO `tbl_form_1_q3` VALUES(1, 10, '1', '2', '3', '4', '5', '6', 0, '0000-00-00');
-INSERT INTO `tbl_form_1_q3` VALUES(2, 10, '7', '8', '9', '10', '11', '12', 0, '0000-00-00');
-INSERT INTO `tbl_form_1_q3` VALUES(3, 10, '13', '14', '15', '16', '17', '18', 0, '0000-00-00');
-INSERT INTO `tbl_form_1_q3` VALUES(4, 10, '', '', '', '', '', '', 0, '0000-00-00');
-INSERT INTO `tbl_form_1_q3` VALUES(7, 12, '1', '2', '3', '4', '5', '6', 8, '2014-10-18');
-INSERT INTO `tbl_form_1_q3` VALUES(8, 12, '', '', '', '', '', '', 8, '2014-10-18');
-INSERT INTO `tbl_form_1_q3` VALUES(9, 13, '', '', '', '', '', '', 8, '2014-10-18');
-INSERT INTO `tbl_form_1_q3` VALUES(10, 13, '', '', '', '', '', '', 8, '2014-10-18');
+INSERT INTO `tbl_form_1_q3` (`id`, `form_1_id`, `col1`, `col2`, `col3`, `col4`, `col5`, `col6`, `modified_by`, `modification_date`) VALUES
+(13, 19, '1', '2', '3', '4', '5', '6', 8, '2014-10-24 19:36:21'),
+(14, 19, '', '', '', '', '', '', 8, '2014-10-24 19:36:21');
 
 -- --------------------------------------------------------
 
@@ -237,7 +240,7 @@ INSERT INTO `tbl_form_1_q3` VALUES(10, 13, '', '', '', '', '', '', 8, '2014-10-1
 --
 
 CREATE TABLE `tbl_form_1_q4` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `form_1_id` bigint(20) NOT NULL,
   `col1` varchar(70) DEFAULT NULL,
   `col2` varchar(70) DEFAULT NULL,
@@ -246,18 +249,15 @@ CREATE TABLE `tbl_form_1_q4` (
   `col5` varchar(70) DEFAULT NULL,
   `col6` varchar(70) DEFAULT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `form_1_id` (`form_1_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_1_q4`
 --
 
-INSERT INTO `tbl_form_1_q4` VALUES(1, 10, '', '', '', '', '', '', 0, '0000-00-00');
-INSERT INTO `tbl_form_1_q4` VALUES(3, 12, '', '', '', '', '', '', 8, '2014-10-18');
-INSERT INTO `tbl_form_1_q4` VALUES(4, 13, '', '', '', '', '', '', 8, '2014-10-18');
+INSERT INTO `tbl_form_1_q4` (`id`, `form_1_id`, `col1`, `col2`, `col3`, `col4`, `col5`, `col6`, `modified_by`, `modification_date`) VALUES
+(6, 19, '', '', '', '', '', '', 8, '2014-10-24 19:36:21');
 
 -- --------------------------------------------------------
 
@@ -266,23 +266,21 @@ INSERT INTO `tbl_form_1_q4` VALUES(4, 13, '', '', '', '', '', '', 8, '2014-10-18
 --
 
 CREATE TABLE `tbl_form_2` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `q2_1` text NOT NULL,
   `q2_2` text NOT NULL,
   `q2_3` text NOT NULL,
   `q2_4` text NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_2`
 --
 
-INSERT INTO `tbl_form_2` VALUES(1, '1', '2', '3', '4', 0, '0000-00-00');
-INSERT INTO `tbl_form_2` VALUES(5, '1', '2', '3', '6', 8, '2014-10-18');
-INSERT INTO `tbl_form_2` VALUES(6, 'jhg', 'b', 'hkjhh', 'bvb', 8, '2014-10-18');
+INSERT INTO `tbl_form_2` (`id`, `q2_1`, `q2_2`, `q2_3`, `q2_4`, `modified_by`, `modification_date`) VALUES
+(9, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 8, '2014-10-24 19:38:38');
 
 -- --------------------------------------------------------
 
@@ -291,20 +289,18 @@ INSERT INTO `tbl_form_2` VALUES(6, 'jhg', 'b', 'hkjhh', 'bvb', 8, '2014-10-18');
 --
 
 CREATE TABLE `tbl_form_3` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `q3_1` text NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_3`
 --
 
-INSERT INTO `tbl_form_3` VALUES(1, 'eresd', 0, '0000-00-00');
-INSERT INTO `tbl_form_3` VALUES(3, 'lsdfkj', 8, '2014-10-18');
-INSERT INTO `tbl_form_3` VALUES(4, 'jhkjh', 8, '2014-10-18');
+INSERT INTO `tbl_form_3` (`id`, `q3_1`, `modified_by`, `modification_date`) VALUES
+(8, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 8, '2014-10-24 19:38:56');
 
 -- --------------------------------------------------------
 
@@ -313,20 +309,18 @@ INSERT INTO `tbl_form_3` VALUES(4, 'jhkjh', 8, '2014-10-18');
 --
 
 CREATE TABLE `tbl_form_4` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `q4_1` text NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_4`
 --
 
-INSERT INTO `tbl_form_4` VALUES(1, 'dvf', 0, '0000-00-00');
-INSERT INTO `tbl_form_4` VALUES(2, 'What the hell?', 8, '2014-10-17');
-INSERT INTO `tbl_form_4` VALUES(4, 'jhg', 8, '2014-10-18');
+INSERT INTO `tbl_form_4` (`id`, `q4_1`, `modified_by`, `modification_date`) VALUES
+(7, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 8, '2014-10-24 19:39:39');
 
 -- --------------------------------------------------------
 
@@ -335,19 +329,18 @@ INSERT INTO `tbl_form_4` VALUES(4, 'jhg', 8, '2014-10-18');
 --
 
 CREATE TABLE `tbl_form_5` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `q5_1` text NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_5`
 --
 
-INSERT INTO `tbl_form_5` VALUES(1, 'ddsds', 0, '0000-00-00');
-INSERT INTO `tbl_form_5` VALUES(4, 'jhgjhg', 8, '2014-10-18');
+INSERT INTO `tbl_form_5` (`id`, `q5_1`, `modified_by`, `modification_date`) VALUES
+(7, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 8, '2014-10-24 19:39:44');
 
 -- --------------------------------------------------------
 
@@ -356,19 +349,18 @@ INSERT INTO `tbl_form_5` VALUES(4, 'jhgjhg', 8, '2014-10-18');
 --
 
 CREATE TABLE `tbl_form_6` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `q6_1` text NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_6`
 --
 
-INSERT INTO `tbl_form_6` VALUES(1, 'ooo', 0, '0000-00-00');
-INSERT INTO `tbl_form_6` VALUES(4, 'jhghjg', 8, '2014-10-18');
+INSERT INTO `tbl_form_6` (`id`, `q6_1`, `modified_by`, `modification_date`) VALUES
+(7, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 8, '2014-10-24 19:39:48');
 
 -- --------------------------------------------------------
 
@@ -377,19 +369,18 @@ INSERT INTO `tbl_form_6` VALUES(4, 'jhghjg', 8, '2014-10-18');
 --
 
 CREATE TABLE `tbl_form_7` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `q7_1` text NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_7`
 --
 
-INSERT INTO `tbl_form_7` VALUES(1, '777ygg', 0, '0000-00-00');
-INSERT INTO `tbl_form_7` VALUES(3, 'jghjg', 8, '2014-10-18');
+INSERT INTO `tbl_form_7` (`id`, `q7_1`, `modified_by`, `modification_date`) VALUES
+(7, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 8, '2014-10-24 19:39:59');
 
 -- --------------------------------------------------------
 
@@ -398,20 +389,19 @@ INSERT INTO `tbl_form_7` VALUES(3, 'jghjg', 8, '2014-10-18');
 --
 
 CREATE TABLE `tbl_form_8` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `q8_1` text NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_8`
 --
 
-INSERT INTO `tbl_form_8` VALUES(1, '888', 0, '0000-00-00');
-INSERT INTO `tbl_form_8` VALUES(3, 'qwe', 8, '2014-10-18');
-INSERT INTO `tbl_form_8` VALUES(4, 'ghf', 8, '2014-10-18');
+INSERT INTO `tbl_form_8` (`id`, `q8_1`, `modified_by`, `modification_date`) VALUES
+(7, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 8, '2014-10-24 19:40:03'),
+(8, 'Something', 8, '2014-10-24 23:19:33');
 
 -- --------------------------------------------------------
 
@@ -420,19 +410,18 @@ INSERT INTO `tbl_form_8` VALUES(4, 'ghf', 8, '2014-10-18');
 --
 
 CREATE TABLE `tbl_form_9` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `q9_1` text NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_9`
 --
 
-INSERT INTO `tbl_form_9` VALUES(1, '999', 0, '0000-00-00');
-INSERT INTO `tbl_form_9` VALUES(3, 'jhg', 8, '2014-10-18');
+INSERT INTO `tbl_form_9` (`id`, `q9_1`, `modified_by`, `modification_date`) VALUES
+(6, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 8, '2014-10-24 19:40:07');
 
 -- --------------------------------------------------------
 
@@ -441,18 +430,18 @@ INSERT INTO `tbl_form_9` VALUES(3, 'jhg', 8, '2014-10-18');
 --
 
 CREATE TABLE `tbl_form_10` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `q10_1` text NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_10`
 --
 
-INSERT INTO `tbl_form_10` VALUES(1, '1010101010', 0, '0000-00-00');
+INSERT INTO `tbl_form_10` (`id`, `q10_1`, `modified_by`, `modification_date`) VALUES
+(7, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 8, '2014-10-24 19:40:13');
 
 -- --------------------------------------------------------
 
@@ -461,19 +450,20 @@ INSERT INTO `tbl_form_10` VALUES(1, '1010101010', 0, '0000-00-00');
 --
 
 CREATE TABLE `tbl_goal_first` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `th_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `th_id` (`th_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_first`
 --
 
-INSERT INTO `tbl_goal_first` VALUES(16, 22, 8, '2014-10-18');
+INSERT INTO `tbl_goal_first` (`id`, `th_id`, `modified_by`, `modification_date`) VALUES
+(25, 26, 8, '2014-10-24 18:21:53'),
+(26, 24, 8, '2014-10-24 23:12:40'),
+(27, 27, 8, '2014-10-25 01:24:52');
 
 -- --------------------------------------------------------
 
@@ -482,21 +472,22 @@ INSERT INTO `tbl_goal_first` VALUES(16, 22, 8, '2014-10-18');
 --
 
 CREATE TABLE `tbl_goal_first_g1` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `goal_first_id` bigint(20) NOT NULL,
   `g1` varchar(50) NOT NULL,
   `fn_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `goal_first_id` (`goal_first_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_first_g1`
 --
 
-INSERT INTO `tbl_goal_first_g1` VALUES(15, 16, 'g1', 10, 8, '2014-10-18');
+INSERT INTO `tbl_goal_first_g1` (`id`, `goal_first_id`, `g1`, `fn_id`, `modified_by`, `modification_date`) VALUES
+(24, 25, 'this is g1', 10, 8, '2014-10-24 18:21:53'),
+(25, 26, 'kuhjk', 3, 8, '2014-10-24 23:12:40'),
+(26, 27, 'This is g1', 5, 8, '2014-10-25 01:24:52');
 
 -- --------------------------------------------------------
 
@@ -505,21 +496,23 @@ INSERT INTO `tbl_goal_first_g1` VALUES(15, 16, 'g1', 10, 8, '2014-10-18');
 --
 
 CREATE TABLE `tbl_goal_first_g1_obj_fn` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `goal_first_g1_id` bigint(20) NOT NULL,
   `obj` varchar(50) NOT NULL,
   `fn_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `goal_first_g1_id` (`goal_first_g1_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_first_g1_obj_fn`
 --
 
-INSERT INTO `tbl_goal_first_g1_obj_fn` VALUES(7, 15, 'obj1', 3, 8, '2014-10-18');
+INSERT INTO `tbl_goal_first_g1_obj_fn` (`id`, `goal_first_g1_id`, `obj`, `fn_id`, `modified_by`, `modification_date`) VALUES
+(16, 24, 'this is obj1', 3, 8, '2014-10-24 23:20:21'),
+(17, 25, 'kljhkjh', 5, 8, '2014-10-24 23:12:40'),
+(18, 26, 'Obj', 5, 8, '2014-10-25 01:24:52'),
+(19, 26, 'Obj', 8, 8, '2014-10-25 01:24:52');
 
 -- --------------------------------------------------------
 
@@ -528,21 +521,22 @@ INSERT INTO `tbl_goal_first_g1_obj_fn` VALUES(7, 15, 'obj1', 3, 8, '2014-10-18')
 --
 
 CREATE TABLE `tbl_goal_first_g2` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `goal_first_id` bigint(20) NOT NULL,
   `g2` varchar(50) NOT NULL,
   `fn_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `goal_first_id` (`goal_first_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_first_g2`
 --
 
-INSERT INTO `tbl_goal_first_g2` VALUES(15, 16, 'g2', 5, 8, '2014-10-18');
+INSERT INTO `tbl_goal_first_g2` (`id`, `goal_first_id`, `g2`, `fn_id`, `modified_by`, `modification_date`) VALUES
+(24, 25, 'this is g2', 3, 8, '2014-10-24 23:20:21'),
+(25, 26, 'kuhkjh', 5, 8, '2014-10-24 23:12:40'),
+(26, 27, 'g2', 10, 8, '2014-10-25 01:24:52');
 
 -- --------------------------------------------------------
 
@@ -551,21 +545,25 @@ INSERT INTO `tbl_goal_first_g2` VALUES(15, 16, 'g2', 5, 8, '2014-10-18');
 --
 
 CREATE TABLE `tbl_goal_first_g2_obj_fn` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `goal_first_g2_id` bigint(20) NOT NULL,
   `obj` varchar(50) NOT NULL,
   `fn_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `goal_first_g2_id` (`goal_first_g2_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_first_g2_obj_fn`
 --
 
-INSERT INTO `tbl_goal_first_g2_obj_fn` VALUES(7, 15, 'obj2', 6, 8, '2014-10-18');
+INSERT INTO `tbl_goal_first_g2_obj_fn` (`id`, `goal_first_g2_id`, `obj`, `fn_id`, `modified_by`, `modification_date`) VALUES
+(16, 24, 'this is obj2', 6, 8, '2014-10-24 18:21:53'),
+(17, 25, 'kjhjkh', 5, 8, '2014-10-24 23:12:40'),
+(18, 25, 'sdf', 7, 8, '2014-10-24 23:12:40'),
+(19, 25, 'sdf', 2, 8, '2014-10-24 23:12:40'),
+(20, 26, 'obj2', 8, 8, '2014-10-25 01:24:52'),
+(21, 26, 'obj', 5, 8, '2014-10-25 01:24:52');
 
 -- --------------------------------------------------------
 
@@ -574,21 +572,22 @@ INSERT INTO `tbl_goal_first_g2_obj_fn` VALUES(7, 15, 'obj2', 6, 8, '2014-10-18')
 --
 
 CREATE TABLE `tbl_goal_first_g3` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `goal_first_id` bigint(20) NOT NULL,
   `g3` varchar(50) NOT NULL,
   `fn_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `goal_first_id` (`goal_first_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_first_g3`
 --
 
-INSERT INTO `tbl_goal_first_g3` VALUES(15, 16, 'g3', 8, 8, '2014-10-18');
+INSERT INTO `tbl_goal_first_g3` (`id`, `goal_first_id`, `g3`, `fn_id`, `modified_by`, `modification_date`) VALUES
+(24, 25, 'this is g3', 8, 8, '2014-10-24 18:21:53'),
+(25, 26, 'kjghkjh', 5, 8, '2014-10-24 23:12:40'),
+(26, 27, 'g3', 4, 8, '2014-10-25 01:24:52');
 
 -- --------------------------------------------------------
 
@@ -597,21 +596,22 @@ INSERT INTO `tbl_goal_first_g3` VALUES(15, 16, 'g3', 8, 8, '2014-10-18');
 --
 
 CREATE TABLE `tbl_goal_first_g3_obj_fn` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `goal_first_g3_id` bigint(20) NOT NULL,
   `obj` varchar(50) NOT NULL,
   `fn_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `goal_first_g3_id` (`goal_first_g3_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_first_g3_obj_fn`
 --
 
-INSERT INTO `tbl_goal_first_g3_obj_fn` VALUES(7, 15, 'obj3', 2, 8, '2014-10-18');
+INSERT INTO `tbl_goal_first_g3_obj_fn` (`id`, `goal_first_g3_id`, `obj`, `fn_id`, `modified_by`, `modification_date`) VALUES
+(16, 24, 'this is obj3', 7, 8, '2014-10-24 18:21:53'),
+(17, 25, 'kjkjh', 3, 8, '2014-10-24 23:12:40'),
+(18, 26, 'obj34', 5, 8, '2014-10-25 01:24:52');
 
 -- --------------------------------------------------------
 
@@ -620,20 +620,20 @@ INSERT INTO `tbl_goal_first_g3_obj_fn` VALUES(7, 15, 'obj3', 2, 8, '2014-10-18')
 --
 
 CREATE TABLE `tbl_goal_second` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `fn_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fn_id` (`fn_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_second`
 --
 
-INSERT INTO `tbl_goal_second` VALUES(18, 5, 8, '2014-10-18');
-INSERT INTO `tbl_goal_second` VALUES(19, 6, 8, '2014-10-18');
+INSERT INTO `tbl_goal_second` (`id`, `fn_id`, `modified_by`, `modification_date`) VALUES
+(24, 8, 8, '2014-10-24 18:22:43'),
+(25, 5, 8, '2014-10-24 23:13:33'),
+(26, 5, 8, '2014-10-25 01:27:50');
 
 -- --------------------------------------------------------
 
@@ -642,21 +642,21 @@ INSERT INTO `tbl_goal_second` VALUES(19, 6, 8, '2014-10-18');
 --
 
 CREATE TABLE `tbl_goal_second_g1` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `goal_second_id` bigint(20) NOT NULL,
   `g1` varchar(50) NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `goal_second_id` (`goal_second_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_second_g1`
 --
 
-INSERT INTO `tbl_goal_second_g1` VALUES(15, 18, 'this is g1', 8, '2014-10-18');
-INSERT INTO `tbl_goal_second_g1` VALUES(16, 19, 'this is g1', 8, '2014-10-18');
+INSERT INTO `tbl_goal_second_g1` (`id`, `goal_second_id`, `g1`, `modified_by`, `modification_date`) VALUES
+(21, 24, 'goal second g1', 8, '2014-10-24 18:22:43'),
+(22, 25, 'sdf', 8, '2014-10-24 23:13:33'),
+(23, 26, 'g1', 8, '2014-10-25 01:27:50');
 
 -- --------------------------------------------------------
 
@@ -665,23 +665,26 @@ INSERT INTO `tbl_goal_second_g1` VALUES(16, 19, 'this is g1', 8, '2014-10-18');
 --
 
 CREATE TABLE `tbl_goal_second_g1_obj` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `goal_second_g1_id` bigint(20) NOT NULL,
   `obj` varchar(50) NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `goal_second_g1_id` (`goal_second_g1_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_second_g1_obj`
 --
 
-INSERT INTO `tbl_goal_second_g1_obj` VALUES(9, 15, 'this is obj1', 8, '2014-10-18');
-INSERT INTO `tbl_goal_second_g1_obj` VALUES(10, 16, 'this is obj1', 8, '2014-10-18');
-INSERT INTO `tbl_goal_second_g1_obj` VALUES(11, 16, 'this is obj3', 8, '2014-10-18');
-INSERT INTO `tbl_goal_second_g1_obj` VALUES(12, 16, 'this is obj2', 8, '2014-10-18');
+INSERT INTO `tbl_goal_second_g1_obj` (`id`, `goal_second_g1_id`, `obj`, `modified_by`, `modification_date`) VALUES
+(19, 21, 'goal second obj1', 8, '2014-10-24 18:22:43'),
+(20, 22, 'bef', 8, '2014-10-24 23:13:33'),
+(21, 22, 'eb', 8, '2014-10-24 23:13:33'),
+(22, 22, 'erg', 8, '2014-10-24 23:13:33'),
+(23, 22, 'advs', 8, '2014-10-24 23:13:33'),
+(24, 22, 'betrb', 8, '2014-10-24 23:13:33'),
+(25, 23, 'obj', 8, '2014-10-25 01:27:50'),
+(26, 23, 'obj2', 8, '2014-10-25 01:27:50');
 
 -- --------------------------------------------------------
 
@@ -690,21 +693,21 @@ INSERT INTO `tbl_goal_second_g1_obj` VALUES(12, 16, 'this is obj2', 8, '2014-10-
 --
 
 CREATE TABLE `tbl_goal_second_g2` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `goal_second_id` bigint(20) NOT NULL,
   `g2` varchar(50) NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `goal_second_id` (`goal_second_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_second_g2`
 --
 
-INSERT INTO `tbl_goal_second_g2` VALUES(13, 18, 'this is g2', 8, '2014-10-18');
-INSERT INTO `tbl_goal_second_g2` VALUES(14, 19, 'this is g2', 8, '2014-10-18');
+INSERT INTO `tbl_goal_second_g2` (`id`, `goal_second_id`, `g2`, `modified_by`, `modification_date`) VALUES
+(19, 24, 'goal second g2', 8, '2014-10-24 18:22:43'),
+(20, 25, 'wetb', 8, '2014-10-24 23:13:33'),
+(21, 26, 'g2', 8, '2014-10-25 01:27:50');
 
 -- --------------------------------------------------------
 
@@ -713,24 +716,22 @@ INSERT INTO `tbl_goal_second_g2` VALUES(14, 19, 'this is g2', 8, '2014-10-18');
 --
 
 CREATE TABLE `tbl_goal_second_g2_obj` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `goal_second_g2_id` bigint(20) NOT NULL,
   `obj` varchar(50) NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `goal_second_g2_id` (`goal_second_g2_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_second_g2_obj`
 --
 
-INSERT INTO `tbl_goal_second_g2_obj` VALUES(9, 13, 'this is obj2', 8, '2014-10-18');
-INSERT INTO `tbl_goal_second_g2_obj` VALUES(10, 14, 'this is obj1', 8, '2014-10-18');
-INSERT INTO `tbl_goal_second_g2_obj` VALUES(11, 14, 'this is obj4', 8, '2014-10-18');
-INSERT INTO `tbl_goal_second_g2_obj` VALUES(12, 14, 'this is obj3', 8, '2014-10-18');
-INSERT INTO `tbl_goal_second_g2_obj` VALUES(13, 14, 'this is obj2', 8, '2014-10-18');
+INSERT INTO `tbl_goal_second_g2_obj` (`id`, `goal_second_g2_id`, `obj`, `modified_by`, `modification_date`) VALUES
+(18, 19, 'goal second obj2', 8, '2014-10-24 18:22:43'),
+(19, 20, 'qv', 8, '2014-10-24 23:13:33'),
+(20, 21, 'objg22', 8, '2014-10-25 01:27:50'),
+(21, 21, 'obj3', 8, '2014-10-25 01:27:50');
 
 -- --------------------------------------------------------
 
@@ -739,21 +740,21 @@ INSERT INTO `tbl_goal_second_g2_obj` VALUES(13, 14, 'this is obj2', 8, '2014-10-
 --
 
 CREATE TABLE `tbl_goal_second_g3` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `goal_second_id` bigint(20) NOT NULL,
   `g3` varchar(50) NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `goal_second_id` (`goal_second_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_second_g3`
 --
 
-INSERT INTO `tbl_goal_second_g3` VALUES(9, 18, 'this is g3', 8, '2014-10-18');
-INSERT INTO `tbl_goal_second_g3` VALUES(10, 19, 'this is g3', 8, '2014-10-18');
+INSERT INTO `tbl_goal_second_g3` (`id`, `goal_second_id`, `g3`, `modified_by`, `modification_date`) VALUES
+(15, 24, 'goal second g3', 8, '2014-10-24 18:22:43'),
+(16, 25, 'qerg', 8, '2014-10-24 23:13:33'),
+(17, 26, 'g3', 8, '2014-10-25 01:27:50');
 
 -- --------------------------------------------------------
 
@@ -762,25 +763,22 @@ INSERT INTO `tbl_goal_second_g3` VALUES(10, 19, 'this is g3', 8, '2014-10-18');
 --
 
 CREATE TABLE `tbl_goal_second_g3_obj` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `goal_second_g3_id` bigint(20) NOT NULL,
   `obj` varchar(50) NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `goal_second_g3_id` (`goal_second_g3_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_second_g3_obj`
 --
 
-INSERT INTO `tbl_goal_second_g3_obj` VALUES(10, 9, 'this is obj3', 8, '2014-10-18');
-INSERT INTO `tbl_goal_second_g3_obj` VALUES(11, 10, 'this is obj1', 8, '2014-10-18');
-INSERT INTO `tbl_goal_second_g3_obj` VALUES(12, 10, 'this is obj5', 8, '2014-10-18');
-INSERT INTO `tbl_goal_second_g3_obj` VALUES(13, 10, 'this is obj4', 8, '2014-10-18');
-INSERT INTO `tbl_goal_second_g3_obj` VALUES(14, 10, 'this is obj3', 8, '2014-10-18');
-INSERT INTO `tbl_goal_second_g3_obj` VALUES(15, 10, 'this is obj2', 8, '2014-10-18');
+INSERT INTO `tbl_goal_second_g3_obj` (`id`, `goal_second_g3_id`, `obj`, `modified_by`, `modification_date`) VALUES
+(20, 15, 'goal second obj3', 8, '2014-10-24 18:22:43'),
+(21, 16, 'vq', 8, '2014-10-24 23:13:33'),
+(22, 17, 'obg3', 8, '2014-10-25 01:27:50'),
+(23, 17, 'obj4', 8, '2014-10-25 01:27:50');
 
 -- --------------------------------------------------------
 
@@ -789,22 +787,21 @@ INSERT INTO `tbl_goal_second_g3_obj` VALUES(15, 10, 'this is obj2', 8, '2014-10-
 --
 
 CREATE TABLE `tbl_responsibility` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `team_id` bigint(20) NOT NULL,
   `role` text,
   `responsibility` text,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `team_id` (`team_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_responsibility`
 --
 
-INSERT INTO `tbl_responsibility` VALUES(1, 2, 'This is the role description. This line is updated.', 'this is the responsibility textarea', 0, '0000-00-00');
-INSERT INTO `tbl_responsibility` VALUES(2, 1, 'This is the second role', 'This is the second responsibility. How about this....', 0, '0000-00-00');
+INSERT INTO `tbl_responsibility` (`id`, `team_id`, `role`, `responsibility`, `modified_by`, `modification_date`) VALUES
+(1, 2, 'This is the role description. This line is updated.', 'this is the responsibility textarea', 0, '0000-00-00 00:00:00'),
+(2, 1, 'This is the second role', 'This is the second responsibility. How about this....', 0, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -813,7 +810,7 @@ INSERT INTO `tbl_responsibility` VALUES(2, 1, 'This is the second role', 'This i
 --
 
 CREATE TABLE `tbl_risk` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `th_id` bigint(20) NOT NULL,
   `mg` varchar(50) NOT NULL,
   `dr` varchar(50) NOT NULL,
@@ -821,24 +818,27 @@ CREATE TABLE `tbl_risk` (
   `wa` varchar(50) NOT NULL,
   `rs` varchar(50) NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `th_id` (`th_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_risk`
 --
 
-INSERT INTO `tbl_risk` VALUES(1, 8, 'mg1', 'dr1', 'pr1', 'wa1', 'rs1', 0, '0000-00-00');
-INSERT INTO `tbl_risk` VALUES(2, 5, 'mg4', 'dr4', 'pr4', 'wa4', 'rs4', 0, '0000-00-00');
-INSERT INTO `tbl_risk` VALUES(3, 11, 'mg3', 'dr2', 'pr3', 'wa1', 'rs4', 5, '2014-10-11');
-INSERT INTO `tbl_risk` VALUES(4, 5, 'mg3', 'dr4', 'pr1', 'wa1', 'rs4', 2, '2014-10-16');
-INSERT INTO `tbl_risk` VALUES(6, 18, 'mg1', 'dr1', 'pr1', 'wa1', 'rs1', 2, '2014-10-17');
-INSERT INTO `tbl_risk` VALUES(7, 20, 'mg1', 'dr1', 'pr1', 'wa1', 'rs1', 8, '2014-10-18');
-INSERT INTO `tbl_risk` VALUES(8, 20, 'mg4', 'dr4', 'pr1', 'wa4', 'rs2', 8, '2014-10-18');
-INSERT INTO `tbl_risk` VALUES(9, 21, 'mg1', 'dr1', 'pr1', 'wa1', 'rs1', 8, '2014-10-18');
-INSERT INTO `tbl_risk` VALUES(10, 22, 'mg1', 'dr1', 'pr1', 'wa4', 'rs3', 8, '2014-10-18');
+INSERT INTO `tbl_risk` (`id`, `th_id`, `mg`, `dr`, `pr`, `wa`, `rs`, `modified_by`, `modification_date`) VALUES
+(1, 8, 'mg1', 'dr1', 'pr1', 'wa1', 'rs1', 0, '0000-00-00 00:00:00'),
+(2, 5, 'mg4', 'dr4', 'pr4', 'wa4', 'rs4', 0, '0000-00-00 00:00:00'),
+(3, 11, 'mg3', 'dr2', 'pr3', 'wa1', 'rs4', 5, '2014-10-11 00:00:00'),
+(4, 5, 'mg3', 'dr4', 'pr1', 'wa1', 'rs4', 2, '2014-10-16 00:00:00'),
+(6, 18, 'mg1', 'dr1', 'pr1', 'wa1', 'rs1', 2, '2014-10-17 00:00:00'),
+(7, 20, 'mg1', 'dr1', 'pr1', 'wa1', 'rs1', 8, '2014-10-18 00:00:00'),
+(8, 20, 'mg4', 'dr4', 'pr1', 'wa4', 'rs2', 8, '2014-10-18 00:00:00'),
+(9, 21, 'mg1', 'dr1', 'pr1', 'wa1', 'rs1', 8, '2014-10-18 00:00:00'),
+(10, 22, 'mg1', 'dr1', 'pr1', 'wa4', 'rs3', 8, '2014-10-18 00:00:00'),
+(11, 23, 'mg1', 'dr1', 'pr1', 'wa1', 'rs1', 8, '2014-10-22 00:00:00'),
+(12, 24, 'mg1', 'dr2', 'pr4', 'wa2', 'rs3', 8, '2014-10-24 00:00:00'),
+(13, 26, 'mg1', 'dr1', 'pr1', 'wa1', 'rs1', 8, '2014-10-24 16:47:27'),
+(14, 27, 'mg1', 'dr1', 'pr1', 'wa1', 'rs1', 8, '2014-10-25 01:16:49');
 
 -- --------------------------------------------------------
 
@@ -847,7 +847,7 @@ INSERT INTO `tbl_risk` VALUES(10, 22, 'mg1', 'dr1', 'pr1', 'wa4', 'rs3', 8, '201
 --
 
 CREATE TABLE `tbl_team` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `team_name` varchar(100) NOT NULL,
   `title` varchar(100) NOT NULL,
   `organization` varchar(70) NOT NULL,
@@ -855,21 +855,22 @@ CREATE TABLE `tbl_team` (
   `phone` varchar(70) NOT NULL,
   `interest` varchar(70) NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_team`
 --
 
-INSERT INTO `tbl_team` VALUES(1, 'Name', 'title', 'organization', 'mahdera@yahoo.com', '2020039494', '3', 0, '0000-00-00');
-INSERT INTO `tbl_team` VALUES(2, 'sdf', 'lksdjfk', 'lkdj', 'lekbirgebre@yahoo.com', '4985723984', '2', 0, '0000-00-00');
-INSERT INTO `tbl_team` VALUES(3, 'sdf', 'asdf', 'asdf', 'asdf', 'asdf', '3', 0, '0000-00-00');
-INSERT INTO `tbl_team` VALUES(4, 'name', 'title ', 'organization', 'email@isp.com', '099898', 'Interest 1,Interest 3,', 0, '0000-00-00');
-INSERT INTO `tbl_team` VALUES(5, 'sdf', 'sdg', 'defg', 'm@gmail.com', '345', 'Interest 1,Interest 5,Interest 7,', 5, '0000-00-00');
-INSERT INTO `tbl_team` VALUES(7, 'Team Mahder', 'This is the title of the team', 'Organization Info', 'mahdera@yahoo.com', '2023743138', 'Interest 1,Interest 2,', 2, '2014-10-17');
-INSERT INTO `tbl_team` VALUES(8, 'Team Name', 'Title of Team', 'Organization of Team', 'emailteam@gmail.com', '878768766', 'Interest 1,Interest 5,', 8, '2014-10-18');
+INSERT INTO `tbl_team` (`id`, `team_name`, `title`, `organization`, `email`, `phone`, `interest`, `modified_by`, `modification_date`) VALUES
+(1, 'Name', 'title', 'organization', 'mahdera@yahoo.com', '2020039494', '3', 0, '0000-00-00 00:00:00'),
+(2, 'sdf', 'lksdjfk', 'lkdj', 'lekbirgebre@yahoo.com', '4985723984', '2', 0, '0000-00-00 00:00:00'),
+(3, 'sdf', 'asdf', 'asdf', 'asdf', 'asdf', '3', 0, '0000-00-00 00:00:00'),
+(4, 'name', 'title ', 'organization', 'email@isp.com', '099898', 'Interest 1,Interest 3,', 0, '0000-00-00 00:00:00'),
+(5, 'sdf', 'sdg', 'defg', 'm@gmail.com', '345', 'Interest 1,Interest 5,Interest 7,', 5, '0000-00-00 00:00:00'),
+(7, 'Team Mahder', 'This is the title of the team', 'Organization Info', 'mahdera@yahoo.com', '2023743138', 'Interest 1,Interest 2,', 2, '2014-10-17 00:00:00'),
+(8, 'Team Name', 'Title of Team', 'Organization of Team', 'emailteam@gmail.com', '878768766', 'Interest 1,Interest 5,', 8, '2014-10-18 00:00:00'),
+(9, 'Team USA', 'The Best Team Ever', 'USA', 'teamusa@usa.com', '9889789787', 'Interest 1,Interest 3,Interest 4,', 8, '2014-10-24 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -878,19 +879,12 @@ INSERT INTO `tbl_team` VALUES(8, 'Team Name', 'Title of Team', 'Organization of 
 --
 
 CREATE TABLE `tbl_team_interest` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `team_id` bigint(20) NOT NULL,
   `interest_name` varchar(70) NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `team_id` (`team_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `tbl_team_interest`
---
-
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -899,38 +893,42 @@ CREATE TABLE `tbl_team_interest` (
 --
 
 CREATE TABLE `tbl_th` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `th_name` varchar(70) NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_th`
 --
 
-INSERT INTO `tbl_th` VALUES(1, 'sdff', 0, '0000-00-00');
-INSERT INTO `tbl_th` VALUES(2, 'dfgdfg', 0, '0000-00-00');
-INSERT INTO `tbl_th` VALUES(3, 'undefined', 0, '0000-00-00');
-INSERT INTO `tbl_th` VALUES(4, 'A TH Name', 0, '0000-00-00');
-INSERT INTO `tbl_th` VALUES(5, 'Another TH', 0, '0000-00-00');
-INSERT INTO `tbl_th` VALUES(6, 'jhg', 0, '0000-00-00');
-INSERT INTO `tbl_th` VALUES(7, 'ghf', 0, '0000-00-00');
-INSERT INTO `tbl_th` VALUES(8, 'What Kind of Th is 42', 0, '0000-00-00');
-INSERT INTO `tbl_th` VALUES(9, 'This is TH One. this better be updating', 0, '0000-00-00');
-INSERT INTO `tbl_th` VALUES(10, 'This is TH Two this is the second th being edited', 0, '0000-00-00');
-INSERT INTO `tbl_th` VALUES(11, 'Th1 by abebe', 5, '0000-00-00');
-INSERT INTO `tbl_th` VALUES(12, 'Th2 by abebe', 5, '0000-00-00');
-INSERT INTO `tbl_th` VALUES(13, 'Th3 by abebe', 5, '0000-00-00');
-INSERT INTO `tbl_th` VALUES(14, 'Better be working', 5, '2014-10-11');
-INSERT INTO `tbl_th` VALUES(15, 'This is yet another th created by Abebe', 5, '2014-10-11');
-INSERT INTO `tbl_th` VALUES(16, 'This is th1', 2, '2014-10-16');
-INSERT INTO `tbl_th` VALUES(18, 'My Sample Th1', 2, '2014-10-17');
-INSERT INTO `tbl_th` VALUES(19, 'Anoter Sample Th1 By root Yes', 2, '2014-10-17');
-INSERT INTO `tbl_th` VALUES(20, 'Added Th 123', 8, '2014-10-18');
-INSERT INTO `tbl_th` VALUES(21, 'New Th Value', 8, '2014-10-18');
-INSERT INTO `tbl_th` VALUES(22, 'Some Th', 8, '2014-10-18');
+INSERT INTO `tbl_th` (`id`, `th_name`, `modified_by`, `modification_date`) VALUES
+(1, 'sdff', 0, '0000-00-00 00:00:00'),
+(2, 'dfgdfg', 0, '0000-00-00 00:00:00'),
+(4, 'A TH Name', 0, '0000-00-00 00:00:00'),
+(5, 'Another TH', 0, '0000-00-00 00:00:00'),
+(6, 'jhg', 0, '0000-00-00 00:00:00'),
+(7, 'ghf', 0, '0000-00-00 00:00:00'),
+(8, 'What Kind of Th is 42', 0, '0000-00-00 00:00:00'),
+(9, 'This is TH One. this better be updating', 0, '0000-00-00 00:00:00'),
+(10, 'This is TH Two this is the second th being edited', 0, '0000-00-00 00:00:00'),
+(11, 'Th1 by abebe', 5, '0000-00-00 00:00:00'),
+(12, 'Th2 by abebe', 5, '0000-00-00 00:00:00'),
+(13, 'Th3 by abebe', 5, '0000-00-00 00:00:00'),
+(14, 'Better be working', 5, '2014-10-11 00:00:00'),
+(15, 'This is yet another th created by Abebe', 5, '2014-10-11 00:00:00'),
+(16, 'This is th1', 2, '2014-10-16 00:00:00'),
+(18, 'My Sample Th1', 2, '2014-10-17 00:00:00'),
+(19, 'Anoter Sample Th1 By root Yes', 2, '2014-10-17 00:00:00'),
+(20, 'Added Th 123', 8, '2014-10-18 00:00:00'),
+(21, 'New Th Value', 8, '2014-10-18 00:00:00'),
+(22, 'Some Th', 8, '2014-10-18 00:00:00'),
+(23, 'New Th On the Train', 8, '2014-10-22 00:00:00'),
+(24, 'My First Th', 8, '2014-10-24 00:00:00'),
+(25, 'My Second Th', 8, '2014-10-24 00:00:00'),
+(26, 'This is A Brand New Th', 8, '2014-10-24 16:47:03'),
+(27, 'Sample TH For Sami. This is Updated', 8, '2014-10-25 01:14:48');
 
 -- --------------------------------------------------------
 
@@ -939,22 +937,22 @@ INSERT INTO `tbl_th` VALUES(22, 'Some Th', 8, '2014-10-18');
 --
 
 CREATE TABLE `tbl_th_action` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id` bigint(20) NOT NULL,
   `th_id` bigint(20) NOT NULL,
   `action_text` text,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `th_id` (`th_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_th_action`
 --
 
-INSERT INTO `tbl_th_action` VALUES(1, 5, 'This is the action done for Th action by Mahder Neway. This line is updated.', 0, '0000-00-00');
-INSERT INTO `tbl_th_action` VALUES(2, 4, 'ffggfdg', 0, '0000-00-00');
-INSERT INTO `tbl_th_action` VALUES(3, 22, 'Done', 8, '2014-10-18');
+INSERT INTO `tbl_th_action` (`id`, `th_id`, `action_text`, `modified_by`, `modification_date`) VALUES
+(8, 24, 'this is my first action', 8, '2014-10-25 01:11:06'),
+(10, 24, 'going to sleep', 8, '2014-10-25 01:12:15'),
+(11, 27, 'This is the first action', 8, '2014-10-25 01:28:57'),
+(12, 27, 'This is the second action', 8, '2014-10-25 01:29:06');
 
 -- --------------------------------------------------------
 
@@ -963,7 +961,7 @@ INSERT INTO `tbl_th_action` VALUES(3, 22, 'Done', 8, '2014-10-18');
 --
 
 CREATE TABLE `tbl_user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `email` varchar(70) NOT NULL,
@@ -973,24 +971,459 @@ CREATE TABLE `tbl_user` (
   `member_type` varchar(50) NOT NULL,
   `user_status` varchar(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`),
-  UNIQUE KEY `user_id` (`user_id`),
-  KEY `modified_by` (`modified_by`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_user`
 --
 
-INSERT INTO `tbl_user` VALUES(2, 'Admin', 'Admin', 'mahderalem@gmail.com', 'root', '63a9f0ea7bb98050796b649e85481845', '39439483948', 'Admin', 'Active', 0, '2014-10-09');
-INSERT INTO `tbl_user` VALUES(3, 'Lekbir', 'Gebretsadik', 'lekbirgebre@yahoo.com', 'leki', '202cb962ac59075b964b07152d234b70', '87897986', 'User', 'Active', 2, '2014-10-10');
-INSERT INTO `tbl_user` VALUES(4, 'Yefikir', 'Alemayehu', 'yefi@yahoo.com', 'yefi', '81dc9bdb52d04dc20036dbd8313ed055', '---', 'User', 'Active', 2, '2014-10-10');
-INSERT INTO `tbl_user` VALUES(5, 'Abebe', 'Teka', 'abebe@gmail.com', 'abebe', '202cb962ac59075b964b07152d234b70', '987987', 'User', 'Blocked', 2, '2014-10-11');
-INSERT INTO `tbl_user` VALUES(6, 'Sample', 'Person', 'sample@yahoo.com', 'sample', '202cb962ac59075b964b07152d234b70', '987987', 'User', 'Active', 0, '2014-10-11');
-INSERT INTO `tbl_user` VALUES(8, 'Mahder', 'Neway', 'mahdera@yahoo.com', 'mahder', '0f3fbc595a293952fabc8de77ae840ca', '2023743138', 'User', 'Active', 2, '2014-10-17');
+INSERT INTO `tbl_user` (`id`, `first_name`, `last_name`, `email`, `user_id`, `password`, `phone_number`, `member_type`, `user_status`, `modified_by`, `modification_date`) VALUES
+(2, 'Admin', 'Admin', 'mahderalem@gmail.com', 'root', '63a9f0ea7bb98050796b649e85481845', '39439483948', 'Admin', 'Active', 0, '2014-10-09 00:00:00'),
+(3, 'Lekbir', 'Gebretsadik', 'lekbirgebre@yahoo.com', 'leki', '202cb962ac59075b964b07152d234b70', '87897986', 'User', 'Active', 2, '2014-10-10 00:00:00'),
+(4, 'Yefikir', 'Alemayehu', 'yefi@yahoo.com', 'yefi', '81dc9bdb52d04dc20036dbd8313ed055', '---', 'User', 'Active', 2, '2014-10-10 00:00:00'),
+(5, 'Abebe', 'Teka', 'abebe@gmail.com', 'abebe', '202cb962ac59075b964b07152d234b70', '987987', 'User', 'Blocked', 2, '2014-10-11 00:00:00'),
+(6, 'Sample', 'Person', 'sample@yahoo.com', 'sample', '202cb962ac59075b964b07152d234b70', '987987', 'User', 'Active', 0, '2014-10-11 00:00:00'),
+(8, 'Mahder', 'Neway', 'mahdera@yahoo.com', 'mahder', '0f3fbc595a293952fabc8de77ae840ca', '2023743138', 'User', 'Active', 2, '2014-10-17 00:00:00'),
+(9, 'Alemu', 'Gebre', 'alemu@yahoo.com', 'alemu', '202cb962ac59075b964b07152d234b70', '453453432', 'User', 'Pending', 0, '2014-10-24 18:07:46');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `calendar`
+--
+ALTER TABLE `calendar`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `calendar_urls`
+--
+ALTER TABLE `calendar_urls`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_assessment`
+--
+ALTER TABLE `tbl_assessment`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_assessment_th`
+--
+ALTER TABLE `tbl_assessment_th`
+ ADD PRIMARY KEY (`id`), ADD KEY `assessment_id` (`assessment_id`), ADD KEY `th_id` (`th_id`);
+
+--
+-- Indexes for table `tbl_fn`
+--
+ALTER TABLE `tbl_fn`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_fn_action`
+--
+ALTER TABLE `tbl_fn_action`
+ ADD PRIMARY KEY (`id`), ADD KEY `fn_id_2` (`fn_id`);
+
+--
+-- Indexes for table `tbl_form_1`
+--
+ALTER TABLE `tbl_form_1`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_form_1_q3`
+--
+ALTER TABLE `tbl_form_1_q3`
+ ADD PRIMARY KEY (`id`), ADD KEY `form_1_id` (`form_1_id`);
+
+--
+-- Indexes for table `tbl_form_1_q4`
+--
+ALTER TABLE `tbl_form_1_q4`
+ ADD PRIMARY KEY (`id`), ADD KEY `form_1_id` (`form_1_id`);
+
+--
+-- Indexes for table `tbl_form_2`
+--
+ALTER TABLE `tbl_form_2`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_form_3`
+--
+ALTER TABLE `tbl_form_3`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_form_4`
+--
+ALTER TABLE `tbl_form_4`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_form_5`
+--
+ALTER TABLE `tbl_form_5`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_form_6`
+--
+ALTER TABLE `tbl_form_6`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_form_7`
+--
+ALTER TABLE `tbl_form_7`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_form_8`
+--
+ALTER TABLE `tbl_form_8`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_form_9`
+--
+ALTER TABLE `tbl_form_9`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_form_10`
+--
+ALTER TABLE `tbl_form_10`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_goal_first`
+--
+ALTER TABLE `tbl_goal_first`
+ ADD PRIMARY KEY (`id`), ADD KEY `th_id` (`th_id`);
+
+--
+-- Indexes for table `tbl_goal_first_g1`
+--
+ALTER TABLE `tbl_goal_first_g1`
+ ADD PRIMARY KEY (`id`), ADD KEY `goal_first_id` (`goal_first_id`);
+
+--
+-- Indexes for table `tbl_goal_first_g1_obj_fn`
+--
+ALTER TABLE `tbl_goal_first_g1_obj_fn`
+ ADD PRIMARY KEY (`id`), ADD KEY `goal_first_g1_id` (`goal_first_g1_id`);
+
+--
+-- Indexes for table `tbl_goal_first_g2`
+--
+ALTER TABLE `tbl_goal_first_g2`
+ ADD PRIMARY KEY (`id`), ADD KEY `goal_first_id` (`goal_first_id`);
+
+--
+-- Indexes for table `tbl_goal_first_g2_obj_fn`
+--
+ALTER TABLE `tbl_goal_first_g2_obj_fn`
+ ADD PRIMARY KEY (`id`), ADD KEY `goal_first_g2_id` (`goal_first_g2_id`);
+
+--
+-- Indexes for table `tbl_goal_first_g3`
+--
+ALTER TABLE `tbl_goal_first_g3`
+ ADD PRIMARY KEY (`id`), ADD KEY `goal_first_id` (`goal_first_id`);
+
+--
+-- Indexes for table `tbl_goal_first_g3_obj_fn`
+--
+ALTER TABLE `tbl_goal_first_g3_obj_fn`
+ ADD PRIMARY KEY (`id`), ADD KEY `goal_first_g3_id` (`goal_first_g3_id`);
+
+--
+-- Indexes for table `tbl_goal_second`
+--
+ALTER TABLE `tbl_goal_second`
+ ADD PRIMARY KEY (`id`), ADD KEY `fn_id` (`fn_id`);
+
+--
+-- Indexes for table `tbl_goal_second_g1`
+--
+ALTER TABLE `tbl_goal_second_g1`
+ ADD PRIMARY KEY (`id`), ADD KEY `goal_second_id` (`goal_second_id`);
+
+--
+-- Indexes for table `tbl_goal_second_g1_obj`
+--
+ALTER TABLE `tbl_goal_second_g1_obj`
+ ADD PRIMARY KEY (`id`), ADD KEY `goal_second_g1_id` (`goal_second_g1_id`);
+
+--
+-- Indexes for table `tbl_goal_second_g2`
+--
+ALTER TABLE `tbl_goal_second_g2`
+ ADD PRIMARY KEY (`id`), ADD KEY `goal_second_id` (`goal_second_id`);
+
+--
+-- Indexes for table `tbl_goal_second_g2_obj`
+--
+ALTER TABLE `tbl_goal_second_g2_obj`
+ ADD PRIMARY KEY (`id`), ADD KEY `goal_second_g2_id` (`goal_second_g2_id`);
+
+--
+-- Indexes for table `tbl_goal_second_g3`
+--
+ALTER TABLE `tbl_goal_second_g3`
+ ADD PRIMARY KEY (`id`), ADD KEY `goal_second_id` (`goal_second_id`);
+
+--
+-- Indexes for table `tbl_goal_second_g3_obj`
+--
+ALTER TABLE `tbl_goal_second_g3_obj`
+ ADD PRIMARY KEY (`id`), ADD KEY `goal_second_g3_id` (`goal_second_g3_id`);
+
+--
+-- Indexes for table `tbl_responsibility`
+--
+ALTER TABLE `tbl_responsibility`
+ ADD PRIMARY KEY (`id`), ADD KEY `team_id` (`team_id`);
+
+--
+-- Indexes for table `tbl_risk`
+--
+ALTER TABLE `tbl_risk`
+ ADD PRIMARY KEY (`id`), ADD KEY `th_id` (`th_id`);
+
+--
+-- Indexes for table `tbl_team`
+--
+ALTER TABLE `tbl_team`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_team_interest`
+--
+ALTER TABLE `tbl_team_interest`
+ ADD PRIMARY KEY (`id`), ADD KEY `team_id` (`team_id`);
+
+--
+-- Indexes for table `tbl_th`
+--
+ALTER TABLE `tbl_th`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_th_action`
+--
+ALTER TABLE `tbl_th_action`
+ ADD PRIMARY KEY (`id`), ADD KEY `th_id` (`th_id`);
+
+--
+-- Indexes for table `tbl_user`
+--
+ALTER TABLE `tbl_user`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `email` (`email`), ADD UNIQUE KEY `user_id` (`user_id`), ADD KEY `modified_by` (`modified_by`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `calendar`
+--
+ALTER TABLE `calendar`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `calendar_urls`
+--
+ALTER TABLE `calendar_urls`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `tbl_assessment`
+--
+ALTER TABLE `tbl_assessment`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `tbl_assessment_th`
+--
+ALTER TABLE `tbl_assessment_th`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT for table `tbl_fn`
+--
+ALTER TABLE `tbl_fn`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `tbl_fn_action`
+--
+ALTER TABLE `tbl_fn_action`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `tbl_form_1`
+--
+ALTER TABLE `tbl_form_1`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT for table `tbl_form_1_q3`
+--
+ALTER TABLE `tbl_form_1_q3`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT for table `tbl_form_1_q4`
+--
+ALTER TABLE `tbl_form_1_q4`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `tbl_form_2`
+--
+ALTER TABLE `tbl_form_2`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `tbl_form_3`
+--
+ALTER TABLE `tbl_form_3`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `tbl_form_4`
+--
+ALTER TABLE `tbl_form_4`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `tbl_form_5`
+--
+ALTER TABLE `tbl_form_5`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `tbl_form_6`
+--
+ALTER TABLE `tbl_form_6`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `tbl_form_7`
+--
+ALTER TABLE `tbl_form_7`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `tbl_form_8`
+--
+ALTER TABLE `tbl_form_8`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `tbl_form_9`
+--
+ALTER TABLE `tbl_form_9`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `tbl_form_10`
+--
+ALTER TABLE `tbl_form_10`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `tbl_goal_first`
+--
+ALTER TABLE `tbl_goal_first`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
+--
+-- AUTO_INCREMENT for table `tbl_goal_first_g1`
+--
+ALTER TABLE `tbl_goal_first_g1`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+--
+-- AUTO_INCREMENT for table `tbl_goal_first_g1_obj_fn`
+--
+ALTER TABLE `tbl_goal_first_g1_obj_fn`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT for table `tbl_goal_first_g2`
+--
+ALTER TABLE `tbl_goal_first_g2`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+--
+-- AUTO_INCREMENT for table `tbl_goal_first_g2_obj_fn`
+--
+ALTER TABLE `tbl_goal_first_g2_obj_fn`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+--
+-- AUTO_INCREMENT for table `tbl_goal_first_g3`
+--
+ALTER TABLE `tbl_goal_first_g3`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+--
+-- AUTO_INCREMENT for table `tbl_goal_first_g3_obj_fn`
+--
+ALTER TABLE `tbl_goal_first_g3_obj_fn`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+--
+-- AUTO_INCREMENT for table `tbl_goal_second`
+--
+ALTER TABLE `tbl_goal_second`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+--
+-- AUTO_INCREMENT for table `tbl_goal_second_g1`
+--
+ALTER TABLE `tbl_goal_second_g1`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
+--
+-- AUTO_INCREMENT for table `tbl_goal_second_g1_obj`
+--
+ALTER TABLE `tbl_goal_second_g1_obj`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+--
+-- AUTO_INCREMENT for table `tbl_goal_second_g2`
+--
+ALTER TABLE `tbl_goal_second_g2`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+--
+-- AUTO_INCREMENT for table `tbl_goal_second_g2_obj`
+--
+ALTER TABLE `tbl_goal_second_g2_obj`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+--
+-- AUTO_INCREMENT for table `tbl_goal_second_g3`
+--
+ALTER TABLE `tbl_goal_second_g3`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+--
+-- AUTO_INCREMENT for table `tbl_goal_second_g3_obj`
+--
+ALTER TABLE `tbl_goal_second_g3_obj`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
+--
+-- AUTO_INCREMENT for table `tbl_responsibility`
+--
+ALTER TABLE `tbl_responsibility`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `tbl_risk`
+--
+ALTER TABLE `tbl_risk`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT for table `tbl_team`
+--
+ALTER TABLE `tbl_team`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `tbl_team_interest`
+--
+ALTER TABLE `tbl_team_interest`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_th`
+--
+ALTER TABLE `tbl_th`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
+--
+-- AUTO_INCREMENT for table `tbl_th_action`
+--
+ALTER TABLE `tbl_th_action`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `tbl_user`
+--
+ALTER TABLE `tbl_user`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- Constraints for dumped tables
 --
@@ -999,131 +1432,131 @@ INSERT INTO `tbl_user` VALUES(8, 'Mahder', 'Neway', 'mahdera@yahoo.com', 'mahder
 -- Constraints for table `tbl_assessment_th`
 --
 ALTER TABLE `tbl_assessment_th`
-  ADD CONSTRAINT `tbl_assessment_th_ibfk_4` FOREIGN KEY (`th_id`) REFERENCES `tbl_th` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `tbl_assessment_th_ibfk_3` FOREIGN KEY (`assessment_id`) REFERENCES `tbl_assessment` (`id`) ON DELETE CASCADE;
+ADD CONSTRAINT `tbl_assessment_th_ibfk_3` FOREIGN KEY (`assessment_id`) REFERENCES `tbl_assessment` (`id`) ON DELETE CASCADE,
+ADD CONSTRAINT `tbl_assessment_th_ibfk_4` FOREIGN KEY (`th_id`) REFERENCES `tbl_th` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_fn_action`
 --
 ALTER TABLE `tbl_fn_action`
-  ADD CONSTRAINT `tbl_fn_action_ibfk_1` FOREIGN KEY (`fn_id`) REFERENCES `tbl_fn` (`id`) ON DELETE CASCADE;
+ADD CONSTRAINT `tbl_fn_action_ibfk_1` FOREIGN KEY (`fn_id`) REFERENCES `tbl_fn` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_form_1_q3`
 --
 ALTER TABLE `tbl_form_1_q3`
-  ADD CONSTRAINT `tbl_form_1_q3_ibfk_1` FOREIGN KEY (`form_1_id`) REFERENCES `tbl_form_1` (`id`) ON DELETE CASCADE;
+ADD CONSTRAINT `tbl_form_1_q3_ibfk_1` FOREIGN KEY (`form_1_id`) REFERENCES `tbl_form_1` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_form_1_q4`
 --
 ALTER TABLE `tbl_form_1_q4`
-  ADD CONSTRAINT `tbl_form_1_q4_ibfk_1` FOREIGN KEY (`form_1_id`) REFERENCES `tbl_form_1` (`id`) ON DELETE CASCADE;
+ADD CONSTRAINT `tbl_form_1_q4_ibfk_1` FOREIGN KEY (`form_1_id`) REFERENCES `tbl_form_1` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_first`
 --
 ALTER TABLE `tbl_goal_first`
-  ADD CONSTRAINT `tbl_goal_first_ibfk_1` FOREIGN KEY (`th_id`) REFERENCES `tbl_th` (`id`) ON DELETE CASCADE;
+ADD CONSTRAINT `tbl_goal_first_ibfk_1` FOREIGN KEY (`th_id`) REFERENCES `tbl_th` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_first_g1`
 --
 ALTER TABLE `tbl_goal_first_g1`
-  ADD CONSTRAINT `tbl_goal_first_g1_ibfk_1` FOREIGN KEY (`goal_first_id`) REFERENCES `tbl_goal_first` (`id`) ON DELETE CASCADE;
+ADD CONSTRAINT `tbl_goal_first_g1_ibfk_1` FOREIGN KEY (`goal_first_id`) REFERENCES `tbl_goal_first` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_first_g1_obj_fn`
 --
 ALTER TABLE `tbl_goal_first_g1_obj_fn`
-  ADD CONSTRAINT `tbl_goal_first_g1_obj_fn_ibfk_1` FOREIGN KEY (`goal_first_g1_id`) REFERENCES `tbl_goal_first_g1` (`id`) ON DELETE CASCADE;
+ADD CONSTRAINT `tbl_goal_first_g1_obj_fn_ibfk_1` FOREIGN KEY (`goal_first_g1_id`) REFERENCES `tbl_goal_first_g1` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_first_g2`
 --
 ALTER TABLE `tbl_goal_first_g2`
-  ADD CONSTRAINT `tbl_goal_first_g2_ibfk_1` FOREIGN KEY (`goal_first_id`) REFERENCES `tbl_goal_first` (`id`) ON DELETE CASCADE;
+ADD CONSTRAINT `tbl_goal_first_g2_ibfk_1` FOREIGN KEY (`goal_first_id`) REFERENCES `tbl_goal_first` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_first_g2_obj_fn`
 --
 ALTER TABLE `tbl_goal_first_g2_obj_fn`
-  ADD CONSTRAINT `tbl_goal_first_g2_obj_fn_ibfk_1` FOREIGN KEY (`goal_first_g2_id`) REFERENCES `tbl_goal_first_g2` (`id`) ON DELETE CASCADE;
+ADD CONSTRAINT `tbl_goal_first_g2_obj_fn_ibfk_1` FOREIGN KEY (`goal_first_g2_id`) REFERENCES `tbl_goal_first_g2` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_first_g3`
 --
 ALTER TABLE `tbl_goal_first_g3`
-  ADD CONSTRAINT `tbl_goal_first_g3_ibfk_1` FOREIGN KEY (`goal_first_id`) REFERENCES `tbl_goal_first` (`id`) ON DELETE CASCADE;
+ADD CONSTRAINT `tbl_goal_first_g3_ibfk_1` FOREIGN KEY (`goal_first_id`) REFERENCES `tbl_goal_first` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_first_g3_obj_fn`
 --
 ALTER TABLE `tbl_goal_first_g3_obj_fn`
-  ADD CONSTRAINT `tbl_goal_first_g3_obj_fn_ibfk_1` FOREIGN KEY (`goal_first_g3_id`) REFERENCES `tbl_goal_first_g3` (`id`) ON DELETE CASCADE;
+ADD CONSTRAINT `tbl_goal_first_g3_obj_fn_ibfk_1` FOREIGN KEY (`goal_first_g3_id`) REFERENCES `tbl_goal_first_g3` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_second`
 --
 ALTER TABLE `tbl_goal_second`
-  ADD CONSTRAINT `tbl_goal_second_ibfk_1` FOREIGN KEY (`fn_id`) REFERENCES `tbl_fn` (`id`) ON DELETE CASCADE;
+ADD CONSTRAINT `tbl_goal_second_ibfk_1` FOREIGN KEY (`fn_id`) REFERENCES `tbl_fn` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_second_g1`
 --
 ALTER TABLE `tbl_goal_second_g1`
-  ADD CONSTRAINT `tbl_goal_second_g1_ibfk_1` FOREIGN KEY (`goal_second_id`) REFERENCES `tbl_goal_second` (`id`) ON DELETE CASCADE;
+ADD CONSTRAINT `tbl_goal_second_g1_ibfk_1` FOREIGN KEY (`goal_second_id`) REFERENCES `tbl_goal_second` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_second_g1_obj`
 --
 ALTER TABLE `tbl_goal_second_g1_obj`
-  ADD CONSTRAINT `tbl_goal_second_g1_obj_ibfk_1` FOREIGN KEY (`goal_second_g1_id`) REFERENCES `tbl_goal_second_g1` (`id`) ON DELETE CASCADE;
+ADD CONSTRAINT `tbl_goal_second_g1_obj_ibfk_1` FOREIGN KEY (`goal_second_g1_id`) REFERENCES `tbl_goal_second_g1` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_second_g2`
 --
 ALTER TABLE `tbl_goal_second_g2`
-  ADD CONSTRAINT `tbl_goal_second_g2_ibfk_1` FOREIGN KEY (`goal_second_id`) REFERENCES `tbl_goal_second` (`id`) ON DELETE CASCADE;
+ADD CONSTRAINT `tbl_goal_second_g2_ibfk_1` FOREIGN KEY (`goal_second_id`) REFERENCES `tbl_goal_second` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_second_g2_obj`
 --
 ALTER TABLE `tbl_goal_second_g2_obj`
-  ADD CONSTRAINT `tbl_goal_second_g2_obj_ibfk_1` FOREIGN KEY (`goal_second_g2_id`) REFERENCES `tbl_goal_second_g2` (`id`) ON DELETE CASCADE;
+ADD CONSTRAINT `tbl_goal_second_g2_obj_ibfk_1` FOREIGN KEY (`goal_second_g2_id`) REFERENCES `tbl_goal_second_g2` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_second_g3`
 --
 ALTER TABLE `tbl_goal_second_g3`
-  ADD CONSTRAINT `tbl_goal_second_g3_ibfk_1` FOREIGN KEY (`goal_second_id`) REFERENCES `tbl_goal_second` (`id`) ON DELETE CASCADE;
+ADD CONSTRAINT `tbl_goal_second_g3_ibfk_1` FOREIGN KEY (`goal_second_id`) REFERENCES `tbl_goal_second` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_second_g3_obj`
 --
 ALTER TABLE `tbl_goal_second_g3_obj`
-  ADD CONSTRAINT `tbl_goal_second_g3_obj_ibfk_1` FOREIGN KEY (`goal_second_g3_id`) REFERENCES `tbl_goal_second_g3` (`id`) ON DELETE CASCADE;
+ADD CONSTRAINT `tbl_goal_second_g3_obj_ibfk_1` FOREIGN KEY (`goal_second_g3_id`) REFERENCES `tbl_goal_second_g3` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_responsibility`
 --
 ALTER TABLE `tbl_responsibility`
-  ADD CONSTRAINT `tbl_responsibility_ibfk_1` FOREIGN KEY (`team_id`) REFERENCES `tbl_team` (`id`);
+ADD CONSTRAINT `tbl_responsibility_ibfk_1` FOREIGN KEY (`team_id`) REFERENCES `tbl_team` (`id`);
 
 --
 -- Constraints for table `tbl_risk`
 --
 ALTER TABLE `tbl_risk`
-  ADD CONSTRAINT `tbl_risk_ibfk_1` FOREIGN KEY (`th_id`) REFERENCES `tbl_th` (`id`);
+ADD CONSTRAINT `tbl_risk_ibfk_1` FOREIGN KEY (`th_id`) REFERENCES `tbl_th` (`id`);
 
 --
 -- Constraints for table `tbl_team_interest`
 --
 ALTER TABLE `tbl_team_interest`
-  ADD CONSTRAINT `tbl_team_interest_ibfk_1` FOREIGN KEY (`team_id`) REFERENCES `tbl_team` (`id`);
+ADD CONSTRAINT `tbl_team_interest_ibfk_1` FOREIGN KEY (`team_id`) REFERENCES `tbl_team` (`id`);
 
 --
 -- Constraints for table `tbl_th_action`
 --
 ALTER TABLE `tbl_th_action`
-  ADD CONSTRAINT `tbl_th_action_ibfk_1` FOREIGN KEY (`th_id`) REFERENCES `tbl_th` (`id`);
+ADD CONSTRAINT `tbl_th_action_ibfk_1` FOREIGN KEY (`th_id`) REFERENCES `tbl_th` (`id`) ON DELETE CASCADE;
