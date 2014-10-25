@@ -8,7 +8,7 @@
 	$loggedInUserObj = getUserUsingTheUserId($_SESSION['LOGGED_USER_ID']);
 	if( !empty($goalFirstList) && ($loggedInUserObj->member_type !== 'Admin') ){
 		?>
-		<table border="1" width="100%">
+		<table border="0" width="100%">
 			<tr style="background:#eee">
 				<td>Th</td>
 				<td>Report Date</td>

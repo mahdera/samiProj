@@ -91,4 +91,17 @@
             $ex->getMessage();
         }
     }
+
+    function getLatestTopGoalSecondModifiedBy($modifiedBy){
+      //echo 'cubiack'.$modifiedBy;
+      try{
+        $query = "select * from tbl_goal_second where modified_by = $modifiedBy order by modification_date limit 0,1";
+        //echo $query;
+        $result = read($query);
+        $resultRow = mysql_fetch_object($result);
+        return $resultRow;
+      }catch(Exception $ex){
+        $ex->getMessage();
+      }
+    }
 ?>

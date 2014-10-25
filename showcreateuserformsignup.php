@@ -16,7 +16,7 @@
         <tr>
             <td><font color='red'>*</font> Email:</td>
             <td>
-                <input type="email" name="txtemail" id="txtemail"/>
+                <input type="text" name="txtemail" id="txtemail"/>
             </td>
         </tr>
         <tr>
@@ -40,7 +40,7 @@
         <tr>
             <td><font color='red'>*</font> Member Type:</td>
             <td>
-                <select name="slctmembertype" id="slctmembertype" style="width: 100%">                    
+                <select name="slctmembertype" id="slctmembertype" style="width: 100%">
                     <option value="User" selected="selected">User</option>
                 </select>
             </td>
@@ -49,7 +49,7 @@
             <td><font color='red'>*</font> User Status:</td>
             <td>
                 <select name="slctuserstatus" id="slctuserstatus" style="width: 100%">
-                    <option value="Pending" selected="selected">Pending</option>                    
+                    <option value="Pending" selected="selected">Pending</option>
                 </select>
             </td>
         </tr>
@@ -63,7 +63,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('#txtfirstname').focus();
-        
+
         $('#btncreateuser').click(function(){
             var firstName = $('#txtfirstname').val();
             var lastName = $('#txtlastname').val();
@@ -81,11 +81,11 @@
                         "&phoneNumber="+phoneNumber+"&memberType="+memberType+
                         "&userStatus="+userStatus;
                 $.ajax({
-                    url: 'files/createusersignup.php',		
+                    url: 'files/createusersignup.php',
                     data: dataString,
                     type:'POST',
-                    success:function(response){                    
-                        //$('#createUserDiv').html('');                        
+                    success:function(response){
+                        //$('#createUserDiv').html('');
                         $('#extraContent').html('Your account needs activation. We have sent you an activation link via your email. Please go to your email and click on the link we have sent you!');
                     },
                     error:function(error){

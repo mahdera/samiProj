@@ -6,7 +6,7 @@
     $goalFirstList = getAllGoalFirstsModifiedBy($_SESSION['LOGGED_USER_ID']);
     //this will have to be like all goalFirsts then filter out the ths in the goal first list
 
-    if(!empty($goalFirstList)){
+    if($goalFirstList){
         ?>
         <table border="0" width="100%">
             <tr style="background: #CCC">
@@ -20,8 +20,8 @@
                         $thObj = getTh($goalFirstRow->th_id);
                         $countVal = 0;
                         $divId = "actionDiv" . $thObj->id;
-                        $countVal = doesThisThAlreadyActionFilledForIt($thObj->id);
-                        if(!$countVal){
+                        //$countVal = doesThisThAlreadyActionFilledForIt($thObj->id);
+                        if(true){
                             ?>
                             <tr>
                                 <td><?php echo $ctr;?></td>
@@ -38,10 +38,7 @@
                             <?php
                             $ctr++;
                         }//end inner...if condition
-                    }//end while loop construct
-                    if($countVal){
-                        echo '<div class="notify"><span class="symbol icon-info"></span> All Ths Have Action Record !</div>';
-                    }
+                    }//end while loop construct                    
                 ?>
         </table>
         <?php

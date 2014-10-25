@@ -62,7 +62,7 @@
     function getAllFilteredLatestFnIdsEnteredByUser($modifiedBy){
         $ctr = 0;
         $fnIdArray = array();
-        try{            
+        try{
             //first read from tbl_goal_first_g1
             $query = "select * from tbl_goal_first_g1 where modified_by = $modifiedBy order by modification_date desc limit 0,1";
             $result = read($query);
@@ -109,5 +109,16 @@
             $ex->getMessage();
         }
         return $fnIdArray;
+    }
+
+    function getAllFnsForGoalSecond($goalSecondId){
+      try{
+        $query = "select tbl_fn.id, tbl_fn.fn_name, tbl_fn.modified_by, tbl_fn.modification_date from tbl_fn,tbl_goal_second where tbl_fn.id = tbl_goal_second.fn_id and tbl_goal_second.id = $goalSecondId";
+        //echo $query;
+        $result = read($query);
+        return $result;
+      }catch(Exception $ex){
+        $ex->getMessage();
+      }
     }
 ?>

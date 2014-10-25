@@ -1,6 +1,6 @@
 <?php
     require_once 'dbconnection.php';
-    
+
     function saveUser($firstName, $lastName, $email, $userId, $password, $phoneNumber,
             $memberType,$userStatus, $modifiedBy){
         $md5Password = md5($password);
@@ -12,18 +12,18 @@
             $ex->getMessage();
         }
     }
-    
+
     function updateUser($id,$firstName, $lastName, $email,$phoneNumber,
             $memberType,$userStatus, $modifiedBy){
         try{
-            $query = "update tbl_user set first_name='$firstName', last_name='$lastName', email='$email', phone_number = '$phoneNumber', member_type = '$memberType',user_status = '$userStatus', modified_by = $modifiedBy, modification_date = NOW() where id = $id";                    
+            $query = "update tbl_user set first_name='$firstName', last_name='$lastName', email='$email', phone_number = '$phoneNumber', member_type = '$memberType',user_status = '$userStatus', modified_by = $modifiedBy, modification_date = NOW() where id = $id";
             //echo $query;
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
-    
+
     function deleteUser($id){
         try{
             $query = "delete from tbl_user where id = id";
@@ -32,7 +32,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function getAllUsers(){
         try{
             $query = "select * from tbl_user order by first_name, last_name";
@@ -45,14 +45,14 @@
 
     function getAllApprovedUsers(){
         try{
-            $query = "select * from tbl_user where user_status = 'Active' order by first_name, last_name";            
+            $query = "select * from tbl_user where user_status = 'Active' order by first_name, last_name";
             $result = read($query);
             return $result;
         } catch (Exception $ex) {
             $ex->getMessage();
-        }   
+        }
     }
-    
+
     function getUser($id){
         try{
             $query = "select * from tbl_user where id = $id";
@@ -63,7 +63,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function isThereAUserWithUserIdAndPassword($userId,$password){
         try{
             $cnt = 0;
@@ -76,11 +76,24 @@
             $ex->getMessage();
         }
     }
-    
+
+    function isThereAUserWithUserIdAndPasswordWithStatus($userId, $password, $userStatus){
+      try{
+          $cnt = 0;
+          $query = "select count(*) as cnt from tbl_user where user_id = '$userId' and password = md5('$password') and user_status = 'Active'";
+          //echo $query;
+          $result = read($query);
+          $resultRow = mysql_fetch_object($result);
+          return $resultRow->cnt;
+      } catch (Exception $ex) {
+          $ex->getMessage();
+      }
+    }
+
     function doesThisUserAccountExistUsingEmail($email){
         try{
             $cnt = 0;
-            $query = "select count(*) as cnt from tbl_user where email = '$email'";            
+            $query = "select count(*) as cnt from tbl_user where email = '$email'";
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow->cnt;
@@ -88,7 +101,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function updateUserPasswordUsingEmail($email, $randomValue){
         try{
             $query = "update tbl_user set password = md5('$randomValue') where email = '$email'";
@@ -97,10 +110,10 @@
             $ex->getMessage();
         }
     }
-    
+
     function getUserUsingEmailAddress($email){
         try{
-            $query = "select * from tbl_user where email = '$email'";            
+            $query = "select * from tbl_user where email = '$email'";
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;
@@ -108,10 +121,10 @@
             $ex->getMessage();
         }
     }
-    
+
     function getUserUsingUserId($userId){
         try{
-            $query = "select * from tbl_user where user_id = '$userId'";            
+            $query = "select * from tbl_user where user_id = '$userId'";
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;
@@ -122,7 +135,7 @@
 
     function getUserUsingTheUserId($userId){
         try{
-            $query = "select * from tbl_user where id = $userId";            
+            $query = "select * from tbl_user where id = $userId";
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;
@@ -130,7 +143,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function getAllNonAdminUsers(){
         try{
             $query = "select * from tbl_user where member_type != 'Admin'";
@@ -140,7 +153,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function resetUserPassword($id, $password){
         try{
             $query = "update tbl_user set password = md5('$password') where id = $id";

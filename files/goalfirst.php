@@ -63,6 +63,7 @@
     function getGoalFirstUsingThId($thId){
         try{
             $query = "select * from tbl_goal_first where th_id = $thId";
+            //echo $query;
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;
@@ -94,7 +95,8 @@
 
     function getAllThsForGoalFirst($goalFirstId){
         try{
-            $query = "select * from tbl_goal_first where id = $goalFirstId";
+            $query = "select tbl_th.id, tbl_th.th_name, tbl_th.modified_by, tbl_th.modification_date from tbl_th,tbl_goal_first where tbl_th.id = tbl_goal_first.th_id and tbl_goal_first.id = $goalFirstId";
+            //echo $query;
             $result = read($query);
             return $result;
         } catch (Exception $ex) {

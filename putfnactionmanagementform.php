@@ -5,7 +5,7 @@
     require_once 'files/fnaction.php';
     require_once 'files/goalsecond.php';
     //$fn_list = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);//getAllFnsModifiedBy($_SESSION['LOGGED_USER_ID']);
-    $goalSecondList = getAllGoalSecondsModifiedBy($_SESSION['LOGGED_USER_ID']);    
+    $goalSecondList = getAllGoalSecondsModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
 <table border="0" width="100%">
     <tr style="background: #ccc">
@@ -14,13 +14,13 @@
         <td>Action</td>
     </tr>
     <?php
-        $ctr=1;        
-        while($goalSecondRow = mysql_fetch_object($goalSecondList)){        
+        $ctr=1;
+        while($goalSecondRow = mysql_fetch_object($goalSecondList)){
             $fnObj = getFn($goalSecondRow->fn_id);
             $countVal = 0;
             $divId = "actionDiv" . $fnObj->id;
-            $countVal = doesThisFnAlreadyActionFilledForIt($fnObj->id);
-            if(!$countVal){
+            //$countVal = doesThisFnAlreadyActionFilledForIt($fnObj->id);
+            if(true){
                 ?>
                     <tr>
                         <td width="10%"><?php echo $ctr++;?></td>
@@ -37,29 +37,27 @@
                 <?php
             }
         }//end while loop
-        if($countVal){
-            echo '<div class="notify"><span class="symbol icon-info"></span> All Fns Have Action Record !</div>';
-        }
+        //if($countVal){
+            //echo '<div class="notify"><span class="symbol icon-info"></span> All Fns Have Action Record !</div>';
+        //}
     ?>
 </table>
 <script type="text/javascript">
     $(document).ready(function(){
-        
+
         $('.openActionFormClass').click(function(){
             var idVal = $(this).attr('id');
             //now create the div element using the id you got in here...
             var divId = "actionDiv" + idVal;
-            
+
             $('#' + divId).load('files/showputfnactionform.php?fn_id='+idVal);
         });
-        
+
         $('.closeActionFormClass').click(function(){
             var idVal = $(this).attr('id');
             var divId = "actionDiv" + idVal;
             $('#' + divId).html('');
         });
-        
+
     });//end document.ready function
 </script>
-
-

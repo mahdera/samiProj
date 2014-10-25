@@ -1,6 +1,6 @@
 <?php
     require_once 'dbconnection.php';
-    
+
     function saveFnAction($fnId, $actionText, $modifiedBy){
         try{
             $query = "insert into tbl_fn_action values(0, $fnId, '$actionText', $modifiedBy, NOW())";
@@ -9,7 +9,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function updateFnAction($id, $actionText, $modifiedBy){
         try{
             $query = "update tbl_fn_action set action_text = '$actionText', modified_by = $modifiedBy, modification_date = NOW() where id = $id";
@@ -18,7 +18,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function deleteFnAction($id){
         try{
             $query = "delete from tbl_fn_action where id = $id";
@@ -27,7 +27,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function getAllFnActions(){
         try{
             $query = "select * from tbl_fn_action";
@@ -47,7 +47,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function getFnAction($id){
         try{
             $query = "select * from tbl_fn_action where id = $id";
@@ -58,13 +58,24 @@
             $ex->getMessage();
         }
     }
-    
+
     function doesThisFnAlreadyActionFilledForIt($fnId){
         try{
             $query = "select count(*) as cnt from tbl_fn_action where fn_id = $fnId";
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow->cnt;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+
+    function getAllFnActionsForThisFn($fnId){
+        try{
+            $query = "select * from tbl_fn_action where fn_id = $fnId";
+            //echo $query;
+            $result = read($query);
+            return $result;
         } catch (Exception $ex) {
             $ex->getMessage();
         }

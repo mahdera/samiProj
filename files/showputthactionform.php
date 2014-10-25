@@ -12,9 +12,9 @@
     require_once 'goalfirstg3objfn.php';
     require_once 'fn.php';
     require_once 'thaction.php';
-    $countVal = 0;
-    $countVal = doesThisThAlreadyActionFilledForIt($thId);
-    if(!$countVal){
+    @$countVal = 0;
+    @$countVal = doesThisThAlreadyActionFilledForIt($thId);
+    if(true){
     //now get all goalfirst records associated with this particular thId
     $goalFirstRow = getGoalFirstUsingThId($thId);
     if(!empty($goalFirstRow)){

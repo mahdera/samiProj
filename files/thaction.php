@@ -1,6 +1,6 @@
 <?php
     require_once 'dbconnection.php';
-    
+
     function saveThAction($thId, $actionText, $modifiedBy){
         try{
             $query = "insert into tbl_th_action values(0, $thId, '$actionText', $modifiedBy, NOW())";
@@ -9,7 +9,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function updateThAction($id, $actionText, $modifiedBy){
         try{
             $query = "update tbl_th_action set action_text = '$actionText', modified_by = $modifiedBy, modification_date = NOW() where id = $id";
@@ -18,7 +18,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function deleteThAction($id){
         try{
             $query = "delete from tbl_th_action where id = $id";
@@ -27,7 +27,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function getAllThActions(){
         try{
             $query = "select * from tbl_th_action";
@@ -47,7 +47,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function getThAction($id){
         try{
             $query = "select * from tbl_th_action where id = $id";
@@ -58,7 +58,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function doesThisThAlreadyActionFilledForIt($thId){
         try{
             $query = "select count(*) as cnt from tbl_th_action where th_id = $thId";
@@ -68,5 +68,15 @@
         } catch (Exception $ex) {
             $ex->getMessage();
         }
+    }
+
+    function getAllThActionsForThisTh($thId){
+      try{
+          $query = "select * from tbl_th_action where th_id = $thId";
+          $result = read($query);
+          return $result;
+      } catch (Exception $ex) {
+          $ex->getMessage();
+      }
     }
 ?>
