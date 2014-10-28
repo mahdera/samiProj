@@ -7,7 +7,7 @@
     <div>
         <a href="#.php" id="createUserLink">Create User</a>
     </div>
-    <table border="1" width="100%">
+    <table border="0" width="100%">
         <tr style="background: #eee">
             <td>Ser.No</td>
             <td>First Name</td>
@@ -51,12 +51,12 @@
         $('#createUserLink').click(function(){
             $('#createUserDiv').load('files/showcreateuserform.php');
         });
-        
+
         $('.resetUserPasswordLink').click(function(){
             var id = $(this).attr('id');
             $('#createUserDiv').load('files/showresetuserpasswordform.php?id='+id);
         });
-        
+
         $('.modifyUserProfileLink').click(function(){
             var id = $(this).attr('id');
             $('#createUserDiv').load('files/showmodifyuserprofileform.php?id='+id);
