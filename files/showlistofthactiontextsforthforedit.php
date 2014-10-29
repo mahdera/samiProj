@@ -37,8 +37,8 @@
   $(document).ready(function(){
     $('.editThActionLinkId').click(function(){
         var idVal = $(this).attr('id');
-        var divId = "editThisActionDiv" + idVal;
-        $('#' + divId).load('showeditfieldsofthisthaction.php?thActionId='+idVal);
+        var divId = "editThisThActionDiv" + idVal;
+        $('#' + divId).load('files/showeditfieldsofthisthaction.php?thActionId='+idVal);
     });
   });//end document.ready function
 </script>

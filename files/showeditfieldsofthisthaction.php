@@ -10,7 +10,7 @@
   <table border="0" width="100%">
       <tr>
           <td>
-              <textarea name="<?php echo $thActionControlName;?>" id="<?php echo $thActionControlName;?>" rows="3" style="width:100%"><?php echo ;?><?php echo $thActionObj->action_text;?></textarea>
+              <textarea name="<?php echo $thActionControlName;?>" id="<?php echo $thActionControlName;?>" rows="3" style="width:100%"><?php echo $thActionObj->action_text;?></textarea>
           </td>
       </tr>
       <tr>
@@ -20,3 +20,28 @@
       </tr>
   </table>
 </form>
+<script type="text/javascript">
+  $(document).ready(function(){
+      var thActionId = "<?php echo $thActionId;?>";
+      var buttonId = "btnupdatethaction" + thActionId;
+      $('#'+buttonId).click(function(){
+        var thActionControlName = "textareathactionedit" + thActionId;
+        var updatedText = $('#'+thActionControlName).val();
+        if(updatedText !== ''){
+          var dataString = "updatedText="+updatedText+"&thActionId="+thActionId;
+          var divId = "thActioneditThisThActionDiv" + thActionId;
+          $.ajax({
+              url: 'files/updatethisthaction.php',
+              data: dataString,
+              type:'POST',
+              success:function(response){
+                  $('#'+divId).html(response);
+              },
+              error:function(error){
+                  alert(error);
+              }
+          });
+        }
+      });
+  });//end document.ready function
+</script>
