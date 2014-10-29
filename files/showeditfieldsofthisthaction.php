@@ -28,8 +28,8 @@
         var thActionControlName = "textareathactionedit" + thActionId;
         var updatedText = $('#'+thActionControlName).val();
         if(updatedText !== ''){
-          var dataString = "updatedText="+updatedText+"&thActionId="+thActionId;
-          var divId = "thActioneditThisThActionDiv" + thActionId;
+          var dataString = "updatedText="+encodeURIComponent(updatedText)+"&thActionId="+thActionId;
+          var divId = "editThisThActionDiv" + thActionId;
           $.ajax({
               url: 'files/updatethisthaction.php',
               data: dataString,
