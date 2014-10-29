@@ -1,6 +1,6 @@
 <?php
     require_once 'dbconnection.php';
-    
+
     function saveAssessmentTh($assessmentId, $thId, $modifiedBy){
         try{
             $query = "insert into tbl_assessment_th values(0, $assessmentId, $thId, $modifiedBy, NOW())";
@@ -10,7 +10,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function updateAssessmentTh($id, $assessmentId, $thId, $modifiedBy){
         try{
             $query = "update tbl_assessment_th set assessment_id = $assessmentId, th_id = $thId, modified_by = $modifiedBy, modification_date = NOW() where id = $id";
@@ -19,7 +19,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function deleteAssessmentTh($id){
         try{
             $query = "delete from tbl_assessment_th where id = $id";
@@ -28,7 +28,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function getAllAssessmentThs(){
         try{
             $query = "select * from tbl_assessment_th";
@@ -38,7 +38,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function getAssessmentTh($id){
         try{
             $query = "select * from tbl_assessment_th where id = $id";

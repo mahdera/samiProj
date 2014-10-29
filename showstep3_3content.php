@@ -1,4 +1,5 @@
     <?php
+        session_start();
         @$ctr = $_GET['ctr'];
         $selectedThIdArray = array();
         for($i=1; $i <= $ctr; $i++){
@@ -7,6 +8,7 @@
             $selectedThIdArray[$i-1] = $_GET["$checkBoxName"];
         }//end for loop
         $_SESSION['SELECTED_THS'] = $selectedThIdArray;
+        var_dump($_SESSION['SELECTED_THS']);
     ?>
     <div id="topcontain">
         <div id="titlearea">
