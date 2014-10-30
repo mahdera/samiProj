@@ -1,11 +1,12 @@
 <?php
+    session_start();
     require_once 'files/th.php';
     require_once 'files/fn.php';
 
     $fnIdArray = array();
     //first read fns from tbl_goal_first_g1
     $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
-    //var_dump($fnIdArray);
+    //var_dump($_SESSION['SELECTED_THS']);
 ?>
 <h1>Add Goal Second</h1>
 <a href="#.php" id="showGoalSecondManagementFormLinkId">Show Form</a>

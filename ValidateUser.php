@@ -13,6 +13,7 @@
       if($loggedInUserObj->user_status !== 'Blocked'){
         $_SESSION['LOGGED_USER_ID'] = $loggedInUserObj->id;
         $_SESSION['USER_ID'] = $userId;
+        $_SESSION['SELECTED_THS'] = NULL;
         if($loggedInUserObj->member_type === 'Admin'){
           header('Location: adminhome.php');
         }else{

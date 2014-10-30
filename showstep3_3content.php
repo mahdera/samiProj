@@ -7,8 +7,10 @@
             //now get the value...
             $selectedThIdArray[$i-1] = $_GET["$checkBoxName"];
         }//end for loop
-        $_SESSION['SELECTED_THS'] = $selectedThIdArray;
-        var_dump($_SESSION['SELECTED_THS']);
+        //if($_SESSION['SELECTED_THS'] === NULL){
+            $_SESSION['SELECTED_THS'] = $selectedThIdArray;
+        //}
+        //var_dump($_SESSION['SELECTED_THS']);
     ?>
     <div id="topcontain">
         <div id="titlearea">

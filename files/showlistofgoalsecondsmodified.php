@@ -46,7 +46,7 @@
                     </tr>
                 <?php
             }
-        }//end while loop        
+        }//end while loop
     ?>
 </table>
 <script type="text/javascript">

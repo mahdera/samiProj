@@ -6,9 +6,10 @@
         require_once 'risk.php';
         require_once 'th.php';
         $riskList = null;
-        var_dump($_SESSION['SELECTED_THS']);
+        //var_dump($_SESSION['SELECTED_THS']);
         //if session containing list of selected checkboxes is empty...then read from database
-        if(isset($_SESSION['SELECTED_THS'])){
+        if($_SESSION['SELECTED_THS'] !== NULL){
+          //echo 'inside most fancy place';
           $selectedThIdArray = $_SESSION['SELECTED_THS'];
         }
         $riskList = getAllRisksModifiedBy($_SESSION['LOGGED_USER_ID']);
