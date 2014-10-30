@@ -1,3 +1,6 @@
+<?php
+  $fnIdArray = array();
+?>
 <form id="goalFirstManagementForm">
     <table border="0" width="100%">
         <tr>
@@ -29,12 +32,20 @@
                 <select name="slctg1fn" id="slctg1fn" style="width: 100%">
                     <option value="" selected="selected">--Select--</option>
                     <?php
-                        $fnList = getAllFns();
-                        while($fnRow = mysql_fetch_object($fnList)){
+                        //first read fns from tbl_goal_first_g1
+                        $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
+                        foreach ($fnIdArray as $fnId) {
+                            $fnObj = getFn($fnId);
+                            ?>
+                                <option value="<?php echo $fnId;?>"><?php echo $fnObj->fn_name;?></option>
+                            <?php
+                        }//end foreach loop...
+
+                        /*while($fnRow = mysql_fetch_object($fnList)){
                             ?>
                                 <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
                             <?php
-                        }//end while loop
+                        }//end while loop*/
                         ?>
                         <option value="other">other</option>
                 </select>
@@ -60,14 +71,22 @@
                             <select name="slctg1fn1" id="slctg1fn1" style="width: 100%">
                                 <option value="" selected="selected">--Select--</option>
                                 <?php
-                                    $fnList = getAllFns();
+                                    //first read fns from tbl_goal_first_g1
+                                    $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
+                                    foreach ($fnIdArray as $fnId) {
+                                        $fnObj = getFn($fnId);
+                                        ?>
+                                            <option value="<?php echo $fnId;?>"><?php echo $fnObj->fn_name;?></option>
+                                        <?php
+                                    }//end foreach loop...
+                                    /*$fnList = getAllFns();
                                     while($fnRow = mysql_fetch_object($fnList)){
                                         ?>
                                             <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
                                         <?php
-                                    }//end while loop
-                                    ?>
-                                    <option value="other">other</option>
+                                    }//end while loop*/
+                                ?>
+                                <option value="other">other</option>
                             </select>
                         </td>
                     </tr>
@@ -98,14 +117,22 @@
                 <select name="slctg2fn" id="slctg2fn" style="width: 100%">
                     <option value="" selected="selected">--Select--</option>
                     <?php
-                        $fnList = getAllFns();
+                        //first read fns from tbl_goal_first_g1
+                        $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
+                        foreach ($fnIdArray as $fnId) {
+                            $fnObj = getFn($fnId);
+                            ?>
+                                <option value="<?php echo $fnId;?>"><?php echo $fnObj->fn_name;?></option>
+                            <?php
+                        }//end foreach loop...
+                        /*$fnList = getAllFns();
                         while($fnRow = mysql_fetch_object($fnList)){
                             ?>
                                 <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
                             <?php
-                        }//end while loop
+                        }//end while loop*/
                         ?>
-                                <option value="other">other</option>
+                        <option value="other">other</option>
                 </select>
             </td>
         </tr>
@@ -129,12 +156,20 @@
                             <select name="slctg2fn1" id="slctg2fn1" style="width: 100%">
                                 <option value="" selected="selected">--Select--</option>
                                 <?php
-                                    $fnList = getAllFns();
+                                    //first read fns from tbl_goal_first_g1
+                                    $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
+                                    foreach ($fnIdArray as $fnId) {
+                                        $fnObj = getFn($fnId);
+                                        ?>
+                                            <option value="<?php echo $fnId;?>"><?php echo $fnObj->fn_name;?></option>
+                                        <?php
+                                    }//end foreach loop...
+                                    /*$fnList = getAllFns();
                                     while($fnRow = mysql_fetch_object($fnList)){
                                         ?>
                                             <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
                                         <?php
-                                    }//end while loop
+                                    }//end while loop*/
                                     ?>
                                     <option value="other">other</option>
                             </select>
@@ -167,14 +202,14 @@
                 <select name="slctg3fn" id="slctg3fn" style="width: 100%">
                     <option value="" selected="selected">--Select--</option>
                     <?php
-                        $fnList = getAllFns();
+                        /*$fnList = getAllFns();
                         while($fnRow = mysql_fetch_object($fnList)){
                             ?>
                                 <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
                             <?php
-                        }//end while loop
+                        }//end while loop*/
                         ?>
-                                <option value="other">other</option>
+                        <option value="other">other</option>
                 </select>
             </td>
         </tr>
@@ -198,12 +233,20 @@
                             <select name="slctg3fn1" id="slctg3fn1" style="width: 100%">
                                 <option value="" selected="selected">--Select--</option>
                                 <?php
-                                    $fnList = getAllFns();
+                                    //first read fns from tbl_goal_first_g1
+                                    $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
+                                    foreach ($fnIdArray as $fnId) {
+                                        $fnObj = getFn($fnId);
+                                        ?>
+                                            <option value="<?php echo $fnId;?>"><?php echo $fnObj->fn_name;?></option>
+                                        <?php
+                                    }//end foreach loop...
+                                    /*$fnList = getAllFns();
                                     while($fnRow = mysql_fetch_object($fnList)){
                                         ?>
                                             <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
                                         <?php
-                                    }//end while loop
+                                    }//end while loop*/
                                     ?>
                                     <option value="other">other</option>
                             </select>

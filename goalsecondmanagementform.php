@@ -6,7 +6,7 @@
     $fnIdArray = array();
     //first read fns from tbl_goal_first_g1
     $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
-    //var_dump($_SESSION['SELECTED_THS']);
+    //var_dump($fnIdArray);
 ?>
 <h1>Add Goal Second</h1>
 <a href="#.php" id="showGoalSecondManagementFormLinkId">Show Form</a>

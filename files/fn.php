@@ -108,7 +108,28 @@
         }catch(Exception $ex){
             $ex->getMessage();
         }
-        return $fnIdArray;
+        //before returning the array i need to check if there are duplicates and
+        //leave out the duplicates...
+        $fnIdArrayFiltered = array();
+
+        //now check if the element already exists in the second newly created array
+        $elementExists = false;
+        for($i=0; $i<count($fnIdArray); $i++){
+          for($j=0; $j<count($fnIdArrayFiltered);$j++){
+            if($fnIdArray[$i] == $fnIdArrayFiltered[$j]){
+                $elementExists = true;
+                break;
+            }
+          }
+          //now check here and if safe add element to fnIdArrayFiltered array...
+          if($elementExists == false){
+              $currentArrayIndex = count($fnIdArrayFiltered);
+              $fnIdArrayFiltered[$currentArrayIndex] = $fnIdArray[$i];
+          }
+          $elementExists = false;
+        }//end for $i loop
+        return $fnIdArrayFiltered;
+
     }
 
     function getAllFnsForGoalSecond($goalSecondId){
