@@ -39,10 +39,13 @@
     $fetchedGoalFirst = getGoalFirstUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
     //now I need to save information on the goal_first_th table...
     saveGoalFirstTh($fetchedGoalFirst->id, $thId, $_SESSION['LOGGED_USER_ID']);
+    //now get the immidieatly saved goalFirstTh record so that it can be used with
+    //the goalFirstG1 and the rest records...
+    $fetchedGoalFirstTh = getGoalFirstThUsingModifiedyBy($_SESSION['LOGGED_USER_ID']);
     //now save the goalfirstg1 value...
-    saveGoalFirstG1($fetchedGoalFirst->id, $g1, $g1Fn, $_SESSION['LOGGED_USER_ID']);
+    saveGoalFirstG1($fetchedGoalFirstTh->id, $g1, $g1Fn, $_SESSION['LOGGED_USER_ID']);
     //fetch the value using the above parameters you have used to save the values to the database...
-    $fetchedGoalFirstG1 = getGoalFirstG1UsingAndModifiedBy($fetchedGoalFirst->id, $g1, $g1Fn, $_SESSION['LOGGED_USER_ID']);
+    $fetchedGoalFirstG1 = getGoalFirstG1UsingAndModifiedBy($fetchedGoalFirstTh->id, $g1, $g1Fn, $_SESSION['LOGGED_USER_ID']);
 
 
     for($i = 1; $i <= $numItemsG1; $i++){
@@ -55,9 +58,9 @@
     }//end for loop i
 
     //now do the same thing for G2
-    saveGoalFirstG2($fetchedGoalFirst->id, $g2, $g2Fn, $_SESSION['LOGGED_USER_ID']);
+    saveGoalFirstG2($fetchedGoalFirstTh->id, $g2, $g2Fn, $_SESSION['LOGGED_USER_ID']);
     //fetch the value using the above parameters you have used to save the values to the database...
-    $fetchedGoalFirstG2 = getGoalFirstG2UsingAndModifiedBy($fetchedGoalFirst->id, $g2, $g2Fn, $_SESSION['LOGGED_USER_ID']);
+    $fetchedGoalFirstG2 = getGoalFirstG2UsingAndModifiedBy($fetchedGoalFirstTh->id, $g2, $g2Fn, $_SESSION['LOGGED_USER_ID']);
 
     for($j = 1; $j <= $numItemsG2; $j++){
         $g2ObjTextBoxId = "txtg2obj" . $j;
@@ -69,9 +72,9 @@
     }//end for loop i
 
     //now do the same thing for G3
-    saveGoalFirstG3($fetchedGoalFirst->id, $g3, $g3Fn, $_SESSION['LOGGED_USER_ID']);
+    saveGoalFirstG3($fetchedGoalFirstTh->id, $g3, $g3Fn, $_SESSION['LOGGED_USER_ID']);
     //fetch the value using the above parameters you have used to save the values to the database...
-    $fetchedGoalFirstG3 = getGoalFirstG3UsingAndModifiedBy($fetchedGoalFirst->id, $g3, $g3Fn, $_SESSION['LOGGED_USER_ID']);
+    $fetchedGoalFirstG3 = getGoalFirstG3UsingAndModifiedBy($fetchedGoalFirstTh->id, $g3, $g3Fn, $_SESSION['LOGGED_USER_ID']);
 
     for($k = 1; $k <= $numItemsG3; $k++){
         $g3ObjTextBoxId = "txtg3obj" . $k;

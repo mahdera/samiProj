@@ -50,10 +50,33 @@
 
     function getAllGoalFirstThsModifiedBy($modifiedBy){
         try{
-            $query = "select * from tbl_goal_first_th where modified_by = $modifiedBy order by modification_date desc";            
+            $query = "select * from tbl_goal_first_th where modified_by = $modifiedBy order by modification_date desc";
             $result = read($query);
             return $result;
         }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
+
+    function getGoalFirstFromGoalFirstThUsingThId($thId){
+        try{
+            $query = "select * from tbl_goal_first_th where th_id = $thId";
+            //echo $query;
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
+
+    function getGoalFirstThUsingModifiedyBy($modifiedBy){
+        try{
+            $query = "select * from tbl_goal_first_th where modified_by = $modifiedBy order by modification_date desc limit 0,1";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+        } catch (Exception $ex) {
             $ex->getMessage();
         }
     }

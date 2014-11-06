@@ -72,7 +72,7 @@
     function getGoalFirstG1Using($goalFirstId, $g1, $g1Fn){
         try{
             $query = "select * from tbl_goal_first_g1 where goal_first_id = $goalFirstId and g1 = '$g1' and fn_id = $g1Fn";
-            echo $query;
+            //echo $query;
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;
@@ -83,8 +83,8 @@
 
     function getGoalFirstG1UsingAndModifiedBy($goalFirstId, $g1, $g1Fn, $modifiedBy){
         try{
-            $query = "select * from tbl_goal_first_g1 where goal_first_id = $goalFirstId and g1 = '$g1' and fn_id = $g1Fn and modified_by = $modifiedBy order by modification_date desc limit 0,1";
-            echo $query;
+            $query = "select * from tbl_goal_first_g1 where goal_first_th_id = $goalFirstId and g1 = '$g1' and fn_id = $g1Fn and modified_by = $modifiedBy order by modification_date desc limit 0,1";
+            //echo $query;
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;
@@ -110,6 +110,18 @@
             $result = read($query);
             return $result;
         } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+
+    function getGoalFirstG1ForGoalFirstThId($goalFirstThId){
+        try{
+            $query = "select * from tbl_goal_first_g1 where goal_first_th_id = $goalFirstThId";
+            //echo $query;
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+        }catch(Exception $ex){
             $ex->getMessage();
         }
     }

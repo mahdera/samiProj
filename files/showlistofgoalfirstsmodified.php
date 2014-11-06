@@ -8,10 +8,10 @@
     require_once 'goalfirst.php';
     require_once 'goalfirstth.php';
     //$goalFirstList = getAllGoalFirstsModifiedBy($_SESSION['LOGGED_USER_ID']);
-    $goalFirstList = getAllGoalFirstThsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    $goalFirstThList = getAllGoalFirstThsModifiedBy($_SESSION['LOGGED_USER_ID']);
     //this will have to be like all goalFirsts then filter out the ths in the goal first list
 
-    if(!empty($goalFirstList)){
+    if(!empty($goalFirstThList)){
         ?>
         <table border="0" width="100%">
             <tr style="background: #CCC">
@@ -23,10 +23,10 @@
             </tr>
             <?php
                 $ctr=1;
-                    while($goalFirstRow = mysql_fetch_object($goalFirstList)){
-                        $thObj = getTh($goalFirstRow->th_id);
+                    while($goalFirstThRow = mysql_fetch_object($goalFirstThList)){
+                        $thObj = getTh($goalFirstThRow->th_id);
                         $countVal = 0;
-                        $divId = "actionDiv" . $thObj->id;
+                        $divId = "actionDiv" . $goalFirstThRow->th_id;
                         //$countVal = doesThisThAlreadyActionFilledForIt($thObj->id);
                         if(true){
                             ?>
@@ -34,13 +34,13 @@
                                 <td><?php echo $ctr;?></td>
                                 <td><?php echo $thObj->th_name;?></td>
                                 <td>
-                                    [<a href="#.php" id="<?php echo $thObj->id;?>" class="openActionFormClass">Show Goal First Detail</a> | <a href="#.php" id="<?php echo $thObj->id;?>" class="closeActionFormClass">Close Goal First Detail</a>]
+                                    [<a href="#.php" id="<?php echo $thObj->id;?>" class="openActionFormClass">Show Goal First Detail</a> | <a href="#.php" id="<?php echo $goalFirstThRow->th_id;?>" class="closeActionFormClass">Close Goal First Detail</a>]
                                 </td>
                                 <td>
-                                    <a href="#.php" id="<?php echo $thObj->id;?>" class="openGoalFirstDetailForEditClass">Edit</a>
+                                    <a href="#.php" id="<?php echo $goalFirstThRow->th_id;?>" class="openGoalFirstDetailForEditClass">Edit</a>
                                 </td>
                                 <td>
-                                    <a href="#.php" id="<?php echo $goalFirstRow->id;?>" class="deleteGoalFirstDetailClass">Delete</a>
+                                    <a href="#.php" id="<?php echo $goalFirstThRow->th_id;?>" class="deleteGoalFirstDetailClass">Delete</a>
                                 </td>
                             </tr>
                             <tr>
