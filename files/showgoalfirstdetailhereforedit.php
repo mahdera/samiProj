@@ -99,14 +99,15 @@
                             </tr>
                             <tr>
                                 <td width="5%"></td>
-                                <td width="5%">Fn</td>
+                                <td width="5%">Fn123</td>
                                 <td>
                                     <select name="<?php echo $goalFirstG1FnControlName;?>" id="<?php echo $goalFirstG1FnControlName;?>" style="width:100%">
                                         <option value="">--Select--</option>
                                         <?php
+                                            //var_dump($goalFirstG1ObjFnRow);
                                             foreach ($fnIdArray as $fnId) {
                                                 $fnObj = getFn($fnId);
-                                                if($fnId === $goalFirstG1ObjFnRow->fn_id){
+                                                if($fnId == $goalFirstG1ObjFnRow->fn_id){
                                                     ?>
                                                         <option value="<?php echo $fnObj->id;?>" selected="selected"><?php echo $fnObj->fn_name;?></option>
                                                     <?php

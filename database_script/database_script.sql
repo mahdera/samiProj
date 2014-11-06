@@ -1560,3 +1560,17 @@ ADD CONSTRAINT `tbl_team_interest_ibfk_1` FOREIGN KEY (`team_id`) REFERENCES `tb
 --
 ALTER TABLE `tbl_th_action`
 ADD CONSTRAINT `tbl_th_action_ibfk_1` FOREIGN KEY (`th_id`) REFERENCES `tbl_th` (`id`) ON DELETE CASCADE;
+
+--- Added table to solve the issue of having many ths in one goal first form ---
+
+create table tbl_goal_first_th(
+    id bigint auto_increment,
+    goal_first_id bigint not null,
+    th_id bigint not null,
+    modified_by int not null,
+    modification_date datetime not null,
+    primary key(id),
+    foreign key(goal_first_id) references tbl_goal_first(id),
+    foreign key(th_id) references tbl_th(id),
+    foreign key(modified_by) references tbl_user(id)
+);

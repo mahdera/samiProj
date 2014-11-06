@@ -7,6 +7,8 @@
     require_once 'goalfirstg2objfn.php';
     require_once 'goalfirstg3.php';
     require_once 'goalfirstg3objfn.php';
+    require_once 'goalfirstth.php';
+
     //get the values...
     $thId = $_POST['th'];
     $g1 = $_POST['g1'];
@@ -25,9 +27,18 @@
     $numItemsG2 = $_POST['numItemsG2'];
     $numItemsG3 = $_POST['numItemsG3'];
     //save the goalfirst object to the database...
-    saveGoalFirst($thId, $_SESSION['LOGGED_USER_ID']);
+    if($_SESSION['GOAL_FIRST_STATUS'] == 'create'){
+        //only create a goal first record iff user has logged in & is trying to
+        //create a new goal_first record or did not click on the next butto.
+        //if user is click save and tries to save another th without clicking the
+        //next button it should grab the last goal first record saved by the current user.
+        saveGoalFirst($_SESSION['LOGGED_USER_ID']);
+        $_SESSION['GOAL_FIRST_STATUS'] = 'existing';
+    }
     //fetch the value just saved using the thId
-    $fetchedGoalFirst = getGoalFirstUsingThIdAndModifiedBy($thId, $_SESSION['LOGGED_USER_ID']);
+    $fetchedGoalFirst = getGoalFirstUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
+    //now I need to save information on the goal_first_th table...
+    saveGoalFirstTh($fetchedGoalFirst->id, $thId, $_SESSION['LOGGED_USER_ID']);
     //now save the goalfirstg1 value...
     saveGoalFirstG1($fetchedGoalFirst->id, $g1, $g1Fn, $_SESSION['LOGGED_USER_ID']);
     //fetch the value using the above parameters you have used to save the values to the database...

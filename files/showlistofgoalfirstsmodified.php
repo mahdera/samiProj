@@ -6,7 +6,9 @@
     require_once 'th.php';
     require_once 'thaction.php';
     require_once 'goalfirst.php';
-    $goalFirstList = getAllGoalFirstsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    require_once 'goalfirstth.php';
+    //$goalFirstList = getAllGoalFirstsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    $goalFirstList = getAllGoalFirstThsModifiedBy($_SESSION['LOGGED_USER_ID']);
     //this will have to be like all goalFirsts then filter out the ths in the goal first list
 
     if(!empty($goalFirstList)){

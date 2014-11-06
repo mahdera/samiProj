@@ -1,18 +1,18 @@
 <?php
     require_once 'dbconnection.php';
 
-    function saveGoalFirst($thId, $modifiedBy){
+    function saveGoalFirst($modifiedBy){
         try{
-            $query = "insert into tbl_goal_first values(0, $thId, $modifiedBy, NOW())";
+            $query = "insert into tbl_goal_first values(0, $modifiedBy, NOW())";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
 
-    function updateGoalFirst($id, $thId, $modifiedBy){
+    function updateGoalFirst($id,$modifiedBy){
         try{
-            $query = "update tbl_goal_first set th_id = $thId, modified_by = $modifiedBy, modification_date = NOW() where id = $id";
+            $query = "update tbl_goal_first set modified_by = $modifiedBy, modification_date = NOW() where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -60,7 +60,18 @@
         }
     }
 
-    function getGoalFirstUsingThId($thId){
+    function getGoalFirstUsingModifiedBy($modifiedBy){
+        try{
+            $query = "select * from tbl_goal_first where modified_by = $modifiedBy order by modification_date desc";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+
+    /*function getGoalFirstUsingThId($thId){
         try{
             $query = "select * from tbl_goal_first where th_id = $thId";
             //echo $query;
@@ -102,5 +113,5 @@
         } catch (Exception $ex) {
             $ex->getMessage();
         }
-    }
+    }*/
 ?>

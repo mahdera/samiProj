@@ -9,14 +9,16 @@
     require_once 'goalfirstg3.php';
     require_once 'goalfirstg3objfn.php';
     require_once 'fn.php';
-    
-    $goalFirstList = getAllGoalFirstsModifiedBy($_SESSION['LOGGED_USER_ID']);    
-    
+    require_once 'goalfirstth.php';
+
+    //$goalFirstList = getAllGoalFirstsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    $goalFirstList = getAllGoalFirstThsModifiedBy($_SESSION['LOGGED_USER_ID']);
+
     if(mysql_num_rows($goalFirstList)){
         ?>
         <table border="0" width="100%">
-            <tr style="background: #cccccc">                
-                <td width="20%">Th</td> 
+            <tr style="background: #cccccc">
+                <td width="20%">Th</td>
                 <td>G1</td>
             </tr>
             <?php
@@ -26,13 +28,13 @@
                     //now get all the goalFirstG1 objects for this particular goalFirstId
                     $goalFirstG1List = getAllGoalFirstG1ForThisGoalFirstIdAndModifiedBy($goalFirstRow->id, $_SESSION['LOGGED_USER_ID']);
                     ?>
-                    <tr>                        
-                        <td><?php echo $thRow->th_name;?></td>  
+                    <tr>
+                        <td><?php echo $thRow->th_name;?></td>
                         <td>
                             <table border="0" width="100%">
                                 <tr style="background: #eee">
                                     <td width="20%">G1</td>
-                                    <td width="30%">Fn</td> 
+                                    <td width="30%">Fn</td>
                                     <td width="50%">Obj & Fn</td>
                                 </tr>
                                 <?php
@@ -77,8 +79,8 @@
         </table>
         <!--now do the same for goal first g2-->
         <table border="0" width="100%">
-            <tr style="background: #cccccc">                
-                <td width="20%">Th</td> 
+            <tr style="background: #cccccc">
+                <td width="20%">Th</td>
                 <td>G2</td>
             </tr>
             <?php
@@ -89,13 +91,13 @@
                     //now get all the goalFirstG1 objects for this particular goalFirstId
                     $goalFirstG2List = getAllGoalFirstG2ForThisGoalFirstIdAndModifiedBy($goalFirstRow->id, $_SESSION['LOGGED_USER_ID']);
                     ?>
-                    <tr>                        
-                        <td><?php echo $thRow->th_name;?></td>  
+                    <tr>
+                        <td><?php echo $thRow->th_name;?></td>
                         <td>
                             <table border="0" width="100%">
                                 <tr style="background: #eee">
                                     <td width="20%">G2</td>
-                                    <td width="30%">Fn</td> 
+                                    <td width="30%">Fn</td>
                                     <td width="50%">Obj & Fn</td>
                                 </tr>
                                 <?php
@@ -139,8 +141,8 @@
         </table>
         <!--now do the same for goal first g3-->
         <table border="0" width="100%">
-            <tr style="background: #cccccc">                
-                <td width="20%">Th</td> 
+            <tr style="background: #cccccc">
+                <td width="20%">Th</td>
                 <td>G3</td>
             </tr>
             <?php
@@ -151,13 +153,13 @@
                     //now get all the goalFirstG1 objects for this particular goalFirstId
                     $goalFirstG3List = getAllGoalFirstG3ForThisGoalFirstIdAndModifiedBy($goalFirstRow->id, $_SESSION['LOGGED_USER_ID']);
                     ?>
-                    <tr>                        
-                        <td><?php echo $thRow->th_name;?></td>  
+                    <tr>
+                        <td><?php echo $thRow->th_name;?></td>
                         <td>
                             <table border="0" width="100%">
                                 <tr style="background: #eee">
                                     <td width="20%">G3</td>
-                                    <td width="30%">Fn</td> 
+                                    <td width="30%">Fn</td>
                                     <td width="50%">Obj & Fn</td>
                                 </tr>
                                 <?php

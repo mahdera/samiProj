@@ -59,6 +59,17 @@
         }
     }
 
+    function getAllFnsModifiedByThisUser($modifiedBy){
+        try{
+            $query = "select * from tbl_fn where modified_by = $modifiedBy order by fn_name asc";
+            //echo $query;
+            $result = read($query);
+            return $result;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
+
     function getAllFilteredLatestFnIdsEnteredByUser($modifiedBy){
         $ctr = 0;
         $fnIdArray = array();

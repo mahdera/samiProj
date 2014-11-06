@@ -9,7 +9,7 @@ $command = "SELECT * FROM calendar_urls ";
 $result = mysql_query($command, $db);
 
 while ($row = mysql_fetch_assoc($result)) {
-	
+
     $url =  $row['calendar_array'];
     $urls[] = $url;
 }
@@ -27,24 +27,24 @@ while ($row = mysql_fetch_assoc($result)) {
 $(document).ready(function() {
 
     $('#calendar').fullCalendar({
-	
+
 	    header: {
 			left: 'prev,next',
 			center: 'title',
 			right: 'month,basicWeek,basicDay'
 		},
 		editable: true,
-	
+
         //events: 'https://www.google.com/calendar/feeds/kelchuk68%40gmail.com/public/basic/',
- 
-		eventSources: [		
+
+		eventSources: [
 		//get_string(),
 	    /*'https://www.google.com/calendar/feeds/kelchuk68%40gmail.com/public/basic',
 		'events.php',*/
 		<?php echo implode(",", $urls); ?>
-		]		
+		]
 		  });
-});	
+});
 </script>
 <style type='text/css'>
 
@@ -54,7 +54,7 @@ $(document).ready(function() {
 		font-size: 14px;
 		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
 		}
-		
+
 	#calendar {
 		width: 900px;
 		margin: 0 auto;
@@ -64,7 +64,7 @@ $(document).ready(function() {
 </head>
 <body>
 
-<?php if($_GET['calendarid']){ 
+<?php if($_GET['calendarid']){
 $calendarid = mysql_real_escape_string($_GET['calendarid']);
 ?>
 <div style="display:block; width:900px; margin: 0 auto; ">
@@ -93,14 +93,14 @@ if(@$_POST['myupdate']){
 
 }
 
-$command = "SELECT * FROM calendar where id ='{$_GET['calendarid']}' "; 
+$command = "SELECT * FROM calendar where id ='{$_GET['calendarid']}' ";
 $result = mysql_query($command, $db);
 
 while($row = mysql_fetch_assoc($result)){
 
-		$year = date("Y"); 
+		$year = date("Y");
 		$year2= $year + 1;
-		$mymonth = date("m"); 
+		$mymonth = date("m");
 		$day = date("d");?>
 		<div style="background-color:grey; width:900px; margin:0 auto;padding-top:20px;padding-bottom:10px; border-radius:15px;">
 		<form action="" method="post">
@@ -118,7 +118,7 @@ while($row = mysql_fetch_assoc($result)){
 		//only the event creator should be allowed to edit and delete an existing event
 		if($_SESSION['LOGGED_USER_ID'] === $row['member_id']){
 			echo '<input style="margin-top:10px;" type="submit" name="myupdate" value="Update Event"/>';
-			echo '<input style="margin-top:10px;" type="submit" name="mydelete" value="Delete Event"/></form></div><br/><br/>';	
+			echo '<input style="margin-top:10px;" type="submit" name="mydelete" value="Delete Event"/></form></div><br/><br/>';
 		}
 	}//end while loop
 }//end if get calendar id at the very top of the code
@@ -136,7 +136,7 @@ $result = mysql_query($command, $db);
 if($result) {
 echo "Successful Insert!";
 }
-}*/
+}this is fun*/
 ?>
 
 <div style="clear:both;"></div>

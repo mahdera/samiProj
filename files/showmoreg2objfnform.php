@@ -1,6 +1,7 @@
 <?php
+    session_start();
     require_once 'fn.php';
-    $fnList = getAllFns();
+    $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
     $numItems = $_POST['numItems'];
     //now define the control names in here...
     $objControlName = "txtg2obj" . ($numItems + 1);
@@ -15,7 +16,7 @@
                 <td>Obj:</td>
                 <td>
                     <input type="text" id="<?php echo $objControlName;?>" name="<?php echo $objControlName;?>" class="g2Obj"/>
-                </td>                        
+                </td>
             </tr>
             <tr>
                 <td>Fn:</td>
@@ -35,7 +36,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <div id="<?php echo $fnOtherDivId;?>"><?php echo $fnOtherDivId;?></div>
+                    <div id="<?php echo $fnOtherDivId;?>"></div>
                 </td>
             </tr>
         </table>

@@ -1,6 +1,7 @@
 <?php
+    session_start();
     require_once 'fn.php';
-    $fnList = getAllFns();
+    $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
     $numItems = $_POST['numItems'];
     //now define the control names in here...
     $objControlName = "txtg3obj" . ($numItems + 1);
@@ -35,7 +36,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <div id="<?php echo $fnOtherDivId;?>"><?php echo $fnOtherDivId;?></div>
+                    <div id="<?php echo $fnOtherDivId;?>"></div>
                 </td>
             </tr>
         </table>

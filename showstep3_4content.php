@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $_SESSION['GOAL_FIRST_STATUS'] = 'create';
 ?>
 <div id="topcontain">
     <div id="titlearea">

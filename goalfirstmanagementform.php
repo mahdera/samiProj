@@ -1,8 +1,8 @@
 <?php
     require_once 'files/th.php';
     require_once 'files/fn.php';
-    //$thList = getAllThs();
-    //$fnList = getAllFns();
+    $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
+    $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
 ?>
 <h1>Add Goal First</h1>
 <a href="#.php" id="showGoalFirstManagementFormLinkId">Show Form</a>
@@ -36,15 +36,17 @@
         <tr>
             <td>Fn:</td>
             <td>
-                <select name="slctg1fn" id="slctg1fn" style="width: 100%">
+                <select name="slctg1fn" id="slctg1fn" style="width: 100%" class="fnDropDown">
                     <option value="" selected="selected">--Select--</option>
                     <?php
-                        $fnList = getAllFns();
+                        //$fnList = getAllFns();
                         while($fnRow = mysql_fetch_object($fnList)){
+                        //foreach ($fnIdArray as $fnId) {
+                            //$fnObj = getFn($fnId);
                             ?>
                                 <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
                             <?php
-                        }//end while loop
+                        }//end for loop
                         ?>
                         <option value="other">other</option>
                 </select>
@@ -67,15 +69,15 @@
                     <tr>
                         <td>Fn:</td>
                         <td>
-                            <select name="slctg1fn1" id="slctg1fn1" style="width: 100%">
+                            <select name="slctg1fn1" id="slctg1fn1" style="width: 100%" class="fnDropDown">
                                 <option value="" selected="selected">--Select--</option>
                                 <?php
-                                    $fnList = getAllFns();
+                                    $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
                                     while($fnRow = mysql_fetch_object($fnList)){
                                         ?>
                                             <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
                                         <?php
-                                    }//end while loop
+                                    }//end for loop
                                     ?>
                                     <option value="other">other</option>
                             </select>
@@ -105,15 +107,15 @@
         <tr>
             <td>Fn:</td>
             <td>
-                <select name="slctg2fn" id="slctg2fn" style="width: 100%">
+                <select name="slctg2fn" id="slctg2fn" style="width: 100%" class="fnDropDown">
                     <option value="" selected="selected">--Select--</option>
                     <?php
-                        $fnList = getAllFns();
+                        $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
                         while($fnRow = mysql_fetch_object($fnList)){
                             ?>
                                 <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
                             <?php
-                        }//end while loop
+                        }//end for loop
                         ?>
                                 <option value="other">other</option>
                 </select>
@@ -136,15 +138,15 @@
                     <tr>
                         <td>Fn:</td>
                         <td>
-                            <select name="slctg2fn1" id="slctg2fn1" style="width: 100%">
+                            <select name="slctg2fn1" id="slctg2fn1" style="width: 100%" class="fnDropDown">
                                 <option value="" selected="selected">--Select--</option>
                                 <?php
-                                    $fnList = getAllFns();
+                                    $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
                                     while($fnRow = mysql_fetch_object($fnList)){
                                         ?>
                                             <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
                                         <?php
-                                    }//end while loop
+                                    }//end for loop
                                     ?>
                                     <option value="other">other</option>
                             </select>
@@ -174,15 +176,15 @@
         <tr>
             <td>Fn:</td>
             <td>
-                <select name="slctg3fn" id="slctg3fn" style="width: 100%">
+                <select name="slctg3fn" id="slctg3fn" style="width: 100%" class="fnDropDown">
                     <option value="" selected="selected">--Select--</option>
                     <?php
-                        $fnList = getAllFns();
+                        $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
                         while($fnRow = mysql_fetch_object($fnList)){
                             ?>
                                 <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
                             <?php
-                        }//end while loop
+                        }//end for loop
                         ?>
                                 <option value="other">other</option>
                 </select>
@@ -205,15 +207,15 @@
                     <tr>
                         <td>Fn:</td>
                         <td>
-                            <select name="slctg3fn1" id="slctg3fn1" style="width: 100%">
+                            <select name="slctg3fn1" id="slctg3fn1" style="width: 100%" class="fnDropDown">
                                 <option value="" selected="selected">--Select--</option>
                                 <?php
-                                    $fnList = getAllFns();
+                                    $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
                                     while($fnRow = mysql_fetch_object($fnList)){
                                         ?>
                                             <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
                                         <?php
-                                    }//end while loop
+                                    }//end for loop
                                     ?>
                                     <option value="other">other</option>
                             </select>
@@ -537,5 +539,9 @@
         });
 
     });//end document.ready function
+
+    /*$('.fnDropDown').click(function(){
+        alert('fn drop down clicked');
+    });*/
 
 </script>

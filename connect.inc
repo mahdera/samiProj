@@ -1,7 +1,7 @@
 <?php
 function public_db_connect() {
-      
-    $host = "localhost";  
+
+    $host = "localhost";
     $user = "root";
     $pw = "root";
     $database = "db_sami_proj";
@@ -11,7 +11,7 @@ function public_db_connect() {
 
     mysql_select_db($database,$db)
        or die("Cannot connect to database.");
-   
+
     return $db;
  }
  ?>

@@ -26,9 +26,9 @@
 
 
 <?php if(@$_POST['add_event']){
-$year = date("Y"); 
+$year = date("Y");
 $year2= $year + 1;
-$mymonth = date("m"); 
+$mymonth = date("m");
 $day = date("d");?>
 <div style="background-color:grey; width:900px; margin:0 auto;padding-top:20px;padding-bottom:10px; border-radius:15px;">
 <form action="" method="post">
@@ -41,7 +41,7 @@ echo '</select>';
 ?>
 
 <select name ="month">
-<?php 
+<?php
 $month = array($month);
 echo '<option selected="selected">'.$mymonth.'</option>';
 $months = array('01','02','03','04','05','06','07','08','09','10','11','12');
@@ -63,7 +63,7 @@ echo '<option>'.$i.'</option>';
 echo '</select>';
 ?>
 &nbsp Hour: <select name="hour">
-<?php 
+<?php
 $hours = array('00','01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23');
 
 foreach($hours as $hour){
@@ -74,7 +74,7 @@ echo '</select>';
 
 ?>
 &nbsp Minutes: <select name="minutes">
-<?php 
+<?php
 $minutes = array('00','15','30','45');
 
 foreach($minutes as $minute){
@@ -89,7 +89,7 @@ echo'</div>';
 
 <?php
 echo '<input style="margin-top:10px;" type="submit" name="adding" value="Add the Event"/></form></div><br/><br/>';
-} 
+}
 
 if(@$_POST['adding']) {
 $year = $_POST['year'];

@@ -430,6 +430,7 @@ input[type=button] {
 input[type=button]:hover {
     background: #4CA6DB;
 }
+
 #footer {
     position:absolute;
     display: block;
