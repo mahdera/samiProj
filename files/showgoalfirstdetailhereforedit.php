@@ -11,11 +11,13 @@
     require_once 'goalfirstg3objfn.php';
     require_once 'fn.php';
     require_once 'thaction.php';
+    require_once 'goalfirstth.php';
 
     $buttonId = "updateGoalFirstButton" . $thId;
     $thObj = getTh($thId);
-    $goalFirstRow = getGoalFirstUsingThId($thId);
-    $goalFirstId = $goalFirstRow->id;
+    $goalFirstThRow = getGoalFirstFromGoalFirstThUsingThId($thId);
+    //$goalFirstRow = getGoalFirstUsingThId($thId);
+    $goalFirstThId = $goalFirstThRow->id;
     //define the control names in here
     $goalFirstG1Ctr = 1;
     $goalFirstG2Ctr = 1;
@@ -36,7 +38,8 @@
 <form>
     <table border="0" width="100%">
             <?php
-            $goalFirstG1Row = getGoalFirstG1ForGoalFirst($goalFirstRow->id);
+            $goalFirstG1Row = getGoalFirstG1ForGoalFirstThId($goalFirstThRow->id);
+            //$goalFirstG1Row = getGoalFirstG1ForGoalFirst($goalFirstRow->id);
             $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
             $goalFirstG1Id = $goalFirstG1Row->id;
 
@@ -99,12 +102,12 @@
                             </tr>
                             <tr>
                                 <td width="5%"></td>
-                                <td width="5%">Fn123</td>
+                                <td width="5%">Fn</td>
                                 <td>
                                     <select name="<?php echo $goalFirstG1FnControlName;?>" id="<?php echo $goalFirstG1FnControlName;?>" style="width:100%">
                                         <option value="">--Select--</option>
                                         <?php
-                                            //var_dump($goalFirstG1ObjFnRow);
+                                            var_dump($goalFirstG1ObjFnRow);
                                             foreach ($fnIdArray as $fnId) {
                                                 $fnObj = getFn($fnId);
                                                 if($fnId == $goalFirstG1ObjFnRow->fn_id){
@@ -134,7 +137,8 @@
         <!--doing the samething for goalfirstg2...-->
         <table border="0" width="100%">
             <?php
-            $goalFirstG2Row = getGoalFirstG2ForGoalFirst($goalFirstRow->id);
+            $goalFirstG1Row = getGoalFirstG2ForGoalFirstThId($goalFirstThRow->id);
+            //$goalFirstG2Row = getGoalFirstG2ForGoalFirst($goalFirstRow->id);
 
             if(!empty($goalFirstG2Row)){
                 $fn_row = getFn($goalFirstG2Row->fn_id);
@@ -229,7 +233,8 @@
         <!--doing the samething for goalfirstg3...-->
         <table border="0" width="100%">
             <?php
-            $goalFirstG3Row = getGoalFirstG3ForGoalFirst($goalFirstRow->id);
+            $goalFirstG3Row = getGoalFirstG3ForGoalFirstThId($goalFirstThRow->id);
+            //$goalFirstG3Row = getGoalFirstG3ForGoalFirst($goalFirstRow->id);
 
             if(!empty($goalFirstG3Row)){
                 $goalFirstG3Id = $goalFirstG3Row->id;
