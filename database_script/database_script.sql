@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 25, 2014 at 07:32 AM
+-- Generation Time: Nov 06, 2014 at 11:00 PM
 -- Server version: 5.5.38
 -- PHP Version: 5.6.2
 
@@ -13,8 +13,10 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_sami_proj`
 --
+
 create database db_sami_proj;
 use db_sami_proj;
+
 -- --------------------------------------------------------
 
 --
@@ -28,7 +30,7 @@ CREATE TABLE `calendar` (
   `notes` text NOT NULL,
   `start` datetime NOT NULL,
   `end` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `calendar`
@@ -41,7 +43,8 @@ INSERT INTO `calendar` (`id`, `member_id`, `title`, `notes`, `start`, `end`) VAL
 (4, 0, 'test3', '230 test', '2012-08-29 02:30:00', '0000-00-00 00:00:00'),
 (6, 0, 'What a night', 'This is added by the administrator', '2014-10-18 00:00:00', '0000-00-00 00:00:00'),
 (8, 0, 'This is in the past days', 'The most important part of the calendary. This line is updated. Again updated for the last time', '2014-10-10 00:00:00', '0000-00-00 00:00:00'),
-(9, 0, 'Where is the calendar', 'I dont see the calendary object', '2014-10-18 00:00:00', '0000-00-00 00:00:00');
+(9, 0, 'Where is the calendar', 'I dont see the calendary object', '2014-10-18 00:00:00', '0000-00-00 00:00:00'),
+(10, 8, 'This is my Event', 'You can add anyting you want here as an event', '2014-11-02 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -76,7 +79,7 @@ CREATE TABLE `tbl_assessment` (
   `summary` text,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_assessment`
@@ -93,7 +96,8 @@ INSERT INTO `tbl_assessment` (`id`, `assessment_type`, `assessment_date`, `summa
 (9, 'as1', '2014-10-17', 'This is the summary information', 2, '2014-10-17 00:00:00'),
 (10, 'as1', '2014-10-18', 'Summary of the Assessment', 8, '2014-10-18 00:00:00'),
 (11, 'as3', '2014-10-24', 'This is the summary of the Add Assessment Box', 8, '2014-10-24 00:00:00'),
-(12, 'as4', '2014-10-24', 'The summary for the brand new Th goes in here.', 8, '2014-10-24 16:47:03');
+(12, 'as4', '2014-10-24', 'The summary for the brand new Th goes in here.', 8, '2014-10-24 16:47:03'),
+(13, 'as2', '2014-10-28', 'This is the summary filed!', 8, '2014-10-28 16:39:54');
 
 -- --------------------------------------------------------
 
@@ -107,7 +111,7 @@ CREATE TABLE `tbl_assessment_th` (
   `th_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_assessment_th`
@@ -125,7 +129,11 @@ INSERT INTO `tbl_assessment_th` (`id`, `assessment_id`, `th_id`, `modified_by`, 
 (10, 10, 20, 8, '2014-10-18 00:00:00'),
 (11, 11, 24, 8, '2014-10-24 00:00:00'),
 (12, 11, 25, 8, '2014-10-24 00:00:00'),
-(13, 12, 26, 8, '2014-10-24 16:47:03');
+(13, 12, 26, 8, '2014-10-24 16:47:03'),
+(14, 13, 28, 8, '2014-10-28 16:39:54'),
+(15, 13, 29, 8, '2014-10-28 16:39:54'),
+(16, 13, 30, 8, '2014-10-28 16:39:54'),
+(17, 13, 31, 8, '2014-10-28 16:39:54');
 
 -- --------------------------------------------------------
 
@@ -138,7 +146,7 @@ CREATE TABLE `tbl_fn` (
   `fn_name` varchar(70) NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_fn`
@@ -154,7 +162,9 @@ INSERT INTO `tbl_fn` (`id`, `fn_name`, `modified_by`, `modification_date`) VALUE
 (7, 'YEFI BABES', 2, '2014-10-16 00:00:00'),
 (8, 'SAMI FN', 2, '2014-10-16 00:00:00'),
 (9, 'xxx', 2, '2014-10-16 00:00:00'),
-(10, 'AS is', 2, '2014-10-16 00:00:00');
+(10, 'AS is', 2, '2014-10-16 00:00:00'),
+(11, 'This is FN', 8, '2014-11-03 20:12:50'),
+(12, 'First Function', 8, '2014-11-03 20:42:58');
 
 -- --------------------------------------------------------
 
@@ -451,19 +461,16 @@ INSERT INTO `tbl_form_10` (`id`, `q10_1`, `modified_by`, `modification_date`) VA
 
 CREATE TABLE `tbl_goal_first` (
 `id` bigint(20) NOT NULL,
-  `th_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_first`
 --
 
-INSERT INTO `tbl_goal_first` (`id`, `th_id`, `modified_by`, `modification_date`) VALUES
-(25, 26, 8, '2014-10-24 18:21:53'),
-(26, 24, 8, '2014-10-24 23:12:40'),
-(27, 27, 8, '2014-10-25 01:24:52');
+INSERT INTO `tbl_goal_first` (`id`, `modified_by`, `modification_date`) VALUES
+(7, 8, '2014-11-06 13:42:41');
 
 -- --------------------------------------------------------
 
@@ -473,21 +480,20 @@ INSERT INTO `tbl_goal_first` (`id`, `th_id`, `modified_by`, `modification_date`)
 
 CREATE TABLE `tbl_goal_first_g1` (
 `id` bigint(20) NOT NULL,
-  `goal_first_id` bigint(20) NOT NULL,
+  `goal_first_th_id` bigint(20) NOT NULL,
   `g1` varchar(50) NOT NULL,
   `fn_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_first_g1`
 --
 
-INSERT INTO `tbl_goal_first_g1` (`id`, `goal_first_id`, `g1`, `fn_id`, `modified_by`, `modification_date`) VALUES
-(24, 25, 'this is g1', 10, 8, '2014-10-24 18:21:53'),
-(25, 26, 'kuhjk', 3, 8, '2014-10-24 23:12:40'),
-(26, 27, 'This is g1', 5, 8, '2014-10-25 01:24:52');
+INSERT INTO `tbl_goal_first_g1` (`id`, `goal_first_th_id`, `g1`, `fn_id`, `modified_by`, `modification_date`) VALUES
+(8, 8, 'g1 for some th', 12, 8, '2014-11-06 13:42:41'),
+(9, 9, 'g1 for my first th', 11, 8, '2014-11-06 13:47:26');
 
 -- --------------------------------------------------------
 
@@ -502,17 +508,15 @@ CREATE TABLE `tbl_goal_first_g1_obj_fn` (
   `fn_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_first_g1_obj_fn`
 --
 
 INSERT INTO `tbl_goal_first_g1_obj_fn` (`id`, `goal_first_g1_id`, `obj`, `fn_id`, `modified_by`, `modification_date`) VALUES
-(16, 24, 'this is obj1', 3, 8, '2014-10-24 23:20:21'),
-(17, 25, 'kljhkjh', 5, 8, '2014-10-24 23:12:40'),
-(18, 26, 'Obj', 5, 8, '2014-10-25 01:24:52'),
-(19, 26, 'Obj', 8, 8, '2014-10-25 01:24:52');
+(5, 8, 'obj1 for some th', 12, 8, '2014-11-06 13:42:41'),
+(6, 9, 'obj1 for my first th', 11, 8, '2014-11-06 16:54:40');
 
 -- --------------------------------------------------------
 
@@ -522,21 +526,20 @@ INSERT INTO `tbl_goal_first_g1_obj_fn` (`id`, `goal_first_g1_id`, `obj`, `fn_id`
 
 CREATE TABLE `tbl_goal_first_g2` (
 `id` bigint(20) NOT NULL,
-  `goal_first_id` bigint(20) NOT NULL,
+  `goal_first_th_id` bigint(20) NOT NULL,
   `g2` varchar(50) NOT NULL,
   `fn_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_first_g2`
 --
 
-INSERT INTO `tbl_goal_first_g2` (`id`, `goal_first_id`, `g2`, `fn_id`, `modified_by`, `modification_date`) VALUES
-(24, 25, 'this is g2', 3, 8, '2014-10-24 23:20:21'),
-(25, 26, 'kuhkjh', 5, 8, '2014-10-24 23:12:40'),
-(26, 27, 'g2', 10, 8, '2014-10-25 01:24:52');
+INSERT INTO `tbl_goal_first_g2` (`id`, `goal_first_th_id`, `g2`, `fn_id`, `modified_by`, `modification_date`) VALUES
+(8, 8, 'g2 for some th', 12, 8, '2014-11-06 13:42:41'),
+(9, 9, 'g2 for my first th', 11, 8, '2014-11-06 13:47:26');
 
 -- --------------------------------------------------------
 
@@ -551,19 +554,15 @@ CREATE TABLE `tbl_goal_first_g2_obj_fn` (
   `fn_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_first_g2_obj_fn`
 --
 
 INSERT INTO `tbl_goal_first_g2_obj_fn` (`id`, `goal_first_g2_id`, `obj`, `fn_id`, `modified_by`, `modification_date`) VALUES
-(16, 24, 'this is obj2', 6, 8, '2014-10-24 18:21:53'),
-(17, 25, 'kjhjkh', 5, 8, '2014-10-24 23:12:40'),
-(18, 25, 'sdf', 7, 8, '2014-10-24 23:12:40'),
-(19, 25, 'sdf', 2, 8, '2014-10-24 23:12:40'),
-(20, 26, 'obj2', 8, 8, '2014-10-25 01:24:52'),
-(21, 26, 'obj', 5, 8, '2014-10-25 01:24:52');
+(5, 8, 'obj2 for some th', 12, 8, '2014-11-06 13:42:41'),
+(6, 9, 'obj2 for my first th', 11, 8, '2014-11-06 13:47:26');
 
 -- --------------------------------------------------------
 
@@ -573,21 +572,20 @@ INSERT INTO `tbl_goal_first_g2_obj_fn` (`id`, `goal_first_g2_id`, `obj`, `fn_id`
 
 CREATE TABLE `tbl_goal_first_g3` (
 `id` bigint(20) NOT NULL,
-  `goal_first_id` bigint(20) NOT NULL,
+  `goal_first_th_id` bigint(20) NOT NULL,
   `g3` varchar(50) NOT NULL,
   `fn_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_first_g3`
 --
 
-INSERT INTO `tbl_goal_first_g3` (`id`, `goal_first_id`, `g3`, `fn_id`, `modified_by`, `modification_date`) VALUES
-(24, 25, 'this is g3', 8, 8, '2014-10-24 18:21:53'),
-(25, 26, 'kjghkjh', 5, 8, '2014-10-24 23:12:40'),
-(26, 27, 'g3', 4, 8, '2014-10-25 01:24:52');
+INSERT INTO `tbl_goal_first_g3` (`id`, `goal_first_th_id`, `g3`, `fn_id`, `modified_by`, `modification_date`) VALUES
+(8, 8, 'g3 for some th', 12, 8, '2014-11-06 13:42:41'),
+(9, 9, 'g3 for my first th', 11, 8, '2014-11-06 13:47:26');
 
 -- --------------------------------------------------------
 
@@ -602,16 +600,37 @@ CREATE TABLE `tbl_goal_first_g3_obj_fn` (
   `fn_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_first_g3_obj_fn`
 --
 
 INSERT INTO `tbl_goal_first_g3_obj_fn` (`id`, `goal_first_g3_id`, `obj`, `fn_id`, `modified_by`, `modification_date`) VALUES
-(16, 24, 'this is obj3', 7, 8, '2014-10-24 18:21:53'),
-(17, 25, 'kjkjh', 3, 8, '2014-10-24 23:12:40'),
-(18, 26, 'obj34', 5, 8, '2014-10-25 01:24:52');
+(5, 8, 'obj3 for some th', 12, 8, '2014-11-06 13:42:41'),
+(6, 9, 'obj3 for my first th', 11, 8, '2014-11-06 16:54:40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_goal_first_th`
+--
+
+CREATE TABLE `tbl_goal_first_th` (
+`id` bigint(20) NOT NULL,
+  `goal_first_id` bigint(20) NOT NULL,
+  `th_id` bigint(20) NOT NULL,
+  `modified_by` int(11) NOT NULL,
+  `modification_date` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_goal_first_th`
+--
+
+INSERT INTO `tbl_goal_first_th` (`id`, `goal_first_id`, `th_id`, `modified_by`, `modification_date`) VALUES
+(8, 7, 22, 8, '2014-11-06 13:42:41'),
+(9, 7, 24, 8, '2014-11-06 13:47:26');
 
 -- --------------------------------------------------------
 
@@ -897,7 +916,7 @@ CREATE TABLE `tbl_th` (
   `th_name` varchar(70) NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_th`
@@ -928,7 +947,11 @@ INSERT INTO `tbl_th` (`id`, `th_name`, `modified_by`, `modification_date`) VALUE
 (24, 'My First Th', 8, '2014-10-24 00:00:00'),
 (25, 'My Second Th', 8, '2014-10-24 00:00:00'),
 (26, 'This is A Brand New Th', 8, '2014-10-24 16:47:03'),
-(27, 'Sample TH For Sami. This is Updated', 8, '2014-10-25 01:14:48');
+(27, 'Sample TH For Sami. This is Updated', 8, '2014-10-25 01:14:48'),
+(28, 'New Th1', 8, '2014-10-28 16:39:54'),
+(29, 'New Th2', 8, '2014-10-28 16:39:54'),
+(30, 'New Th3', 8, '2014-10-28 16:39:54'),
+(31, 'New Th4', 8, '2014-10-28 16:39:54');
 
 -- --------------------------------------------------------
 
@@ -1103,13 +1126,13 @@ ALTER TABLE `tbl_form_10`
 -- Indexes for table `tbl_goal_first`
 --
 ALTER TABLE `tbl_goal_first`
- ADD PRIMARY KEY (`id`), ADD KEY `th_id` (`th_id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_goal_first_g1`
 --
 ALTER TABLE `tbl_goal_first_g1`
- ADD PRIMARY KEY (`id`), ADD KEY `goal_first_id` (`goal_first_id`);
+ ADD PRIMARY KEY (`id`), ADD KEY `goal_first_id` (`goal_first_th_id`);
 
 --
 -- Indexes for table `tbl_goal_first_g1_obj_fn`
@@ -1121,7 +1144,7 @@ ALTER TABLE `tbl_goal_first_g1_obj_fn`
 -- Indexes for table `tbl_goal_first_g2`
 --
 ALTER TABLE `tbl_goal_first_g2`
- ADD PRIMARY KEY (`id`), ADD KEY `goal_first_id` (`goal_first_id`);
+ ADD PRIMARY KEY (`id`), ADD KEY `goal_first_id` (`goal_first_th_id`);
 
 --
 -- Indexes for table `tbl_goal_first_g2_obj_fn`
@@ -1133,13 +1156,19 @@ ALTER TABLE `tbl_goal_first_g2_obj_fn`
 -- Indexes for table `tbl_goal_first_g3`
 --
 ALTER TABLE `tbl_goal_first_g3`
- ADD PRIMARY KEY (`id`), ADD KEY `goal_first_id` (`goal_first_id`);
+ ADD PRIMARY KEY (`id`), ADD KEY `goal_first_id` (`goal_first_th_id`);
 
 --
 -- Indexes for table `tbl_goal_first_g3_obj_fn`
 --
 ALTER TABLE `tbl_goal_first_g3_obj_fn`
  ADD PRIMARY KEY (`id`), ADD KEY `goal_first_g3_id` (`goal_first_g3_id`);
+
+--
+-- Indexes for table `tbl_goal_first_th`
+--
+ALTER TABLE `tbl_goal_first_th`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `goal_first_id` (`goal_first_id`,`th_id`,`modified_by`), ADD KEY `tbl_goal_first_th_ibfk_2` (`th_id`), ADD KEY `tbl_goal_first_th_ibfk_3` (`modified_by`);
 
 --
 -- Indexes for table `tbl_goal_second`
@@ -1233,7 +1262,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `calendar`
 --
 ALTER TABLE `calendar`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `calendar_urls`
 --
@@ -1243,17 +1272,17 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT for table `tbl_assessment`
 --
 ALTER TABLE `tbl_assessment`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `tbl_assessment_th`
 --
 ALTER TABLE `tbl_assessment_th`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `tbl_fn`
 --
 ALTER TABLE `tbl_fn`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `tbl_fn_action`
 --
@@ -1323,37 +1352,42 @@ MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 -- AUTO_INCREMENT for table `tbl_goal_first`
 --
 ALTER TABLE `tbl_goal_first`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `tbl_goal_first_g1`
 --
 ALTER TABLE `tbl_goal_first_g1`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `tbl_goal_first_g1_obj_fn`
 --
 ALTER TABLE `tbl_goal_first_g1_obj_fn`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `tbl_goal_first_g2`
 --
 ALTER TABLE `tbl_goal_first_g2`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `tbl_goal_first_g2_obj_fn`
 --
 ALTER TABLE `tbl_goal_first_g2_obj_fn`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `tbl_goal_first_g3`
 --
 ALTER TABLE `tbl_goal_first_g3`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `tbl_goal_first_g3_obj_fn`
 --
 ALTER TABLE `tbl_goal_first_g3_obj_fn`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `tbl_goal_first_th`
+--
+ALTER TABLE `tbl_goal_first_th`
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `tbl_goal_second`
 --
@@ -1413,7 +1447,7 @@ MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `tbl_th`
 --
 ALTER TABLE `tbl_th`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT for table `tbl_th_action`
 --
@@ -1454,16 +1488,10 @@ ALTER TABLE `tbl_form_1_q4`
 ADD CONSTRAINT `tbl_form_1_q4_ibfk_1` FOREIGN KEY (`form_1_id`) REFERENCES `tbl_form_1` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `tbl_goal_first`
---
-ALTER TABLE `tbl_goal_first`
-ADD CONSTRAINT `tbl_goal_first_ibfk_1` FOREIGN KEY (`th_id`) REFERENCES `tbl_th` (`id`) ON DELETE CASCADE;
-
---
 -- Constraints for table `tbl_goal_first_g1`
 --
 ALTER TABLE `tbl_goal_first_g1`
-ADD CONSTRAINT `tbl_goal_first_g1_ibfk_1` FOREIGN KEY (`goal_first_id`) REFERENCES `tbl_goal_first` (`id`) ON DELETE CASCADE;
+ADD CONSTRAINT `tbl_goal_first_g1_ibfk_1` FOREIGN KEY (`goal_first_th_id`) REFERENCES `tbl_goal_first_th` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_first_g1_obj_fn`
@@ -1475,7 +1503,7 @@ ADD CONSTRAINT `tbl_goal_first_g1_obj_fn_ibfk_1` FOREIGN KEY (`goal_first_g1_id`
 -- Constraints for table `tbl_goal_first_g2`
 --
 ALTER TABLE `tbl_goal_first_g2`
-ADD CONSTRAINT `tbl_goal_first_g2_ibfk_1` FOREIGN KEY (`goal_first_id`) REFERENCES `tbl_goal_first` (`id`) ON DELETE CASCADE;
+ADD CONSTRAINT `tbl_goal_first_g2_ibfk_1` FOREIGN KEY (`goal_first_th_id`) REFERENCES `tbl_goal_first_th` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_first_g2_obj_fn`
@@ -1487,13 +1515,21 @@ ADD CONSTRAINT `tbl_goal_first_g2_obj_fn_ibfk_1` FOREIGN KEY (`goal_first_g2_id`
 -- Constraints for table `tbl_goal_first_g3`
 --
 ALTER TABLE `tbl_goal_first_g3`
-ADD CONSTRAINT `tbl_goal_first_g3_ibfk_1` FOREIGN KEY (`goal_first_id`) REFERENCES `tbl_goal_first` (`id`) ON DELETE CASCADE;
+ADD CONSTRAINT `tbl_goal_first_g3_ibfk_1` FOREIGN KEY (`goal_first_th_id`) REFERENCES `tbl_goal_first_th` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_first_g3_obj_fn`
 --
 ALTER TABLE `tbl_goal_first_g3_obj_fn`
 ADD CONSTRAINT `tbl_goal_first_g3_obj_fn_ibfk_1` FOREIGN KEY (`goal_first_g3_id`) REFERENCES `tbl_goal_first_g3` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `tbl_goal_first_th`
+--
+ALTER TABLE `tbl_goal_first_th`
+ADD CONSTRAINT `tbl_goal_first_th_ibfk_3` FOREIGN KEY (`modified_by`) REFERENCES `tbl_user` (`id`) ON DELETE CASCADE,
+ADD CONSTRAINT `tbl_goal_first_th_ibfk_1` FOREIGN KEY (`goal_first_id`) REFERENCES `tbl_goal_first` (`id`) ON DELETE CASCADE,
+ADD CONSTRAINT `tbl_goal_first_th_ibfk_2` FOREIGN KEY (`th_id`) REFERENCES `tbl_th` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_goal_second`
@@ -1553,24 +1589,10 @@ ADD CONSTRAINT `tbl_risk_ibfk_1` FOREIGN KEY (`th_id`) REFERENCES `tbl_th` (`id`
 -- Constraints for table `tbl_team_interest`
 --
 ALTER TABLE `tbl_team_interest`
-ADD CONSTRAINT `tbl_team_interest_ibfk_1` FOREIGN KEY (`team_id`) REFERENCES `tbl_team` (`id`);
+ADD CONSTRAINT `tbl_team_interest_ibfk_1` FOREIGN KEY (`team_id`) REFERENCES `tbl_team` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_th_action`
 --
 ALTER TABLE `tbl_th_action`
 ADD CONSTRAINT `tbl_th_action_ibfk_1` FOREIGN KEY (`th_id`) REFERENCES `tbl_th` (`id`) ON DELETE CASCADE;
-
---- Added table to solve the issue of having many ths in one goal first form ---
-
-create table tbl_goal_first_th(
-    id bigint auto_increment,
-    goal_first_id bigint not null,
-    th_id bigint not null,
-    modified_by int not null,
-    modification_date datetime not null,
-    primary key(id),
-    foreign key(goal_first_id) references tbl_goal_first(id),
-    foreign key(th_id) references tbl_th(id),
-    foreign key(modified_by) references tbl_user(id)
-);
