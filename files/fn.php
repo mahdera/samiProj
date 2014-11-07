@@ -153,4 +153,14 @@
         $ex->getMessage();
       }
     }
+
+    function getAllFunctionsEnteredByThisUser($modifiedBy){
+        try{
+            $query = "select * from tbl_fn where modified_by = $modifiedBy order by fn_name";            
+            $result = read($query);
+            return $result;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
 ?>

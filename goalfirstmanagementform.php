@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once 'files/th.php';
     require_once 'files/fn.php';
     $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);

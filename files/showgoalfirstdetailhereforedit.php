@@ -39,12 +39,11 @@
     <table border="0" width="100%">
             <?php
             $goalFirstG1Row = getGoalFirstG1ForGoalFirstThId($goalFirstThRow->id);
-            //$goalFirstG1Row = getGoalFirstG1ForGoalFirst($goalFirstRow->id);
-            $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
+            //$fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
             $goalFirstG1Id = $goalFirstG1Row->id;
 
+
             if(!empty($goalFirstG1Row)){
-                $fn_row = getFn($goalFirstG1Row->fn_id);
                 ?>
                 <tr>
                     <td width="5%"></td>
@@ -62,22 +61,22 @@
                     <td>
                         <?php
                           $fn1ControlName = "editslctfn1" . $thId;
+                          $fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
                         ?>
                         <select name="<?php echo $fn1ControlName;?>" id="<?php echo $fn1ControlName;?>" style="width:100%">
-                            <option value="" selected="selected">--Select--</option>
+                            <option value="" selected="selected">--Option--</option>
                             <?php
-                                foreach ($fnIdArray as $fnId) {
-                                    $fnObj = getFn($fnId);
-                                    if($fnId === $goalFirstG1Row->fn_id){
-                                        ?>
-                                            <option value="<?php echo $fnObj->id;?>" selected="selected"><?php echo $fnObj->fn_name;?></option>
-                                        <?php
+                                while($fnRow = mysql_fetch_object($fnList)){
+                                    if($goalFirstG1Row->fn_id == $fnRow->id){
+                                    ?>
+                                        <option value="<?php echo $fnRow->id;?>" selected="selected"><?php echo $fnRow->fn_name;?></option>
+                                    <?php
                                     }else{
-                                        ?>
-                                            <option value="<?php echo $fnObj->id;?>"><?php echo $fnObj->fn_name;?></option>
-                                        <?php
+                                    ?>
+                                        <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
+                                    <?php
                                     }
-                                }//end foreach loop
+                                }//end while loop
                             ?>
                         </select>
                     </td>
@@ -107,16 +106,15 @@
                                     <select name="<?php echo $goalFirstG1FnControlName;?>" id="<?php echo $goalFirstG1FnControlName;?>" style="width:100%">
                                         <option value="">--Select--</option>
                                         <?php
-                                            var_dump($goalFirstG1ObjFnRow);
-                                            foreach ($fnIdArray as $fnId) {
-                                                $fnObj = getFn($fnId);
-                                                if($fnId == $goalFirstG1ObjFnRow->fn_id){
+                                            $fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
+                                            while ($fnRow = mysql_fetch_object($fnList)) {
+                                                if($fnRow->id == $goalFirstG1ObjFnRow->fn_id){
                                                     ?>
-                                                        <option value="<?php echo $fnObj->id;?>" selected="selected"><?php echo $fnObj->fn_name;?></option>
+                                                        <option value="<?php echo $fnRow->id;?>" selected="selected"><?php echo $fnRow->fn_name;?></option>
                                                     <?php
                                                 }else{
                                                     ?>
-                                                        <option value="<?php echo $fnObj->id;?>"><?php echo $fnObj->fn_name;?></option>
+                                                        <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
                                                     <?php
                                                 }
                                             }//end foreach loop
@@ -137,11 +135,11 @@
         <!--doing the samething for goalfirstg2...-->
         <table border="0" width="100%">
             <?php
-            $goalFirstG1Row = getGoalFirstG2ForGoalFirstThId($goalFirstThRow->id);
+            $goalFirstG2Row = getGoalFirstG2ForGoalFirstThId($goalFirstThRow->id);
             //$goalFirstG2Row = getGoalFirstG2ForGoalFirst($goalFirstRow->id);
 
             if(!empty($goalFirstG2Row)){
-                $fn_row = getFn($goalFirstG2Row->fn_id);
+                //$fn_row = getFn($goalFirstG2Row->fn_id);
                 $goalFirstG2Id = $goalFirstG2Row->id;
                 ?>
                 <tr>
@@ -164,18 +162,18 @@
                         <select name="<?php echo $fn2ControlName;?>" id="<?php echo $fn2ControlName;?>" style="width:100%">
                             <option value="">--Select--</option>
                             <?php
-                                foreach ($fnIdArray as $fnId) {
-                                    $fnObj = getFn($fnId);
-                                    if($fnId === $goalFirstG2Row->fn_id){
+                                $fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
+                                while ($fnRow = mysql_fetch_object($fnList)) {
+                                    if($fnRow->id == $goalFirstG2Row->fn_id){
                                         ?>
-                                            <option value="<?php echo $fnObj->id;?>" selected="selected"><?php echo $fnObj->fn_name;?></option>
+                                            <option value="<?php echo $fnRow->id;?>" selected="selected"><?php echo $fnRow->fn_name;?></option>
                                         <?php
                                     }else{
                                         ?>
-                                            <option value="<?php echo $fnObj->id;?>"><?php echo $fnObj->fn_name;?></option>
+                                            <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
                                         <?php
                                     }
-                                }//end foreach loop
+                                }//end while loop
                             ?>
                         </select>
                     </td>
@@ -204,18 +202,18 @@
                                     <select name="<?php echo $goalFirstG2FnControlName;?>" id="<?php echo $goalFirstG2FnControlName;?>" style="width:100%">
                                     <option value="">--Select--</option>
                                     <?php
-                                        foreach ($fnIdArray as $fnId) {
-                                            $fnObj = getFn($fnId);
-                                            if($fnId === $goalFirstG2ObjFnRow->fn_id){
+                                        $fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
+                                        while ($fnRow = mysql_fetch_object($fnList)) {
+                                            if($fnRow->id == $goalFirstG2ObjFnRow->fn_id){
                                                 ?>
-                                                    <option value="<?php echo $fnObj->id;?>" selected="selected"><?php echo $fnObj->fn_name;?></option>
+                                                    <option value="<?php echo $fnRow->id;?>" selected="selected"><?php echo $fnRow->fn_name;?></option>
                                                 <?php
                                             }else{
                                                 ?>
-                                                    <option value="<?php echo $fnObj->id;?>"><?php echo $fnObj->fn_name;?></option>
+                                                    <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
                                                 <?php
                                             }
-                                        }//end foreach loop
+                                        }//end while loop
                                     ?>
                                     </select>
                                 </td>
@@ -238,7 +236,7 @@
 
             if(!empty($goalFirstG3Row)){
                 $goalFirstG3Id = $goalFirstG3Row->id;
-                $fn_row = getFn($goalFirstG3Row->fn_id);
+                //$fn_row = getFn($goalFirstG3Row->fn_id);
                 ?>
                 <tr>
                     <td width="5%"></td>
@@ -260,15 +258,15 @@
                         <select name="<?php echo $fn3ControlName;?>" id="<?php echo $fn3ControlName;?>" style="width:100%">
                             <option value="">--Select--</option>
                             <?php
-                                foreach ($fnIdArray as $fnId) {
-                                    $fnObj = getFn($fnId);
-                                    if($fnId === $goalFirstG3Row->fn_id){
+                                $fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
+                                while ($fnRow = mysql_fetch_object($fnList)) {
+                                    if($fnRow->id === $goalFirstG3Row->fn_id){
                                         ?>
-                                            <option value="<?php echo $fnObj->id;?>" selected="selected"><?php echo $fnObj->fn_name;?></option>
+                                            <option value="<?php echo $fnRow->id;?>" selected="selected"><?php echo $fnRow->fn_name;?></option>
                                         <?php
                                     }else{
                                         ?>
-                                            <option value="<?php echo $fnObj->id;?>"><?php echo $fnObj->fn_name;?></option>
+                                            <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
                                         <?php
                                     }
                                 }//end foreach loop
@@ -300,15 +298,15 @@
                                     <select name="<?php echo $goalFirstG3FnControlName;?>" id="<?php echo $goalFirstG3FnControlName;?>" style="width:100%">
                                         <option value="">--Select--</option>
                                         <?php
-                                            foreach ($fnIdArray as $fnId) {
-                                                $fnObj = getFn($fnId);
-                                                if($fnId === $goalFirstG3ObjFnRow->fn_id){
+                                            $fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
+                                            while ($fnRow = mysql_fetch_object($fnList)) {
+                                                if($fnRow->id === $goalFirstG3ObjFnRow->fn_id){
                                                     ?>
-                                                        <option value="<?php echo $fnObj->id;?>" selected="selected"><?php echo $fnObj->fn_name;?></option>
+                                                        <option value="<?php echo $fnRow->id;?>" selected="selected"><?php echo $fnRow->fn_name;?></option>
                                                     <?php
                                                 }else{
                                                     ?>
-                                                        <option value="<?php echo $fnObj->id;?>"><?php echo $fnObj->fn_name;?></option>
+                                                        <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
                                                     <?php
                                                 }
                                             }//end foreach loop
@@ -375,7 +373,7 @@
             var goalFirstG2ObjFnId = "<?php echo $goalFirstG2ObjFnId;?>";
             var goalFirstG3Id = "<?php echo $goalFirstG3Id;?>";
             var goalFirstG3ObjFnId = "<?php echo $goalFirstG3ObjFnId;?>";
-            var goalFirstId = "<?php echo $goalFirstId;?>";
+            var goalFirstThId = "<?php echo $goalFirstThId;?>";
 
             //var divId = "editActionTextDiv" + thActionId;
             var divId = "actionDiv" + thId;
@@ -386,7 +384,7 @@
                 "&slctFn3Val="+slctFn3Val+"&goalFirstG1Id="+goalFirstG1Id+"&goalFirstG1ObjFnId="+goalFirstG1ObjFnId+
                 "&goalFirstG2Id="+goalFirstG2Id+"&goalFirstG2ObjFnId="+goalFirstG2ObjFnId+"&goalFirstG3Id="+goalFirstG3Id+
                 "&goalFirstG3ObjFnId="+goalFirstG3ObjFnId+"&goalFirstG1Ctr="+goalFirstG1Ctr+"&goalFirstG2Ctr="+
-                goalFirstG2Ctr+"&goalFirstG3Ctr="+goalFirstG3Ctr+"&goalFirstId="+goalFirstId;
+                goalFirstG2Ctr+"&goalFirstG3Ctr="+goalFirstG3Ctr+"&goalFirstThId="+goalFirstThId;
                 //now get the dynamic values and append it to the dataString variable.
                 for(var i=1; i<=goalFirstG1Ctr; i++){
                     var goalFirstG1ObjControlName = "edittxtgoalfirstg1obj" + thId + i;

@@ -23,7 +23,7 @@
     $goalFirstG1Ctr = $_POST['goalFirstG1Ctr'];
     $goalFirstG2Ctr = $_POST['goalFirstG2Ctr'];
     $goalFirstG3Ctr = $_POST['goalFirstG3Ctr'];
-    $goalFirstId = $_POST['goalFirstId'];
+    $goalFirstThId = $_POST['goalFirstThId'];
 
     for($i=1; $i<=$goalFirstG1Ctr; $i++){
         $goalFirstG1ObjControlName = "edittxtgoalfirstg1obj" . $thId . $i;
@@ -31,7 +31,7 @@
         $goalFirstG1ObjVal = $_POST["$goalFirstG1ObjControlName"];
         $goalFirstG1FnVal = $_POST["$goalFirstG1FnControlName"];
         //now update the data value...
-        updateGoalFirstG1($goalFirstG1Id, $goalFirstId, $txtG1Val, $slctFn1Val, $_SESSION['LOGGED_USER_ID']);
+        updateGoalFirstG1($goalFirstG1Id, $goalFirstThId, $txtG1Val, $slctFn1Val, $_SESSION['LOGGED_USER_ID']);
         updateGoalFirstG1ObjFn($goalFirstG1ObjFnId, $goalFirstG1Id, $goalFirstG1ObjVal, $goalFirstG1FnVal, $_SESSION['LOGGED_USER_ID']);
     }
 
@@ -41,7 +41,7 @@
         $goalFirstG2ObjVal = $_POST["$goalFirstG2ObjControlName"];
         $goalFirstG2FnVal = $_POST["$goalFirstG2FnControlName"];
         //now update the data value...
-        updateGoalFirstG2($goalFirstG2Id, $goalFirstId, $txtG2Val, $slctFn2Val, $_SESSION['LOGGED_USER_ID']);
+        updateGoalFirstG2($goalFirstG2Id, $goalFirstThId, $txtG2Val, $slctFn2Val, $_SESSION['LOGGED_USER_ID']);
         updateGoalFirstG2ObjFn($goalFirstG2ObjFnId, $goalFirstG2Id, $goalFirstG2ObjVal, $goalFirstG2FnVal, $_SESSION['LOGGED_USER_ID']);
     }
 
@@ -51,7 +51,7 @@
         $goalFirstG3ObjVal = $_POST["$goalFirstG3ObjControlName"];
         $goalFirstG3FnVal = $_POST["$goalFirstG3FnControlName"];
         //now update the data value...
-        updateGoalFirstG3($goalFirstG3Id, $goalFirstId, $txtG3Val, $slctFn3Val, $_SESSION['LOGGED_USER_ID']);
+        updateGoalFirstG3($goalFirstG3Id, $goalFirstThId, $txtG3Val, $slctFn3Val, $_SESSION['LOGGED_USER_ID']);
         updateGoalFirstG3ObjFn($goalFirstG3ObjFnId, $goalFirstG3Id, $goalFirstG3ObjVal, $goalFirstG3FnVal, $_SESSION['LOGGED_USER_ID']);
     }
 ?>

@@ -1,18 +1,18 @@
 <?php
     require_once 'dbconnection.php';
 
-    function saveGoalFirstG1($goalFirstId, $g1, $fn, $modified_by){
+    function saveGoalFirstG1($goalFirstThId, $g1, $fn, $modified_by){
         try{
-            $query = "insert into tbl_goal_first_g1 values(0, $goalFirstId, '$g1', $fn, $modified_by, NOW())";
+            $query = "insert into tbl_goal_first_g1 values(0, $goalFirstThId, '$g1', $fn, $modified_by, NOW())";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
 
-    function updateGoalFirstG1($id, $goalFirstId, $g1, $fn, $modifiedBy){
+    function updateGoalFirstG1($id, $goalFirstThId, $g1, $fn, $modifiedBy){
         try{
-            $query = "update tbl_goal_first_g1 set goal_first_id = $goalFirstId, g1 = '$g1', fn_id = $fn, modified_by = $modifiedBy, modification_date = NOW() where id = $id";
+            $query = "update tbl_goal_first_g1 set goal_first_th_id = $goalFirstThId, g1 = '$g1', fn_id = $fn, modified_by = $modifiedBy, modification_date = NOW() where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -38,9 +38,9 @@
         }
     }
 
-    function getAllGoalFirstG1ForThisGoalFirstId($goalFirstId){
+    function getAllGoalFirstG1ForThisGoalFirstThId($goalFirstThId){
         try{
-            $query = "select * from tbl_goal_first_g1 where goal_first_id = $goalFirstId";
+            $query = "select * from tbl_goal_first_g1 where goal_first_th_id = $goalFirstThId";
             $result = read($query);
             return $result;
         } catch (Exception $ex) {
@@ -48,9 +48,9 @@
         }
     }
 
-    function getAllGoalFirstG1ForThisGoalFirstIdAndModifiedBy($goalFirstId, $modifiedBy){
+    function getAllGoalFirstG1ForThisGoalFirstThIdAndModifiedBy($goalFirstThId, $modifiedBy){
         try{
-            $query = "select * from tbl_goal_first_g1 where goal_first_id = $goalFirstId and modified_by = $modifiedBy";
+            $query = "select * from tbl_goal_first_g1 where goal_first_th_id = $goalFirstThId and modified_by = $modifiedBy";
             $result = read($query);
             return $result;
         } catch (Exception $ex) {
@@ -69,9 +69,9 @@
         }
     }
 
-    function getGoalFirstG1Using($goalFirstId, $g1, $g1Fn){
+    function getGoalFirstG1Using($goalFirstThId, $g1, $g1Fn){
         try{
-            $query = "select * from tbl_goal_first_g1 where goal_first_id = $goalFirstId and g1 = '$g1' and fn_id = $g1Fn";
+            $query = "select * from tbl_goal_first_g1 where goal_first_th_id = $goalFirstThId and g1 = '$g1' and fn_id = $g1Fn";
             //echo $query;
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
@@ -81,9 +81,9 @@
         }
     }
 
-    function getGoalFirstG1UsingAndModifiedBy($goalFirstId, $g1, $g1Fn, $modifiedBy){
+    function getGoalFirstG1UsingAndModifiedBy($goalFirstThId, $g1, $g1Fn, $modifiedBy){
         try{
-            $query = "select * from tbl_goal_first_g1 where goal_first_th_id = $goalFirstId and g1 = '$g1' and fn_id = $g1Fn and modified_by = $modifiedBy order by modification_date desc limit 0,1";
+            $query = "select * from tbl_goal_first_g1 where goal_first_th_id = $goalFirstThId and g1 = '$g1' and fn_id = $g1Fn and modified_by = $modifiedBy order by modification_date desc limit 0,1";
             //echo $query;
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
@@ -93,9 +93,9 @@
         }
     }
 
-    function getGoalFirstG1ForGoalFirst($goalFirstId){
+    function getGoalFirstG1ForGoalFirstTh($goalFirstThId){
         try{
-            $query = "select * from tbl_goal_first_g1 where goal_first_id = $goalFirstId";
+            $query = "select * from tbl_goal_first_g1 where goal_first_th_id = $goalFirstThId";
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;

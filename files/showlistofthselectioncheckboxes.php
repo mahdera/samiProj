@@ -1,4 +1,4 @@
-<?php session_start();?>
+<?php //session_start();?>
 <div>
     <?php
         //now display the saved data back to the user...
@@ -6,6 +6,7 @@
         require_once 'risk.php';
         require_once 'th.php';
         $riskList = null;
+        $selectedThIdArray = null;
         //var_dump($_SESSION['SELECTED_THS']);
         //if session containing list of selected checkboxes is empty...then read from database
         if($_SESSION['SELECTED_THS'] !== NULL){

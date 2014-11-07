@@ -1,5 +1,5 @@
     <?php
-        session_start();
+        //session_start();
         @$ctr = $_GET['ctr'];
         $selectedThIdArray = array();
         for($i=1; $i <= $ctr; $i++){
