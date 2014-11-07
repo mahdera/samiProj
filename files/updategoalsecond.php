@@ -6,6 +6,7 @@
     require_once 'goalsecondg2obj.php';
     require_once 'goalsecondg3.php';
     require_once 'goalsecondg3obj.php';
+    require_once 'goalsecondfn.php';
 
     $fnId = $_POST['fnId'];
     $txtG1Val = $_POST['txtG1Val'];
@@ -17,7 +18,7 @@
     $goalSecondG2ObjId = $_POST['goalSecondG2ObjId'];
     $goalSecondG3Id = $_POST['goalSecondG3Id'];
     $goalSecondG3ObjId = $_POST['goalSecondG3ObjId'];
-    $goalSecondId = $_POST['goalSecondId'];
+    $goalSecondFnId = $_POST['goalSecondFnId'];
     $goalSecondG1Ctr = $_POST['goalSecondG1Ctr'];
     $goalSecondG2Ctr = $_POST['goalSecondG2Ctr'];
     $goalSecondG3Ctr = $_POST['goalSecondG3Ctr'];
@@ -26,7 +27,7 @@
         $goalSecondG1ObjControlName = "edittxtgoalsecondg1obj" . $fnId . $i;
         $goalSecondG1ObjVal = $_POST["$goalSecondG1ObjControlName"];
         //now update the data value...
-        updateGoalSecondG1($goalSecondG1Id, $goalSecondId, $txtG1Val, $_SESSION['LOGGED_USER_ID']);
+        updateGoalSecondG1($goalSecondG1Id, $goalSecondFnId, $txtG1Val, $_SESSION['LOGGED_USER_ID']);
         updateGoalSecondG1Obj($goalSecondG1ObjId, $goalSecondG1Id, $goalSecondG1ObjVal, $_SESSION['LOGGED_USER_ID']);
     }
 
@@ -34,7 +35,7 @@
         $goalSecondG2ObjControlName = "edittxtgoalsecondg2obj" . $fnId . $j;
         $goalSecondG2ObjVal = $_POST["$goalSecondG2ObjControlName"];
         //now update the data value...
-        updateGoalSecondG2($goalSecondG2Id, $goalSecondId, $txtG2Val, $_SESSION['LOGGED_USER_ID']);
+        updateGoalSecondG2($goalSecondG2Id, $goalSecondFnId, $txtG2Val, $_SESSION['LOGGED_USER_ID']);
         updateGoalSecondG2Obj($goalSecondG2ObjId, $goalSecondG2Id, $goalSecondG2ObjVal, $_SESSION['LOGGED_USER_ID']);
     }
 
@@ -42,7 +43,7 @@
         $goalSecondG3ObjControlName = "edittxtgoalsecondg3obj" . $fnId . $k;
         $goalSecondG3ObjVal = $_POST["$goalSecondG3ObjControlName"];
         //now update the data value...
-        updateGoalSecondG3($goalSecondG3Id, $goalSecondId, $txtG3Val, $_SESSION['LOGGED_USER_ID']);
+        updateGoalSecondG3($goalSecondG3Id, $goalSecondFnId, $txtG3Val, $_SESSION['LOGGED_USER_ID']);
         updateGoalSecondG3Obj($goalSecondG3ObjId, $goalSecondG3Id, $goalSecondG3ObjVal, $_SESSION['LOGGED_USER_ID']);
     }
 ?>

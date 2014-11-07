@@ -38,7 +38,7 @@
                             <a href="#.php" id="<?php echo $fnObj->id;?>" class="editGoalSecondLink">Edit</a>
                         </td>
                         <td>
-                            <a href="#.php" id="<?php echo $goalSecondRow->id;?>" class="deleteGoalSecondLink">Delete</a>
+                            <a href="#.php" id="<?php echo $goalSecondFnRow->id;?>" class="deleteGoalSecondLink">Delete</a>
                         </td>
                     </tr>
                     <tr>
@@ -78,7 +78,7 @@
             if(window.confirm('Are you sure you want to delete this goal second record?')){
               var idVal = $(this).attr('id');
               var divId = "subDetailDiv";
-              var dataString = "goalSecondId=" + idVal;
+              var dataString = "goalSecondFnId=" + idVal;
               $.ajax({
                   url: 'files/deletegoalsecond.php',
                   data: dataString,

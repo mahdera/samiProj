@@ -93,7 +93,7 @@
 
     function getGoalSecondG2ForGoalSecondFnId($goalSecondFnId){
         try{
-            $query = "select * from tbl_goal_second_g2 where goal_second_fn_id = $goalSecondFnId";
+            $query = "select * from tbl_goal_second_g2 where goal_second_fn_id = $goalSecondFnId";            
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;

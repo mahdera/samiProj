@@ -40,7 +40,7 @@
                                     <a href="#.php" id="<?php echo $goalFirstThRow->th_id;?>" class="openGoalFirstDetailForEditClass">Edit</a>
                                 </td>
                                 <td>
-                                    <a href="#.php" id="<?php echo $goalFirstThRow->th_id;?>" class="deleteGoalFirstDetailClass">Delete</a>
+                                    <a href="#.php" id="<?php echo $goalFirstThRow->id;?>" class="deleteGoalFirstDetailClass">Delete</a>
                                 </td>
                             </tr>
                             <tr>
@@ -85,7 +85,7 @@
           if(window.confirm('Are you sure you want to delete this goal first record?')){
             var idVal = $(this).attr('id');
             var divId = "subDetailDiv";
-            var dataString = "goalFirstId=" + idVal;
+            var dataString = "goalFirstThId=" + idVal;
             $.ajax({
                 url: 'files/deletegoalfirst.php',
                 data: dataString,

@@ -9,12 +9,12 @@
     require_once 'goalsecondg3obj.php';
     require_once 'fnaction.php';
     require_once 'fn.php';
+    require_once 'goalsecondfn.php';
 
     $fnId = $_GET['fn_id'];
     $buttonId = "updateGoalSecondButton" . $fnId;
-    $goalSecondRow = getGoalSecondUsingFnId($fnId);
-    $goalSecondId = $goalSecondRow->id;
-    $fnObj = getFn($fnId);
+    $goalSecondFnRow = getGoalSecondFnUsingFnId($fnId);    
+    $goalSecondFnId = $goalSecondFnRow->id;
     $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
     $goalSecondG1ObjId;
     $goalSecondG2Id;
@@ -31,7 +31,7 @@
 <form>
     <table border="0" width="100%">
         <?php
-            $goalSecondG1Row = getGoalSecondG1ForGoalSecondId($goalSecondId);
+            $goalSecondG1Row = getGoalSecondG1ForGoalSecondFnId($goalSecondFnId);
             if(!empty($goalSecondG1Row)){
                 $goalSecondG1Id = $goalSecondG1Row->id;
             ?>
@@ -69,7 +69,7 @@
 
     <table border="0" width="100%">
         <?php
-            $goalSecondG2Row = getGoalSecondG2ForGoalSecondId($goalSecondId);
+            $goalSecondG2Row = getGoalSecondG2ForGoalSecondFnId($goalSecondFnId);
             if(!empty($goalSecondG2Row)){
                 $goalSecondG2Id = $goalSecondG2Row->id;
             ?>
@@ -107,7 +107,7 @@
 
     <table border="0" width="100%">
         <?php
-            $goalSecondG3Row = getGoalSecondG3ForGoalSecondId($goalSecondId);
+            $goalSecondG3Row = getGoalSecondG3ForGoalSecondFnId($goalSecondFnId);
             if(!empty($goalSecondG3Row)){
                 $goalSecondG3Id = $goalSecondG3Row->id;
             ?>
@@ -183,13 +183,13 @@
             var goalSecondG2ObjId = "<?php echo $goalSecondG2ObjId;?>";
             var goalSecondG3Id = "<?php echo $goalSecondG3Id;?>";
             var goalSecondG3ObjId = "<?php echo $goalSecondG3ObjId;?>";
-            var goalSecondId = "<?php echo $goalSecondId;?>";
+            var goalSecondFnId = "<?php echo $goalSecondFnId;?>";
 
             if(true){
                 var dataString = "txtG1Val="+txtG1Val+"&fnId="+fnId+
                 "&txtG2Val="+txtG2Val+"&txtG3Val="+txtG3Val+"&goalSecondG1Id="+goalSecondG1Id+"&goalSecondG1ObjId="+
                 goalSecondG1ObjId+"&goalSecondG2Id="+goalSecondG2Id+"&goalSecondG2ObjId="+goalSecondG2ObjId+
-                "&goalSecondG3Id="+goalSecondG3Id+"&goalSecondG3ObjId="+goalSecondG3ObjId+"&goalSecondId="+goalSecondId+
+                "&goalSecondG3Id="+goalSecondG3Id+"&goalSecondG3ObjId="+goalSecondG3ObjId+"&goalSecondFnId="+goalSecondFnId+
                 "&goalSecondG1Ctr="+goalSecondG1Ctr+"&goalSecondG2Ctr="+goalSecondG2Ctr+"&goalSecondG3Ctr="+goalSecondG3Ctr;
 
                 //now get the dynamic values and append it to the dataString variable.
