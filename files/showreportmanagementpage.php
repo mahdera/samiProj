@@ -10,16 +10,16 @@
 		?>
 		<table border="0" width="100%">
 			<tr style="background:#eee">
-				<td>Th</td>
+				<td>Goal First Record</td>
 				<td>Report Date</td>
 				<td>Detail</td>
 			</tr>
 			<?php
 				while($goalFirstRow = mysql_fetch_object($goalFirstList)){
-					$thObj = getTh($goalFirstRow->th_id);
+					//$thObj = getTh($goalFirstRow->th_id);
 					?>
 					<tr>
-						<td><?php echo $thObj->th_name;?></td>
+						<td>Record</td>
 						<td><?php echo $goalFirstRow->modification_date;?></td>
 						<td>
 							<a href="#.php" class="showReportLink" id="<?php echo $goalFirstRow->id;?>">Show Report</a>

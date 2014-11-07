@@ -80,4 +80,26 @@
             $ex->getMessage();
         }
     }
+
+    function getAllGoalFirstThsForThisGoalFirst($goalFirstId){
+        try{
+            $query = "select * from tbl_goal_first_th where goal_first_id = $goalFirstId order by modification_date desc";
+            //echo $query;
+            $result = read($query);
+            return $result;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
+
+    function getGoalFirstThUsingThId($thId){
+        try{
+            $query = "select * from tbl_goal_first_th where th_id = $thId";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
 ?>

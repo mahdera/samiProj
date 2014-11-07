@@ -92,6 +92,17 @@
         }
     }
 
+    function getLatestForm1ModifiedByUser($modifiedBy){
+        try{
+            $query = "select * from tbl_form_1 where modified_by = $modifiedBy order by modification_date desc limit 0,1";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
+
     function getMaxFormIdForUser($modifiedBy){
       try{
         $query = "select * from tbl_form_1 where modified_by = $modifiedBy order by modification_date desc limit 0,1";

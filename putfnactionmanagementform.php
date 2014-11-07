@@ -4,8 +4,9 @@
     require_once 'files/fn.php';
     require_once 'files/fnaction.php';
     require_once 'files/goalsecond.php';
-    //$fn_list = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);//getAllFnsModifiedBy($_SESSION['LOGGED_USER_ID']);
-    $goalSecondList = getAllGoalSecondsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    require_once 'files/goalsecondfn.php';
+
+    $goalSecondFnList = getAllGoalSecondFnsModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
 <table border="0" width="100%">
     <tr style="background: #ccc">
@@ -15,8 +16,8 @@
     </tr>
     <?php
         $ctr=1;
-        while($goalSecondRow = mysql_fetch_object($goalSecondList)){
-            $fnObj = getFn($goalSecondRow->fn_id);
+        while($goalSecondFnRow = mysql_fetch_object($goalSecondFnList)){
+            $fnObj = getFn($goalSecondFnRow->fn_id);
             $countVal = 0;
             $divId = "actionDiv" . $fnObj->id;
             //$countVal = doesThisFnAlreadyActionFilledForIt($fnObj->id);

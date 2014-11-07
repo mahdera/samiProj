@@ -10,13 +10,14 @@
     require_once 'goalsecondg3obj.php';
     require_once 'fnaction.php';
     require_once 'fn.php';
+    require_once 'goalsecondfn.php';
 
     //$fnActionId = $_GET['fn_id'];
     //$fnActionObj = getFnAction($fnActionId);
     $fnEditActionText = "fnEditActionText" . $fn_id;
     $buttonId = "updateFnActionButton" . $fn_id;
-    $goalSecondRow = getGoalSecondUsingFnId($fn_id);
-    $goalSecondId = $goalSecondRow->id;
+    $goalSecondFnRow = getGoalSecondFnUsingFnId($fn_id);
+    $goalSecondFnId = $goalSecondFnRow->id;
     $fnObj = getFn($fn_id);
     $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
     //now I got all the result set read from the database...lets do the iteration thing now...
@@ -28,7 +29,7 @@
 <form>
     <table border="0" width="100%">
         <?php
-            $goalSecondG1Row = getGoalSecondG1ForGoalSecondId($goalSecondId);
+            $goalSecondG1Row = getGoalSecondG1ForGoalSecondFnId($goalSecondFnId);
             if(!empty($goalSecondG1Row)){
                 $goalSecondG1Id = $goalSecondG1Row->id;
             ?>
@@ -61,7 +62,7 @@
 
     <table border="0" width="100%">
         <?php
-            $goalSecondG2Row = getGoalSecondG2ForGoalSecondId($goalSecondId);
+            $goalSecondG2Row = getGoalSecondG2ForGoalSecondFnId($goalSecondFnId);
             if(!empty($goalSecondG2Row)){
                 $goalSecondG2Id = $goalSecondG2Row->id;
             ?>
@@ -94,7 +95,7 @@
 
     <table border="0" width="100%">
         <?php
-            $goalSecondG3Row = getGoalSecondG3ForGoalSecondId($goalSecondId);
+            $goalSecondG3Row = getGoalSecondG3ForGoalSecondFnId($goalSecondFnId);
             if(!empty($goalSecondG3Row)){
                 $goalSecondG3Id = $goalSecondG3Row->id;
             ?>

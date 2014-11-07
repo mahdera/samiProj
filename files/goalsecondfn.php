@@ -80,4 +80,24 @@
             $ex->getMessage();
         }
     }
+
+    function getAllGoalSecondFnsForGoalSecond($goalSecondId){
+        try{
+            $query = "select * from tbl_goal_second_fn where goal_second_id = $goalSecondId";
+            $result = read($query);
+            return $result;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
+
+    function getAllGoalSecondFnsForThisGoalSecondId($goalSecondId){
+        try{
+            $query = "select * from tbl_goal_second_fn where goal_second_id = $goalSecondId";
+            $result = read($query);
+            return $result;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
 ?>

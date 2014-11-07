@@ -31,6 +31,8 @@
 	require_once 'goalsecondg3.php';
 	require_once 'goalsecondg3obj.php';
 	require_once 'fnaction.php';
+	require_once 'goalfirstth.php';
+	require_once 'goalsecondfn.php';
 
 	//start showing the report from form1 upto form10
 	$goalFirstObj = getGoalFirst($id);
@@ -40,7 +42,7 @@
 	<div id="printReportDiv">
 	<?php
 	//now get a form1 obj modified by the logged in user and modification date same as that of the goal first...
-	$form1Obj = getForm1ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+	$form1Obj = getLatestForm1ModifiedByUser($_SESSION['LOGGED_USER_ID']);
 		if($form1Obj){
 		?>
 		<div id="printReportDiv">
@@ -272,44 +274,37 @@
 				</td>
 			</tr>
 		</table>
-		<!--table used to display the details of the goal first related to this th-->
+		<!--start displaying all Ths-->
 		<table border="0" width="100%">
 		<?php
-			$thList = getAllThsForGoalFirst($goalFirstObj->id);
-			if(mysql_num_rows($thList)){
-				while($thRow = mysql_fetch_object($thList)){
-					//$thObj = getTh($thRow->id);
-					?>
-					<tr>
-						<td width="20%">Th</td>
-						<td><?php echo $thRow->th_name;?></td>
-					</tr>
-					<tr>
-						<td colspan="2">
-							<?php
-									//////begin here/////
-									//var_dump($thObj);
-									//$thId = $thObj->id;
-									//echo $thRow->id;
-									$goalFirstRow = getGoalFirstUsingThId($thRow->id);
-									if(!empty($goalFirstRow)){
-											//now get all goalfirstg1 records associated with this particualr goalfirstid
-											?>
+				//first get all goalFirstThLists associated with the selected goalFirst record...
+				$goalFirstThList = getAllGoalFirstThsForThisGoalFirst($id);
+				while($goalFirstThRow = mysql_fetch_object($goalFirstThList)){
+						$thObj = getTh($goalFirstThRow->th_id);
+						?>
+							<tr>
+									<td>
+											<?php echo $thObj->th_name;?>
+									</td>
+							</tr>
+							<!--now for each Th record show all the details here-->
+							<tr>
+									<td>
 											<table border="0" width="100%">
 													<?php
-													$goalFirstG1Row = getGoalFirstG1ForGoalFirst($goalFirstRow->id);
+													$goalFirstG1Row = getGoalFirstG1ForGoalFirstThId($goalFirstThRow->id);
 
 													if(!empty($goalFirstG1Row)){
 															$fn_row = getFn($goalFirstG1Row->fn_id);
 															?>
-															<tr style="font-weight:bolder;">
-																	<td width="20%"></td>
-																	<td width="20%">G1</td>
+															<tr>
+																	<td width="30%"></td>
+																	<td width="30%">G1</td>
 																	<td><?php echo $goalFirstG1Row->g1;?></td>
 															</tr>
 															<tr>
-																	<td width="20%"></td>
-																	<td width="20%">Fn</td>
+																	<td width="30%"></td>
+																	<td width="30%">Fn</td>
 																	<td><?php echo $fn_row->fn_name;?></td>
 															</tr>
 															<?php
@@ -320,13 +315,13 @@
 																					$fn_row = getFn($goalFirstG1ObjFnRow->fn_id);
 																					?>
 																					<tr>
-																							<td width="20%"></td>
-																							<td width="20%">Obj</td>
+																							<td width="30%"></td>
+																							<td width="30%">Obj</td>
 																							<td><?php echo $goalFirstG1ObjFnRow->obj;?></td>
 																					</tr>
 																					<tr>
-																							<td width="20%"></td>
-																							<td width="20%">Fn</td>
+																							<td width="30%"></td>
+																							<td width="30%">Fn</td>
 																							<td><?php echo $fn_row->fn_name;?></td>
 																					</tr>
 																					<?php
@@ -341,19 +336,19 @@
 											<!--doing the samething for goalfirstg2...-->
 											<table border="0" width="100%">
 													<?php
-													$goalFirstG2Row = getGoalFirstG2ForGoalFirst($goalFirstRow->id);
+													$goalFirstG2Row = getGoalFirstG2ForGoalFirstThId($goalFirstThRow->id);
 
 													if(!empty($goalFirstG2Row)){
 															$fn_row = getFn($goalFirstG2Row->fn_id);
 															?>
-															<tr style="font-weight:bolder;">
-																	<td width="20%"></td>
-																	<td width="20%">G2</td>
+															<tr>
+																	<td width="30%"></td>
+																	<td width="30%">G2</td>
 																	<td><?php echo $goalFirstG2Row->g2;?></td>
 															</tr>
 															<tr>
-																	<td width="20%"></td>
-																	<td width="20%">Fn</td>
+																	<td width="30%"></td>
+																	<td width="30%">Fn</td>
 																	<td><?php echo $fn_row->fn_name;?></td>
 															</tr>
 															<?php
@@ -364,13 +359,13 @@
 																					$fn_row = getFn($goalFirstG2ObjFnRow->fn_id);
 																					?>
 																					<tr>
-																							<td width="20%"></td>
-																							<td width="20%">Obj</td>
+																							<td width="30%"></td>
+																							<td width="30%">Obj</td>
 																							<td><?php echo $goalFirstG2ObjFnRow->obj;?></td>
 																					</tr>
 																					<tr>
-																							<td width="20%"></td>
-																							<td width="20%">Fn</td>
+																							<td width="30%"></td>
+																							<td width="30%">Fn</td>
 																							<td><?php echo $fn_row->fn_name;?></td>
 																					</tr>
 																					<?php
@@ -385,219 +380,220 @@
 											<!--doing the samething for goalfirstg3...-->
 											<table border="0" width="100%">
 													<?php
-													$goalFirstG3Row = getGoalFirstG3ForGoalFirst($goalFirstRow->id);
+													$goalFirstG3Row = getGoalFirstG3ForGoalFirstThId($goalFirstThRow->id);
 
 													if(!empty($goalFirstG3Row)){
 															$fn_row = getFn($goalFirstG3Row->fn_id);
 															?>
-															<tr style="font-weight:bolder;">
-																	<td width="20%"></td>
-																	<td width="20%">G3</td>
+															<tr>
+																	<td width="30%"></td>
+																	<td width="30%">G3</td>
 																	<td><?php echo $goalFirstG3Row->g3;?></td>
 															</tr>
 															<tr>
-																	<td width="20%"></td>
-																	<td width="20%">Fn</td>
+																	<td width="30%"></td>
+																	<td width="30%">Fn</td>
 																	<td><?php echo $fn_row->fn_name;?></td>
 															</tr>
 															<?php
-															//now get all the obj fn values for this particular goalFirstG1Id
-															$goalFirstG3ObjFnList = getAllGoalFirstG3ObjFnsForThisGoalFirstG3Id($goalFirstG3Row->id);
-															if(!empty($goalFirstG3ObjFnList)){
-																	while($goalFirstG3ObjFnRow = mysql_fetch_object($goalFirstG3ObjFnList)){
-																			$fn_row = getFn($goalFirstG3ObjFnRow->fn_id);
-																			?>
-																			<tr>
-																					<td width="20%"></td>
-																					<td width="20%">Obj</td>
-																					<td><?php echo $goalFirstG3ObjFnRow->obj;?></td>
-																			</tr>
-																			<tr>
-																					<td width="20%"></td>
-																					<td width="20%">Fn</td>
-																					<td><?php echo $fn_row->fn_name;?></td>
-																			</tr>
-																			<?php
-																	}//end while loop
-															}//end if condition for goalFirstG1ObjFnList
-												}
-											}//end if goalFirstChecker
-											//here is the perfect location to put the th action listing
-											$thActionList = getAllThActionsForThisTh($thRow->id);
-											?>
-											<table border="0" width="100%">
-													<tr>
-															<td width="20%">Action Text</td>
-															<td>Value</td>
-													</tr>
-													<?php
-														while($thActionRow = mysql_fetch_object($thActionList)){
+																	//now get all the obj fn values for this particular goalFirstG1Id
+																	$goalFirstG3ObjFnList = getAllGoalFirstG3ObjFnsForThisGoalFirstG3Id($goalFirstG3Row->id);
+																	if(!empty($goalFirstG3ObjFnList)){
+																			while($goalFirstG3ObjFnRow = mysql_fetch_object($goalFirstG3ObjFnList)){
+																					$fn_row = getFn($goalFirstG3ObjFnRow->fn_id);
+																					?>
+																					<tr>
+																							<td width="30%"></td>
+																							<td width="30%">Obj</td>
+																							<td><?php echo $goalFirstG3ObjFnRow->obj;?></td>
+																					</tr>
+																					<tr>
+																							<td width="30%"></td>
+																							<td width="30%">Fn</td>
+																							<td><?php echo $fn_row->fn_name;?></td>
+																					</tr>
+																					<?php
+																			}//end while loop
+																	}//end if condition for goalFirstG1ObjFnList
 															?>
-																	<tr>
-																			<td></td>
-																			<td><?php echo $thActionRow->action_text;?></td>
-																	</tr>
 															<?php
-														}//end thActionList while loop
+													}//end empty checking for goalFirstG1List
+
 													?>
 											</table>
-											<?php
-										}//end while thList loop
-
-
-										////do the same for goal second
-										//first get the first latest top goal second ever...
-
-										$latestTopGoalSecond = getLatestTopGoalSecondModifiedBy($_SESSION['LOGGED_USER_ID']);
-
-										$fnList = getAllFnsForGoalSecond($latestTopGoalSecond->id);
-										if(mysql_num_rows($fnList)){
-											while($fnRow = mysql_fetch_object($fnList)){
-												$goalSecondRow = getGoalSecondUsingFnId($fnRow->id);
-												$goalSecondId = $goalSecondRow->id;
-												$fnObj = getFn($fn_id);
-											?>
-												<table border="0" width="100%">
-														<tr>
-																<td width="20%">Fn</td>
-																<td><?php echo $fnRow->fn_name;?></td>
-														</tr>
-														<tr>
-																<td colspan="2">
-																		<table border="0" width="100%">
-																				<?php
-																						$goalSecondG1Row = getGoalSecondG1ForGoalSecondId($goalSecondId);
-																						if(!empty($goalSecondG1Row)){
-																							  //var_dump($goalSecondG1Row);
-																								$goalSecondG1Id = $goalSecondG1Row->id;
-																						?>
-																								<tr style="font-weight:bolder;">
-																										<td width="20%"></td>
-																										<td width="20%">G1</td>
-																										<td>
-																												<?php echo $goalSecondG1Row->g1;?>
-																										</td>
-																								</tr>
-																						<?php
-																								$goalSecondG1ObjList = getAllGoalSecondG1ObjsForThisGoalSecondG1Id($goalSecondG1Id);
-																								if(!empty($goalSecondG1ObjList)){
-																										while($goalSecondG1ObjRow = mysql_fetch_object($goalSecondG1ObjList)){
-																												$goalSecondG1ObjId = $goalSecondG1ObjRow->id;
-																												?>
-																														<tr>
-																																<td></td>
-																																<td>Obj</td>
-																																<td>
-																																		<?php echo $goalSecondG1ObjRow->obj;?>
-																																</td>
-																														</tr>
-																												<?php
-																										}//end while loop
-																								}//end empty checking inner if condition
-																						}//end if empty checking condition
-																				?>
-																		</table>
-
-																		<table border="0" width="100%">
-																				<?php
-																						$goalSecondG2Row = getGoalSecondG2ForGoalSecondId($goalSecondId);
-																						if(!empty($goalSecondG2Row)){
-																								$goalSecondG2Id = $goalSecondG2Row->id;
-																						?>
-																								<tr style="font-weight:bolder;">
-																										<td width="20%"></td>
-																										<td width="20%">G2</td>
-																										<td>
-																												<?php echo $goalSecondG2Row->g2;?>
-																										</td>
-																								</tr>
-																						<?php
-																								$goalSecondG2ObjList = getAllGoalSecondG2ObjsForThisGoalSecondG2Id($goalSecondG2Id);
-																								if(!empty($goalSecondG2ObjList)){
-																										while($goalSecondG2ObjRow = mysql_fetch_object($goalSecondG2ObjList)){
-																												$goalSecondG2ObjId = $goalSecondG2ObjRow->id;
-																												?>
-																														<tr>
-																																<td></td>
-																																<td>Obj</td>
-																																<td>
-																																		<?php echo $goalSecondG2ObjRow->obj;?>
-																																</td>
-																														</tr>
-																												<?php
-																										}//end while loop
-																								}//end empty checking inner if condition
-																						}//end if empty checking condition
-																				?>
-																		</table>
-
-																		<table border="0" width="100%">
-																				<?php
-																						$goalSecondG3Row = getGoalSecondG3ForGoalSecondId($goalSecondId);
-																						if(!empty($goalSecondG3Row)){
-																								$goalSecondG3Id = $goalSecondG3Row->id;
-																						?>
-																								<tr style="font-weight:bolder;">
-																										<td width="20%"></td>
-																										<td width="20%">G3</td>
-																										<td>
-																												<?php echo $goalSecondG3Row->g3;?>
-																										</td>
-																								</tr>
-																						<?php
-																								$goalSecondG3ObjList = getAllGoalSecondG3ObjsForThisGoalSecondG3Id($goalSecondG3Id);
-																								if(!empty($goalSecondG3ObjList)){
-																										while($goalSecondG3ObjRow = mysql_fetch_object($goalSecondG3ObjList)){
-																												$goalSecondG3ObjId = $goalSecondG3ObjRow->id;
-																												?>
-																														<tr>
-																																<td></td>
-																																<td>Obj</td>
-																																<td>
-																																		<?php echo $goalSecondG3ObjRow->obj;?>
-																																</td>
-																														</tr>
-																												<?php
-																										}//end while loop
-																								}//end empty checking inner if condition
-																						}//end if empty checking condition
-																				?>
-																		</table>
-																</td>
-														</tr>
-												</table>
-											<?php
-													$fnActionList = getAllFnActionsForThisFn($fnRow->id);
-													?>
-													<table border="0" width="100%">
-															<tr>
-																	<td width="20%">Action Text</td>
-																	<td>Value</td>
-															</tr>
-															<?php
-																while($fnActionRow = mysql_fetch_object($fnActionList)){
-																	?>
-																			<tr>
-																					<td></td>
-																					<td><?php echo $fnActionRow->action_text;?></td>
-																			</tr>
-																	<?php
-																}//end thActionList while loop
-															?>
-													</table>
-												<?php
-											}//end fnRow while loop
-										}//end if mysql_num_rows(fnList)
-										////end it here
-
-										//////end here///////
-
-									}//end if condition to check if thList is empty or not.
+									</td>
+							</tr>
+							<!--now get the th action for this particular thId-->
+							<?php
+									//get the thActionList for this particular th object...
+									$thActionList = getAllThActionsForThisTh($thObj->id);
 							?>
-						</td>
-					</tr>
+							<tr>
+									<td>
+												<table border="0" width="100%">
+														<?php
+																while($thActionRow = mysql_fetch_object($thActionList)){
+																		?>
+																				<tr>
+																						<td width="10%">Action:</td>
+																						<td>
+																								<?php echo $thActionRow->action_text;?>
+																						</td>
+																				</tr>
+																		<?php
+																}//end action while loop
+														?>
+												</table>
+									</td>
+							</tr>
+						<?php
+				}//end goalFirstThList while loop -- here is the boundary for Th...
+		?>
 		</table>
-	</div>
+		<!--now get the latest goal-second record from the database saved by the logged in user-->
+		<?php
+				$latestGoalSecondRow = getTheLatestGoalSecondRecordModifiedBy($_SESSION['LOGGED_USER_ID']);
+				//now get list of goalSecondFnList for this particular goal-second-id
+				$goalSecondFnList = getAllGoalSecondFnsForThisGoalSecondId($latestGoalSecondRow->id);
+		?>
+		<table border="0" width="100%">
+				<?php
+						while($goalSecondFnRow = mysql_fetch_object($goalSecondFnList)){
+								$fnObj = getFn($goalSecondFnRow->fn_id);
+								?>
+										<tr>
+												<td>
+														<?php echo $fnObj->fn_name;?>
+												</td>
+										</tr>
+										<tr>
+												<td>
+														<table border="0" width="100%">
+																<?php
+																		$goalSecondG1Row = getGoalSecondG1ForGoalSecondFnId($goalSecondFnRow->id);
+																		if(!empty($goalSecondG1Row)){
+																				$goalSecondG1Id = $goalSecondG1Row->id;
+																		?>
+																				<tr>
+																						<td width="30%"></td>
+																						<td width="30%">G1</td>
+																						<td>
+																								<?php echo $goalSecondG1Row->g1;?>
+																						</td>
+																				</tr>
+																		<?php
+																				$goalSecondG1ObjList = getAllGoalSecondG1ObjsForThisGoalSecondG1Id($goalSecondG1Id);
+																				if(!empty($goalSecondG1ObjList)){
+																						while($goalSecondG1ObjRow = mysql_fetch_object($goalSecondG1ObjList)){
+																								$goalSecondG1ObjId = $goalSecondG1ObjRow->id;
+																								?>
+																										<tr>
+																												<td></td>
+																												<td>Obj</td>
+																												<td>
+																														<?php echo $goalSecondG1ObjRow->obj;?>
+																												</td>
+																										</tr>
+																								<?php
+																						}//end while loop
+																				}//end empty checking inner if condition
+																		}//end if empty checking condition
+																?>
+														</table>
+
+														<table border="0" width="100%">
+																<?php
+																		$goalSecondG2Row = getGoalSecondG2ForGoalSecondFnId($goalSecondFnRow->id);
+																		if(!empty($goalSecondG2Row)){
+																				$goalSecondG2Id = $goalSecondG2Row->id;
+																		?>
+																				<tr>
+																						<td width="30%"></td>
+																						<td width="30%">G2</td>
+																						<td>
+																								<?php echo $goalSecondG2Row->g2;?>
+																						</td>
+																				</tr>
+																		<?php
+																				$goalSecondG2ObjList = getAllGoalSecondG2ObjsForThisGoalSecondG2Id($goalSecondG2Id);
+																				if(!empty($goalSecondG2ObjList)){
+																						while($goalSecondG2ObjRow = mysql_fetch_object($goalSecondG2ObjList)){
+																								$goalSecondG2ObjId = $goalSecondG2ObjRow->id;
+																								?>
+																										<tr>
+																												<td></td>
+																												<td>Obj</td>
+																												<td>
+																														<?php echo $goalSecondG2ObjRow->obj;?>
+																												</td>
+																										</tr>
+																								<?php
+																						}//end while loop
+																				}//end empty checking inner if condition
+																		}//end if empty checking condition
+																?>
+														</table>
+
+														<table border="0" width="100%">
+																<?php
+																		$goalSecondG3Row = getGoalSecondG3ForGoalSecondFnId($goalSecondFnRow->id);
+																		if(!empty($goalSecondG3Row)){
+																				$goalSecondG3Id = $goalSecondG3Row->id;
+																		?>
+																				<tr>
+																						<td width="30%"></td>
+																						<td width="30%">G3</td>
+																						<td>
+																								<?php echo $goalSecondG3Row->g3;?>
+																						</td>
+																				</tr>
+																		<?php
+																				$goalSecondG3ObjList = getAllGoalSecondG3ObjsForThisGoalSecondG3Id($goalSecondG3Id);
+																				if(!empty($goalSecondG3ObjList)){
+																						while($goalSecondG3ObjRow = mysql_fetch_object($goalSecondG3ObjList)){
+																								$goalSecondG3ObjId = $goalSecondG3ObjRow->id;
+																								?>
+																										<tr>
+																												<td></td>
+																												<td>Obj</td>
+																												<td>
+																														<?php echo $goalSecondG3ObjRow->obj;?>
+																												</td>
+																										</tr>
+																								<?php
+																						}//end while loop
+																				}//end empty checking inner if condition
+																		}//end if empty checking condition
+																?>
+														</table>
+
+												</td>
+										</tr>
+										<!--here for each fn obj find the fn-action and display the result to the user...-->
+										<?php
+												$fnActionList = getAllFnActionsForThisFn($fnObj->id);
+										?>
+										<tr>
+												<td>
+														<table border="0" width="100%">
+																<?php
+																		while($fnActionRow = mysql_fetch_object($fnActionList)){
+																				?>
+																						<tr>
+																								<td>Action:</td>
+																								<td><?php echo $fnActionRow->action_text;?></td>
+																						</tr>
+																				<?php
+																		}//end fn_action while loop
+																?>
+														</table>
+												</td>
+										</tr>
+								<?php
+						}//end goal second fn list-while loop
+				?>
+		</table>
+	</div><!--end printDiv-->
 	<table border="0" width="100%">
 		<tr>
 			<td align="right">

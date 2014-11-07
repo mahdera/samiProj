@@ -12,17 +12,19 @@
     require_once 'goalfirstg3objfn.php';
     require_once 'fn.php';
     require_once 'thaction.php';
+    require_once 'goalfirstth.php';
+
     @$countVal = 0;
     @$countVal = doesThisThAlreadyActionFilledForIt($thId);
     if(true){
     //now get all goalfirst records associated with this particular thId
-    $goalFirstRow = getGoalFirstUsingThId($thId);
-    if(!empty($goalFirstRow)){
+    $goalFirstThRow = getGoalFirstThUsingThId($thId);
+    if(!empty($goalFirstThRow)){
         //now get all goalfirstg1 records associated with this particualr goalfirstid
         ?>
         <table border="0" width="100%">
             <?php
-            $goalFirstG1Row = getGoalFirstG1ForGoalFirst($goalFirstRow->id);
+            $goalFirstG1Row = getGoalFirstG1ForGoalFirstThId($goalFirstThRow->goal_first_id);
 
             if(!empty($goalFirstG1Row)){
                 $fn_row = getFn($goalFirstG1Row->fn_id);
@@ -66,7 +68,7 @@
         <!--doing the samething for goalfirstg2...-->
         <table border="0" width="100%">
             <?php
-            $goalFirstG2Row = getGoalFirstG2ForGoalFirst($goalFirstRow->id);
+            $goalFirstG2Row = getGoalFirstG2ForGoalFirstThId($goalFirstThRow->goal_first_id);
 
             if(!empty($goalFirstG2Row)){
                 $fn_row = getFn($goalFirstG2Row->fn_id);
@@ -110,7 +112,7 @@
         <!--doing the samething for goalfirstg3...-->
         <table border="0" width="100%">
             <?php
-            $goalFirstG3Row = getGoalFirstG3ForGoalFirst($goalFirstRow->id);
+            $goalFirstG3Row = getGoalFirstG3ForGoalFirstThId($goalFirstThRow->goal_first_id);
 
             if(!empty($goalFirstG3Row)){
                 $fn_row = getFn($goalFirstG3Row->fn_id);

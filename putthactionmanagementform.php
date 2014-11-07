@@ -3,10 +3,12 @@
     require_once 'files/th.php';
     require_once 'files/thaction.php';
     require_once 'files/goalfirst.php';
-    $goalFirstList = getAllGoalFirstsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    require_once 'files/goalfirstth.php';
+
+    $goalFirstThList = getAllGoalFirstThsModifiedBy($_SESSION['LOGGED_USER_ID']);
     //this will have to be like all goalFirsts then filter out the ths in the goal first list
 
-    if($goalFirstList){
+    if($goalFirstThList){
         ?>
         <table border="0" width="100%">
             <tr style="background: #CCC">
@@ -17,8 +19,8 @@
             </tr>
             <?php
                 $ctr=1;
-                    while($goalFirstRow = mysql_fetch_object($goalFirstList)){
-                        $thObj = getTh($goalFirstRow->th_id);
+                    while($goalFirstThRow = mysql_fetch_object($goalFirstThList)){
+                        $thObj = getTh($goalFirstThRow->th_id);
                         $countVal = 0;
                         $divId = "actionDiv" . $thObj->id;
                         //$countVal = doesThisThAlreadyActionFilledForIt($thObj->id);

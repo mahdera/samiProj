@@ -75,42 +75,42 @@
         $fnIdArray = array();
         try{
             //first read from tbl_goal_first_g1
-            $query = "select * from tbl_goal_first_g1 where modified_by = $modifiedBy order by modification_date desc limit 0,1";
+            $query = "select * from tbl_goal_first_g1 where modified_by = $modifiedBy order by modification_date desc";
             $result = read($query);
             while($resultRow = mysql_fetch_object($result)){
                 $fnIdArray[$ctr] = $resultRow->fn_id;
                 $ctr++;
             }//end while loop
             //second read from tbl_goal_first_g1_obj_fn
-            $query = "select * from tbl_goal_first_g1_obj_fn where modified_by = $modifiedBy order by modification_date desc limit 0,1";
+            $query = "select * from tbl_goal_first_g1_obj_fn where modified_by = $modifiedBy order by modification_date desc";
             $result = read($query);
             while($resultRow = mysql_fetch_object($result)){
                 $fnIdArray[$ctr] = $resultRow->fn_id;
                 $ctr++;
             }//end while loop
             //third read from tbl_goal_first_g2
-            $query = "select * from tbl_goal_first_g2 where modified_by = $modifiedBy order by modification_date desc limit 0,1";
+            $query = "select * from tbl_goal_first_g2 where modified_by = $modifiedBy order by modification_date desc";
             $result = read($query);
             while($resultRow = mysql_fetch_object($result)){
                 $fnIdArray[$ctr] = $resultRow->fn_id;
                 $ctr++;
             }//end while loop
             //fourth read from tbl_goal_first_g2_obj_fn
-            $query = "select * from tbl_goal_first_g2_obj_fn where modified_by = $modifiedBy order by modification_date desc limit 0,1";
+            $query = "select * from tbl_goal_first_g2_obj_fn where modified_by = $modifiedBy order by modification_date desc";
             $result = read($query);
             while($resultRow = mysql_fetch_object($result)){
                 $fnIdArray[$ctr] = $resultRow->fn_id;
                 $ctr++;
             }//end while loop
             //fifth read from tbl_goal_first_g3
-            $query = "select * from tbl_goal_first_g3 where modified_by = $modifiedBy order by modification_date desc limit 0,1";
+            $query = "select * from tbl_goal_first_g3 where modified_by = $modifiedBy order by modification_date desc";
             $result = read($query);
             while($resultRow = mysql_fetch_object($result)){
                 $fnIdArray[$ctr] = $resultRow->fn_id;
                 $ctr++;
             }//end while loop
             //fourth read from tbl_goal_first_g3_obj_fn
-            $query = "select * from tbl_goal_first_g3_obj_fn where modified_by = $modifiedBy order by modification_date desc limit 0,1";
+            $query = "select * from tbl_goal_first_g3_obj_fn where modified_by = $modifiedBy order by modification_date desc";
             $result = read($query);
             while($resultRow = mysql_fetch_object($result)){
                 $fnIdArray[$ctr] = $resultRow->fn_id;
@@ -119,6 +119,7 @@
         }catch(Exception $ex){
             $ex->getMessage();
         }
+
         //before returning the array i need to check if there are duplicates and
         //leave out the duplicates...
         $fnIdArrayFiltered = array();
@@ -138,7 +139,8 @@
               $fnIdArrayFiltered[$currentArrayIndex] = $fnIdArray[$i];
           }
           $elementExists = false;
-        }//end for $i loop
+        }//end for $i loop eliminating repeating function_id works perfectly...
+        //var_dump($fnIdArrayFiltered);
         return $fnIdArrayFiltered;
 
     }
@@ -156,7 +158,7 @@
 
     function getAllFunctionsEnteredByThisUser($modifiedBy){
         try{
-            $query = "select * from tbl_fn where modified_by = $modifiedBy order by fn_name";            
+            $query = "select * from tbl_fn where modified_by = $modifiedBy order by fn_name";
             $result = read($query);
             return $result;
         }catch(Exception $ex){
