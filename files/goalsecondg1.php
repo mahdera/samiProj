@@ -1,18 +1,18 @@
 <?php
     require_once 'dbconnection.php';
 
-    function saveGoalSecondG1($goalSecondId, $g1, $modifiedBy){
+    function saveGoalSecondG1($goalSecondFnId, $g1, $modifiedBy){
         try{
-            $query = "insert into tbl_goal_second_g1 values(0, $goalSecondId, '$g1', $modifiedBy, NOW())";
+            $query = "insert into tbl_goal_second_g1 values(0, $goalSecondFnId, '$g1', $modifiedBy, NOW())";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
 
-    function updateGoalSecondG1($id, $goalSecondId, $g1, $modifiedBy){
+    function updateGoalSecondG1($id, $goalSecondFnId, $g1, $modifiedBy){
         try{
-            $query = "update tbl_goal_second_g1 set goal_second_id = $goalSecondId, g1 = '$g1', modified_by = $modifiedBy, modification_date = NOW() where id = $id";
+            $query = "update tbl_goal_second_g1 set goal_second_fn_id = $goalSecondFnId, g1 = '$g1', modified_by = $modifiedBy, modification_date = NOW() where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -38,9 +38,9 @@
         }
     }
 
-    function getAllGoalSecondG1ForThisGoalSecondId($goalSecondId){
+    function getAllGoalSecondG1ForThisGoalSecondFnId($goalSecondFnId){
         try{
-            $query = "select * from tbl_goal_second_g1 where goal_second_id = $goalSecondId";
+            $query = "select * from tbl_goal_second_g1 where goal_second_fn_id = $goalSecondFnId";
             $result = read($query);
             return $result;
         } catch (Exception $ex) {
@@ -48,9 +48,9 @@
         }
     }
 
-    function getAllGoalSecondG1ForThisGoalSecondIdAndModifiedBy($goalSecondId, $modifiedBy){
+    function getAllGoalSecondG1ForThisGoalSecondFnIdAndModifiedBy($goalSecondFnId, $modifiedBy){
         try{
-            $query = "select * from tbl_goal_second_g1 where goal_second_id = $goalSecondId and modified_by = $modifiedBy";
+            $query = "select * from tbl_goal_second_g1 where goal_second_fn_id = $goalSecondFnId and modified_by = $modifiedBy";
             $result = read($query);
             return $result;
         } catch (Exception $ex) {
@@ -69,9 +69,9 @@
         }
     }
 
-    function getGoalSecondG1Using($goalSecondId, $g1){
+    function getGoalSecondG1Using($goalSecondFnId, $g1){
         try{
-            $query = "select * from tbl_goal_second_g1 where goal_second_id = $goalSecondId and g1 = '$g1'";
+            $query = "select * from tbl_goal_second_g1 where goal_second_fn_id = $goalSecondFnId and g1 = '$g1'";
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;
@@ -80,9 +80,9 @@
         }
     }
 
-    function getGoalSecondG1UsingAndModifiedBy($goalSecondId, $g1, $modifiedBy){
+    function getGoalSecondG1UsingAndModifiedBy($goalSecondFnId, $g1, $modifiedBy){
         try{
-            $query = "select * from tbl_goal_second_g1 where goal_second_id = $goalSecondId and g1 = '$g1' and modified_by = $modifiedBy order by modification_date desc limit 0,1";
+            $query = "select * from tbl_goal_second_g1 where goal_second_fn_id = $goalSecondFnId and g1 = '$g1' and modified_by = $modifiedBy order by modification_date desc limit 0,1";
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;
@@ -91,9 +91,9 @@
         }
     }
 
-    function getGoalSecondG1ForGoalSecondId($goalSecondId){
+    function getGoalSecondG1ForGoalSecondId($goalSecondFnId){
         try{
-            $query = "select * from tbl_goal_second_g1 where goal_second_id = $goalSecondId";
+            $query = "select * from tbl_goal_second_g1 where goal_second_fn_id = $goalSecondFnId";
             //echo $query;
             $result = read($query);
             $resultRow = mysql_fetch_object($result);

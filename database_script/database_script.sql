@@ -17,6 +17,18 @@ SET time_zone = "+00:00";
 create database db_sami_proj;
 use db_sami_proj;
 
+create table tbl_goal_second_fn(
+    id bigint auto_increment,
+    goal_second_id bigint not null,
+    fn_id bigint not null,
+    modified_by int not null,
+    modification_date datetime not null,
+    primary key(id),
+    foreign key(goal_second_id) references tbl_goal_second(id),
+    foreign key(fn_id) references tbl_fn(id),
+    foreign key(modified_by) references tbl_user(id)
+);
+
 -- --------------------------------------------------------
 
 --

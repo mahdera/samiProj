@@ -15,6 +15,7 @@
         $_SESSION['USER_ID'] = $userId;
         $_SESSION['SELECTED_THS'] = NULL;
         $_SESSION['GOAL_FIRST_STATUS'] = 'create';
+        $_SESSION['GOAL_SECOND_STATUS'] = 'create';
         if($loggedInUserObj->member_type === 'Admin'){
           header('Location: adminhome.php');
         }else{
