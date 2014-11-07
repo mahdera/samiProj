@@ -48,4 +48,36 @@
             $ex->getMessage();
         }
     }
+
+    function getGoalSecondFnUsingModifiedyBy($modifiedBy){
+        try{
+            $query = "select * from tbl_goal_second_fn where modified_by = $modifiedBy order by modification_date desc limit 0,1";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
+
+    function getAllGoalSecondFnsModifiedBy($modifiedBy){
+        try{
+            $query = "select * from tbl_goal_second_fn where modified_by = $modifiedBy order by modification_date desc";
+            $result = read($query);
+            return $result;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
+
+    function getGoalSecondFnUsingFnId($fnId){
+        try{
+            $query = "select * from tbl_goal_second_fn where fn_id = $fnId";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
 ?>

@@ -91,7 +91,7 @@
         }
     }
 
-    function getGoalSecondG1ForGoalSecondId($goalSecondFnId){
+    function getGoalSecondG1ForGoalSecondFnId($goalSecondFnId){
         try{
             $query = "select * from tbl_goal_second_g1 where goal_second_fn_id = $goalSecondFnId";
             //echo $query;

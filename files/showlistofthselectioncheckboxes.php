@@ -1,4 +1,4 @@
-<?php //session_start();?>
+<?php session_start();?>
 <div>
     <?php
         //now display the saved data back to the user...

@@ -7,6 +7,7 @@
     require_once 'goalsecondg1obj.php';
     require_once 'goalsecondg2obj.php';
     require_once 'goalsecondg3obj.php';
+    require_once 'goalsecondfn.php';
 
     //get the values...
     $fnId = $_POST['fn'];
@@ -20,14 +21,24 @@
     $numItemsG1 = $_POST['numItemsG1'];
     $numItemsG2 = $_POST['numItemsG2'];
     $numItemsG3 = $_POST['numItemsG3'];
-    //save the goalfirst object to the database...
-    saveGoalSecond($fnId, $_SESSION['LOGGED_USER_ID']);
+
+    if($_SESSION['GOAL_SECOND_STATUS'] == 'create'){
+        //only create a goal first record iff user has logged in & is trying to
+        //create a new goal_first record or did not click on the next butto.
+        //if user is click save and tries to save another th without clicking the
+        //next button it should grab the last goal first record saved by the current user.
+        saveGoalSecond($_SESSION['LOGGED_USER_ID']);
+        $_SESSION['GOAL_SECOND_STATUS'] = 'existing';
+    }
     //fetch the value just saved using the thId
-    $fetchedGoalSecond = getGoalSecondUsingFnIdAndModifiedBy($fnId,$_SESSION['LOGGED_USER_ID']);
+    $fetchedGoalSecond = getGoalSecondUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
+    //now save the goalsecondfn record in here...
+    saveGoalSecondFn($fetchedGoalSecond->id, $fnId, $_SESSION['LOGGED_USER_ID']);
+    $fetchedGoalSecondFn = getGoalSecondFnUsingModifiedyBy($_SESSION['LOGGED_USER_ID']);
     //now save the goalfirstg1 value...
-    saveGoalSecondG1($fetchedGoalSecond->id, $g1, $_SESSION['LOGGED_USER_ID']);
+    saveGoalSecondG1($fetchedGoalSecondFn->id, $g1, $_SESSION['LOGGED_USER_ID']);
     //fetch the value using the above parameters you have used to save the values to the database...
-    $fetchedGoalSecondG1 = getGoalSecondG1UsingAndModifiedBy($fetchedGoalSecond->id, $g1, $_SESSION['LOGGED_USER_ID']);
+    $fetchedGoalSecondG1 = getGoalSecondG1UsingAndModifiedBy($fetchedGoalSecondFn->id, $g1, $_SESSION['LOGGED_USER_ID']);
 
 
     for($i = 1; $i <= $numItemsG1; $i++){
@@ -38,9 +49,9 @@
     }//end for loop i
 
     //now do the same thing for G2
-    saveGoalSecondG2($fetchedGoalSecond->id, $g2, $_SESSION['LOGGED_USER_ID']);
+    saveGoalSecondG2($fetchedGoalSecondFn->id, $g2, $_SESSION['LOGGED_USER_ID']);
     //fetch the value using the above parameters you have used to save the values to the database...
-    $fetchedGoalSecondG2 = getGoalSecondG2UsingAndModifiedBy($fetchedGoalSecond->id, $g2, $_SESSION['LOGGED_USER_ID']);
+    $fetchedGoalSecondG2 = getGoalSecondG2UsingAndModifiedBy($fetchedGoalSecondFn->id, $g2, $_SESSION['LOGGED_USER_ID']);
 
     for($j = 1; $j <= $numItemsG2; $j++){
         $g2ObjTextBoxId = "txtg2obj" . $j;
@@ -50,9 +61,9 @@
     }//end for loop i
 
     //now do the same thing for G3
-    saveGoalSecondG3($fetchedGoalSecond->id, $g3, $_SESSION['LOGGED_USER_ID']);
+    saveGoalSecondG3($fetchedGoalSecondFn->id, $g3, $_SESSION['LOGGED_USER_ID']);
     //fetch the value using the above parameters you have used to save the values to the database...
-    $fetchedGoalSecondG3 = getGoalSecondG3UsingAndModifiedBy($fetchedGoalSecond->id, $g3, $_SESSION['LOGGED_USER_ID']);
+    $fetchedGoalSecondG3 = getGoalSecondG3UsingAndModifiedBy($fetchedGoalSecondFn->id, $g3, $_SESSION['LOGGED_USER_ID']);
 
     for($k = 1; $k <= $numItemsG3; $k++){
         $g3ObjTextBoxId = "txtg3obj" . $k;
