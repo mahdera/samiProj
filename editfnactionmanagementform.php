@@ -27,7 +27,7 @@
                         $editDivId = "editActionTextDiv" . $fnActionRow->id;
                         $deleteLinkId = $fnActionRow->id;
                     ?>
-                    <a href="#.php" id="<?php echo $editLinkId;?> class="editFnActionLinkId">Edit</a>
+                    <a href="#.php" id="<?php echo $editLinkId;?>" class="editFnActionLinkId">Edit</a>
                     |
                     <a href="#.php" id="<?php echo $deleteLinkId;?>" class="deleteFnActionLinkId">Delete</a>
                 </td>

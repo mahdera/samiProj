@@ -11,15 +11,17 @@
     require_once 'goalfirstg3objfn.php';
     require_once 'fn.php';
     require_once 'thaction.php';
+    require_once 'goalfirstth.php';
 
     $thActionObj = getThAction($thActionId);
     $thEditActionText = "thEditActionText" . $thActionId;
     $buttonId = "updateThActionButton" . $thActionId;
-    $thObj = getTh($thActionObj->th_id);       
-    $goalFirstRow = getGoalFirstUsingThId($thObj->id);
-    $goalFirstId = $goalFirstRow->id;
-    //define the control names in here 
-    $goalFirstG1Ctr = 1; 
+    $thObj = getTh($thActionObj->th_id);
+    $goalFirstThRow = getGoalFirstThUsingThId($thObj->id);
+    //$goalFirstRow = getGoalFirstUsingThId($thObj->id);
+    $goalFirstThId = $goalFirstThRow->id;
+    //define the control names in here
+    $goalFirstG1Ctr = 1;
     $goalFirstG2Ctr = 1;
     $goalFirstG3Ctr = 1;
     $goalFirstG1ObjControlName=null;
@@ -28,21 +30,21 @@
     $goalFirstG2FnControlName=null;
     $goalFirstG3ObjControlName=null;
     $goalFirstG3FnControlName=null;
-    $goalFirstG1Id;
-    $goalFirstG1ObjFnId;
-    $goalFirstG2Id;
-    $goalFirstG2ObjFnId;
-    $goalFirstG3Id;
-    $goalFirstG3ObjFnId;
+    $goalFirstG1Id = null;
+    $goalFirstG1ObjFnId = null;
+    $goalFirstG2Id = null;
+    $goalFirstG2ObjFnId = null;
+    $goalFirstG3Id = null;
+    $goalFirstG3ObjFnId = null;
 ?>
 <form>
-    <table border="0" width="100%">           
-            <?php                    
-            $goalFirstG1Row = getGoalFirstG1ForGoalFirst($goalFirstRow->id);
+    <table border="0" width="100%">
+            <?php
+            $goalFirstG1Row = getGoalFirstG1ForGoalFirstThId($goalFirstThRow->id);
             $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
             $goalFirstG1Id = $goalFirstG1Row->id;
-            
-            if(!empty($goalFirstG1Row)){  
+
+            if(!empty($goalFirstG1Row)){
                 $fn_row = getFn($goalFirstG1Row->fn_id);
                 ?>
                 <tr>
@@ -50,7 +52,7 @@
                     <td width="5%">G1</td>
                     <td>
                         <input type="text" name="txtg1" id="txtg1" value="<?php echo $goalFirstG1Row->g1;?>"/>
-                    </td>                    
+                    </td>
                 </tr>
                 <tr>
                     <td width="5%"></td>
@@ -72,13 +74,13 @@
                                     }
                                 }//end foreach loop
                             ?>
-                        </select>                        
+                        </select>
                     </td>
                 </tr>
                 <?php
                     //now get all the obj fn values for this particular goalFirstG1Id
                     $goalFirstG1ObjFnList = getAllGoalFirstG1ObjFnsForThisGoalFirstG1Id($goalFirstG1Row->id);
-                    if(!empty($goalFirstG1ObjFnList)){                        
+                    if(!empty($goalFirstG1ObjFnList)){
                         while($goalFirstG1ObjFnRow = mysql_fetch_object($goalFirstG1ObjFnList)){
                             $goalFirstG1ObjFnId = $goalFirstG1ObjFnRow->id;
                             $fn_row = getFn($goalFirstG1ObjFnRow->fn_id);
@@ -121,17 +123,17 @@
                         }//end while loop
                     }//end if condition for goalFirstG1ObjFnList
                 ?>
-                <?php                
+                <?php
             }//end empty checking for goalFirstG1List
 
             ?>
-        </table>  
+        </table>
         <!--doing the samething for goalfirstg2...-->
-        <table border="0" width="100%">           
-            <?php                    
-            $goalFirstG2Row = getGoalFirstG2ForGoalFirst($goalFirstRow->id);
-            
-            if(!empty($goalFirstG2Row)){    
+        <table border="0" width="100%">
+            <?php
+            $goalFirstG2Row = getGoalFirstG2ForGoalFirstThId($goalFirstThRow->id);
+
+            if(!empty($goalFirstG2Row)){
                 $fn_row = getFn($goalFirstG2Row->fn_id);
                 $goalFirstG2Id = $goalFirstG2Row->id;
                 ?>
@@ -140,7 +142,7 @@
                     <td width="5%">G2</td>
                     <td>
                         <input type="text" name="txtg2" id="txtg2" value="<?php echo $goalFirstG2Row->g2;?>"/>
-                    </td>                    
+                    </td>
                 </tr>
                 <tr>
                     <td width="5%"></td>
@@ -204,24 +206,24 @@
                                     ?>
                                     </select>
                                 </td>
-                            </tr>                            
+                            </tr>
                             <?php
                             $goalFirstG2Ctr++;
                         }//end while loop
                     }//end if condition for goalFirstG1ObjFnList
                 ?>
-                <?php                
+                <?php
             }//end empty checking for goalFirstG1List
 
             ?>
-        </table> 
+        </table>
         <!--doing the samething for goalfirstg3...-->
-        <table border="0" width="100%">           
-            <?php                    
-            $goalFirstG3Row = getGoalFirstG3ForGoalFirst($goalFirstRow->id);
-            
-            if(!empty($goalFirstG3Row)){ 
-                $goalFirstG3Id = $goalFirstG3Row->id;               
+        <table border="0" width="100%">
+            <?php
+            $goalFirstG3Row = getGoalFirstG3ForGoalFirstThId($goalFirstThRow->id);
+
+            if(!empty($goalFirstG3Row)){
+                $goalFirstG3Id = $goalFirstG3Row->id;
                 $fn_row = getFn($goalFirstG3Row->fn_id);
                 ?>
                 <tr>
@@ -229,7 +231,7 @@
                     <td width="5%">G3</td>
                     <td>
                         <input type="text" name="txtg3" id="txtg3" value="<?php echo $goalFirstG3Row->g3;?>"/>
-                    </td>                    
+                    </td>
                 </tr>
                 <tr>
                     <td width="5%"></td>
@@ -299,11 +301,11 @@
                         }//end while loop
                     }//end if condition for goalFirstG1ObjFnList
                 ?>
-                <?php                
+                <?php
             }//end empty checking for goalFirstG1List
 
             ?>
-        </table> 
+        </table>
     <table border="0" width="100%">
         <tr>
             <td width="10%">Th Action:</td>
@@ -313,7 +315,7 @@
         </tr>
         <tr>
             <td colspan="2" align="right">
-                <input type="button" value="Update" id="<?php echo $buttonId;?>"/>                
+                <input type="button" value="Update" id="<?php echo $buttonId;?>"/>
             </td>
         </tr>
     </table>
@@ -323,14 +325,14 @@
         var thActionId = "<?php echo $thActionId;?>";
         //now create the button id here using the actionId i got...
         var buttonId = "updateThActionButton" + thActionId;
-        var goalFirstG1Ctr = "<?php echo $goalFirstG1Ctr;?>"; 
+        var goalFirstG1Ctr = "<?php echo $goalFirstG1Ctr;?>";
         var goalFirstG2Ctr = "<?php echo $goalFirstG2Ctr;?>";
         var goalFirstG3Ctr = "<?php echo $goalFirstG3Ctr;?>";
         goalFirstG1Ctr--;
         goalFirstG2Ctr--;
         goalFirstG3Ctr--;
         //alert(goalFirstG1Ctr+" "+goalFirstG2Ctr+" "+goalFirstG3Ctr);
-        
+
         $('#'+buttonId).click(function(){
             //now get the update text value..
             var textAreaId = "thEditActionText" + thActionId;
@@ -355,19 +357,19 @@
             var goalFirstG2ObjFnId = "<?php echo $goalFirstG2ObjFnId;?>";
             var goalFirstG3Id = "<?php echo $goalFirstG3Id;?>";
             var goalFirstG3ObjFnId = "<?php echo $goalFirstG3ObjFnId;?>";
-            var goalFirstId = "<?php echo $goalFirstId;?>";
-            
+            var goalFirstThId = "<?php echo $goalFirstThId;?>";
+
             //get the value of the textarea using the textId you just created...
             var textAreaValue = $('#'+textAreaId).val();
             var divId = "editActionTextDiv" + thActionId;
-            
+
             if(textAreaValue !== ""){
                 var dataString = "updatedText="+textAreaValue+"&thActionId="+thActionId+"&txtG1Val="+txtG1Val+
                 "&slctFn1Val="+slctFn1Val+"&txtG2Val="+txtG2Val+"&slctFn2Val="+slctFn2Val+"&txtG3Val="+txtG3Val+
                 "&slctFn3Val="+slctFn3Val+"&goalFirstG1Id="+goalFirstG1Id+"&goalFirstG1ObjFnId="+goalFirstG1ObjFnId+
                 "&goalFirstG2Id="+goalFirstG2Id+"&goalFirstG2ObjFnId="+goalFirstG2ObjFnId+"&goalFirstG3Id="+goalFirstG3Id+
                 "&goalFirstG3ObjFnId="+goalFirstG3ObjFnId+"&goalFirstG1Ctr="+goalFirstG1Ctr+"&goalFirstG2Ctr="+
-                goalFirstG2Ctr+"&goalFirstG3Ctr="+goalFirstG3Ctr+"&goalFirstId="+goalFirstId;
+                goalFirstG2Ctr+"&goalFirstG3Ctr="+goalFirstG3Ctr+"&goalFirstThId="+goalFirstThId;
                 //now get the dynamic values and append it to the dataString variable.
                 for(var i=1; i<=goalFirstG1Ctr; i++){
                     var goalFirstG1ObjControlName = "txtgoalfirstg1obj" + i;
@@ -398,13 +400,13 @@
                     dataString += "&"+goalFirstG3ObjControlName+"="+goalFirstG3ObjVal+"&"+goalFirstG3FnControlName+"="+
                         goalFirstG3FnVal;
                 }
-                             
+
 
                 $.ajax({
-                    url: 'files/updatethaction.php',        
+                    url: 'files/updatethaction.php',
                     data: dataString,
                     type:'POST',
-                    success:function(response){                     
+                    success:function(response){
                         $('#'+divId).html(response);
                     },
                     error:function(error){

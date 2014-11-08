@@ -7,15 +7,17 @@
     require_once 'goalsecondg2obj.php';
     require_once 'goalsecondg3.php';
     require_once 'goalsecondg3obj.php';
-    require_once 'fnaction.php';  
-    require_once 'fn.php';  
+    require_once 'fnaction.php';
+    require_once 'fn.php';
+    require_once 'goalsecondfn.php';
 
-    $fnActionId = $_GET['id'];    
-    $fnActionObj = getFnAction($fnActionId);    
+    $fnActionId = $_GET['id'];
+    $fnActionObj = getFnAction($fnActionId);
     $fnEditActionText = "fnEditActionText" . $fnActionId;
     $buttonId = "updateFnActionButton" . $fnActionId;
-    $goalSecondRow = getGoalSecondUsingFnId($fnActionObj->fn_id);
-    $goalSecondId = $goalSecondRow->id;
+    $goalSecondFnRow = getGoalSecondFnUsingFnId($fnActionObj->fn_id);
+    //$goalSecondFnRow = getGoalSecondUsingFnId($fnActionObj->fn_id);
+    $goalSecondFnId = $goalSecondFnRow->id;
     $fnObj = getFn($fnActionObj->fn_id);
     $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
     $goalSecondG1ObjId;
@@ -26,14 +28,14 @@
     $goalSecondG2Ctr=1;
     $goalSecondG3Ctr=1;
     //defining the control names in here...
-    $goalSecondG1ObjControlName=null;    
-    $goalSecondG2ObjControlName=null;    
-    $goalSecondG3ObjControlName=null;    
+    $goalSecondG1ObjControlName=null;
+    $goalSecondG2ObjControlName=null;
+    $goalSecondG3ObjControlName=null;
 ?>
 <form>
     <table border="0" width="100%">
         <?php
-            $goalSecondG1Row = getGoalSecondG1ForGoalSecondId($goalSecondId);
+            $goalSecondG1Row = getGoalSecondG1ForGoalSecondFnId($goalSecondFnRow->id);
             if(!empty($goalSecondG1Row)){
                 $goalSecondG1Id = $goalSecondG1Row->id;
             ?>
@@ -48,7 +50,7 @@
                 $goalSecondG1ObjList = getAllGoalSecondG1ObjsForThisGoalSecondG1Id($goalSecondG1Id);
                 if(!empty($goalSecondG1ObjList)){
                     while($goalSecondG1ObjRow = mysql_fetch_object($goalSecondG1ObjList)){
-                        $goalSecondG1ObjControlName = "txtgoalsecondg1obj" . $goalSecondG1Ctr;                            
+                        $goalSecondG1ObjControlName = "txtgoalsecondg1obj" . $goalSecondG1Ctr;
                         $goalSecondG1ObjId = $goalSecondG1ObjRow->id;
                         ?>
                             <tr>
@@ -68,7 +70,7 @@
 
     <table border="0" width="100%">
         <?php
-            $goalSecondG2Row = getGoalSecondG2ForGoalSecondId($goalSecondId);
+            $goalSecondG2Row = getGoalSecondG2ForGoalSecondFnId($goalSecondFnRow->id);
             if(!empty($goalSecondG2Row)){
                 $goalSecondG2Id = $goalSecondG2Row->id;
             ?>
@@ -99,11 +101,11 @@
                 }//end empty checking inner if condition
             }//end if empty checking condition
         ?>
-    </table>   
+    </table>
 
     <table border="0" width="100%">
         <?php
-            $goalSecondG3Row = getGoalSecondG3ForGoalSecondId($goalSecondId);
+            $goalSecondG3Row = getGoalSecondG3ForGoalSecondFnId($goalSecondFnRow->id);
             if(!empty($goalSecondG3Row)){
                 $goalSecondG3Id = $goalSecondG3Row->id;
             ?>
@@ -145,7 +147,7 @@
         </tr>
         <tr>
             <td colspan="2" align="right">
-                <input type="button" value="Update" id="<?php echo $buttonId;?>"/>                
+                <input type="button" value="Update" id="<?php echo $buttonId;?>"/>
             </td>
         </tr>
     </table>
@@ -155,13 +157,13 @@
         var fnActionId = "<?php echo $fnActionId;?>";
         //now create the button id here using the actionId i got...
         var buttonId = "updateFnActionButton" + fnActionId;
-        var goalSecondG1Ctr = "<?php echo $goalSecondG1Ctr;?>"; 
+        var goalSecondG1Ctr = "<?php echo $goalSecondG1Ctr;?>";
         var goalSecondG2Ctr = "<?php echo $goalSecondG2Ctr;?>";
         var goalSecondG3Ctr = "<?php echo $goalSecondG3Ctr;?>";
         goalSecondG1Ctr--;
         goalSecondG2Ctr--;
         goalSecondG3Ctr--;
-        
+
         $('#'+buttonId).click(function(){
             //now get the update text value..
             var textAreaId = "fnEditActionText" + fnActionId;
@@ -169,12 +171,12 @@
             var textAreaValue = $('#'+textAreaId).val();
             var divId = "editActionTextDiv" + fnActionId;
             //get the counter values for each g1 g2 and g3 now define the control names...
-            var goalSecondG1ObjControlName = null;            
-            var goalSecondG2ObjControlName = null;            
-            var goalSecondG3ObjControlName = null;            
+            var goalSecondG1ObjControlName = null;
+            var goalSecondG2ObjControlName = null;
+            var goalSecondG3ObjControlName = null;
             //get the static control value here...
-            var txtG1Val = $('#txtg1').val();            
-            var txtG2Val = $('#txtg2').val();            
+            var txtG1Val = $('#txtg1').val();
+            var txtG2Val = $('#txtg2').val();
             var txtG3Val = $('#txtg3').val();
             //now grab the ids here
             var goalSecondG1Id = "<?php echo $goalSecondG1Id;?>";
@@ -183,42 +185,42 @@
             var goalSecondG2ObjId = "<?php echo $goalSecondG2ObjId;?>";
             var goalSecondG3Id = "<?php echo $goalSecondG3Id;?>";
             var goalSecondG3ObjId = "<?php echo $goalSecondG3ObjId;?>";
-            var goalSecondId = "<?php echo $goalSecondId;?>";            
-            
+            var goalSecondFnId = "<?php echo $goalSecondFnId;?>";
+
             if(textAreaValue !== ""){
                 var dataString = "updatedText="+textAreaValue+"&fnActionId="+fnActionId+"&txtG1Val="+txtG1Val+
                 "&txtG2Val="+txtG2Val+"&txtG3Val="+txtG3Val+"&goalSecondG1Id="+goalSecondG1Id+"&goalSecondG1ObjId="+
                 goalSecondG1ObjId+"&goalSecondG2Id="+goalSecondG2Id+"&goalSecondG2ObjId="+goalSecondG2ObjId+
-                "&goalSecondG3Id="+goalSecondG3Id+"&goalSecondG3ObjId="+goalSecondG3ObjId+"&goalSecondId="+goalSecondId+
+                "&goalSecondG3Id="+goalSecondG3Id+"&goalSecondG3ObjId="+goalSecondG3ObjId+"&goalSecondFnId="+goalSecondFnId+
                 "&goalSecondG1Ctr="+goalSecondG1Ctr+"&goalSecondG2Ctr="+goalSecondG2Ctr+"&goalSecondG3Ctr="+goalSecondG3Ctr;
 
                 //now get the dynamic values and append it to the dataString variable.
                 for(var i=1; i<=goalSecondG1Ctr; i++){
-                    var goalSecondG1ObjControlName = "txtgoalsecondg1obj" + i;                    
-                    var goalSecondG1ObjVal = $('#'+goalSecondG1ObjControlName).val();                    
+                    var goalSecondG1ObjControlName = "txtgoalsecondg1obj" + i;
+                    var goalSecondG1ObjVal = $('#'+goalSecondG1ObjControlName).val();
                     //append it to the dataString variable...
                     dataString += "&"+goalSecondG1ObjControlName+"="+goalSecondG1ObjVal;
                 }
 
                 for(var j=1; j<=goalSecondG2Ctr; j++){
-                    var goalSecondG2ObjControlName = "txtgoalsecondg2obj" + j;                    
-                    var goalSecondG2ObjVal = $('#'+goalSecondG2ObjControlName).val();                    
+                    var goalSecondG2ObjControlName = "txtgoalsecondg2obj" + j;
+                    var goalSecondG2ObjVal = $('#'+goalSecondG2ObjControlName).val();
                     //append it to the dataString variable...
                     dataString += "&"+goalSecondG2ObjControlName+"="+goalSecondG2ObjVal;
                 }
 
                 for(var k=1; k<=goalSecondG3Ctr; k++){
-                    var goalSecondG3ObjControlName = "txtgoalsecondg3obj" + k;                    
-                    var goalSecondG3ObjVal = $('#'+goalSecondG3ObjControlName).val();                    
+                    var goalSecondG3ObjControlName = "txtgoalsecondg3obj" + k;
+                    var goalSecondG3ObjVal = $('#'+goalSecondG3ObjControlName).val();
                     //append it to the dataString variable...
                     dataString += "&"+goalSecondG3ObjControlName+"="+goalSecondG3ObjVal;
                 }
 
                 $.ajax({
-                    url: 'files/updatefnaction.php',        
+                    url: 'files/updatefnaction.php',
                     data: dataString,
                     type:'POST',
-                    success:function(response){                     
+                    success:function(response){
                         $('#'+divId).html(response);
                     },
                     error:function(error){
