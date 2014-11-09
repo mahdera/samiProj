@@ -27,6 +27,22 @@
     $numItemsG2 = $_POST['numItemsG2'];
     $numItemsG3 = $_POST['numItemsG3'];
     //save the goalfirst object to the database...
+    //the status should change to 'create' iff the session is older than 180 days or
+    //if there is no goal first record by this particular user.
+    $fetchedGoalFirstRecord = getGoalFirstUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
+    $dateDifference = getDateDifferenceForGoalFirstUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
+
+    if($dateDifference){
+        if($dateDifference > 180){
+            //last created goalFirst record is older than 6 months...hence create new...
+            $_SESSION['GOAL_FIRST_STATUS'] = 'create';
+        }else{
+            $_SESSION['GOAL_FIRST_STATUS'] = 'existing';
+        }
+    }else{
+        $_SESSION['GOAL_FIRST_STATUS'] = 'create';
+    }
+
     if($_SESSION['GOAL_FIRST_STATUS'] == 'create'){
         //only create a goal first record iff user has logged in & is trying to
         //create a new goal_first record or did not click on the next butto.

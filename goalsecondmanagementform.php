@@ -31,13 +31,13 @@
             </td>
         </tr>
         <tr>
-            <td>G1:</td>
+            <td width="20%">G1:</td>
             <td>
                 <input type="text" name="txtg1" id="txtg1" class="g1Obj"/>
             </td>
         </tr>
         <tr>
-            <td>Obj:</td>
+            <td width="20%">Obj:</td>
             <td>
                 <input type="text" name="txtg1obj1" id="txtg1obj1"/>
             </td>
@@ -50,13 +50,13 @@
         </tr>
         <!--do the same thing for G2-->
         <tr>
-            <td>G2:</td>
+            <td width="20%">G2:</td>
             <td>
                 <input type="text" name="txtg2" id="txtg2" class="g2Obj"/>
             </td>
         </tr>
         <tr>
-            <td>Obj:</td>
+            <td width="20%">Obj:</td>
             <td>
                 <input type="text" name="txtg2obj1" id="txtg2obj1"/>
             </td>
@@ -69,13 +69,13 @@
         </tr>
         <!--now do the same thing for G3-->
         <tr>
-            <td>G3:</td>
+            <td width="20%">G3:</td>
             <td>
                 <input type="text" name="txtg3" id="txtg3" class="g3Obj"/>
             </td>
         </tr>
         <tr>
-            <td>Obj:</td>
+            <td width="20%">Obj:</td>
             <td>
                 <input type="text" name="txtg3obj1" id="txtg3obj1"/>
             </td>

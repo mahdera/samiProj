@@ -15,7 +15,7 @@
                         <li><a href="#" id="reportManagementLink">My Report</a></li>
                         <li><a href="#.php" id="contentManagementLink">Content</a></li>
                         <li><a href="#.php" id="userManagementLink">User</a></li>
-                        <li><a href="logout.php">Logout</a></li>
+                        <li><a href="#" id="logoutLink">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                         <li><a href="mycalendar.php">Calendar</a></li>
                         <li><a href="step1.php">Process</a></li>
                         <li><a href="#" id="reportManagementLink">My Report</a></li>
-                        <li><a href="logout.php">Logout</a></li>
+                        <li><a href="#" id="logoutLink">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -52,6 +52,45 @@
 
         $('#reportManagementLink').click(function(){
             $('.content').load('files/showreportmanagementpage.php');
+        });
+
+        $('#logoutLink').click(function(){
+            var txt = 'Are you sure you want to logout?';
+
+            $.prompt(txt,{
+        					buttons:{Logout:true, Cancel:false},
+        					close: function(e,v,m,f){
+
+        						if(v){
+        							    $.ajax({
+                              url: 'logout.php',
+                              data: null,
+                              type:'POST',
+                              success:function(response){
+                                  window.location = 'login.php';
+                              },
+                              error:function(error){
+                                  alert(error);
+                              }
+                          });
+        						}
+        						else{}
+        					}
+	           });
+
+            /*if(window.confirm('Are you sure you want to logout?')){
+                $.ajax({
+                    url: 'logout.php',
+                    data: null,
+                    type:'POST',
+                    success:function(response){
+                        window.location = 'login.php';
+                    },
+                    error:function(error){
+                        alert(error);
+                    }
+                });
+            }*/
         });
 
     });//end document.ready function

@@ -86,8 +86,8 @@
 										<td><?php echo $form1Q3Row->col2;?></td>
 										<td><?php echo $form1Q3Row->col3;?></td>
 										<td><?php echo $form1Q3Row->col4;?></td>
-										<td><?php echo $form1Q3Row->col5;?></td>
-										<td><?php echo $form1Q3Row->col6;?></td>
+										<td style='visibility:hidden'><?php echo $form1Q3Row->col5;?></td>
+										<td style='visibility:hidden'><?php echo $form1Q3Row->col6;?></td>
 									</tr>
 								<?php
 								}//end while loop
@@ -109,8 +109,8 @@
 										<td><?php echo $form1Q4Row->col2;?></td>
 										<td><?php echo $form1Q4Row->col3;?></td>
 										<td><?php echo $form1Q4Row->col4;?></td>
-										<td><?php echo $form1Q4Row->col5;?></td>
-										<td><?php echo $form1Q4Row->col6;?></td>
+										<td style='visibility:hidden'><?php echo $form1Q4Row->col5;?></td>
+										<td style='visibility:hidden'><?php echo $form1Q4Row->col6;?></td>
 									</tr>
 								<?php
 								}//end while loop

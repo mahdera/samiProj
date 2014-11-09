@@ -12,11 +12,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <title>title</title>
         <script type='text/javascript' src="js/jquery-1.11.1.js"></script>
-        <!-- for the datetime picker -->	
-        <script type="text/javascript" src="js/jquery-ui.js"></script>	
+        <!-- for the datetime picker -->
+        <script type="text/javascript" src="js/jquery-ui.js"></script>
         <link href="css/jquery-ui.css" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
-        <link rel="stylesheet" href="css/slidebars.css">        
+        <link rel="stylesheet" href="css/slidebars.css">
+        <link rel="stylesheet" media="all" type="text/css" href="css/jquery-impromptu.css" />       
         <script type="text/javascript" src="js/modernizr.custom.15150.js" ></script>
         <script type="text/javascript" src="js/accordion.js" ></script>
     </head>
@@ -27,7 +28,7 @@
                     require 'menurow.php';
                     require 'steprowstep5.php';
                     require 'contentstep5.php';
-                ?>                
+                ?>
             </div>
             <?php
                 require 'footer.php';

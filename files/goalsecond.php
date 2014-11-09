@@ -91,4 +91,18 @@
             $ex->getMessage();
         }
     }
+
+    function getDateDifferenceForGoalSecondUsingModifiedBy($modifiedBy){
+        try{
+            $query = "select DATEDIFF(modification_date, NOW()) as dateDiff from tbl_goal_second where modified_by = $modifiedBy order by modification_date desc limit 0,1";
+            $result = read($query);
+            if(mysql_num_rows($result)){
+                $resultRow = mysql_fetch_object($result);
+                return abs($resultRow->dateDiff);
+            }
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+        return false;
+    }
 ?>

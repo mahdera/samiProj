@@ -30,6 +30,7 @@
         <link href="css/jquery-ui.css" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
         <link rel="stylesheet" href="css/slidebars.css">
+        <link rel="stylesheet" media="all" type="text/css" href="css/jquery-impromptu.css" />
         <script type="text/javascript" src="js/modernizr.custom.15150.js" ></script>
         <script type="text/javascript" src="js/accordion.js" ></script>
         <!--this part is done for the calendar-->

@@ -71,47 +71,17 @@
         }
     }
 
-    /*function getGoalFirstUsingThId($thId){
+    function getDateDifferenceForGoalFirstUsingModifiedBy($modifiedBy){
         try{
-            $query = "select * from tbl_goal_first where th_id = $thId";
-            //echo $query;
+            $query = "select DATEDIFF(modification_date, NOW()) as dateDiff from tbl_goal_first where modified_by = $modifiedBy order by modification_date desc limit 0,1";
             $result = read($query);
-            $resultRow = mysql_fetch_object($result);
-            return $resultRow;
-        } catch (Exception $ex) {
+            if(mysql_num_rows($result)){
+                $resultRow = mysql_fetch_object($result);
+                return abs($resultRow->dateDiff);
+            }
+        }catch(Exception $ex){
             $ex->getMessage();
         }
+        return false;
     }
-
-    function getGoalFirstUsingThIdAndModifiedBy($thId, $modifiedBy){
-        try{
-            $query = "select * from tbl_goal_first where th_id = $thId and modified_by = $modifiedBy order by modification_date desc";
-            $result = read($query);
-            $resultRow = mysql_fetch_object($result);
-            return $resultRow;
-        } catch (Exception $ex) {
-            $ex->getMessage();
-        }
-    }
-
-    function getAllGoalFirstsUsingThId($thId){
-        try{
-            $query = "select * from tbl_goal_first where th_id = $thId";
-            $result = read($query);
-            return $result;
-        } catch (Exception $ex) {
-            $ex->getMessage();
-        }
-    }
-
-    function getAllThsForGoalFirst($goalFirstId){
-        try{
-            $query = "select tbl_th.id, tbl_th.th_name, tbl_th.modified_by, tbl_th.modification_date from tbl_th,tbl_goal_first where tbl_th.id = tbl_goal_first.th_id and tbl_goal_first.id = $goalFirstId";
-            //echo $query;
-            $result = read($query);
-            return $result;
-        } catch (Exception $ex) {
-            $ex->getMessage();
-        }
-    }*/
 ?>

@@ -102,4 +102,20 @@
             $ex->getMessage();
         }
     }
+
+    function hasThisThBeenUsedForGoalFirstByThisUser($thId, $modifiedBy){
+        $cntVal = 0;
+        try{
+            $query = "select count(*) as cnt from tbl_goal_first_th where th_id = $thId and modified_by = $modifiedBy";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            $cntVal = $resultRow->cnt;
+            if($cntVal != 0)
+                return true;
+            else
+                return false;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
 ?>

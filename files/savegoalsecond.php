@@ -22,6 +22,20 @@
     $numItemsG2 = $_POST['numItemsG2'];
     $numItemsG3 = $_POST['numItemsG3'];
 
+    $fetchedGoalSecondRecord = getGoalSecondUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
+    $dateDifference = getDateDifferenceForGoalSecondUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
+
+    if($dateDifference){
+        if($dateDifference > 180){
+            //last created goalFirst record is older than 6 months...hence create new...
+            $_SESSION['GOAL_SECOND_STATUS'] = 'create';
+        }else{
+            $_SESSION['GOAL_SECOND_STATUS'] = 'existing';
+        }
+    }else{
+        $_SESSION['GOAL_SECOND_STATUS'] = 'create';
+    }
+
     if($_SESSION['GOAL_SECOND_STATUS'] == 'create'){
         //only create a goal first record iff user has logged in & is trying to
         //create a new goal_first record or did not click on the next butto.

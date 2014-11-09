@@ -13,13 +13,13 @@
     <td colspan="2">
         <table border="0" width="100%" style="background: lightyellow">
             <tr>
-                <td>Obj:</td>
+                <td width="20%">Obj:</td>
                 <td>
                     <input type="text" id="<?php echo $objControlName;?>" name="<?php echo $objControlName;?>" class="g2Obj"/>
                 </td>
             </tr>
             <tr>
-                <td>Fn:</td>
+                <td width="20%">Fn:</td>
                 <td>
                     <select name="<?php echo $fnSelectControlName;?>" id="<?php echo $fnSelectControlName;?>" style="width: 100%" onchange="showOtherFnDataEntryForm(this.value, '<?php echo $fnOtherDivId;?>', <?php echo $numItems + 1;?>);">
                         <option value="" selected="selected">--Select--</option>
