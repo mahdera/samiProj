@@ -12,17 +12,27 @@
     </tr>
     <?php
       $ctr=1;
-      while($thActionRow = mysql_fetch_object($thActionList)){
-        ?>
-          <tr>
-            <td><?php echo $ctr++;?></td>
-            <td><?php echo $thActionRow->action_text;?></td>
-            <td>
-                <a href="#.php" id="<?php echo $thActionRow->id;?>" class="deleteThActionLinkId">Delete</a>
-            </td>
-          </tr>
-        <?php
-      }//end while loop
+      if(mysql_num_rows($thActionList)){
+          while($thActionRow = mysql_fetch_object($thActionList)){
+            ?>
+              <tr>
+                <td><?php echo $ctr++;?></td>
+                <td><?php echo $thActionRow->action_text;?></td>
+                <td>
+                    <a href="#.php" id="<?php echo $thActionRow->id;?>" class="deleteThActionLinkId">Delete</a>
+                </td>
+              </tr>
+            <?php
+          }//end while loop
+      }else{
+          ?>
+              <tr>
+                  <td colspan="3">
+                      <div class="notify notify-yellow"><span class="symbol icon-info"></span> No Action Texts Found!</div>
+                  </td>
+              </tr>
+          <?php
+      }
     ?>
 </table>
 <script type="text/javascript">

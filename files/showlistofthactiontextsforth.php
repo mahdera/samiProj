@@ -11,13 +11,23 @@
     </tr>
     <?php
       $ctr=1;
-      while($thActionRow = mysql_fetch_object($thActionList)){
-        ?>
+      if(mysql_num_rows($thActionList)){
+          while($thActionRow = mysql_fetch_object($thActionList)){
+            ?>
+              <tr>
+                <td><?php echo $ctr++;?></td>
+                <td><?php echo $thActionRow->action_text;?></td>
+              </tr>
+            <?php
+          }//end while loop
+      }else{
+          ?>
           <tr>
-            <td><?php echo $ctr++;?></td>
-            <td><?php echo $thActionRow->action_text;?></td>
+              <td colspan="2">
+                  <div class="notify notify-yellow"><span class="symbol icon-info"></span> No Action Texts Found!</div>
+              </td>
           </tr>
-        <?php
-      }//end while loop
+          <?php
+      }
     ?>
 </table>

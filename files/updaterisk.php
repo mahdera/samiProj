@@ -7,7 +7,7 @@
     $pr = $_POST['pr'];
     $wa = $_POST['wa'];
     $rs = $_POST['rs'];
-    
+
     require_once 'risk.php';
     updateRisk($id, $thId, $mg, $dr, $pr, $wa, $rs, $_SESSION['LOGGED_USER_ID']);
 ?>
