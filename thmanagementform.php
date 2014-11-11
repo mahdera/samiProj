@@ -1,3 +1,6 @@
+<?php
+  error_reporting( 0 );
+?>
 <h1>Add Th</h1>
 <a href="#.php" id="showThManagementFormLinkId">Show Form</a>
 |
@@ -12,7 +15,7 @@
         </tr>
         <tr>
             <td colspan="2" align="right">
-                <input type="button" value="Save" id="btnsave"/>                
+                <input type="button" value="Save" id="btnsave"/>
             </td>
         </tr>
     </table>
@@ -21,48 +24,48 @@
 <div id="subDetailDiv"></div>
 <script type="text/javascript">
     $(document).ready(function(){
-        
+
         $('#thManagementForm').hide();
 
         $('#showThManagementFormLinkId').click(function(){
-            $('#thManagementForm').show('slow');            
+            $('#thManagementForm').show('slow');
         });
 
         $('#hideThManagementFormLinkId').click(function(){
-            $('#thManagementForm').hide('slow');            
+            $('#thManagementForm').hide('slow');
         });
 
         showListOfThs();
-        
+
         $('#btnsave').click(function(){
             var thName = $('#txtth').val();
-            
+
             if(thName !== ""){
                 dataString = "thName="+thName;
-                
+
                 $.ajax({
-                    url: 'files/saveth.php',		
+                    url: 'files/saveth.php',
                     data: dataString,
                     type:'POST',
-                    success:function(response){                        
-                        clearFormInputField(); 
+                    success:function(response){
+                        clearFormInputField();
                         showListOfThs();
                     },
                     error:function(error){
                         alert(error);
                     }
                 });
-                
+
             }
         });
-        
+
         function clearFormInputField(){
             $('#txtth').val('');
         }
-        
+
         function showListOfThs(){
             $('#subDetailDiv').load('files/showlistofths.php');
         }
-        
+
     });//end document.ready function
 </script>

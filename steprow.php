@@ -1,3 +1,6 @@
+<?php
+  error_reporting( 0 );
+?>
 <div id="step_row">
     <div id="step_title">
         <h2>Process</h2>

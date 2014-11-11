@@ -1,8 +1,9 @@
 <?php
+    error_reporting( 0 );
     require_once('files/user.php');
     require_once 'files/utility.php';
     //am sure the user entered the email address
-    $userIdEmail = $_GET['userIdEmail'];	
+    $userIdEmail = $_GET['userIdEmail'];
     //check if the user exists by the given email address and if so send email
     $userCount = doesThisUserAccountExistUsingEmail($userIdEmail);
     if($userCount){
@@ -12,7 +13,7 @@
         updateUserPasswordUsingEmail($userIdEmail, $randomValue);
         //now send the email to the user...
         $from = "mahderalem@gmail.com";
-        $headers = "From: $from\r\n";            
+        $headers = "From: $from\r\n";
         $headers .= "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type: text/html; charset=iso-8859-1" . "\r\n";
         $headers .= "Content-Transfer-Encoding: 8bit\r\n";
@@ -23,5 +24,5 @@
         echo 'An email containing your Password has been sent to ', $userIdEmail, '.';
     }else{
         echo $userIdEmail, ' was not found in our records.';
-    }	
+    }
 ?>

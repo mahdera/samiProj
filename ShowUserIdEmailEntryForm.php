@@ -1,3 +1,6 @@
+<?php
+	error_reporting( 0 );
+?>
 <table border="0" width="100%">
 	<tr>
 		<td colspan="2" align="right">
@@ -19,7 +22,7 @@
 </table>
 <script type="text/javascript">
 	$('#userIdOrEmailEntered').click(function(){
-    
+
   	var userIdEmail = $('#userid_email').val();
 
   	if(userIdEmail != ""){
@@ -28,7 +31,7 @@
 	        data:null,
 	        url:'CheckUserUsingUserIdEmailForgotPassword.php?userIdEmail='+userIdEmail,
 	        success:function(data) {
-            
+
             // if html comes back take the whole div area otherwise its an info message
             if (data.indexOf('<') > -1 ) {
               alert(data);

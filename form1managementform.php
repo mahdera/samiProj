@@ -1,3 +1,6 @@
+<?php
+  error_reporting( 0 );
+?>
 <h2>Form 1</h2>
 <form style="background:white" id="form1Entry">
     <table border="0" width="100%">

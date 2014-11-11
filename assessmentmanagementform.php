@@ -1,3 +1,6 @@
+<?php
+  error_reporting( 0 );
+?>
 <h1>Add Assessment</h1>
 <a href="#.php" id="showAssessmentManagementFormLinkId">Show Form</a>
 |

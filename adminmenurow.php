@@ -1,5 +1,5 @@
 <div id="menu_row">
-    <?php       
+    <?php
         require 'adminmenudiv.php';
         require 'rightcontain.php'
     ?>

@@ -43,7 +43,7 @@
                 <input type="button" value="Save" id="btnsave"/>
                 <input type="reset" value="Clear"/>
             </td>
-        </tr>        
+        </tr>
     </table>
 </form>
 <hr/>
@@ -56,29 +56,29 @@
         $('#responsibilityManagementForm').hide();
 
         $('#showResponsibilityManagementFormLinkId').click(function(){
-            $('#responsibilityManagementForm').show('slow');            
+            $('#responsibilityManagementForm').show('slow');
         });
 
         $('#hideResponsibilityManagementFormLinkId').click(function(){
-            $('#responsibilityManagementForm').hide('slow');            
+            $('#responsibilityManagementForm').hide('slow');
         });
 
         showListOfResponsibilities();
-        
+
         $('#btnsave').click(function(){
             var teamId = $('#slctteam').val();
             var role = $('#textarearole').val();
             var responsibility = $('#textarearesponsibility').val();
-            
+
             if(teamId !== "" && role !== "" && responsibility !== ""){
-                var dataString = "teamId="+teamId+"&role="+encodeURIComponent(role)+"&responsibility="+encodeURIComponent(responsibility);                
+                var dataString = "teamId="+teamId+"&role="+encodeURIComponent(role)+"&responsibility="+encodeURIComponent(responsibility);
 
                 $.ajax({
-                    url: 'files/saveresponsibility.php',		
+                    url: 'files/saveresponsibility.php',
                     data: dataString,
                     type:'POST',
-                    success:function(response){                        
-                        clearFormInputFields(); 
+                    success:function(response){
+                        clearFormInputFields();
                         showListOfResponsibilities();
                     },
                     error:function(error){
@@ -89,16 +89,16 @@
                 alert('Enter all the data values in the form');
             }
         });
-        
+
         function clearFormInputFields(){
             $('#slctteam').val('');
             $('#textarearole').val('');
             $('#textarearesponsibility').val('');
         }
-        
+
         function showListOfResponsibilities(){
             $('#subDetailDiv').load('files/showlistofresponsibilities.php');
         }
-        
+
     });//end document.ready function
 </script>

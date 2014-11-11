@@ -1,3 +1,6 @@
+<?php
+  error_reporting( 0 );
+?>
 <form id="assessmentManagementForm">
     <table border="0" width="99%">
         <tr>

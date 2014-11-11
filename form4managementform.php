@@ -1,3 +1,6 @@
+<?php
+error_reporting( 0 );
+?>
 <h2>Form 4</h2>
 <form>
     <table border="0" width="100%">

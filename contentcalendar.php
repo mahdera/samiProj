@@ -1,3 +1,6 @@
+<?php
+  error_reporting( 0 );
+?>
 <div class="content" id='step1Content'>
     <!--to be replaced when the next button is clicked-->
     <div id="topcontain">

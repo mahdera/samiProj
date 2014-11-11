@@ -1,3 +1,6 @@
+<?php
+  error_reporting( 0 );
+?>
 <h1>Th Action</h1>
 <?php
     require_once 'files/th.php';

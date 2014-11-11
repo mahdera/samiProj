@@ -19,7 +19,7 @@
 </table>
 <script type="text/javascript">
 	$('#onlyEmailEntered').click(function(){
-    
+
   	var email = $('#email').val();
 
   	if (email != "") {
@@ -27,7 +27,7 @@
 	        type:'GET',
 	        data:null,
 	        url:'CheckUserUsingEmailForgotUserId.php?email='+email,
-	        success:function(data) {            
+	        success:function(data) {
                     // if html comes back take the whole div area otherwise its an info message
                         if (data.indexOf('<') > -1 ) {
                             setMessage(data);

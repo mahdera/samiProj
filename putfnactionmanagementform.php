@@ -1,3 +1,6 @@
+<?php
+  error_reporting( 0 );
+?>
 <h2>Fn Action</h2>
 <?php
     //first grab all fn record from the database...

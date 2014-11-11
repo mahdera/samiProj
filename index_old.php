@@ -9,11 +9,11 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title>Sami's Project</title>
         <script type='text/javascript' src="js/jquery-1.11.1.js"></script>
-        <!-- for the datetime picker -->	
-        <script type="text/javascript" src="js/jquery-ui.js"></script>	
+        <!-- for the datetime picker -->
+        <script type="text/javascript" src="js/jquery-ui.js"></script>
         <link href="css/jquery-ui.css" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
-        <link rel="stylesheet" href="css/slidebars.css">        
+        <link rel="stylesheet" href="css/slidebars.css">
         <script type="text/javascript" src="js/modernizr.custom.15150.js" ></script>
         <script type="text/javascript" src="js/accordion.js" ></script>
 
@@ -45,101 +45,101 @@ and open the template in the editor.
                 <td><a href="#.php" id="reportManagementLink">Report</a></td>
             </tr>
         </table>
-        
-        <div id="mainDetailDiv">            
+
+        <div id="mainDetailDiv">
         </div>
-        
+
     </body>
 </html>
 <script type='text/javascript'>
     $(document).ready(function(){
-        
+
         $('#teamManagementLink').click(function(){
             $('#mainDetailDiv').load('teammanagementform.php');
         });
-        
+
         $('#responsibilityManagementLink').click(function(){
             $('#mainDetailDiv').load('responsibilitymanagementform.php');
         });
-        
+
         $('#assessmentManagementLink').click(function(){
             $('#mainDetailDiv').load('assessmentmanagementform.php');
         });
-        
+
         $('#thManagementLink').click(function(){
             $('#mainDetailDiv').load('thmanagementform.php');
         });
-        
+
         $('#riskManagementLink').click(function(){
             $('#mainDetailDiv').load('riskmanagementform.php');
         });
-        
+
         $('#goalFirstManagementLink').click(function(){
             $('#mainDetailDiv').load('goalfirstmanagementform.php');
         });
-        
+
         $('#goalSecondManagementLink').click(function(){
             $('#mainDetailDiv').load('goalsecondmanagementform.php');
         });
-        
+
         $('#putThActionManagementLink').click(function(){
             $('#mainDetailDiv').load('putthactionmanagementform.php');
         });
-        
+
         $('#putFnActionManagementLink').click(function(){
             $('#mainDetailDiv').load('putfnactionmanagementform.php');
         });
-        
+
         $('#editThActionManagementLink').click(function(){
             $('#mainDetailDiv').load('editthactionmanagementform.php');
         });
-        
+
         $('#editFnActionManagementLink').click(function(){
             $('#mainDetailDiv').load('editfnactionmanagementform.php');
         });
-        
+
         $('#form1ManagementLink').click(function(){
             $('#mainDetailDiv').load('form1managementform.php');
         });
-        
+
         $('#form2ManagementLink').click(function(){
             $('#mainDetailDiv').load('form2managementform.php');
         });
-        
+
         $('#form3ManagementLink').click(function(){
             $('#mainDetailDiv').load('form3managementform.php');
         });
-        
+
         $('#form4ManagementLink').click(function(){
             $('#mainDetailDiv').load('form4managementform.php');
         });
-        
+
         $('#form5ManagementLink').click(function(){
             $('#mainDetailDiv').load('form5managementform.php');
         });
-        
+
         $('#form6ManagementLink').click(function(){
             $('#mainDetailDiv').load('form6managementform.php');
         });
-        
+
         $('#form7ManagementLink').click(function(){
             $('#mainDetailDiv').load('form7managementform.php');
         });
-        
+
         $('#form8ManagementLink').click(function(){
             $('#mainDetailDiv').load('form8managementform.php');
         });
-        
+
         $('#form9ManagementLink').click(function(){
             $('#mainDetailDiv').load('form9managementform.php');
         });
-        
+
         $('#form10ManagementLink').click(function(){
             $('#mainDetailDiv').load('form10managementform.php');
         });
-        
-        $('#reportManagementLink').click(function(){});       
-        
-        
+
+        $('#reportManagementLink').click(function(){});
+
+
     });//end document.ready function
 </script>

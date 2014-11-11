@@ -1,3 +1,6 @@
+<?php
+  error_reporting( 0 );
+?>
 <div class="sb-slidebar sb-left sb-style-push">
     <div id="close_slide">
         <ul class="ximg">
@@ -11,7 +14,7 @@
             <li><a href="#.php">1-2</a></li>
             <li><a href="#.php">1-3</a></li>
             <li><a href="#.php">1-4</a></li>
-        </ul>        
+        </ul>
         <h3 class="clicker" id="stepTwoMenuLink">Step 2</h3>
         <ul class="reveal">
             <li><a href="#.php">2-1</a></li>

@@ -1,4 +1,5 @@
 <?php
+error_reporting( 0 );
 session_start();
 include ("connect.inc");
 $db=public_db_connect();

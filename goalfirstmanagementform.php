@@ -1,4 +1,5 @@
 <?php
+    error_reporting( 0 );
     session_start();
     require_once 'files/th.php';
     require_once 'files/fn.php';

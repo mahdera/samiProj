@@ -1,3 +1,6 @@
+<?php
+  error_reporting( 0 );
+?>
 <h1>Add Team</h1>
 <a href="#.php" id="showTeamManagementFormLinkId">Show Form</a>
 |
@@ -47,12 +50,12 @@
                         <td><input type="checkbox" name="chkinterest6" id="chkinterest6" value="Interest 6"/> Interest 6</td>
                         <td><input type="checkbox" name="chkinterest7" id="chkinterest7" value="Interest 7"/> Interest 7</td>
                     </tr>
-                </table>                
+                </table>
             </td>
         </tr>
         <tr>
             <td colspan="2" align="right">
-                <input type="button" value="Save" id="btnsave"/>                
+                <input type="button" value="Save" id="btnsave"/>
             </td>
         </tr>
     </table>
@@ -67,15 +70,15 @@
         $('#teamManagementForm').hide();
 
         $('#showTeamManagementFormLinkId').click(function(){
-            $('#teamManagementForm').show('slow');            
+            $('#teamManagementForm').show('slow');
         });
 
         $('#hideTeamManagementFormLinkId').click(function(){
-            $('#teamManagementForm').hide('slow');            
-        });        
-        
+            $('#teamManagementForm').hide('slow');
+        });
+
         showListOfTeams();
-        
+
         $('#btnsave').click(function(){
             var name = $('#txtname').val();
             var title = $('#txttitle').val();
@@ -83,24 +86,24 @@
             var email = $('#txtemail').val();
             var phone = $('#txtphone').val();
             var interest = "";
-            //get the selected checkboxes here            
+            //get the selected checkboxes here
             $('input[type=checkbox]').each(function () {
                 if(this.checked){
                     interest += $(this).val()+",";
-                }                
+                }
             });
 
             if(name !== "" && title !== "" && organization !== "" && email !== "" &&
                     phone !== "" && interest !== ""){
                 var dataString = "name="+encodeURIComponent(name)+"&title="+encodeURIComponent(title)+"&organization="+
                         encodeURIComponent(organization)+"&email="+email+"&phone="+phone+"&interest="+
-                        encodeURIComponent(interest);                
+                        encodeURIComponent(interest);
                 $.ajax({
-                    url: 'files/saveteam.php',		
+                    url: 'files/saveteam.php',
                     data: dataString,
                     type:'POST',
-                    success:function(response){                        
-                        clearFormInputFields(); 
+                    success:function(response){
+                        clearFormInputFields();
                         showListOfTeams();
                     },
                     error:function(error){
@@ -111,7 +114,7 @@
                 alert('Enter all the data fields');
             }
         });
-        
+
         function clearFormInputFields(){
             $('#txtname').val('');
             $('#txttitle').val('');
@@ -120,10 +123,10 @@
             $('#txtphone').val('');
             $('#slctinterest').val('');
         }
-        
+
         function showListOfTeams(){
             $('#subDetailDiv').load('files/showlistofteams.php');
-        }       
-        
+        }
+
     });//end document.ready function
 </script>

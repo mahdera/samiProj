@@ -1,5 +1,6 @@
 <h2>Edit Fn Action</h2>
 <?php
+    error_reporting( 0 );
     require_once 'files/fnaction.php';
     require_once 'files/fn.php';
     $fnActionList = getAllFnActionsModifiedBy($_SESSION['LOGGED_USER_ID']);

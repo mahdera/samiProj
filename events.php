@@ -1,5 +1,5 @@
 <?php
-//this is fun
+error_reporting( 0 );
 session_start();
 date_default_timezone_set('America/Los_Angeles');
 include ("connect.inc");

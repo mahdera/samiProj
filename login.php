@@ -5,9 +5,9 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8" />        
-        <link rel="stylesheet" href="css/front_cool.css" media="screen, projection" type="text/css"/>        
-        <script type="text/javascript" src="js/jquery-1.11.1.js"></script>        
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="css/front_cool.css" media="screen, projection" type="text/css"/>
+        <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
         <script type="text/javascript" src='js/login.js'></script>
     </head>
     <body style="background: #fff">
@@ -41,16 +41,14 @@
                     </p>
                     <div id="extraContent"></div>
                     <p class="forgot"><a href="#" id="forgotUserIdLink">Forgot your User Id?</a> | <a href="#" id="forgotPasswordLink" >Forgot your password?</a> |
-                     <a href="#" id="signupLink">Sign up</a>   
+                     <a href="#" id="signupLink">Sign up</a>
                     <div id="forgotPasswordDiv"></div>
                     <hr style="height: 0px; color: #59B;background-color:#598; width: 100% " />
                     <p style="color:#59B;font-weight: bolder"><font color="red">*</font> Required Field</p>
-                    
+
                     <div id="requestNewAccessDiv"></div>
                 </form>
             </fieldset>
         </div>
     </body>
 </html>
-
-

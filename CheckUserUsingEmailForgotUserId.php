@@ -1,12 +1,13 @@
 <?php
+error_reporting( 0 );
   require_once 'files/user.php';
   require_once 'files/utility.php';
 
-  $email = $_GET['email'];  
+  $email = $_GET['email'];
   $user = null;
   $user = getUserUsingEmailAddress($email);
-  
-  if ($user != null){        
+
+  if ($user != null){
         $userId = $user->user_id;
         $fullName = $user->first_name." ".$user->last_name;
         $emailFrom = "mahderalem@gmail.com";

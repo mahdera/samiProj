@@ -1,3 +1,6 @@
+<?php
+  error_reporting( 0 );
+?>
 <h1>Create User</h1>
 <form>
     <table border="0" width="100%">

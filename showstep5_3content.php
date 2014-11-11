@@ -1,4 +1,5 @@
 <?php
+    error_reporting( 0 );
     session_start();
 ?>
 <!--to be replaced when the next button is clicked-->
@@ -22,9 +23,11 @@
 <?php
     require_once 'importjsscripts.php';
 ?>
+<div id="thActionHolderDiv">
 <?php
     require_once 'editthactionmanagementform.php';
 ?>
+</div>
 <script type='text/javascript'>
     $(document).ready(function(){
 

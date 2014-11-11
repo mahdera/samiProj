@@ -1,5 +1,6 @@
 <h2>Edit Th Action</h2>
 <?php
+    error_reporting( 0 );
     require_once 'files/thaction.php';
     require_once 'files/th.php';
     $thActionList = getAllThActionsModifiedBy($_SESSION['LOGGED_USER_ID']);
@@ -55,7 +56,7 @@
             if(window.confirm('Are you sure you want to delete this Th Action Record?')){
                 var id = $(this).attr('id');
                 var editDivId = "editActionTextDiv" + id;
-                $('#thActionDetailDiv').load('files/deletethactionform.php?thActionId='+id);
+                $('#'+editDivId).load('files/deletethactionform.php?thActionId='+id);
             }
         });
     });//end document.ready function

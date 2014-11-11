@@ -1,3 +1,6 @@
+<?php
+error_reporting( 0 );
+?>
 <div id="topcontain">
     <div id="titlearea">
         <h1 id='currentPageTag'>Step1-1</h1>

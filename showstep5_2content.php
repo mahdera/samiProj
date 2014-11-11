@@ -1,4 +1,6 @@
-
+<?php
+  error_reporting( 0 );
+?>
     <!--to be replaced when the next button is clicked-->
     <div id="topcontain">
         <div id="titlearea">
