@@ -298,12 +298,12 @@
 															$fn_row = getFn($goalFirstG1Row->fn_id);
 															?>
 															<tr>
-																	<td width="30%"></td>
+																	<td width="20%"></td>
 																	<td width="30%">G1</td>
 																	<td><?php echo $goalFirstG1Row->g1;?></td>
 															</tr>
 															<tr>
-																	<td width="30%"></td>
+																	<td width="20%"></td>
 																	<td width="30%">Fn</td>
 																	<td><?php echo $fn_row->fn_name;?></td>
 															</tr>
@@ -315,12 +315,12 @@
 																					$fn_row = getFn($goalFirstG1ObjFnRow->fn_id);
 																					?>
 																					<tr>
-																							<td width="30%"></td>
+																							<td width="20%"></td>
 																							<td width="30%">Obj</td>
 																							<td><?php echo $goalFirstG1ObjFnRow->obj;?></td>
 																					</tr>
 																					<tr>
-																							<td width="30%"></td>
+																							<td width="20%"></td>
 																							<td width="30%">Fn</td>
 																							<td><?php echo $fn_row->fn_name;?></td>
 																					</tr>
@@ -342,12 +342,12 @@
 															$fn_row = getFn($goalFirstG2Row->fn_id);
 															?>
 															<tr>
-																	<td width="30%"></td>
+																	<td width="20%"></td>
 																	<td width="30%">G2</td>
 																	<td><?php echo $goalFirstG2Row->g2;?></td>
 															</tr>
 															<tr>
-																	<td width="30%"></td>
+																	<td width="20%"></td>
 																	<td width="30%">Fn</td>
 																	<td><?php echo $fn_row->fn_name;?></td>
 															</tr>
@@ -359,12 +359,12 @@
 																					$fn_row = getFn($goalFirstG2ObjFnRow->fn_id);
 																					?>
 																					<tr>
-																							<td width="30%"></td>
+																							<td width="20%"></td>
 																							<td width="30%">Obj</td>
 																							<td><?php echo $goalFirstG2ObjFnRow->obj;?></td>
 																					</tr>
 																					<tr>
-																							<td width="30%"></td>
+																							<td width="20%"></td>
 																							<td width="30%">Fn</td>
 																							<td><?php echo $fn_row->fn_name;?></td>
 																					</tr>
@@ -386,12 +386,12 @@
 															$fn_row = getFn($goalFirstG3Row->fn_id);
 															?>
 															<tr>
-																	<td width="30%"></td>
+																	<td width="20%"></td>
 																	<td width="30%">G3</td>
 																	<td><?php echo $goalFirstG3Row->g3;?></td>
 															</tr>
 															<tr>
-																	<td width="30%"></td>
+																	<td width="20%"></td>
 																	<td width="30%">Fn</td>
 																	<td><?php echo $fn_row->fn_name;?></td>
 															</tr>
@@ -403,12 +403,12 @@
 																					$fn_row = getFn($goalFirstG3ObjFnRow->fn_id);
 																					?>
 																					<tr>
-																							<td width="30%"></td>
+																							<td width="20%"></td>
 																							<td width="30%">Obj</td>
 																							<td><?php echo $goalFirstG3ObjFnRow->obj;?></td>
 																					</tr>
 																					<tr>
-																							<td width="30%"></td>
+																							<td width="20%"></td>
 																							<td width="30%">Fn</td>
 																							<td><?php echo $fn_row->fn_name;?></td>
 																					</tr>
@@ -435,7 +435,7 @@
 																while($thActionRow = mysql_fetch_object($thActionList)){
 																		?>
 																				<tr>
-																						<td width="10%">Action:</td>
+																						<td width="20%">Action:</td>
 																						<td>
 																								<?php echo $thActionRow->action_text;?>
 																						</td>
@@ -475,7 +475,7 @@
 																				$goalSecondG1Id = $goalSecondG1Row->id;
 																		?>
 																				<tr>
-																						<td width="30%"></td>
+																						<td width="20%"></td>
 																						<td width="30%">G1</td>
 																						<td>
 																								<?php echo $goalSecondG1Row->g1;?>
@@ -508,7 +508,7 @@
 																				$goalSecondG2Id = $goalSecondG2Row->id;
 																		?>
 																				<tr>
-																						<td width="30%"></td>
+																						<td width="20%"></td>
 																						<td width="30%">G2</td>
 																						<td>
 																								<?php echo $goalSecondG2Row->g2;?>
@@ -541,7 +541,7 @@
 																				$goalSecondG3Id = $goalSecondG3Row->id;
 																		?>
 																				<tr>
-																						<td width="30%"></td>
+																						<td width="20%"></td>
 																						<td width="30%">G3</td>
 																						<td>
 																								<?php echo $goalSecondG3Row->g3;?>
@@ -580,7 +580,7 @@
 																		while($fnActionRow = mysql_fetch_object($fnActionList)){
 																				?>
 																						<tr>
-																								<td>Action:</td>
+																								<td width="20%">Action:</td>
 																								<td><?php echo $fnActionRow->action_text;?></td>
 																						</tr>
 																				<?php

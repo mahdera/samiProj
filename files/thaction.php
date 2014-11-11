@@ -13,6 +13,7 @@
     function updateThAction($id, $actionText, $modifiedBy){
         try{
             $query = "update tbl_th_action set action_text = '$actionText', modified_by = $modifiedBy, modification_date = NOW() where id = $id";
+            //echo $query;
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
