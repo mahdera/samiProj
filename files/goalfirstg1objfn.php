@@ -1,25 +1,26 @@
 <?php
     require_once 'dbconnection.php';
-    
+
     function saveGoalFirstG1ObjFn($goalFirstG1Id, $obj, $fn, $modifiedBy){
         try{
             $query = "insert into tbl_goal_first_g1_obj_fn values(0, $goalFirstG1Id, '$obj', $fn, $modifiedBy, NOW())";
-            echo $query;
+            //echo $query;
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
-    
+
     function updateGoalFirstG1ObjFn($id, $goalFirstG1Id, $obj, $fn, $modifiedBy){
         try{
             $query = "update tbl_goal_first_g1_obj_fn set  goal_first_g1_id = $goalFirstG1Id, obj = '$obj', fn_id = $fn, modified_by = $modifiedBy, modification_date = NOW() where id = $id";
+            //echo $query;
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
-    
+
     function deleteGoalFirstG1ObjFn($id){
         try{
             $query = "delete from tbl_goal_first_g1_obj_fn where id = $id";
@@ -28,7 +29,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function getAllGoalFirstG1ObjFns(){
         try{
             $query = "select * from tbl_goal_first_g1_obj_fn";
@@ -38,10 +39,10 @@
             $ex->getMessage();
         }
     }
-    
+
     function getAllGoalFirstG1ObjFnsForThisGoalFirstG1Id($goalFirstG1Id){
         try{
-            $query = "select * from tbl_goal_first_g1_obj_fn where goal_first_g1_id = $goalFirstG1Id";            
+            $query = "select * from tbl_goal_first_g1_obj_fn where goal_first_g1_id = $goalFirstG1Id";
             $result = read($query);
             return $result;
         } catch (Exception $ex) {
@@ -51,14 +52,14 @@
 
     function getAllGoalFirstG1ObjFnsForThisGoalFirstG1IdAndModifiedBy($goalFirstG1Id, $modifiedBy){
         try{
-            $query = "select * from tbl_goal_first_g1_obj_fn where goal_first_g1_id = $goalFirstG1Id and modified_by = $modifiedBy";            
+            $query = "select * from tbl_goal_first_g1_obj_fn where goal_first_g1_id = $goalFirstG1Id and modified_by = $modifiedBy";
             $result = read($query);
             return $result;
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
-    
+
     function getGoalFirstG1ObjFn($id){
         try{
             $query = "select * from tbl_goal_first_g1_obj_fn where id = $id";
@@ -69,7 +70,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function getAllGoalFirstG1ObjFnsForFn($fn_id){
         try{
             $query = "select * from tbl_goal_first_g1_obj_fn where fn_id = $fn_id";
@@ -81,4 +82,3 @@
         }
     }
 ?>
-

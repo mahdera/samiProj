@@ -195,7 +195,8 @@
         });
 
         function clearFormInputField(){
-            $('#slctfn').val('');
+            $('#goalSecondManagementForm')[0].reset();
+            /*$('#slctfn').val('');
             $('#txtg1').val('');
             $('#txtg1obj1').val('');
             $('#txtg2').val('');
@@ -220,7 +221,7 @@
             for(var k=1; k <= numItemsG3; k++){
                 var textBoxControlName = "txtg3obj" + j;
                 $('#' + textBoxControlName).val('');
-            }
+            }*/
 
         }
 

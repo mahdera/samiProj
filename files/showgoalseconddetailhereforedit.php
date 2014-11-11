@@ -13,7 +13,7 @@
 
     $fnId = $_GET['fn_id'];
     $buttonId = "updateGoalSecondButton" . $fnId;
-    $goalSecondFnRow = getGoalSecondFnUsingFnId($fnId);    
+    $goalSecondFnRow = getGoalSecondFnUsingFnId($fnId);
     $goalSecondFnId = $goalSecondFnRow->id;
     $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
     $goalSecondG1ObjId;
@@ -27,6 +27,9 @@
     $goalSecondG1ObjControlName=null;
     $goalSecondG2ObjControlName=null;
     $goalSecondG3ObjControlName=null;
+    $goalSecondG1ObjHiddenIdControlName=null;
+    $goalSecondG2ObjHiddenIdControlName=null;
+    $goalSecondG3ObjHiddenIdControlName=null;
 ?>
 <form>
     <table border="0" width="100%">
@@ -42,7 +45,7 @@
                         <?php
                           $g1ControlName = "edittxtg1" . $fnId;
                         ?>
-                        <input type="text" name="<?php echo $g1ControlName;?>" id="<?php echo $g1ControlName;?>" value="<?php echo $goalSecondG1Row->g1;?>"/>
+                        <input type="text" name="<?php echo $g1ControlName;?>" id="<?php echo $g1ControlName;?>" value="<?php echo $goalSecondG1Row->g1;?>" size="70"/>
                     </td>
                 </tr>
             <?php
@@ -51,12 +54,14 @@
                     while($goalSecondG1ObjRow = mysql_fetch_object($goalSecondG1ObjList)){
                         $goalSecondG1ObjControlName = "edittxtgoalsecondg1obj" . $fnId . $goalSecondG1Ctr;
                         $goalSecondG1ObjId = $goalSecondG1ObjRow->id;
+                        $goalSecondG1ObjHiddenIdControlName = "hiddengoalsecondg1objid" . $fnId . $goalSecondG1Ctr;
                         ?>
                             <tr>
                                 <td></td>
                                 <td>Obj</td>
                                 <td>
-                                    <input type="text" name="<?php echo $goalSecondG1ObjControlName;?>" id="<?php echo $goalSecondG1ObjControlName;?>" value="<?php echo $goalSecondG1ObjRow->obj;?>"/>
+                                    <input type="text" name="<?php echo $goalSecondG1ObjControlName;?>" id="<?php echo $goalSecondG1ObjControlName;?>" value="<?php echo $goalSecondG1ObjRow->obj;?>" size="70"/>
+                                    <input type="hidden" name="<?php echo $goalSecondG1ObjHiddenIdControlName;?>" id="<?php echo $goalSecondG1ObjHiddenIdControlName;?>" value="<?php echo $goalSecondG1ObjId;?>"/>
                                 </td>
                             </tr>
                         <?php
@@ -80,7 +85,7 @@
                         <?php
                           $g2ControlName = "edittxtg2" . $fnId;
                         ?>
-                        <input type="text" name="<?php echo $g2ControlName;?>" id="<?php echo $g2ControlName;?>" value="<?php echo $goalSecondG2Row->g2;?>"/>
+                        <input type="text" name="<?php echo $g2ControlName;?>" id="<?php echo $g2ControlName;?>" value="<?php echo $goalSecondG2Row->g2;?>" size="70"/>
                     </td>
                 </tr>
             <?php
@@ -89,12 +94,14 @@
                     while($goalSecondG2ObjRow = mysql_fetch_object($goalSecondG2ObjList)){
                         $goalSecondG2ObjControlName = "edittxtgoalsecondg2obj" . $fnId . $goalSecondG2Ctr;
                         $goalSecondG2ObjId = $goalSecondG2ObjRow->id;
+                        $goalSecondG2ObjHiddenIdControlName = "hiddengoalsecondg2objid" . $fnId . $goalSecondG2Ctr;
                         ?>
                             <tr>
                                 <td></td>
                                 <td>Obj</td>
                                 <td>
-                                    <input type="text" name="<?php echo $goalSecondG2ObjControlName;?>" id="<?php echo $goalSecondG2ObjControlName;?>" value="<?php echo $goalSecondG2ObjRow->obj;?>"/>
+                                    <input type="text" name="<?php echo $goalSecondG2ObjControlName;?>" id="<?php echo $goalSecondG2ObjControlName;?>" value="<?php echo $goalSecondG2ObjRow->obj;?>" size="70"/>
+                                    <input type="hidden" name="<?php echo $goalSecondG2ObjHiddenIdControlName;?>" id="<?php echo $goalSecondG2ObjHiddenIdControlName;?>" value="<?php echo $goalSecondG2ObjId;?>"/>
                                 </td>
                             </tr>
                         <?php
@@ -118,7 +125,7 @@
                         <?php
                           $g3ControlName = "edittxtg3" . $fnId;
                         ?>
-                        <input type="text" name="<?php echo $g3ControlName;?>" id="<?php echo $g3ControlName;?>" value="<?php echo $goalSecondG3Row->g3;?>"/>
+                        <input type="text" name="<?php echo $g3ControlName;?>" id="<?php echo $g3ControlName;?>" value="<?php echo $goalSecondG3Row->g3;?>" size="70"/>
                     </td>
                 </tr>
             <?php
@@ -127,12 +134,14 @@
                     while($goalSecondG3ObjRow = mysql_fetch_object($goalSecondG3ObjList)){
                         $goalSecondG3ObjControlName = "edittxtgoalsecondg3obj" . $fnId . $goalSecondG3Ctr;
                         $goalSecondG3ObjId = $goalSecondG3ObjRow->id;
+                        $goalSecondG3ObjHiddenIdControlName = "hiddengoalsecondg3objid" . $fnId . $goalSecondG3Ctr;
                         ?>
                             <tr>
                                 <td></td>
                                 <td>Obj</td>
                                 <td>
-                                    <input type="text" name="<?php echo $goalSecondG3ObjControlName;?>" id="<?php echo $goalSecondG3ObjControlName;?>" value="<?php echo $goalSecondG3ObjRow->obj;?>"/>
+                                    <input type="text" name="<?php echo $goalSecondG3ObjControlName;?>" id="<?php echo $goalSecondG3ObjControlName;?>" value="<?php echo $goalSecondG3ObjRow->obj;?>" size="70"/>
+                                    <input type="hidden" name="<?php echo $goalSecondG3ObjHiddenIdControlName;?>" id="<?php echo $goalSecondG3ObjHiddenIdControlName;?>" value="<?php echo $goalSecondG3ObjId;?>"/>
                                 </td>
                             </tr>
                         <?php
@@ -178,40 +187,46 @@
             var txtG3Val = $('#' + g3ControlName).val();
             //now grab the ids here
             var goalSecondG1Id = "<?php echo $goalSecondG1Id;?>";
-            var goalSecondG1ObjId = "<?php echo $goalSecondG1ObjId;?>";
             var goalSecondG2Id = "<?php echo $goalSecondG2Id;?>";
-            var goalSecondG2ObjId = "<?php echo $goalSecondG2ObjId;?>";
             var goalSecondG3Id = "<?php echo $goalSecondG3Id;?>";
-            var goalSecondG3ObjId = "<?php echo $goalSecondG3ObjId;?>";
             var goalSecondFnId = "<?php echo $goalSecondFnId;?>";
 
             if(true){
                 var dataString = "txtG1Val="+txtG1Val+"&fnId="+fnId+
-                "&txtG2Val="+txtG2Val+"&txtG3Val="+txtG3Val+"&goalSecondG1Id="+goalSecondG1Id+"&goalSecondG1ObjId="+
-                goalSecondG1ObjId+"&goalSecondG2Id="+goalSecondG2Id+"&goalSecondG2ObjId="+goalSecondG2ObjId+
-                "&goalSecondG3Id="+goalSecondG3Id+"&goalSecondG3ObjId="+goalSecondG3ObjId+"&goalSecondFnId="+goalSecondFnId+
+                "&txtG2Val="+txtG2Val+"&txtG3Val="+txtG3Val+"&goalSecondG1Id="+goalSecondG1Id+
+                "&goalSecondG2Id="+goalSecondG2Id+"&goalSecondG3Id="+goalSecondG3Id+"&goalSecondFnId="+goalSecondFnId+
                 "&goalSecondG1Ctr="+goalSecondG1Ctr+"&goalSecondG2Ctr="+goalSecondG2Ctr+"&goalSecondG3Ctr="+goalSecondG3Ctr;
 
                 //now get the dynamic values and append it to the dataString variable.
                 for(var i=1; i<=goalSecondG1Ctr; i++){
                     var goalSecondG1ObjControlName = "edittxtgoalsecondg1obj" + fnId + i;
+                    var goalSecondG1ObjHiddenIdControlName = "hiddengoalsecondg1objid" + fnId + i;
                     var goalSecondG1ObjVal = $('#'+goalSecondG1ObjControlName).val();
+                    var goalSecondG1ObjHiddenIdVal = $('#'+goalSecondG1ObjHiddenIdControlName).val();
+
                     //append it to the dataString variable...
-                    dataString += "&"+goalSecondG1ObjControlName+"="+goalSecondG1ObjVal;
+                    dataString += "&"+goalSecondG1ObjControlName+"="+goalSecondG1ObjVal+"&"+
+                    goalSecondG1ObjHiddenIdControlName+"="+goalSecondG1ObjHiddenIdVal;
                 }
 
                 for(var j=1; j<=goalSecondG2Ctr; j++){
                     var goalSecondG2ObjControlName = "edittxtgoalsecondg2obj" + fnId + j;
+                    var goalSecondG2ObjHiddenIdControlName = "hiddengoalsecondg2objid" + fnId + j;
                     var goalSecondG2ObjVal = $('#'+goalSecondG2ObjControlName).val();
+                    var goalSecondG2ObjHiddenIdVal = $('#'+goalSecondG2ObjHiddenIdControlName).val();
                     //append it to the dataString variable...
-                    dataString += "&"+goalSecondG2ObjControlName+"="+goalSecondG2ObjVal;
+                    dataString += "&"+goalSecondG2ObjControlName+"="+goalSecondG2ObjVal+"&"+
+                    goalSecondG2ObjHiddenIdControlName+"="+goalSecondG2ObjHiddenIdVal;
                 }
 
                 for(var k=1; k<=goalSecondG3Ctr; k++){
                     var goalSecondG3ObjControlName = "edittxtgoalsecondg3obj" + fnId + k;
+                    var goalSecondG3ObjHiddenIdControlName = "hiddengoalsecondg3objid" + fnId + k;
                     var goalSecondG3ObjVal = $('#'+goalSecondG3ObjControlName).val();
+                    var goalSecondG3ObjHiddenIdVal = $('#'+goalSecondG3ObjHiddenIdControlName).val();
                     //append it to the dataString variable...
-                    dataString += "&"+goalSecondG3ObjControlName+"="+goalSecondG3ObjVal;
+                    dataString += "&"+goalSecondG3ObjControlName+"="+goalSecondG3ObjVal+"&"+
+                    goalSecondG3ObjHiddenIdControlName+"="+goalSecondG3ObjHiddenIdVal;
                 }
 
                 $.ajax({
