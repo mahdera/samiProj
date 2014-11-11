@@ -24,7 +24,7 @@
             </tr>
             <tr>
                 <td colspan="2" align="right">
-                    <input type="button" value="Create" id="<?php echo $buttonId;?>"/>
+                    <input type="button" value="Update" id="<?php echo $buttonId;?>"/>
                 </td>
             </tr>
         </table>

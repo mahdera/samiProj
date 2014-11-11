@@ -189,4 +189,15 @@
             $ex->getMessage();
         }
     }
+
+    function fetchUserByUserIdAndEmail($userId, $email){
+        try{
+            $query = "select * from tbl_user user_id = '$userId' and email = '$email'";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
 ?>

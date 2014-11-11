@@ -11,7 +11,7 @@
 <div id="branchManagementDiv"></div>
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#branchZoneLinkId').click(function(){
+        $('#createBranchLinkId').click(function(){
           $('#branchManagementDiv').load('files/showcreatebranchform.php');
         });
 

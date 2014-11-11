@@ -47,4 +47,14 @@
       $ex->getMessage();
     }
   }
+
+  function getAllBranchsOfThisZone($zoneId){
+    try{
+      $query = "select * from tbl_branch where zone_id = $zoneId order by branch_name";
+      $result = read($query);
+      return $result;
+    }catch(Exception $ex){
+      $ex->getMessage();
+    }
+  }
 ?>

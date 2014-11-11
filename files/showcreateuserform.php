@@ -1,3 +1,8 @@
+<?php
+  require_once 'zone.php';
+  require_once 'branch.php';
+  $zoneList = getAllZones();
+?>
 <h1>Create User</h1>
 <form>
     <table border="0" width="100%">
@@ -58,6 +63,27 @@
             </td>
         </tr>
         <tr>
+            <td><font color='red'>*</font> Zone:</td>
+            <td>
+                <select name="slctzone" id="slctzone" style="width:100%">
+                    <option value="" selected="selected">--Select--</option>
+                    <?php
+                        while($zoneRow = mysql_fetch_object($zoneList)){
+                            ?>
+                              <option value="<?php echo $zoneRow->id;?>"><?php echo $zoneRow->zone_name;?></option>
+                            <?php
+                        }//end while loop
+                    ?>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><font color='red'>*</font> Branch:</td>
+            <td>
+                <div id="branchDiv"></div>
+            </td>
+        </tr>
+        <tr>
             <td colspan="2" align="right">
                 <input type="button" value="Create User" id="btncreateuser"/>
             </td>
@@ -67,7 +93,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('#txtfirstname').focus();
-        
+
         $('#btncreateuser').click(function(){
             var firstName = $('#txtfirstname').val();
             var lastName = $('#txtlastname').val();
@@ -77,18 +103,19 @@
             var phoneNumber = $('#txtphonenumber').val();
             var memberType = $('#slctmembertype').val();
             var userStatus = $('#slctuserstatus').val();
+            var branchId = $('#slctbranch').val();
 
             if(firstName !== "" && lastName !== "" && email !== "" && userId !== "" &&
-                    password !== "" && memberType !== "" && userStatus !== ""){
+                    password !== "" && memberType !== "" && userStatus !== "" && branchId !== ""){
                 var dataString = "firstName="+firstName+"&lastName="+lastName+
                         "&email="+email+"&userId="+userId+"&password="+password+
                         "&phoneNumber="+phoneNumber+"&memberType="+memberType+
                         "&userStatus="+userStatus;
                 $.ajax({
-                    url: 'files/createuser.php',		
+                    url: 'files/createuser.php',
                     data: dataString,
                     type:'POST',
-                    success:function(response){                    
+                    success:function(response){
                         $('#createUserDiv').html('');
                         $('.content').load('files/showusermanagementlist.php');
                     },
@@ -98,6 +125,13 @@
                 });
             }else{
                 alert('Enter the required filed members!');
+            }
+        });
+
+        $('#slctzone').change(function(){
+            var zoneId = $(this).val();
+            if(zoneId !== ''){
+                $('#branchDiv').load('files/showlistofbranchsforthiszone.php?zoneId='+zoneId);
             }
         });
     });//end document.ready function
