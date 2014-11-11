@@ -5,7 +5,9 @@
 ?>
 <form>
     <div>
-        <a href="#.php" id="createUserLink">Create User</a>
+        <a href="#.php" id="createUserLink">Create User</a> |
+        <a href="#.php" id="zoneManagementLink">Zone Management</a> |
+        <a href="#.php" id="branchManagementLink">Branch Management</a>
     </div>
     <table border="0" width="100%">
         <tr style="background: #eee">
@@ -60,6 +62,14 @@
         $('.modifyUserProfileLink').click(function(){
             var id = $(this).attr('id');
             $('#createUserDiv').load('files/showmodifyuserprofileform.php?id='+id);
+        });
+
+        $('#zoneManagementLink').click(function(){
+            $('#createUserDiv').load('files/showzonemanagementmenu.php');
+        });
+
+        $('#branchManagementLink').click(function(){
+            $('#createUserDiv').load('files/showbranchmanagementmenu.php');
         });
     });//end document.ready function
 </script>

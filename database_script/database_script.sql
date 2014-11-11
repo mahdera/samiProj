@@ -16,7 +16,30 @@ SET time_zone = "+00:00";
 create database db_sami_proj;
 use db_sami_proj;
 -- --------------------------------------------------------
+create table tbl_zone(
+    id int auto_increment,
+    zone_name varchar(100) not null,
+    description text not null,
+    primary key(id)
+);
 
+create table tbl_branch(
+    id int auto_increment,
+    zone_id int not null,
+    branch_name varchar(100) not null,
+    description text not null,
+    primary key(id),
+    foreign key(zone_id) references tbl_zone(id)
+);
+
+create table tbl_user_branch(
+    id int auto_increment,
+    branch_id int not null,
+    user_id int not null,
+    primary key(id),
+    foreign key(branch_id) references tbl_branch(id),
+    foreign key(user_id) references tbl_user(id)
+);
 --
 -- Table structure for table `calendar`
 --
