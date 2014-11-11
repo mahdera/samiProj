@@ -13,6 +13,7 @@
         <td>Ser.No</td>
         <td>Fn</td>
         <td>Action</td>
+        <td>View/Edit/Delete</td>
     </tr>
     <?php
         $ctr=1;
@@ -29,18 +30,18 @@
                         <td>
                             <a href="#.php" id="<?php echo $fnObj->id;?>" class="openActionFormClass">Show Add Action Form</a> | <a href="#.php" id="<?php echo $fnObj->id;?>" class="closeActionFormClass">Close Add Action Form</a>
                         </td>
+                        <td>
+                          [<a href="#.php" id="<?php echo $fnObj->id;?>" class="viewFnActionLink">View</a> | <a href="#.php" id="<?php echo $fnObj->id;?>" class="editFnActionLink">Edit</a> | <a href="#.php" id="<?php echo $fnObj->id;?>" class="deleteFnActionLink">Delete</a>]
+                        </td>
                     </tr>
                     <tr>
-                        <td colspan="3">
+                        <td colspan="4">
                             <div id="<?php echo $divId;?>"></div>
                         </td>
                     </tr>
                 <?php
             }
         }//end while loop
-        //if($countVal){
-            //echo '<div class="notify"><span class="symbol icon-info"></span> All Fns Have Action Record !</div>';
-        //}
     ?>
 </table>
 <script type="text/javascript">
@@ -58,6 +59,24 @@
             var idVal = $(this).attr('id');
             var divId = "actionDiv" + idVal;
             $('#' + divId).html('');
+        });
+
+        $('.viewFnActionLink').click(function(){
+            var idVal = $(this).attr('id');
+            var divId = "actionDiv" + idVal;
+            $('#' + divId).load('files/showlistoffnactiontextsforfn.php?fnId='+idVal);
+        });
+
+        $('.editFnActionLink').click(function(){
+            var idVal = $(this).attr('id');
+            var divId = "actionDiv" + idVal;
+            $('#' + divId).load('files/showlistoffnactiontextsforfnforedit.php?fnId='+idVal);
+        });
+
+        $('.deleteFnActionLink').click(function(){
+            var idVal = $(this).attr('id');
+            var divId = "actionDiv" + idVal;
+            $('#' + divId).load('files/showlistoffnactiontextsforfnfordelete.php?fnId='+idVal);
         });
 
     });//end document.ready function

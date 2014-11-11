@@ -1,5 +1,6 @@
 <?php
     $thActionId = $_GET['thActionId'];
+    $thId = $_GET['thId'];
     require_once 'thaction.php';
     //now define the control names in here...
     $thActionControlName = "textareathactionedit" . $thActionId;
@@ -24,12 +25,15 @@
   $(document).ready(function(){
       var thActionId = "<?php echo $thActionId;?>";
       var buttonId = "btnupdatethaction" + thActionId;
+      var thId = "<?php echo $thId;?>";
+      
       $('#'+buttonId).click(function(){
         var thActionControlName = "textareathactionedit" + thActionId;
         var updatedText = $('#'+thActionControlName).val();
         if(updatedText !== ''){
           var dataString = "updatedText="+encodeURIComponent(updatedText)+"&thActionId="+thActionId;
-          var divId = "editThisThActionDiv" + thActionId;
+          //var divId = "editThisThActionDiv" + thActionId;
+          var divId = "actionDiv" + thId;
           $.ajax({
               url: 'files/updatethisthaction.php',
               data: dataString,

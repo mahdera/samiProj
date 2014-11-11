@@ -22,7 +22,7 @@
     <?php
     require_once 'importjsscripts.php';
 ?>
-    <div>
+    <div id="fnActionManagementDiv">
         <?php
             require 'putfnactionmanagementform.php';
         ?>
