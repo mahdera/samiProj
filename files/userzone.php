@@ -1,36 +1,36 @@
 <?php
     require_once 'dbconnection.php';
 
-    function saveUserBranch($branchId, $userId){
+    function saveUserZone($zoneId, $userId){
       try{
-        $query = "insert into tbl_user_branch values(0, $branchId, $userId)";
+        $query = "insert into tbl_user_zone values(0, $zoneId, $userId)";
         save($query);
       }catch(Exception $ex){
         $ex->getMessage();
       }
     }
 
-    function updateUserBranch($id, $branchId, $userId){
+    function updateUserZone($id, $zoneId, $userId){
       try{
-        $query = "update tbl_user_branch set branch_id = $branchId, user_id = $userId where id = $id";
+        $query = "update tbl_user_zone set zone_id = $zoneId, user_id = $userId where id = $id";
         save($query);
       }catch(Exception $ex){
         $ex->getMessage();
       }
     }
 
-    function deleteUserBranch($id){
+    function deleteUserZone($id){
       try{
-        $query = "delete from tbl_user_branch where id = $id";
+        $query = "delete from tbl_user_zone where id = $id";
         save($query);
       }catch(Exception $ex){
         $ex->getMessage();
       }
     }
 
-    function getAllUserBranchs(){
+    function getAllUserZones(){
       try{
-        $query = "select * from tbl_user_branch";
+        $query = "select * from tbl_user_zone";
         $result = read($query);
         return $result;
       }catch(Exception $ex){
@@ -38,9 +38,9 @@
       }
     }
 
-    function getUserBranch($id){
+    function getUserZone($id){
       try{
-        $query = "select * from tbl_user_branch where id = $id";
+        $query = "select * from tbl_user_zone where id = $id";
         $result = read($query);
         $resultRow = mysql_fetch_object($result);
         return $resultRow;
@@ -49,9 +49,9 @@
       }
     }
 
-    function getBranchInfoForUser($userId){
+    function getZoneInfoForUser($userId){
       try{
-        $query = "select * from tbl_user_branch where user_id = $userId";
+        $query = "select * from tbl_user_zone where user_id = $userId";
         $result = read($query);
         $resultRow = mysql_fetch_object($result);
         return $resultRow;

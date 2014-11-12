@@ -1,5 +1,9 @@
 <?php
     require_once 'user.php';
+    require_once 'zone.php';
+    require_once 'branch.php';
+    require_once 'userzone.php';
+    require_once 'userbranch.php';
     //get all non-admin users
     $userList = getAllNonAdminUsers();
 ?>
@@ -18,6 +22,9 @@
             <td>User Id</td>
             <td>Member Type</td>
             <td>Member Status</td>
+            <td>User Level</td>
+            <td>Zone</td>
+            <td>Branch</td>
             <td>Modification Date</td>
             <td>Reset Password</td>
             <td>Modify Status</td>
@@ -25,6 +32,17 @@
         <?php
             $ctr=1;
             while($userRow = mysql_fetch_object($userList)){
+                $zoneObj = null;
+                if($userLevel == 'Zone Level'){
+                    //fetch zone information from tbl_user_zone
+                    $userZone = getZoneInfoForUser($userRow->id);
+                    $zoneObj = getZone($userZone->zone_id);
+                }else if($userLevel == 'Branch Level'){
+                    //fetch branch information from tbl_user_branch
+                    $userBranch = getBranchInfoForUser($userRow->id);
+                    $branchObj = getBranch($userBranch->branch_id);
+                    $zoneObj = getZone($branchObj->zone_id);
+                }
                 ?>
                 <tr>
                     <td><?php echo $ctr++;?></td>
@@ -34,6 +52,9 @@
                     <td><?php echo $userRow->user_id;?></td>
                     <td><?php echo $userRow->member_type;?></td>
                     <td><?php echo $userRow->user_status;?></td>
+                    <td><?php echo ($userRow->user_level != null ? $userRow->user_level : '---');?></td>
+                    <td><?php echo ($zoneObj != null ? $zoneObj->zone_name : '---');?></td>
+                    <td><?php echo ($branchObj != null ? $branchObj->branch_name : '---');?></td>
                     <td><?php echo $userRow->modification_date;?></td>
                     <td>
                         <a href="#.php" class="resetUserPasswordLink" id="<?php echo $userRow->id;?>">Reset Password</a>

@@ -63,6 +63,16 @@
             </td>
         </tr>
         <tr>
+            <td><font color='red'>*</font> User Level:</td>
+            <td>
+                <select name="slctuserlevel" id="slctuserlevel" style="width:100%">
+                    <option value="" selected="selected">--Select--</option>
+                    <option value="Branch Level">Branch Level</option>
+                    <option value="Zone Level">Zone Level</option>
+                </select>
+            </td>
+        </tr>
+        <tr id="zoneRow">
             <td><font color='red'>*</font> Zone:</td>
             <td>
                 <select name="slctzone" id="slctzone" style="width:100%">
@@ -75,12 +85,6 @@
                         }//end while loop
                     ?>
                 </select>
-            </td>
-        </tr>
-        <tr>
-            <td><font color='red'>*</font> Branch:</td>
-            <td>
-                <div id="branchDiv"></div>
             </td>
         </tr>
         <tr>
@@ -103,14 +107,21 @@
             var phoneNumber = $('#txtphonenumber').val();
             var memberType = $('#slctmembertype').val();
             var userStatus = $('#slctuserstatus').val();
-            var branchId = $('#slctbranch').val();
+            var userLevel = $('#slctuserlevel').val();
+            var eitherZoneIdOrBranchId = "";
+            if(userLevel == 'Zone Level'){
+                eitherZoneIdOrBranchId = $('#slctzone').val();
+            }else if(userLevel == 'Branch Level'){
+                eitherZoneIdOrBranchId = $('#slctbranch').val();
+            }
 
             if(firstName !== "" && lastName !== "" && email !== "" && userId !== "" &&
-                    password !== "" && memberType !== "" && userStatus !== "" && branchId !== ""){
+                    password !== "" && memberType !== "" && userStatus !== "" && eitherZoneIdOrBranchId !== ""){
                 var dataString = "firstName="+firstName+"&lastName="+lastName+
                         "&email="+email+"&userId="+userId+"&password="+password+
                         "&phoneNumber="+phoneNumber+"&memberType="+memberType+
-                        "&userStatus="+userStatus;
+                        "&userStatus="+userStatus+"&userLevel="+encodeURIComponent(userLevel)+"&eitherZoneIdOrBranchId="+
+                        eitherZoneIdOrBranchId;
                 $.ajax({
                     url: 'files/createuser.php',
                     data: dataString,
@@ -130,9 +141,47 @@
 
         $('#slctzone').change(function(){
             var zoneId = $(this).val();
-            if(zoneId !== ''){
-                $('#branchDiv').load('files/showlistofbranchsforthiszone.php?zoneId='+zoneId);
+            var userLevel = $('#slctuserlevel').val();
+            if(zoneId !== '' && userLevel == 'Branch Level'){
+                var dataString = "zoneId="+zoneId;
+                $.ajax({
+                    url: 'files/showlistofbranchsforthiszone.php',
+                    data: dataString,
+                    type:'POST',
+                    success:function(response){
+                        $('#branchRow').remove();
+                        $('#zoneRow').after(response);
+                    },
+                    error:function(error){
+                        alert(error);
+                    }
+                });
             }
         });
+
+        $('#slctuserlevel').change(function(){
+            var memberType = $(this).val();
+            if(memberType != ''){
+                if(memberType == 'Zone Level'){
+                    $('#branchRow').remove();
+                }else if(memberType == 'Branch Level'){
+                    var zoneId = $('#slctzone').val();
+                    var dataString = "zoneId="+zoneId;
+                    $.ajax({
+                        url: 'files/showlistofbranchsforthiszone.php',
+                        data: dataString,
+                        type:'POST',
+                        success:function(response){
+                            $('#branchRow').remove();
+                            $('#zoneRow').after(response);
+                        },
+                        error:function(error){
+                            alert(error);
+                        }
+                    });
+                }
+            }
+        });
+
     });//end document.ready function
 </script>

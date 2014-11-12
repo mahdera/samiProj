@@ -1,6 +1,10 @@
 <?php
     $id = $_GET['id'];
     require_once 'user.php';
+    require_once 'userzone.php';
+    require_once 'userbranch.php';
+    require_once 'zone.php';
+    require_once 'branch.php';
     //now get the user info using the id value
     $userObj = getUser($id);
 ?>
@@ -29,7 +33,7 @@
             <td>Member Type:</td>
             <td>
                 <select name="slcteditmembertype" id="slcteditmembertype" style="width: 100%">
-                    <?php 
+                    <?php
                         if($userObj->member_type === "Admin"){
                             ?>
                                 <option value="Admin" selected="selected">Admin</option>
@@ -52,6 +56,12 @@
             </td>
         </tr>
         <tr>
+            <td>Phone Number:</td>
+            <td>
+                <input type="text" name="txteditphonenumber" id="txteditphonenumber" value="<?php echo $userObj->phone_number;?>"/>
+            </td>
+        </tr>
+        <tr>
             <td>User Status:</td>
             <td>
                 <select name="slctedituserstatus" id="slctedituserstatus" style="width: 100%">
@@ -60,11 +70,19 @@
                             ?>
                                 <option value="Active" selected="selected">Active</option>
                                 <option value="Blocked">Blocked</option>
+                                <option value="Pending">Pending</option>
                             <?php
                         }else if($userObj->user_status === "Blocked"){
                             ?>
                                 <option value="Active">Active</option>
                                 <option value="Blocked" selected="selected">Blocked</option>
+                                <option value="Pending">Pending</option>
+                            <?php
+                        }else if($userObj->user_status === "Pending"){
+                            ?>
+                                <option value="Active">Active</option>
+                                <option value="Blocked">Blocked</option>
+                                <option value="Pending" selected="selected">Pending</option>
                             <?php
                         }else{
                             ?>
@@ -78,12 +96,95 @@
             </td>
         </tr>
         <tr>
-            <td>Phone Number:</td>
+            <td><font color='red'>*</font> User Level:</td>
             <td>
-                <input type="text" name="txteditphonenumber" id="txteditphonenumber" value="<?php echo $userObj->phone_number;?>"/>
+                <select name="slctuserlevel" id="slctuserlevel" style="width:100%">
+                    <option value="" selected="selected">--Select--</option>
+                    <?php
+                      if($userObj->user_level === 'Branch Level'){
+                        ?>
+                          <option value="Branch Level" selected="selected">Branch Level</option>
+                          <option value="Zone Level">Zone Level</option>
+                        <?php
+                      }else if($userObj->user_level === 'Zone Level'){
+                        ?>
+                          <option value="Branch Level">Branch Level</option>
+                          <option value="Zone Level" selected="selected">Zone Level</option>
+                        <?php
+                      }else{
+                        ?>
+                          <option value="Branch Level">Branch Level</option>
+                          <option value="Zone Level">Zone Level</option>
+                        <?php
+                      }
+                      ?>
+                </select>
             </td>
-        </tr>        
-        <tr>            
+        </tr>
+        <?php
+          $zoneObj = null;
+          $branchObj = null;
+          if($userObj->user_level == 'Zone Level'){
+            $userZone = getZoneInfoForUser($userObj->id);
+            $zoneObj = getZone($userZone->zone_id);
+          }else if($userObj->user_level == 'Branch Level'){
+            $userBranch = getBranchInfoForUser($userObj->id);
+            $branchObj = getBranch($userBranch->branch_id);
+            $zoneObj = getZone($branchObj->zone_id);
+          }
+          $zoneList = getAllZones();
+        ?>
+        <tr id="zoneRow">
+            <td><font color='red'>*</font> Zone:</td>
+            <td>
+                <select name="slctzone" id="slctzone" style="width:100%">
+                    <option value="" selected="selected">--Select--</option>
+                    <?php
+                        while($zoneRow = mysql_fetch_object($zoneList)){
+                            if($userZone->zone_id == $zoneRow->id){
+                              ?>
+                                <option value="<?php echo $zoneRow->id;?>" selected="selected"><?php echo $zoneRow->zone_name;?></option>
+                              <?php
+                            }else{
+                              ?>
+                                <option value="<?php echo $zoneRow->id;?>"><?php echo $zoneRow->zone_name;?></option>
+                              <?php
+                            }
+                        }//end while loop
+                    ?>
+                </select>
+            </td>
+        </tr>
+        <?php
+          if($userObj->user_level == 'Branch Level'){
+            //get the zone info of this user and based on that populate the branch dropdown...
+            $branchList = getAllBranchesOfThisZone($zoneObj->id);
+            ?>
+            <tr id="branchRow">
+                <td><font color='red'>*</font> Branch:</td>
+                <td>
+                    <select name="slctbranch" id="slctbranch" style="width:100%">
+                        <option value="" selected="selected">--Select--</option>
+                        <?php
+                          while($branchRow = mysql_fetch_object($branchList)){
+                            if($branchRow->id == $branchObj->id){
+                              ?>
+                                <option value="<?php echo $branchRow->id;?>" selected="selected"><?php echo $branchRow->branch_name;?></option>
+                              <?php
+                            }else{
+                              ?>
+                                <option value="<?php echo $branchRow->id;?>"><?php echo $branchRow->branch_name;?></option>
+                              <?php
+                            }
+                          }//end while loop
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <?php
+          }
+        ?>
+        <tr>
             <td colspan="2" align="right">
                 <input type="button" value="Update" id="btnupdate"/>
             </td>
@@ -100,16 +201,25 @@
             var userStatus = $('#slctedituserstatus').val();
             var phoneNumber = $('#txteditphonenumber').val();
             var id = "<?php echo $id;?>";
-            
+            var userLevel = $('#slctuserlevel').val();
+            var eitherZoneIdOrBranchId = "";
+            if(userLevel == 'Zone Level'){
+                eitherZoneIdOrBranchId = $('#slctzone').val();
+            }else if(userLevel == 'Branch Level'){
+                eitherZoneIdOrBranchId = $('#slctbranch').val();
+            }
+
             if(firstName !== "" && lastName !== "" && email !== "" && memberType !== "" &&
-                    userStatus !== ""){
+                    userStatus !== "" && eitherZoneIdOrBranchId !== ""){
                 var dataString = "id="+id+"&firstName="+firstName+"&lastName="+lastName+"&email="+email+
-                        "&memberType="+memberType+"&userStatus="+userStatus+"&phoneNumber="+phoneNumber;
+                        "&memberType="+memberType+"&userStatus="+userStatus+"&phoneNumber="+phoneNumber+
+                        "&userLevel="+encodeURIComponent(userLevel)+"&eitherZoneIdOrBranchId="+
+                        eitherZoneIdOrBranchId;
                 $.ajax({
-                    url: 'files/updateuserprofile.php',		
+                    url: 'files/updateuserprofile.php',
                     data: dataString,
                     type:'POST',
-                    success:function(response){                    
+                    success:function(response){
                         $('.content').html(response);
                     },
                     error:function(error){
@@ -120,5 +230,50 @@
                 alert("Enter the missing data value!");
             }
         });
+
+        $('#slctzone').change(function(){
+            var zoneId = $(this).val();
+            var userLevel = $('#slctuserlevel').val();
+            if(zoneId !== '' && userLevel == 'Branch Level'){
+                var dataString = "zoneId="+zoneId;
+                $.ajax({
+                    url: 'files/showlistofbranchsforthiszone.php',
+                    data: dataString,
+                    type:'POST',
+                    success:function(response){
+                        $('#branchRow').remove();
+                        $('#zoneRow').after(response);
+                    },
+                    error:function(error){
+                        alert(error);
+                    }
+                });
+            }
+        });
+
+        $('#slctuserlevel').change(function(){
+            var memberType = $(this).val();
+            if(memberType != ''){
+                if(memberType == 'Zone Level'){
+                    $('#branchRow').remove();
+                }else if(memberType == 'Branch Level'){
+                    var zoneId = $('#slctzone').val();
+                    var dataString = "zoneId="+zoneId;
+                    $.ajax({
+                        url: 'files/showlistofbranchsforthiszone.php',
+                        data: dataString,
+                        type:'POST',
+                        success:function(response){
+                            $('#branchRow').remove();
+                            $('#zoneRow').after(response);
+                        },
+                        error:function(error){
+                            alert(error);
+                        }
+                    });
+                }
+            }
+        });
+
     });//end document.ready function
 </script>

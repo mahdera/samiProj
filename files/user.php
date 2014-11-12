@@ -2,11 +2,10 @@
     require_once 'dbconnection.php';
 
     function saveUser($firstName, $lastName, $email, $userId, $password, $phoneNumber,
-            $memberType,$userStatus, $modifiedBy){
+            $memberType,$userStatus, $userLevel, $modifiedBy){
         $md5Password = md5($password);
         try{
-            $query = "insert into tbl_user values(0,'$firstName','$lastName','$email','$userId','$md5Password','$phoneNumber','$memberType','$userStatus',$modifiedBy,NOW())";
-            echo $query;
+            $query = "insert into tbl_user values(0,'$firstName','$lastName','$email','$userId','$md5Password','$phoneNumber','$memberType','$userStatus', '$userLevel', $modifiedBy,NOW())";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -14,10 +13,9 @@
     }
 
     function updateUser($id,$firstName, $lastName, $email,$phoneNumber,
-            $memberType,$userStatus, $modifiedBy){
+            $memberType,$userStatus,$userLevel, $modifiedBy){
         try{
-            $query = "update tbl_user set first_name='$firstName', last_name='$lastName', email='$email', phone_number = '$phoneNumber', member_type = '$memberType',user_status = '$userStatus', modified_by = $modifiedBy, modification_date = NOW() where id = $id";
-            //echo $query;
+            $query = "update tbl_user set first_name='$firstName', last_name='$lastName', email='$email', phone_number = '$phoneNumber', member_type = '$memberType',user_status = '$userStatus', user_level = '$userLevel', modified_by = $modifiedBy, modification_date = NOW() where id = $id";            
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
