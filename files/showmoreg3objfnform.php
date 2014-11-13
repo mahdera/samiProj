@@ -6,7 +6,7 @@
     //now define the control names in here...
     $objControlName = "txtg3obj" . ($numItems + 1);
     $fnSelectControlName = "slctg3fn" . ($numItems + 1);
-    $trRowId = "trg3" . ($numItems + 1);
+    $trRowId = "addMoreG3ObjFn" . ($numItems + 1);
     $fnOtherDivId = "fnOtherG3ObjFn" . ($numItems + 1);
 ?>
 <tr id="<?php echo $trRowId;?>">

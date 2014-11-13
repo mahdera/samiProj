@@ -43,7 +43,7 @@
                 <input type="text" name="txtg1obj1" id="txtg1obj1"/>
             </td>
         </tr>
-        <tr id="addMoreG1Obj">
+        <tr id="addMoreG1Obj1">
             <td colspan="2" align="right">
                 <a href="#.php" id="addMoreG1ObjLink">[Add More]</a> |
                 <a href="#.php" id="removeG1ObjThRowLink">[Remove]</a>
@@ -62,7 +62,7 @@
                 <input type="text" name="txtg2obj1" id="txtg2obj1"/>
             </td>
         </tr>
-        <tr id="addMoreG2Obj">
+        <tr id="addMoreG2Obj1">
             <td colspan="2" align="right">
                 <a href="#.php" id="addMoreG2ObjLink">[Add More]</a> |
                 <a href="#.php" id="removeG2ObjThRowLink">[Remove]</a>
@@ -81,7 +81,7 @@
                 <input type="text" name="txtg3obj1" id="txtg3obj1"/>
             </td>
         </tr>
-        <tr id="addMoreG3Obj">
+        <tr id="addMoreG3Obj1">
             <td colspan="2" align="right">
                 <a href="#.php" id="addMoreG3ObjLink">[Add More]</a> |
                 <a href="#.php" id="removeG3ObjThRowLink">[Remove]</a>
@@ -239,7 +239,8 @@
                 data: dataString,
                 type:'POST',
                 success:function(response){
-                    $('#addMoreG1Obj').after(response);
+                    var trId = "addMoreG1Obj" + numItems;
+                    $('#' + trId).after(response);
                 },
                 error:function(error){
                     alert(error);
@@ -257,7 +258,8 @@
                 data: dataString,
                 type:'POST',
                 success:function(response){
-                    $('#addMoreG2Obj').after(response);
+                    var trId = "addMoreG2Obj" + numItems;
+                    $('#' + trId).after(response);
                 },
                 error:function(error){
                     alert(error);
@@ -275,7 +277,8 @@
                 data: dataString,
                 type:'POST',
                 success:function(response){
-                    $('#addMoreG3Obj').after(response);
+                    var trId = "addMoreG3Obj" + numItems;
+                    $('#' + trId).after(response);
                 },
                 error:function(error){
                     alert(error);
@@ -287,7 +290,7 @@
         $('#removeG1ObjThRowLink').click(function(){
             var numItems = $('.g1Obj').length;
             if(numItems > 1){
-                var thRowId = 'trg1'+numItems;
+                var thRowId = 'addMoreG1Obj'+numItems;
                 $('#'+thRowId).remove();
             }
         });
@@ -295,7 +298,7 @@
         $('#removeG2ObjThRowLink').click(function(){
             var numItems = $('.g2Obj').length;
             if(numItems > 1){
-                var thRowId = 'trg2'+numItems;
+                var thRowId = 'addMoreG2Obj'+numItems;
                 $('#'+thRowId).remove();
             }
         });
@@ -303,7 +306,7 @@
         $('#removeG3ObjThRowLink').click(function(){
             var numItems = $('.g3Obj').length;
             if(numItems > 1){
-                var thRowId = 'trg3'+numItems;
+                var thRowId = 'addMoreG3Obj'+numItems;
                 $('#'+thRowId).remove();
             }
         });

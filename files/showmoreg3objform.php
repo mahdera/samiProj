@@ -2,7 +2,7 @@
     $numItems = $_POST['numItems'];
     //now define the control names in here...
     $objControlName = "txtg3obj" . ($numItems + 1);
-    $trRowId = "trg3" . ($numItems + 1);
+    $trRowId = "addMoreG3Obj" . ($numItems + 1);
 ?>
 <tr id="<?php echo $trRowId;?>">
     <td colspan="2">

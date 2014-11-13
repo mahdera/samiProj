@@ -13,6 +13,9 @@
       $loggedInUserObj = getUserUsingUserId($userId);
       if($loggedInUserObj->user_status !== 'Blocked'){
         $_SESSION['LOGGED_USER_ID'] = $loggedInUserObj->id;
+        //this will have to be replaced with branch id now...or zone id
+
+
         $_SESSION['USER_ID'] = $userId;
         $_SESSION['SELECTED_THS'] = NULL;
         $_SESSION['GOAL_FIRST_STATUS'] = 'exsisting';

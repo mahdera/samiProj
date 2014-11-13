@@ -28,7 +28,8 @@
         $('#rightArrowButton').click(function(){
             var currentPageTag = $('#currentPageTag').html();
             if(currentPageTag === 'Step 6-5'){
-                $('#step6Content').load('showstep6_6content.php');
+                //$('#step6Content').load('showstep6_6content.php');
+                window.location.replace("step1.php");
             }
         });
 
