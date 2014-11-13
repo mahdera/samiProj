@@ -15,7 +15,7 @@
     function updateUser($id,$firstName, $lastName, $email,$phoneNumber,
             $memberType,$userStatus,$userLevel, $modifiedBy){
         try{
-            $query = "update tbl_user set first_name='$firstName', last_name='$lastName', email='$email', phone_number = '$phoneNumber', member_type = '$memberType',user_status = '$userStatus', user_level = '$userLevel', modified_by = $modifiedBy, modification_date = NOW() where id = $id";            
+            $query = "update tbl_user set first_name='$firstName', last_name='$lastName', email='$email', phone_number = '$phoneNumber', member_type = '$memberType',user_status = '$userStatus', user_level = '$userLevel', modified_by = $modifiedBy, modification_date = NOW() where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -190,7 +190,7 @@
 
     function fetchUserByUserIdAndEmail($userId, $email){
         try{
-            $query = "select * from tbl_user user_id = '$userId' and email = '$email'";
+            $query = "select * from tbl_user where user_id = '$userId' and email = '$email'";
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;

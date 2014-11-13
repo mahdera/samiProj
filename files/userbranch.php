@@ -77,4 +77,21 @@
         $ex->getMessage();
       }
     }
+
+    function doesThisUserHasExistingUserBranchRecord($userId){
+      try{
+        $cntVal = 0;
+        $query = "select count(*) as cnt from tbl_user_branch where user_id = $userId";
+        $result = read($query);
+        $resultRow = mysql_fetch_object($result);
+        $cntVal = $resultRow->cnt;
+        if($cntVal){
+          return true;
+        }else{
+          return false;
+        }
+      }catch(Exception $ex){
+        $ex->getMessage();
+      }
+    }
 ?>

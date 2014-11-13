@@ -20,11 +20,25 @@
       updateUser($id, $firstName, $lastName, $email, $phoneNumber, $memberType, $userStatus, $userLevel, $adminUser->id);
       //now remove any record for this user from the user_zone table
       deleteUserZoneForThisUser($id);
-      updateUserBranchForUser($id, $eitherZoneIdOrBranchId);
+      //check if a user_branch record already exists...
+      $userBranchExists = false;
+      $userBranchExists = doesThisUserHasExistingUserBranchRecord($id);
+      if($userBranchExists){
+          updateUserBranchForUser($id, $eitherZoneIdOrBranchId);
+      }else{
+          saveUserBranch($eitherZoneIdOrBranchId, $id);
+      }
     }else if($userLevel == 'Zone Level'){
       updateUser($id, $firstName, $lastName, $email, $phoneNumber, $memberType, $userStatus, $userLevel, $adminUser->id);
       deleteUserBranchForThisUser($id);
-      updateUserZoneForUser($id, $eitherZoneIdOrBranchId);
+      //check if a user_zone record already exists...
+      $userZoneExists = false;
+      $userZoneExists = doesThisUserHasExistingUserZoneRecord($id);
+      if($userZoneExists){
+          updateUserZoneForUser($id, $eitherZoneIdOrBranchId);
+      }else{
+          saveUserZone($eitherZoneIdOrBranchId, $id);
+      }
     }
 
     require_once 'showusermanagementlist.php';

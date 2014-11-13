@@ -33,11 +33,12 @@
             $ctr=1;
             while($userRow = mysql_fetch_object($userList)){
                 $zoneObj = null;
-                if($userLevel == 'Zone Level'){
+                $branchObj = null;
+                if($userRow->user_level == 'Zone Level'){
                     //fetch zone information from tbl_user_zone
                     $userZone = getZoneInfoForUser($userRow->id);
                     $zoneObj = getZone($userZone->zone_id);
-                }else if($userLevel == 'Branch Level'){
+                }else if($userRow->user_level == 'Branch Level'){
                     //fetch branch information from tbl_user_branch
                     $userBranch = getBranchInfoForUser($userRow->id);
                     $branchObj = getBranch($userBranch->branch_id);

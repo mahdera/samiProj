@@ -116,7 +116,8 @@
             }
 
             if(firstName !== "" && lastName !== "" && email !== "" && userId !== "" &&
-                    password !== "" && memberType !== "" && userStatus !== "" && eitherZoneIdOrBranchId !== ""){
+                    password !== "" && memberType !== "" && userStatus !== "" && eitherZoneIdOrBranchId !== "" &&
+                    userLevel !== ""){
                 var dataString = "firstName="+firstName+"&lastName="+lastName+
                         "&email="+email+"&userId="+userId+"&password="+password+
                         "&phoneNumber="+phoneNumber+"&memberType="+memberType+

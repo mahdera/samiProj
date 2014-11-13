@@ -141,7 +141,7 @@
                     <option value="" selected="selected">--Select--</option>
                     <?php
                         while($zoneRow = mysql_fetch_object($zoneList)){
-                            if($userZone->zone_id == $zoneRow->id){
+                            if($zoneObj->id == $zoneRow->id){
                               ?>
                                 <option value="<?php echo $zoneRow->id;?>" selected="selected"><?php echo $zoneRow->zone_name;?></option>
                               <?php
@@ -158,7 +158,7 @@
         <?php
           if($userObj->user_level == 'Branch Level'){
             //get the zone info of this user and based on that populate the branch dropdown...
-            $branchList = getAllBranchesOfThisZone($zoneObj->id);
+            $branchList = getAllBranchsOfThisZone($zoneObj->id);
             ?>
             <tr id="branchRow">
                 <td><font color='red'>*</font> Branch:</td>

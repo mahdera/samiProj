@@ -3,7 +3,7 @@
     require_once 'user.php';
     require_once 'userbranch.php';
     require_once 'userzone.php';
-    
+
     $adminUser = getUserUsingUserId($_SESSION['USER_ID']);
     //get the values...
     $firstName = $_POST['firstName'];
@@ -19,7 +19,7 @@
     //$branchId = $_POST['branchId'];
     //now I can save this info to the database...
     saveUser($firstName, $lastName, $email, $userId, $password, $phoneNumber,
-            $memberType, $userStatus, $adminUser->id);
+            $memberType, $userStatus, $userLevel, $adminUser->id);
     //fetch user by $userId and email address
     $fetchedUser = fetchUserByUserIdAndEmail($userId, $email);
     //now associate the newly crated user here
