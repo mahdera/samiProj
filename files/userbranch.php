@@ -59,4 +59,22 @@
         $ex->getMessage();
       }
     }
+
+    function updateUserBranchForUser($userId, $branchId){
+      try{
+        $query = "update tbl_user_branch set branch_id = $branchId where user_id = $userId";
+        save($query);
+      }catch(Exception $ex){
+        $ex->getMessage();
+      }
+    }
+
+    function deleteUserBranchForThisUser($userId){
+      try{
+        $query = "delete from tbl_user_branch where user_id = $userId";
+        save($query);
+      }catch(Exception $ex){
+        $ex->getMessage();
+      }
+    }
 ?>

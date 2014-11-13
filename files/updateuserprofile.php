@@ -17,10 +17,15 @@
     $eitherZoneIdOrBranchId = $_POST['eitherZoneIdOrBranchId'];
     //now I can save this info to the database...
     if($userLevel == 'Branch Level'){
-      
+      updateUser($id, $firstName, $lastName, $email, $phoneNumber, $memberType, $userStatus, $userLevel, $adminUser->id);
+      //now remove any record for this user from the user_zone table
+      deleteUserZoneForThisUser($id);
+      updateUserBranchForUser($id, $eitherZoneIdOrBranchId);
     }else if($userLevel == 'Zone Level'){
-
+      updateUser($id, $firstName, $lastName, $email, $phoneNumber, $memberType, $userStatus, $userLevel, $adminUser->id);
+      deleteUserBranchForThisUser($id);
+      updateUserZoneForUser($id, $eitherZoneIdOrBranchId);
     }
-    updateUser($id, $firstName, $lastName, $email,$phoneNumber, $memberType, $userStatus, $adminUser->id);
+
     require_once 'showusermanagementlist.php';
 ?>

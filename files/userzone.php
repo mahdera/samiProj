@@ -59,4 +59,22 @@
         $ex->getMessage();
       }
     }
+
+    function deleteUserZoneForThisUser($userId){
+      try{
+        $query = "delete from tbl_user_zone where user_id = $userId";
+        save($query);
+      }catch(Exception $ex){
+        $ex->getMessage();
+      }
+    }
+
+    function updateUserZoneForUser($userId, $zoneId){
+      try{
+        $query = "update tbl_user_zone set zone_id = $zoneId where user_id = $userId";
+        save($query);
+      }catch(Exception $ex){
+        $ex->getMessage();
+      }
+    }
 ?>
