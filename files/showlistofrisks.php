@@ -13,15 +13,15 @@
 
         $userObj = getUser($_SESSION['LOGGED_USER_ID']);
         $riskList = null;
-        if($userObj->user_level == 'Zone Level'){
+        /*if($userObj->user_level == 'Zone Level'){
             $userZoneObj = getZoneInfoForUser($userObj->id);
             $riskList = getAllRisksModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
         }else if($userObj->user_level == 'Branch Level'){
             $userBranchObj = getBranchInfoForUser($userObj->id);
             $riskList = getAllRisksModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
-        }
+        }*/
 
-        //$riskList = getAllRisksModifiedBy($_SESSION['LOGGED_USER_ID']);
+        $riskList = getAllRisksModifiedBy($_SESSION['LOGGED_USER_ID']);
         if(!empty($riskList)){
             ?>
                 <table border="0" width="100%">

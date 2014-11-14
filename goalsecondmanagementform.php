@@ -10,16 +10,16 @@
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
     $fnIdArray = array();
 
-    if($userObj->user_level == 'Zone Level'){
+    /*if($userObj->user_level == 'Zone Level'){
         $userZoneObj = getZoneInfoForUser($userObj->id);
         $fnIdArray = getAllFilteredLatestFnIdsEnteredByUserUsingUserLevel('Zone Level', $userZoneObj->zone_id);
     }else if($userObj->user_level == 'Branch Level'){
         $userBranchObj = getBranchInfoForUser($userObj->id);
         $fnIdArray = getAllFilteredLatestFnIdsEnteredByUserUsingUserLevel('Branch Level', $userBranchObj->branch_id);
-    }
+    }*/
 
     //first read fns from tbl_goal_first_g1
-    //$fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
+    $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
     //var_dump($fnIdArray);
 ?>
 <h1>Add Goal Second</h1>

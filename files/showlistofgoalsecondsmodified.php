@@ -14,15 +14,15 @@
 
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
     $goalSecondFnList = null;
-    if($userObj->user_level == 'Zone Level'){
+    /*if($userObj->user_level == 'Zone Level'){
         $userZoneObj = getZoneInfoForUser($userObj->id);
         $goalSecondFnList = getAllGoalSecondFnsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
     }else if($userObj->user_level == 'Branch Level'){
         $userBranchObj = getBranchInfoForUser($userObj->id);
         $goalSecondFnList = getAllGoalSecondFnsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
-    }
+    }*/
 
-    //$goalSecondFnList = getAllGoalSecondFnsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    $goalSecondFnList = getAllGoalSecondFnsModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
 <table border="0" width="100%">
     <tr style="background: #ccc">
@@ -38,7 +38,7 @@
             $fnObj = getFn($goalSecondFnRow->fn_id);
             $divExt = $goalSecondFnRow->modified_by ."_". $fnObj->id;
             $countVal = 0;
-            $divId = "actionDiv" . $divExt;
+            $divId = "actionDiv" . $fnObj->id;
             //$countVal = doesThisFnAlreadyActionFilledForIt($fnObj->id);
             if(true){
                 ?>
@@ -46,10 +46,10 @@
                         <td width="10%"><?php echo $ctr++;?></td>
                         <td width="20%"><?php echo $fnObj->fn_name;?></td>
                         <td>
-                            <a href="#.php" id="<?php echo $divExt;?>" class="openActionFormClass">Show Goal Second Detail</a> | <a href="#.php" id="<?php echo $fnObj->id;?>" class="closeActionFormClass">Close Goal Second Detail</a>
+                            <a href="#.php" id="<?php echo $fnObj->id;?>" class="openActionFormClass">Show Goal Second Detail</a> | <a href="#.php" id="<?php echo $fnObj->id;?>" class="closeActionFormClass">Close Goal Second Detail</a>
                         </td>
                         <td>
-                            <a href="#.php" id="<?php echo $divExt;?>" class="editGoalSecondLink">Edit</a>
+                            <a href="#.php" id="<?php echo $fnObj->id;?>" class="editGoalSecondLink">Edit</a>
                         </td>
                         <td>
                             <a href="#.php" id="<?php echo $goalSecondFnRow->id;?>" class="deleteGoalSecondLink">Delete</a>
@@ -71,11 +71,7 @@
         $('.openActionFormClass').click(function(){
             var idVal = $(this).attr('id');
             var divId = "actionDiv" + idVal;
-            var splitedResult = idVal.split('_');
-            //now create the div element using the id you got in here...
-            var fnId = splitedResult[2];
-
-            $('#' + divId).load('files/showgoalseconddetailhere.php?fn_id='+fnId);
+            $('#' + divId).load('files/showgoalseconddetailhere.php?fn_id='+idVal);
         });
 
         $('.closeActionFormClass').click(function(){

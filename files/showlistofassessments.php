@@ -11,14 +11,14 @@
         require_once 'userzone.php';
         $userObj = getUser($_SESSION['LOGGED_USER_ID']);
         $assessmentList = null;
-        if($userObj->user_level == 'Zone Level'){
+        /*if($userObj->user_level == 'Zone Level'){
             $userZoneObj = getZoneInfoForUser($userObj->id);
             $assessmentList = getAllAssessmentsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
         }else{
             $userBranchObj = getBranchInfoForUser($userObj->id);
             $assessmentList = getAllAssessmentsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
-        }
-        //$assessmentList = getAllAssessmentsModifiedBy($_SESSION['LOGGED_USER_ID']);
+        }*/
+        $assessmentList = getAllAssessmentsModifiedBy($_SESSION['LOGGED_USER_ID']);
         if(!empty($assessmentList)){
             ?>
                 <table border="0" width="100%">

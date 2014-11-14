@@ -11,16 +11,16 @@
     require_once 'userbranch.php';
     require_once 'userzone.php';
     //$goalFirstList = getAllGoalFirstsModifiedBy($_SESSION['LOGGED_USER_ID']);
-    $goalFirstThList = null;//getAllGoalFirstThsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    $goalFirstThList = getAllGoalFirstThsModifiedBy($_SESSION['LOGGED_USER_ID']);
     //this will have to be like all goalFirsts then filter out the ths in the goal first list
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
-    if($userObj->user_level == 'Zone Level'){
+    /*if($userObj->user_level == 'Zone Level'){
         $userZoneObj = getZoneInfoForUser($userObj->id);
         $goalFirstThList = getAllGoalFirstThsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
     }else if($userObj->user_level == 'Branch Level'){
         $userBranchObj = getBranchInfoForUser($userObj->id);
         $goalFirstThList = getAllGoalFirstThsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
-    }
+    }*/
 
     if(!empty($goalFirstThList)){
         ?>

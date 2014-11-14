@@ -12,14 +12,14 @@
 
         $userObj = getUser($_SESSION['LOGGED_USER_ID']);
         $teamList = null;
-        if($userObj->user_level == 'Zone Level'){
+        /*if($userObj->user_level == 'Zone Level'){
             $userZoneObj = getZoneInfoForUser($userObj->id);
             $teamList = getAllTeamsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
         }else if($userObj->user_level == 'Branch Level'){
             $userBranchObj = getBranchInfoForUser($userObj->id);
             $teamList = getAllTeamsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
-        }
-        //$teamList = getAllTeamsModifiedBy($_SESSION['LOGGED_USER_ID']);
+        }*/
+        $teamList = getAllTeamsModifiedBy($_SESSION['LOGGED_USER_ID']);
         //now i need to get the level of the user and the based on that i will have to
         //query the records...
         if(!empty($teamList)){

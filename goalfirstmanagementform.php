@@ -9,15 +9,15 @@
 
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
     $fnList = null;
-    if($userObj->user_level == 'Zone Level'){
+    /*if($userObj->user_level == 'Zone Level'){
         $userZoneObj = getZoneInfoForUser($userObj->id);
         $fnList = getAllFnsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
     }else if($userObj->user_level == 'Branch Level'){
         $userBranchObj = getBranchInfoForUser($userObj->id);
         $fnList = getAllFnsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
-    }
+    }*/
     //$fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
-    //$fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
+    $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
 ?>
 <h1>Add Goal First</h1>
 <a href="#.php" id="showGoalFirstManagementFormLinkId">Show Form</a>
