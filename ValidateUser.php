@@ -13,6 +13,7 @@
       $loggedInUserObj = getUserUsingUserId($userId);
       if($loggedInUserObj->user_status !== 'Blocked'){
         $_SESSION['LOGGED_USER_ID'] = $loggedInUserObj->id;
+        $_SESSION['INDIVIDUAL_INT_USER_ID'] = $loggedInUserObj->id;
         //this will have to be replaced with branch id now...or zone id
 
 
@@ -20,6 +21,7 @@
         $_SESSION['SELECTED_THS'] = NULL;
         $_SESSION['GOAL_FIRST_STATUS'] = 'exsisting';
         $_SESSION['GOAL_SECOND_STATUS'] = 'exsisting';
+
         if($loggedInUserObj->member_type === 'Admin'){
           header('Location: adminhome.php');
         }else{

@@ -69,6 +69,17 @@
                 </select>
             </td>
         </tr>
+        <tr>
+            <td><font color="red">*</font> User Role:</td>
+            <td>
+                <select name="slctuserrole" id="slctuserrole" style="width:100%">
+                    <option value="" selected="selected">--Select--</option>
+                    <option value="Branch Admin">Branch Admin</option>
+                    <option value="User">User</option>
+                    <option value="Zone Admin">Zone Admin</option>
+                </select>
+            </td>
+        </tr>
         <tr id="zoneRow">
             <td><font color='red'>*</font> Zone:</td>
             <td>
@@ -149,6 +160,7 @@
             var memberType = $('#slctmembertype').val();
             var userStatus = $('#slctuserstatus').val();
             var userLevel = $('#slctuserlevel').val();
+            var userRole = $('#slctuserrole').val();
             var eitherZoneIdOrBranchId = "";
             if(userLevel == 'Zone Level'){
                 eitherZoneIdOrBranchId = $('#slctzone').val();
@@ -158,12 +170,12 @@
 
             if(firstName !== "" && lastName !== "" && email !== "" && userId !== "" &&
                     password !== "" && memberType !== "" && userStatus !== "" && userLevel !== "" &&
-                    eitherZoneIdOrBranchId !== ""){
+                    eitherZoneIdOrBranchId !== "" && userRole !== ""){
                 var dataString = "firstName="+firstName+"&lastName="+lastName+
                         "&email="+email+"&userId="+userId+"&password="+password+
                         "&phoneNumber="+phoneNumber+"&memberType="+memberType+
                         "&userStatus="+userStatus+"&eitherZoneIdOrBranchId="+eitherZoneIdOrBranchId+
-                        "&userLevel="+encodeURIComponent(userLevel);
+                        "&userLevel="+encodeURIComponent(userLevel)+"&userRole="+encodeURIComponent(userRole);
                 $.ajax({
                     url: 'files/createusersignup.php',
                     data: dataString,
@@ -179,6 +191,20 @@
             }else{
                 alert('Enter the required filed members!');
             }
+        });
+
+        $('#slctuserrole').change(function(){
+          var userRole = $(this).val();
+          var userLevel = $('#slctuserlevel').val();
+          if(userRole !== '' && userLevel !== ''){
+              if(userLevel == 'Branch Level' && userRole == 'Zone Admin'){
+                  alert('A branch level user can not have a Zone Admin role! Please select again!');
+                  $('#slctuserrole').val('');
+              }else if(userLevel == 'Zone Level' && userRole == 'Branch Admin'){
+                  alert('A zone level user can not have a Branch Admin role! Please select again!');
+                  $('#slctuserrole').val('');
+              }
+          }
         });
     });//end document.ready function
 </script>

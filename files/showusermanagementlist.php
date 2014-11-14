@@ -1,17 +1,40 @@
 <?php
+    session_start();
     require_once 'user.php';
     require_once 'zone.php';
     require_once 'branch.php';
     require_once 'userzone.php';
     require_once 'userbranch.php';
-    //get all non-admin users
-    $userList = getAllNonAdminUsers();
+    $theUserId = $_SESSION['INDIVIDUAL_INT_USER_ID'];
+    $loggedInUserObj = getUser($theUserId);
+    $userList = null;
+    if($loggedInUserObj->member_type == 'Admin'){
+        $userList = getAllNonAdminUsers();
+    }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == 'Branch Admin'){
+        //now get the branch id of the logged in user
+        $userBranchObj = getBranchInfoForUser($theUserId);
+        $userList = getAllBranchUsersWithBranchId($userBranchObj->branch_id);
+    }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == 'Zone Admin'){
+        //now get the zone id of the logged in user and get all zone and branch level users found under the zone id of this logged in user
+        $userZoneObj = getZoneInfoForUser($theUserId);
+        $userList = getAllZoneAndBranchUsersWithZoneId($userZoneObj->zone_id);
+    }
 ?>
 <form>
     <div>
-        <a href="#.php" id="createUserLink">Create User</a> |
-        <a href="#.php" id="zoneManagementLink">Zone Management</a> |
-        <a href="#.php" id="branchManagementLink">Branch Management</a>
+        <?php
+          if($loggedInUserObj->member_type == 'Admin'){
+            ?>
+              <a href="#.php" id="createUserLink">Create User</a> |
+              <a href="#.php" id="zoneManagementLink">Zone Management</a> |
+              <a href="#.php" id="branchManagementLink">Branch Management</a>
+            <?php
+          }else{
+            ?>
+              <a href="#.php" id="createUserLink">Create User</a>
+            <?php
+          }
+        ?>
     </div>
     <table border="0" width="100%">
         <tr style="background: #eee">
@@ -23,6 +46,7 @@
             <td>Member Type</td>
             <td>Member Status</td>
             <td>User Level</td>
+            <td>User Role</td>
             <td>Zone</td>
             <td>Branch</td>
             <td>Modification Date</td>
@@ -54,6 +78,7 @@
                     <td><?php echo $userRow->member_type;?></td>
                     <td><?php echo $userRow->user_status;?></td>
                     <td><?php echo ($userRow->user_level != null ? $userRow->user_level : '---');?></td>
+                    <td><?php echo ($userRow->user_role != null ? $userRow->user_role : '---');?></td>
                     <td><?php echo ($zoneObj != null ? $zoneObj->zone_name : '---');?></td>
                     <td><?php echo ($branchObj != null ? $branchObj->branch_name : '---');?></td>
                     <td><?php echo $userRow->modification_date;?></td>

@@ -29,7 +29,7 @@
             var currentPageTag = $('#currentPageTag').html();
             if(currentPageTag === 'Step 6-5'){
                 //$('#step6Content').load('showstep6_6content.php');
-                window.location.replace("step1.php");
+                window.location.replace("intro1.php");
             }
         });
 

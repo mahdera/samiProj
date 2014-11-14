@@ -2,10 +2,10 @@
     require_once 'dbconnection.php';
 
     function saveUser($firstName, $lastName, $email, $userId, $password, $phoneNumber,
-            $memberType,$userStatus, $userLevel, $modifiedBy){
+            $memberType,$userStatus, $userLevel, $userRole, $modifiedBy){
         $md5Password = md5($password);
         try{
-            $query = "insert into tbl_user values(0,'$firstName','$lastName','$email','$userId','$md5Password','$phoneNumber','$memberType','$userStatus', '$userLevel', $modifiedBy,NOW())";
+            $query = "insert into tbl_user values(0,'$firstName','$lastName','$email','$userId','$md5Password','$phoneNumber','$memberType','$userStatus', '$userLevel', '$userRole', $modifiedBy,NOW())";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -13,9 +13,9 @@
     }
 
     function updateUser($id,$firstName, $lastName, $email,$phoneNumber,
-            $memberType,$userStatus,$userLevel, $modifiedBy){
+            $memberType,$userStatus,$userLevel,$userRole, $modifiedBy){
         try{
-            $query = "update tbl_user set first_name='$firstName', last_name='$lastName', email='$email', phone_number = '$phoneNumber', member_type = '$memberType',user_status = '$userStatus', user_level = '$userLevel', modified_by = $modifiedBy, modification_date = NOW() where id = $id";
+            $query = "update tbl_user set first_name='$firstName', last_name='$lastName', email='$email', phone_number = '$phoneNumber', member_type = '$memberType',user_status = '$userStatus', user_level = '$userLevel', user_role = '$userRole', modified_by = $modifiedBy, modification_date = NOW() where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -194,6 +194,29 @@
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
+
+    function getAllBranchUsersWithBranchId($branchId){
+        try{
+            $query = "select tbl_user.* from tbl_user, tbl_user_branch where tbl_user.id = tbl_user_branch.user_id and tbl_user_branch.branch_id = $branchId";
+            $result = read($query);
+            return $result;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
+
+    function getAllZoneAndBranchUsersWithZoneId($zoneId){
+        try{
+            $query = "select tbl_user.* from tbl_user, tbl_user_zone where tbl_user.id = tbl_user_zone.user_id and " .
+            "tbl_user_zone.zone_id = $zoneId UNION select tbl_user.* from tbl_user, tbl_user_branch, tbl_branch " .
+            "where tbl_user.id = tbl_user_branch.user_id and tbl_user_branch.branch_id = tbl_branch.id and " .
+            "tbl_branch.zone_id = $zoneId";
+            $result = read($query);
+            return $result;
         }catch(Exception $ex){
             $ex->getMessage();
         }

@@ -47,4 +47,14 @@
       $ex->getMessage();
     }
   }
+
+  function getAllZonesWithZoneId($zoneId){
+    try{
+      $query = "select * from tbl_zone where id = $zoneId";
+      $result = read($query);
+      return $result;
+    }catch(Exception $ex){
+      $ex->getMessage();
+    }
+  }
 ?>

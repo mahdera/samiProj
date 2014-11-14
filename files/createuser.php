@@ -16,10 +16,11 @@
     $userStatus = $_POST['userStatus'];
     $userLevel = $_POST['userLevel'];
     $eitherZoneIdOrBranchId = $_POST['eitherZoneIdOrBranchId'];
+    $userRole = $_POST['userRole'];
     //$branchId = $_POST['branchId'];
     //now I can save this info to the database...
     saveUser($firstName, $lastName, $email, $userId, $password, $phoneNumber,
-            $memberType, $userStatus, $userLevel, $adminUser->id);
+            $memberType, $userStatus, $userLevel,$userRole, $adminUser->id);
     //fetch user by $userId and email address
     $fetchedUser = fetchUserByUserIdAndEmail($userId, $email);
     //now associate the newly crated user here

@@ -14,10 +14,11 @@
     $memberType = $_POST['memberType'];
     $userStatus = $_POST['userStatus'];
     $userLevel = $_POST['userLevel'];
+    $userRole = $_POST['userRole'];
     $eitherZoneIdOrBranchId = $_POST['eitherZoneIdOrBranchId'];
     //now I can save this info to the database...
     if($userLevel == 'Branch Level'){
-      updateUser($id, $firstName, $lastName, $email, $phoneNumber, $memberType, $userStatus, $userLevel, $adminUser->id);
+      updateUser($id, $firstName, $lastName, $email, $phoneNumber, $memberType, $userStatus, $userLevel, $userRole, $adminUser->id);
       //now remove any record for this user from the user_zone table
       deleteUserZoneForThisUser($id);
       //check if a user_branch record already exists...
@@ -29,7 +30,7 @@
           saveUserBranch($eitherZoneIdOrBranchId, $id);
       }
     }else if($userLevel == 'Zone Level'){
-      updateUser($id, $firstName, $lastName, $email, $phoneNumber, $memberType, $userStatus, $userLevel, $adminUser->id);
+      updateUser($id, $firstName, $lastName, $email, $phoneNumber, $memberType, $userStatus, $userLevel, $userRole, $adminUser->id);
       deleteUserBranchForThisUser($id);
       //check if a user_zone record already exists...
       $userZoneExists = false;

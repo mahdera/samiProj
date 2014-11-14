@@ -4,4 +4,4 @@
     require_once 'user.php';
     resetUserPassword($id, $resetPassword);
 ?>
-<p style="background: lightgreen">User Password Reset Successfully!</p>
+<div class="notify notify-green"><span class="symbol icon-tick"></span> User Password Reset Successfully!</div>

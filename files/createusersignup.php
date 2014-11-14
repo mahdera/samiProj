@@ -15,9 +15,10 @@
     $userStatus = $_POST['userStatus'];//is in a pending status...so email the activation link
     $userLevel = $_POST['userLevel'];
     $eitherZoneIdOrBranchId = $_POST['eitherZoneIdOrBranchId'];
+    $userRole = $_POST['userRole'];
     //now I can save this info to the database...
     saveUser($firstName, $lastName, $email, $userId, $password, $phoneNumber,
-                    $memberType, $userStatus, $userLevel, 0);
+                    $memberType, $userStatus, $userLevel,$userRole, 0);
     //fetch user by $userId and email address
     $fetchedUser = fetchUserByUserIdAndEmail($userId, $email);
     //now associate the newly crated user here

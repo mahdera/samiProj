@@ -196,12 +196,12 @@ ul.sq {
     border-bottom: 6px solid #84B537;
 }
 #menudiv {
-    width: 50%;
+    width: 20%;
     float:left;
     display: inline;
 }
 #rightcontain {
-    width: 50%;
+    width: 80%;
     float:right;
     display: inline;
 }

@@ -1,7 +1,24 @@
 <?php
+  session_start();
   require_once 'zone.php';
   require_once 'branch.php';
-  $zoneList = getAllZones();
+  require_once 'userzone.php';
+  require_once 'userbranch.php';
+  require_once 'user.php';
+
+  $theUserId = $_SESSION['INDIVIDUAL_INT_USER_ID'];
+  $loggedInUserObj = getUser($theUserId);
+  $zoneList = null;
+  if($loggedInUserObj->member_type == 'Admin'){
+        $zoneList = getAllZones();
+  }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == 'Zone Admin'){
+        $userZoneObj = getZoneInfoForUser($theUserId);
+        $zoneList = getAllZonesWithZoneId($userZoneObj->zone_id);
+  }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == 'Branch Admin'){
+        //$userBranchObj = getBranchInfoForUser($theUserId);
+
+  }
+
 ?>
 <h1>Create User</h1>
 <form>
@@ -66,9 +83,31 @@
             <td><font color='red'>*</font> User Level:</td>
             <td>
                 <select name="slctuserlevel" id="slctuserlevel" style="width:100%">
+                    <?php
+                      if($loggedInUserObj->user_role == 'Branch Admin'){
+                        ?>
+                            <option value="" selected="selected">--Select--</option>
+                            <option value="Branch Level">Branch Level</option>
+                        <?php
+                      }else{
+                        ?>
+                            <option value="" selected="selected">--Select--</option>
+                            <option value="Branch Level">Branch Level</option>
+                            <option value="Zone Level">Zone Level</option>
+                        <?php
+                      }
+                    ?>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><font color="red">*</font> User Role:</td>
+            <td>
+                <select name="slctuserrole" id="slctuserrole" style="width:100%">
                     <option value="" selected="selected">--Select--</option>
-                    <option value="Branch Level">Branch Level</option>
-                    <option value="Zone Level">Zone Level</option>
+                    <option value="Branch Admin">Branch Admin</option>
+                    <option value="User">User</option>
+                    <option value="Zone Admin">Zone Admin</option>
                 </select>
             </td>
         </tr>
@@ -108,6 +147,7 @@
             var memberType = $('#slctmembertype').val();
             var userStatus = $('#slctuserstatus').val();
             var userLevel = $('#slctuserlevel').val();
+            var userRole = $('#slctuserrole').val();
             var eitherZoneIdOrBranchId = "";
             if(userLevel == 'Zone Level'){
                 eitherZoneIdOrBranchId = $('#slctzone').val();
@@ -117,12 +157,12 @@
 
             if(firstName !== "" && lastName !== "" && email !== "" && userId !== "" &&
                     password !== "" && memberType !== "" && userStatus !== "" && eitherZoneIdOrBranchId !== "" &&
-                    userLevel !== ""){
+                    userLevel !== "" && userRole !== ""){
                 var dataString = "firstName="+firstName+"&lastName="+lastName+
                         "&email="+email+"&userId="+userId+"&password="+password+
                         "&phoneNumber="+phoneNumber+"&memberType="+memberType+
                         "&userStatus="+userStatus+"&userLevel="+encodeURIComponent(userLevel)+"&eitherZoneIdOrBranchId="+
-                        eitherZoneIdOrBranchId;
+                        eitherZoneIdOrBranchId+"&userRole="+encodeURIComponent(userRole);
                 $.ajax({
                     url: 'files/createuser.php',
                     data: dataString,
@@ -182,6 +222,20 @@
                     });
                 }
             }
+        });
+
+        $('#slctuserrole').change(function(){
+          var userRole = $(this).val();
+          var userLevel = $('#slctuserlevel').val();
+          if(userRole !== '' && userLevel !== ''){
+              if(userLevel == 'Branch Level' && userRole == 'Zone Admin'){
+                  alert('A branch level user can not have a Zone Admin role! Please select again!');
+                  $('#slctuserrole').val('');
+              }else if(userLevel == 'Zone Level' && userRole == 'Branch Admin'){
+                  alert('A zone level user can not have a Branch Admin role! Please select again!');
+                  $('#slctuserrole').val('');
+              }
+          }
         });
 
     });//end document.ready function
