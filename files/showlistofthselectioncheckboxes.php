@@ -1,11 +1,22 @@
 <?php session_start();?>
 <div>
     <?php
-        //now display the saved data back to the user...
-        //require_once 'dbconnection.php';
         require_once 'risk.php';
         require_once 'th.php';
+        require_once 'user.php';
+        require_once 'userbranch.php';
+        require_once 'userzone.php';
+
+        $userObj = getUser($_SESSION['LOGGED_USER_ID']);
         $riskList = null;
+        if($userObj->user_level == 'Zone Level'){
+            $userZoneObj = getZoneInfoForUser($userObj->id);
+            $riskList = getAllRisksModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
+        }else if($userObj->user_level == 'Branch Level'){
+            $userBranchObj = getBranchInfoForUser($userObj->id);
+            $riskList = getAllRisksModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
+        }
+
         $selectedThIdArray = null;
         //var_dump($_SESSION['SELECTED_THS']);
         //if session containing list of selected checkboxes is empty...then read from database
@@ -13,7 +24,7 @@
           //echo 'inside most fancy place';
           $selectedThIdArray = $_SESSION['SELECTED_THS'];
         }
-        $riskList = getAllRisksModifiedBy($_SESSION['LOGGED_USER_ID']);
+        //$riskList = getAllRisksModifiedBy($_SESSION['LOGGED_USER_ID']);
 
         if(!empty($riskList)){
             ?>

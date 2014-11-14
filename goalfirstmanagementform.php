@@ -3,8 +3,21 @@
     session_start();
     require_once 'files/th.php';
     require_once 'files/fn.php';
+    require_once 'files/user.php';
+    require_once 'files/userbranch.php';
+    require_once 'files/userzone.php';
+
+    $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+    $fnList = null;
+    if($userObj->user_level == 'Zone Level'){
+        $userZoneObj = getZoneInfoForUser($userObj->id);
+        $fnList = getAllFnsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
+    }else if($userObj->user_level == 'Branch Level'){
+        $userBranchObj = getBranchInfoForUser($userObj->id);
+        $fnList = getAllFnsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
+    }
     //$fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
-    $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
+    //$fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
 ?>
 <h1>Add Goal First</h1>
 <a href="#.php" id="showGoalFirstManagementFormLinkId">Show Form</a>
@@ -79,7 +92,14 @@
                             <select name="slctg1fn1" id="slctg1fn1" style="width: 100%" class="fnDropDown">
                                 <option value="" selected="selected">--Select--</option>
                                 <?php
-                                    $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
+                                    //$fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
+                                    if($userObj->user_level == 'Zone Level'){
+                                        $userZoneObj = getZoneInfoForUser($userObj->id);
+                                        $fnList = getAllFnsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
+                                    }else if($userObj->user_level == 'Branch Level'){
+                                        $userBranchObj = getBranchInfoForUser($userObj->id);
+                                        $fnList = getAllFnsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
+                                    }
                                     while($fnRow = mysql_fetch_object($fnList)){
                                         ?>
                                             <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
@@ -117,7 +137,14 @@
                 <select name="slctg2fn" id="slctg2fn" style="width: 100%" class="fnDropDown">
                     <option value="" selected="selected">--Select--</option>
                     <?php
-                        $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
+                        //$fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
+                        if($userObj->user_level == 'Zone Level'){
+                            $userZoneObj = getZoneInfoForUser($userObj->id);
+                            $fnList = getAllFnsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
+                        }else if($userObj->user_level == 'Branch Level'){
+                            $userBranchObj = getBranchInfoForUser($userObj->id);
+                            $fnList = getAllFnsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
+                        }
                         while($fnRow = mysql_fetch_object($fnList)){
                             ?>
                                 <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
@@ -148,7 +175,14 @@
                             <select name="slctg2fn1" id="slctg2fn1" style="width: 100%" class="fnDropDown">
                                 <option value="" selected="selected">--Select--</option>
                                 <?php
-                                    $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
+                                    //$fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
+                                    if($userObj->user_level == 'Zone Level'){
+                                        $userZoneObj = getZoneInfoForUser($userObj->id);
+                                        $fnList = getAllFnsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
+                                    }else if($userObj->user_level == 'Branch Level'){
+                                        $userBranchObj = getBranchInfoForUser($userObj->id);
+                                        $fnList = getAllFnsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
+                                    }
                                     while($fnRow = mysql_fetch_object($fnList)){
                                         ?>
                                             <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
@@ -186,7 +220,14 @@
                 <select name="slctg3fn" id="slctg3fn" style="width: 100%" class="fnDropDown">
                     <option value="" selected="selected">--Select--</option>
                     <?php
-                        $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
+                        //$fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
+                        if($userObj->user_level == 'Zone Level'){
+                            $userZoneObj = getZoneInfoForUser($userObj->id);
+                            $fnList = getAllFnsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
+                        }else if($userObj->user_level == 'Branch Level'){
+                            $userBranchObj = getBranchInfoForUser($userObj->id);
+                            $fnList = getAllFnsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
+                        }
                         while($fnRow = mysql_fetch_object($fnList)){
                             ?>
                                 <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
@@ -217,7 +258,14 @@
                             <select name="slctg3fn1" id="slctg3fn1" style="width: 100%" class="fnDropDown">
                                 <option value="" selected="selected">--Select--</option>
                                 <?php
-                                    $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
+                                    //$fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
+                                    if($userObj->user_level == 'Zone Level'){
+                                        $userZoneObj = getZoneInfoForUser($userObj->id);
+                                        $fnList = getAllFnsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
+                                    }else if($userObj->user_level == 'Branch Level'){
+                                        $userBranchObj = getBranchInfoForUser($userObj->id);
+                                        $fnList = getAllFnsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
+                                    }
                                     while($fnRow = mysql_fetch_object($fnList)){
                                         ?>
                                             <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>

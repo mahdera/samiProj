@@ -1,7 +1,20 @@
 <?php
     session_start();
     require_once 'fn.php';
-    $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
+    require_once 'user.php';
+    require_once 'userbranch.php';
+    require_once 'userzone.php';
+    $fnList = null;
+    //$fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
+    $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+    if($userObj->user_level == 'Zone Level'){
+        $userZoneObj = getZoneInfoForUser($userObj->id);
+        $fnList = getAllFnsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
+    }else if($userObj->user_level == 'Branch Level'){
+        $userBranchObj = getBranchInfoForUser($userObj->id);
+        $fnList = getAllFnsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
+    }
+    //$fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
     $numItems = $_POST['numItems'];
     //now define the control names in here...
     $objControlName = "txtg2obj" . ($numItems + 1);
