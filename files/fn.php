@@ -92,6 +92,146 @@
         }
     }
 
+    function getAllFilteredLatestFnIdsEnteredByUserUsingUserLevel($userLevel, $divisionId){
+        $ctr = 0;
+        $fnIdArray = array();
+        $query = null;
+        try{
+            //first read from tbl_goal_first_g1
+            if($userLevel == 'Branch Level'){
+                $query = "select tbl_goal_first_g1.* from tbl_goal_first_g1, tbl_user_branch where " .
+                "tbl_goal_first_g1.modified_by = tbl_user_branch.user_id and " .
+                "tbl_user_branch.branch_id = $divisionId order by modification_date desc";
+            }else if($userLevel == 'Zone Level'){
+                $query = "select tbl_goal_first_g1.* from tbl_goal_first_g1, tbl_user_zone " .
+                "where tbl_goal_first_g1.modified_by = tbl_user_zone.user_id and " .
+                "tbl_user_zone.zone_id = $divisionId  UNION select tbl_goal_first_g1.* from tbl_goal_first_g1, tbl_user_branch, tbl_branch " .
+                "where tbl_goal_first_g1.modified_by = tbl_user_branch.user_id and ".
+                "tbl_user_branch.branch_id = tbl_branch.id and tbl_branch.zone_id = $divisionId order by modification_date desc";
+            }
+            $result = read($query);
+            while($resultRow = mysql_fetch_object($result)){
+                $fnIdArray[$ctr] = $resultRow->fn_id;
+                $ctr++;
+            }//end while loop
+            //second read from tbl_goal_first_g1_obj_fn
+            if($userLevel == 'Branch Level'){
+                $query = "select tbl_goal_first_g1_obj_fn.* from tbl_goal_first_g1_obj_fn, tbl_user_branch where " .
+                "tbl_goal_first_g1_obj_fn.modified_by = tbl_user_branch.user_id and " .
+                "tbl_user_branch.branch_id = $divisionId order by modification_date desc";
+            }else if($userLevel == 'Zone Level'){
+                $query = "select tbl_goal_first_g1_obj_fn.* from tbl_goal_first_g1_obj_fn, tbl_user_zone " .
+                "where tbl_goal_first_g1_obj_fn.modified_by = tbl_user_zone.user_id and " .
+                "tbl_user_zone.zone_id = $divisionId  UNION select tbl_goal_first_g1_obj_fn.* from tbl_goal_first_g1_obj_fn, tbl_user_branch, tbl_branch " .
+                "where tbl_goal_first_g1_obj_fn.modified_by = tbl_user_branch.user_id and ".
+                "tbl_user_branch.branch_id = tbl_branch.id and tbl_branch.zone_id = $divisionId order by modification_date desc";
+            }
+            //$query = "select * from tbl_goal_first_g1_obj_fn where modified_by = $modifiedBy order by modification_date desc";
+            $result = read($query);
+            while($resultRow = mysql_fetch_object($result)){
+                $fnIdArray[$ctr] = $resultRow->fn_id;
+                $ctr++;
+            }//end while loop
+            //third read from tbl_goal_first_g2
+            if($userLevel == 'Branch Level'){
+                $query = "select tbl_goal_first_g2.* from tbl_goal_first_g2, tbl_user_branch where " .
+                "tbl_goal_first_g2.modified_by = tbl_user_branch.user_id and " .
+                "tbl_user_branch.branch_id = $divisionId order by modification_date desc";
+            }else if($userLevel == 'Zone Level'){
+                $query = "select tbl_goal_first_g2.* from tbl_goal_first_g2, tbl_user_zone " .
+                "where tbl_goal_first_g2.modified_by = tbl_user_zone.user_id and " .
+                "tbl_user_zone.zone_id = $divisionId  UNION select tbl_goal_first_g2.* from tbl_goal_first_g2, tbl_user_branch, tbl_branch " .
+                "where tbl_goal_first_g2.modified_by = tbl_user_branch.user_id and ".
+                "tbl_user_branch.branch_id = tbl_branch.id and tbl_branch.zone_id = $divisionId order by modification_date desc";
+            }
+            //$query = "select * from tbl_goal_first_g2 where modified_by = $modifiedBy order by modification_date desc";
+            $result = read($query);
+            while($resultRow = mysql_fetch_object($result)){
+                $fnIdArray[$ctr] = $resultRow->fn_id;
+                $ctr++;
+            }//end while loop
+            //fourth read from tbl_goal_first_g2_obj_fn
+            if($userLevel == 'Branch Level'){
+                $query = "select tbl_goal_first_g2_obj_fn.* from tbl_goal_first_g2_obj_fn, tbl_user_branch where " .
+                "tbl_goal_first_g2_obj_fn.modified_by = tbl_user_branch.user_id and " .
+                "tbl_user_branch.branch_id = $divisionId order by modification_date desc";
+            }else if($userLevel == 'Zone Level'){
+                $query = "select tbl_goal_first_g2_obj_fn.* from tbl_goal_first_g2_obj_fn, tbl_user_zone " .
+                "where tbl_goal_first_g2_obj_fn.modified_by = tbl_user_zone.user_id and " .
+                "tbl_user_zone.zone_id = $divisionId  UNION select tbl_goal_first_g2_obj_fn.* from tbl_goal_first_g2_obj_fn, tbl_user_branch, tbl_branch " .
+                "where tbl_goal_first_g2_obj_fn.modified_by = tbl_user_branch.user_id and ".
+                "tbl_user_branch.branch_id = tbl_branch.id and tbl_branch.zone_id = $divisionId order by modification_date desc";
+            }
+            //$query = "select * from tbl_goal_first_g2_obj_fn where modified_by = $modifiedBy order by modification_date desc";
+            $result = read($query);
+            while($resultRow = mysql_fetch_object($result)){
+                $fnIdArray[$ctr] = $resultRow->fn_id;
+                $ctr++;
+            }//end while loop
+            //fifth read from tbl_goal_first_g3
+            if($userLevel == 'Branch Level'){
+                $query = "select tbl_goal_first_g3.* from tbl_goal_first_g3, tbl_user_branch where " .
+                "tbl_goal_first_g3.modified_by = tbl_user_branch.user_id and " .
+                "tbl_user_branch.branch_id = $divisionId order by modification_date desc";
+            }else if($userLevel == 'Zone Level'){
+                $query = "select tbl_goal_first_g3.* from tbl_goal_first_g3, tbl_user_zone " .
+                "where tbl_goal_first_g3.modified_by = tbl_user_zone.user_id and " .
+                "tbl_user_zone.zone_id = $divisionId  UNION select tbl_goal_first_g3.* from tbl_goal_first_g3, tbl_user_branch, tbl_branch " .
+                "where tbl_goal_first_g3.modified_by = tbl_user_branch.user_id and ".
+                "tbl_user_branch.branch_id = tbl_branch.id and tbl_branch.zone_id = $divisionId order by modification_date desc";
+            }
+            //$query = "select * from tbl_goal_first_g3 where modified_by = $modifiedBy order by modification_date desc";
+            $result = read($query);
+            while($resultRow = mysql_fetch_object($result)){
+                $fnIdArray[$ctr] = $resultRow->fn_id;
+                $ctr++;
+            }//end while loop
+            //fourth read from tbl_goal_first_g3_obj_fn
+            if($userLevel == 'Branch Level'){
+                $query = "select tbl_goal_first_g3_obj_fn.* from tbl_goal_first_g3_obj_fn, tbl_user_branch where " .
+                "tbl_goal_first_g3_obj_fn.modified_by = tbl_user_branch.user_id and " .
+                "tbl_user_branch.branch_id = $divisionId order by modification_date desc";
+            }else if($userLevel == 'Zone Level'){
+                $query = "select tbl_goal_first_g3_obj_fn.* from tbl_goal_first_g3_obj_fn, tbl_user_zone " .
+                "where tbl_goal_first_g3_obj_fn.modified_by = tbl_user_zone.user_id and " .
+                "tbl_user_zone.zone_id = $divisionId  UNION select tbl_goal_first_g3_obj_fn.* from tbl_goal_first_g3_obj_fn, tbl_user_branch, tbl_branch " .
+                "where tbl_goal_first_g3_obj_fn.modified_by = tbl_user_branch.user_id and ".
+                "tbl_user_branch.branch_id = tbl_branch.id and tbl_branch.zone_id = $divisionId order by modification_date desc";
+            }
+            //$query = "select * from tbl_goal_first_g3_obj_fn where modified_by = $modifiedBy order by modification_date desc";
+            $result = read($query);
+            while($resultRow = mysql_fetch_object($result)){
+                $fnIdArray[$ctr] = $resultRow->fn_id;
+                $ctr++;
+            }//end while loop
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+
+        //before returning the array i need to check if there are duplicates and
+        //leave out the duplicates...
+        $fnIdArrayFiltered = array();
+
+        //now check if the element already exists in the second newly created array
+        $elementExists = false;
+        for($i=0; $i<count($fnIdArray); $i++){
+          for($j=0; $j<count($fnIdArrayFiltered);$j++){
+            if($fnIdArray[$i] == $fnIdArrayFiltered[$j]){
+                $elementExists = true;
+                break;
+            }
+          }
+          //now check here and if safe add element to fnIdArrayFiltered array...
+          if($elementExists == false){
+              $currentArrayIndex = count($fnIdArrayFiltered);
+              $fnIdArrayFiltered[$currentArrayIndex] = $fnIdArray[$i];
+          }
+          $elementExists = false;
+        }//end for $i loop eliminating repeating function_id works perfectly...
+        //var_dump($fnIdArrayFiltered);
+        return $fnIdArrayFiltered;
+    }
+
     function getAllFilteredLatestFnIdsEnteredByUser($modifiedBy){
         $ctr = 0;
         $fnIdArray = array();

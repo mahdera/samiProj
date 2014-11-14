@@ -100,4 +100,26 @@
             $ex->getMessage();
         }
     }
+
+    function getAllGoalSecondFnsModifiedByUsingUserLevel($userLevel, $divisionId){
+        try{
+            $query = null;
+            if($userLevel == 'Branch Level'){
+                $query = "select tbl_goal_second_fn.* from tbl_goal_second_fn, tbl_user_branch where " .
+                "tbl_goal_second_fn.modified_by = tbl_user_branch.user_id and " .
+                "tbl_user_branch.branch_id = $divisionId order by modification_date desc";
+            }else if($userLevel == 'Zone Level'){
+                $query = "select tbl_goal_second_fn.* from tbl_goal_second_fn, tbl_user_zone " .
+                "where tbl_goal_second_fn.modified_by = tbl_user_zone.user_id and " .
+                "tbl_user_zone.zone_id = $divisionId  UNION select tbl_goal_second_fn.* from tbl_goal_second_fn, tbl_user_branch, tbl_branch " .
+                "where tbl_goal_second_fn.modified_by = tbl_user_branch.user_id and ".
+                "tbl_user_branch.branch_id = tbl_branch.id and tbl_branch.zone_id = $divisionId order by modification_date desc";
+            }
+            //echo $query;
+            $result = read($query);
+            return $result;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
 ?>
