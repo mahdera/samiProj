@@ -2,11 +2,26 @@
     session_start();
 ?>
 <div>
-    <?php        
+    <?php
         //now display the saved data back to the user...
         require_once 'dbconnection.php';
         require_once 'team.php';
-        $teamList = getAllTeamsModifiedBy($_SESSION['LOGGED_USER_ID']);
+        require_once 'user.php';
+        require_once 'userbranch.php';
+        require_once 'userzone.php';
+
+        $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+        $teamList = null;
+        if($userObj->user_level == 'Zone Level'){
+            $userZoneObj = getZoneInfoForUser($userObj->id);
+            $teamList = getAllTeamsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
+        }else if($userObj->user_level == 'Branch Level'){
+            $userBranchObj = getBranchInfoForUser($userObj->id);
+            $teamList = getAllTeamsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
+        }
+        //$teamList = getAllTeamsModifiedBy($_SESSION['LOGGED_USER_ID']);
+        //now i need to get the level of the user and the based on that i will have to
+        //query the records...
         if(!empty($teamList)){
             ?>
                 <table border="0" width="100%">
@@ -55,16 +70,16 @@
             var id = $(this).attr('id');
             $('#teamEditDiv').load('files/showeditfieldsofthisteam.php?id='+id);
         });
-        
+
         $('.teamDeleteLink').click(function(){
             var id = $(this).attr('id');
             var dataString = "id="+id;
             if(window.confirm('Are you sure you want to delete this team?')){
                 $.ajax({
-                    url: 'files/deleteteam.php',		
+                    url: 'files/deleteteam.php',
                     data: dataString,
                     type:'POST',
-                    success:function(response){                    
+                    success:function(response){
                         showListOfTeams();
                     },
                     error:function(error){
@@ -73,7 +88,7 @@
                 });
             }
         });
-        
+
         function showListOfTeams(){
             $('#subDetailDiv').load('files/showlistofteams.php');
         }
