@@ -47,7 +47,7 @@
                                 <td><?php echo $teamRow->organization;?></td>
                                 <td><?php echo $teamRow->email;?></td>
                                 <td><?php echo $teamRow->phone;?></td>
-                                <td><?php echo $teamRow->interest;?></td>
+                                <td><?php echo rtrim($teamRow->interest , ',');?></td>
                                 <td>
                                     <a href="#.php" class="teamEditLink" id="<?php echo $teamRow->id;?>">Edit</a>
                                 </td>
