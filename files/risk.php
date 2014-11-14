@@ -1,7 +1,7 @@
 <?php
 
     require_once 'dbconnection.php';
-    
+
     function saveRisk($thId, $mg, $dr, $pr, $wa, $rs, $modifiedBy){
         try{
             $query = "insert into tbl_risk values(0, $thId, '$mg', '$dr', '$pr', '$wa', '$rs', $modifiedBy, NOW())";
@@ -10,7 +10,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function updateRisk($id, $thId, $mg, $dr, $pr, $wa, $rs, $modifiedBy){
         try{
             $query = "update tbl_risk set th_id = $thId, mg = '$mg', dr = '$dr', pr = '$pr', wa = '$wa', rs = '$rs', modified_by = $modifiedBy, modification_date = NOW() where id = $id";
@@ -20,7 +20,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function deleteRisk($id){
         try{
             $query = "delete from tbl_risk where id = $id";
@@ -29,7 +29,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function getAllRisks(){
         try{
             $query = "select * from tbl_risk";
@@ -39,7 +39,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function getAllRisksModifiedBy($modifiedBy){
         try{
             $query = "select * from tbl_risk where modified_by = $modifiedBy";
@@ -49,7 +49,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function getRisk($id){
         try{
             $query = "select * from tbl_risk where id = $id";
@@ -61,5 +61,26 @@
         }
     }
 
-?>
+    function getAllRisksModifiedByUsingUserLevel($userLevel, $divisionId){
+        try{
+            $query = null;
+            if($userLevel == 'Branch Level'){
+                $query = "select tbl_risk.* from tbl_risk, tbl_user_branch where " .
+                "tbl_risk.modified_by = tbl_user_branch.user_id and " .
+                "tbl_user_branch.branch_id = $divisionId order by modification_date desc";
+            }else if($userLevel == 'Zone Level'){
+                $query = "select tbl_risk.* from tbl_risk, tbl_user_zone " .
+                "where tbl_risk.modified_by = tbl_user_zone.user_id and " .
+                "tbl_user_zone.zone_id = $divisionId  UNION select tbl_risk.* from tbl_risk, tbl_user_branch, tbl_branch " .
+                "where tbl_risk.modified_by = tbl_user_branch.user_id and ".
+                "tbl_user_branch.branch_id = tbl_branch.id and tbl_branch.zone_id = $divisionId order by modification_date desc";
+            }
+            //echo $query;
+            $result = read($query);
+            return $result;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
 
+?>

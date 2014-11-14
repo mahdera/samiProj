@@ -92,4 +92,26 @@
         }
     }
 
+    function getAllThsModifiedByUsingUserLevel($userLevel, $divisionId){
+        try{
+            $query = null;
+            if($userLevel == 'Branch Level'){
+                $query = "select tbl_th.* from tbl_th, tbl_user_branch where " .
+                "tbl_th.modified_by = tbl_user_branch.user_id and " .
+                "tbl_user_branch.branch_id = $divisionId order by th_name asc";
+            }else if($userLevel == 'Zone Level'){
+                $query = "select tbl_th.* from tbl_th, tbl_user_zone " .
+                "where tbl_th.modified_by = tbl_user_zone.user_id and " .
+                "tbl_user_zone.zone_id = $divisionId  UNION select tbl_th.* from tbl_th, tbl_user_branch, tbl_branch " .
+                "where tbl_th.modified_by = tbl_user_branch.user_id and ".
+                "tbl_user_branch.branch_id = tbl_branch.id and tbl_branch.zone_id = $divisionId order by th_name asc";
+            }
+            //echo $query;
+            $result = read($query);
+            return $result;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
+
 ?>

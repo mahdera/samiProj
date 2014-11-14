@@ -58,14 +58,13 @@
                 "tbl_team.modified_by = tbl_user_branch.user_id and " .
                 "tbl_user_branch.branch_id = $divisionId order by team_name asc";
             }else if($userLevel == 'Zone Level'){
-                $query = "select tbl_team.* from tbl_team, tbl_user_zone, tbl_user_branch, " .
-                "tbl_branch where tbl_team.modified_by = tbl_user_zone.user_id and " .
-                "tbl_user_zone.zone_id = tbl_branch.zone_id and tbl_branch.zone_id = $divisionId " .
-                "UNION ".
-                "select tbl_team.* from tbl_team, tbl_user_zone where tbl_team.modified_by = ".
-                "tbl_user_zone.user_id and tbl_user_zone.zone_id = $divisionId";
+                $query = "select tbl_team.* from tbl_team, tbl_user_zone " .
+                "where tbl_team.modified_by = tbl_user_zone.user_id and " .
+                "tbl_user_zone.zone_id = $divisionId  UNION select tbl_team.* from tbl_team, tbl_user_branch, tbl_branch " .
+                "where tbl_team.modified_by = tbl_user_branch.user_id and ".
+                "tbl_user_branch.branch_id = tbl_branch.id and tbl_branch.zone_id = $divisionId order by team_name asc";
             }
-            echo $query;
+            //echo $query;
             $result = read($query);
             return $result;
         }catch(Exception $ex){

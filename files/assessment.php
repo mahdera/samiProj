@@ -71,4 +71,26 @@
             $ex->getMessage();
         }
     }
+
+    function getAllAssessmentsModifiedByUsingUserLevel($userLevel, $divisionId){
+        try{
+            $query = null;
+            if($userLevel == 'Branch Level'){
+                $query = "select tbl_assessment.* from tbl_assessment, tbl_user_branch where " .
+                "tbl_assessment.modified_by = tbl_user_branch.user_id and " .
+                "tbl_user_branch.branch_id = $divisionId order by modification_date desc";
+            }else if($userLevel == 'Zone Level'){
+                $query = "select tbl_assessment.* from tbl_assessment, tbl_user_zone " .
+                "where tbl_assessment.modified_by = tbl_user_zone.user_id and " .
+                "tbl_user_zone.zone_id = $divisionId  UNION select tbl_assessment.* from tbl_assessment, tbl_user_branch, tbl_branch " .
+                "where tbl_assessment.modified_by = tbl_user_branch.user_id and ".
+                "tbl_user_branch.branch_id = tbl_branch.id and tbl_branch.zone_id = $divisionId order by modification_date desc";
+            }
+            //echo $query;
+            $result = read($query);
+            return $result;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
 ?>

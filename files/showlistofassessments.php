@@ -6,8 +6,19 @@
         //now display the saved data back to the user...
         require_once 'assessment.php';
         require_once 'th.php';
-
-        $assessmentList = getAllAssessmentsModifiedBy($_SESSION['LOGGED_USER_ID']);
+        require_once 'user.php';
+        require_once 'userbranch.php';
+        require_once 'userzone.php';
+        $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+        $assessmentList = null;
+        if($userObj->user_level == 'Zone Level'){
+            $userZoneObj = getZoneInfoForUser($userObj->id);
+            $assessmentList = getAllAssessmentsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
+        }else{
+            $userBranchObj = getBranchInfoForUser($userObj->id);
+            $assessmentList = getAllAssessmentsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
+        }
+        //$assessmentList = getAllAssessmentsModifiedBy($_SESSION['LOGGED_USER_ID']);
         if(!empty($assessmentList)){
             ?>
                 <table border="0" width="100%">
@@ -33,9 +44,12 @@
                                     <?php
                                       //now get all list of ths associated with this assessment.
                                       $thList = getAllThsForThisAssessment($assessmentRow->id);
+                                      $thNameStr = null;
                                       while($thRow = mysql_fetch_object($thList)){
-                                        echo $thRow->th_name.", ";
+                                        //echo $thRow->th_name.", ";
+                                        $thNameStr .= $thRow->th_name . ', ';
                                       }//end while loop
+                                      echo rtrim($thNameStr, ', ');
                                     ?>
                                 </td>
                                 <td><?php echo $assessmentRow->summary;?></td>

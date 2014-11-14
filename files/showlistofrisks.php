@@ -7,8 +7,21 @@
         //require_once 'dbconnection.php';
         require_once 'risk.php';
         require_once 'th.php';
-        
-        $riskList = getAllRisksModifiedBy($_SESSION['LOGGED_USER_ID']);
+        require_once 'user.php';
+        require_once 'userbranch.php';
+        require_once 'userzone.php';
+
+        $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+        $riskList = null;
+        if($userObj->user_level == 'Zone Level'){
+            $userZoneObj = getZoneInfoForUser($userObj->id);
+            $riskList = getAllRisksModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
+        }else if($userObj->user_level == 'Branch Level'){
+            $userBranchObj = getBranchInfoForUser($userObj->id);
+            $riskList = getAllRisksModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
+        }
+
+        //$riskList = getAllRisksModifiedBy($_SESSION['LOGGED_USER_ID']);
         if(!empty($riskList)){
             ?>
                 <table border="0" width="100%">
@@ -16,11 +29,11 @@
                         <td>#</td>
                         <td>Th</td>
                         <td>MG</td>
-                        <td>DR</td>                        
+                        <td>DR</td>
                         <td>PR</td>
                         <td>WA</td>
                         <td>RS</td>
-                        <td>Edit</td>  
+                        <td>Edit</td>
                         <td>Delete</td>
                     </tr>
                     <?php
@@ -33,11 +46,11 @@
                                 <td><?php echo $ctr;?></td>
                                 <td><?php echo $th->th_name;?></td>
                                 <td><?php echo $riskRow->mg;?></td>
-                                <td><?php echo $riskRow->dr;?></td>                                
+                                <td><?php echo $riskRow->dr;?></td>
                                 <td><?php echo $riskRow->pr;?></td>
                                 <td><?php echo $riskRow->wa;?></td>
                                 <td><?php echo $riskRow->rs;?></td>
-                                <td><a href="#.php" class="riskEditLink" id="<?php echo $riskRow->id;?>">Edit</a></td>                                
+                                <td><a href="#.php" class="riskEditLink" id="<?php echo $riskRow->id;?>">Edit</a></td>
                                 <td><a href="#.php" class="riskDeleteLink" id="<?php echo $riskRow->id;?>">Delete</a></td>
                             </tr>
                             <tr>
@@ -56,34 +69,34 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function(){
-        
+
         $('.riskEditLink').click(function(){
             var id = $(this).attr('id');
             var divId = "riskEditDiv" + id;
             $('#'+divId).load('files/showeditfiedlsofrisk.php?id='+id);
         });
-        
+
         $('.riskDeleteLink').click(function(){
             var id = $(this).attr('id');
             if(window.confirm('Are you sure you want to delete this risk record?')){
                 var dataString = "id="+id;
                 $.ajax({
-                    url: 'files/deleterisk.php',		
+                    url: 'files/deleterisk.php',
                     data: dataString,
                     type:'POST',
-                    success:function(response){                                                
+                    success:function(response){
                         showListOfRisks();
                     },
                     error:function(error){
                         alert(error);
                     }
                 });
-            }            
+            }
         });
-        
+
         function showListOfRisks(){
             $('#subDetailDiv').load('files/showlistofrisks.php');
         }
-        
+
     });//end document.ready function
 </script>

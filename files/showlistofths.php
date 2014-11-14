@@ -1,8 +1,19 @@
 <?php
     session_start();
     require_once 'th.php';
-    
-    $thList = getAllThsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    require_once 'user.php';
+    require_once 'userbranch.php';
+    require_once 'userzone.php';
+    $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+    $thList = null;
+    if($userObj->user_level == 'Zone Level'){
+        $userZoneObj = getZoneInfoForUser($userObj->id);
+        $thList = getAllThsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
+    }else{
+        $userBranchObj = getBranchInfoForUser($userObj->id);
+        $thList = getAllThsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
+    }
+    //$thList = getAllThsModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
 <table border="0" width="100%">
     <tr style="background: #ccc">
@@ -33,34 +44,34 @@
 </table>
 <script type="text/javascript">
     $(document).ready(function(){
-        
+
         $('.editThLink').click(function(){
             var id = $(this).attr('id');
             var divId = "thEditDiv" + id;
             $('#'+divId).load('files/showeditfieldsofth.php?id='+id);
         });
-        
+
         $('.deleteThLink').click(function(){
             var id = $(this).attr('id');
             if(window.confirm('Are you sure you want to delete this Th?')){
                 var dataString = "id="+id;
                 $.ajax({
-                    url: 'files/deleteth.php',		
+                    url: 'files/deleteth.php',
                     data: dataString,
                     type:'POST',
-                    success:function(response){                                                
+                    success:function(response){
                         showListOfThs();
                     },
                     error:function(error){
                         alert(error);
                     }
                 });
-            }            
+            }
         });
-        
+
         function showListOfThs(){
             $('#subDetailDiv').load('files/showlistofths.php');
         }
-        
+
     });//end document.ready function
 </script>
