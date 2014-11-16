@@ -7,7 +7,5 @@
       ?>
           <div class="notify notify-red"><span class="symbol icon-error"></span> This Th has already been used before. Please try selecting another Th value from the select box!</div>
       <?php
-    }else{
-
     }
 ?>

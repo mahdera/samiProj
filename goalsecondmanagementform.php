@@ -29,6 +29,11 @@
 <form id="goalSecondManagementForm">
     <table border="0" width="100%">
         <tr>
+            <td colspan="2">
+                <div id="fnDuplicationErrorDiv"></div>
+            </td>
+        </tr>
+        <tr>
             <td>Fn:</td>
             <td>
                 <select name="slctfn" id="slctfn" style="width: 100%">
@@ -124,6 +129,24 @@
         });
 
         showListOfGoalSeconds();
+
+        $('#slctfn').change(function(){
+            var fnId = $(this).val();
+            if(fnId != ''){
+                var dataString = "fnId="+fnId;
+                $.ajax({
+                    url: 'files/hasthisfnbeenusedbefore.php',
+                    data: dataString,
+                    type:'POST',
+                    success:function(response){
+                        $('#fnDuplicationErrorDiv').html(response);
+                    },
+                    error:function(error){
+                        alert(error);
+                    }
+                });
+            }
+        });
 
         $('#btnsave').click(function(){
             //first get the static form values...

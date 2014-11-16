@@ -42,13 +42,13 @@
             <td>
                 <table border="0" width="100%">
                     <tr>
-                        <td><input type="checkbox" name="chkinterest1" id="chkinterest1" value="Interest 1"/> Interest 1</td>
-                        <td><input type="checkbox" name="chkinterest2" id="chkinterest2" value="Interest 2"/> Interest 2</td>
-                        <td><input type="checkbox" name="chkinterest3" id="chkinterest3" value="Interest 3"/> Interest 3</td>
-                        <td><input type="checkbox" name="chkinterest4" id="chkinterest4" value="Interest 4"/> Interest 4</td>
-                        <td><input type="checkbox" name="chkinterest5" id="chkinterest5" value="Interest 5"/> Interest 5</td>
-                        <td><input type="checkbox" name="chkinterest6" id="chkinterest6" value="Interest 6"/> Interest 6</td>
-                        <td><input type="checkbox" name="chkinterest7" id="chkinterest7" value="Interest 7"/> Interest 7</td>
+                        <td><input type="checkbox" class="interestChkBox" name="chkinterest1" id="chkinterest1" value="Interest 1"/> Interest 1</td>
+                        <td><input type="checkbox" class="interestChkBox" name="chkinterest2" id="chkinterest2" value="Interest 2"/> Interest 2</td>
+                        <td><input type="checkbox" class="interestChkBox" name="chkinterest3" id="chkinterest3" value="Interest 3"/> Interest 3</td>
+                        <td><input type="checkbox" class="interestChkBox" name="chkinterest4" id="chkinterest4" value="Interest 4"/> Interest 4</td>
+                        <td><input type="checkbox" class="interestChkBox" name="chkinterest5" id="chkinterest5" value="Interest 5"/> Interest 5</td>
+                        <td><input type="checkbox" class="interestChkBox" name="chkinterest6" id="chkinterest6" value="Interest 6"/> Interest 6</td>
+                        <td><input type="checkbox" class="interestChkBox" name="chkinterest7" id="chkinterest7" value="Interest 7"/> Interest 7</td>
                     </tr>
                 </table>
             </td>
@@ -93,6 +93,7 @@
                 }
             });
 
+            
             if(name !== "" && title !== "" && organization !== "" && email !== "" &&
                     phone !== "" && interest !== ""){
                 var dataString = "name="+encodeURIComponent(name)+"&title="+encodeURIComponent(title)+"&organization="+
@@ -121,7 +122,7 @@
             $('#txtorganization').val('');
             $('#txtemail').val('');
             $('#txtphone').val('');
-            $('#slctinterest').val('');
+            $('.interestChkBox').prop('checked', false);//unchecks the checkboxes...
         }
 
         function showListOfTeams(){

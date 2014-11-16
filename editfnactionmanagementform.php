@@ -54,7 +54,7 @@
         $('.deleteFnActionLinkId').click(function(){
             if(window.confirm('Are you sure you want to delete this Fn Action Record?')){
               var id = $(this).attr('id');
-              $('#thActionDetailDiv').load('files/deletefnactionform.php?fnActionId='+id);
+              $('#fnActionDetailDiv').load('files/deletefnactionform.php?fnActionId='+id);
             }
         });
 
