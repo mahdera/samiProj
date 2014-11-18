@@ -5,36 +5,39 @@
 <a href="#.php" id="showTeamManagementFormLinkId">Show Form</a>
 |
 <a href="#.php" id="hideTeamManagementFormLinkId">Hide Form</a>
+
 <form id="teamManagementForm">
+    <fieldset>
+    <legend>Add Team Form</legend>
     <table border="0" width="100%">
         <tr>
-            <td width="20%">Name:</td>
+            <td width="10%">Name:</td>
             <td>
-                <input type="text" name="txtname" id="txtname"/>
+                <input type="text" name="txtname" id="txtname" size="70"/>
             </td>
         </tr>
         <tr>
             <td>Title:</td>
             <td>
-                <input type="text" name="txttitle" id="txttitle"/>
+                <input type="text" name="txttitle" id="txttitle" size="70"/>
             </td>
         </tr>
         <tr>
             <td>Organization:</td>
             <td>
-                <input type="text" name="txtorganization" id="txtorganization"/>
+                <input type="text" name="txtorganization" id="txtorganization" size="70"/>
             </td>
         </tr>
         <tr>
             <td>Email:</td>
             <td>
-                <input type="email" name="txtemail" id="txtemail"/>
+                <input type="email" name="txtemail" id="txtemail" size="70"/>
             </td>
         </tr>
         <tr>
             <td>Phone:</td>
             <td>
-                <input type="tel" name="txtphone" id="txtphone"/>
+                <input type="tel" name="txtphone" id="txtphone" size="70"/>
             </td>
         </tr>
         <tr>
@@ -59,7 +62,9 @@
             </td>
         </tr>
     </table>
+  </fieldset>
 </form>
+
 <hr/>
 
 <div id="subDetailDiv"></div>
@@ -93,7 +98,7 @@
                 }
             });
 
-            
+
             if(name !== "" && title !== "" && organization !== "" && email !== "" &&
                     phone !== "" && interest !== ""){
                 var dataString = "name="+encodeURIComponent(name)+"&title="+encodeURIComponent(title)+"&organization="+

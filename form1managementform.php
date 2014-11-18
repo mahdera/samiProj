@@ -48,16 +48,12 @@
                         <td>Col2</td>
                         <td>Col3</td>
                         <td>Col4</td>
-                        <td style="visibility:hidden">Col5</td>
-                        <td style="visibility:hidden">Col6</td>
                     </tr>
                     <tr id="thRowQ31">
                         <td><input type="text" name="txtrowq31" id="txtrowq31" class="thInputRowQ3"/></td>
                         <td><input type="text" name="txtrowq32" id="txtrowq32" class="thInputRowQ3"/></td>
                         <td><input type="text" name="txtrowq33" id="txtrowq33" class="thInputRowQ3"/></td>
                         <td><input type="text" name="txtrowq34" id="txtrowq34" class="thInputRowQ3"/></td>
-                        <td style="visibility:hidden"><input type="text" name="txtrowq35" id="txtrowq35" class="thInputRowQ3"/></td>
-                        <td style="visibility:hidden"><input type="text" name="txtrowq36" id="txtrowq36" class="thInputRowQ3"/></td>
                     </tr>
                 </table>
             </td>
@@ -76,16 +72,12 @@
                         <td>Col2</td>
                         <td>Col3</td>
                         <td>Col4</td>
-                        <td style="visibility:hidden">Col5</td>
-                        <td style="visibility:hidden">Col6</td>
                     </tr>
                     <tr id="thRowQ41">
                         <td><input type="text" name="txtrowq41" id="txtrowq41" class="thInputRowQ4"/></td>
                         <td><input type="text" name="txtrowq42" id="txtrowq42" class="thInputRowQ4"/></td>
                         <td><input type="text" name="txtrowq43" id="txtrowq43" class="thInputRowQ4"/></td>
                         <td><input type="text" name="txtrowq44" id="txtrowq44" class="thInputRowQ4"/></td>
-                        <td style="visibility:hidden"><input type="text" name="txtrowq45" id="txtrowq45" class="thInputRowQ4"/></td>
-                        <td style="visibility:hidden"><input type="text" name="txtrowq46" id="txtrowq46" class="thInputRowQ4"/></td>
                     </tr>
                 </table>
             </td>
@@ -117,16 +109,14 @@
             var textBoxCol2Id = "txtrowq3"+(numItems+2);
             var textBoxCol3Id = "txtrowq3"+(numItems+3);
             var textBoxCol4Id = "txtrowq3"+(numItems+4);
-            var textBoxCol5Id = "txtrowq3"+(numItems+5);
-            var textBoxCol6Id = "txtrowq3"+(numItems+6);
-            var newRow = $("<tr id='thRowQ3"+((numItems/6)+1)+"'><td><input type='text' class='thInputRowQ3' name='"+textBoxCol1Id+"' id='"+textBoxCol1Id+"'/></td><td><input type='text' class='thInputRowQ3' name='"+textBoxCol2Id+"' id='"+textBoxCol2Id+"'/></td><td><input type='text' class='thInputRowQ3' name='"+textBoxCol3Id+"' id='"+textBoxCol3Id+"'/></td><td><input type='text' class='thInputRowQ3' name='"+textBoxCol4Id+"' id='"+textBoxCol4Id+"'/></td><td style='visibility:hidden'><input type='text' class='thInputRowQ3' name='"+textBoxCol5Id+"' id='"+textBoxCol5Id+"'/></td><td style='visibility:hidden'><input type='text' class='thInputRowQ3' name='"+textBoxCol6Id+"' id='"+textBoxCol6Id+"'/></td></tr>");
-            $('#thRowQ3'+(numItems/6)).after(newRow);
+            var newRow = $("<tr id='thRowQ3"+((numItems/4)+1)+"'><td><input type='text' class='thInputRowQ3' name='"+textBoxCol1Id+"' id='"+textBoxCol1Id+"'/></td><td><input type='text' class='thInputRowQ3' name='"+textBoxCol2Id+"' id='"+textBoxCol2Id+"'/></td><td><input type='text' class='thInputRowQ3' name='"+textBoxCol3Id+"' id='"+textBoxCol3Id+"'/></td><td><input type='text' class='thInputRowQ3' name='"+textBoxCol4Id+"' id='"+textBoxCol4Id+"'/></td></tr>");
+            $('#thRowQ3'+(numItems/4)).after(newRow);
         });
 
         $('#removeRowsQ3Link').click(function(){
             var numItems = $('.thInputRowQ3').length;
-            if((numItems/6) > 1){
-                var thRowId = 'thRowQ3'+(numItems/6);
+            if((numItems/4) > 1){
+                var thRowId = 'thRowQ3'+(numItems/4);
                 $('#'+thRowId).remove();
             }
         });
@@ -137,16 +127,14 @@
             var textBoxCol2Id = "txtrowq4"+(numItems+2);
             var textBoxCol3Id = "txtrowq4"+(numItems+3);
             var textBoxCol4Id = "txtrowq4"+(numItems+4);
-            var textBoxCol5Id = "txtrowq4"+(numItems+5);
-            var textBoxCol6Id = "txtrowq4"+(numItems+6);
-            var newRow = $("<tr id='thRowQ4"+((numItems/6)+1)+"'><td><input type='text' class='thInputRowQ4' name='"+textBoxCol1Id+"' id='"+textBoxCol1Id+"'/></td><td><input type='text' class='thInputRowQ4' name='"+textBoxCol2Id+"' id='"+textBoxCol2Id+"'/></td><td><input type='text' class='thInputRowQ4' name='"+textBoxCol3Id+"' id='"+textBoxCol3Id+"'/></td><td><input type='text' class='thInputRowQ4' name='"+textBoxCol4Id+"' id='"+textBoxCol4Id+"'/></td><td style='visibility:hidden'><input type='text' class='thInputRowQ4' name='"+textBoxCol5Id+"' id='"+textBoxCol5Id+"'/></td><td style='visibility:hidden'><input type='text' class='thInputRowQ4' name='"+textBoxCol6Id+"' id='"+textBoxCol6Id+"'/></td></tr>");
-            $('#thRowQ4'+(numItems/6)).after(newRow);
+            var newRow = $("<tr id='thRowQ4"+((numItems/4)+1)+"'><td><input type='text' class='thInputRowQ4' name='"+textBoxCol1Id+"' id='"+textBoxCol1Id+"'/></td><td><input type='text' class='thInputRowQ4' name='"+textBoxCol2Id+"' id='"+textBoxCol2Id+"'/></td><td><input type='text' class='thInputRowQ4' name='"+textBoxCol3Id+"' id='"+textBoxCol3Id+"'/></td><td><input type='text' class='thInputRowQ4' name='"+textBoxCol4Id+"' id='"+textBoxCol4Id+"'/></td></tr>");
+            $('#thRowQ4'+(numItems/4)).after(newRow);
         });
 
         $('#removeRowsQ4Link').click(function(){
             var numItems = $('.thInputRowQ4').length;
-            if((numItems/6) > 1){
-                var thRowId = 'thRowQ4'+(numItems/6);
+            if((numItems/4) > 1){
+                var thRowId = 'thRowQ4'+(numItems/4);
                 $('#'+thRowId).remove();
             }
         });
@@ -179,6 +167,7 @@
                     var textBoxIdVal = $('#'+textBoxId).val();
                     dataString += "&"+textBoxId+"="+encodeURIComponent(textBoxIdVal);
                 }
+                alert(dataString);
                 //now its time to save the data to the database...
                 $.ajax({
                     url: 'files/saveform1.php',
@@ -187,7 +176,7 @@
                     success:function(response){
                         //alert('Form One Saved Successfully!');
                         $('#form1Div').html('<div class="notify notify-green"><span class="symbol icon-tick"></span> Form One Saved Successfully!</div>');
-                        clearFormInputFields(q3NumItems, q4NumItems);
+                        //clearFormInputFields(q3NumItems, q4NumItems);
                         showListOfForm1Records();
                     },
                     error:function(error){

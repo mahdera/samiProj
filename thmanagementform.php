@@ -6,11 +6,13 @@
 |
 <a href="#.php" id="hideThManagementFormLinkId">Hide Form</a>
 <form id="thManagementForm">
+    <fieldset>
+      <legend>Add Th Form</legend>
     <table border="0" width="100%">
         <tr>
             <td>Th:</td>
             <td>
-                <input type="text" name="txtth" id="txtth"/>
+                <input type="text" name="txtth" id="txtth" size="70"/>
             </td>
         </tr>
         <tr>
@@ -19,6 +21,7 @@
             </td>
         </tr>
     </table>
+  </fieldset>
 </form>
 <hr/>
 <div id="subDetailDiv"></div>

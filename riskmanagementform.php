@@ -20,6 +20,8 @@
 |
 <a href="#.php" id="hideRiskManagementFormLinkId">Hide Form</a>
 <form id="riskManagementForm">
+    <fieldset>
+      <legend>Add Risk Form</legend>
     <table border="0" width="100%">
         <tr>
             <td>Th:</td>
@@ -102,6 +104,7 @@
             </td>
         </tr>
     </table>
+  </fieldset>
 </form>
 <hr/>
 <div id="subDetailDiv"></div>

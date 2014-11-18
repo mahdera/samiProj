@@ -27,7 +27,7 @@
             <tr>
                 <td  width="20%">Obj:</td>
                 <td>
-                    <input type="text" id="<?php echo $objControlName;?>" name="<?php echo $objControlName;?>" class="g1Obj"/>
+                    <input type="text" id="<?php echo $objControlName;?>" name="<?php echo $objControlName;?>" class="g1Obj" size="70"/>
                 </td>
             </tr>
             <tr>

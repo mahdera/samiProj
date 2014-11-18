@@ -2,9 +2,11 @@
   error_reporting( 0 );
 ?>
 <form id="assessmentManagementForm">
+    <fieldset>
+      <legend>Add Assessment Form</legend>
     <table border="0" width="99%">
         <tr>
-            <td>Assessment Type:</td>
+            <td width="15%">Assessment Type:</td>
             <td>
                 <select name="slctassessmenttype" id="slctassessmenttype" style="width:100%">
                     <option value="" selected="selected">--Select--</option>
@@ -39,4 +41,5 @@
             </td>
         </tr>
     </table>
+  </fieldset>
 </form>
