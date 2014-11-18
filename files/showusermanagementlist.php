@@ -1,23 +1,24 @@
 <?php
     session_start();
     require_once 'user.php';
-    require_once 'zone.php';
-    require_once 'branch.php';
-    require_once 'userzone.php';
-    require_once 'userbranch.php';
+    require_once 'district.php';
+    require_once 'subdistrict.php';
+    require_once 'userdistrict.php';
+    require_once 'usersubdistrict.php';
+
     $theUserId = $_SESSION['INDIVIDUAL_INT_USER_ID'];
     $loggedInUserObj = getUser($theUserId);
     $userList = null;
     if($loggedInUserObj->member_type == 'Admin'){
         $userList = getAllNonAdminUsers();
-    }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == 'Branch Admin'){
+    }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == 'Sub District Admin'){
         //now get the branch id of the logged in user
-        $userBranchObj = getBranchInfoForUser($theUserId);
-        $userList = getAllBranchUsersWithBranchId($userBranchObj->branch_id);
-    }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == 'Zone Admin'){
+        $userSubDistrictObj = getSubDistrictInfoForUser($theUserId);
+        $userList = getAllSubDistrictUsersWithDistrictId($userSubDistrictObj->sub_district_id);
+    }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == 'District Admin'){
         //now get the zone id of the logged in user and get all zone and branch level users found under the zone id of this logged in user
-        $userZoneObj = getZoneInfoForUser($theUserId);
-        $userList = getAllZoneAndBranchUsersWithZoneId($userZoneObj->zone_id);
+        $userDistrictObj = getDistrictInfoForUser($theUserId);
+        $userList = getAllDistrictAndSubDistrictUsersWithDistrictId($userDistrictObj->district_id);
     }
 ?>
 <form>
@@ -26,8 +27,8 @@
           if($loggedInUserObj->member_type == 'Admin'){
             ?>
               <a href="#.php" id="createUserLink">Create User</a> |
-              <a href="#.php" id="zoneManagementLink">Zone Management</a> |
-              <a href="#.php" id="branchManagementLink">Branch Management</a>
+              <a href="#.php" id="zoneManagementLink">District Management</a> |
+              <a href="#.php" id="branchManagementLink">Sub District Management</a>
             <?php
           }else{
             ?>
@@ -47,8 +48,8 @@
             <td>Member Status</td>
             <td>User Level</td>
             <td>User Role</td>
-            <td>Zone</td>
-            <td>Branch</td>
+            <td>District</td>
+            <td>Sub District</td>
             <td>Modification Date</td>
             <td>Reset Password</td>
             <td>Modify Status</td>
@@ -56,17 +57,17 @@
         <?php
             $ctr=1;
             while($userRow = mysql_fetch_object($userList)){
-                $zoneObj = null;
-                $branchObj = null;
+                $districtObj = null;
+                $subDistrictObj = null;
                 if($userRow->user_level == 'Zone Level'){
                     //fetch zone information from tbl_user_zone
-                    $userZone = getZoneInfoForUser($userRow->id);
-                    $zoneObj = getZone($userZone->zone_id);
+                    $userDistrict = getDistrictInfoForUser($userRow->id);
+                    $districtObj = getDistrict($userDistrict->district_id);
                 }else if($userRow->user_level == 'Branch Level'){
                     //fetch branch information from tbl_user_branch
-                    $userBranch = getBranchInfoForUser($userRow->id);
-                    $branchObj = getBranch($userBranch->branch_id);
-                    $zoneObj = getZone($branchObj->zone_id);
+                    $userSubDistrict = getSubDistrictInfoForUser($userRow->id);
+                    $subDistrictObj = getSubDistrict($userSubDistrict->sub_district_id);
+                    $districtObj = getDistrict($subDistrictObj->district_id);
                 }
                 ?>
                 <tr>
@@ -79,8 +80,8 @@
                     <td><?php echo $userRow->user_status;?></td>
                     <td><?php echo ($userRow->user_level != null ? $userRow->user_level : '---');?></td>
                     <td><?php echo ($userRow->user_role != null ? $userRow->user_role : '---');?></td>
-                    <td><?php echo ($zoneObj != null ? $zoneObj->zone_name : '---');?></td>
-                    <td><?php echo ($branchObj != null ? $branchObj->branch_name : '---');?></td>
+                    <td><?php echo ($districtObj != null ? $districtObj->district_name : '---');?></td>
+                    <td><?php echo ($subDistrictObj != null ? $subDistrictObj->sub_district_name : '---');?></td>
                     <td><?php echo $userRow->modification_date;?></td>
                     <td>
                         <a href="#.php" class="resetUserPasswordLink" id="<?php echo $userRow->id;?>">Reset Password</a>
