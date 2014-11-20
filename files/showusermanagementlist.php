@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    @session_start();
     require_once 'user.php';
     require_once 'district.php';
     require_once 'subdistrict.php';
@@ -66,8 +66,10 @@
                 }else if($userRow->user_level == 'Sub District Level'){
                     //fetch branch information from tbl_user_branch
                     $userSubDistrict = getSubDistrictInfoForUser($userRow->id);
-                    $subDistrictObj = getSubDistrict($userSubDistrict->sub_district_id);
-                    $districtObj = getDistrict($subDistrictObj->district_id);
+                    if($userSubDistrict != null){
+                      $subDistrictObj = getSubDistrict($userSubDistrict->sub_district_id);
+                      $districtObj = getDistrict($subDistrictObj->district_id);
+                    }
                 }
                 ?>
                 <tr>

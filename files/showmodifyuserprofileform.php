@@ -173,8 +173,10 @@
             $zoneObj = getDistrict($userZone->district_id);
           }else if($userObj->user_level == 'Sub District Level'){
             $userBranch = getSubDistrictInfoForUser($userObj->id);
-            $branchObj = getSubDistrict($userBranch->sub_district_id);
-            $zoneObj = getDistrict($branchObj->district_id);
+            if($userBranch != null){
+              $branchObj = getSubDistrict($userBranch->sub_district_id);
+              $zoneObj = getDistrict($branchObj->district_id);
+            }
           }
           $zoneList = getAllDistricts();
         ?>
@@ -185,7 +187,7 @@
                     <option value="" selected="selected">--Select--</option>
                     <?php
                         while($zoneRow = mysql_fetch_object($zoneList)){
-                            if($zoneObj->id == $zoneRow->id){
+                            if($zoneObj != null && $zoneObj->id == $zoneRow->id){
                               ?>
                                 <option value="<?php echo $zoneRow->id;?>" selected="selected"><?php echo $zoneRow->district_name;?></option>
                               <?php
@@ -202,7 +204,10 @@
         <?php
           if($userObj->user_level == 'Sub District Level'){
             //get the zone info of this user and based on that populate the branch dropdown...
-            $branchList = getAllSubDistrictsOfThisDistrict($zoneObj->id);
+            $branchList = null;
+            if($zoneObj != null){
+                $branchList = getAllSubDistrictsOfThisDistrict($zoneObj->id);
+            }
             ?>
             <tr id="branchRow">
                 <td><font color='red'>*</font> Sub District:</td>
@@ -210,6 +215,7 @@
                     <select name="slctbranch" id="slctbranch" style="width:100%">
                         <option value="" selected="selected">--Select--</option>
                         <?php
+                        if($branchList != null){
                           while($branchRow = mysql_fetch_object($branchList)){
                             if($branchRow->id == $branchObj->id){
                               ?>
@@ -221,6 +227,7 @@
                               <?php
                             }
                           }//end while loop
+                        }
                         ?>
                     </select>
                 </td>

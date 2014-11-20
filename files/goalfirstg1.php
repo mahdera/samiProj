@@ -84,7 +84,7 @@
     function getGoalFirstG1UsingAndModifiedBy($goalFirstThId, $g1, $g1Fn, $modifiedBy){
         try{
             $query = "select * from tbl_goal_first_g1 where goal_first_th_id = $goalFirstThId and g1 = '$g1' and fn_id = $g1Fn and modified_by = $modifiedBy order by modification_date desc limit 0,1";
-            //echo $query;
+            echo $query;
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;
