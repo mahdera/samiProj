@@ -2,8 +2,8 @@
     session_start();
     require_once 'fn.php';
     require_once 'user.php';
-    require_once 'userbranch.php';
-    require_once 'userzone.php';
+    require_once 'usersubdistrict.php';
+    require_once 'userdistrict.php';
     $fnList = null;
     $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
@@ -36,6 +36,16 @@
                 <td>
                     <select name="<?php echo $fnSelectControlName;?>" id="<?php echo $fnSelectControlName;?>" style="width: 100%" onchange="showOtherFnDataEntryForm(this.value, '<?php echo $fnOtherDivId;?>', <?php echo $numItems + 1;?>);">
                         <option value="" selected="selected">--Select--</option>
+                        <option value="Fnc1">Fnc1</option>
+                        <option value="Fnc2">Fnc2</option>
+                        <option value="Fnc3">Fnc3</option>
+                        <option value="Fnc4">Fnc4</option>
+                        <option value="Fnc5">Fnc5</option>
+                        <option value="Fnc6">Fnc6</option>
+                        <option value="Fnc7">Fnc7</option>
+                        <option value="Fnc8">Fnc8</option>
+                        <option value="Fnc9">Fnc9</option>
+                        <option value="Fnc10">Fnc10</option>
                         <?php
                             while($fnRow = mysql_fetch_object($fnList)){
                                 ?>

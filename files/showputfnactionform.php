@@ -24,7 +24,7 @@
     $fn = getFn($fn_id);
     @$countVal=0;
     @$countVal = doesThisFnAlreadyActionFilledForIt($fn_id);
-    if(true){
+    if($countVal == 0){
 ?>
 <form>
     <table border="0" width="100%">

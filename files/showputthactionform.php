@@ -16,7 +16,7 @@
 
     @$countVal = 0;
     @$countVal = doesThisThAlreadyActionFilledForIt($thId);
-    if(true){
+    if($countVal == 0){
     //now get all goalfirst records associated with this particular thId
     $goalFirstThRow = getGoalFirstThUsingThId($thId);
     if(!empty($goalFirstThRow)){

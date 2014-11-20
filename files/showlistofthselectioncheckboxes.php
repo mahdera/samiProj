@@ -24,6 +24,7 @@
           //echo 'inside most fancy place';
           $selectedThIdArray = $_SESSION['SELECTED_THS'];
         }
+
         $riskList = getAllRisksModifiedBy($_SESSION['LOGGED_USER_ID']);
 
         if(!empty($riskList)){

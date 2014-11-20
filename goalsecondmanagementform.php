@@ -4,8 +4,8 @@
     require_once 'files/th.php';
     require_once 'files/fn.php';
     require_once 'files/user.php';
-    require_once 'files/userbranch.php';
-    require_once 'files/userzone.php';
+    require_once 'files/usersubdistrict.php';
+    require_once 'files/userdistrict.php';
 
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
     $fnIdArray = array();
@@ -40,6 +40,16 @@
             <td>
                 <select name="slctfn" id="slctfn" style="width: 100%">
                     <option value="" selected="selected">--Select--</option>
+                    <option value="Fnc1">Fnc1</option>
+                    <option value="Fnc2">Fnc2</option>
+                    <option value="Fnc3">Fnc3</option>
+                    <option value="Fnc4">Fnc4</option>
+                    <option value="Fnc5">Fnc5</option>
+                    <option value="Fnc6">Fnc6</option>
+                    <option value="Fnc7">Fnc7</option>
+                    <option value="Fnc8">Fnc8</option>
+                    <option value="Fnc9">Fnc9</option>
+                    <option value="Fnc10">Fnc10</option>
                     <?php
                         foreach ($fnIdArray as $fnId) {
                             $fnObj = getFn($fnId);
@@ -236,33 +246,6 @@
 
         function clearFormInputField(){
             $('#goalSecondManagementForm')[0].reset();
-            /*$('#slctfn').val('');
-            $('#txtg1').val('');
-            $('#txtg1obj1').val('');
-            $('#txtg2').val('');
-            $('#txtg2obj1').val('');
-            $('#txtg3').val('');
-            $('#txtg3obj1').val('');
-
-            var numItemsG1 = $('.g1Obj').length;
-            var numItemsG2 = $('.g2Obj').length;
-            var numItemsG3 = $('.g3Obj').length;
-
-            for(var i=1; i <= numItemsG1; i++){
-                var textBoxControlName = "txtg1obj" + i;
-                $('#' + textBoxControlName).val('');
-            }
-
-            for(var j=1; j <= numItemsG2; j++){
-                var textBoxControlName = "txtg2obj" + j;
-                $('#' + textBoxControlName).val('');
-            }
-
-            for(var k=1; k <= numItemsG3; k++){
-                var textBoxControlName = "txtg3obj" + j;
-                $('#' + textBoxControlName).val('');
-            }*/
-
         }
 
         function showListOfGoalSeconds(){

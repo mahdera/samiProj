@@ -48,11 +48,11 @@
                     }
                 });
                 selectedCheckBoxesIdDataString+="ctr="+(ctr-1);
-                if(ctr === 1){
+                /*if(ctr === 1){
                     $('#errorDiv').html('<div class="notify notify-red"><span class="symbol icon-error"></span> You need to select at least one th value!</div>');
                     var divLoc = $('#errorDiv').offset();
                     $('html, body').animate({scrollTop: divLoc.top}, "slow");
-                }else{
+                }else*/{
                     $('#step3Content').load('showstep3_3content.php?'+selectedCheckBoxesIdDataString);
                 }
             }
