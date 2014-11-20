@@ -1,20 +1,20 @@
 <?php
   session_start();
-  require_once 'zone.php';
-  require_once 'branch.php';
-  require_once 'userzone.php';
-  require_once 'userbranch.php';
+  require_once 'district.php';
+  require_once 'subdistrict.php';
+  require_once 'userdistrict.php';
+  require_once 'usersubdistrict.php';
   require_once 'user.php';
 
   $theUserId = $_SESSION['INDIVIDUAL_INT_USER_ID'];
   $loggedInUserObj = getUser($theUserId);
   $zoneList = null;
   if($loggedInUserObj->member_type == 'Admin'){
-        $zoneList = getAllZones();
-  }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == 'Zone Admin'){
+        $zoneList = getAllDistricts();
+  }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == 'District Admin'){
         $userZoneObj = getZoneInfoForUser($theUserId);
         $zoneList = getAllZonesWithZoneId($userZoneObj->zone_id);
-  }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == 'Branch Admin'){
+  }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == 'Sub District Admin'){
         //$userBranchObj = getBranchInfoForUser($theUserId);
 
   }
@@ -24,39 +24,39 @@
 <form>
     <table border="0" width="100%">
         <tr>
-            <td><font color='red'>*</font> First Name:</td>
+            <td width="15%"><font color='red'>*</font> First Name:</td>
             <td>
-                <input type="text" name="txtfirstname" id="txtfirstname"/>
+                <input type="text" name="txtfirstname" id="txtfirstname" size="70"/>
             </td>
         </tr>
         <tr>
             <td><font color='red'>*</font> Last Name:</td>
             <td>
-                <input type="text" name="txtlastname" id="txtlastname"/>
+                <input type="text" name="txtlastname" id="txtlastname" size="70"/>
             </td>
         </tr>
         <tr>
             <td><font color='red'>*</font> Email:</td>
             <td>
-                <input type="email" name="txtemail" id="txtemail"/>
+                <input type="email" name="txtemail" id="txtemail" size="70"/>
             </td>
         </tr>
         <tr>
             <td><font color='red'>*</font> User Id:</td>
             <td>
-                <input type="text" name="txtuserid" id="txtuserid"/>
+                <input type="text" name="txtuserid" id="txtuserid" size="70"/>
             </td>
         </tr>
         <tr>
             <td><font color='red'>*</font> Password:</td>
             <td>
-                <input type="password" name="txtpassword" id="txtpassword"/>
+                <input type="password" name="txtpassword" id="txtpassword" size="70"/>
             </td>
         </tr>
         <tr>
             <td>Phone Number:</td>
             <td>
-                <input type="text" name="txtphonenumber" id="txtphonenumber"/>
+                <input type="text" name="txtphonenumber" id="txtphonenumber" size="70"/>
             </td>
         </tr>
         <tr>
@@ -84,16 +84,16 @@
             <td>
                 <select name="slctuserlevel" id="slctuserlevel" style="width:100%">
                     <?php
-                      if($loggedInUserObj->user_role == 'Branch Admin'){
+                      if($loggedInUserObj->user_role == 'Sub District Admin'){
                         ?>
                             <option value="" selected="selected">--Select--</option>
-                            <option value="Branch Level">Branch Level</option>
+                            <option value="Sub District Level">Branch Level</option>
                         <?php
                       }else{
                         ?>
                             <option value="" selected="selected">--Select--</option>
-                            <option value="Branch Level">Branch Level</option>
-                            <option value="Zone Level">Zone Level</option>
+                            <option value="Sub District Level">Sub District Level</option>
+                            <option value="District Level">District Level</option>
                         <?php
                       }
                     ?>
@@ -105,9 +105,9 @@
             <td>
                 <select name="slctuserrole" id="slctuserrole" style="width:100%">
                     <option value="" selected="selected">--Select--</option>
-                    <option value="Branch Admin">Branch Admin</option>
+                    <option value="Sub District Admin">Sub District Admin</option>
                     <option value="User">User</option>
-                    <option value="Zone Admin">Zone Admin</option>
+                    <option value="District Admin">District Admin</option>
                 </select>
             </td>
         </tr>
@@ -119,7 +119,7 @@
                     <?php
                         while($zoneRow = mysql_fetch_object($zoneList)){
                             ?>
-                              <option value="<?php echo $zoneRow->id;?>"><?php echo $zoneRow->zone_name;?></option>
+                              <option value="<?php echo $zoneRow->id;?>"><?php echo $zoneRow->district_name;?></option>
                             <?php
                         }//end while loop
                     ?>
@@ -149,9 +149,9 @@
             var userLevel = $('#slctuserlevel').val();
             var userRole = $('#slctuserrole').val();
             var eitherZoneIdOrBranchId = "";
-            if(userLevel == 'Zone Level'){
+            if(userLevel == 'District Level'){
                 eitherZoneIdOrBranchId = $('#slctzone').val();
-            }else if(userLevel == 'Branch Level'){
+            }else if(userLevel == 'Sub District Level'){
                 eitherZoneIdOrBranchId = $('#slctbranch').val();
             }
 
@@ -183,7 +183,7 @@
         $('#slctzone').change(function(){
             var zoneId = $(this).val();
             var userLevel = $('#slctuserlevel').val();
-            if(zoneId !== '' && userLevel == 'Branch Level'){
+            if(zoneId !== '' && userLevel == 'Sub District Level'){
                 var dataString = "zoneId="+zoneId;
                 $.ajax({
                     url: 'files/showlistofbranchsforthiszone.php',
@@ -203,9 +203,9 @@
         $('#slctuserlevel').change(function(){
             var memberType = $(this).val();
             if(memberType != ''){
-                if(memberType == 'Zone Level'){
+                if(memberType == 'District Level'){
                     $('#branchRow').remove();
-                }else if(memberType == 'Branch Level'){
+                }else if(memberType == 'Sub District Level'){
                     var zoneId = $('#slctzone').val();
                     var dataString = "zoneId="+zoneId;
                     $.ajax({
@@ -228,11 +228,11 @@
           var userRole = $(this).val();
           var userLevel = $('#slctuserlevel').val();
           if(userRole !== '' && userLevel !== ''){
-              if(userLevel == 'Branch Level' && userRole == 'Zone Admin'){
-                  alert('A branch level user can not have a Zone Admin role! Please select again!');
+              if(userLevel == 'Sub District Level' && userRole == 'District Admin'){
+                  alert('A sub district level user can not have a District Admin role! Please select again!');
                   $('#slctuserrole').val('');
-              }else if(userLevel == 'Zone Level' && userRole == 'Branch Admin'){
-                  alert('A zone level user can not have a Branch Admin role! Please select again!');
+              }else if(userLevel == 'District Level' && userRole == 'Sub District Admin'){
+                  alert('A district level user can not have a Sub District Admin role! Please select again!');
                   $('#slctuserrole').val('');
               }
           }

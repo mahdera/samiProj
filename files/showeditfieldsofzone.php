@@ -1,7 +1,7 @@
 <?php
-    require_once 'zone.php';
+    require_once 'district.php';
     $zoneId = $_GET['zoneId'];
-    $zoneObj = getZone($zoneId);
+    $zoneObj = getDistrict($zoneId);
     //define the control names in here
     $zoneNameControl = "txtzonename" . $zoneId;
     $descriptionControl = "textareadescription" . $zoneId;
@@ -11,9 +11,9 @@
     <form>
         <table border="0" width="100%">
             <tr>
-                <td>Zone Name:</td>
+                <td>District Name:</td>
                 <td>
-                    <input type="text" name="<?php echo $zoneNameControl;?>" id="<?php echo $zoneNameControl;?>" size="70" value="<?php echo $zoneObj->zone_name;?>"/>
+                    <input type="text" name="<?php echo $zoneNameControl;?>" id="<?php echo $zoneNameControl;?>" size="70" value="<?php echo $zoneObj->district_name;?>"/>
                 </td>
             </tr>
             <tr>

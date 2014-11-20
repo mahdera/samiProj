@@ -11,7 +11,7 @@
 
   function updateSubDistrict($id, $districtId, $subDistrictName, $description){
     try{
-      $query = "update tbl_sub_district set zone_id = '$districtId', sub_district_name = '$subDistrictName', description = '$description' where id = $id";
+      $query = "update tbl_sub_district set district_id = $districtId, sub_district_name = '$subDistrictName', description = '$description' where id = $id";
       save($query);
     }catch(Exception $ex){
       $ex->getMessage();
@@ -51,6 +51,7 @@
   function getAllSubDistrictsOfThisDistrict($districtId){
     try{
       $query = "select * from tbl_sub_district where district_id = $districtId order by sub_district_name";
+      //echo $query;
       $result = read($query);
       return $result;
     }catch(Exception $ex){

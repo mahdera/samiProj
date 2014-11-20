@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 16, 2014 at 03:51 AM
+-- Generation Time: Nov 20, 2014 at 04:37 AM
 -- Server version: 5.5.38
 -- PHP Version: 5.6.2
 
@@ -13,7 +13,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_sami_proj`
 --
-create database db_sami_proj;
+create db_sami_proj;
 use db_sami_proj;
 -- --------------------------------------------------------
 
@@ -127,23 +127,22 @@ INSERT INTO `tbl_assessment_th` (`id`, `assessment_id`, `th_id`, `modified_by`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_branch`
+-- Table structure for table `tbl_district`
 --
 
-CREATE TABLE `tbl_branch` (
+CREATE TABLE `tbl_district` (
 `id` int(11) NOT NULL,
-  `zone_id` int(11) NOT NULL,
-  `branch_name` varchar(100) NOT NULL,
+  `district_name` varchar(100) NOT NULL,
   `description` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_branch`
+-- Dumping data for table `tbl_district`
 --
 
-INSERT INTO `tbl_branch` (`id`, `zone_id`, `branch_name`, `description`) VALUES
-(1, 2, 'First Branch.1', 'desc.1'),
-(2, 1, 'Sample Branch', '---');
+INSERT INTO `tbl_district` (`id`, `district_name`, `description`) VALUES
+(1, 'First District', '---'),
+(2, 'Second District', '---');
 
 -- --------------------------------------------------------
 
@@ -217,14 +216,15 @@ CREATE TABLE `tbl_form_1` (
   `q2` text NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_1`
 --
 
 INSERT INTO `tbl_form_1` (`id`, `title`, `form_date`, `plan`, `q1`, `q2`, `modified_by`, `modification_date`) VALUES
-(19, 'This is the title', '2014-10-24', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 8, '2014-10-24 19:36:21');
+(19, 'This is the title', '2014-10-24', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 8, '2014-10-24 19:36:21'),
+(20, 'the title', '2014-11-17', 'This is my plan', 'This is Q1', 'This is Q2', 8, '2014-11-17 07:01:14');
 
 -- --------------------------------------------------------
 
@@ -243,7 +243,7 @@ CREATE TABLE `tbl_form_1_q3` (
   `col6` varchar(70) DEFAULT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_1_q3`
@@ -251,7 +251,8 @@ CREATE TABLE `tbl_form_1_q3` (
 
 INSERT INTO `tbl_form_1_q3` (`id`, `form_1_id`, `col1`, `col2`, `col3`, `col4`, `col5`, `col6`, `modified_by`, `modification_date`) VALUES
 (13, 19, '1', '2', '3', '4', '5', '6', 8, '2014-10-24 19:36:21'),
-(14, 19, '', '', '', '', '', '', 8, '2014-10-24 19:36:21');
+(14, 19, '', '', '', '', '', '', 8, '2014-10-24 19:36:21'),
+(15, 20, 'q3c1', 'q3c2', 'q3c3', 'q3c4', '', '', 8, '2014-11-17 07:01:14');
 
 -- --------------------------------------------------------
 
@@ -270,14 +271,15 @@ CREATE TABLE `tbl_form_1_q4` (
   `col6` varchar(70) DEFAULT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_1_q4`
 --
 
 INSERT INTO `tbl_form_1_q4` (`id`, `form_1_id`, `col1`, `col2`, `col3`, `col4`, `col5`, `col6`, `modified_by`, `modification_date`) VALUES
-(6, 19, '', '', '', '', '', '', 8, '2014-10-24 19:36:21');
+(6, 19, '', '', '', '', '', '', 8, '2014-10-24 19:36:21'),
+(7, 20, '', '', '', '', 'q4c4', '', 8, '2014-11-17 07:01:14');
 
 -- --------------------------------------------------------
 
@@ -851,6 +853,29 @@ INSERT INTO `tbl_risk` (`id`, `th_id`, `mg`, `dr`, `pr`, `wa`, `rs`, `modified_b
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_sub_district`
+--
+
+CREATE TABLE `tbl_sub_district` (
+`id` int(11) NOT NULL,
+  `district_id` int(11) NOT NULL,
+  `sub_district_name` varchar(100) NOT NULL,
+  `description` text NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_sub_district`
+--
+
+INSERT INTO `tbl_sub_district` (`id`, `district_id`, `sub_district_name`, `description`) VALUES
+(1, 1, 'First Sub District - FD', '---gigi'),
+(2, 1, 'Second Sub District - FD', '---'),
+(3, 2, 'First Sub District - SD', '---'),
+(4, 2, 'Second Sub District - SD', '---');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_team`
 --
 
@@ -960,7 +985,7 @@ CREATE TABLE `tbl_user` (
   `user_role` varchar(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_user`
@@ -968,76 +993,61 @@ CREATE TABLE `tbl_user` (
 
 INSERT INTO `tbl_user` (`id`, `first_name`, `last_name`, `email`, `user_id`, `password`, `phone_number`, `member_type`, `user_status`, `user_level`, `user_role`, `modified_by`, `modification_date`) VALUES
 (2, 'Admin', 'Admin', 'mahderalem@gmail.com', 'root', '63a9f0ea7bb98050796b649e85481845', '39439483948', 'Admin', 'Active', 'Super User', 'Root', 0, '2014-10-09 00:00:00'),
-(3, 'Lekbir', 'Gebretsadik', 'lekbirgebre@yahoo.com', 'leki', '202cb962ac59075b964b07152d234b70', '87897986', 'User', 'Active', 'Branch Level', 'Branch Admin', 2, '2014-11-14 10:36:18'),
-(4, 'Yefikir', 'Alemayehu', 'yefi@yahoo.com', 'yefi', '202cb962ac59075b964b07152d234b70', '---', 'User', 'Active', 'Branch Level', 'User', 2, '2014-11-14 08:14:24'),
-(5, 'Abebe', 'Teka', 'abebe@gmail.com', 'abebe', '202cb962ac59075b964b07152d234b70', '987987', 'User', 'Blocked', 'Branch Level', 'User', 2, '2014-11-14 08:17:41'),
-(6, 'Sample', 'Person', 'sample@yahoo.com', 'sample', '202cb962ac59075b964b07152d234b70', '987987', 'User', 'Active', 'Branch Level', 'User', 2, '2014-11-14 08:17:56'),
-(8, 'Mahder', 'Neway', 'mahdera@yahoo.com', 'mahder', '0f3fbc595a293952fabc8de77ae840ca', '2023743138', 'User', 'Active', 'Zone Level', 'Zone Admin', 2, '2014-11-14 08:11:33'),
-(9, 'Alemu', 'Gebre', 'alemu@yahoo.com', 'alemu', '202cb962ac59075b964b07152d234b70', '453453432', 'User', 'Active', 'Branch Level', 'User', 2, '2014-11-14 10:37:03'),
-(12, 'Sample', 'User', 'sample@americanprogress.org', 'sample_usa', '202cb962ac59075b964b07152d234b70', '98786786', 'User', 'Active', 'Branch Level', 'User', 2, '2014-11-14 10:37:42');
+(3, 'Lekbir', 'Gebretsadik', 'lekbirgebre@yahoo.com', 'leki', '202cb962ac59075b964b07152d234b70', '87897986', 'User', 'Active', 'Sub District Level', 'User', 2, '2014-11-19 17:49:11'),
+(4, 'Yefikir', 'Alemayehu', 'yefi@yahoo.com', 'yefi', '202cb962ac59075b964b07152d234b70', '---', 'User', 'Active', 'Sub District Level', 'Sub District Admin', 2, '2014-11-19 17:49:48'),
+(5, 'Abebe', 'Teka', 'abebe@gmail.com', 'abebe', '202cb962ac59075b964b07152d234b70', '987987', 'User', 'Blocked', 'Sub District Level', 'User', 2, '2014-11-19 17:50:07'),
+(6, 'Sample', 'Person', 'sample@yahoo.com', 'sample', '202cb962ac59075b964b07152d234b70', '987987', 'User', 'Active', 'Sub District Level', 'User', 2, '2014-11-19 17:50:46'),
+(8, 'Mahder', 'Neway', 'mahdera@yahoo.com', 'mahder', '0f3fbc595a293952fabc8de77ae840ca', '2023743138', 'User', 'Active', 'District Level', 'District Admin', 2, '2014-11-19 17:45:54'),
+(9, 'Alemu', 'Gebre', 'alemu@yahoo.com', 'alemu', '202cb962ac59075b964b07152d234b70', '453453432', 'User', 'Active', 'Sub District Level', 'User', 2, '2014-11-19 17:52:01'),
+(12, 'Sample', 'User', 'sample@americanprogress.org', 'sample_usa', '202cb962ac59075b964b07152d234b70', '98786786', 'User', 'Active', 'Sub District Level', 'User', 2, '2014-11-19 17:52:17'),
+(13, 'ldkjf', 'lkjd', 'lkjdf@lkjd.com', 'dfkjd', '8f1c40920564e482fe9e091efbe008c4', 'lkdjfkld', 'User', 'Active', 'Sub District Level', 'User', 2, '2014-11-19 22:22:15'),
+(14, 'kjbmbm', 'hjvjnb', 'jgjhgjh2J@yahoo.com', 'jhgjhg', '25df0e344ac90688ec58ddf14c8f4f3d', 'jhjbm', 'User', 'Active', 'Sub District Level', 'Sub District Admin', 2, '2014-11-19 22:26:16'),
+(15, 'dlfkj', 'lkj', 'jkjkjh@yefi.com', 'kjhkjh', 'ffd55284aeb6073b8e85e2a92ac584cb', 'kjh9908', 'User', 'Pending', 'Sub District Level', 'User', 0, '2014-11-19 22:36:17');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_user_branch`
+-- Table structure for table `tbl_user_district`
 --
 
-CREATE TABLE `tbl_user_branch` (
+CREATE TABLE `tbl_user_district` (
 `id` int(11) NOT NULL,
-  `branch_id` int(11) NOT NULL,
+  `district_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_user_branch`
+-- Dumping data for table `tbl_user_district`
 --
 
-INSERT INTO `tbl_user_branch` (`id`, `branch_id`, `user_id`) VALUES
-(2, 2, 9),
-(3, 1, 12),
-(4, 2, 3),
-(5, 1, 4),
-(6, 1, 5),
-(7, 1, 6);
+INSERT INTO `tbl_user_district` (`id`, `district_id`, `user_id`) VALUES
+(1, 1, 8);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_user_zone`
+-- Table structure for table `tbl_user_sub_district`
 --
 
-CREATE TABLE `tbl_user_zone` (
+CREATE TABLE `tbl_user_sub_district` (
 `id` int(11) NOT NULL,
-  `zone_id` int(11) NOT NULL,
+  `sub_district_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_user_zone`
+-- Dumping data for table `tbl_user_sub_district`
 --
 
-INSERT INTO `tbl_user_zone` (`id`, `zone_id`, `user_id`) VALUES
-(2, 2, 8);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_zone`
---
-
-CREATE TABLE `tbl_zone` (
-`id` int(11) NOT NULL,
-  `zone_name` varchar(100) NOT NULL,
-  `description` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_zone`
---
-
-INSERT INTO `tbl_zone` (`id`, `zone_name`, `description`) VALUES
-(1, 'First Zone', 'Description of zone. edited'),
-(2, 'Second Zone. updated.', 'description of second zone');
+INSERT INTO `tbl_user_sub_district` (`id`, `sub_district_id`, `user_id`) VALUES
+(1, 2, 3),
+(2, 2, 4),
+(3, 3, 5),
+(4, 1, 6),
+(5, 3, 9),
+(6, 1, 12),
+(7, 4, 14),
+(8, 2, 15);
 
 --
 -- Indexes for dumped tables
@@ -1068,10 +1078,10 @@ ALTER TABLE `tbl_assessment_th`
  ADD PRIMARY KEY (`id`), ADD KEY `assessment_id` (`assessment_id`), ADD KEY `th_id` (`th_id`);
 
 --
--- Indexes for table `tbl_branch`
+-- Indexes for table `tbl_district`
 --
-ALTER TABLE `tbl_branch`
- ADD PRIMARY KEY (`id`), ADD KEY `zone_id` (`zone_id`);
+ALTER TABLE `tbl_district`
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_fn`
@@ -1266,6 +1276,12 @@ ALTER TABLE `tbl_risk`
  ADD PRIMARY KEY (`id`), ADD KEY `th_id` (`th_id`);
 
 --
+-- Indexes for table `tbl_sub_district`
+--
+ALTER TABLE `tbl_sub_district`
+ ADD PRIMARY KEY (`id`), ADD KEY `district_id` (`district_id`);
+
+--
 -- Indexes for table `tbl_team`
 --
 ALTER TABLE `tbl_team`
@@ -1296,22 +1312,16 @@ ALTER TABLE `tbl_user`
  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `email` (`email`), ADD UNIQUE KEY `user_id` (`user_id`), ADD KEY `modified_by` (`modified_by`);
 
 --
--- Indexes for table `tbl_user_branch`
+-- Indexes for table `tbl_user_district`
 --
-ALTER TABLE `tbl_user_branch`
- ADD PRIMARY KEY (`id`), ADD KEY `branch_id` (`branch_id`), ADD KEY `user_id` (`user_id`);
+ALTER TABLE `tbl_user_district`
+ ADD PRIMARY KEY (`id`), ADD KEY `district_id` (`district_id`), ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `tbl_user_zone`
+-- Indexes for table `tbl_user_sub_district`
 --
-ALTER TABLE `tbl_user_zone`
- ADD PRIMARY KEY (`id`), ADD KEY `zone_id` (`zone_id`), ADD KEY `user_id` (`user_id`);
-
---
--- Indexes for table `tbl_zone`
---
-ALTER TABLE `tbl_zone`
- ADD PRIMARY KEY (`id`);
+ALTER TABLE `tbl_user_sub_district`
+ ADD PRIMARY KEY (`id`), ADD KEY `sub_district_id` (`sub_district_id`), ADD KEY `user_id` (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -1338,10 +1348,10 @@ MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 ALTER TABLE `tbl_assessment_th`
 MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
 --
--- AUTO_INCREMENT for table `tbl_branch`
+-- AUTO_INCREMENT for table `tbl_district`
 --
-ALTER TABLE `tbl_branch`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+ALTER TABLE `tbl_district`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tbl_fn`
 --
@@ -1356,17 +1366,17 @@ MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
 -- AUTO_INCREMENT for table `tbl_form_1`
 --
 ALTER TABLE `tbl_form_1`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `tbl_form_1_q3`
 --
 ALTER TABLE `tbl_form_1_q3`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `tbl_form_1_q4`
 --
 ALTER TABLE `tbl_form_1_q4`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `tbl_form_2`
 --
@@ -1503,6 +1513,11 @@ MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 ALTER TABLE `tbl_risk`
 MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
+-- AUTO_INCREMENT for table `tbl_sub_district`
+--
+ALTER TABLE `tbl_sub_district`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `tbl_team`
 --
 ALTER TABLE `tbl_team`
@@ -1526,22 +1541,17 @@ MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
--- AUTO_INCREMENT for table `tbl_user_branch`
+-- AUTO_INCREMENT for table `tbl_user_district`
 --
-ALTER TABLE `tbl_user_branch`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+ALTER TABLE `tbl_user_district`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `tbl_user_zone`
+-- AUTO_INCREMENT for table `tbl_user_sub_district`
 --
-ALTER TABLE `tbl_user_zone`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `tbl_zone`
---
-ALTER TABLE `tbl_zone`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+ALTER TABLE `tbl_user_sub_district`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- Constraints for dumped tables
 --
@@ -1552,12 +1562,6 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 ALTER TABLE `tbl_assessment_th`
 ADD CONSTRAINT `tbl_assessment_th_ibfk_3` FOREIGN KEY (`assessment_id`) REFERENCES `tbl_assessment` (`id`) ON DELETE CASCADE,
 ADD CONSTRAINT `tbl_assessment_th_ibfk_4` FOREIGN KEY (`th_id`) REFERENCES `tbl_th` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `tbl_branch`
---
-ALTER TABLE `tbl_branch`
-ADD CONSTRAINT `tbl_branch_ibfk_1` FOREIGN KEY (`zone_id`) REFERENCES `tbl_zone` (`id`);
 
 --
 -- Constraints for table `tbl_fn_action`
@@ -1684,6 +1688,12 @@ ALTER TABLE `tbl_risk`
 ADD CONSTRAINT `tbl_risk_ibfk_1` FOREIGN KEY (`th_id`) REFERENCES `tbl_th` (`id`) ON DELETE CASCADE;
 
 --
+-- Constraints for table `tbl_sub_district`
+--
+ALTER TABLE `tbl_sub_district`
+ADD CONSTRAINT `tbl_sub_district_ibfk_1` FOREIGN KEY (`district_id`) REFERENCES `tbl_district` (`id`);
+
+--
 -- Constraints for table `tbl_team_interest`
 --
 ALTER TABLE `tbl_team_interest`
@@ -1696,15 +1706,15 @@ ALTER TABLE `tbl_th_action`
 ADD CONSTRAINT `tbl_th_action_ibfk_1` FOREIGN KEY (`th_id`) REFERENCES `tbl_th` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `tbl_user_branch`
+-- Constraints for table `tbl_user_district`
 --
-ALTER TABLE `tbl_user_branch`
-ADD CONSTRAINT `tbl_user_branch_ibfk_1` FOREIGN KEY (`branch_id`) REFERENCES `tbl_branch` (`id`),
-ADD CONSTRAINT `tbl_user_branch_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`);
+ALTER TABLE `tbl_user_district`
+ADD CONSTRAINT `tbl_user_district_ibfk_1` FOREIGN KEY (`district_id`) REFERENCES `tbl_district` (`id`),
+ADD CONSTRAINT `tbl_user_district_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`);
 
 --
--- Constraints for table `tbl_user_zone`
+-- Constraints for table `tbl_user_sub_district`
 --
-ALTER TABLE `tbl_user_zone`
-ADD CONSTRAINT `tbl_user_zone_ibfk_1` FOREIGN KEY (`zone_id`) REFERENCES `tbl_zone` (`id`),
-ADD CONSTRAINT `tbl_user_zone_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`);
+ALTER TABLE `tbl_user_sub_district`
+ADD CONSTRAINT `tbl_user_sub_district_ibfk_1` FOREIGN KEY (`sub_district_id`) REFERENCES `tbl_sub_district` (`id`),
+ADD CONSTRAINT `tbl_user_sub_district_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`);

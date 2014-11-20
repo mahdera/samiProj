@@ -2,16 +2,16 @@
   require_once 'dbconnection.php';
   function saveDistrict($districtName, $description){
     try{
-      $query = "insert into tbl_district values(0, '$zoneName', '$description')";
+      $query = "insert into tbl_district values(0, '$districtName', '$description')";
       save($query);
     }catch(Exception $ex){
       $ex->getMessage();
     }
   }
 
-  function updateDistrict($id, $zoneName, $description){
+  function updateDistrict($id, $districtName, $description){
     try{
-      $query = "update tbl_district set district_name = '$zoneName', description = '$description' where id = $id";
+      $query = "update tbl_district set district_name = '$districtName', description = '$description' where id = $id";
       save($query);
     }catch(Exception $ex){
       $ex->getMessage();

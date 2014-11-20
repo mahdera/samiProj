@@ -23,7 +23,7 @@
                 </div>
             </div>
         <?php
-    }else if($userObj->member_type == 'User' && ($userObj->user_role == 'Branch Admin' || $userObj->user_role == 'Zone Admin')){
+    }else if($userObj->member_type == 'User' && ($userObj->user_role == 'Sub District Admin' || $userObj->user_role == 'District Admin')){
         ?>
             <div id="rightcontain">
                 <div id="listdiv">

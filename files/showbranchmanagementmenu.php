@@ -1,10 +1,10 @@
 <div>
     <table border="0" width="100%">
         <tr>
-              <td><a href="#.php" id="createBranchLinkId">Create Branch</a></td>
-              <td><a href="#.php" id="viewBranchLinkId">View Branch</a></td>
-              <td><a href="#.php" id="editBranchLinkId">Edit Branch</a></td>
-              <td><a href="#.php" id="deleteBranchLinkId">Delete Branch</a></td>
+              <td><a href="#.php" id="createBranchLinkId">Create Sub District</a></td>
+              <td><a href="#.php" id="viewBranchLinkId">View Sub District</a></td>
+              <td><a href="#.php" id="editBranchLinkId">Edit Sub District</a></td>
+              <td><a href="#.php" id="deleteBranchLinkId">Delete Sub District</a></td>
         </tr>
     </table>
 </div>

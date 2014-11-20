@@ -59,11 +59,11 @@
             while($userRow = mysql_fetch_object($userList)){
                 $districtObj = null;
                 $subDistrictObj = null;
-                if($userRow->user_level == 'Zone Level'){
+                if($userRow->user_level == 'District Level'){
                     //fetch zone information from tbl_user_zone
                     $userDistrict = getDistrictInfoForUser($userRow->id);
                     $districtObj = getDistrict($userDistrict->district_id);
-                }else if($userRow->user_level == 'Branch Level'){
+                }else if($userRow->user_level == 'Sub District Level'){
                     //fetch branch information from tbl_user_branch
                     $userSubDistrict = getSubDistrictInfoForUser($userRow->id);
                     $subDistrictObj = getSubDistrict($userSubDistrict->sub_district_id);

@@ -1,8 +1,8 @@
 <?php
     session_start();
     require_once 'user.php';
-    require_once 'userbranch.php';
-    require_once 'userzone.php';
+    require_once 'usersubdistrict.php';
+    require_once 'userdistrict.php';
 
     $adminUser = getUserUsingUserId($_SESSION['USER_ID']);
     //get the values...
@@ -24,10 +24,10 @@
     //fetch user by $userId and email address
     $fetchedUser = fetchUserByUserIdAndEmail($userId, $email);
     //now associate the newly crated user here
-    if($userLevel == 'Branch Level'){
-        saveUserBranch($branchId, $fetchedUser->id);
-    }else if($userLevel == 'Zone Level'){
-        saveUserZone($zoneId, $fetchedUser->id);
+    if($userLevel == 'Sub District Level'){
+        saveUserSubDistrict($eitherZoneIdOrBranchId, $fetchedUser->id);
+    }else if($userLevel == 'District Level'){
+        saveUserDistrict($eitherZoneIdOrBranchId, $fetchedUser->id);
     }
     require_once 'showusermanagementlist.php';
 ?>

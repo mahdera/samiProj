@@ -78,7 +78,7 @@
       }
     }
 
-    function doesThisUserHasExistingUserDistrictRecord(){
+    function doesThisUserHasExistingUserDistrictRecord($userId){
       try{
         $cntVal = 0;
         $query = "select count(*) as cnt from tbl_user_district where user_id = $userId";

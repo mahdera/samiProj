@@ -1,10 +1,10 @@
 <div>
     <table border="0" width="100%">
         <tr>
-              <td><a href="#.php" id="createZoneLinkId">Create Zone</a></td>
-              <td><a href="#.php" id="viewZoneLinkId">View Zone</a></td>
-              <td><a href="#.php" id="editZoneLinkId">Edit Zone</a></td>
-              <td><a href="#.php" id="deleteZoneLinkId">Delete Zone</a></td>
+              <td><a href="#.php" id="createZoneLinkId">Create District</a></td>
+              <td><a href="#.php" id="viewZoneLinkId">View District</a></td>
+              <td><a href="#.php" id="editZoneLinkId">Edit Disrict</a></td>
+              <td><a href="#.php" id="deleteZoneLinkId">Delete District</a></td>
         </tr>
     </table>
 </div>

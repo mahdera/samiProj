@@ -1,8 +1,8 @@
 <?php
-    require_once 'zone.php';
-    $zoneName = $_POST['zoneName'];
+    require_once 'district.php';
+    $districtName = $_POST['zoneName'];
     $description = $_POST['description'];
 
-    saveZone($zoneName, $description);
+    saveDistrict($districtName, $description);
 ?>
-<div class="notify notify-green"><span class="symbol icon-tick"></span> Zone Created Successfully!</div>
+<div class="notify notify-green"><span class="symbol icon-tick"></span> District Created Successfully!</div>

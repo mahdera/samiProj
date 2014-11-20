@@ -1,15 +1,15 @@
 <?php
-    require_once 'branch.php';
-    require_once 'zone.php';
+    require_once 'subdistrict.php';
+    require_once 'district.php';
 
     $branchId = $_GET['branchId'];
-    $branchObj = getBranch($branchId);
+    $branchObj = getSubDistrict($branchId);
     //define the control names in here...
     $zoneControl = "slctzone" . $branchId;
     $branchNameControl = "txtbranchname" . $branchId;
     $descriptionControl = "textareadescription" . $branchId;
     $buttonId = "btnupdate" . $branchId;
-    $zoneList = getAllZones();
+    $zoneList = getAllDistricts();
 ?>
 <div>
     <table border="0" width="100%">
@@ -20,13 +20,13 @@
                     <option value="" selected="selected">--Select--</option>
                     <?php
                         while($zoneRow = mysql_fetch_object($zoneList)){
-                          if($branchObj->zone_id == $zoneRow->id){
+                          if($branchObj->district_id == $zoneRow->id){
                           ?>
-                            <option value="<?php echo $zoneRow->id;?>" selected="selected"><?php echo $zoneRow->zone_name;?></option>
+                            <option value="<?php echo $zoneRow->id;?>" selected="selected"><?php echo $zoneRow->district_name;?></option>
                           <?php
                           }else{
                           ?>
-                            <option value="<?php echo $zoneRow->id;?>"><?php echo $zoneRow->zone_name;?></option>
+                            <option value="<?php echo $zoneRow->id;?>"><?php echo $zoneRow->district_name;?></option>
                           <?php
                           }
                         }//end while loop
@@ -35,9 +35,9 @@
             </td>
         </tr>
         <tr>
-            <td>Branch Name:</td>
+            <td>Sub District Name:</td>
             <td>
-                <input type="text" name="<?php echo $branchNameControl;?>" id="<?php echo $branchNameControl;?>" size="70" value="<?php echo $branchObj->branch_name;?>"/>
+                <input type="text" name="<?php echo $branchNameControl;?>" id="<?php echo $branchNameControl;?>" size="70" value="<?php echo $branchObj->sub_district_name;?>"/>
             </td>
         </tr>
         <tr>

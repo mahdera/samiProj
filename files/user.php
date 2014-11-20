@@ -209,12 +209,12 @@
         }
     }
 
-    function getAllZoneAndBranchUsersWithZoneId($zoneId){
+    function getAllDistrictAndSubDistrictUsersWithDistrictId($districtId){
         try{
-            $query = "select tbl_user.* from tbl_user, tbl_user_zone where tbl_user.id = tbl_user_zone.user_id and " .
-            "tbl_user_zone.zone_id = $zoneId UNION select tbl_user.* from tbl_user, tbl_user_branch, tbl_branch " .
-            "where tbl_user.id = tbl_user_branch.user_id and tbl_user_branch.branch_id = tbl_branch.id and " .
-            "tbl_branch.zone_id = $zoneId";
+            $query = "select tbl_user.* from tbl_user, tbl_user_district where tbl_user.id = tbl_user_district.user_id and " .
+            "tbl_user_district.district_id = $districtId UNION select tbl_user.* from tbl_user, tbl_user_sub_district, tbl_sub_district " .
+            "where tbl_user.id = tbl_user_sub_district.user_id and tbl_user_sub_district.sub_district_id = tbl_sub_district.id and " .
+            "tbl_sub_district.district_id = $districtId";
             $result = read($query);
             return $result;
         }catch(Exception $ex){

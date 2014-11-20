@@ -1,7 +1,7 @@
 <?php
-    require_once 'branch.php';
+    require_once 'subdistrict.php';
     $zoneId = $_POST['zoneId'];
-    $branchList = getAllBranchsOfThisZone($zoneId);
+    $branchList = getAllSubDistrictsOfThisDistrict($zoneId);
 ?>
 <tr id="branchRow">
   <td><font color='red'>*</font> Branch:</td>
@@ -11,7 +11,7 @@
           <?php
             while($branchRow = mysql_fetch_object($branchList)){
               ?>
-                <option value="<?php echo $branchRow->id;?>"><?php echo $branchRow->branch_name;?></option>
+                <option value="<?php echo $branchRow->id;?>"><?php echo $branchRow->sub_district_name;?></option>
               <?php
             }//end while loop
           ?>

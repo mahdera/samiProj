@@ -1,8 +1,8 @@
 <?php
   error_reporting( 0 );
-  require_once 'files/zone.php';
-  require_once 'files/branch.php';
-  $zoneList = getAllZones();
+  require_once 'files/district.php';
+  require_once 'files/subdistrict.php';
+  $zoneList = getAllDistricts();
 ?>
 <h1>Create User</h1>
 <form>
@@ -64,8 +64,8 @@
             <td>
                 <select name="slctuserlevel" id="slctuserlevel" style="width:100%">
                     <option value="" selected="selected">--Select--</option>
-                    <option value="Branch Level">Branch Level</option>
-                    <option value="Zone Level">Zone Level</option>
+                    <option value="District Level">District Level</option>
+                    <option value="Sub District Level">Sub District Level</option>
                 </select>
             </td>
         </tr>
@@ -74,9 +74,9 @@
             <td>
                 <select name="slctuserrole" id="slctuserrole" style="width:100%">
                     <option value="" selected="selected">--Select--</option>
-                    <option value="Branch Admin">Branch Admin</option>
+                    <option value="District Admin">District Admin</option>
+                    <option value="Sub District Admin">Sub District Admin</option>
                     <option value="User">User</option>
-                    <option value="Zone Admin">Zone Admin</option>
                 </select>
             </td>
         </tr>
@@ -88,7 +88,7 @@
                     <?php
                         while($zoneRow = mysql_fetch_object($zoneList)){
                             ?>
-                              <option value="<?php echo $zoneRow->id;?>"><?php echo $zoneRow->zone_name;?></option>
+                              <option value="<?php echo $zoneRow->id;?>"><?php echo $zoneRow->district_name;?></option>
                             <?php
                         }//end while loop
                     ?>
@@ -109,7 +109,7 @@
         $('#slctzone').change(function(){
             var zoneId = $(this).val();
             var userLevel = $('#slctuserlevel').val();
-            if(zoneId !== '' && userLevel == 'Branch Level'){
+            if(zoneId !== '' && userLevel == 'Sub District Level'){
                 var dataString = "zoneId="+zoneId;
                 $.ajax({
                     url: 'files/showlistofbranchsforthiszone.php',
@@ -129,9 +129,9 @@
         $('#slctuserlevel').change(function(){
             var memberType = $(this).val();
             if(memberType != ''){
-                if(memberType == 'Zone Level'){
+                if(memberType == 'District Level'){
                     $('#branchRow').remove();
-                }else if(memberType == 'Branch Level'){
+                }else if(memberType == 'Sub District Level'){
                     var zoneId = $('#slctzone').val();
                     var dataString = "zoneId="+zoneId;
                     $.ajax({
@@ -162,9 +162,9 @@
             var userLevel = $('#slctuserlevel').val();
             var userRole = $('#slctuserrole').val();
             var eitherZoneIdOrBranchId = "";
-            if(userLevel == 'Zone Level'){
+            if(userLevel == 'District Level'){
                 eitherZoneIdOrBranchId = $('#slctzone').val();
-            }else if(userLevel == 'Branch Level'){
+            }else if(userLevel == 'Sub District Level'){
                 eitherZoneIdOrBranchId = $('#slctbranch').val();
             }
 
@@ -197,11 +197,11 @@
           var userRole = $(this).val();
           var userLevel = $('#slctuserlevel').val();
           if(userRole !== '' && userLevel !== ''){
-              if(userLevel == 'Branch Level' && userRole == 'Zone Admin'){
-                  alert('A branch level user can not have a Zone Admin role! Please select again!');
+              if(userLevel == 'Sub District Level' && userRole == 'District Admin'){
+                  alert('A sub district level user can not have a District Admin role! Please select again!');
                   $('#slctuserrole').val('');
-              }else if(userLevel == 'Zone Level' && userRole == 'Branch Admin'){
-                  alert('A zone level user can not have a Branch Admin role! Please select again!');
+              }else if(userLevel == 'District Level' && userRole == 'Sub District Admin'){
+                  alert('A district level user can not have a Sub District Admin role! Please select again!');
                   $('#slctuserrole').val('');
               }
           }

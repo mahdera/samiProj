@@ -1,8 +1,8 @@
 <?php
     session_start();
     require_once 'user.php';
-    require_once 'userbranch.php';
-    require_once 'userzone.php';
+    require_once 'usersubdistrict.php';
+    require_once 'userdistrict.php';
     require_once 'utility.php';
     //get the values...
     $firstName = $_POST['firstName'];
@@ -22,10 +22,10 @@
     //fetch user by $userId and email address
     $fetchedUser = fetchUserByUserIdAndEmail($userId, $email);
     //now associate the newly crated user here
-    if($userLevel == 'Branch Level'){
-        saveUserBranch($eitherZoneIdOrBranchId, $fetchedUser->id);
-    }else if($userLevel == 'Zone Level'){
-        saveUserZone($eitherZoneIdOrBranchId, $fetchedUser->id);
+    if($userLevel == 'Sub District Level'){
+        saveUserSubDistrict($eitherZoneIdOrBranchId, $fetchedUser->id);
+    }else if($userLevel == 'District Level'){
+        saveUserDistrict($eitherZoneIdOrBranchId, $fetchedUser->id);
     }
     //now send an activation email for this particular user via email.
     $activationLink = "http://www.domain.com/project_name/activateuserviaemail.php?email=".$email;

@@ -1,8 +1,8 @@
 <?php
     session_start();
     require_once 'user.php';
-    require_once 'userzone.php';
-    require_once 'userbranch.php';
+    require_once 'userdistrict.php';
+    require_once 'usersubdistrict.php';
 
     $adminUser = getUserUsingUserId($_SESSION['USER_ID']);
     //get the values...
@@ -17,28 +17,28 @@
     $userRole = $_POST['userRole'];
     $eitherZoneIdOrBranchId = $_POST['eitherZoneIdOrBranchId'];
     //now I can save this info to the database...
-    if($userLevel == 'Branch Level'){
+    if($userLevel == 'Sub District Level'){
       updateUser($id, $firstName, $lastName, $email, $phoneNumber, $memberType, $userStatus, $userLevel, $userRole, $adminUser->id);
       //now remove any record for this user from the user_zone table
-      deleteUserZoneForThisUser($id);
+      deleteUserDistrictForThisUser($id);
       //check if a user_branch record already exists...
       $userBranchExists = false;
-      $userBranchExists = doesThisUserHasExistingUserBranchRecord($id);
+      $userBranchExists = doesThisUserHasExistingUserSubDistrictRecord($id);
       if($userBranchExists){
-          updateUserBranchForUser($id, $eitherZoneIdOrBranchId);
+          updateUserSubDistrictForUser($id, $eitherZoneIdOrBranchId);
       }else{
-          saveUserBranch($eitherZoneIdOrBranchId, $id);
+          saveUserSubDistrict($eitherZoneIdOrBranchId, $id);
       }
-    }else if($userLevel == 'Zone Level'){
+    }else if($userLevel == 'District Level'){
       updateUser($id, $firstName, $lastName, $email, $phoneNumber, $memberType, $userStatus, $userLevel, $userRole, $adminUser->id);
-      deleteUserBranchForThisUser($id);
+      deleteUserSubDistrictForThisUser($id);
       //check if a user_zone record already exists...
       $userZoneExists = false;
-      $userZoneExists = doesThisUserHasExistingUserZoneRecord($id);
+      $userZoneExists = doesThisUserHasExistingUserDistrictRecord($id);
       if($userZoneExists){
-          updateUserZoneForUser($id, $eitherZoneIdOrBranchId);
+          updateUserDistrictForUser($id, $eitherZoneIdOrBranchId);
       }else{
-          saveUserZone($eitherZoneIdOrBranchId, $id);
+          saveUserDistrict($eitherZoneIdOrBranchId, $id);
       }
     }
 

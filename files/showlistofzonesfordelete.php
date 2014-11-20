@@ -1,26 +1,26 @@
 <?php
-    require_once 'zone.php';
+    require_once 'district.php';
 
-    $zoneList = getAllZones();
-    if(mysql_num_rows($zoneList)){
+    $districtList = getAllDistricts();
+    if(mysql_num_rows($districtList)){
         ?>
             <table border="0" width="100%">
                 <tr>
                     <td>Ser.No</td>
-                    <td>Zone Name</td>
+                    <td>District Name</td>
                     <td>Description</td>
                     <td>Delete</td>
                 </tr>
                 <?php
                   $ctr=1;
-                  while($zoneRow = mysql_fetch_object($zoneList)){
+                  while($districtRow = mysql_fetch_object($districtList)){
                       ?>
                           <tr>
                               <td><?php echo $ctr++;?></td>
-                              <td><?php echo $zoneRow->zone_name;?></td>
-                              <td><?php echo $zoneRow->description;?></td>
+                              <td><?php echo $districtRow->district_name;?></td>
+                              <td><?php echo $districtRow->description;?></td>
                               <td>
-                                  <a href="#" id="<?php echo $zoneRow->id;?>" class="deleteZoneClass">Delete</a>
+                                  <a href="#" id="<?php echo $districtRow->id;?>" class="deleteZoneClass">Delete</a>
                               </td>
                           </tr>
                       <?php

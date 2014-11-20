@@ -1,5 +1,5 @@
 <?php
-    require_once 'branch.php';
+    require_once 'subdistrict.php';
     $branchId = $_POST['branchId'];
-    deleteBranch($branchId);
+    deleteSubDistrict($branchId);
 ?>

@@ -1,5 +1,5 @@
 <?php
-    require_once 'zone.php';
+    require_once 'district.php';
     $zoneId = $_POST['zoneId'];
-    deleteZone($zoneId);
+    deleteDistrict($zoneId);
 ?>

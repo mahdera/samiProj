@@ -2,7 +2,7 @@
     <form>
         <table border="0" width="100%">
             <tr>
-                <td>Zone Name:</td>
+                <td>District Name:</td>
                 <td>
                     <input type="text" name="txtzonename" id="txtzonename" size="70"/>
                 </td>
