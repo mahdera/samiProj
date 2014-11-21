@@ -39,17 +39,7 @@
             <td>Fn:</td>
             <td>
                 <select name="slctfn" id="slctfn" style="width: 100%">
-                    <option value="" selected="selected">--Select--</option>
-                    <option value="Fnc1">Fnc1</option>
-                    <option value="Fnc2">Fnc2</option>
-                    <option value="Fnc3">Fnc3</option>
-                    <option value="Fnc4">Fnc4</option>
-                    <option value="Fnc5">Fnc5</option>
-                    <option value="Fnc6">Fnc6</option>
-                    <option value="Fnc7">Fnc7</option>
-                    <option value="Fnc8">Fnc8</option>
-                    <option value="Fnc9">Fnc9</option>
-                    <option value="Fnc10">Fnc10</option>
+                    <option value="" selected="selected">--Select--</option>                    
                     <?php
                         foreach ($fnIdArray as $fnId) {
                             $fnObj = getFn($fnId);

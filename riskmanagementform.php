@@ -39,6 +39,11 @@
             </td>
         </tr>
         <tr>
+            <td colspan="2">
+                <div id="thDuplicationErrorDiv"></div>
+            </td>
+        </tr>
+        <tr>
             <td>MG</td>
             <td>
                 <select name="slctmg" id="slctmg" style="width: 100%">
@@ -165,6 +170,24 @@
             $('#slctwa').val('');
             $('#slctrs').val('');
         }
+
+        $('#slctth').change(function(){
+            var thId = $(this).val();
+            if(thId != ''){
+                var dataString = "thId="+thId;
+                $.ajax({
+                    url: 'files/hasthisthbeenusedbeforeforrisk.php',
+                    data: dataString,
+                    type:'POST',
+                    success:function(response){
+                        $('#thDuplicationErrorDiv').html(response);
+                    },
+                    error:function(error){
+                        alert(error);
+                    }
+                });
+            }
+        });
 
     });//end document.ready function
 </script>

@@ -23,7 +23,7 @@
 ?>
 <tr id="<?php echo $trRowId;?>">
     <td colspan="2">
-        <table border="0" width="100%" style="background: lightyellow">
+        <table border="0" width="100%" style="background: #fff">
             <tr>
                 <td  width="20%">Obj:</td>
                 <td>
@@ -34,7 +34,7 @@
                 <td width="20%">Fn:</td>
                 <td>
                     <select name="<?php echo $fnSelectControlName;?>" id="<?php echo $fnSelectControlName;?>" style="width: 100%" onchange="showOtherFnDataEntryForm(this.value, '<?php echo $fnOtherDivId;?>', <?php echo $numItems + 1;?>);">
-                        <option value="" selected="selected">--Select--</option>                        
+                        <option value="" selected="selected">--Select--</option>
                         <?php
                             while($fnRow = mysql_fetch_object($fnList)){
                                 ?>
@@ -59,6 +59,8 @@
         if(val === 'other'){
             //now insert the fn data entry form here...
             $('#'+divId).load('files/showotherfnentryformforuniqueval.php?uniqueVal='+uniqueVal);
+        }else{
+            $('#'+divId).html('');
         }
     }
 </script>

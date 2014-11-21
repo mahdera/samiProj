@@ -70,7 +70,7 @@
                 <select name="slctg1fn" id="slctg1fn" style="width: 100%" class="fnDropDown">
                     <option value="" selected="selected">--Select--</option>
                     <?php
-                        //$fnList = getAllFns();
+                        $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
                         while($fnRow = mysql_fetch_object($fnList)){
                         //foreach ($fnIdArray as $fnId) {
                             //$fnObj = getFn($fnId);
@@ -90,7 +90,7 @@
         </tr>
         <tr>
             <td colspan="2">
-                <table border="0" width="100%" style="background: lightyellow">
+                <table border="0" width="100%" style="background: #fff">
                     <tr>
                         <td width="20%">Obj:</td>
                         <td>
@@ -103,7 +103,7 @@
                             <select name="slctg1fn1" id="slctg1fn1" style="width: 100%" class="fnDropDown">
                                 <option value="" selected="selected">--Select--</option>
                                 <?php
-                                    //$fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
+                                    $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
                                     /*if($userObj->user_level == 'Zone Level'){
                                         $userZoneObj = getZoneInfoForUser($userObj->id);
                                         $fnList = getAllFnsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
@@ -173,7 +173,7 @@
         </tr>
         <tr>
             <td colspan="2">
-                <table border="0" width="100%" style="background: lightyellow">
+                <table border="0" width="100%" style="background: #fff">
                     <tr>
                         <td width="20%">Obj:</td>
                         <td>
@@ -256,7 +256,7 @@
         </tr>
         <tr>
             <td colspan="2">
-                <table border="0" width="100%" style="background: lightyellow">
+                <table border="0" width="100%" style="background: #fff">
                     <tr>
                         <td width="20%">Obj:</td>
                         <td>
@@ -267,7 +267,7 @@
                         <td width="20%">Fn:</td>
                         <td>
                             <select name="slctg3fn1" id="slctg3fn1" style="width: 100%" class="fnDropDown">
-                                <option value="" selected="selected">--Select--</option>                                
+                                <option value="" selected="selected">--Select--</option>
                                 <?php
                                     $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
                                     /*if($userObj->user_level == 'Zone Level'){

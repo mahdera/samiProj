@@ -67,7 +67,7 @@
                                         $checked7 = "checked";
                                     }
                                     //echo $interestVal.'<br/>';
-                                }                                
+                                }
                         ?>
                         <td>
                             <?php
@@ -82,6 +82,8 @@
                                 }
                             ?>
                         </td>
+                    </tr>
+                    <tr>
                         <td>
                             <?php
                                 if($checked2 === "checked"){
@@ -95,6 +97,8 @@
                                 }
                             ?>
                         </td>
+                    </tr>
+                    <tr>
                         <td>
                             <?php
                                 if($checked3 === "checked"){
@@ -108,6 +112,8 @@
                                 }
                             ?>
                         </td>
+                    </tr>
+                    <tr>
                         <td>
                             <?php
                                 if($checked4 === "checked"){
@@ -121,6 +127,8 @@
                                 }
                             ?>
                         </td>
+                    </tr>
+                    <tr>
                         <td>
                             <?php
                                 if($checked5 === "checked"){
@@ -134,6 +142,8 @@
                                 }
                             ?>
                         </td>
+                    </tr>
+                    <tr>
                         <td>
                             <?php
                                 if($checked6 === "checked"){
@@ -147,6 +157,8 @@
                                 }
                             ?>
                         </td>
+                    </tr>
+                    <tr>
                         <td>
                             <?php
                                 if($checked7 === "checked"){
@@ -161,19 +173,19 @@
                             ?>
                         </td>
                     </tr>
-                </table>                
+                </table>
             </td>
         </tr>
         <tr>
             <td colspan="2" align="right">
-                <input type="button" value="Update" id="btnupdate"/>                
+                <input type="button" value="Update" id="btnupdate"/>
             </td>
         </tr>
     </table>
 </form>
 <script type="text/javascript">
     $(document).ready(function(){
-        
+
         $('#btnupdate').click(function(){
             var id = "<?php echo $id;?>";
             var teamName = $('#txteditname').val();
@@ -182,20 +194,20 @@
             var email = $('#txteditemail').val();
             var phone = $('#txteditphone').val();
             var interest = "";
-            //get the selected checkboxes here            
+            //get the selected checkboxes here
             $('#teamEditDiv input:checked').each(function () {
                 if(this.checked){
                     interest += $(this).val()+",";
-                }                
+                }
             });
             var dataString = "name="+encodeURIComponent(teamName)+"&title="+encodeURIComponent(title)+"&organization="+
                         encodeURIComponent(organization)+"&email="+email+"&phone="+phone+"&interest="+
-                        encodeURIComponent(interest)+"&id="+id;                
+                        encodeURIComponent(interest)+"&id="+id;
             $.ajax({
-                url: 'files/updateteam.php',		
+                url: 'files/updateteam.php',
                 data: dataString,
                 type:'POST',
-                success:function(response){                    
+                success:function(response){
                     showListOfTeams();
                 },
                 error:function(error){
@@ -203,10 +215,10 @@
                 }
             });
         });
-        
+
         function showListOfTeams(){
             $('#subDetailDiv').load('files/showlistofteams.php');
-        } 
-        
+        }
+
     });//end document.ready function
 </script>
