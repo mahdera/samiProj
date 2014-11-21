@@ -67,7 +67,7 @@
         <tr>
             <td width="20%">Fn:</td>
             <td>
-                <select name="slctg1fn" id="slctg1fn" style="width: 97%" class="fnDropDown">
+                <select name="slctg1fn" id="slctg1fn" style="width: 95%" class="fnDropDown">
                     <option value="" selected="selected">--Select--</option>
                     <?php
                         $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
@@ -81,7 +81,7 @@
                         ?>
                         <option value="other">other</option>
                 </select>
-                <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list"><img src="images/spin.png" border="0" align="absmiddle"/></a>
+                <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="g1fn"><img src="images/spin.png" border="0" align="absmiddle"/></a>
             </td>
         </tr>
         <tr>
@@ -101,7 +101,7 @@
                     <tr>
                         <td width="20%">Fn:</td>
                         <td>
-                            <select name="slctg1fn1" id="slctg1fn1" style="width: 100%" class="fnDropDown">
+                            <select name="slctg1fn1" id="slctg1fn1" style="width: 95%" class="fnDropDown">
                                 <option value="" selected="selected">--Select--</option>
                                 <?php
                                     $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
@@ -120,6 +120,7 @@
                                     ?>
                                     <option value="other">other</option>
                             </select>
+                            <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="g1fn1"><img src="images/spin.png" border="0" align="absmiddle"/></a>
                         </td>
                     </tr>
                 </table>
@@ -146,7 +147,7 @@
         <tr>
             <td width="20%">Fn:</td>
             <td>
-                <select name="slctg2fn" id="slctg2fn" style="width: 100%" class="fnDropDown">
+                <select name="slctg2fn" id="slctg2fn" style="width: 95%" class="fnDropDown">
                     <option value="" selected="selected">--Select--</option>
                     <?php
                         $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
@@ -165,6 +166,7 @@
                         ?>
                                 <option value="other">other</option>
                 </select>
+                <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="g2fn"><img src="images/spin.png" border="0" align="absmiddle"/></a>
             </td>
         </tr>
         <tr>
@@ -184,7 +186,7 @@
                     <tr>
                         <td width="20%">Fn:</td>
                         <td>
-                            <select name="slctg2fn1" id="slctg2fn1" style="width: 100%" class="fnDropDown">
+                            <select name="slctg2fn1" id="slctg2fn1" style="width: 95%" class="fnDropDown">
                                 <option value="" selected="selected">--Select--</option>
                                 <?php
                                     $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
@@ -203,6 +205,7 @@
                                     ?>
                                     <option value="other">other</option>
                             </select>
+                            <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="g2fn1"><img src="images/spin.png" border="0" align="absmiddle"/></a>
                         </td>
                     </tr>
                 </table>
@@ -229,7 +232,7 @@
         <tr>
             <td width="20%">Fn:</td>
             <td>
-                <select name="slctg3fn" id="slctg3fn" style="width: 100%" class="fnDropDown">
+                <select name="slctg3fn" id="slctg3fn" style="width: 95%" class="fnDropDown">
                     <option value="" selected="selected">--Select--</option>
                     <?php
                         $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
@@ -248,6 +251,7 @@
                         ?>
                                 <option value="other">other</option>
                 </select>
+                <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="g3fn"><img src="images/spin.png" border="0" align="absmiddle"/></a>
             </td>
         </tr>
         <tr>
@@ -267,7 +271,7 @@
                     <tr>
                         <td width="20%">Fn:</td>
                         <td>
-                            <select name="slctg3fn1" id="slctg3fn1" style="width: 100%" class="fnDropDown">
+                            <select name="slctg3fn1" id="slctg3fn1" style="width: 95%" class="fnDropDown">
                                 <option value="" selected="selected">--Select--</option>
                                 <?php
                                     $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
@@ -286,6 +290,7 @@
                                     ?>
                                     <option value="other">other</option>
                             </select>
+                            <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="g3fn1"><img src="images/spin.png" border="0" align="absmiddle"/></a>
                         </td>
                     </tr>
                 </table>
@@ -580,6 +585,25 @@
                 var thRowId = 'addMoreG3ObjFn'+numItems;
                 $('#'+thRowId).remove();
             }
+        });
+
+        $('.fnRefreshSpin').click(function(){
+            var idVal = $(this).attr('id');
+            var selectControlName = "slct" + idVal;
+            //first clear the current contents...
+            jQuery('#'+selectControlName).children().remove();
+            //now you have the control name defined in here, reload the content again...
+            $.getJSON('files/reloadfunctionselectcontrolwithlatestdata.php', function(data) {
+                console.log("succ");
+            })
+
+            .done(function( data ) {
+                  $.each( data.functions, function( i, item ) {
+                      //console.log(item.fnName);
+                      jQuery('#'+selectControlName).append("<option value='"+item.fnId+"'>"+item.fnName+"</option>");
+                  });
+                  jQuery('#'+selectControlName).append("<option value='other'>other</option>");
+            });
         });
 
     });//end document.ready function

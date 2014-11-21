@@ -21,6 +21,7 @@
     $fnSelectControlName = "slctg3fn" . ($numItems + 1);
     $trRowId = "addMoreG3ObjFn" . ($numItems + 1);
     $fnOtherDivId = "fnOtherG3ObjFn" . ($numItems + 1);
+    $idForSpinner = "g3fn" . ($numItems + 1);
 ?>
 <tr id="<?php echo $trRowId;?>">
     <td colspan="2">
@@ -34,7 +35,7 @@
             <tr>
                 <td width="20%">Fn:</td>
                 <td>
-                    <select name="<?php echo $fnSelectControlName;?>" id="<?php echo $fnSelectControlName;?>" style="width: 100%" onchange="showOtherFnDataEntryForm(this.value, '<?php echo $fnOtherDivId;?>', <?php echo $numItems + 1;?>);">
+                    <select name="<?php echo $fnSelectControlName;?>" id="<?php echo $fnSelectControlName;?>" style="width: 95%" onchange="showOtherFnDataEntryForm(this.value, '<?php echo $fnOtherDivId;?>', <?php echo $numItems + 1;?>);">
                         <option value="" selected="selected">--Select--</option>
                         <?php
                             while($fnRow = mysql_fetch_object($fnList)){
@@ -45,6 +46,7 @@
                             ?>
                             <option value="other">other</option>
                     </select>
+                    <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $idForSpinner;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
                 </td>
             </tr>
             <tr>
@@ -64,4 +66,25 @@
             $('#'+divId).html('');
         }
     }
+
+    $(document).ready(function(){
+        $('.fnRefreshSpin').click(function(){
+            var idVal = $(this).attr('id');
+            var selectControlName = "slct" + idVal;
+            //first clear the current contents...
+            jQuery('#'+selectControlName).children().remove();
+            //now you have the control name defined in here, reload the content again...
+            $.getJSON('files/reloadfunctionselectcontrolwithlatestdata.php', function(data) {
+                console.log("succ");
+            })
+
+            .done(function( data ) {
+                  $.each( data.functions, function( i, item ) {
+                      //console.log(item.fnName);
+                      jQuery('#'+selectControlName).append("<option value='"+item.fnId+"'>"+item.fnName+"</option>");
+                  });
+                  jQuery('#'+selectControlName).append("<option value='other'>other</option>");
+            });
+        });
+    });//end document.ready function
 </script>

@@ -13,6 +13,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_sami_proj`
 --
+drop database db_sami_proj;
 create database db_sami_proj;
 use db_sami_proj;
 -- --------------------------------------------------------

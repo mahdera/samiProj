@@ -520,8 +520,18 @@ input[type=button]:hover {
 
 .fnRefreshSpin {
   border: 1px solid white;
+  /*width:128px;
+  margin: 10px;
+  border-radius: 500px;
+  -webkit-border-radius: 500px;
+  -moz-border-radius: 500px;*/
 }
 
 .fnRefreshSpin:hover {
   border: 1px solid #ccc;
+  /*width:128px;
+  margin: 10px;
+  border-radius: 500px;
+  -webkit-border-radius: 500px;
+  -moz-border-radius: 500px;*/
 }
