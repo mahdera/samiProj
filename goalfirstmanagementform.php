@@ -67,7 +67,7 @@
         <tr>
             <td width="20%">Fn:</td>
             <td>
-                <select name="slctg1fn" id="slctg1fn" style="width: 100%" class="fnDropDown">
+                <select name="slctg1fn" id="slctg1fn" style="width: 97%" class="fnDropDown">
                     <option value="" selected="selected">--Select--</option>
                     <?php
                         $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
@@ -81,6 +81,7 @@
                         ?>
                         <option value="other">other</option>
                 </select>
+                <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list"><img src="images/spin.png" border="0" align="absmiddle"/></a>
             </td>
         </tr>
         <tr>
@@ -582,9 +583,5 @@
         });
 
     });//end document.ready function
-
-    /*$('.fnDropDown').click(function(){
-        alert('fn drop down clicked');
-    });*/
 
 </script>

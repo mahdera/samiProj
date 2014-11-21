@@ -517,3 +517,11 @@ input[type=button]:hover {
 .notify-yellow { background: #fff8c4; border-color: #f7deae; }
 .notify-red { background: #ffecec; border-color: #fad9d7; }
 .notify-green { background: #e9ffd9; border-color: #D1FAB6; }
+
+.fnRefreshSpin {
+  border: 1px solid white;
+}
+
+.fnRefreshSpin:hover {
+  border: 1px solid #ccc;
+}

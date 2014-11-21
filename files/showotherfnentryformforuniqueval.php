@@ -1,5 +1,5 @@
 <?php
-    $uniqueVal = $_GET['uniqueVal'];    
+    $uniqueVal = $_GET['uniqueVal'];
     //txtg1fnname
     //define the unique fn box here
     $fnBoxName = "txtg1fnobjother" . $uniqueVal;
@@ -22,7 +22,7 @@
     $(document).ready(function(){
         var uniqueId = "<?php echo $uniqueVal;?>";
         var buttonId = "btnupdateg1fnobjother" + uniqueId;
-        
+
         $('#'+buttonId).click(function(){
             var textBoxId = "txtg1fnobjother" + uniqueId;
             var fnName = $('#'+textBoxId).val();
@@ -30,10 +30,10 @@
                 var dataString = "fnName="+encodeURIComponent(fnName);
                 var fnOtherDivId = "fnOtherG1ObjFn" + uniqueId;
                 $.ajax({
-                    url: 'files/savefn.php',		
+                    url: 'files/savefn.php',
                     data: dataString,
                     type:'POST',
-                    success:function(response){                        
+                    success:function(response){
                         $('#'+fnOtherDivId).html(response);
                     },
                     error:function(error){
