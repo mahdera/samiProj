@@ -452,7 +452,9 @@
 		</table>
 		<!--now get the latest goal-second record from the database saved by the logged in user-->
 		<?php
-				$latestGoalSecondRow = getTheLatestGoalSecondRecordModifiedBy($_SESSION['LOGGED_USER_ID']);
+				//$latestGoalSecondRow = getTheLatestGoalSecondRecordModifiedBy($_SESSION['LOGGED_USER_ID']);
+				$goalSecondListByUser = getAllGoalSecondsModifiedBy($_SESSION['LOGGED_USER_ID']);
+				while($latestGoalSecondRow = mysql_fetch_object($goalSecondListByUser)){
 				//now get list of goalSecondFnList for this particular goal-second-id
 				$goalSecondFnList = getAllGoalSecondFnsForThisGoalSecondId($latestGoalSecondRow->id);
 		?>
@@ -593,6 +595,9 @@
 						}//end goal second fn list-while loop
 				?>
 		</table>
+		<?php
+	}//end while loop iterating thru all the goal second list modified by this user...
+		?>
 	</div><!--end printDiv-->
 	<table border="0" width="100%">
 		<tr>

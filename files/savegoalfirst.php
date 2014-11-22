@@ -34,7 +34,8 @@
     $dateDifference = getDateDifferenceForGoalFirstUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
     echo 'the date diff is : ' . $dateDifference.'<br/>';
 
-    if($dateDifference != null && $dateDifference >= 0){
+    if(is_numeric($dateDifference)){
+        echo 'got here';
         if($dateDifference > 180){
             //last created goalFirst record is older than 6 months...hence create new...
             $_SESSION['GOAL_FIRST_STATUS'] = 'create';
@@ -42,7 +43,7 @@
             $_SESSION['GOAL_FIRST_STATUS'] = 'existing';
         }
     }else{
-        $_SESSION['GOAL_FIRST_STATUS'] = 'create';
+        $_SESSION['GOAL_FIRST_STATUS'] = 'create';        
     }
 
     if($_SESSION['GOAL_FIRST_STATUS'] == 'create'){
