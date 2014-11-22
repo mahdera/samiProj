@@ -1,8 +1,9 @@
 <?php
+    session_start();
     $thId = $_GET['thId'];
     require_once 'thaction.php';
     //now get all thActions for
-    $thActionList = getAllThActionsForThisTh($thId);
+    $thActionList = getAllThActionsForThisThModifiedBy($thId, $_SESSION['LOGGED_USER_ID']);
 ?>
 <table border="0" width="100%">
     <tr style="background:#ccc">

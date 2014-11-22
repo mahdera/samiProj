@@ -9,7 +9,6 @@
 		<td>Q2.1</td>
 		<td>Q2.2</td>
 		<td>Q2.3</td>
-		<td>Q2.4</td>
 		<td>Edit</td>
 		<td>Delete</td>
 	</tr>
@@ -20,7 +19,6 @@
 				<td><?php echo $form2Row->q2_1;?></td>
 				<td><?php echo $form2Row->q2_2;?></td>
 				<td><?php echo $form2Row->q2_3;?></td>
-				<td><?php echo $form2Row->q2_4;?></td>
 				<td>
 					<a href="#.php" class="form2EditLink" id="<?php echo $form2Row->id;?>">Edit</a>
 				</td>
@@ -32,7 +30,7 @@
 				$divId = "form2EditDiv" . $form2Row->id;
 			?>
 			<tr>
-				<td colspan="6">
+				<td colspan="5">
 					<div id="<?php echo $divId;?>"></div>
 				</td>
 			</tr>

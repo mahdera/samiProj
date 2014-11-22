@@ -23,7 +23,7 @@
     //now I got all the result set read from the database...lets do the iteration thing now...
     $fn = getFn($fn_id);
     @$countVal=0;
-    @$countVal = doesThisFnAlreadyActionFilledForIt($fn_id);
+    @$countVal = doesThisFnAlreadyActionFilledForItByUser($fn_id,$_SESSION['LOGGED_USER_ID']);
     if($countVal == 0){
 ?>
 <form>

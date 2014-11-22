@@ -44,7 +44,7 @@
         </tr>
         <tr>
             <td colspan="2" align="right">
-                <input type="button" value="Update" id="<?php echo $buttonId;?>"/>                
+                <input type="button" value="Update" id="<?php echo $buttonId;?>"/>
             </td>
         </tr>
     </table>
@@ -53,8 +53,8 @@
     $(document).ready(function(){
         var id = "<?php echo $id;?>";
         var buttonId = "btnupdateform1" + id;
-        
-        $('#'+buttonId).click(function(){           
+
+        $('#'+buttonId).click(function(){
             var divId = "form1EditDiv" + id;
             var titleControlName = "txttitle" + id;
             var dateControlName = "datepicker" + id;
@@ -70,10 +70,10 @@
             var dataString = "id="+id+"&titleValue="+titleValue+"&dateValue="+dateValue+
             "&planValue="+planValue+"&q1Value="+q1Value+"&q2Value="+q2Value;
             $.ajax({
-                url: 'files/updateform1.php',        
+                url: 'files/updateform1.php',
                 data: dataString,
                 type:'POST',
-                success:function(response){ 
+                success:function(response){
                     $('#'+divId).html(response);
                 },
                 error:function(error){

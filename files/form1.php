@@ -60,7 +60,7 @@
     function getForm1($id){
         try{
             $query = "select * from tbl_form_1 where id = $id";
-            echo $query;
+            //echo $query;
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;
@@ -72,7 +72,7 @@
     function getForm1Using($title, $form_date){
         try{
             $query = "select * from tbl_form_1 where title = '$title' and form_date = '$form_date'";
-            echo $query;
+            //echo $query;
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;

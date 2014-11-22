@@ -81,4 +81,14 @@
           $ex->getMessage();
       }
     }
+
+    function getAllThActionsForThisThModifiedBy($thId, $modifiedBy){
+      try{
+          $query = "select * from tbl_th_action where th_id = $thId and modified_by = $modifiedBy";
+          $result = read($query);
+          return $result;
+      } catch (Exception $ex) {
+          $ex->getMessage();
+      }
+    }
 ?>

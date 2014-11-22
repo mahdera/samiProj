@@ -167,7 +167,7 @@
                     var textBoxIdVal = $('#'+textBoxId).val();
                     dataString += "&"+textBoxId+"="+encodeURIComponent(textBoxIdVal);
                 }
-                alert(dataString);
+                //alert(dataString);
                 //now its time to save the data to the database...
                 $.ajax({
                     url: 'files/saveform1.php',

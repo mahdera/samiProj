@@ -70,9 +70,31 @@
         }
     }
 
+    function doesThisFnAlreadyActionFilledForItByUser($fnId, $modifiedBy){
+        try{
+            $query = "select count(*) as cnt from tbl_fn_action where fn_id = $fnId and modified_by = $modifiedBy";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow->cnt;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+
     function getAllFnActionsForThisFn($fnId){
         try{
             $query = "select * from tbl_fn_action where fn_id = $fnId";
+            //echo $query;
+            $result = read($query);
+            return $result;
+        } catch (Exception $ex) {
+            $ex->getMessage();
+        }
+    }
+
+    function getAllFnActionsForThisFnModifiedBy($fnId, $modifiedBy){
+        try{
+            $query = "select * from tbl_fn_action where fn_id = $fnId and modified_by = $modifiedBy";
             //echo $query;
             $result = read($query);
             return $result;

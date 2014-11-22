@@ -30,14 +30,8 @@
             </td>
         </tr>
         <tr>
-            <td>Q2.4:</td>
-            <td>
-                <textarea name="<?php echo $q24TextAreaControlName;?>" id="<?php echo $q24TextAreaControlName;?>" style="width: 100%" rows="3"><?php echo $form2Obj->q2_4;?></textarea>
-            </td>
-        </tr>        
-        <tr>
             <td colspan="2" align="right">
-                <input type="button" value="Update" id="<?php echo $buttonId;?>"/>                
+                <input type="button" value="Update" id="<?php echo $buttonId;?>"/>
             </td>
         </tr>
     </table>
@@ -46,25 +40,23 @@
 	$(document).ready(function(){
 		var id = "<?php echo $id;?>";
 		var buttonId = "btnupdateform2" + id;
-		
-		$('#'+buttonId).click(function(){			
+
+		$('#'+buttonId).click(function(){
 			var divId = "form2EditDiv" + id;
 			var q21TextAreaControlName = "q2_1" + id;
 			var q22TextAreaControlName = "q2_2" + id;
 			var q23TextAreaControlName = "q2_3" + id;
-			var q24TextAreaControlName = "q2_4" + id;
 			//now get the values...
 			var q21Value = $('#'+q21TextAreaControlName).val();
 			var q22Value = $('#'+q22TextAreaControlName).val();
 			var q23Value = $('#'+q23TextAreaControlName).val();
-			var q24Value = $('#'+q24TextAreaControlName).val();
 			var dataString = "id="+id+"&q21Value="+q21Value+"&q22Value="+q22Value+
-			"&q23Value="+q23Value+"&q24Value="+q24Value;
+			"&q23Value="+q23Value;
 			$.ajax({
-                url: 'files/updateform2.php',        
+                url: 'files/updateform2.php',
                 data: dataString,
                 type:'POST',
-                success:function(response){ 
+                success:function(response){
                     $('#'+divId).html(response);
                 },
                 error:function(error){

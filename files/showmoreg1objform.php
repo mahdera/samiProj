@@ -6,11 +6,11 @@
 ?>
 <tr id="<?php echo $trRowId;?>">
     <td colspan="2">
-        <table border="0" width="100%" style="background: lightyellow">
+        <table border="0" width="100%" style="background: #fff">
             <tr>
                 <td width="20%">Obj:</td>
                 <td>
-                    <input type="text" id="<?php echo $objControlName;?>" name="<?php echo $objControlName;?>" class="g1Obj"/>
+                    <input type="text" size="70" id="<?php echo $objControlName;?>" name="<?php echo $objControlName;?>" class="g1Obj"/>
                 </td>
             </tr>
         </table>

@@ -2,11 +2,11 @@
 	session_start();
 	//get all form2 values created by the session owner user...
 	require_once 'form6.php';
-	$form6List = getAllForm6sModifiedBy($_SESSION['LOGGED_USER_ID']);	
+	$form6List = getAllForm6sModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
 <table border="0" width="100%">
 	<tr style="background:#ccc">
-		<td>Q6.1</td>		
+		<td>Q6.1</td>
 		<td>Edit</td>
 		<td>Delete</td>
 	</tr>
@@ -14,12 +14,12 @@
 		while($form6Row = mysql_fetch_object($form6List)){
 			?>
 			<tr>
-				<td><?php echo $form6Row->q6_1;?></td>				
+				<td><?php echo $form6Row->q6_1;?></td>
 				<td>
 					<a href="#.php" class="form6EditLink" id="<?php echo $form6Row->id;?>">Edit</a>
 				</td>
 				<td>
-					<a href="#.php" class="form6DeleteLink" id="<?php echo $form6Row->id;?>">Delete</a>	
+					<a href="#.php" class="form6DeleteLink" id="<?php echo $form6Row->id;?>">Delete</a>
 				</td>
 			</tr>
 			<?php
