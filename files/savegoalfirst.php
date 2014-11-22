@@ -29,17 +29,20 @@
     //save the goalfirst object to the database...
     //the status should change to 'create' iff the session is older than 180 days or
     //if there is no goal first record by this particular user.
+    $dateDifference = null;
     $fetchedGoalFirstRecord = getGoalFirstUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
     $dateDifference = getDateDifferenceForGoalFirstUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
     echo 'the date diff is : ' . $dateDifference.'<br/>';
 
-    if($dateDifference >= 0){
+    if($dateDifference != null && $dateDifference >= 0){
         if($dateDifference > 180){
             //last created goalFirst record is older than 6 months...hence create new...
             $_SESSION['GOAL_FIRST_STATUS'] = 'create';
         }else{
             $_SESSION['GOAL_FIRST_STATUS'] = 'existing';
         }
+    }else{
+        $_SESSION['GOAL_FIRST_STATUS'] = 'create';
     }
 
     if($_SESSION['GOAL_FIRST_STATUS'] == 'create'){

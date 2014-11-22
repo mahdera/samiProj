@@ -2,8 +2,9 @@
     error_reporting( 0 );
     $thActionId = $_GET['thActionId'];
     require_once 'thaction.php';
+    require_once 'th.php';
     deleteThAction($thActionId);
-    //deleteThAction($thId); this will be automatically taken care of by MySQL...
-    //require_once 'editthactionmanagementform.php';
+    $thActionList = getAllThActionsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    require_once '../editthactionmanagementform.php';
+    require_once '../importjsscripts.php';
 ?>
-<div class="notify notify-green"><span class="symbol icon-tick"></span> Th Action Deleted Successfully!</div>

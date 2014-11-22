@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    @session_start();
 ?>
 <h2>Goal Second List</h2>
 <?php
