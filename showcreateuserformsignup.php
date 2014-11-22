@@ -81,7 +81,7 @@
             </td>
         </tr>
         <tr id="zoneRow">
-            <td><font color='red'>*</font> Zone:</td>
+            <td><font color='red'>*</font> District:</td>
             <td>
                 <select name="slctzone" id="slctzone" style="width:100%">
                     <option value="" selected="selected">--Select--</option>
@@ -182,7 +182,7 @@
                     type:'POST',
                     success:function(response){
                         //$('#createUserDiv').html('');
-                        $('#extraContent').html('Your account needs activation. We have sent you an activation link via your email. Please go to your email and click on the link we have sent you!');
+                        $('#extraContent').html(response);
                     },
                     error:function(error){
                         alert(error);

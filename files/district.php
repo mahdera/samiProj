@@ -57,4 +57,14 @@
       $ex->getMessage();
     }
   }
+
+  function getAllDistrictsWithDistrictId($districtId){
+    try{
+      $query = "select * from tbl_district where id = $districtId";
+      $result = read($query);
+      return $result;
+    }catch(Exception $ex){
+      $ex->getMessage();
+    }
+  }
 ?>

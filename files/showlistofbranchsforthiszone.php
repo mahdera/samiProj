@@ -4,7 +4,7 @@
     $branchList = getAllSubDistrictsOfThisDistrict($zoneId);
 ?>
 <tr id="branchRow">
-  <td><font color='red'>*</font> Branch:</td>
+  <td><font color='red'>*</font> Sub District:</td>
   <td>
       <select name="slctbranch" id="slctbranch" style="width:100%">
           <option value="" selected="selected">--Select--</option>

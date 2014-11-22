@@ -35,3 +35,4 @@
     "<a href='$activationLink'>$activationLink</a>";
     sendEmail($email, $subject, $message, $from, $ccTo = null, $bcc = null);
 ?>
+<div class="notify notify-green"><span class="symbol icon-tick"></span>Your account needs activation. We have sent you an activation link via your email. Please go to your email and click on the link we have sent you!</div>

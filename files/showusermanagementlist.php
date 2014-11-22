@@ -22,7 +22,7 @@
     }
 ?>
 <form>
-    <div>
+    <div style="background:#eee">
         <?php
           if($loggedInUserObj->member_type == 'Admin'){
             ?>
@@ -37,7 +37,7 @@
           }
         ?>
     </div>
-    <table border="0" width="100%">
+    <table border="1" width="100%" rules="rows">
         <tr style="background: #eee">
             <td>Ser.No</td>
             <td>First Name</td>
@@ -97,6 +97,7 @@
         ?>
     </table>
 </form>
+<hr/>
 <div id="createUserDiv"></div>
 <script type="text/javascript">
     $(document).ready(function(){

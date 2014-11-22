@@ -12,8 +12,8 @@
   if($loggedInUserObj->member_type == 'Admin'){
         $zoneList = getAllDistricts();
   }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == 'District Admin'){
-        $userZoneObj = getZoneInfoForUser($theUserId);
-        $zoneList = getAllZonesWithZoneId($userZoneObj->zone_id);
+        $userZoneObj = getDistrictInfoForUser($theUserId);
+        $zoneList = getAllDistrictsWithDistrictId($userZoneObj->district_id);
   }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == 'Sub District Admin'){
         //$userBranchObj = getBranchInfoForUser($theUserId);
 
@@ -112,7 +112,7 @@
             </td>
         </tr>
         <tr id="zoneRow">
-            <td><font color='red'>*</font> Zone:</td>
+            <td><font color='red'>*</font> District:</td>
             <td>
                 <select name="slctzone" id="slctzone" style="width:100%">
                     <option value="" selected="selected">--Select--</option>

@@ -12,7 +12,7 @@
             <div id="rightcontain">
                 <div id="listdiv">
                     <ul class="ld">
-                        <li><a href="#.php"><?php echo $fullName;?> logged in</a></li>
+                        <li><a href="#.php"><?php echo $fullName;?>, <?php echo $userRole . " - " . $userLevel;?> logged in</a></li>
                         <li><a href="#.php" id="accountManagementLink">My Account</a></li>
                         <li><a href="mycalendar.php">Calendar</a></li>
                         <li><a href="#" id="reportManagementLink">My Report</a></li>
@@ -28,7 +28,7 @@
             <div id="rightcontain">
                 <div id="listdiv">
                     <ul class="ld">
-                        <li><a href="#.php"><?php echo $fullName;?> logged in</a></li>
+                        <li><a href="#.php"><?php echo $fullName;?>, <?php echo $userRole . " - " . $userLevel;?> logged in</a></li>
                         <li><a href="#.php" id="accountManagementLink">My Account</a></li>
                         <li><a href="mycalendar.php">Calendar</a></li>
                         <li><a href="step1.php">Process</a></li>
@@ -45,7 +45,7 @@
             <div id="rightcontain">
                 <div id="listdiv">
                     <ul class="ld">
-                        <li><a href="#.php"><?php echo $fullName;?> logged in</a></li>
+                        <li><a href="#.php"><?php echo $fullName;?>, <?php echo $userRole . " - " . $userLevel;?> logged in</a></li>
                         <li><a href="#.php" id="accountManagementLink">My Account</a></li>
                         <li><a href="mycalendar.php">Calendar</a></li>
                         <li><a href="step1.php">Process</a></li>

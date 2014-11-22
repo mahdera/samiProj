@@ -7,6 +7,7 @@
     <head>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="css/front_cool.css" media="screen, projection" type="text/css"/>
+        <link rel="stylesheet" href="css/style.css" type="text/css"/>
         <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
         <script type="text/javascript" src='js/login.js'></script>
     </head>
