@@ -8,31 +8,31 @@
         <tr>
             <td width="20%">Name:</td>
             <td>
-                <input type="text" name="txteditname" id="txteditname" value="<?php echo $teamObj->team_name;?>"/>
+                <input type="text" name="txteditname" id="txteditname" value="<?php echo $teamObj->team_name;?>" size="70"/>
             </td>
         </tr>
         <tr>
             <td>Title:</td>
             <td>
-                <input type="text" name="txtedittitle" id="txtedittitle" value="<?php echo $teamObj->title;?>"/>
+                <input type="text" name="txtedittitle" id="txtedittitle" value="<?php echo $teamObj->title;?>" size="70"/>
             </td>
         </tr>
         <tr>
             <td>Organization:</td>
             <td>
-                <input type="text" name="txteditorganization" id="txteditorganization" value="<?php echo $teamObj->organization;?>"/>
+                <input type="text" name="txteditorganization" id="txteditorganization" value="<?php echo $teamObj->organization;?>" size="70"/>
             </td>
         </tr>
         <tr>
             <td>Email:</td>
             <td>
-                <input type="email" name="txteditemail" id="txteditemail" value="<?php echo $teamObj->email;?>"/>
+                <input type="email" name="txteditemail" id="txteditemail" value="<?php echo $teamObj->email;?>" size="70"/>
             </td>
         </tr>
         <tr>
             <td>Phone:</td>
             <td>
-                <input type="tel" name="txteditphone" id="txteditphone" value="<?php echo $teamObj->phone;?>"/>
+                <input type="tel" name="txteditphone" id="txteditphone" value="<?php echo $teamObj->phone;?>" size="70"/>
             </td>
         </tr>
         <tr>
@@ -201,7 +201,7 @@
                 }
             });
             var dataString = "name="+encodeURIComponent(teamName)+"&title="+encodeURIComponent(title)+"&organization="+
-                        encodeURIComponent(organization)+"&email="+email+"&phone="+phone+"&interest="+
+                        encodeURIComponent(organization)+"&email="+encodeURIComponent(email)+"&phone="+encodeURIComponent(phone)+"&interest="+
                         encodeURIComponent(interest)+"&id="+id;
             $.ajax({
                 url: 'files/updateteam.php',

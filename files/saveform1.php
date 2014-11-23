@@ -4,12 +4,12 @@
     require_once 'form1q3.php';
     require_once 'form1q4.php';
 
-    $title = $_POST['title'];
-    $formDate = $_POST['formDate'];
-    $plan = $_POST['plan'];
-    $q1 = $_POST['q1'];
-    $q2 = $_POST['q2'];
-    $q3NumItems = $_POST['q3NumItems'];
+    $title = mysql_real_escape_string($_POST['title']);
+    $formDate = mysql_real_escape_string($_POST['formDate']);
+    $plan = mysql_real_escape_string($_POST['plan']);
+    $q1 = mysql_real_escape_string($_POST['q1']);
+    $q2 = mysql_real_escape_string($_POST['q2']);
+    $q3NumItems = ($_POST['q3NumItems']);
     $q4NumItems = $_POST['q4NumItems'];
 
     //now save form1 record to the database

@@ -1,8 +1,8 @@
 <?php
     session_start();
-    $fnId = $_POST['fnId'];
-    $textAreaValue = $_POST['textAreaValue'];
-    
+    $fnId = mysql_real_escape_string($_POST['fnId']);
+    $textAreaValue = mysql_real_escape_string($_POST['textAreaValue']);
+
     require_once 'fnaction.php';
     saveFnAction($fnId, $textAreaValue, $_SESSION['LOGGED_USER_ID']);
 ?>

@@ -1,7 +1,7 @@
 <?php
     require_once 'district.php';
-    $districtName = $_POST['zoneName'];
-    $description = $_POST['description'];
+    $districtName = mysql_real_escape_string($_POST['zoneName']);
+    $description = mysql_real_escape_string($_POST['description']);
 
     saveDistrict($districtName, $description);
 ?>

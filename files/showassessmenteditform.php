@@ -5,7 +5,7 @@
     $assessmentObj = getAssessment($id);
     //now define the control names in here...
     $assessmentTypeControlName = "slctassessmenttype" . $id;
-    $assessmentDateControlName = "datepicker" . $id;    
+    $assessmentDateControlName = "datepicker" . $id;
     $summaryControlName = "textareasummary" . $id;
     $buttonId = "btnupdate" . $id;
 ?>
@@ -54,7 +54,7 @@
                                 <option value="as4">as4</option>
                             <?php
                         }
-                    ?>                    
+                    ?>
                 </select>
             </td>
         </tr>
@@ -101,40 +101,40 @@
         </tr>
         <tr>
             <td colspan="2" align="right">
-                <input type="button" value="Update" id="<?php echo $buttonId;?>"/>                
-            </td>            
-        </tr>        
+                <input type="button" value="Update" id="<?php echo $buttonId;?>"/>
+            </td>
+        </tr>
     </table>
 </form>
 <hr/>
 <script type="text/javascript">
     $(document).ready(function(){
-        
-        
-            
+
+
+
         $( ".datepicker" ).datepicker({
-            option:true, 
+            option:true,
             dateFormat: 'yy-mm-dd',
             changeMonth:true,
             changeYear:true
         });
-            
-	
-        
+
+
+
         /*$( ".datepicker" ).datepicker({
             //format: "YYYY-mm-dd",
             //changeMonth: true,//this option for allowing user to select month
             //changeYear: true //this option for allowing user to select from year range
             "option", "dateFormat", "yy-mm-dd"
         });*/
-        
+
         var id = "<?php echo $id;?>";
         var buttonId = "btnupdate" + id;
-        
+
         $('#'+buttonId).click(function(){
             //redefine the controls in here...
             var assessmentTypeControlName = "slctassessmenttype" + id;
-            var assessmentDateControlName = "datepicker" + id;    
+            var assessmentDateControlName = "datepicker" + id;
             var summaryControlName = "textareasummary" + id;
             var ctr = "<?php echo $rowCtr-1;?>";
             //now get the values for the non-iterative controls in here...
@@ -155,10 +155,10 @@
             //now it is looking great...i can continue working on the save part...
             var divId = "assessmentEditDiv" + id;
             $.ajax({
-                url: 'files/updateassessment.php',		
+                url: 'files/updateassessment.php',
                 data: dataString,
                 type:'POST',
-                success:function(response){                    
+                success:function(response){
                     $('#'+divId).html(response);
                 },
                 error:function(error){
@@ -166,6 +166,6 @@
                 }
             });
         });//end button.click function
-        
+
     });//end document.ready function
 </script>

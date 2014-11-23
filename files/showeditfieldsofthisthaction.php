@@ -26,7 +26,7 @@
       var thActionId = "<?php echo $thActionId;?>";
       var buttonId = "btnupdatethaction" + thActionId;
       var thId = "<?php echo $thId;?>";
-      
+
       $('#'+buttonId).click(function(){
         var thActionControlName = "textareathactionedit" + thActionId;
         var updatedText = $('#'+thActionControlName).val();

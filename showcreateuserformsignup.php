@@ -72,12 +72,14 @@
         <tr>
             <td><font color="red">*</font> User Role:</td>
             <td>
-                <select name="slctuserrole" id="slctuserrole" style="width:100%">
-                    <option value="" selected="selected">--Select--</option>
-                    <option value="District Admin">District Admin</option>
-                    <option value="Sub District Admin">Sub District Admin</option>
-                    <option value="User">User</option>
-                </select>
+                <div id="userLevelDiv">
+                    <select name="slctuserrole" id="slctuserrole" style="width:100%">
+                        <option value="" selected="selected">--Select--</option>
+                        <option value="District Admin">District Admin</option>
+                        <option value="Sub District Admin">Sub District Admin</option>
+                        <option value="User">User</option>
+                    </select>
+                </div>
             </td>
         </tr>
         <tr id="zoneRow">
@@ -205,6 +207,17 @@
                   $('#slctuserrole').val('');
               }
           }
+        });
+
+        $('#slctuserlevel').change(function(){
+            var userLevel = $(this).val();
+            if(userLevel != ""){
+                if(userLevel == "District Level"){
+                    $('#userLevelDiv').load('showuserrolefordistrictlevel.php');
+                }else if(userLevel == "Sub District Level"){
+                    $('#userLevelDiv').load('showuserroleforsubdistrictlevel.php');
+                }
+            }
         });
     });//end document.ready function
 </script>

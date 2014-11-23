@@ -59,7 +59,7 @@
             var summary = $('#textareasummary').val();
 
             if(assessmentType !== "" && assessmentDate !== "" && th1 !== ""){
-                var dataString = "assessmentType="+assessmentType+
+                var dataString = "assessmentType="+encodeURIComponent(assessmentType)+
                         "&assessmentDate="+assessmentDate+"&summary="+encodeURIComponent(summary)+
                         "&numItems="+numItems;
 

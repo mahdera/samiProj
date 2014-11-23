@@ -98,6 +98,7 @@
             $result = read($query);
             if(mysql_num_rows($result)){
                 $resultRow = mysql_fetch_object($result);
+                //echo $resultRow->dateDiff;
                 return abs($resultRow->dateDiff);
             }
         }catch(Exception $ex){

@@ -112,7 +112,7 @@
             if(name !== "" && title !== "" && organization !== "" && email !== "" &&
                     phone !== "" && interest !== ""){
                 var dataString = "name="+encodeURIComponent(name)+"&title="+encodeURIComponent(title)+"&organization="+
-                        encodeURIComponent(organization)+"&email="+email+"&phone="+phone+"&interest="+
+                        encodeURIComponent(organization)+"&email="+encodeURIComponent(email)+"&phone="+encodeURIComponent(phone)+"&interest="+
                         encodeURIComponent(interest);
                 $.ajax({
                     url: 'files/saveteam.php',

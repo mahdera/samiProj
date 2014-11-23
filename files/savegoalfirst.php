@@ -11,18 +11,18 @@
 
     //get the values...
     $thId = $_POST['th'];
-    $g1 = $_POST['g1'];
-    $g1Fn = $_POST['g1Fn'];
-    $g1Obj1 = $_POST['g1Obj1'];
-    $g1Fn1 = $_POST['g1Fn1'];
-    $g2 = $_POST['g2'];
-    $g2Fn = $_POST['g2Fn'];
-    $g2Obj1 = $_POST['g2Obj1'];
-    $g2Fn1 = $_POST['g2Fn1'];
-    $g3 = $_POST['g3'];
-    $g3Fn = $_POST['g3Fn'];
-    $g3Obj1 = $_POST['g3Obj1'];
-    $g3Fn1 = $_POST['g3Fn1'];
+    $g1 = mysql_real_escape_string($_POST['g1']);
+    $g1Fn = mysql_real_escape_string($_POST['g1Fn']);
+    $g1Obj1 = mysql_real_escape_string($_POST['g1Obj1']);
+    $g1Fn1 = mysql_real_escape_string($_POST['g1Fn1']);
+    $g2 = mysql_real_escape_string($_POST['g2']);
+    $g2Fn = mysql_real_escape_string($_POST['g2Fn']);
+    $g2Obj1 = mysql_real_escape_string($_POST['g2Obj1']);
+    $g2Fn1 = mysql_real_escape_string($_POST['g2Fn1']);
+    $g3 = mysql_real_escape_string($_POST['g3']);
+    $g3Fn = mysql_real_escape_string($_POST['g3Fn']);
+    $g3Obj1 = mysql_real_escape_string($_POST['g3Obj1']);
+    $g3Fn1 = mysql_real_escape_string($_POST['g3Fn1']);
     $numItemsG1 = $_POST['numItemsG1'];
     $numItemsG2 = $_POST['numItemsG2'];
     $numItemsG3 = $_POST['numItemsG3'];
@@ -32,10 +32,9 @@
     $dateDifference = null;
     $fetchedGoalFirstRecord = getGoalFirstUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
     $dateDifference = getDateDifferenceForGoalFirstUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
-    echo 'the date diff is : ' . $dateDifference.'<br/>';
+    //echo 'the date diff is : ' . $dateDifference.'<br/>';
 
     if(is_numeric($dateDifference)){
-        echo 'got here';
         if($dateDifference > 180){
             //last created goalFirst record is older than 6 months...hence create new...
             $_SESSION['GOAL_FIRST_STATUS'] = 'create';
@@ -43,7 +42,7 @@
             $_SESSION['GOAL_FIRST_STATUS'] = 'existing';
         }
     }else{
-        $_SESSION['GOAL_FIRST_STATUS'] = 'create';        
+        $_SESSION['GOAL_FIRST_STATUS'] = 'create';
     }
 
     if($_SESSION['GOAL_FIRST_STATUS'] == 'create'){

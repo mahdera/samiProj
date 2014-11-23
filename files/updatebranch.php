@@ -1,8 +1,8 @@
 <?php
     require_once 'subdistrict.php';
     $zoneId = $_POST['zoneId'];
-    $branchName = $_POST['branchName'];
-    $description = $_POST['description'];
+    $branchName = mysql_real_escape_string($_POST['branchName']);
+    $description = mysql_real_escape_string($_POST['description']);
     $branchId = $_POST['branchId'];
 
     updateSubDistrict($branchId, $zoneId, $branchName, $description);

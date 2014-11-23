@@ -11,21 +11,21 @@
 
     //get the values...
     $fnId = $_POST['fn'];
-    $g1 = $_POST['g1'];
-    $g1Obj1 = $_POST['g1Obj1'];
-    $g2 = $_POST['g2'];
-    $g2Obj1 = $_POST['g2Obj1'];
-    $g3 = $_POST['g3'];
-    $g3Obj1 = $_POST['g3Obj1'];
+    $g1 = mysql_real_escape_string($_POST['g1']);
+    $g1Obj1 = mysql_real_escape_string($_POST['g1Obj1']);
+    $g2 = mysql_real_escape_string($_POST['g2']);
+    $g2Obj1 = mysql_real_escape_string($_POST['g2Obj1']);
+    $g3 = mysql_real_escape_string($_POST['g3']);
+    $g3Obj1 = mysql_real_escape_string($_POST['g3Obj1']);
 
     $numItemsG1 = $_POST['numItemsG1'];
     $numItemsG2 = $_POST['numItemsG2'];
     $numItemsG3 = $_POST['numItemsG3'];
 
-    $fetchedGoalSecondRecord = getGoalSecondUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
+    //$fetchedGoalSecondRecord = getGoalSecondUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
     $dateDifference = getDateDifferenceForGoalSecondUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
-
-    if($dateDifference){
+    echo "the date diff is : " . $dateDifference;
+    if(is_numeric($dateDifference)){
         if($dateDifference > 180){
             //last created goalFirst record is older than 6 months...hence create new...
             $_SESSION['GOAL_SECOND_STATUS'] = 'create';
@@ -57,7 +57,7 @@
 
     for($i = 1; $i <= $numItemsG1; $i++){
         $g1ObjTextBoxId = "txtg1obj" . $i;
-        $g1ObjTextBoxValue = $_POST["$g1ObjTextBoxId"];
+        $g1ObjTextBoxValue = mysql_real_escape_string($_POST["$g1ObjTextBoxId"]);
         //now save the values to the database...
         saveGoalSecondG1Obj($fetchedGoalSecondG1->id, $g1ObjTextBoxValue, $_SESSION['LOGGED_USER_ID']);
     }//end for loop i
@@ -69,7 +69,7 @@
 
     for($j = 1; $j <= $numItemsG2; $j++){
         $g2ObjTextBoxId = "txtg2obj" . $j;
-        $g2ObjTextBoxValue = $_POST["$g2ObjTextBoxId"];
+        $g2ObjTextBoxValue = mysql_real_escape_string($_POST["$g2ObjTextBoxId"]);
         //now save the values to the database...
         saveGoalSecondG2Obj($fetchedGoalSecondG2->id, $g2ObjTextBoxValue, $_SESSION['LOGGED_USER_ID']);
     }//end for loop i
@@ -81,7 +81,7 @@
 
     for($k = 1; $k <= $numItemsG3; $k++){
         $g3ObjTextBoxId = "txtg3obj" . $k;
-        $g3ObjTextBoxValue = $_POST["$g3ObjTextBoxId"];
+        $g3ObjTextBoxValue = mysql_real_escape_string($_POST["$g3ObjTextBoxId"]);
         //now save the values to the database...
         saveGoalSecondG3Obj($fetchedGoalSecondG3->id, $g3ObjTextBoxValue, $_SESSION['LOGGED_USER_ID']);
     }//end for loop i

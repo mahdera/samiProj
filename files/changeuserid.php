@@ -1,6 +1,6 @@
 <?php
 	$currentUserId = $_POST['currentUserId'];
-	$newUserId = $_POST['newUserId'];
+	$newUserId = mysql_real_escape_string($_POST['newUserId']);
 	$password = $_POST['password'];
 
 	require_once 'user.php';

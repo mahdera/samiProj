@@ -1,7 +1,7 @@
 <?php
 	$userId = $_POST['userId'];
 	$currentPassword = $_POST['currentPassword'];
-	$newPassword = $_POST['newPassword'];
+	$newPassword = mysql_real_escape_string($_POST['newPassword']);
 
 	require_once 'user.php';
 	//first check if there is a user with the given userId and current Password combination
