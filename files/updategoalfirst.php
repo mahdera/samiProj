@@ -8,12 +8,12 @@
     require_once 'goalfirstg3objfn.php';
 
     $thId = $_POST['thId'];
-    $txtG1Val = mysql_real_escape_string($_POST['txtG1Val']);
-    $slctFn1Val = mysql_real_escape_string($_POST['slctFn1Val']);
-    $txtG2Val = mysql_real_escape_string($_POST['txtG2Val']);
-    $slctFn2Val = mysql_real_escape_string($_POST['slctFn2Val']);
-    $txtG3Val = mysql_real_escape_string($_POST['txtG3Val']);
-    $slctFn3Val = mysql_real_escape_string($_POST['slctFn3Val']);
+    @$txtG1Val = mysql_real_escape_string($_POST['txtG1Val']);
+    @$slctFn1Val = mysql_real_escape_string($_POST['slctFn1Val']);
+    @$txtG2Val = mysql_real_escape_string($_POST['txtG2Val']);
+    @$slctFn2Val = mysql_real_escape_string($_POST['slctFn2Val']);
+    @$txtG3Val = mysql_real_escape_string($_POST['txtG3Val']);
+    @$slctFn3Val = mysql_real_escape_string($_POST['slctFn3Val']);
     $goalFirstG1Id = $_POST['goalFirstG1Id'];
     $goalFirstG2Id = $_POST['goalFirstG2Id'];
     $goalFirstG3Id = $_POST['goalFirstG3Id'];

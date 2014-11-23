@@ -3,9 +3,9 @@
     require_once 'assessment.php';
     require_once 'th.php';
 
-    $assessmentType = mysql_real_escape_string($_POST['assessmentType']);
+    @$assessmentType = mysql_real_escape_string($_POST['assessmentType']);
     $assessmentDate = $_POST['assessmentDate'];
-    $summary = mysql_real_escape_string($_POST['summary']);
+    @$summary = mysql_real_escape_string($_POST['summary']);
     $id = $_POST['id'];
     $ctr = $_POST['ctr'];
     //now do the assessment update in here...

@@ -11,12 +11,12 @@
 
     //get the values...
     $fnId = $_POST['fn'];
-    $g1 = mysql_real_escape_string($_POST['g1']);
-    $g1Obj1 = mysql_real_escape_string($_POST['g1Obj1']);
-    $g2 = mysql_real_escape_string($_POST['g2']);
-    $g2Obj1 = mysql_real_escape_string($_POST['g2Obj1']);
-    $g3 = mysql_real_escape_string($_POST['g3']);
-    $g3Obj1 = mysql_real_escape_string($_POST['g3Obj1']);
+    @$g1 = mysql_real_escape_string($_POST['g1']);
+    @$g1Obj1 = mysql_real_escape_string($_POST['g1Obj1']);
+    @$g2 = mysql_real_escape_string($_POST['g2']);
+    @$g2Obj1 = mysql_real_escape_string($_POST['g2Obj1']);
+    @$g3 = mysql_real_escape_string($_POST['g3']);
+    @$g3Obj1 = mysql_real_escape_string($_POST['g3Obj1']);
 
     $numItemsG1 = $_POST['numItemsG1'];
     $numItemsG2 = $_POST['numItemsG2'];

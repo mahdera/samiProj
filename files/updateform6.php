@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	$id = $_POST['id'];
-	$q61Value = mysql_real_escape_string($_POST['q61Value']);	
+	@$q61Value = mysql_real_escape_string($_POST['q61Value']);	
 	require_once 'form6.php';
 	updateForm6($id, $q61Value, $_SESSION['LOGGED_USER_ID']);
 ?>

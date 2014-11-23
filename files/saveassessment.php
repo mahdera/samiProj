@@ -1,9 +1,9 @@
 <?php
     session_start();
-    $assessmentType = mysql_real_escape_string($_POST['assessmentType']);
-    $assessmentDate = mysql_real_escape_string($_POST['assessmentDate']);
-    $summary = mysql_real_escape_string($_POST['summary']);
-    $numItems = mysql_real_escape_string($_POST['numItems']);
+    @$assessmentType = mysql_real_escape_string($_POST['assessmentType']);
+    @$assessmentDate = mysql_real_escape_string($_POST['assessmentDate']);
+    @$summary = mysql_real_escape_string($_POST['summary']);
+    @$numItems = mysql_real_escape_string($_POST['numItems']);
 
     require_once 'th.php';
     require_once 'assessment.php';
