@@ -144,15 +144,12 @@ CREATE TABLE `tbl_form_1` (
 CREATE TABLE `tbl_form_1_q3` (
 `id` bigint(20) NOT NULL,
   `form_1_id` bigint(20) NOT NULL,
-  `col1` varchar(255) DEFAULT NULL,
-  `col2` varchar(255) DEFAULT NULL,
-  `col3` varchar(255) DEFAULT NULL,
-  `col4` varchar(255) DEFAULT NULL,
-  `col5` varchar(255) DEFAULT NULL,
-  `col6` varchar(255) DEFAULT NULL,
+  `row` int(11) DEFAULT NULL,
+  `col` int(11) DEFAULT NULL,
+  `column_value` text,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -163,15 +160,12 @@ CREATE TABLE `tbl_form_1_q3` (
 CREATE TABLE `tbl_form_1_q4` (
 `id` bigint(20) NOT NULL,
   `form_1_id` bigint(20) NOT NULL,
-  `col1` varchar(255) DEFAULT NULL,
-  `col2` varchar(255) DEFAULT NULL,
-  `col3` varchar(255) DEFAULT NULL,
-  `col4` varchar(255) DEFAULT NULL,
-  `col5` varchar(255) DEFAULT NULL,
-  `col6` varchar(255) DEFAULT NULL,
+  `row` int(11) DEFAULT NULL,
+  `col` int(11) DEFAULT NULL,
+  `column_value` text,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 

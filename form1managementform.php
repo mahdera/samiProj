@@ -49,11 +49,11 @@
                         <td>Col3</td>
                         <td>Col4</td>
                     </tr>
-                    <tr id="thRowQ31">
-                        <td><input type="text" name="txtrowq31" id="txtrowq31" class="thInputRowQ3"/></td>
-                        <td><input type="text" name="txtrowq32" id="txtrowq32" class="thInputRowQ3"/></td>
-                        <td><input type="text" name="txtrowq33" id="txtrowq33" class="thInputRowQ3"/></td>
-                        <td><input type="text" name="txtrowq34" id="txtrowq34" class="thInputRowQ3"/></td>
+                    <tr id="thRowQ31" class="thInputRowQ3">
+                        <td><input type="text" name="txtrowq311" id="txtrowq311" /></td>
+                        <td><input type="text" name="txtrowq312" id="txtrowq312" /></td>
+                        <td><input type="text" name="txtrowq313" id="txtrowq313" /></td>
+                        <td><input type="text" name="txtrowq314" id="txtrowq314" /></td>
                     </tr>
                 </table>
             </td>
@@ -73,11 +73,11 @@
                         <td>Col3</td>
                         <td>Col4</td>
                     </tr>
-                    <tr id="thRowQ41">
-                        <td><input type="text" name="txtrowq41" id="txtrowq41" class="thInputRowQ4"/></td>
-                        <td><input type="text" name="txtrowq42" id="txtrowq42" class="thInputRowQ4"/></td>
-                        <td><input type="text" name="txtrowq43" id="txtrowq43" class="thInputRowQ4"/></td>
-                        <td><input type="text" name="txtrowq44" id="txtrowq44" class="thInputRowQ4"/></td>
+                    <tr id="thRowQ41" class="thInputRowQ4">
+                        <td><input type="text" name="txtrowq411" id="txtrowq411" /></td>
+                        <td><input type="text" name="txtrowq412" id="txtrowq412" /></td>
+                        <td><input type="text" name="txtrowq413" id="txtrowq413" /></td>
+                        <td><input type="text" name="txtrowq414" id="txtrowq414" /></td>
                     </tr>
                 </table>
             </td>
@@ -104,37 +104,38 @@
         });
 
         $('#addRowsQ3Link').click(function(){
-            var numItems = ($('.thInputRowQ3').length);
-            var textBoxCol1Id = "txtrowq3"+(numItems+1);
-            var textBoxCol2Id = "txtrowq3"+(numItems+2);
-            var textBoxCol3Id = "txtrowq3"+(numItems+3);
-            var textBoxCol4Id = "txtrowq3"+(numItems+4);
-            var newRow = $("<tr id='thRowQ3"+((numItems/4)+1)+"'><td><input type='text' class='thInputRowQ3' name='"+textBoxCol1Id+"' id='"+textBoxCol1Id+"'/></td><td><input type='text' class='thInputRowQ3' name='"+textBoxCol2Id+"' id='"+textBoxCol2Id+"'/></td><td><input type='text' class='thInputRowQ3' name='"+textBoxCol3Id+"' id='"+textBoxCol3Id+"'/></td><td><input type='text' class='thInputRowQ3' name='"+textBoxCol4Id+"' id='"+textBoxCol4Id+"'/></td></tr>");
-            $('#thRowQ3'+(numItems/4)).after(newRow);
+            var numRows = ($('.thInputRowQ3').length);
+            var textBoxCol1Id = "txtrowq3"+(numRows+1)+1;
+            var textBoxCol2Id = "txtrowq3"+(numRows+1)+2;
+            var textBoxCol3Id = "txtrowq3"+(numRows+1)+3;
+            var textBoxCol4Id = "txtrowq3"+(numRows+1)+4;
+            var newRow = $("<tr id='thRowQ3"+((numRows)+1)+"' class='thInputRowQ3'><td><input type='text' name='"+textBoxCol1Id+"' id='"+textBoxCol1Id+"'/></td><td><input type='text' name='"+textBoxCol2Id+"' id='"+textBoxCol2Id+"'/></td><td><input type='text' name='"+textBoxCol3Id+"' id='"+textBoxCol3Id+"'/></td><td><input type='text' name='"+textBoxCol4Id+"' id='"+textBoxCol4Id+"'/></td></tr>");
+            $('#thRowQ3'+(numRows)).after(newRow);
         });
 
         $('#removeRowsQ3Link').click(function(){
-            var numItems = $('.thInputRowQ3').length;
-            if((numItems/4) > 1){
-                var thRowId = 'thRowQ3'+(numItems/4);
+            var numRows = $('.thInputRowQ3').length;
+            if(numRows > 1){
+                var thRowId = 'thRowQ3'+(numRows);
                 $('#'+thRowId).remove();
             }
         });
 
         $('#addRowsQ4Link').click(function(){
-            var numItems = ($('.thInputRowQ4').length);
-            var textBoxCol1Id = "txtrowq4"+(numItems+1);
-            var textBoxCol2Id = "txtrowq4"+(numItems+2);
-            var textBoxCol3Id = "txtrowq4"+(numItems+3);
-            var textBoxCol4Id = "txtrowq4"+(numItems+4);
-            var newRow = $("<tr id='thRowQ4"+((numItems/4)+1)+"'><td><input type='text' class='thInputRowQ4' name='"+textBoxCol1Id+"' id='"+textBoxCol1Id+"'/></td><td><input type='text' class='thInputRowQ4' name='"+textBoxCol2Id+"' id='"+textBoxCol2Id+"'/></td><td><input type='text' class='thInputRowQ4' name='"+textBoxCol3Id+"' id='"+textBoxCol3Id+"'/></td><td><input type='text' class='thInputRowQ4' name='"+textBoxCol4Id+"' id='"+textBoxCol4Id+"'/></td></tr>");
-            $('#thRowQ4'+(numItems/4)).after(newRow);
+            var numRows = ($('.thInputRowQ4').length);
+            var textBoxCol1Id = "txtrowq4"+(numRows+1)+1;
+            var textBoxCol2Id = "txtrowq4"+(numRows+1)+2;
+            var textBoxCol3Id = "txtrowq4"+(numRows+1)+3;
+            var textBoxCol4Id = "txtrowq4"+(numRows+1)+4;
+            var newRow = $("<tr id='thRowQ4"+((numRows)+1)+"' class='thInputRowQ4'><td><input type='text' name='"+textBoxCol1Id+"' id='"+textBoxCol1Id+"'/></td><td><input type='text' name='"+textBoxCol2Id+"' id='"+textBoxCol2Id+"'/></td><td><input type='text' name='"+textBoxCol3Id+"' id='"+textBoxCol3Id+"'/></td><td><input type='text' name='"+textBoxCol4Id+"' id='"+textBoxCol4Id+"'/></td></tr>");
+            $('#thRowQ4'+(numRows)).after(newRow);
         });
 
+
         $('#removeRowsQ4Link').click(function(){
-            var numItems = $('.thInputRowQ4').length;
-            if((numItems/4) > 1){
-                var thRowId = 'thRowQ4'+(numItems/4);
+            var numRows = $('.thInputRowQ4').length;
+            if(numRows > 1){
+                var thRowId = 'thRowQ4'+(numRows);
                 $('#'+thRowId).remove();
             }
         });
@@ -145,28 +146,51 @@
             var plan = $('#textareaplan').val();
             var q1 = $('#textareaq1').val();
             var q2 = $('#textareaq2').val();
-            var q3NumItems = $('.thInputRowQ3').length;
-            var q4NumItems = $('.thInputRowQ4').length;
+            var q3NumRows = $('.thInputRowQ3').length;
+            var q4NumRows = $('.thInputRowQ4').length;
             var dataString = "";
 
             if(formDate !== ""){
                 dataString += "title="+encodeURIComponent(title)+"&formDate="+
                         formDate+"&plan="+encodeURIComponent(plan)+
                         "&q1="+encodeURIComponent(q1)+"&q2="+encodeURIComponent(q2)+
-                        "&q3NumItems="+q3NumItems+"&q4NumItems="+q4NumItems;
-                for(var i=1; i <= q3NumItems; i++){
-                    var textBoxId = "txtrowq3"+i;
+                        "&q3NumRows="+q3NumRows+"&q4NumRows="+q4NumRows;
+
+                for(var i=1; i <= q3NumRows; i++){
+                    var textBoxCol1Id = "txtrowq3"+i+1;
+                    var textBoxCol2Id = "txtrowq3"+i+2;
+                    var textBoxCol3Id = "txtrowq3"+i+3;
+                    var textBoxCol4Id = "txtrowq3"+i+4;
                     //now get the value...
-                    var textBoxIdVal = $('#'+textBoxId).val();
-                    dataString += "&"+textBoxId+"="+encodeURIComponent(textBoxIdVal);
+                    var textBoxCol1Val = $('#'+textBoxCol1Id).val();
+                    var textBoxCol2Val = $('#'+textBoxCol2Id).val();
+                    var textBoxCol3Val = $('#'+textBoxCol3Id).val();
+                    var textBoxCol4Val = $('#'+textBoxCol4Id).val();
+
+                    dataString += "&"+textBoxCol1Id+"="+encodeURIComponent(textBoxCol1Val)+
+                            "&"+textBoxCol2Id+"="+encodeURIComponent(textBoxCol2Val)+
+                            "&"+textBoxCol3Id+"="+encodeURIComponent(textBoxCol3Val)+
+                            "&"+textBoxCol4Id+"="+encodeURIComponent(textBoxCol4Val);
                 }//end for loop
 
-                for(var j=1; j <= q4NumItems; j++){
-                    var textBoxId = "txtrowq4"+j;
-                    //now get the values...
-                    var textBoxIdVal = $('#'+textBoxId).val();
-                    dataString += "&"+textBoxId+"="+encodeURIComponent(textBoxIdVal);
-                }
+
+                for(var i=1; i <= q4NumRows; i++){
+                    var textBoxCol1Id = "txtrowq4"+i+1;
+                    var textBoxCol2Id = "txtrowq4"+i+2;
+                    var textBoxCol3Id = "txtrowq4"+i+3;
+                    var textBoxCol4Id = "txtrowq4"+i+4;
+                    //now get the value...
+                    var textBoxCol1Val = $('#'+textBoxCol1Id).val();
+                    var textBoxCol2Val = $('#'+textBoxCol2Id).val();
+                    var textBoxCol3Val = $('#'+textBoxCol3Id).val();
+                    var textBoxCol4Val = $('#'+textBoxCol4Id).val();
+
+                    dataString += "&"+textBoxCol1Id+"="+encodeURIComponent(textBoxCol1Val)+
+                            "&"+textBoxCol2Id+"="+encodeURIComponent(textBoxCol2Val)+
+                            "&"+textBoxCol3Id+"="+encodeURIComponent(textBoxCol3Val)+
+                            "&"+textBoxCol4Id+"="+encodeURIComponent(textBoxCol4Val);
+                }//end for loop
+
                 //alert(dataString);
                 //now its time to save the data to the database...
                 $.ajax({

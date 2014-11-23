@@ -9,8 +9,8 @@
     @$plan = mysql_real_escape_string($_POST['plan']);
     @$q1 = mysql_real_escape_string($_POST['q1']);
     @$q2 = mysql_real_escape_string($_POST['q2']);
-    $q3NumItems = ($_POST['q3NumItems']);
-    $q4NumItems = $_POST['q4NumItems'];
+    $q3NumRows = $_POST['q3NumRows'];
+    $q4NumRows = $_POST['q4NumRows'];
 
     //now save form1 record to the database
     saveForm1($title, $formDate, $plan, $q1, $q2, $_SESSION['LOGGED_USER_ID']);
@@ -24,47 +24,38 @@
         $q3ValueArray = array();
         $q4ValueArray = array();
 
-        for($i=1; $i <= $q3NumItems; $i++){
-            $textBoxId = "txtrowq3" . $i;
-            $textBoxIdVal = $_POST["$textBoxId"];
-            $q3ValueArray[($i-1)] = $textBoxIdVal;
+        for($i=1; $i <= $q3NumRows; $i++){
+            $textBoxCol1Id = "txtrowq3" . $i . 1;
+            $textBoxCol2Id = "txtrowq3" . $i . 2;
+            $textBoxCol3Id = "txtrowq3" . $i . 3;
+            $textBoxCol4Id = "txtrowq3" . $i . 4;
+
+            $textBoxCol1Val = mysql_real_escape_string($_POST["$textBoxCol1Id"]);
+            $textBoxCol2Val = mysql_real_escape_string($_POST["$textBoxCol2Id"]);
+            $textBoxCol3Val = mysql_real_escape_string($_POST["$textBoxCol3Id"]);
+            $textBoxCol4Val = mysql_real_escape_string($_POST["$textBoxCol4Id"]);
+
+            saveForm1Q3($form1Id, $i, 1, $textBoxCol1Val, $_SESSION['LOGGED_USER_ID']);
+            saveForm1Q3($form1Id, $i, 2, $textBoxCol2Val, $_SESSION['LOGGED_USER_ID']);
+            saveForm1Q3($form1Id, $i, 3, $textBoxCol3Val, $_SESSION['LOGGED_USER_ID']);
+            saveForm1Q3($form1Id, $i, 4, $textBoxCol4Val, $_SESSION['LOGGED_USER_ID']);
         }//end for loop
 
-        //now save the record to form1q3 table using the array as intermidiary storage value...
-        for($k=0; $k < count($q3ValueArray); $k++ ){
-            $index = $k+1;
-            if($index == 1){
-                saveForm1Q3($form1Id, $q3ValueArray[$k], $q3ValueArray[$k+1],
-                    $q3ValueArray[$k+2], $q3ValueArray[$k+3],
-                    $q3ValueArray[$k+4], $q3ValueArray[$k+5], $_SESSION['LOGGED_USER_ID']);
-            }
+        for($i=1; $i <= $q4NumRows; $i++){
+            $textBoxCol1Id = "txtrowq4" . $i . 1;
+            $textBoxCol2Id = "txtrowq4" . $i . 2;
+            $textBoxCol3Id = "txtrowq4" . $i . 3;
+            $textBoxCol4Id = "txtrowq4" . $i . 4;
 
-            if($index % 6 == 0){
-                saveForm1Q3($form1Id, $q3ValueArray[$k+1], $q3ValueArray[$k+2],
-                    $q3ValueArray[$k+3], $q3ValueArray[$k+4],
-                    $q3ValueArray[$k+5], $q3ValueArray[$k+6], $_SESSION['LOGGED_USER_ID']);
-            }
-        }//end for loop
+            $textBoxCol1Val = mysql_real_escape_string($_POST["$textBoxCol1Id"]);
+            $textBoxCol2Val = mysql_real_escape_string($_POST["$textBoxCol2Id"]);
+            $textBoxCol3Val = mysql_real_escape_string($_POST["$textBoxCol3Id"]);
+            $textBoxCol4Val = mysql_real_escape_string($_POST["$textBoxCol4Id"]);
 
-        for($j=1; $j <= $q4NumItems; $j++){
-            $textBoxId = "txtrowq4" . $j;
-            $textBoxIdVal = $_POST["$textBoxId"];
-            $q4ValueArray[($i-1)] = $textBoxIdVal;
-        }//end for loop
-
-        for($m=0; $m < count($q4ValueArray); $m++){
-            $index = $m+1;
-            if($index == 1){
-                saveForm1Q4($form1Id, $q4ValueArray[$m], $q4ValueArray[$m+1],
-                    $q4ValueArray[$m+2], $q4ValueArray[$m+3],
-                    $q4ValueArray[$m+4], $q4ValueArray[$m+5], $_SESSION['LOGGED_USER_ID']);
-            }
-
-            if($index % 6 == 0){
-                saveForm1Q4($form1Id, $q4ValueArray[$m+1], $q4ValueArray[$m+2],
-                    $q4ValueArray[$m+3], $q4ValueArray[$m+4],
-                    $q4ValueArray[$m+5], $q4ValueArray[$m+6], $_SESSION['LOGGED_USER_ID']);
-            }
+            saveForm1Q4($form1Id, $i, 1, $textBoxCol1Val, $_SESSION['LOGGED_USER_ID']);
+            saveForm1Q4($form1Id, $i, 2, $textBoxCol2Val, $_SESSION['LOGGED_USER_ID']);
+            saveForm1Q4($form1Id, $i, 3, $textBoxCol3Val, $_SESSION['LOGGED_USER_ID']);
+            saveForm1Q4($form1Id, $i, 4, $textBoxCol4Val, $_SESSION['LOGGED_USER_ID']);
         }//end for loop
 
     }///end if condition...

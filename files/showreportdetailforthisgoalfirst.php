@@ -76,22 +76,33 @@
 				<td>Q3:</td>
 				<td>
 					<table border="0" width="100%">
-						<?php
-							$form1Q3List = getAllForm1Q3ForThisForm1($form1Obj->id);
-
-								while($form1Q3Row = mysql_fetch_object($form1Q3List)){
-								?>
-									<tr>
-										<td><?php echo $form1Q3Row->col1;?></td>
-										<td><?php echo $form1Q3Row->col2;?></td>
-										<td><?php echo $form1Q3Row->col3;?></td>
-										<td><?php echo $form1Q3Row->col4;?></td>
-										<td style='visibility:hidden'><?php echo $form1Q3Row->col5;?></td>
-										<td style='visibility:hidden'><?php echo $form1Q3Row->col6;?></td>
-									</tr>
-								<?php
-								}//end while loop
-						?>
+							<tr style="background: #eee">
+									<td>Col1</td>
+									<td>Col2</td>
+									<td>Col3</td>
+									<td>Col4</td>
+							</tr>
+							<?php
+									$form1Q3List = getAllForm1Q3ForThisForm1($form1Obj->id);
+									$colCount = 1;
+									while($form1Q3Row = mysql_fetch_object($form1Q3List)){
+											$textBoxId = "txtrowq3" . $form1Q3Row->row . $form1Q3Row->col;
+											if($colCount == 1){
+												echo "<tr>";
+											}if($colCount < 4){
+												?>
+													<td width="25%"><?php echo $form1Q3Row->column_value;?></td>
+												<?php
+											}if($colCount == 4){
+												?>
+													<td width="25%"><?php echo $form1Q3Row->column_value;?></td>
+												<?php
+												$colCount = 0;
+												echo "</tr>";
+											}
+											$colCount++;
+									}//end while loop
+							?>
 					</table>
 				</td>
 			</tr>
@@ -99,23 +110,33 @@
 				<td>Q4:</td>
 				<td>
 					<table border="0" width="100%">
-						<?php
-							$form1Q4List = getAllForm1Q4ForThisForm1($form1Obj->id);
-
-								while($form1Q4Row = mysql_fetch_object($form1Q4List)){
-								?>
-									<tr>
-										<td width="20%"><?php echo $form1Q4Row->col1;?></td>
-										<td><?php echo $form1Q4Row->col2;?></td>
-										<td><?php echo $form1Q4Row->col3;?></td>
-										<td><?php echo $form1Q4Row->col4;?></td>
-										<td style='visibility:hidden'><?php echo $form1Q4Row->col5;?></td>
-										<td style='visibility:hidden'><?php echo $form1Q4Row->col6;?></td>
-									</tr>
-								<?php
-								}//end while loop
-
-						?>
+							<tr style="background: #eee">
+									<td>Col1</td>
+									<td>Col2</td>
+									<td>Col3</td>
+									<td>Col4</td>
+							</tr>
+							<?php
+									$form1Q4List = getAllForm1Q4ForThisForm1($form1Obj->id);
+									$colCount = 1;
+									while($form1Q4Row = mysql_fetch_object($form1Q4List)){
+											$textBoxId = "txtrowq4" . $form1Q4Row->row . $form1Q4Row->col;
+											if($colCount == 1){
+												echo "<tr>";
+											}if($colCount < 4){
+												?>
+													<td width="25%"><?php echo $form1Q4Row->column_value;?></td>
+												<?php
+											}if($colCount == 4){
+												?>
+													<td width="25%"><?php echo $form1Q4Row->column_value;?></td>
+												<?php
+												$colCount = 0;
+												echo "</tr>";
+											}
+											$colCount++;
+									}//end while loop
+							?>
 					</table>
 				</td>
 			</tr>

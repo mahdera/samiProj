@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 21, 2014 at 07:28 PM
+-- Generation Time: Nov 23, 2014 at 02:10 PM
 -- Server version: 5.5.38
 -- PHP Version: 5.6.2
 
@@ -13,7 +13,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_sami_proj`
 --
-drop database db_sami_proj;
 create database db_sami_proj;
 use db_sami_proj;
 -- --------------------------------------------------------
@@ -31,20 +30,6 @@ CREATE TABLE `calendar` (
   `end` datetime NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `calendar`
---
-
-INSERT INTO `calendar` (`id`, `member_id`, `title`, `notes`, `start`, `end`) VALUES
-(1, 0, 'First Date', 'Firsts date content goes here', '2012-08-11 07:52:29', '2012-08-11 12:52:33'),
-(2, 0, 'Database Appointment #2', 'Meeting for Juan ', '2012-08-23 08:43:45', '2012-08-23 09:43:50'),
-(3, 0, 'Test title', 'test here', '2012-08-12 00:00:00', '0000-00-00 00:00:00'),
-(4, 0, 'test3', '230 test', '2012-08-29 02:30:00', '0000-00-00 00:00:00'),
-(6, 0, 'What a night', 'This is added by the administrator', '2014-10-18 00:00:00', '0000-00-00 00:00:00'),
-(8, 0, 'This is in the past days', 'The most important part of the calendary. This line is updated. Again updated for the last time', '2014-10-10 00:00:00', '0000-00-00 00:00:00'),
-(9, 0, 'Where is the calendar', 'I dont see the calendary object', '2014-10-18 00:00:00', '0000-00-00 00:00:00'),
-(10, 8, 'This is my Event', 'You can add anyting you want here as an event', '2014-11-02 00:00:00', '0000-00-00 00:00:00');
-
 -- --------------------------------------------------------
 
 --
@@ -57,14 +42,6 @@ CREATE TABLE `calendar_urls` (
   `calendar_array` text NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `calendar_urls`
---
-
-INSERT INTO `calendar_urls` (`id`, `member_id`, `calendar_array`) VALUES
-(1, 0, '''events.php'''),
-(2, 0, '''https://www.google.com/calendar/feeds/kelchuk68%40gmail.com/public/basic''');
-
 -- --------------------------------------------------------
 
 --
@@ -73,28 +50,20 @@ INSERT INTO `calendar_urls` (`id`, `member_id`, `calendar_array`) VALUES
 
 CREATE TABLE `tbl_assessment` (
 `id` bigint(20) NOT NULL,
-  `assessment_type` varchar(50) NOT NULL,
+  `assessment_type` varchar(200) NOT NULL,
   `assessment_date` date NOT NULL,
   `summary` text,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_assessment`
 --
 
 INSERT INTO `tbl_assessment` (`id`, `assessment_type`, `assessment_date`, `summary`, `modified_by`, `modification_date`) VALUES
-(1, 'as1', '2014-10-08', 'this is the summary', 0, '0000-00-00 00:00:00'),
-(2, 'as1', '2014-10-05', 'sdfasd', 0, '0000-00-00 00:00:00'),
-(3, 'as2', '2014-10-08', 'This is the Summary written just before SCRUM lol. I love php more than Java', 0, '0000-00-00 00:00:00'),
-(4, 'as2', '2014-10-09', 'This is the summary info', 5, '2014-10-11 00:00:00'),
-(5, 'as2', '2014-10-11', 'Sample summary text', 5, '0000-00-00 00:00:00'),
-(6, 'as1', '2014-10-11', 'Summary by Abebe', 5, '0000-00-00 00:00:00'),
-(7, 'as2', '2014-10-11', 'This is the sumamry', 5, '0000-00-00 00:00:00'),
-(9, 'as1', '2014-10-17', 'This is the summary information', 2, '2014-10-17 00:00:00'),
-(14, 'as1', '2014-11-14', 'this is a summary added by Mahder Neway', 8, '2014-11-14 17:57:12'),
-(15, 'as1', '2014-11-20', 'This is my assessment record.', 3, '2014-11-20 15:02:15');
+(17, 'as1', '2014-11-22', 'This is the summary info I''m entering now. lol''s', 22, '2014-11-22 22:46:44'),
+(18, 'as1', '2014-11-23', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. UPDATED.', 23, '2014-11-23 03:47:25');
 
 -- --------------------------------------------------------
 
@@ -108,25 +77,17 @@ CREATE TABLE `tbl_assessment_th` (
   `th_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_assessment_th`
 --
 
 INSERT INTO `tbl_assessment_th` (`id`, `assessment_id`, `th_id`, `modified_by`, `modification_date`) VALUES
-(1, 3, 9, 0, '0000-00-00 00:00:00'),
-(2, 3, 10, 0, '0000-00-00 00:00:00'),
-(3, 6, 11, 5, '0000-00-00 00:00:00'),
-(4, 6, 12, 5, '0000-00-00 00:00:00'),
-(5, 6, 13, 5, '0000-00-00 00:00:00'),
-(6, 5, 14, 5, '0000-00-00 00:00:00'),
-(8, 9, 18, 2, '2014-10-17 00:00:00'),
-(9, 9, 19, 2, '2014-10-17 00:00:00'),
-(18, 14, 32, 8, '2014-11-14 17:57:12'),
-(19, 14, 33, 8, '2014-11-14 17:57:12'),
-(20, 15, 34, 3, '2014-11-20 15:02:15'),
-(21, 15, 35, 3, '2014-11-20 15:02:15');
+(24, 17, 41, 22, '2014-11-22 22:44:01'),
+(25, 17, 42, 22, '2014-11-22 22:44:01'),
+(26, 18, 44, 23, '2014-11-23 03:47:01'),
+(27, 18, 45, 23, '2014-11-23 03:47:01');
 
 -- --------------------------------------------------------
 
@@ -156,45 +117,29 @@ INSERT INTO `tbl_district` (`id`, `district_name`, `description`) VALUES
 
 CREATE TABLE `tbl_fn` (
 `id` bigint(20) NOT NULL,
-  `fn_name` varchar(70) NOT NULL,
+  `fn_name` varchar(200) NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_fn`
 --
 
 INSERT INTO `tbl_fn` (`id`, `fn_name`, `modified_by`, `modification_date`) VALUES
-(1, 'sdfdsf', 0, '0000-00-00 00:00:00'),
-(2, 'sdfdf', 0, '0000-00-00 00:00:00'),
-(3, 'dfsf', 0, '0000-00-00 00:00:00'),
-(4, 'this is mahder', 0, '0000-00-00 00:00:00'),
-(5, 'LEKU the FN LOVE', 2, '2014-10-16 00:00:00'),
-(6, 'MAHI love', 2, '2014-10-16 00:00:00'),
-(7, 'YEFI BABES', 2, '2014-10-16 00:00:00'),
-(8, 'SAMI FN', 2, '2014-10-16 00:00:00'),
-(9, 'xxx', 2, '2014-10-16 00:00:00'),
-(10, 'AS is', 2, '2014-10-16 00:00:00'),
-(11, 'This is FN', 8, '2014-11-03 20:12:50'),
-(12, 'First Function', 8, '2014-11-03 20:42:58'),
-(13, 'Other New Function', 8, '2014-11-07 13:49:25'),
-(14, 'Mahder the Function', 8, '2014-11-11 04:19:20'),
-(15, 'Fnc1', 8, '2014-11-20 12:46:45'),
-(16, 'Fnc2', 8, '2014-11-20 12:47:00'),
-(17, 'Fnc3', 8, '2014-11-20 12:47:10'),
-(18, 'Fnc4', 8, '2014-11-20 12:47:19'),
-(19, 'Fnc5', 8, '2014-11-20 12:47:27'),
-(20, 'Fnc6', 8, '2014-11-20 12:47:35'),
-(21, 'Fnc7', 8, '2014-11-20 12:48:11'),
-(22, 'Fnc8', 8, '2014-11-20 12:48:21'),
-(23, 'Fnc9', 8, '2014-11-20 12:48:31'),
-(24, 'Fnc10', 8, '2014-11-20 12:48:41'),
-(25, 'This is added via Other', 8, '2014-11-21 12:43:36'),
-(26, '1111', 8, '2014-11-21 12:50:07'),
-(27, '222', 8, '2014-11-21 12:52:29'),
-(28, '333', 8, '2014-11-21 12:57:50'),
-(29, 'fgh', 8, '2014-11-21 13:10:00');
+(31, 'Fn1 By Biruk', 22, '2014-11-22 23:06:12'),
+(32, 'Fn2 By Biruk', 22, '2014-11-22 23:06:18'),
+(33, 'Fn3 By Biruk', 22, '2014-11-22 23:06:25'),
+(34, 'Fn4 By Biruk', 22, '2014-11-22 23:06:25'),
+(35, 'Fn5 By Biruk', 22, '2014-11-22 23:06:27'),
+(36, 'Fn6 By Biruk', 22, '2014-11-22 23:06:28'),
+(37, 'Fn7 By Biruk', 22, '2014-11-22 23:22:20'),
+(38, 'ruka''s function one', 23, '2014-11-23 04:13:18'),
+(39, 'ruka''s function two', 23, '2014-11-23 04:13:19'),
+(40, 'ruka''s function three', 23, '2014-11-23 04:13:21'),
+(41, 'ruka''s function four', 23, '2014-11-23 04:13:22'),
+(42, 'ruka''s function five', 23, '2014-11-23 04:13:23'),
+(43, 'ruka''s function six', 23, '2014-11-23 04:13:25');
 
 -- --------------------------------------------------------
 
@@ -208,19 +153,15 @@ CREATE TABLE `tbl_fn_action` (
   `action_text` text,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_fn_action`
 --
 
 INSERT INTO `tbl_fn_action` (`id`, `fn_id`, `action_text`, `modified_by`, `modification_date`) VALUES
-(19, 12, 'sd', 8, '2014-11-15 21:50:30'),
-(20, 12, 'dfe', 8, '2014-11-15 21:50:35'),
-(21, 12, 'erger', 8, '2014-11-15 21:50:41'),
-(22, 12, 'drger', 8, '2014-11-15 21:50:46'),
-(23, 18, 'hgjhg', 3, '2014-11-20 17:27:58'),
-(24, 15, 'hrhg sami update', 3, '2014-11-20 17:31:52');
+(32, 31, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of UPDATED!', 22, '2014-11-23 00:10:52'),
+(33, 42, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.\n\nContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.\n\nmy first update.\n\nThis is my second update.', 23, '2014-11-23 04:36:44');
 
 -- --------------------------------------------------------
 
@@ -237,15 +178,15 @@ CREATE TABLE `tbl_form_1` (
   `q2` text NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_1`
 --
 
 INSERT INTO `tbl_form_1` (`id`, `title`, `form_date`, `plan`, `q1`, `q2`, `modified_by`, `modification_date`) VALUES
-(19, 'This is the title', '2014-10-24', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 8, '2014-10-24 19:36:21'),
-(20, 'the title', '2014-11-17', 'This is my plan', 'This is Q1', 'This is Q2', 8, '2014-11-17 07:01:14');
+(33, 'This is a sample title', '2014-11-23', 'plan', 'q1', 'q2. updated value!', 23, '2014-11-23 08:03:20'),
+(34, 'This is a sample title for checkup', '2014-11-23', 'this is the plan ', 'this is q1', 'this is q2', 23, '2014-11-23 08:09:22');
 
 -- --------------------------------------------------------
 
@@ -256,24 +197,34 @@ INSERT INTO `tbl_form_1` (`id`, `title`, `form_date`, `plan`, `q1`, `q2`, `modif
 CREATE TABLE `tbl_form_1_q3` (
 `id` bigint(20) NOT NULL,
   `form_1_id` bigint(20) NOT NULL,
-  `col1` varchar(70) DEFAULT NULL,
-  `col2` varchar(70) DEFAULT NULL,
-  `col3` varchar(70) DEFAULT NULL,
-  `col4` varchar(70) DEFAULT NULL,
-  `col5` varchar(70) DEFAULT NULL,
-  `col6` varchar(70) DEFAULT NULL,
+  `row` int(11) DEFAULT NULL,
+  `col` int(11) DEFAULT NULL,
+  `column_value` text,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_1_q3`
 --
 
-INSERT INTO `tbl_form_1_q3` (`id`, `form_1_id`, `col1`, `col2`, `col3`, `col4`, `col5`, `col6`, `modified_by`, `modification_date`) VALUES
-(13, 19, '1', '2', '3', '4', '5', '6', 8, '2014-10-24 19:36:21'),
-(14, 19, '', '', '', '', '', '', 8, '2014-10-24 19:36:21'),
-(15, 20, 'q3c1', 'q3c2', 'q3c3', 'q3c4', '', '', 8, '2014-11-17 07:01:14');
+INSERT INTO `tbl_form_1_q3` (`id`, `form_1_id`, `row`, `col`, `column_value`, `modified_by`, `modification_date`) VALUES
+(59, 33, 1, 1, '1', 23, '2014-11-23 08:03:20'),
+(60, 33, 1, 2, '2', 23, '2014-11-23 08:03:20'),
+(61, 33, 1, 3, '3', 23, '2014-11-23 08:03:20'),
+(62, 33, 1, 4, '4', 23, '2014-11-23 08:03:20'),
+(99, 34, 1, 1, '1', 23, '2014-11-23 08:09:22'),
+(100, 34, 1, 2, '2', 23, '2014-11-23 08:09:22'),
+(101, 34, 1, 3, '3', 23, '2014-11-23 08:09:22'),
+(102, 34, 1, 4, '4', 23, '2014-11-23 08:09:22'),
+(103, 34, 2, 1, '5', 23, '2014-11-23 08:09:22'),
+(104, 34, 2, 2, '6', 23, '2014-11-23 08:09:22'),
+(105, 34, 2, 3, '7', 23, '2014-11-23 08:09:22'),
+(106, 34, 2, 4, '8', 23, '2014-11-23 08:09:22'),
+(107, 34, 3, 1, '9', 23, '2014-11-23 08:09:22'),
+(108, 34, 3, 2, '10', 23, '2014-11-23 08:09:22'),
+(109, 34, 3, 3, '11', 23, '2014-11-23 08:09:22'),
+(110, 34, 3, 4, '12', 23, '2014-11-23 08:09:22');
 
 -- --------------------------------------------------------
 
@@ -284,23 +235,34 @@ INSERT INTO `tbl_form_1_q3` (`id`, `form_1_id`, `col1`, `col2`, `col3`, `col4`, 
 CREATE TABLE `tbl_form_1_q4` (
 `id` bigint(20) NOT NULL,
   `form_1_id` bigint(20) NOT NULL,
-  `col1` varchar(70) DEFAULT NULL,
-  `col2` varchar(70) DEFAULT NULL,
-  `col3` varchar(70) DEFAULT NULL,
-  `col4` varchar(70) DEFAULT NULL,
-  `col5` varchar(70) DEFAULT NULL,
-  `col6` varchar(70) DEFAULT NULL,
+  `row` int(11) DEFAULT NULL,
+  `col` int(11) DEFAULT NULL,
+  `column_value` text,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_1_q4`
 --
 
-INSERT INTO `tbl_form_1_q4` (`id`, `form_1_id`, `col1`, `col2`, `col3`, `col4`, `col5`, `col6`, `modified_by`, `modification_date`) VALUES
-(6, 19, '', '', '', '', '', '', 8, '2014-10-24 19:36:21'),
-(7, 20, '', '', '', '', 'q4c4', '', 8, '2014-11-17 07:01:14');
+INSERT INTO `tbl_form_1_q4` (`id`, `form_1_id`, `row`, `col`, `column_value`, `modified_by`, `modification_date`) VALUES
+(51, 33, 1, 1, '5', 23, '2014-11-23 08:03:20'),
+(52, 33, 1, 2, '6', 23, '2014-11-23 08:03:20'),
+(53, 33, 1, 3, '7', 23, '2014-11-23 08:03:20'),
+(54, 33, 1, 4, '8888', 23, '2014-11-23 08:03:20'),
+(91, 34, 1, 1, '13', 23, '2014-11-23 08:09:22'),
+(92, 34, 1, 2, '14', 23, '2014-11-23 08:09:22'),
+(93, 34, 1, 3, '15', 23, '2014-11-23 08:09:22'),
+(94, 34, 1, 4, '16', 23, '2014-11-23 08:09:22'),
+(95, 34, 2, 1, '17', 23, '2014-11-23 08:09:22'),
+(96, 34, 2, 2, '18', 23, '2014-11-23 08:09:22'),
+(97, 34, 2, 3, '19', 23, '2014-11-23 08:09:22'),
+(98, 34, 2, 4, '20', 23, '2014-11-23 08:09:22'),
+(99, 34, 3, 1, '21', 23, '2014-11-23 08:09:22'),
+(100, 34, 3, 2, '22', 23, '2014-11-23 08:09:22'),
+(101, 34, 3, 3, '23', 23, '2014-11-23 08:09:22'),
+(102, 34, 3, 4, '24. This is updated value.', 23, '2014-11-23 08:09:22');
 
 -- --------------------------------------------------------
 
@@ -316,15 +278,15 @@ CREATE TABLE `tbl_form_2` (
   `q2_4` text NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_2`
 --
 
 INSERT INTO `tbl_form_2` (`id`, `q2_1`, `q2_2`, `q2_3`, `q2_4`, `modified_by`, `modification_date`) VALUES
-(9, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 8, '2014-10-24 19:38:38'),
-(10, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', '', 3, '2014-11-20 17:33:32');
+(12, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of updated', '', 22, '2014-11-23 00:13:41'),
+(13, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.\n\nContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.\n\nContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.\n\nContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. updated.', '', 23, '2014-11-23 04:29:06');
 
 -- --------------------------------------------------------
 
@@ -337,14 +299,16 @@ CREATE TABLE `tbl_form_3` (
   `q3_1` text NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_3`
 --
 
 INSERT INTO `tbl_form_3` (`id`, `q3_1`, `modified_by`, `modification_date`) VALUES
-(8, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 8, '2014-10-24 19:38:56');
+(11, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:13:35'),
+(12, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.\n\nContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. nice', 23, '2014-11-23 04:29:48'),
+(13, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.\n\nContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 23, '2014-11-23 04:30:07');
 
 -- --------------------------------------------------------
 
@@ -357,14 +321,15 @@ CREATE TABLE `tbl_form_4` (
   `q4_1` text NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_4`
 --
 
 INSERT INTO `tbl_form_4` (`id`, `q4_1`, `modified_by`, `modification_date`) VALUES
-(7, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 8, '2014-10-24 19:39:39');
+(9, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:13:37'),
+(10, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.\n\nContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 23, '2014-11-23 04:30:12');
 
 -- --------------------------------------------------------
 
@@ -377,14 +342,15 @@ CREATE TABLE `tbl_form_5` (
   `q5_1` text NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_5`
 --
 
 INSERT INTO `tbl_form_5` (`id`, `q5_1`, `modified_by`, `modification_date`) VALUES
-(7, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 8, '2014-10-24 19:39:44');
+(9, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:13:38'),
+(10, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.\n\nContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 23, '2014-11-23 04:30:17');
 
 -- --------------------------------------------------------
 
@@ -397,14 +363,15 @@ CREATE TABLE `tbl_form_6` (
   `q6_1` text NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_6`
 --
 
 INSERT INTO `tbl_form_6` (`id`, `q6_1`, `modified_by`, `modification_date`) VALUES
-(7, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 8, '2014-10-24 19:39:48');
+(9, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:13:46'),
+(10, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.\n\nContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 23, '2014-11-23 04:30:23');
 
 -- --------------------------------------------------------
 
@@ -417,14 +384,15 @@ CREATE TABLE `tbl_form_7` (
   `q7_1` text NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_7`
 --
 
 INSERT INTO `tbl_form_7` (`id`, `q7_1`, `modified_by`, `modification_date`) VALUES
-(7, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 8, '2014-10-24 19:39:59');
+(9, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:14:00'),
+(10, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.\n\nContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 23, '2014-11-23 04:30:30');
 
 -- --------------------------------------------------------
 
@@ -437,15 +405,15 @@ CREATE TABLE `tbl_form_8` (
   `q8_1` text NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_8`
 --
 
 INSERT INTO `tbl_form_8` (`id`, `q8_1`, `modified_by`, `modification_date`) VALUES
-(7, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 8, '2014-10-24 19:40:03'),
-(8, 'Something', 8, '2014-10-24 23:19:33');
+(10, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:14:02'),
+(11, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.\n\nContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 23, '2014-11-23 04:30:35');
 
 -- --------------------------------------------------------
 
@@ -458,14 +426,15 @@ CREATE TABLE `tbl_form_9` (
   `q9_1` text NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_9`
 --
 
 INSERT INTO `tbl_form_9` (`id`, `q9_1`, `modified_by`, `modification_date`) VALUES
-(6, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 8, '2014-10-24 19:40:07');
+(8, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of DO YOUR JOBS VERY GOOD!', 22, '2014-11-23 00:14:47'),
+(9, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.\n\nContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 23, '2014-11-23 04:30:41');
 
 -- --------------------------------------------------------
 
@@ -478,14 +447,15 @@ CREATE TABLE `tbl_form_10` (
   `q10_1` text NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_form_10`
 --
 
 INSERT INTO `tbl_form_10` (`id`, `q10_1`, `modified_by`, `modification_date`) VALUES
-(7, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.', 8, '2014-10-24 19:40:13');
+(9, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:14:05'),
+(10, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.\n\nContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. updated', 23, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -497,14 +467,15 @@ CREATE TABLE `tbl_goal_first` (
 `id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_first`
 --
 
 INSERT INTO `tbl_goal_first` (`id`, `modified_by`, `modification_date`) VALUES
-(14, 8, '2014-11-21 08:24:55');
+(29, 22, '2014-11-22 23:07:21'),
+(30, 23, '2014-11-23 04:14:28');
 
 -- --------------------------------------------------------
 
@@ -515,19 +486,21 @@ INSERT INTO `tbl_goal_first` (`id`, `modified_by`, `modification_date`) VALUES
 CREATE TABLE `tbl_goal_first_g1` (
 `id` bigint(20) NOT NULL,
   `goal_first_th_id` bigint(20) NOT NULL,
-  `g1` varchar(50) NOT NULL,
+  `g1` text NOT NULL,
   `fn_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_first_g1`
 --
 
 INSERT INTO `tbl_goal_first_g1` (`id`, `goal_first_th_id`, `g1`, `fn_id`, `modified_by`, `modification_date`) VALUES
-(23, 25, 'g1', 12, 8, '2014-11-21 08:24:55'),
-(25, 27, 'g1', 12, 8, '2014-11-21 08:37:56');
+(44, 46, 'G1 th1 by biruk', 31, 22, '2014-11-22 23:07:21'),
+(45, 47, 'G1', 31, 22, '2014-11-22 23:12:57'),
+(46, 48, 'Contrar''y to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 31, 22, '2014-11-23 00:15:33'),
+(47, 49, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 42, 23, '2014-11-23 04:32:16');
 
 -- --------------------------------------------------------
 
@@ -538,19 +511,24 @@ INSERT INTO `tbl_goal_first_g1` (`id`, `goal_first_th_id`, `g1`, `fn_id`, `modif
 CREATE TABLE `tbl_goal_first_g1_obj_fn` (
 `id` bigint(20) NOT NULL,
   `goal_first_g1_id` bigint(20) NOT NULL,
-  `obj` varchar(50) NOT NULL,
+  `obj` text NOT NULL,
   `fn_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_first_g1_obj_fn`
 --
 
 INSERT INTO `tbl_goal_first_g1_obj_fn` (`id`, `goal_first_g1_id`, `obj`, `fn_id`, `modified_by`, `modification_date`) VALUES
-(24, 23, 'obj1', 15, 8, '2014-11-21 08:24:55'),
-(26, 25, 'obj1', 15, 8, '2014-11-21 08:37:56');
+(45, 44, 'obj1 th1 by biruk', 32, 22, '2014-11-22 23:07:21'),
+(46, 45, 'Obj1', 31, 22, '2014-11-22 23:12:57'),
+(47, 45, 'Obj1.1', 31, 22, '2014-11-22 23:12:57'),
+(48, 46, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 31, 22, '2014-11-23 00:15:33'),
+(49, 46, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 32, 22, '2014-11-23 00:15:33'),
+(50, 46, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 32, 22, '2014-11-23 00:15:33'),
+(51, 47, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 41, 23, '2014-11-23 04:32:16');
 
 -- --------------------------------------------------------
 
@@ -561,19 +539,21 @@ INSERT INTO `tbl_goal_first_g1_obj_fn` (`id`, `goal_first_g1_id`, `obj`, `fn_id`
 CREATE TABLE `tbl_goal_first_g2` (
 `id` bigint(20) NOT NULL,
   `goal_first_th_id` bigint(20) NOT NULL,
-  `g2` varchar(50) NOT NULL,
+  `g2` text NOT NULL,
   `fn_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_first_g2`
 --
 
 INSERT INTO `tbl_goal_first_g2` (`id`, `goal_first_th_id`, `g2`, `fn_id`, `modified_by`, `modification_date`) VALUES
-(23, 25, 'g2', 24, 8, '2014-11-21 08:24:55'),
-(25, 27, 'g2', 16, 8, '2014-11-21 08:37:56');
+(44, 46, 'g2 th1 by biruk', 33, 22, '2014-11-22 23:07:21'),
+(45, 47, 'F2', 32, 22, '2014-11-22 23:12:57'),
+(46, 48, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 32, 22, '2014-11-23 00:15:33'),
+(47, 49, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 38, 23, '2014-11-23 04:32:16');
 
 -- --------------------------------------------------------
 
@@ -584,19 +564,24 @@ INSERT INTO `tbl_goal_first_g2` (`id`, `goal_first_th_id`, `g2`, `fn_id`, `modif
 CREATE TABLE `tbl_goal_first_g2_obj_fn` (
 `id` bigint(20) NOT NULL,
   `goal_first_g2_id` bigint(20) NOT NULL,
-  `obj` varchar(50) NOT NULL,
+  `obj` text NOT NULL,
   `fn_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_first_g2_obj_fn`
 --
 
 INSERT INTO `tbl_goal_first_g2_obj_fn` (`id`, `goal_first_g2_id`, `obj`, `fn_id`, `modified_by`, `modification_date`) VALUES
-(22, 23, 'obj2', 16, 8, '2014-11-21 08:24:55'),
-(24, 25, 'obj2', 17, 8, '2014-11-21 08:37:56');
+(43, 44, 'obj2 th1 by biruk', 34, 22, '2014-11-22 23:07:21'),
+(44, 45, 'Obj2', 32, 22, '2014-11-22 23:12:57'),
+(45, 45, 'Obj2.1', 32, 22, '2014-11-22 23:12:57'),
+(46, 46, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 31, 22, '2014-11-23 00:15:33'),
+(47, 46, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 33, 22, '2014-11-23 00:15:33'),
+(48, 46, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 33, 22, '2014-11-23 00:15:33'),
+(49, 47, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 43, 23, '2014-11-23 04:32:16');
 
 -- --------------------------------------------------------
 
@@ -607,19 +592,21 @@ INSERT INTO `tbl_goal_first_g2_obj_fn` (`id`, `goal_first_g2_id`, `obj`, `fn_id`
 CREATE TABLE `tbl_goal_first_g3` (
 `id` bigint(20) NOT NULL,
   `goal_first_th_id` bigint(20) NOT NULL,
-  `g3` varchar(50) NOT NULL,
+  `g3` text NOT NULL,
   `fn_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_first_g3`
 --
 
 INSERT INTO `tbl_goal_first_g3` (`id`, `goal_first_th_id`, `g3`, `fn_id`, `modified_by`, `modification_date`) VALUES
-(23, 25, 'g3', 17, 8, '2014-11-21 08:24:55'),
-(25, 27, 'g3', 19, 8, '2014-11-21 08:37:56');
+(44, 46, 'g3 th1 by biruk', 35, 22, '2014-11-22 23:07:21'),
+(45, 47, 'G3', 33, 22, '2014-11-22 23:12:57'),
+(46, 48, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 33, 22, '2014-11-23 00:15:33'),
+(47, 49, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 40, 23, '2014-11-23 04:32:16');
 
 -- --------------------------------------------------------
 
@@ -630,19 +617,26 @@ INSERT INTO `tbl_goal_first_g3` (`id`, `goal_first_th_id`, `g3`, `fn_id`, `modif
 CREATE TABLE `tbl_goal_first_g3_obj_fn` (
 `id` bigint(20) NOT NULL,
   `goal_first_g3_id` bigint(20) NOT NULL,
-  `obj` varchar(50) NOT NULL,
+  `obj` text NOT NULL,
   `fn_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_first_g3_obj_fn`
 --
 
 INSERT INTO `tbl_goal_first_g3_obj_fn` (`id`, `goal_first_g3_id`, `obj`, `fn_id`, `modified_by`, `modification_date`) VALUES
-(22, 23, 'obj3', 18, 8, '2014-11-21 08:24:55'),
-(24, 25, 'obj3', 22, 8, '2014-11-21 08:37:56');
+(43, 44, 'obj3 th1 by biruk', 36, 22, '2014-11-22 23:07:21'),
+(44, 45, 'Obj3', 33, 22, '2014-11-22 23:12:57'),
+(45, 45, 'Obj3.1. This value is updated.', 33, 22, '2014-11-22 23:12:57'),
+(46, 46, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 33, 22, '2014-11-23 00:15:33'),
+(47, 46, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 34, 22, '2014-11-23 00:15:33'),
+(48, 46, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 35, 22, '2014-11-23 00:15:33'),
+(49, 46, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 36, 22, '2014-11-23 00:15:33'),
+(50, 46, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 37, 22, '2014-11-23 00:15:33'),
+(51, 47, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 39, 23, '2014-11-23 04:32:16');
 
 -- --------------------------------------------------------
 
@@ -656,15 +650,17 @@ CREATE TABLE `tbl_goal_first_th` (
   `th_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_first_th`
 --
 
 INSERT INTO `tbl_goal_first_th` (`id`, `goal_first_id`, `th_id`, `modified_by`, `modification_date`) VALUES
-(25, 14, 33, 8, '2014-11-21 08:24:55'),
-(27, 14, 32, 8, '2014-11-21 08:37:56');
+(46, 29, 41, 22, '2014-11-22 23:07:21'),
+(47, 29, 42, 22, '2014-11-22 23:09:31'),
+(48, 29, 43, 22, '2014-11-22 23:22:43'),
+(49, 30, 46, 23, '2014-11-23 04:14:28');
 
 -- --------------------------------------------------------
 
@@ -676,16 +672,15 @@ CREATE TABLE `tbl_goal_second` (
 `id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_second`
 --
 
 INSERT INTO `tbl_goal_second` (`id`, `modified_by`, `modification_date`) VALUES
-(29, 8, '2014-11-14 18:11:14'),
-(30, 3, '2014-11-20 17:25:06'),
-(31, 3, '2014-11-20 17:25:26');
+(36, 22, '2014-11-22 23:57:59'),
+(37, 23, '2014-11-23 04:19:13');
 
 -- --------------------------------------------------------
 
@@ -699,18 +694,15 @@ CREATE TABLE `tbl_goal_second_fn` (
   `fn_id` bigint(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_second_fn`
 --
 
 INSERT INTO `tbl_goal_second_fn` (`id`, `goal_second_id`, `fn_id`, `modified_by`, `modification_date`) VALUES
-(8, 29, 12, 8, '2014-11-14 18:11:14'),
-(9, 30, 15, 3, '2014-11-20 17:25:06'),
-(10, 31, 18, 3, '2014-11-20 17:25:26'),
-(11, 29, 23, 8, '2014-11-20 17:38:59'),
-(12, 29, 22, 8, '2014-11-20 17:39:15');
+(18, 36, 31, 22, '2014-11-22 23:57:59'),
+(19, 37, 42, 23, '2014-11-23 04:19:13');
 
 -- --------------------------------------------------------
 
@@ -721,20 +713,18 @@ INSERT INTO `tbl_goal_second_fn` (`id`, `goal_second_id`, `fn_id`, `modified_by`
 CREATE TABLE `tbl_goal_second_g1` (
 `id` bigint(20) NOT NULL,
   `goal_second_fn_id` bigint(20) NOT NULL,
-  `g1` varchar(50) NOT NULL,
+  `g1` text NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_second_g1`
 --
 
 INSERT INTO `tbl_goal_second_g1` (`id`, `goal_second_fn_id`, `g1`, `modified_by`, `modification_date`) VALUES
-(32, 9, 'fdlkj', 3, '2014-11-20 17:31:52'),
-(33, 10, 'kjh', 3, '2014-11-20 17:25:26'),
-(34, 11, 'hjk', 8, '2014-11-20 17:38:59'),
-(35, 12, 'kjg', 8, '2014-11-20 17:39:15');
+(41, 18, 'It''s Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:00:19'),
+(42, 19, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 23, '2014-11-23 04:36:44');
 
 -- --------------------------------------------------------
 
@@ -745,20 +735,22 @@ INSERT INTO `tbl_goal_second_g1` (`id`, `goal_second_fn_id`, `g1`, `modified_by`
 CREATE TABLE `tbl_goal_second_g1_obj` (
 `id` bigint(20) NOT NULL,
   `goal_second_g1_id` bigint(20) NOT NULL,
-  `obj` varchar(50) NOT NULL,
+  `obj` text NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_second_g1_obj`
 --
 
 INSERT INTO `tbl_goal_second_g1_obj` (`id`, `goal_second_g1_id`, `obj`, `modified_by`, `modification_date`) VALUES
-(41, 32, 'lkdjf', 3, '2014-11-20 17:31:52'),
-(42, 33, 'kj', 3, '2014-11-20 17:25:26'),
-(43, 34, 'jh', 8, '2014-11-20 17:38:59'),
-(44, 35, 'nbv', 8, '2014-11-20 17:39:15');
+(51, 41, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:00:19'),
+(52, 41, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:00:19'),
+(53, 41, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:00:19'),
+(54, 41, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:00:19'),
+(55, 42, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 23, '2014-11-23 04:36:44'),
+(56, 42, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 23, '2014-11-23 04:36:44');
 
 -- --------------------------------------------------------
 
@@ -769,21 +761,18 @@ INSERT INTO `tbl_goal_second_g1_obj` (`id`, `goal_second_g1_id`, `obj`, `modifie
 CREATE TABLE `tbl_goal_second_g2` (
 `id` bigint(20) NOT NULL,
   `goal_second_fn_id` bigint(20) NOT NULL,
-  `g2` varchar(50) NOT NULL,
+  `g2` text NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_second_g2`
 --
 
 INSERT INTO `tbl_goal_second_g2` (`id`, `goal_second_fn_id`, `g2`, `modified_by`, `modification_date`) VALUES
-(29, 8, 'g2', 8, '2014-11-14 18:18:26'),
-(30, 9, 'lkjdflkj', 3, '2014-11-20 17:31:52'),
-(31, 10, 'g', 3, '2014-11-20 17:25:26'),
-(32, 11, 'jhg', 8, '2014-11-20 17:38:59'),
-(33, 12, 'nbv', 8, '2014-11-20 17:39:15');
+(39, 18, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:00:19'),
+(40, 19, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 23, '2014-11-23 04:36:44');
 
 -- --------------------------------------------------------
 
@@ -794,23 +783,23 @@ INSERT INTO `tbl_goal_second_g2` (`id`, `goal_second_fn_id`, `g2`, `modified_by`
 CREATE TABLE `tbl_goal_second_g2_obj` (
 `id` bigint(20) NOT NULL,
   `goal_second_g2_id` bigint(20) NOT NULL,
-  `obj` varchar(50) NOT NULL,
+  `obj` text NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_second_g2_obj`
 --
 
 INSERT INTO `tbl_goal_second_g2_obj` (`id`, `goal_second_g2_id`, `obj`, `modified_by`, `modification_date`) VALUES
-(32, 29, 'obj2', 8, '2014-11-14 18:18:26'),
-(33, 29, 'obj2.1', 8, '2014-11-14 18:18:26'),
-(34, 29, 'obj2.2', 8, '2014-11-14 18:18:26'),
-(35, 30, 'lkjdflkjq', 3, '2014-11-20 17:31:52'),
-(36, 31, 'jhg', 3, '2014-11-20 17:25:26'),
-(37, 32, 'jkhg', 8, '2014-11-20 17:38:59'),
-(38, 33, 'hg', 8, '2014-11-20 17:39:15');
+(45, 39, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:00:19'),
+(46, 39, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:00:19'),
+(47, 39, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:00:19'),
+(48, 39, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:00:19'),
+(49, 39, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:00:19'),
+(50, 40, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 23, '2014-11-23 04:36:44'),
+(51, 40, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 23, '2014-11-23 04:36:44');
 
 -- --------------------------------------------------------
 
@@ -821,21 +810,18 @@ INSERT INTO `tbl_goal_second_g2_obj` (`id`, `goal_second_g2_id`, `obj`, `modifie
 CREATE TABLE `tbl_goal_second_g3` (
 `id` bigint(20) NOT NULL,
   `goal_second_fn_id` bigint(20) NOT NULL,
-  `g3` varchar(50) NOT NULL,
+  `g3` text NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_second_g3`
 --
 
 INSERT INTO `tbl_goal_second_g3` (`id`, `goal_second_fn_id`, `g3`, `modified_by`, `modification_date`) VALUES
-(25, 8, 'g3', 8, '2014-11-14 18:18:26'),
-(26, 9, 'kjhkjh', 3, '2014-11-20 17:31:52'),
-(27, 10, 'jhg', 3, '2014-11-20 17:25:26'),
-(28, 11, 'jhg', 8, '2014-11-20 17:38:59'),
-(29, 12, 'jhng', 8, '2014-11-20 17:39:15');
+(35, 18, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:00:19'),
+(36, 19, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 23, '2014-11-23 04:36:44');
 
 -- --------------------------------------------------------
 
@@ -846,23 +832,20 @@ INSERT INTO `tbl_goal_second_g3` (`id`, `goal_second_fn_id`, `g3`, `modified_by`
 CREATE TABLE `tbl_goal_second_g3_obj` (
 `id` bigint(20) NOT NULL,
   `goal_second_g3_id` bigint(20) NOT NULL,
-  `obj` varchar(50) NOT NULL,
+  `obj` text NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_goal_second_g3_obj`
 --
 
 INSERT INTO `tbl_goal_second_g3_obj` (`id`, `goal_second_g3_id`, `obj`, `modified_by`, `modification_date`) VALUES
-(34, 25, 'obj3', 8, '2014-11-14 18:18:26'),
-(35, 25, 'obj3.1', 8, '2014-11-14 18:18:26'),
-(36, 25, 'obj3.2. updated.', 8, '2014-11-14 18:18:26'),
-(37, 26, 'kjhkjh', 3, '2014-11-20 17:31:52'),
-(38, 27, 'jhg', 3, '2014-11-20 17:25:26'),
-(39, 28, 'jkhg', 8, '2014-11-20 17:38:59'),
-(40, 29, 'jhg', 8, '2014-11-20 17:39:15');
+(47, 35, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:00:19'),
+(48, 35, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of this line is udpated', 22, '2014-11-23 00:00:19'),
+(49, 36, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 23, '2014-11-23 04:36:44'),
+(50, 36, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of . updated.', 23, '2014-11-23 04:36:44');
 
 -- --------------------------------------------------------
 
@@ -888,26 +871,25 @@ CREATE TABLE `tbl_responsibility` (
 CREATE TABLE `tbl_risk` (
 `id` bigint(20) NOT NULL,
   `th_id` bigint(20) NOT NULL,
-  `mg` varchar(50) NOT NULL,
-  `dr` varchar(50) NOT NULL,
-  `pr` varchar(50) NOT NULL,
-  `wa` varchar(50) NOT NULL,
-  `rs` varchar(50) NOT NULL,
+  `mg` text NOT NULL,
+  `dr` text NOT NULL,
+  `pr` text NOT NULL,
+  `wa` text NOT NULL,
+  `rs` text NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_risk`
 --
 
 INSERT INTO `tbl_risk` (`id`, `th_id`, `mg`, `dr`, `pr`, `wa`, `rs`, `modified_by`, `modification_date`) VALUES
-(15, 33, 'mg1', 'dr1', 'pr1', 'wa1', 'rs1', 8, '2014-11-14 18:01:10'),
-(16, 32, 'mg2', 'dr2', 'pr2', 'wa2', 'rs4', 8, '2014-11-14 18:01:31'),
-(17, 34, 'mg1', 'dr1', 'pr1', 'wa1', 'rs1', 3, '2014-11-20 15:03:55'),
-(18, 35, 'mg2', 'dr2', 'pr3', 'wa4', 'rs3', 3, '2014-11-20 15:04:13'),
-(19, 36, 'mg1', 'dr1', 'pr1', 'wa2', 'rs1', 3, '2014-11-20 17:16:06'),
-(20, 37, 'mg1', 'dr1', 'pr1', 'wa1', 'rs1', 3, '2014-11-20 17:16:17');
+(24, 41, 'mg1', 'dr1', 'pr1', 'wa1', 'rs1', 22, '2014-11-22 23:03:03'),
+(25, 42, 'mg2', 'dr2', 'pr2', 'wa2', 'rs2', 22, '2014-11-22 23:03:23'),
+(26, 46, 'mg1', 'dr1', 'pr1', 'wa1', 'rs1', 23, '2014-11-23 04:04:34'),
+(27, 44, 'mg1', 'dr1', 'pr1', 'wa1', 'rs1', 23, '2014-11-23 04:04:45'),
+(28, 45, 'mg1', 'dr1', 'pr1', 'wa1', 'rs1', 23, '2014-11-23 04:05:09');
 
 -- --------------------------------------------------------
 
@@ -918,7 +900,7 @@ INSERT INTO `tbl_risk` (`id`, `th_id`, `mg`, `dr`, `pr`, `wa`, `rs`, `modified_b
 CREATE TABLE `tbl_sub_district` (
 `id` int(11) NOT NULL,
   `district_id` int(11) NOT NULL,
-  `sub_district_name` varchar(100) NOT NULL,
+  `sub_district_name` varchar(255) NOT NULL,
   `description` text NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
@@ -940,23 +922,23 @@ INSERT INTO `tbl_sub_district` (`id`, `district_id`, `sub_district_name`, `descr
 
 CREATE TABLE `tbl_team` (
 `id` bigint(20) NOT NULL,
-  `team_name` varchar(100) NOT NULL,
-  `title` varchar(100) NOT NULL,
-  `organization` varchar(70) NOT NULL,
-  `email` varchar(70) NOT NULL,
-  `phone` varchar(70) NOT NULL,
-  `interest` varchar(150) NOT NULL,
+  `team_name` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `organization` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `interest` text NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_team`
 --
 
 INSERT INTO `tbl_team` (`id`, `team_name`, `title`, `organization`, `email`, `phone`, `interest`, `modified_by`, `modification_date`) VALUES
-(11, 'Team Added by Yefi', 'team yefi', 'AAU', 'team@yahoo.com', '0989089', 'Interest 4,Interest 5,', 4, '2014-11-14 13:51:24'),
-(17, 'Sample Team', 'Title of the team', 'Organization of the team', 'mahdera@yahoo.com', '098098908', 'Interest 1,Interest 2,Interest 3,Interest 4,Interest 6,Interest 7,', 8, '2014-11-20 18:12:10');
+(19, 'name', 'title', 'The Organization''s name', 'team@yahoo.com', '983478937', 'Interest 1,Interest 3,Interest 7,', 22, '2014-11-22 22:10:55'),
+(20, 'team''s name', 'team''s title', 'team''s organization', 'email@address.com', '4804958', 'Interest 2,Interest 6', 23, '2014-11-23 03:44:32');
 
 -- --------------------------------------------------------
 
@@ -967,7 +949,7 @@ INSERT INTO `tbl_team` (`id`, `team_name`, `title`, `organization`, `email`, `ph
 CREATE TABLE `tbl_team_interest` (
 `id` bigint(20) NOT NULL,
   `team_id` bigint(20) NOT NULL,
-  `interest_name` varchar(70) NOT NULL,
+  `interest_name` text NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -980,39 +962,22 @@ CREATE TABLE `tbl_team_interest` (
 
 CREATE TABLE `tbl_th` (
 `id` bigint(20) NOT NULL,
-  `th_name` varchar(70) NOT NULL,
+  `th_name` text NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_th`
 --
 
 INSERT INTO `tbl_th` (`id`, `th_name`, `modified_by`, `modification_date`) VALUES
-(1, 'sdff', 0, '0000-00-00 00:00:00'),
-(2, 'dfgdfg', 0, '0000-00-00 00:00:00'),
-(4, 'A TH Name', 0, '0000-00-00 00:00:00'),
-(5, 'Another TH', 0, '0000-00-00 00:00:00'),
-(6, 'jhg', 0, '0000-00-00 00:00:00'),
-(7, 'ghf', 0, '0000-00-00 00:00:00'),
-(8, 'What Kind of Th is 42', 0, '0000-00-00 00:00:00'),
-(9, 'This is TH One. this better be updating', 0, '0000-00-00 00:00:00'),
-(10, 'This is TH Two this is the second th being edited', 0, '0000-00-00 00:00:00'),
-(11, 'Th1 by abebe', 5, '0000-00-00 00:00:00'),
-(12, 'Th2 by abebe', 5, '0000-00-00 00:00:00'),
-(13, 'Th3 by abebe', 5, '0000-00-00 00:00:00'),
-(14, 'Better be working', 5, '2014-10-11 00:00:00'),
-(15, 'This is yet another th created by Abebe', 5, '2014-10-11 00:00:00'),
-(16, 'This is th1', 2, '2014-10-16 00:00:00'),
-(18, 'My Sample Th1', 2, '2014-10-17 00:00:00'),
-(19, 'Anoter Sample Th1 By root Yes', 2, '2014-10-17 00:00:00'),
-(32, 'My Th yes...', 8, '2014-11-14 17:58:50'),
-(33, 'My own th', 8, '2014-11-14 17:57:12'),
-(34, 'Th1 by Leki', 3, '2014-11-20 15:02:15'),
-(35, 'Th2 by Leki', 3, '2014-11-20 15:02:15'),
-(36, 'Dunkin Th1', 3, '2014-11-20 17:14:20'),
-(37, 'Dunkin Th2', 3, '2014-11-20 17:14:31');
+(41, 'Th1 By Biruk', 22, '2014-11-22 22:46:44'),
+(42, 'Th2 By Biruk', 22, '2014-11-22 22:46:44'),
+(43, 'Th3 By Biruk', 22, '2014-11-22 22:50:13'),
+(44, 'Th1 by Ruka', 23, '2014-11-23 03:47:25'),
+(45, 'Th2 by Ruka', 23, '2014-11-23 03:47:25'),
+(46, 'Th''s created by Ruka', 23, '2014-11-23 03:49:56');
 
 -- --------------------------------------------------------
 
@@ -1026,16 +991,16 @@ CREATE TABLE `tbl_th_action` (
   `action_text` text,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_th_action`
 --
 
 INSERT INTO `tbl_th_action` (`id`, `th_id`, `action_text`, `modified_by`, `modification_date`) VALUES
-(15, 33, 'Hi there Th Action. This is edited.', 8, '2014-11-20 07:02:12'),
-(16, 37, 'this is the action.', 3, '2014-11-20 17:26:34'),
-(17, 36, 'jhjhg', 3, '2014-11-20 17:27:27');
+(27, 43, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of UPDATED', 22, '2014-11-23 00:15:33'),
+(28, 42, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:06:20'),
+(29, 46, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.\n\nContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.\n\nupdated by mahder neway!\n\nanother update.', 23, '2014-11-23 04:32:16');
 
 -- --------------------------------------------------------
 
@@ -1057,7 +1022,7 @@ CREATE TABLE `tbl_user` (
   `user_role` varchar(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
   `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_user`
@@ -1065,16 +1030,8 @@ CREATE TABLE `tbl_user` (
 
 INSERT INTO `tbl_user` (`id`, `first_name`, `last_name`, `email`, `user_id`, `password`, `phone_number`, `member_type`, `user_status`, `user_level`, `user_role`, `modified_by`, `modification_date`) VALUES
 (2, 'Admin', 'Admin', 'mahderalem@gmail.com', 'root', '63a9f0ea7bb98050796b649e85481845', '39439483948', 'Admin', 'Active', 'Super User', 'Root', 0, '2014-10-09 00:00:00'),
-(3, 'Lekbir', 'Gebretsadik', 'lekbirgebre@yahoo.com', 'leki', '202cb962ac59075b964b07152d234b70', '87897986', 'User', 'Active', 'Sub District Level', 'User', 2, '2014-11-19 17:49:11'),
-(4, 'Yefikir', 'Alemayehu', 'yefi@yahoo.com', 'yefi', '202cb962ac59075b964b07152d234b70', '---', 'User', 'Active', 'Sub District Level', 'Sub District Admin', 2, '2014-11-19 17:49:48'),
-(5, 'Abebe', 'Teka', 'abebe@gmail.com', 'abebe', '202cb962ac59075b964b07152d234b70', '987987', 'User', 'Blocked', 'Sub District Level', 'User', 2, '2014-11-19 17:50:07'),
-(6, 'Sample', 'Person', 'sample@yahoo.com', 'sample', '202cb962ac59075b964b07152d234b70', '987987', 'User', 'Active', 'Sub District Level', 'User', 2, '2014-11-19 17:50:46'),
-(8, 'Mahder', 'Neway', 'mahdera@yahoo.com', 'mahder', '0f3fbc595a293952fabc8de77ae840ca', '2023743138', 'User', 'Active', 'District Level', 'District Admin', 2, '2014-11-19 17:45:54'),
-(9, 'Alemu', 'Gebre', 'alemu@yahoo.com', 'alemu', '202cb962ac59075b964b07152d234b70', '453453432', 'User', 'Active', 'Sub District Level', 'User', 2, '2014-11-19 17:52:01'),
-(12, 'Sample', 'User', 'sample@americanprogress.org', 'sample_usa', '202cb962ac59075b964b07152d234b70', '98786786', 'User', 'Active', 'Sub District Level', 'User', 2, '2014-11-19 17:52:17'),
-(13, 'ldkjf', 'lkjd', 'lkjdf@lkjd.com', 'dfkjd', '8f1c40920564e482fe9e091efbe008c4', 'lkdjfkld', 'User', 'Active', 'Sub District Level', 'User', 2, '2014-11-20 12:29:22'),
-(14, 'kjbmbm', 'hjvjnb', 'jgjhgjh2J@yahoo.com', 'jhgjhg', '25df0e344ac90688ec58ddf14c8f4f3d', 'jhjbm', 'User', 'Active', 'Sub District Level', 'Sub District Admin', 2, '2014-11-19 22:26:16'),
-(15, 'dlfkj', 'lkj', 'jkjkjh@yefi.com', 'kjhkjh', 'ffd55284aeb6073b8e85e2a92ac584cb', 'kjh9908', 'User', 'Pending', 'Sub District Level', 'User', 0, '2014-11-19 22:36:17');
+(22, 'Biruk', 'Fikre', 'biruk@yahoo.com', 'biruk', '202cb962ac59075b964b07152d234b70', '9823749873', 'User', 'Active', 'District Level', 'User', 2, '2014-11-22 21:57:25'),
+(23, 'Rahel', 'Taye', 'rahel@gmail.com', 'rahel', '202cb962ac59075b964b07152d234b70', '983498734', 'User', 'Active', 'Sub District Level', 'User', 2, '2014-11-23 03:41:57');
 
 -- --------------------------------------------------------
 
@@ -1086,14 +1043,14 @@ CREATE TABLE `tbl_user_district` (
 `id` int(11) NOT NULL,
   `district_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_user_district`
 --
 
 INSERT INTO `tbl_user_district` (`id`, `district_id`, `user_id`) VALUES
-(1, 1, 8);
+(4, 1, 22);
 
 -- --------------------------------------------------------
 
@@ -1105,22 +1062,14 @@ CREATE TABLE `tbl_user_sub_district` (
 `id` int(11) NOT NULL,
   `sub_district_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_user_sub_district`
 --
 
 INSERT INTO `tbl_user_sub_district` (`id`, `sub_district_id`, `user_id`) VALUES
-(1, 2, 3),
-(2, 2, 4),
-(3, 3, 5),
-(4, 1, 6),
-(5, 3, 9),
-(6, 1, 12),
-(7, 4, 14),
-(8, 2, 15),
-(9, 1, 13);
+(13, 3, 23);
 
 --
 -- Indexes for dumped tables
@@ -1388,13 +1337,13 @@ ALTER TABLE `tbl_user`
 -- Indexes for table `tbl_user_district`
 --
 ALTER TABLE `tbl_user_district`
- ADD PRIMARY KEY (`id`), ADD KEY `district_id` (`district_id`), ADD KEY `user_id` (`user_id`);
+ ADD PRIMARY KEY (`id`), ADD KEY `tbl_user_district_ibfk_2` (`user_id`), ADD KEY `tbl_user_district_ibfk_1` (`district_id`);
 
 --
 -- Indexes for table `tbl_user_sub_district`
 --
 ALTER TABLE `tbl_user_sub_district`
- ADD PRIMARY KEY (`id`), ADD KEY `sub_district_id` (`sub_district_id`), ADD KEY `user_id` (`user_id`);
+ ADD PRIMARY KEY (`id`), ADD KEY `tbl_user_sub_district_ibfk_1` (`sub_district_id`), ADD KEY `tbl_user_sub_district_ibfk_2` (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -1414,12 +1363,12 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT for table `tbl_assessment`
 --
 ALTER TABLE `tbl_assessment`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `tbl_assessment_th`
 --
 ALTER TABLE `tbl_assessment_th`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `tbl_district`
 --
@@ -1429,152 +1378,152 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT for table `tbl_fn`
 --
 ALTER TABLE `tbl_fn`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=44;
 --
 -- AUTO_INCREMENT for table `tbl_fn_action`
 --
 ALTER TABLE `tbl_fn_action`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT for table `tbl_form_1`
 --
 ALTER TABLE `tbl_form_1`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `tbl_form_1_q3`
 --
 ALTER TABLE `tbl_form_1_q3`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=111;
 --
 -- AUTO_INCREMENT for table `tbl_form_1_q4`
 --
 ALTER TABLE `tbl_form_1_q4`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=103;
 --
 -- AUTO_INCREMENT for table `tbl_form_2`
 --
 ALTER TABLE `tbl_form_2`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `tbl_form_3`
 --
 ALTER TABLE `tbl_form_3`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `tbl_form_4`
 --
 ALTER TABLE `tbl_form_4`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tbl_form_5`
 --
 ALTER TABLE `tbl_form_5`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tbl_form_6`
 --
 ALTER TABLE `tbl_form_6`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tbl_form_7`
 --
 ALTER TABLE `tbl_form_7`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tbl_form_8`
 --
 ALTER TABLE `tbl_form_8`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `tbl_form_9`
 --
 ALTER TABLE `tbl_form_9`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `tbl_form_10`
 --
 ALTER TABLE `tbl_form_10`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tbl_goal_first`
 --
 ALTER TABLE `tbl_goal_first`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `tbl_goal_first_g1`
 --
 ALTER TABLE `tbl_goal_first_g1`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=48;
 --
 -- AUTO_INCREMENT for table `tbl_goal_first_g1_obj_fn`
 --
 ALTER TABLE `tbl_goal_first_g1_obj_fn`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=52;
 --
 -- AUTO_INCREMENT for table `tbl_goal_first_g2`
 --
 ALTER TABLE `tbl_goal_first_g2`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=48;
 --
 -- AUTO_INCREMENT for table `tbl_goal_first_g2_obj_fn`
 --
 ALTER TABLE `tbl_goal_first_g2_obj_fn`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT for table `tbl_goal_first_g3`
 --
 ALTER TABLE `tbl_goal_first_g3`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=48;
 --
 -- AUTO_INCREMENT for table `tbl_goal_first_g3_obj_fn`
 --
 ALTER TABLE `tbl_goal_first_g3_obj_fn`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=52;
 --
 -- AUTO_INCREMENT for table `tbl_goal_first_th`
 --
 ALTER TABLE `tbl_goal_first_th`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT for table `tbl_goal_second`
 --
 ALTER TABLE `tbl_goal_second`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=32;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT for table `tbl_goal_second_fn`
 --
 ALTER TABLE `tbl_goal_second_fn`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `tbl_goal_second_g1`
 --
 ALTER TABLE `tbl_goal_second_g1`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=36;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT for table `tbl_goal_second_g1_obj`
 --
 ALTER TABLE `tbl_goal_second_g1_obj`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=57;
 --
 -- AUTO_INCREMENT for table `tbl_goal_second_g2`
 --
 ALTER TABLE `tbl_goal_second_g2`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
 --
 -- AUTO_INCREMENT for table `tbl_goal_second_g2_obj`
 --
 ALTER TABLE `tbl_goal_second_g2_obj`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=52;
 --
 -- AUTO_INCREMENT for table `tbl_goal_second_g3`
 --
 ALTER TABLE `tbl_goal_second_g3`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT for table `tbl_goal_second_g3_obj`
 --
 ALTER TABLE `tbl_goal_second_g3_obj`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=51;
 --
 -- AUTO_INCREMENT for table `tbl_responsibility`
 --
@@ -1584,7 +1533,7 @@ MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT for table `tbl_risk`
 --
 ALTER TABLE `tbl_risk`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `tbl_sub_district`
 --
@@ -1594,7 +1543,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 -- AUTO_INCREMENT for table `tbl_team`
 --
 ALTER TABLE `tbl_team`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `tbl_team_interest`
 --
@@ -1604,27 +1553,27 @@ MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `tbl_th`
 --
 ALTER TABLE `tbl_th`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=38;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=47;
 --
 -- AUTO_INCREMENT for table `tbl_th_action`
 --
 ALTER TABLE `tbl_th_action`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `tbl_user_district`
 --
 ALTER TABLE `tbl_user_district`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbl_user_sub_district`
 --
 ALTER TABLE `tbl_user_sub_district`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- Constraints for dumped tables
 --
@@ -1782,12 +1731,12 @@ ADD CONSTRAINT `tbl_th_action_ibfk_1` FOREIGN KEY (`th_id`) REFERENCES `tbl_th` 
 -- Constraints for table `tbl_user_district`
 --
 ALTER TABLE `tbl_user_district`
-ADD CONSTRAINT `tbl_user_district_ibfk_1` FOREIGN KEY (`district_id`) REFERENCES `tbl_district` (`id`),
-ADD CONSTRAINT `tbl_user_district_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`);
+ADD CONSTRAINT `tbl_user_district_ibfk_1` FOREIGN KEY (`district_id`) REFERENCES `tbl_district` (`id`) ON DELETE CASCADE,
+ADD CONSTRAINT `tbl_user_district_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tbl_user_sub_district`
 --
 ALTER TABLE `tbl_user_sub_district`
-ADD CONSTRAINT `tbl_user_sub_district_ibfk_1` FOREIGN KEY (`sub_district_id`) REFERENCES `tbl_sub_district` (`id`),
-ADD CONSTRAINT `tbl_user_sub_district_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`);
+ADD CONSTRAINT `tbl_user_sub_district_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`) ON DELETE CASCADE,
+ADD CONSTRAINT `tbl_user_sub_district_ibfk_1` FOREIGN KEY (`sub_district_id`) REFERENCES `tbl_sub_district` (`id`) ON DELETE CASCADE;
