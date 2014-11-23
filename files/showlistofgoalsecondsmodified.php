@@ -26,7 +26,6 @@
 ?>
 <table border="0" width="100%">
     <tr style="background: #ccc">
-        <td>Ser.No</td>
         <td>Fn</td>
         <td>Action</td>
         <td>Edit</td>
@@ -43,7 +42,6 @@
             if(true){
                 ?>
                     <tr>
-                        <td width="10%"><?php echo $ctr++;?></td>
                         <td width="20%"><?php echo $fnObj->fn_name;?></td>
                         <td>
                             <a href="#.php" id="<?php echo $fnObj->id;?>" class="openActionFormClass">Show Goal Second Detail</a> | <a href="#.php" id="<?php echo $fnObj->id;?>" class="closeActionFormClass">Close Goal Second Detail</a>
@@ -56,7 +54,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="5">
+                        <td colspan="4">
                             <div id="<?php echo $divId;?>"></div>
                         </td>
                     </tr>

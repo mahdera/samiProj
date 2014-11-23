@@ -25,8 +25,7 @@
     if(!empty($goalFirstThList)){
         ?>
         <table border="0" width="100%">
-            <tr style="background: #CCC">
-                <td width="10%">Ser.No</td>
+            <tr style="background: #CCC">                
                 <td width="20%">Th</td>
                 <td>Action</td>
                 <td>Edit</td>
@@ -42,7 +41,6 @@
                         if(true){
                             ?>
                             <tr>
-                                <td><?php echo $ctr;?></td>
                                 <td><?php echo $thObj->th_name;?></td>
                                 <td>
                                     [<a href="#.php" id="<?php echo $thObj->id;?>" class="openActionFormClass">Show Goal First Detail</a> | <a href="#.php" id="<?php echo $goalFirstThRow->th_id;?>" class="closeActionFormClass">Close Goal First Detail</a>]
@@ -55,7 +53,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="5">
+                                <td colspan="4">
                                     <div id="<?php echo $divId;?>"></div>
                                 </td>
                             </tr>

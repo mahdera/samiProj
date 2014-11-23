@@ -15,7 +15,7 @@
                   while($districtRow = mysql_fetch_object($districtList)){
                       ?>
                           <tr>
-                              <td><?php echo $ctr++;?></td>
+                              <td><?php //echo $ctr++;?></td>
                               <td><?php echo $districtRow->district_name;?></td>
                               <td><?php echo $districtRow->description;?></td>
                           </tr>

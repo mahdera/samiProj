@@ -15,7 +15,6 @@
         ?>
         <table border="0" width="100%">
             <tr style="background: #CCC">
-                <td width="10%">Ser.No</td>
                 <td width="20%">Th</td>
                 <td>Action</td>
                 <td>View/Edit/Delete</td>
@@ -30,7 +29,6 @@
                         if(true){
                             ?>
                             <tr>
-                                <td><?php echo $ctr;?></td>
                                 <td><?php echo $thObj->th_name;?></td>
                                 <td>
                                     [<a href="#.php" id="<?php echo $thObj->id;?>" class="openActionFormClass">Show Add Action Form</a> | <a href="#.php" id="<?php echo $thObj->id;?>" class="closeActionFormClass">Close Add Action Form</a>]
@@ -40,7 +38,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="4">
+                                <td colspan="3">
                                     <div id="<?php echo $divId;?>"></div>
                                 </td>
                             </tr>

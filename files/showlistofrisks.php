@@ -43,7 +43,7 @@
                             $divId = "riskEditDiv" . $riskRow->id;
                             ?>
                             <tr>
-                                <td><?php echo $ctr;?></td>
+                                <td><?php //echo $ctr;?></td>
                                 <td><?php echo $th->th_name;?></td>
                                 <td><?php echo $riskRow->mg;?></td>
                                 <td><?php echo $riskRow->dr;?></td>

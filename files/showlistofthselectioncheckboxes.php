@@ -31,7 +31,6 @@
             ?>
                 <table border="0" width="100%">
                     <tr style="background: #ccc">
-                        <td>#</td>
                         <td>Th</td>
                         <td>MG</td>
                         <td>DR</td>
@@ -45,8 +44,7 @@
                         while($riskRow = mysql_fetch_object($riskList)){
                             $thObj = getTh($riskRow->th_id);
                             ?>
-                            <tr>
-                                <td><?php echo $ctr;?></td>
+                            <tr>                                
                                 <td><?php echo $thObj->th_name;?></td>
                                 <td><?php echo $riskRow->mg;?></td>
                                 <td><?php echo $riskRow->dr;?></td>
