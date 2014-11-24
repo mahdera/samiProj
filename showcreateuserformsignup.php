@@ -64,8 +64,8 @@
             <td>
                 <select name="slctuserlevel" id="slctuserlevel" style="width:100%">
                     <option value="" selected="selected">--Select--</option>
-                    <option value="District Level">District Level</option>
-                    <option value="Sub District Level">Sub District Level</option>
+                    <option value="01">District Level</option>
+                    <option value="02">Sub District Level</option>
                 </select>
             </td>
         </tr>
@@ -75,9 +75,9 @@
                 <div id="userLevelDiv">
                     <select name="slctuserrole" id="slctuserrole" style="width:100%">
                         <option value="" selected="selected">--Select--</option>
-                        <option value="District Admin">District Admin</option>
-                        <option value="Sub District Admin">Sub District Admin</option>
-                        <option value="User">User</option>
+                        <option value="01A">District Admin</option>
+                        <option value="02A">Sub District Admin</option>
+                        <option value="999">User</option>
                     </select>
                 </div>
             </td>
@@ -111,7 +111,7 @@
         $('#slctzone').change(function(){
             var zoneId = $(this).val();
             var userLevel = $('#slctuserlevel').val();
-            if(zoneId !== '' && userLevel == 'Sub District Level'){
+            if(zoneId !== '' && userLevel == '02'){
                 var dataString = "zoneId="+zoneId;
                 $.ajax({
                     url: 'files/showlistofbranchsforthiszone.php',
@@ -131,9 +131,9 @@
         $('#slctuserlevel').change(function(){
             var memberType = $(this).val();
             if(memberType != ''){
-                if(memberType == 'District Level'){
+                if(memberType == '01'){
                     $('#branchRow').remove();
-                }else if(memberType == 'Sub District Level'){
+                }else if(memberType == '02'){
                     var zoneId = $('#slctzone').val();
                     var dataString = "zoneId="+zoneId;
                     $.ajax({
@@ -164,9 +164,9 @@
             var userLevel = $('#slctuserlevel').val();
             var userRole = $('#slctuserrole').val();
             var eitherZoneIdOrBranchId = "";
-            if(userLevel == 'District Level'){
+            if(userLevel == '01'){
                 eitherZoneIdOrBranchId = $('#slctzone').val();
-            }else if(userLevel == 'Sub District Level'){
+            }else if(userLevel == '02'){
                 eitherZoneIdOrBranchId = $('#slctbranch').val();
             }
 

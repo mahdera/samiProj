@@ -1,122 +1,57 @@
 <div class="content" id='step1Content'>
-    <!--to be replaced when the next button is clicked-->
-    <div id="topcontain">
-        <div id="titlearea">
-            <h1 id='currentPageTag'>Calendar</h1>
-            <h2></h2>
-            <h3></h3>
-        </div>
-        <div id="resourcearea">
-            <ul>
-                <li class="sb-toggle-right"><img src="images/resource_icon.png" alt="Resource Toolkit" /> Resource Toolkit</li>
-            </ul>
-        </div>
+    <h1>Event Calendar</h1>
+    <div id='calendar'></div>
+    <div id="event_edit_container">
+      <form>
+        <input type="hidden" />
+        <ul>
+          <li>
+            <span>Date: </span><span class="date_holder"></span>
+          </li>
+          <li>
+            <label for="start">Start Time: </label><select name="start"><option value="">Select Start Time</option></select>
+          </li>
+          <li>
+            <label for="end">End Time: </label><select name="end"><option value="">Select End Time</option></select>
+          </li>
+          <li>
+            <label for="title">Title: </label><input type="text" name="title" />
+          </li>
+          <li>
+            <label for="body">Body: </label><textarea name="body"></textarea>
+          </li>
+        </ul>
+      </form>
     </div>
-    <div class="col-half left" id="calendarBody">
-        <div style="display:block; width:900px; margin: 0 auto; ">
-<div style="float:right; margin-bottom:10px;">
-<form action="" method="post">
-<input type="submit" name="add_event" value="Add Event"/>
-<a href="#.php" id="btnshareevent">Email Event</a>
-</form>
-<p style="display:none">Add Event | Edit Event | Delete Event</p></div>
+    <div id="about">
+      <h2>Summary</h2>
+      <p>
+        This calendar implementation demonstrates further usage of the calendar with editing and deleting of events.
+        It stops short however of implementing a server-side back-end which is out of the scope of this plugin. It
+        should be reasonably evident by viewing the demo source code, where the points for adding ajax should be.
+        Note also that this is **just a demo** and some of the demo code itself is rough. It could certainly be
+        optimised.
+      </p>
+      <p>
+        ***Note: This demo is straight out of SVN trunk so may show unreleased features from time to time.
+      </p>
+      <h2>Demonstrated Features</h2>
+      <p>
+        This calendar implementation demonstrates the following features:
+      </p>
+      <ul class="formatted">
+        <li>Adding, updating and deleting of calendar events using jquery-ui dialog. Also includes
+          additional calEvent data (body field) not defined by the calEvent data structure to show the storage
+          of the data within the calEvent</li>
+        <li>Dragging and resizing of calendar events</li>
+        <li>Restricted timeslot rendering based on business hours</li>
+        <li>Week starts on Monday instead of the default of Sunday</li>
+        <li>Allowing calEvent overlap with staggered rendering of overlapping events</li>
+        <li>Use of the 'getTimeslotTimes' method to retrieve valid times for a given event day. This is used to populate
+          select fields for adding, updating events.</li>
+        <li>Use of the 'eventRender' callback to add a different css class to calEvents in the past</li>
+        <li>Use of additional calEvent data to enforce readonly behaviour for a calendar event. See the event
+          titled "i'm read-only"</li>
+      </ul>
+    </div>
 </div>
-
-<div style="clear:both;"></div>
-
-
-<?php if(@$_POST['add_event']){
-$year = date("Y");
-$year2= $year + 1;
-$mymonth = date("m");
-$day = date("d");?>
-<div style="background-color:grey; width:900px; margin:0 auto;padding-top:20px;padding-bottom:10px; border-radius:15px;">
-<form action="" method="post">
-<div style="float:left;margin-left:10px;">Title: <input style="margin:0 auto; text-align:left;" type="text" name="event_title" value=""/>
-<select name ="year">
-<?php echo '<option selected="selected">'.$year.'</option>';
-echo '<option>'.$year2.'</option>';
-
-echo '</select>';
-?>
-
-<select name ="month">
-<?php
-$month = array($month);
-echo '<option selected="selected">'.$mymonth.'</option>';
-$months = array('01','02','03','04','05','06','07','08','09','10','11','12');
-$months = array_diff($months,$month);
-
-foreach($months as $month_opt){
-echo '<option>'.$month_opt.'</option>';
-}
-echo '</select>';
-
-?>
-
-<select name="day">
-<?php echo '<option selected="selected">'.$day.'</option>';
-for($i=1; $i<32; $i++) {
-echo '<option>'.$i.'</option>';
-}
-
-echo '</select>';
-?>
-&nbsp Hour: <select name="hour">
-<?php
-$hours = array('00','01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23');
-
-foreach($hours as $hour){
-echo '<option>'.$hour.'</option>';
-}
-
-echo '</select>';
-
-?>
-&nbsp Minutes: <select name="minutes">
-<?php
-$minutes = array('00','15','30','45');
-
-foreach($minutes as $minute){
-echo '<option>'.$minute.'</option>';
-}
-
-echo '</select>';
-echo'</div>';
-?><br/><br/>
-<div style="float:left;margin-left:10px;margin-bottom:5px;">Notes:</div>
-<textarea name="notes" style="width:880px; margin:0 auto;"></textarea><br/>
-
-<?php
-echo '<input style="margin-top:10px;" type="submit" name="adding" value="Add the Event"/></form></div><br/><br/>';
-}
-
-if(@$_POST['adding']) {
-$year = $_POST['year'];
-$month = $_POST['month'];
-$day= $_POST['day'];
-$hour= $_POST['hour'];
-$minutes= $_POST['minutes'];
-$fulldate = $year."-".$month."-".$day." ".$hour.":".$minutes;
-
-$command = "INSERT INTO calendar VALUES('','0', '{$_POST['event_title']}', '{$_POST['notes']}', '$fulldate','') ";
-$result = mysql_query($command, $db);
-if($result) {
-echo "Successful Insert!";
-}
-}
-?>
-<div id="shareEventDiv"></div>
-<br/>
-<div style="clear:both;"></div>
-<div id='calendar'></div>
-    </div><!-- /col-half --><!-- /col-half -->
-    <!--end to be replaced content-->
-</div> <!-- /content -->
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('#btnshareevent').click(function(){
-            $('#shareEventDiv').load('files/showeventemailselectionform.php');
-        });
-    });//end document.ready function
-</script>

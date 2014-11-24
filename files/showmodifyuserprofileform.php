@@ -104,25 +104,25 @@
                 <select name="slctuserlevel" id="slctuserlevel" style="width:100%">
                     <option value="" selected="selected">--Select--</option>
                   <?php
-                    if($loggedInUserObj->user_role == 'Sub District Admin'){
+                    if($loggedInUserObj->user_role == '02A'){
                       ?>
-                        <option value="Sub District Level" selected="selected">Sub District Level</option>
+                        <option value="02A" selected="selected">Sub District Level</option>
                       <?php
                     }else{
-                      if($userObj->user_level === 'Sub District Level'){
+                      if($userObj->user_level === '02'){
                         ?>
-                          <option value="Sub District Level" selected="selected">Sub District Level</option>
-                          <option value="District Level">District Level</option>
+                          <option value="02" selected="selected">Sub District Level</option>
+                          <option value="01">District Level</option>
                         <?php
-                      }else if($userObj->user_level === 'District Level'){
+                      }else if($userObj->user_level === '01'){
                         ?>
-                          <option value="Sub District Level">Sub District Level</option>
-                          <option value="District Level" selected="selected">District Level</option>
+                          <option value="02">Sub District Level</option>
+                          <option value="01" selected="selected">District Level</option>
                         <?php
                       }else{
                         ?>
-                          <option value="Sub District Level">Sub District Level</option>
-                          <option value="District Level">District Level</option>
+                          <option value="02">Sub District Level</option>
+                          <option value="01">District Level</option>
                         <?php
                       }
                     }
@@ -138,27 +138,27 @@
                     <?php
                       if($userObj->user_role === 'Sub District Admin'){
                         ?>
-                            <option value="Sub District Admin" selected="selected">Sub District Admin</option>
-                            <option value="User">User</option>
-                            <option value="District Admin">District Admin</option>
+                            <option value="02A" selected="selected">Sub District Admin</option>
+                            <option value="999">User</option>
+                            <option value="01A">District Admin</option>
                         <?php
                       }else if($userObj->user_role === 'User'){
                         ?>
-                            <option value="Sub District Admin">Sub District Admin</option>
-                            <option value="User" selected="selected">User</option>
-                            <option value="District Admin">District Admin</option>
+                            <option value="02A">Sub District Admin</option>
+                            <option value="999" selected="selected">User</option>
+                            <option value="01A">District Admin</option>
                         <?php
                       }else if($userObj->user_role === 'District Admin'){
                         ?>
-                            <option value="Sub District Admin">Sub District Admin</option>
-                            <option value="User">User</option>
-                            <option value="District Admin" selected="selected">District Admin</option>
+                            <option value="02A">Sub District Admin</option>
+                            <option value="999">User</option>
+                            <option value="01A" selected="selected">District Admin</option>
                         <?php
                       }else{
                         ?>
-                            <option value="Sub District Admin">Sub District Admin</option>
-                            <option value="User">User</option>
-                            <option value="District Admin">District Admin</option>
+                            <option value="02A">Sub District Admin</option>
+                            <option value="999">User</option>
+                            <option value="01A">District Admin</option>
                         <?php
                       }
                         ?>
