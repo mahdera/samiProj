@@ -106,23 +106,23 @@
                   <?php
                     if($loggedInUserObj->user_role == '02A'){
                       ?>
-                        <option value="02A" selected="selected">Sub District Level</option>
+                        <option value="02A" selected="selected">02</option>
                       <?php
                     }else{
                       if($userObj->user_level === '02'){
                         ?>
-                          <option value="02" selected="selected">Sub District Level</option>
-                          <option value="01">District Level</option>
+                          <option value="02" selected="selected">02</option>
+                          <option value="01">01</option>
                         <?php
                       }else if($userObj->user_level === '01'){
                         ?>
-                          <option value="02">Sub District Level</option>
-                          <option value="01" selected="selected">District Level</option>
+                          <option value="02">02</option>
+                          <option value="01" selected="selected">01</option>
                         <?php
                       }else{
                         ?>
-                          <option value="02">Sub District Level</option>
-                          <option value="01">District Level</option>
+                          <option value="02">02</option>
+                          <option value="01">01</option>
                         <?php
                       }
                     }
@@ -136,29 +136,29 @@
                 <select name="slctuserrole" id="slctuserrole" style="width:100%">
                     <option value="" selected="selected">--Select--</option>
                     <?php
-                      if($userObj->user_role === 'Sub District Admin'){
+                      if($userObj->user_role === 'Sub 01A'){
                         ?>
-                            <option value="02A" selected="selected">Sub District Admin</option>
+                            <option value="02A" selected="selected">Sub 01A</option>
                             <option value="999">User</option>
-                            <option value="01A">District Admin</option>
+                            <option value="01A">01A</option>
                         <?php
                       }else if($userObj->user_role === 'User'){
                         ?>
-                            <option value="02A">Sub District Admin</option>
+                            <option value="02A">Sub 01A</option>
                             <option value="999" selected="selected">User</option>
-                            <option value="01A">District Admin</option>
+                            <option value="01A">01A</option>
                         <?php
-                      }else if($userObj->user_role === 'District Admin'){
+                      }else if($userObj->user_role === '01A'){
                         ?>
-                            <option value="02A">Sub District Admin</option>
+                            <option value="02A">Sub 01A</option>
                             <option value="999">User</option>
-                            <option value="01A" selected="selected">District Admin</option>
+                            <option value="01A" selected="selected">01A</option>
                         <?php
                       }else{
                         ?>
-                            <option value="02A">Sub District Admin</option>
+                            <option value="02A">Sub 01A</option>
                             <option value="999">User</option>
-                            <option value="01A">District Admin</option>
+                            <option value="01A">01A</option>
                         <?php
                       }
                         ?>
@@ -168,10 +168,10 @@
         <?php
           $zoneObj = null;
           $branchObj = null;
-          if($userObj->user_level == 'District Level'){
+          if($userObj->user_level == '01'){
             $userZone = getDistrictInfoForUser($userObj->id);
             $zoneObj = getDistrict($userZone->district_id);
-          }else if($userObj->user_level == 'Sub District Level'){
+          }else if($userObj->user_level == '02'){
             $userBranch = getSubDistrictInfoForUser($userObj->id);
             if($userBranch != null){
               $branchObj = getSubDistrict($userBranch->sub_district_id);
@@ -202,7 +202,7 @@
             </td>
         </tr>
         <?php
-          if($userObj->user_level == 'Sub District Level'){
+          if($userObj->user_level == '02'){
             //get the zone info of this user and based on that populate the branch dropdown...
             $branchList = null;
             if($zoneObj != null){
@@ -255,9 +255,9 @@
             var userLevel = $('#slctuserlevel').val();
             var eitherZoneIdOrBranchId = "";
             var userRole = $('#slctuserrole').val();
-            if(userLevel == 'District Level'){
+            if(userLevel == '01'){
                 eitherZoneIdOrBranchId = $('#slctzone').val();
-            }else if(userLevel == 'Sub District Level'){
+            }else if(userLevel == '02'){
                 eitherZoneIdOrBranchId = $('#slctbranch').val();
             }
 
@@ -286,7 +286,7 @@
         $('#slctzone').change(function(){
             var zoneId = $(this).val();
             var userLevel = $('#slctuserlevel').val();
-            if(zoneId !== '' && userLevel == 'Sub District Level'){
+            if(zoneId !== '' && userLevel == '02'){
                 var dataString = "zoneId="+zoneId;
                 $.ajax({
                     url: 'files/showlistofbranchsforthiszone.php',
@@ -306,9 +306,9 @@
         $('#slctuserlevel').change(function(){
             var memberType = $(this).val();
             if(memberType != ''){
-                if(memberType == 'District Level'){
+                if(memberType == '01'){
                     $('#branchRow').remove();
-                }else if(memberType == 'Sub District Level'){
+                }else if(memberType == '02'){
                     var zoneId = $('#slctzone').val();
                     var dataString = "zoneId="+zoneId;
                     $.ajax({
@@ -331,11 +331,11 @@
           var userRole = $(this).val();
           var userLevel = $('#slctuserlevel').val();
           if(userRole !== '' && userLevel !== ''){
-              if(userLevel == 'Sub District Level' && userRole == 'District Admin'){
-                  alert('A sub district level user can not have a District Admin role! Please select again!');
+              if(userLevel == '02' && userRole == '01A'){
+                  alert('A 02 user can not have a 01A role! Please select again!');
                   $('#slctuserrole').val('');
-              }else if(userLevel == 'District Level' && userRole == 'Sub District Admin'){
-                  alert('A district level user can not have a Sub District Admin role! Please select again!');
+              }else if(userLevel == '01' && userRole == 'Sub 01A'){
+                  alert('A 01 user can not have a Sub 01A role! Please select again!');
                   $('#slctuserrole').val('');
               }
           }
