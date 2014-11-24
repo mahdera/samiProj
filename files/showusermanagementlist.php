@@ -5,17 +5,19 @@
     require_once 'subdistrict.php';
     require_once 'userdistrict.php';
     require_once 'usersubdistrict.php';
+    require_once 'userrolelookup.php';
+    require_once 'userlevellookup.php';
 
     $theUserId = $_SESSION['INDIVIDUAL_INT_USER_ID'];
     $loggedInUserObj = getUser($theUserId);
     $userList = null;
     if($loggedInUserObj->member_type == 'Admin'){
         $userList = getAllNonAdminUsers();
-    }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == 'Sub District Admin'){
+    }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == '02A'){
         //now get the branch id of the logged in user
         $userSubDistrictObj = getSubDistrictInfoForUser($theUserId);
         $userList = getAllSubDistrictUsersWithDistrictId($userSubDistrictObj->sub_district_id);
-    }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == 'District Admin'){
+    }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == '01A'){
         //now get the zone id of the logged in user and get all zone and branch level users found under the zone id of this logged in user
         $userDistrictObj = getDistrictInfoForUser($theUserId);
         $userList = getAllDistrictAndSubDistrictUsersWithDistrictId($userDistrictObj->district_id);
@@ -59,11 +61,11 @@
             while($userRow = mysql_fetch_object($userList)){
                 $districtObj = null;
                 $subDistrictObj = null;
-                if($userRow->user_level == 'District Level'){
+                if($userRow->user_level == '01'){
                     //fetch zone information from tbl_user_zone
                     $userDistrict = getDistrictInfoForUser($userRow->id);
                     $districtObj = getDistrict($userDistrict->district_id);
-                }else if($userRow->user_level == 'Sub District Level'){
+                }else if($userRow->user_level == '02'){
                     //fetch branch information from tbl_user_branch
                     $userSubDistrict = getSubDistrictInfoForUser($userRow->id);
                     if($userSubDistrict != null){
@@ -71,6 +73,9 @@
                       $districtObj = getDistrict($subDistrictObj->district_id);
                     }
                 }
+                //now do the conversion in here
+                $userRole = getUserRoleLookUpUsingCode($userRow->user_role);
+                $userLevel = getUserLevelLookUpUsingCode($userRow->user_level);
                 ?>
                 <tr>
                     <td><?php echo $ctr++;?></td>
@@ -80,10 +85,10 @@
                     <td><?php echo $userRow->user_id;?></td>
                     <td><?php echo $userRow->member_type;?></td>
                     <td><?php echo $userRow->user_status;?></td>
-                    <td><?php echo ($userRow->user_level != null ? $userRow->user_level : '---');?></td>
-                    <td><?php echo ($userRow->user_role != null ? $userRow->user_role : '---');?></td>
-                    <td><?php echo ($districtObj != null ? $districtObj->district_name : '---');?></td>
-                    <td><?php echo ($subDistrictObj != null ? $subDistrictObj->sub_district_name : '---');?></td>
+                    <td><?php echo ($userLevel != null ? $userLevel->value : '---');?></td>
+                    <td><?php echo ($userRole != null ? $userRole->value : '---');?></td>
+                    <td><?php echo ($districtObj != null ? $districtObj->display_name : '---');?></td>
+                    <td><?php echo ($subDistrictObj != null ? $subDistrictObj->display_name : '---');?></td>
                     <td><?php echo $userRow->modification_date;?></td>
                     <td>
                         <a href="#.php" class="resetUserPasswordLink" id="<?php echo $userRow->id;?>">Reset Password</a>

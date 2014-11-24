@@ -1,17 +1,17 @@
 <?php
   require_once 'dbconnection.php';
-  function saveSubDistrict($districtId, $subDistrictName, $displayName, $description){
+  function saveSubDistrict($districtId, $code, $displayName, $description){
     try{
-      $query = "insert into tbl_sub_district values(0, $districtId, '$subDistrictName', '$displayName', '$description')";
+      $query = "insert into tbl_sub_district values(0, $districtId, '$code', '$displayName', '$description')";
       save($query);
     }catch(Exception $ex){
       $ex->getMessage();
     }
   }
 
-  function updateSubDistrict($id, $districtId, $subDistrictName, $displayName, $description){
+  function updateSubDistrict($id, $districtId, $code, $displayName, $description){
     try{
-      $query = "update tbl_sub_district set district_id = $districtId, sub_district_name = '$subDistrictName', display_name='$displayName', description = '$description' where id = $id";
+      $query = "update tbl_sub_district set district_id = $districtId, code = '$code', display_name='$displayName', description = '$description' where id = $id";
       save($query);
     }catch(Exception $ex){
       $ex->getMessage();
@@ -29,7 +29,7 @@
 
   function getAllSubDistricts(){
     try{
-      $query = "select * from tbl_sub_district order by sub_district_name";
+      $query = "select * from tbl_sub_district order by display_name";
       $result = read($query);
       return $result;
     }catch(Exception $ex){
@@ -50,7 +50,7 @@
 
   function getAllSubDistrictsOfThisDistrict($districtId){
     try{
-      $query = "select * from tbl_sub_district where district_id = $districtId order by sub_district_name";
+      $query = "select * from tbl_sub_district where district_id = $districtId order by display_name";
       //echo $query;
       $result = read($query);
       return $result;

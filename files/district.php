@@ -1,17 +1,17 @@
 <?php
   require_once 'dbconnection.php';
-  function saveDistrict($districtName,$displayName, $description){
+  function saveDistrict($code,$displayName, $description){
     try{
-      $query = "insert into tbl_district values(0, '$districtName', '$displayName', '$description')";
+      $query = "insert into tbl_district values(0, '$code', '$displayName', '$description')";
       save($query);
     }catch(Exception $ex){
       $ex->getMessage();
     }
   }
 
-  function updateDistrict($id, $districtName, $displayName, $description){
+  function updateDistrict($id, $code, $displayName, $description){
     try{
-      $query = "update tbl_district set district_name = '$districtName', display_name = '$displayName', description = '$description' where id = $id";
+      $query = "update tbl_district set code = '$code', display_name = '$displayName', description = '$description' where id = $id";
       save($query);
     }catch(Exception $ex){
       $ex->getMessage();
@@ -29,7 +29,7 @@
 
   function getAllDistricts(){
     try{
-      $query = "select * from tbl_district order by district_name";
+      $query = "select * from tbl_district order by display_name";
       $result = read($query);
       return $result;
     }catch(Exception $ex){

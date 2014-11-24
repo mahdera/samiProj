@@ -106,23 +106,23 @@
                   <?php
                     if($loggedInUserObj->user_role == '02A'){
                       ?>
-                        <option value="02A" selected="selected">02</option>
+                        <option value="02A" selected="selected">Sub District Admin</option>
                       <?php
                     }else{
                       if($userObj->user_level === '02'){
                         ?>
-                          <option value="02" selected="selected">02</option>
-                          <option value="01">01</option>
+                          <option value="02" selected="selected">Sub District Level</option>
+                          <option value="01">District Level</option>
                         <?php
                       }else if($userObj->user_level === '01'){
                         ?>
-                          <option value="02">02</option>
-                          <option value="01" selected="selected">01</option>
+                          <option value="02">Sub District Level</option>
+                          <option value="01" selected="selected">District Level</option>
                         <?php
                       }else{
                         ?>
-                          <option value="02">02</option>
-                          <option value="01">01</option>
+                          <option value="02">Sub District Level</option>
+                          <option value="01">District Level</option>
                         <?php
                       }
                     }
@@ -136,29 +136,29 @@
                 <select name="slctuserrole" id="slctuserrole" style="width:100%">
                     <option value="" selected="selected">--Select--</option>
                     <?php
-                      if($userObj->user_role === 'Sub 01A'){
+                      if($userObj->user_role === '02A'){
                         ?>
-                            <option value="02A" selected="selected">Sub 01A</option>
+                            <option value="02A" selected="selected">Sub District Admin</option>
                             <option value="999">User</option>
-                            <option value="01A">01A</option>
+                            <option value="01A">District Admin</option>
                         <?php
                       }else if($userObj->user_role === 'User'){
                         ?>
-                            <option value="02A">Sub 01A</option>
+                            <option value="02A">Sub District Admin</option>
                             <option value="999" selected="selected">User</option>
-                            <option value="01A">01A</option>
+                            <option value="01A">District Admin</option>
                         <?php
                       }else if($userObj->user_role === '01A'){
                         ?>
-                            <option value="02A">Sub 01A</option>
+                            <option value="02A">Sub District Admin</option>
                             <option value="999">User</option>
-                            <option value="01A" selected="selected">01A</option>
+                            <option value="01A" selected="selected">District Admin</option>
                         <?php
                       }else{
                         ?>
-                            <option value="02A">Sub 01A</option>
+                            <option value="02A">Sub District Admin</option>
                             <option value="999">User</option>
-                            <option value="01A">01A</option>
+                            <option value="01A">District Admin</option>
                         <?php
                       }
                         ?>
@@ -332,10 +332,10 @@
           var userLevel = $('#slctuserlevel').val();
           if(userRole !== '' && userLevel !== ''){
               if(userLevel == '02' && userRole == '01A'){
-                  alert('A 02 user can not have a 01A role! Please select again!');
+                  alert('A sub district level user can not have a District Admin role! Please select again!');
                   $('#slctuserrole').val('');
-              }else if(userLevel == '01' && userRole == 'Sub 01A'){
-                  alert('A 01 user can not have a Sub 01A role! Please select again!');
+              }else if(userLevel == '01' && userRole == '02A'){
+                  alert('A district level user can not have a Sub District Admin role! Please select again!');
                   $('#slctuserrole').val('');
               }
           }
