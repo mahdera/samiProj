@@ -1,5 +1,5 @@
 <?php
-  error_reporting( 0 );
+  //error_reporting( 0 );
   require_once 'files/district.php';
   require_once 'files/subdistrict.php';
   $zoneList = getAllDistricts();
@@ -90,7 +90,7 @@
                     <?php
                         while($zoneRow = mysql_fetch_object($zoneList)){
                             ?>
-                              <option value="<?php echo $zoneRow->id;?>"><?php echo $zoneRow->district_name;?></option>
+                              <option value="<?php echo $zoneRow->id;?>"><?php echo $zoneRow->display_name;?></option>
                             <?php
                         }//end while loop
                     ?>
@@ -199,10 +199,10 @@
           var userRole = $(this).val();
           var userLevel = $('#slctuserlevel').val();
           if(userRole !== '' && userLevel !== ''){
-              if(userLevel == 'Sub District Level' && userRole == 'District Admin'){
+              if(userLevel == '02' && userRole == '01A'){
                   alert('A sub district level user can not have a District Admin role! Please select again!');
                   $('#slctuserrole').val('');
-              }else if(userLevel == 'District Level' && userRole == 'Sub District Admin'){
+              }else if(userLevel == '01' && userRole == '02A'){
                   alert('A district level user can not have a Sub District Admin role! Please select again!');
                   $('#slctuserrole').val('');
               }
@@ -212,9 +212,9 @@
         $('#slctuserlevel').change(function(){
             var userLevel = $(this).val();
             if(userLevel != ""){
-                if(userLevel == "District Level"){
+                if(userLevel == "01"){
                     $('#userLevelDiv').load('showuserrolefordistrictlevel.php');
-                }else if(userLevel == "Sub District Level"){
+                }else if(userLevel == "02"){
                     $('#userLevelDiv').load('showuserroleforsubdistrictlevel.php');
                 }
             }

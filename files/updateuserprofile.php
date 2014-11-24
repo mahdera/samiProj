@@ -17,7 +17,7 @@
     @$userRole = mysql_real_escape_string($_POST['userRole']);
     $eitherZoneIdOrBranchId = $_POST['eitherZoneIdOrBranchId'];
     //now I can save this info to the database...
-    if($userLevel == 'Sub District Level'){
+    if($userLevel == '02'){
       updateUser($id, $firstName, $lastName, $email, $phoneNumber, $memberType, $userStatus, $userLevel, $userRole, $adminUser->id);
       //now remove any record for this user from the user_zone table
       deleteUserDistrictForThisUser($id);
@@ -29,7 +29,7 @@
       }else{
           saveUserSubDistrict($eitherZoneIdOrBranchId, $id);
       }
-    }else if($userLevel == 'District Level'){
+    }else if($userLevel == '01'){
       updateUser($id, $firstName, $lastName, $email, $phoneNumber, $memberType, $userStatus, $userLevel, $userRole, $adminUser->id);
       deleteUserSubDistrictForThisUser($id);
       //check if a user_zone record already exists...

@@ -63,7 +63,7 @@
             <td>
                 <select name="slctmembertype" id="slctmembertype" style="width: 100%">
                     <option value="" selected="selected">--Select--</option>
-                    <option value="Admin">Admin</option>
+                    <option value="Admin">Root</option>
                     <option value="User">User</option>
                 </select>
             </td>
@@ -86,7 +86,7 @@
                       if($loggedInUserObj->user_role == '02A'){
                         ?>
                             <option value="" selected="selected">--Select--</option>
-                            <option value="02">Branch Level</option>
+                            <option value="02">Sub District Level</option>
                         <?php
                       }else{
                         ?>
@@ -118,7 +118,7 @@
                     <?php
                         while($zoneRow = mysql_fetch_object($zoneList)){
                             ?>
-                              <option value="<?php echo $zoneRow->id;?>"><?php echo $zoneRow->district_name;?></option>
+                              <option value="<?php echo $zoneRow->id;?>"><?php echo $zoneRow->display_name;?></option>
                             <?php
                         }//end while loop
                     ?>
@@ -148,9 +148,9 @@
             var userLevel = $('#slctuserlevel').val();
             var userRole = $('#slctuserrole').val();
             var eitherZoneIdOrBranchId = "";
-            if(userLevel == 'District Level'){
+            if(userLevel == '01'){
                 eitherZoneIdOrBranchId = $('#slctzone').val();
-            }else if(userLevel == 'Sub District Level'){
+            }else if(userLevel == '02'){
                 eitherZoneIdOrBranchId = $('#slctbranch').val();
             }
 
@@ -200,11 +200,11 @@
         });
 
         $('#slctuserlevel').change(function(){
-            var memberType = $(this).val();
-            if(memberType != ''){
-                if(memberType == '01'){
+            var userLevel = $(this).val();
+            if(userLevel != ''){
+                if(userLevel == '01'){
                     $('#branchRow').remove();
-                }else if(memberType == '02'){
+                }else if(userLevel == '02'){
                     var zoneId = $('#slctzone').val();
                     var dataString = "zoneId="+zoneId;
                     $.ajax({

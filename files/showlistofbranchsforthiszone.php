@@ -9,9 +9,9 @@
       <select name="slctbranch" id="slctbranch" style="width:100%">
           <option value="" selected="selected">--Select--</option>
           <?php
-            while($branchRow = mysql_fetch_object($branchList)){
+            while(@$branchRow = mysql_fetch_object($branchList)){
               ?>
-                <option value="<?php echo $branchRow->id;?>"><?php echo $branchRow->sub_district_name;?></option>
+                <option value="<?php echo $branchRow->id;?>"><?php echo $branchRow->display_name;?></option>
               <?php
             }//end while loop
           ?>

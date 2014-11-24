@@ -24,9 +24,9 @@
     //fetch user by $userId and email address
     $fetchedUser = fetchUserByUserIdAndEmail($userId, $email);
     //now associate the newly crated user here
-    if($userLevel == 'Sub District Level'){
+    if($userLevel == '02'){
         saveUserSubDistrict($eitherZoneIdOrBranchId, $fetchedUser->id);
-    }else if($userLevel == 'District Level'){
+    }else if($userLevel == '01'){
         saveUserDistrict($eitherZoneIdOrBranchId, $fetchedUser->id);
     }
     require_once 'showusermanagementlist.php';

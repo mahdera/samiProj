@@ -142,7 +142,7 @@
                             <option value="999">User</option>
                             <option value="01A">District Admin</option>
                         <?php
-                      }else if($userObj->user_role === 'User'){
+                      }else if($userObj->user_role === '999'){
                         ?>
                             <option value="02A">Sub District Admin</option>
                             <option value="999" selected="selected">User</option>
@@ -189,11 +189,11 @@
                         while($zoneRow = mysql_fetch_object($zoneList)){
                             if($zoneObj != null && $zoneObj->id == $zoneRow->id){
                               ?>
-                                <option value="<?php echo $zoneRow->id;?>" selected="selected"><?php echo $zoneRow->district_name;?></option>
+                                <option value="<?php echo $zoneRow->id;?>" selected="selected"><?php echo $zoneRow->display_name;?></option>
                               <?php
                             }else{
                               ?>
-                                <option value="<?php echo $zoneRow->id;?>"><?php echo $zoneRow->district_name;?></option>
+                                <option value="<?php echo $zoneRow->id;?>"><?php echo $zoneRow->display_name;?></option>
                               <?php
                             }
                         }//end while loop
@@ -219,11 +219,11 @@
                           while($branchRow = mysql_fetch_object($branchList)){
                             if($branchRow->id == $branchObj->id){
                               ?>
-                                <option value="<?php echo $branchRow->id;?>" selected="selected"><?php echo $branchRow->sub_district_name;?></option>
+                                <option value="<?php echo $branchRow->id;?>" selected="selected"><?php echo $branchRow->display_name;?></option>
                               <?php
                             }else{
                               ?>
-                                <option value="<?php echo $branchRow->id;?>"><?php echo $branchRow->sub_district_name;?></option>
+                                <option value="<?php echo $branchRow->id;?>"><?php echo $branchRow->display_name;?></option>
                               <?php
                             }
                           }//end while loop

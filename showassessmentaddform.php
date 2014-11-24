@@ -1,5 +1,6 @@
 <?php
-  error_reporting( 0 );
+  //error_reporting( 0 );
+  require_once 'files/assessmentlookup.php';
 ?>
 <form id="assessmentManagementForm">
     <fieldset>
@@ -8,12 +9,18 @@
         <tr>
             <td width="15%">Assessment Type:</td>
             <td>
+                <?php
+                    $assessmentLookupList = getAllAssessmentLookUpValues();
+                ?>
                 <select name="slctassessmenttype" id="slctassessmenttype" style="width:100%">
                     <option value="" selected="selected">--Select--</option>
-                    <option value="as1">as1</option>
-                    <option value="as2">as2</option>
-                    <option value="as3">as3</option>
-                    <option value="as4">as4</option>
+                    <?php
+                        while($assessmentLookupRow = mysql_fetch_object($assessmentLookupList)){
+                          ?>
+                              <option value="<?php echo $assessmentLookupRow->value;?>"><?php echo $assessmentLookupRow->value;?></option>
+                          <?php
+                        }//end while loop
+                    ?>
                 </select>
             </td>
         </tr>

@@ -5,17 +5,17 @@
     require_once 'userdistrict.php';
     require_once 'utility.php';
     //get the values...
-    $firstName = mysql_real_escape_string($_POST['firstName']);
-    $lastName = mysql_real_escape_string($_POST['lastName']);
-    $email = mysql_real_escape_string($_POST['email']);
-    $userId = mysql_real_escape_string($_POST['userId']);
-    $password = mysql_real_escape_string($_POST['password']);
-    $phoneNumber = mysql_real_escape_string($_POST['phoneNumber']);
-    $memberType = mysql_real_escape_string($_POST['memberType']);
-    $userStatus = mysql_real_escape_string($_POST['userStatus']);//is in a pending status...so email the activation link
-    $userLevel = mysql_real_escape_string($_POST['userLevel']);
+    @$firstName = mysql_real_escape_string($_POST['firstName']);
+    @$lastName = mysql_real_escape_string($_POST['lastName']);
+    @$email = mysql_real_escape_string($_POST['email']);
+    @$userId = mysql_real_escape_string($_POST['userId']);
+    @$password = mysql_real_escape_string($_POST['password']);
+    @$phoneNumber = mysql_real_escape_string($_POST['phoneNumber']);
+    @$memberType = mysql_real_escape_string($_POST['memberType']);
+    @$userStatus = mysql_real_escape_string($_POST['userStatus']);//is in a pending status...so email the activation link
+    @$userLevel = mysql_real_escape_string($_POST['userLevel']);
     $eitherZoneIdOrBranchId = $_POST['eitherZoneIdOrBranchId'];
-    $userRole = mysql_real_escape_string($_POST['userRole']);
+    @$userRole = mysql_real_escape_string($_POST['userRole']);
     //now I can save this info to the database...
     saveUser($firstName, $lastName, $email, $userId, $password, $phoneNumber,
                     $memberType, $userStatus, $userLevel,$userRole, 0);

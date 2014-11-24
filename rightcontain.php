@@ -3,10 +3,15 @@
     //is an admin or not and depending on the value the menu bar will change
     //accordingly...
     require_once 'files/user.php';
+    require_once 'files/userlevellookup.php';
+    require_once 'files/userrolelookup.php';
+
     $userObj = getUserUsingUserId($_SESSION['USER_ID']);
     $fullName = $userObj->first_name." ".$userObj->last_name;
-    $userLevel = $userObj->user_level;
-    $userRole = $userObj->user_role;
+    $userLevelRow = getUserLevelLookUpUsingCode($userObj->user_level);
+    $userRoleRow = getUserRoleLookUpUsingCode($userObj->user_role);
+    $userLevel = $userLevelRow->value;
+    $userRole = $userRoleRow->value;
     if($userObj->member_type == 'Admin'){
         ?>
             <div id="rightcontain">
@@ -23,7 +28,7 @@
                 </div>
             </div>
         <?php
-    }else if($userObj->member_type == 'User' && ($userObj->user_role == 'Sub District Admin' || $userObj->user_role == 'District Admin')){
+    }else if($userObj->member_type == 'User' && ($userObj->user_role == '02A' || $userObj->user_role == '01A')){
         ?>
             <div id="rightcontain">
                 <div id="listdiv">

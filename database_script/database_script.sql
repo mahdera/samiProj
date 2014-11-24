@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 24, 2014 at 10:02 PM
+-- Generation Time: Nov 24, 2014 at 11:29 PM
 -- Server version: 5.5.38
 -- PHP Version: 5.6.2
 
@@ -72,7 +72,7 @@ create database db_sami_proj;
     `summary` text,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_assessment`
@@ -80,7 +80,27 @@ create database db_sami_proj;
 
   INSERT INTO `tbl_assessment` (`id`, `assessment_type`, `assessment_date`, `summary`, `modified_by`, `modification_date`) VALUES
   (17, 'as1', '2014-11-22', 'This is the summary info I''m entering now. lol''s', 22, '2014-11-22 22:46:44'),
-  (18, 'as1', '2014-11-23', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. UPDATED.', 23, '2014-11-23 03:47:25');
+  (18, 'as1', '2014-11-23', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. UPDATED.', 23, '2014-11-23 03:47:25'),
+  (19, 'Ass 1', '2014-11-24', 'This is the summary', 25, '2014-11-24 17:28:23');
+
+  -- --------------------------------------------------------
+
+  --
+  -- Table structure for table `tbl_assessment_lookup`
+  --
+
+  CREATE TABLE `tbl_assessment_lookup` (
+    `id` int(11) NOT NULL,
+    `value` varchar(70) NOT NULL
+  ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+  --
+  -- Dumping data for table `tbl_assessment_lookup`
+  --
+
+  INSERT INTO `tbl_assessment_lookup` (`id`, `value`) VALUES
+  (1, 'Ass 1'),
+  (2, 'Ass 2');
 
   -- --------------------------------------------------------
 
@@ -94,7 +114,7 @@ create database db_sami_proj;
     `th_id` bigint(20) NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_assessment_th`
@@ -104,7 +124,8 @@ create database db_sami_proj;
   (24, 17, 41, 22, '2014-11-22 22:44:01'),
   (25, 17, 42, 22, '2014-11-22 22:44:01'),
   (26, 18, 44, 23, '2014-11-23 03:47:01'),
-  (27, 18, 45, 23, '2014-11-23 03:47:01');
+  (27, 18, 45, 23, '2014-11-23 03:47:01'),
+  (28, 19, 47, 25, '2014-11-24 17:28:23');
 
   -- --------------------------------------------------------
 
@@ -986,7 +1007,7 @@ create database db_sami_proj;
     `th_name` text NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_th`
@@ -998,7 +1019,8 @@ create database db_sami_proj;
   (43, 'Th3 By Biruk', 22, '2014-11-22 22:50:13'),
   (44, 'Th1 by Ruka', 23, '2014-11-23 03:47:25'),
   (45, 'Th2 by Ruka', 23, '2014-11-23 03:47:25'),
-  (46, 'Th''s created by Ruka', 23, '2014-11-23 03:49:56');
+  (46, 'Th''s created by Ruka', 23, '2014-11-23 03:49:56'),
+  (47, 'This is th1', 25, '2014-11-24 17:28:23');
 
   -- --------------------------------------------------------
 
@@ -1043,7 +1065,7 @@ create database db_sami_proj;
     `user_role` varchar(20) NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_user`
@@ -1052,7 +1074,13 @@ create database db_sami_proj;
   INSERT INTO `tbl_user` (`id`, `first_name`, `last_name`, `email`, `user_id`, `password`, `phone_number`, `member_type`, `user_status`, `user_level`, `user_role`, `modified_by`, `modification_date`) VALUES
   (2, 'Admin', 'Admin', 'mahderalem@gmail.com', 'root', '63a9f0ea7bb98050796b649e85481845', '39439483948', 'Admin', 'Active', 'Super User', 'Root', 0, '2014-10-09 00:00:00'),
   (22, 'Biruk', 'Fikre', 'biruk@yahoo.com', 'biruk', '202cb962ac59075b964b07152d234b70', '9823749873', 'User', 'Active', '01', '999', 2, '2014-11-22 21:57:25'),
-  (23, 'Rahel', 'Taye', 'rahel@gmail.com', 'rahel', '202cb962ac59075b964b07152d234b70', '983498734', 'User', 'Active', '02', '999', 2, '2014-11-23 03:41:57');
+  (23, 'Rahel', 'Taye', 'rahel@gmail.com', 'rahel', '202cb962ac59075b964b07152d234b70', '983498734', 'User', 'Active', '02', '999', 2, '2014-11-23 03:41:57'),
+  (25, 'Mahder', 'Neway', 'mneway@americanprogress.org', 'mahder', '0f3fbc595a293952fabc8de77ae840ca', '(202) 374 3138', 'User', 'Active', '01', '01A', 2, '2014-11-24 16:43:23'),
+  (26, 'Lekbir', 'Gebretsadik', 'lekbirgebre@yahoo.com', 'leki', '202cb962ac59075b964b07152d234b70', '(202) 730 5250', 'User', 'Active', '02', '02A', 2, '2014-11-24 16:45:35'),
+  (27, 'Yefikir', 'Alemayehu', 'yefi@yahoo.com', 'yefi', '202cb962ac59075b964b07152d234b70', '98798787', 'User', 'Active', '02', '999', 2, '2014-11-24 16:46:54'),
+  (28, 'Miki', 'Biruk', 'miki@yahoo.com', 'miki', '202cb962ac59075b964b07152d234b70', '98798789', 'User', 'Active', '01', '999', 2, '2014-11-24 17:11:37'),
+  (29, 'Lala', 'Biruk', 'lala@yahoo.com', 'lala', '202cb962ac59075b964b07152d234b70', '87986876', 'User', 'Active', '02', '02A', 2, '2014-11-24 17:11:25'),
+  (30, 'Tona', 'Biruk', 'tona@yahoo.com', 'tona', '202cb962ac59075b964b07152d234b70', '98786876', 'User', 'Active', '02', '999', 2, '2014-11-24 17:11:05');
 
   -- --------------------------------------------------------
 
@@ -1064,14 +1092,16 @@ create database db_sami_proj;
     `id` int(11) NOT NULL,
     `district_id` int(11) NOT NULL,
     `user_id` int(11) NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_user_district`
   --
 
   INSERT INTO `tbl_user_district` (`id`, `district_id`, `user_id`) VALUES
-  (4, 1, 22);
+  (4, 1, 22),
+  (5, 1, 25),
+  (6, 1, 28);
 
   -- --------------------------------------------------------
 
@@ -1124,14 +1154,18 @@ create database db_sami_proj;
     `id` int(11) NOT NULL,
     `sub_district_id` int(11) NOT NULL,
     `user_id` int(11) NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_user_sub_district`
   --
 
   INSERT INTO `tbl_user_sub_district` (`id`, `sub_district_id`, `user_id`) VALUES
-  (13, 3, 23);
+  (13, 3, 23),
+  (14, 1, 26),
+  (15, 3, 27),
+  (16, 2, 29),
+  (17, 3, 30);
 
   --
   -- Indexes for dumped tables
@@ -1153,6 +1187,12 @@ create database db_sami_proj;
   -- Indexes for table `tbl_assessment`
   --
   ALTER TABLE `tbl_assessment`
+  ADD PRIMARY KEY (`id`);
+
+  --
+  -- Indexes for table `tbl_assessment_lookup`
+  --
+  ALTER TABLE `tbl_assessment_lookup`
   ADD PRIMARY KEY (`id`);
 
   --
@@ -1437,12 +1477,17 @@ create database db_sami_proj;
   -- AUTO_INCREMENT for table `tbl_assessment`
   --
   ALTER TABLE `tbl_assessment`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+  --
+  -- AUTO_INCREMENT for table `tbl_assessment_lookup`
+  --
+  ALTER TABLE `tbl_assessment_lookup`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
   --
   -- AUTO_INCREMENT for table `tbl_assessment_th`
   --
   ALTER TABLE `tbl_assessment_th`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
   --
   -- AUTO_INCREMENT for table `tbl_district`
   --
@@ -1627,7 +1672,7 @@ create database db_sami_proj;
   -- AUTO_INCREMENT for table `tbl_th`
   --
   ALTER TABLE `tbl_th`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=47;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=48;
   --
   -- AUTO_INCREMENT for table `tbl_th_action`
   --
@@ -1637,12 +1682,12 @@ create database db_sami_proj;
   -- AUTO_INCREMENT for table `tbl_user`
   --
   ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
   --
   -- AUTO_INCREMENT for table `tbl_user_district`
   --
   ALTER TABLE `tbl_user_district`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
   --
   -- AUTO_INCREMENT for table `tbl_user_level_lookup`
   --
@@ -1657,7 +1702,7 @@ create database db_sami_proj;
   -- AUTO_INCREMENT for table `tbl_user_sub_district`
   --
   ALTER TABLE `tbl_user_sub_district`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
   --
   -- Constraints for dumped tables
   --
