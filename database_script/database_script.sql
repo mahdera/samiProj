@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 23, 2014 at 02:10 PM
+-- Generation Time: Nov 24, 2014 at 02:35 AM
 -- Server version: 5.5.38
 -- PHP Version: 5.6.2
 
@@ -28,7 +28,24 @@ CREATE TABLE `calendar` (
   `notes` text NOT NULL,
   `start` datetime NOT NULL,
   `end` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `calendar`
+--
+
+INSERT INTO `calendar` (`id`, `member_id`, `title`, `notes`, `start`, `end`) VALUES
+(11, 23, '', '', '2014-11-23 00:00:00', '0000-00-00 00:00:00'),
+(12, 23, 'This is my title', 'this is the note', '2014-11-23 00:00:00', '0000-00-00 00:00:00'),
+(13, 23, 'she is hungry', 'this is the note', '2014-11-23 00:00:00', '0000-00-00 00:00:00'),
+(14, 23, 'she is hungry', 'this is the note', '2014-11-23 00:00:00', '0000-00-00 00:00:00'),
+(15, 23, 'she is hungry', 'an anger', '2014-11-23 00:00:00', '0000-00-00 00:00:00'),
+(16, 23, 'she is hungry', 'an anger', '2014-11-23 00:00:00', '0000-00-00 00:00:00'),
+(17, 23, 'she is hungry', 'an anger', '2014-11-23 00:00:00', '0000-00-00 00:00:00'),
+(18, 23, 'title of the event', 'this is the note', '2014-11-23 00:00:00', '0000-00-00 00:00:00'),
+(19, 0, 'title of the event', 'this is the note', '2014-11-23 00:00:00', '0000-00-00 00:00:00'),
+(20, 0, 'what the hell', 'yes', '2014-11-23 00:00:00', '0000-00-00 00:00:00'),
+(21, 2, 'pan cake', 'this is delicious', '2014-11-23 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -119,27 +136,38 @@ CREATE TABLE `tbl_fn` (
 `id` bigint(20) NOT NULL,
   `fn_name` varchar(200) NOT NULL,
   `modified_by` int(11) NOT NULL,
-  `modification_date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
+  `modification_date` datetime NOT NULL,
+  `show_all` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_fn`
 --
 
-INSERT INTO `tbl_fn` (`id`, `fn_name`, `modified_by`, `modification_date`) VALUES
-(31, 'Fn1 By Biruk', 22, '2014-11-22 23:06:12'),
-(32, 'Fn2 By Biruk', 22, '2014-11-22 23:06:18'),
-(33, 'Fn3 By Biruk', 22, '2014-11-22 23:06:25'),
-(34, 'Fn4 By Biruk', 22, '2014-11-22 23:06:25'),
-(35, 'Fn5 By Biruk', 22, '2014-11-22 23:06:27'),
-(36, 'Fn6 By Biruk', 22, '2014-11-22 23:06:28'),
-(37, 'Fn7 By Biruk', 22, '2014-11-22 23:22:20'),
-(38, 'ruka''s function one', 23, '2014-11-23 04:13:18'),
-(39, 'ruka''s function two', 23, '2014-11-23 04:13:19'),
-(40, 'ruka''s function three', 23, '2014-11-23 04:13:21'),
-(41, 'ruka''s function four', 23, '2014-11-23 04:13:22'),
-(42, 'ruka''s function five', 23, '2014-11-23 04:13:23'),
-(43, 'ruka''s function six', 23, '2014-11-23 04:13:25');
+INSERT INTO `tbl_fn` (`id`, `fn_name`, `modified_by`, `modification_date`, `show_all`) VALUES
+(31, 'Fn1 By Biruk', 22, '2014-11-22 23:06:12', 0),
+(32, 'Fn2 By Biruk', 22, '2014-11-22 23:06:18', 0),
+(33, 'Fn3 By Biruk', 22, '2014-11-22 23:06:25', 0),
+(34, 'Fn4 By Biruk', 22, '2014-11-22 23:06:25', 0),
+(35, 'Fn5 By Biruk', 22, '2014-11-22 23:06:27', 0),
+(36, 'Fn6 By Biruk', 22, '2014-11-22 23:06:28', 0),
+(37, 'Fn7 By Biruk', 22, '2014-11-22 23:22:20', 0),
+(38, 'ruka''s function one', 23, '2014-11-23 04:13:18', 0),
+(39, 'ruka''s function two', 23, '2014-11-23 04:13:19', 0),
+(40, 'ruka''s function three', 23, '2014-11-23 04:13:21', 0),
+(41, 'ruka''s function four', 23, '2014-11-23 04:13:22', 0),
+(42, 'ruka''s function five', 23, '2014-11-23 04:13:23', 0),
+(43, 'ruka''s function six', 23, '2014-11-23 04:13:25', 0),
+(44, 'Function 1', 2, '2014-11-23 00:00:00', 1),
+(45, 'Function 2', 2, '2014-11-23 00:00:00', 1),
+(46, 'Function 3', 2, '2014-11-23 00:00:00', 1),
+(47, 'Function 4', 2, '2014-11-23 00:00:00', 1),
+(48, 'Function 5', 2, '2014-11-23 00:00:00', 1),
+(49, 'Function 6', 2, '2014-11-23 00:00:00', 1),
+(50, 'Function 7', 2, '2014-11-23 00:00:00', 1),
+(51, 'Function 8', 2, '2014-11-23 00:00:00', 1),
+(52, 'Function 9', 2, '2014-11-23 00:00:00', 1),
+(53, 'Function 10', 2, '2014-11-23 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -185,7 +213,6 @@ CREATE TABLE `tbl_form_1` (
 --
 
 INSERT INTO `tbl_form_1` (`id`, `title`, `form_date`, `plan`, `q1`, `q2`, `modified_by`, `modification_date`) VALUES
-(33, 'This is a sample title', '2014-11-23', 'plan', 'q1', 'q2. updated value!', 23, '2014-11-23 08:03:20'),
 (34, 'This is a sample title for checkup', '2014-11-23', 'this is the plan ', 'this is q1', 'this is q2', 23, '2014-11-23 08:09:22');
 
 -- --------------------------------------------------------
@@ -209,10 +236,6 @@ CREATE TABLE `tbl_form_1_q3` (
 --
 
 INSERT INTO `tbl_form_1_q3` (`id`, `form_1_id`, `row`, `col`, `column_value`, `modified_by`, `modification_date`) VALUES
-(59, 33, 1, 1, '1', 23, '2014-11-23 08:03:20'),
-(60, 33, 1, 2, '2', 23, '2014-11-23 08:03:20'),
-(61, 33, 1, 3, '3', 23, '2014-11-23 08:03:20'),
-(62, 33, 1, 4, '4', 23, '2014-11-23 08:03:20'),
 (99, 34, 1, 1, '1', 23, '2014-11-23 08:09:22'),
 (100, 34, 1, 2, '2', 23, '2014-11-23 08:09:22'),
 (101, 34, 1, 3, '3', 23, '2014-11-23 08:09:22'),
@@ -247,10 +270,6 @@ CREATE TABLE `tbl_form_1_q4` (
 --
 
 INSERT INTO `tbl_form_1_q4` (`id`, `form_1_id`, `row`, `col`, `column_value`, `modified_by`, `modification_date`) VALUES
-(51, 33, 1, 1, '5', 23, '2014-11-23 08:03:20'),
-(52, 33, 1, 2, '6', 23, '2014-11-23 08:03:20'),
-(53, 33, 1, 3, '7', 23, '2014-11-23 08:03:20'),
-(54, 33, 1, 4, '8888', 23, '2014-11-23 08:03:20'),
 (91, 34, 1, 1, '13', 23, '2014-11-23 08:09:22'),
 (92, 34, 1, 2, '14', 23, '2014-11-23 08:09:22'),
 (93, 34, 1, 3, '15', 23, '2014-11-23 08:09:22'),
@@ -1353,7 +1372,7 @@ ALTER TABLE `tbl_user_sub_district`
 -- AUTO_INCREMENT for table `calendar`
 --
 ALTER TABLE `calendar`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `calendar_urls`
 --
@@ -1378,7 +1397,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT for table `tbl_fn`
 --
 ALTER TABLE `tbl_fn`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=44;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=54;
 --
 -- AUTO_INCREMENT for table `tbl_fn_action`
 --
