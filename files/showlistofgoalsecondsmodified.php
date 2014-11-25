@@ -9,20 +9,21 @@
     require_once 'goalsecond.php';
     require_once 'goalsecondfn.php';
     require_once 'user.php';
-    require_once 'userbranch.php';
-    require_once 'userzone.php';
+    require_once 'usersubdistrict.php';
+    //require_once 'userzone.php';
 
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
     $goalSecondFnList = null;
     /*if($userObj->user_level == 'Zone Level'){
         $userZoneObj = getZoneInfoForUser($userObj->id);
         $goalSecondFnList = getAllGoalSecondFnsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
-    }else if($userObj->user_level == 'Branch Level'){
-        $userBranchObj = getBranchInfoForUser($userObj->id);
-        $goalSecondFnList = getAllGoalSecondFnsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
     }*/
+    if($userObj->user_level == '02'){
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+        $goalSecondFnList = getAllGoalSecondFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    }
 
-    $goalSecondFnList = getAllGoalSecondFnsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    //$goalSecondFnList = getAllGoalSecondFnsModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
 <table border="0" width="100%">
     <tr style="background: #ccc">

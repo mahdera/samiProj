@@ -12,6 +12,8 @@
     require_once 'fn.php';
     require_once 'thaction.php';
     require_once 'goalfirstth.php';
+    require_once 'usersubdistrict.php';
+    require_once 'user.php';
 
     $buttonId = "updateGoalFirstButton" . $thId;
     $thObj = getTh($thId);
@@ -37,6 +39,7 @@
     $goalFirstG2ObjFnId;
     $goalFirstG3Id;
     $goalFirstG3ObjFnId;
+    $userObj = getUser($_SESSION['LOGGED_USER_ID']);
 ?>
 <form>
     <table border="0" width="100%">
@@ -63,7 +66,11 @@
                     <td>
                         <?php
                           $fn1ControlName = "editslctfn1" . $thId;
-                          $fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
+                          //$fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
+                          if($userObj->user_level == '02'){
+                            $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                            $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                          }
                         ?>
                         <select name="<?php echo $fn1ControlName;?>" id="<?php echo $fn1ControlName;?>" style="width:100%">
                             <option value="" selected="selected">--Option--</option>
@@ -110,7 +117,10 @@
                                     <select name="<?php echo $goalFirstG1FnControlName;?>" id="<?php echo $goalFirstG1FnControlName;?>" style="width:100%">
                                         <option value="">--Select--</option>
                                         <?php
-                                            $fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
+                                            if($userObj->user_level == '02'){
+                                              $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                                              $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                                            }
                                             while ($fnRow = mysql_fetch_object($fnList)) {
                                                 if($fnRow->id == $goalFirstG1ObjFnRow->fn_id){
                                                     ?>
@@ -166,7 +176,11 @@
                         <select name="<?php echo $fn2ControlName;?>" id="<?php echo $fn2ControlName;?>" style="width:100%">
                             <option value="">--Select--</option>
                             <?php
-                                $fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
+                                //$fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
+                                if($userObj->user_level == '02'){
+                                  $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                                  $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                                }
                                 while ($fnRow = mysql_fetch_object($fnList)) {
                                     if($fnRow->id == $goalFirstG2Row->fn_id){
                                         ?>
@@ -208,7 +222,11 @@
                                     <select name="<?php echo $goalFirstG2FnControlName;?>" id="<?php echo $goalFirstG2FnControlName;?>" style="width:100%">
                                     <option value="">--Select--</option>
                                     <?php
-                                        $fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
+                                        //$fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
+                                        if($userObj->user_level == '02'){
+                                          $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                                          $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                                        }
                                         while ($fnRow = mysql_fetch_object($fnList)) {
                                             if($fnRow->id == $goalFirstG2ObjFnRow->fn_id){
                                                 ?>
@@ -264,7 +282,11 @@
                         <select name="<?php echo $fn3ControlName;?>" id="<?php echo $fn3ControlName;?>" style="width:100%">
                             <option value="">--Select--</option>
                             <?php
-                                $fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
+                                //$fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
+                                if($userObj->user_level == '02'){
+                                  $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                                  $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                                }
                                 while ($fnRow = mysql_fetch_object($fnList)) {
                                     if($fnRow->id === $goalFirstG3Row->fn_id){
                                         ?>
@@ -306,7 +328,11 @@
                                     <select name="<?php echo $goalFirstG3FnControlName;?>" id="<?php echo $goalFirstG3FnControlName;?>" style="width:100%">
                                         <option value="">--Select--</option>
                                         <?php
-                                            $fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
+                                            //$fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
+                                            if($userObj->user_level == '02'){
+                                              $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                                              $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                                            }
                                             while ($fnRow = mysql_fetch_object($fnList)) {
                                                 if($fnRow->id === $goalFirstG3ObjFnRow->fn_id){
                                                     ?>

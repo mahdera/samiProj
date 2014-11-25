@@ -13,13 +13,14 @@
     /*if($userObj->user_level == 'Zone Level'){
         $userZoneObj = getZoneInfoForUser($userObj->id);
         $fnIdArray = getAllFilteredLatestFnIdsEnteredByUserUsingUserLevel('Zone Level', $userZoneObj->zone_id);
-    }else if($userObj->user_level == 'Branch Level'){
-        $userBranchObj = getBranchInfoForUser($userObj->id);
-        $fnIdArray = getAllFilteredLatestFnIdsEnteredByUserUsingUserLevel('Branch Level', $userBranchObj->branch_id);
     }*/
+    if($userObj->user_level == '02'){
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+        $fnIdArray = getAllFilteredLatestFnIdsEnteredByUserUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    }
 
     //first read fns from tbl_goal_first_g1
-    $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
+    //$fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
     //var_dump($fnIdArray);
 ?>
 <h1>Add Goal Second</h1>
@@ -39,7 +40,7 @@
             <td>Fn:</td>
             <td>
                 <select name="slctfn" id="slctfn" style="width: 100%">
-                    <option value="" selected="selected">--Select--</option>                    
+                    <option value="" selected="selected">--Select--</option>
                     <?php
                         foreach ($fnIdArray as $fnId) {
                             $fnObj = getFn($fnId);
