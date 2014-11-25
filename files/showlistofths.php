@@ -2,18 +2,19 @@
     session_start();
     require_once 'th.php';
     require_once 'user.php';
-    require_once 'userbranch.php';
-    require_once 'userzone.php';
+    require_once 'usersubdistrict.php';
+    //require_once 'userzone.php';
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
     $thList = null;
     /*if($userObj->user_level == 'Zone Level'){
         $userZoneObj = getZoneInfoForUser($userObj->id);
         $thList = getAllThsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
-    }else{
-        $userBranchObj = getBranchInfoForUser($userObj->id);
-        $thList = getAllThsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
     }*/
-    $thList = getAllThsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    if($userObj->user_level == '02'){
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+        $thList = getAllThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    }
+    //$thList = getAllThsModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
 <table border="0" width="100%">
     <tr style="background: #ccc">

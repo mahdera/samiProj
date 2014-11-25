@@ -12,12 +12,12 @@
         <tr>
             <td>Th:</td>
             <td>
-                <input type="text" name="<?php echo $thControlName;?>" id="<?php echo $thControlName;?>" value="<?php echo $thObj->th_name;?>"/>
+                <input type="text" name="<?php echo $thControlName;?>" id="<?php echo $thControlName;?>" value="<?php echo $thObj->th_name;?>" size="100"/>
             </td>
         </tr>
         <tr>
             <td colspan="2" align="right">
-                <input type="button" value="Update" id="<?php echo $buttonId;?>"/>                
+                <input type="button" value="Update" id="<?php echo $buttonId;?>"/>
             </td>
         </tr>
     </table>
@@ -29,17 +29,17 @@
         //define the controls here...
         var thControlName = "txteditth" + id;
         var buttonId = "btnupdate" + id;
-        
+
         $('#'+buttonId).click(function(){
             var thName = $('#'+thControlName).val();
             if(thName !== ""){
                 var dataString = "id="+id+"&thName="+encodeURIComponent(thName);
                 var divId = "thEditDiv" + id;
                 $.ajax({
-                    url: 'files/updateth.php',		
+                    url: 'files/updateth.php',
                     data: dataString,
                     type:'POST',
-                    success:function(response){                    
+                    success:function(response){
                         $('#'+divId).html(response);
                     },
                     error:function(error){
@@ -48,6 +48,6 @@
                 });
             }
         });
-        
+
     });//end document.ready function
 </script>

@@ -7,19 +7,16 @@
         require_once 'dbconnection.php';
         require_once 'team.php';
         require_once 'user.php';
-        require_once 'userbranch.php';
-        require_once 'userzone.php';
+        require_once 'usersubdistrict.php';
+        //require_once 'userzone.php';
 
         $userObj = getUser($_SESSION['LOGGED_USER_ID']);
         $teamList = null;
-        /*if($userObj->user_level == 'Zone Level'){
-            $userZoneObj = getZoneInfoForUser($userObj->id);
-            $teamList = getAllTeamsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
-        }else if($userObj->user_level == 'Branch Level'){
-            $userBranchObj = getBranchInfoForUser($userObj->id);
-            $teamList = getAllTeamsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
-        }*/
-        $teamList = getAllTeamsModifiedBy($_SESSION['LOGGED_USER_ID']);
+        if($userObj->user_level == '02'){
+            $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+            $teamList = getAllTeamsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+        }
+        //$teamList = getAllTeamsModifiedBy($_SESSION['LOGGED_USER_ID']);
         //now i need to get the level of the user and the based on that i will have to
         //query the records...
         if(!empty($teamList)){
