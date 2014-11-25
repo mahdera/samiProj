@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $id = $_GET['id'];
     require_once 'risk.php';
     require_once 'th.php';
@@ -19,9 +20,9 @@
             <td>Th:</td>
             <td>
                 <select name="<?php echo $thControlName;?>" id="<?php echo $thControlName;?>" style="width: 100%">
-                    <option value="" selected="selected">--Select--</option>                    
+                    <option value="" selected="selected">--Select--</option>
                     <?php
-                        $thList = getAllThs();
+                        $thList = getAllThsModifiedBy($_SESSION['LOGGED_USER_ID']);
                         while($thRow = mysql_fetch_object($thList)){
                             if($thRow->id == $riskObj->th_id){
                             ?>
@@ -29,7 +30,7 @@
                             <?php
                             }else{
                             ?>
-                                <option value="<?php echo $thRow->id;?>"><?php echo $thRow->th_name;?></option>    
+                                <option value="<?php echo $thRow->id;?>"><?php echo $thRow->th_name;?></option>
                             <?php
                             }
                         }//end while loop
@@ -41,7 +42,7 @@
             <td>MG</td>
             <td>
                 <select name="<?php echo $mgControlName;?>" id="<?php echo $mgControlName;?>" style="width: 100%">
-                    <option value="" selected="selected">--Select--</option>                    
+                    <option value="" selected="selected">--Select--</option>
                     <?php
                         if($riskObj->mg === 'mg1'){
                             ?>
@@ -79,7 +80,7 @@
                                 <option value="mg4">mg4</option>
                             <?php
                         }
-                    ?>                    
+                    ?>
                 </select>
             </td>
         </tr>
@@ -87,7 +88,7 @@
             <td>DR</td>
             <td>
                 <select name="<?php echo $drControlName;?>" id="<?php echo $drControlName;?>" style="width: 100%">
-                    <option value="" selected="selected">--Select--</option>                    
+                    <option value="" selected="selected">--Select--</option>
                     <?php
                         if($riskObj->dr === 'dr1'){
                             ?>
@@ -124,8 +125,8 @@
                                 <option value="dr3">dr3</option>
                                 <option value="dr4">dr4</option>
                             <?php
-                        }                        
-                    ?>                    
+                        }
+                    ?>
                 </select>
             </td>
         </tr>
@@ -133,7 +134,7 @@
             <td>PR</td>
             <td>
                 <select name="<?php echo $prControlName;?>" id="<?php echo $prControlName;?>" style="width: 100%">
-                    <option value="" selected="selected">--Select--</option>                    
+                    <option value="" selected="selected">--Select--</option>
                     <?php
                         if($riskObj->pr === 'pr1'){
                             ?>
@@ -170,8 +171,8 @@
                                 <option value="pr3">pr3</option>
                                 <option value="pr4">pr4</option>
                             <?php
-                        }                        
-                    ?>                     
+                        }
+                    ?>
                 </select>
             </td>
         </tr>
@@ -179,7 +180,7 @@
             <td>WA</td>
             <td>
                 <select name="<?php echo $waControlName;?>" id="<?php echo $waControlName;?>" style="width: 100%">
-                    <option value="" selected="selected">--Select--</option>                    
+                    <option value="" selected="selected">--Select--</option>
                     <?php
                         if($riskObj->wa === 'wa1'){
                             ?>
@@ -216,8 +217,8 @@
                                 <option value="wa3">wa3</option>
                                 <option value="wa4">wa4</option>
                             <?php
-                        }                        
-                    ?>                     
+                        }
+                    ?>
                 </select>
             </td>
         </tr>
@@ -225,7 +226,7 @@
             <td>RS</td>
             <td>
                 <select name="<?php echo $rsControlName;?>" id="<?php echo $rsControlName;?>" style="width: 100%">
-                    <option value="" selected="selected">--Select--</option>                    
+                    <option value="" selected="selected">--Select--</option>
                     <?php
                         if($riskObj->rs === 'rs1'){
                             ?>
@@ -262,15 +263,15 @@
                                 <option value="rs3">rs3</option>
                                 <option value="rs4">rs4</option>
                             <?php
-                        }                        
-                    ?>                    
+                        }
+                    ?>
                 </select>
             </td>
         </tr>
         <tr>
             <td colspan="2" align="right">
-                <input type="button" value="Update" id="<?php echo $buttonId;?>"/>                
-            </td>            
+                <input type="button" value="Update" id="<?php echo $buttonId;?>"/>
+            </td>
         </tr>
     </table>
 </form>
@@ -286,7 +287,7 @@
         var waControlName = "slctwa" + id;
         var rsControlName = "slctrs" + id;
         var buttonId = "btnupdate" + id;
-        
+
         $('#'+buttonId).click(function(){
             //now get the values...
             var thId = $('#'+thControlName).val();
@@ -295,24 +296,24 @@
             var pr = $('#'+prControlName).val();
             var wa = $('#'+waControlName).val();
             var rs = $('#'+rsControlName).val();
-            
+
             var dataString = "id="+id+"&thId="+thId+"&mg="+mg+"&dr="+dr+
                     "&pr="+pr+"&wa="+wa+"&rs="+rs;
             var divId = "riskEditDiv" + id;
-            
+
             $.ajax({
-                url: 'files/updaterisk.php',		
+                url: 'files/updaterisk.php',
                 data: dataString,
                 type:'POST',
-                success:function(response){                    
+                success:function(response){
                     $('#'+divId).html(response);
                 },
                 error:function(error){
                     alert(error);
                 }
             });
-            
+
         });
-        
+
     });//end document.ready function
 </script>
