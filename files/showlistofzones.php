@@ -6,7 +6,6 @@
         ?>
             <table border="0" width="100%">
                 <tr>
-                    <td>Ser.No</td>
                     <td>District Name</td>
                     <td>Description</td>
                 </tr>
@@ -14,9 +13,8 @@
                   $ctr=1;
                   while($districtRow = mysql_fetch_object($districtList)){
                       ?>
-                          <tr>
-                              <td><?php //echo $ctr++;?></td>
-                              <td><?php echo $districtRow->district_name;?></td>
+                          <tr>                              
+                              <td><?php echo $districtRow->display_name;?></td>
                               <td><?php echo $districtRow->description;?></td>
                           </tr>
                       <?php

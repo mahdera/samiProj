@@ -6,7 +6,6 @@
         ?>
             <table border="0" width="100%">
                 <tr>
-                    <td>Ser.No</td>
                     <td>District Name</td>
                     <td>Description</td>
                     <td>Delete</td>
@@ -16,8 +15,7 @@
                   while($districtRow = mysql_fetch_object($districtList)){
                       ?>
                           <tr>
-                              <td><?php echo $ctr++;?></td>
-                              <td><?php echo $districtRow->district_name;?></td>
+                              <td><?php echo $districtRow->display_name;?></td>
                               <td><?php echo $districtRow->description;?></td>
                               <td>
                                   <a href="#" id="<?php echo $districtRow->id;?>" class="deleteZoneClass">Delete</a>

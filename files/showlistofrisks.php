@@ -26,7 +26,6 @@
             ?>
                 <table border="0" width="100%">
                     <tr style="background: #ccc">
-                        <td>#</td>
                         <td>Th</td>
                         <td>MG</td>
                         <td>DR</td>
@@ -43,7 +42,6 @@
                             $divId = "riskEditDiv" . $riskRow->id;
                             ?>
                             <tr>
-                                <td><?php //echo $ctr;?></td>
                                 <td><?php echo $th->th_name;?></td>
                                 <td><?php echo $riskRow->mg;?></td>
                                 <td><?php echo $riskRow->dr;?></td>
@@ -54,7 +52,7 @@
                                 <td><a href="#.php" class="riskDeleteLink" id="<?php echo $riskRow->id;?>">Delete</a></td>
                             </tr>
                             <tr>
-                                <td colspan="11">
+                                <td colspan="8">
                                     <div id="<?php echo $divId;?>"></div>
                                 </td>
                             </tr>

@@ -12,7 +12,7 @@
                     <?php
                         while($zoneRow = mysql_fetch_object($zoneList)){
                           ?>
-                            <option value="<?php echo $zoneRow->id;?>"><?php echo $zoneRow->district_name;?></option>
+                            <option value="<?php echo $zoneRow->id;?>"><?php echo $zoneRow->display_name;?></option>
                           <?php
                         }//end while loop
                     ?>

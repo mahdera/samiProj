@@ -13,7 +13,7 @@
             <tr>
                 <td>District Name:</td>
                 <td>
-                    <input type="text" name="<?php echo $zoneNameControl;?>" id="<?php echo $zoneNameControl;?>" size="70" value="<?php echo $zoneObj->district_name;?>"/>
+                    <input type="text" name="<?php echo $zoneNameControl;?>" id="<?php echo $zoneNameControl;?>" size="70" value="<?php echo $zoneObj->display_name;?>"/>
                 </td>
             </tr>
             <tr>

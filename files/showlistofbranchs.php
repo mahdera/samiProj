@@ -7,7 +7,6 @@
         ?>
             <table border="0" width="100%">
                 <tr>
-                    <td>Ser.No</td>
                     <td>District</td>
                     <td>Sub District Name</td>
                     <td>Description</td>
@@ -18,9 +17,8 @@
                       $zoneObj = getDistrict($branchRow->district_id);
                       ?>
                           <tr>
-                              <td><?php echo $ctr++;?></td>
-                              <td><?php echo $zoneObj->district_name;?></td>
-                              <td><?php echo $branchRow->sub_district_name;?></td>
+                              <td><?php echo $zoneObj->display_name;?></td>
+                              <td><?php echo $branchRow->display_name;?></td>
                               <td><?php echo $branchRow->description;?></td>
                           </tr>
                       <?php

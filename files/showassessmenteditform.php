@@ -1,6 +1,7 @@
 <?php
     require_once 'assessment.php';
     require_once 'th.php';
+    require_once 'assessmentlookup.php';
     $id = $_GET['id'];
     $assessmentObj = getAssessment($id);
     //now define the control names in here...
@@ -15,47 +16,25 @@
         <tr>
             <td>Assessment Type:</td>
             <td>
-                <select name="<?php echo $assessmentTypeControlName;?>" id="<?php echo $assessmentTypeControlName;?>" style="width:100%">
+                  <?php
+                      $assessmentLookupList = getAllAssessmentLookUpValues();
+                  ?>
+                  <select name="<?php echo $assessmentTypeControlName;?>" id="<?php echo $assessmentTypeControlName;?>" style="width:100%">
                     <option value="" selected="selected">--Select--</option>
                     <?php
-                        if($assessmentObj->assessment_type === "as1"){
-                            ?>
-                                <option value="as1" selected="selected">as1</option>
-                                <option value="as2">as2</option>
-                                <option value="as3">as3</option>
-                                <option value="as4">as4</option>
-                            <?php
-                        }else if($assessmentObj->assessment_type === "as2"){
-                            ?>
-                                <option value="as1">as1</option>
-                                <option value="as2" selected="selected">as2</option>
-                                <option value="as3">as3</option>
-                                <option value="as4">as4</option>
-                            <?php
-                        }else if($assessmentObj->assessment_type === "as3"){
-                            ?>
-                                <option value="as1">as1</option>
-                                <option value="as2">as2</option>
-                                <option value="as3" selected="selected">as3</option>
-                                <option value="as4">as4</option>
-                            <?php
-                        }else if($assessmentObj->assessment_type === "as4"){
-                            ?>
-                                <option value="as1">as1</option>
-                                <option value="as2">as2</option>
-                                <option value="as3">as3</option>
-                                <option value="as4" selected="selected">as4</option>
-                            <?php
-                        }else{
-                            ?>
-                                <option value="as1">as1</option>
-                                <option value="as2">as2</option>
-                                <option value="as3">as3</option>
-                                <option value="as4">as4</option>
-                            <?php
-                        }
+                    while($assessmentLookupRow = mysql_fetch_object($assessmentLookupList)){
+                      if($assessmentObj->id == $assessmentLookupRow->id){
+                        ?>
+                            <option value="<?php echo $assessmentLookupRow->value;?>" selected="selected"><?php echo $assessmentLookupRow->value;?></option>
+                        <?php
+                      }else{
+                        ?>
+                        <option value="<?php echo $assessmentLookupRow->value;?>"><?php echo $assessmentLookupRow->value;?></option>
+                        <?php
+                      }
+                    }//end while loop
                     ?>
-                </select>
+                  </select>
             </td>
         </tr>
         <tr>

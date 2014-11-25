@@ -22,11 +22,11 @@
                         while($zoneRow = mysql_fetch_object($zoneList)){
                           if($branchObj->district_id == $zoneRow->id){
                           ?>
-                            <option value="<?php echo $zoneRow->id;?>" selected="selected"><?php echo $zoneRow->district_name;?></option>
+                            <option value="<?php echo $zoneRow->id;?>" selected="selected"><?php echo $zoneRow->display_name;?></option>
                           <?php
                           }else{
                           ?>
-                            <option value="<?php echo $zoneRow->id;?>"><?php echo $zoneRow->district_name;?></option>
+                            <option value="<?php echo $zoneRow->id;?>"><?php echo $zoneRow->display_name;?></option>
                           <?php
                           }
                         }//end while loop
@@ -37,7 +37,7 @@
         <tr>
             <td>Sub District Name:</td>
             <td>
-                <input type="text" name="<?php echo $branchNameControl;?>" id="<?php echo $branchNameControl;?>" size="70" value="<?php echo $branchObj->sub_district_name;?>"/>
+                <input type="text" name="<?php echo $branchNameControl;?>" id="<?php echo $branchNameControl;?>" size="70" value="<?php echo $branchObj->display_name;?>"/>
             </td>
         </tr>
         <tr>

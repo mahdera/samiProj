@@ -4,6 +4,6 @@
     @$description = mysql_real_escape_string($_POST['description']);
     $zoneId = $_POST['zoneId'];
 
-    updateDistrict($zoneId, $zoneName, $description);
+    updateDistrict($zoneId, $zoneName,$zoneName, $description);
 ?>
 <div class="notify notify-green"><span class="symbol icon-tick"></span> District Updated Successfully!</div>

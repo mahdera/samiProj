@@ -6,7 +6,6 @@
         ?>
             <table border="0" width="100%">
                 <tr>
-                    <td>Ser.No</td>
                     <td>District Name</td>
                     <td>Description</td>
                     <td>Edit</td>
@@ -16,8 +15,7 @@
                   while($districtRow = mysql_fetch_object($districtList)){
                       ?>
                           <tr>
-                              <td><?php echo $ctr++;?></td>
-                              <td><?php echo $districtRow->district_name;?></td>
+                              <td><?php echo $districtRow->display_name;?></td>
                               <td><?php echo $districtRow->description;?></td>
                               <td>
                                   <a href="#" id="<?php echo $districtRow->id;?>" class="editZoneClass">Edit</a>
@@ -27,7 +25,7 @@
                               $divId = "zoneEditDiv" . $districtRow->id;
                           ?>
                           <tr>
-                              <td colspan="4">
+                              <td colspan="3">
                                   <div id="<?php echo $divId;?>"></div>
                               </td>
                           </tr>
