@@ -12,10 +12,11 @@
         /*if($userObj->user_level == 'Zone Level'){
             $userZoneObj = getZoneInfoForUser($userObj->id);
             $riskList = getAllRisksModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
-        }else if($userObj->user_level == 'Branch Level'){
-            $userBranchObj = getBranchInfoForUser($userObj->id);
-            $riskList = getAllRisksModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
         }*/
+        if($userObj->user_level == '02'){
+            $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+            $riskList = getAllRisksModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+        }
 
         $selectedThIdArray = null;
         //var_dump($_SESSION['SELECTED_THS']);
@@ -25,7 +26,7 @@
           $selectedThIdArray = $_SESSION['SELECTED_THS'];
         }
 
-        $riskList = getAllRisksModifiedBy($_SESSION['LOGGED_USER_ID']);
+        //$riskList = getAllRisksModifiedBy($_SESSION['LOGGED_USER_ID']);
 
         if(!empty($riskList)){
             ?>
@@ -44,7 +45,7 @@
                         while($riskRow = mysql_fetch_object($riskList)){
                             $thObj = getTh($riskRow->th_id);
                             ?>
-                            <tr>                                
+                            <tr>
                                 <td><?php echo $thObj->th_name;?></td>
                                 <td><?php echo $riskRow->mg;?></td>
                                 <td><?php echo $riskRow->dr;?></td>

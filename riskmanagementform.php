@@ -2,18 +2,19 @@
     //session_start();
     require_once 'files/th.php';
     require_once 'files/user.php';
-    require_once 'files/userbranch.php';
-    require_once 'files/userzone.php';
+    require_once 'files/usersubdistrict.php';
+    //require_once 'files/userzone.php';
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
     $thList = null;
     /*if($userObj->user_level == 'Zone Level'){
         $userZoneObj = getZoneInfoForUser($userObj->id);
         $thList = getAllThsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
-    }else if($userObj->user_level == 'Branch Level'){
-        $userBranchObj = getBranchInfoForUser($userObj->id);
-        $thList = getAllThsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
     }*/
-    $thList = getAllThsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    if($userObj->user_level == '02'){
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+        $thList = getAllThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    }
+    //$thList = getAllThsModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
 <h1>Add Risk</h1>
 <a href="#.php" id="showRiskManagementFormLinkId">Show Form</a>
