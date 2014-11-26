@@ -1,7 +1,7 @@
 <?php
   //error_reporting( 0 );
 ?>
-<h2>Fn Action</h2>
+<h1>Fn Action</h1>
 <?php
     //first grab all fn record from the database...
     require_once 'files/fn.php';

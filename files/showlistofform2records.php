@@ -2,7 +2,17 @@
 	session_start();
 	//get all form2 values created by the session owner user...
 	require_once 'form2.php';
-	$form2List = getAllForm2sModifiedBy($_SESSION['LOGGED_USER_ID']);
+	require_once 'user.php';
+	require_once 'usersubdistrict.php';
+
+	//$form2List = getAllForm2sModifiedBy($_SESSION['LOGGED_USER_ID']);
+	$form2List = null;
+	$userObj = getUser($_SESSION['LOGGED_USER_ID']);
+	if($userObj->user_level == '02'){
+		$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+		$form2List = getAllForm2ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+	}
+
 ?>
 <table border="0" width="100%">
 	<tr style="background:#ccc">

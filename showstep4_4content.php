@@ -23,7 +23,7 @@
     <?php
     require_once 'importjsscripts.php';
 ?>
-    <div id="fnActionManagementDiv">
+    <div id="fnActionManagementDiv" class="col-half left">
         <?php
             require 'putfnactionmanagementform.php';
         ?>

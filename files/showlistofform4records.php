@@ -2,11 +2,20 @@
 	session_start();
 	//get all form2 values created by the session owner user...
 	require_once 'form4.php';
-	$form4List = getAllForm4sModifiedBy($_SESSION['LOGGED_USER_ID']);	
+	require_once 'user.php';
+	require_once 'usersubdistrict.php';
+
+	//$form4List = getAllForm4sModifiedBy($_SESSION['LOGGED_USER_ID']);
+	$form4List = null;
+	$userObj = getUser($_SESSION['LOGGED_USER_ID']);
+	if($userObj->user_level == '02'){
+		$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+		$form4List = getAllForm4ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+	}
 ?>
 <table border="0" width="100%">
 	<tr style="background:#ccc">
-		<td>Q4.1</td>		
+		<td>Q4.1</td>
 		<td>Edit</td>
 		<td>Delete</td>
 	</tr>
@@ -14,12 +23,12 @@
 		while($form4Row = mysql_fetch_object($form4List)){
 			?>
 			<tr>
-				<td><?php echo $form4Row->q4_1;?></td>				
+				<td><?php echo $form4Row->q4_1;?></td>
 				<td>
 					<a href="#.php" class="form4EditLink" id="<?php echo $form4Row->id;?>">Edit</a>
 				</td>
 				<td>
-					<a href="#.php" class="form4DeleteLink" id="<?php echo $form4Row->id;?>">Delete</a>	
+					<a href="#.php" class="form4DeleteLink" id="<?php echo $form4Row->id;?>">Delete</a>
 				</td>
 			</tr>
 			<?php

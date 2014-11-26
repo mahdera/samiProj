@@ -18,7 +18,7 @@
             require_once 'importjsscripts.php';
         ?>
 </div><!-- /col-half --><!-- /col-half -->
-<div>
+<div class="col-half left">
     <?php
         require_once 'teammanagementform.php';
     ?>

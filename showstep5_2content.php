@@ -1,5 +1,5 @@
 <?php
-  error_reporting( 0 );
+  //error_reporting( 0 );
 ?>
     <!--to be replaced when the next button is clicked-->
     <div id="topcontain">
@@ -22,9 +22,11 @@
     <?php
     require_once 'importjsscripts.php';
 ?>
+<div class="col-half left">
     <?php
         require 'showformmanagementgrid.php';
     ?>
+</div>
 <script type='text/javascript'>
     $(document).ready(function(){
 

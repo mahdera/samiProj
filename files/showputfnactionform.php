@@ -22,8 +22,10 @@
     $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
     //now I got all the result set read from the database...lets do the iteration thing now...
     $fn = getFn($fn_id);
-    @$countVal=0;
-    @$countVal = doesThisFnAlreadyActionFilledForItByUser($fn_id,$_SESSION['LOGGED_USER_ID']);
+    $countVal=0;
+    //@$countVal = doesThisFnAlreadyActionFilledForItByUser($fn_id,$_SESSION['LOGGED_USER_ID']);
+    @$countVal = doesThisFnAlreadyActionFilledForIt($fn_id);
+
     if($countVal == 0){
 ?>
 <form>
