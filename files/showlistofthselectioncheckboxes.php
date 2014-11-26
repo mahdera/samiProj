@@ -5,7 +5,7 @@
         require_once 'th.php';
         require_once 'user.php';
         require_once 'usersubdistrict.php';
-        require_once 'userdistrict.php';
+        //require_once 'userdistrict.php';
 
         $userObj = getUser($_SESSION['LOGGED_USER_ID']);
         $riskList = null;

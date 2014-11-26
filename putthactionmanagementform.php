@@ -1,5 +1,5 @@
 <?php
-  error_reporting( 0 );
+  //error_reporting( 0 );
 ?>
 <h1>Th Action</h1>
 <?php
@@ -7,8 +7,17 @@
     require_once 'files/thaction.php';
     require_once 'files/goalfirst.php';
     require_once 'files/goalfirstth.php';
+    require_once 'files/usersubdistrict.php';
+    require_once 'files/user.php';
 
-    $goalFirstThList = getAllGoalFirstThsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+
+    if($userObj->user_level == '02'){
+      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+      $goalFirstThList = getAllGoalFirstThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    }
+
+    //$goalFirstThList = getAllGoalFirstThsModifiedBy($_SESSION['LOGGED_USER_ID']);
     //this will have to be like all goalFirsts then filter out the ths in the goal first list
 
     if($goalFirstThList){

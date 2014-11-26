@@ -1,5 +1,5 @@
 <?php
-    error_reporting( 0 );
+    //error_reporting( 0 );
     session_start();
     require_once 'files/th.php';
     require_once 'files/fn.php';
@@ -41,7 +41,7 @@
                     <?php
                         //loop the array instead...
                         if($selectedThIdArray == NULL){
-                          $thList = getAllThsModifiedBy($_SESSION['LOGGED_USER_ID']);
+                          $thList = getAllThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
                           while($thObj = mysql_fetch_object($thList)){
                             ?>
                                 <option value="<?php echo $thObj->id;?>"><?php echo $thObj->th_name;?></option>
