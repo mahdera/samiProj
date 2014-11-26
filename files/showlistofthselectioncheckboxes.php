@@ -1,5 +1,6 @@
 <?php session_start();?>
-<div>
+<div class="col-half left">
+  <h1>Th Check Boxes</h1>
     <?php
         require_once 'risk.php';
         require_once 'th.php';

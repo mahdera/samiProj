@@ -125,6 +125,27 @@
         }
     }
 
+    function hasThisThBeenUsedForGoalFirstByUsingUserLevel($thId, $userLevel, $divisionId){
+        $cntVal = 0;
+        try{
+            if($userLevel = '02'){
+                $query = "select count(*) as cnt from tbl_goal_first_th, tbl_user_sub_district where th_id = $thId and " .
+                "tbl_goal_first_th.modified_by = tbl_user_sub_district.user_id and tbl_user_sub_district.sub_district_id = $divisionId";
+                //echo $query;
+            }
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            $cntVal = $resultRow->cnt;
+            if($cntVal != 0){
+                return true;
+            }else{
+                return false;
+            }
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
+
     function hasThisThBeenUsedForGoalFirstByThisUser($thId, $modifiedBy){
         $cntVal = 0;
         try{

@@ -1,5 +1,5 @@
 <?php
-  error_reporting( 0 );
+  //error_reporting( 0 );
 ?>
 <h2>Fn Action</h2>
 <?php
@@ -8,8 +8,18 @@
     require_once 'files/fnaction.php';
     require_once 'files/goalsecond.php';
     require_once 'files/goalsecondfn.php';
+    require_once 'files/usersubdistrict.php';
+    require_once 'files/user.php';
 
-    $goalSecondFnList = getAllGoalSecondFnsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    $goalSecondFnList = null;
+
+    $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+    if($userObj->user_level == '02'){
+      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+      $goalSecondFnList = getAllGoalSecondFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    }
+
+    //$goalSecondFnList = getAllGoalSecondFnsModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
 <table border="0" width="100%">
     <tr style="background: #ccc">

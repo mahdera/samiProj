@@ -22,10 +22,7 @@
     </div><!-- /col-half --><!-- /col-half -->
     <?php
         require_once 'importjsscripts.php';
-    ?>
-    <div>
-        <h1>Th Check Boxes</h1>
-    </div>
+    ?>    
     <div id="errorDiv"></div>
     <?php
         require_once 'files/showlistofthselectioncheckboxes.php';

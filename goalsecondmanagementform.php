@@ -1,6 +1,6 @@
 <?php
     //error_reporting( 0 );
-    session_start();
+    @session_start();
     require_once 'files/th.php';
     require_once 'files/fn.php';
     require_once 'files/user.php';
@@ -23,7 +23,7 @@
     //$fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
     //var_dump($fnIdArray);
 ?>
-<h1>Add Goal Second</h1>
+<div class="col-half left">
 <a href="#.php" id="showGoalSecondManagementFormLinkId">Show Form</a>
 |
 <a href="#.php" id="hideGoalSecondManagementFormLinkId">Hide Form</a>
@@ -118,6 +118,7 @@
 </form>
 <hr/>
 <div id="subDetailDiv"></div>
+</div>
 <script type="text/javascript">
 
     $(document).ready(function(){

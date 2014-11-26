@@ -32,7 +32,7 @@
     <?php
         require_once 'importjsscripts.php';
     ?>
-    <div>
+    <div class="col-half left">
         <?php
             require 'goalfirstmanagementform.php';
         ?>

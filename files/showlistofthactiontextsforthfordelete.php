@@ -2,8 +2,12 @@
     session_start();
     $thId = $_GET['thId'];
     require_once 'thaction.php';
+    require_once 'usersubdistrict.php';
+    require_once 'user.php';
     //now get all thActions for
-    $thActionList = getAllThActionsForThisThModifiedBy($thId, $_SESSION['LOGGED_USER_ID']);
+    //$thActionList = getAllThActionsForThisThModifiedBy($thId, $_SESSION['LOGGED_USER_ID']);
+    $thActionList = null;
+    $thActionList = getAllThActionForThisTh($thId);
 ?>
 <table border="0" width="100%">
     <tr style="background:#ccc">
