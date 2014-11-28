@@ -9,8 +9,12 @@
     $thUsed = 0;
 
     if($userObj->user_level == '02'){
-      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-      $thUsed = hasThisThBeenUsedForGoalFirstByUsingUserLevel($thId, '02', $userSubDistrictObj->sub_district_id);
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+        $thUsed = hasThisThBeenUsedForGoalFirstByUsingUserLevel($thId, '02', $userSubDistrictObj->sub_district_id);
+    }else if($userObj->user_level == '01'){
+        $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+        $thUsed = hasThisThBeenUsedForGoalFirstByUsingUserLevel($thId, '02', $userSubDistrictObj->sub_district_id);
     }
 
     //$thUsed = hasThisThBeenUsedForGoalFirstByThisUser($thId, $_SESSION['LOGGED_USER_ID']);

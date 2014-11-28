@@ -20,6 +20,10 @@
         if($userObj->user_level == '02'){
             $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
             $riskList = getAllRisksModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+        }else if($userObj->user_level == '01'){
+            $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+            $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+            $riskList = getAllRisksModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
         }
         //$riskList = getAllRisksModifiedBy($_SESSION['LOGGED_USER_ID']);
         if(!empty($riskList)){

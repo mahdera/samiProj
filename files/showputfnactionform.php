@@ -11,6 +11,7 @@
     require_once 'fnaction.php';
     require_once 'fn.php';
     require_once 'goalsecondfn.php';
+    require_once 'user.php';
 
     //$fnActionId = $_GET['fn_id'];
     //$fnActionObj = getFnAction($fnActionId);

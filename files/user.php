@@ -221,4 +221,16 @@
             $ex->getMessage();
         }
     }
+
+    function getUserFromThisSubDistrictWithStatus($subDistrictId, $status){
+      try{
+        $query = "select tbl_user.* from tbl_user, tbl_user_sub_district where tbl_user.user_status = '$status' and " .
+        "tbl_user.id = tbl_user_sub_district.user_id and tbl_user_sub_district.sub_district_id = $subDistrictId order by first_name, last_name limit 0,1";
+        $result = read($query);
+        $resultRow = mysql_fetch_object($result);
+        return $resultRow;
+      }catch(Exception $ex){
+        $ex->getMessage();
+      }
+    }
 ?>

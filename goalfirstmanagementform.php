@@ -1,6 +1,6 @@
 <?php
     //error_reporting( 0 );
-    session_start();
+    @session_start();
     require_once 'files/th.php';
     require_once 'files/fn.php';
     require_once 'files/user.php';
@@ -14,6 +14,10 @@
         $fnList = getAllFnsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
     }*/
     if($userObj->user_level == '02'){
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+        $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    }else if($userObj->user_level == '01'){
+        $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
         $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
         $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
     }
@@ -41,7 +45,13 @@
                     <?php
                         //loop the array instead...
                         if($selectedThIdArray == NULL){
-                          $thList = getAllThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                          if($userObj->user_level == '02'){
+                              $thList = getAllThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                          }else if($userObj->user_level == '01'){
+                              $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+                              $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                              $thList = getAllThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                          }
                           while($thObj = mysql_fetch_object($thList)){
                             ?>
                                 <option value="<?php echo $thObj->id;?>"><?php echo $thObj->th_name;?></option>
@@ -73,6 +83,10 @@
                     <?php
                         //$fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
                         if($userObj->user_level == '02'){
+                          $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                          $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                        }else if($userObj->user_level == '01'){
+                          $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
                           $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
                           $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
                         }
@@ -118,6 +132,10 @@
                                         $fnList = getAllFnsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
                                     }*/
                                     if($userObj->user_level == '02'){
+                                      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                                      $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                                    }else if($userObj->user_level == '01'){
+                                      $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
                                       $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
                                       $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
                                     }
@@ -170,6 +188,10 @@
                         if($userObj->user_level == '02'){
                           $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
                           $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                        }else if($userObj->user_level == '01'){
+                          $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+                          $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                          $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
                         }
                         while($fnRow = mysql_fetch_object($fnList)){
                             ?>
@@ -213,6 +235,10 @@
                                     if($userObj->user_level == '02'){
                                       $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
                                       $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                                    }else if($userObj->user_level == '01'){
+                                      $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+                                      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                                      $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
                                     }
                                     while($fnRow = mysql_fetch_object($fnList)){
                                         ?>
@@ -252,7 +278,14 @@
                 <select name="slctg3fn" id="slctg3fn" style="width: 95%" class="fnDropDown">
                     <option value="" selected="selected">--Select--</option>
                     <?php
-                        $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
+                        if($userObj->user_level == '02'){
+                          $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                          $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                        }else if($userObj->user_level == '01'){
+                          $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+                          $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                          $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                        }
                         /*if($userObj->user_level == 'Zone Level'){
                             $userZoneObj = getZoneInfoForUser($userObj->id);
                             $fnList = getAllFnsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
@@ -291,7 +324,14 @@
                             <select name="slctg3fn1" id="slctg3fn1" style="width: 95%" class="fnDropDown">
                                 <option value="" selected="selected">--Select--</option>
                                 <?php
-                                    $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
+                                    if($userObj->user_level == '02'){
+                                      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                                      $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                                    }else if($userObj->user_level == '01'){
+                                      $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+                                      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                                      $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                                    }
                                     /*if($userObj->user_level == 'Zone Level'){
                                         $userZoneObj = getZoneInfoForUser($userObj->id);
                                         $fnList = getAllFnsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);

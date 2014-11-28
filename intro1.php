@@ -1,7 +1,13 @@
 <?php
     session_start();
-    if(!isset($_SESSION['USER_ID'])){
+    if( !isset($_SESSION['USER_ID']) ){
         header("Location: login.php");
+    }
+
+    if( isset($_SESSION['USER_ROLE_CODE']) && $_SESSION['USER_ROLE_CODE'] == "01A" ){
+      if( !isset($_SESSION['SUB_DISTRICT_ID'])){
+          header("Location: nosubdistrictselected.php");
+      }
     }
 ?>
 <html>

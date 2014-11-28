@@ -1,18 +1,29 @@
 <?php
+    @session_start();
     //now search a user using the userId from the session and check if the user
     //is an admin or not and depending on the value the menu bar will change
     //accordingly...
     require_once 'files/user.php';
     require_once 'files/userlevellookup.php';
     require_once 'files/userrolelookup.php';
+    require_once 'files/subdistrict.php';
+    require_once 'files/userdistrict.php';
+
     $userObj = null;
     $fullName = null;
     $userLevelRow = null;
     $userRoleRow = null;
     $userLevel = null;
     $userRole = null;
+    $districtId = null;
 
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+    $userRoleCode = $userObj->user_role;
+
+    if($userRoleCode === '01A'){
+      $districtId = getDistrictIdForUser($_SESSION['LOGGED_USER_ID']);
+      $_SESSION['USER_ROLE_CODE'] = $userRoleCode;
+    }
 
     if($userObj != null){
       $fullName = $userObj->first_name." ".$userObj->last_name;
@@ -43,6 +54,13 @@
                 <div id="listdiv">
                     <ul class="ld">
                         <li><a href="#.php"><?php echo $fullName;?>, <?php echo $userRole . " - " . $userLevel;?> logged in</a></li>
+                        <li>
+                            <span id="subDistrictSelectionDiv">
+                              <select name="slctsubdistrictselection" id="slctsubdistrictselection" style="width:15%">
+                                <option value="" selected="selected">--Select--</option>
+                              </select>
+                            </span>
+                        </li>
                         <li><a href="#.php" id="accountManagementLink">My Account</a></li>
                         <li><a href="mycalendar.php">Calendar</a></li>
                         <li><a href="step1.php">Process</a></li>
@@ -73,6 +91,13 @@
 ?>
 <script type="text/javascript">
     $(document).ready(function(){
+        //first load all the sub-districts available in the user's district
+        var userRoleCode = "<?php echo $userRoleCode;?>";
+        if(userRoleCode === '01A'){
+          var districtId = "<?php echo $districtId;?>";
+          $('#subDistrictSelectionDiv').load('files/showlistofsubdistrictsfoundinthisdistrict.php?districtId='+districtId);
+        }
+
         $('#contentManagementLink').click(function(){
             $('.content').load('files/showcontentmanagementlist.php');
         });
@@ -113,19 +138,6 @@
         					}
 	           });
 
-            /*if(window.confirm('Are you sure you want to logout?')){
-                $.ajax({
-                    url: 'logout.php',
-                    data: null,
-                    type:'POST',
-                    success:function(response){
-                        window.location = 'login.php';
-                    },
-                    error:function(error){
-                        alert(error);
-                    }
-                });
-            }*/
         });
 
     });//end document.ready function

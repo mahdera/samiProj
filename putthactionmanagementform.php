@@ -13,8 +13,12 @@
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
 
     if($userObj->user_level == '02'){
-      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-      $goalFirstThList = getAllGoalFirstThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+        $goalFirstThList = getAllGoalFirstThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    }else if($userObj->user_level == '01'){
+        $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+        $goalFirstThList = getAllGoalFirstThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
     }
 
     //$goalFirstThList = getAllGoalFirstThsModifiedBy($_SESSION['LOGGED_USER_ID']);

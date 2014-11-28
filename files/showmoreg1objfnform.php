@@ -5,15 +5,18 @@
     require_once 'usersubdistrict.php';
     require_once 'userdistrict.php';
     $fnList = null;
-    $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
+    //$fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
-    /*if($userObj->user_level == 'Zone Level'){
-        $userZoneObj = getZoneInfoForUser($userObj->id);
-        $fnList = getAllFnsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
-    }else if($userObj->user_level == 'Branch Level'){
-        $userBranchObj = getBranchInfoForUser($userObj->id);
-        $fnList = getAllFnsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
-    }*/
+
+    if($userObj->user_level == '02'){
+      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+      $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    }else if($userObj->user_level == '01'){
+      $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+      $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    }
+
     $numItems = $_POST['numItems'];
     //now define the control names in here...
     $objControlName = "txtg1obj" . ($numItems + 1);

@@ -1,6 +1,6 @@
     <?php
-        error_reporting( 0 );
-        session_start();
+        //error_reporting( 0 );
+        @session_start();
         @$ctr = $_GET['ctr'];
         $selectedThIdArray = array();
         for($i=1; $i <= $ctr; $i++){

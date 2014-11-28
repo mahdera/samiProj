@@ -15,6 +15,10 @@
         if($userObj->user_level == '02'){
             $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
             $teamList = getAllTeamsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+        }else if($userObj->user_level == '01'){
+            $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+            $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+            $teamList = getAllTeamsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
         }
         //$teamList = getAllTeamsModifiedBy($_SESSION['LOGGED_USER_ID']);
         //now i need to get the level of the user and the based on that i will have to
