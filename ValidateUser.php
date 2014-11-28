@@ -11,7 +11,7 @@
   if($success){
       //get the userId so that it can be stored in a session and saved in record manipulation
       $loggedInUserObj = getUserUsingUserId($userId);
-      if($loggedInUserObj->user_status !== 'Blocked'){
+      if($loggedInUserObj->user_status != 'Blocked'){
         $_SESSION['LOGGED_USER_ID'] = $loggedInUserObj->id;
         $_SESSION['INDIVIDUAL_INT_USER_ID'] = $loggedInUserObj->id;
         //this will have to be replaced with branch id now...or zone id

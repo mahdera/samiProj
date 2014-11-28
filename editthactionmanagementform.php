@@ -3,7 +3,18 @@
     error_reporting( 0 );
     require_once 'files/thaction.php';
     require_once 'files/th.php';
-    $thActionList = getAllThActionsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    require_once 'files/user.php';
+    require_once 'files/usersubdistrict.php';
+
+    $thActionList = null;
+
+    $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+    if($userObj->user_level == '02'){
+      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+      //$fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+      $thActionList = getAllThActionsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    }
+    //$thActionList = getAllThActionsModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
 <div id="thActionDetailDiv">
 <table border="0" width="100%">

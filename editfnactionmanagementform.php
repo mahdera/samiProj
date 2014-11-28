@@ -3,7 +3,17 @@
     error_reporting( 0 );
     require_once 'files/fnaction.php';
     require_once 'files/fn.php';
-    $fnActionList = getAllFnActionsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    require_once 'files/user.php';
+    require_once 'files/usersubdistrict.php';
+    //$fnActionList = getAllFnActionsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    $fnActionList = null;
+
+    $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+    if($userObj->user_level == '02'){
+      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+      //$fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+      $fnActionList = getAllFnActionsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    }
 ?>
 <div id="fnActionDetailDiv">
 <table border="0" width="100%">

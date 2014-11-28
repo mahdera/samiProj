@@ -5,13 +5,22 @@
     require_once 'files/user.php';
     require_once 'files/userlevellookup.php';
     require_once 'files/userrolelookup.php';
+    $userObj = null;
+    $fullName = null;
+    $userLevelRow = null;
+    $userRoleRow = null;
+    $userLevel = null;
+    $userRole = null;
 
-    $userObj = getUserUsingUserId($_SESSION['USER_ID']);
-    $fullName = $userObj->first_name." ".$userObj->last_name;
-    $userLevelRow = getUserLevelLookUpUsingCode($userObj->user_level);
-    $userRoleRow = getUserRoleLookUpUsingCode($userObj->user_role);
-    $userLevel = $userLevelRow->value;
-    $userRole = $userRoleRow->value;
+    $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+
+    if($userObj != null){
+      $fullName = $userObj->first_name." ".$userObj->last_name;
+      $userLevelRow = getUserLevelLookUpUsingCode($userObj->user_level);
+      $userRoleRow = getUserRoleLookUpUsingCode($userObj->user_role);
+      $userLevel = $userLevelRow->value;
+      $userRole = $userRoleRow->value;
+    }
     if($userObj->member_type == 'Admin'){
         ?>
             <div id="rightcontain">

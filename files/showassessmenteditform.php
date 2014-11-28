@@ -23,7 +23,7 @@
                     <option value="" selected="selected">--Select--</option>
                     <?php
                     while($assessmentLookupRow = mysql_fetch_object($assessmentLookupList)){
-                      if($assessmentObj->id == $assessmentLookupRow->id){
+                      if($assessmentObj->assessment_type == $assessmentLookupRow->value){
                         ?>
                             <option value="<?php echo $assessmentLookupRow->value;?>" selected="selected"><?php echo $assessmentLookupRow->value;?></option>
                         <?php

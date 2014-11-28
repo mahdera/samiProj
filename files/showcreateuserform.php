@@ -91,8 +91,8 @@
                       }else{
                         ?>
                             <option value="" selected="selected">--Select--</option>
-                            <option value="02">Sub District Level</option>
                             <option value="01">District Level</option>
+                            <option value="02">Sub District Level</option>
                         <?php
                       }
                     ?>
@@ -102,12 +102,11 @@
         <tr>
             <td><font color="red">*</font> User Role:</td>
             <td>
-                <select name="slctuserrole" id="slctuserrole" style="width:100%">
+                <div id="userRoleDiv">
+                  <select name="slctuserrole" id="slctuserrole" style="width:100%">
                     <option value="" selected="selected">--Select--</option>
-                    <option value="02A">Sub District Admin</option>
-                    <option value="999">User</option>
-                    <option value="01A">District Admin</option>
-                </select>
+                  </select>
+                </div>
             </td>
         </tr>
         <tr id="zoneRow">
@@ -204,6 +203,7 @@
             if(userLevel != ''){
                 if(userLevel == '01'){
                     $('#branchRow').remove();
+                    $('#userRoleDiv').load('files/showuserrolefordistrictleveluser.php');
                 }else if(userLevel == '02'){
                     var zoneId = $('#slctzone').val();
                     var dataString = "zoneId="+zoneId;
@@ -219,6 +219,7 @@
                             alert(error);
                         }
                     });
+                    $('#userRoleDiv').load('files/showuserroleforsubdistrictleveluser.php');
                 }
             }
         });
