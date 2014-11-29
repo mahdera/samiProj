@@ -9,6 +9,16 @@
     @$rs = mysql_real_escape_string($_POST['rs']);
 
     require_once 'risk.php';
-    updateRisk($id, $thId, $mg, $dr, $pr, $wa, $rs, $_SESSION['LOGGED_USER_ID']);
+    require_once 'user.php';
+    require_once 'usersubdistrict.php';
+
+    $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+
+    if($userObj->user_level == '02'){
+      updateRisk($id, $thId, $mg, $dr, $pr, $wa, $rs, $_SESSION['LOGGED_USER_ID']);
+    }else if($userObj->user_level == '01'){
+      $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+      updateRisk($id, $thId, $mg, $dr, $pr, $wa, $rs, $userObj->id);
+    }
 ?>
 <div class="notify notify-green"><span class="symbol icon-tick"></span> Risk Updated Successfully!</div>

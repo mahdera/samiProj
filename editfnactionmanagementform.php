@@ -1,6 +1,6 @@
 <h2>Edit Fn Action</h2>
 <?php
-    error_reporting( 0 );
+    //error_reporting( 0 );
     require_once 'files/fnaction.php';
     require_once 'files/fn.php';
     require_once 'files/user.php';
@@ -12,6 +12,10 @@
     if($userObj->user_level == '02'){
       $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
       //$fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+      $fnActionList = getAllFnActionsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    }else if($userObj->user_level == '01'){
+      $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
       $fnActionList = getAllFnActionsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
     }
 ?>

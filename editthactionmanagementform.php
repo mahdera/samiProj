@@ -1,6 +1,6 @@
 <h2>Edit Th Action</h2>
 <?php
-    error_reporting( 0 );
+    //error_reporting( 0 );
     require_once 'files/thaction.php';
     require_once 'files/th.php';
     require_once 'files/user.php';
@@ -12,6 +12,10 @@
     if($userObj->user_level == '02'){
       $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
       //$fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+      $thActionList = getAllThActionsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    }else if($userObj->user_level == '01'){
+      $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
       $thActionList = getAllThActionsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
     }
     //$thActionList = getAllThActionsModifiedBy($_SESSION['LOGGED_USER_ID']);

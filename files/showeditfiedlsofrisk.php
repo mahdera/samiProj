@@ -3,6 +3,9 @@
     $id = $_GET['id'];
     require_once 'risk.php';
     require_once 'th.php';
+    require_once 'user.php';
+    require_once 'usersubdistrict.php';
+
     $riskObj = getRisk($id);
     //now define the control names
     $thControlName = "slctth" . $id;
@@ -12,6 +15,7 @@
     $waControlName = "slctwa" . $id;
     $rsControlName = "slctrs" . $id;
     $buttonId = "btnupdate" . $id;
+    $userObj = getUser($_SESSION['LOGGED_USER_ID']);
 ?>
 <h2>Edit Risk</h2>
 <form>
@@ -21,8 +25,16 @@
             <td>
                 <select name="<?php echo $thControlName;?>" id="<?php echo $thControlName;?>" style="width: 100%">
                     <option value="" selected="selected">--Select--</option>
-                    <?php
-                        $thList = getAllThsModifiedBy($_SESSION['LOGGED_USER_ID']);
+                    <?php                        
+                        $thList = null;
+                        if($userObj->user_level == '02'){
+                          $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                          $thList = getAllThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                        }else if($userObj->user_level == '01'){
+                          $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+                          $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                          $thList = getAllThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                        }
                         while($thRow = mysql_fetch_object($thList)){
                             if($thRow->id == $riskObj->th_id){
                             ?>
