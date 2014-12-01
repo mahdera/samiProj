@@ -9,6 +9,7 @@
     require_once 'goalfirstg3objfn.php';
     require_once 'goalfirstth.php';
     require_once 'user.php';
+    require_once 'usersubdistrict.php';
 
     //get the values...
     $thId = $_POST['th'];
@@ -29,13 +30,22 @@
     $numItemsG3 = $_POST['numItemsG3'];
 
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+    //echo 'User Obj Level : ' . $userObj->user_level.'<br/>';
     //save the goalfirst object to the database...
     //the status should change to 'create' iff the session is older than 180 days or
     //if there is no goal first record by this particular user.
     $dateDifference = null;
-    $fetchedGoalFirstRecord = getGoalFirstUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
-    $dateDifference = getDateDifferenceForGoalFirstUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
+    //$fetchedGoalFirstRecord = getGoalFirstUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
+    //$dateDifference = getDateDifferenceForGoalFirstUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
     //echo 'the date diff is : ' . $dateDifference.'<br/>';
+    if($userObj->user_level == '02'){
+      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+      $dateDifference = getDateDifferenceForGoalFirstUsingModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    }else if($userObj->user_level == '01'){
+      $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+      $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+      $dateDifference = getDateDifferenceForGoalFirstUsingModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    }
 
     if(is_numeric($dateDifference)){
         if($dateDifference > 180){
@@ -72,14 +82,15 @@
 
     if($userObj->user_level == '01'){
         $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-
+        /////HERE I NEED TO THINK AND WORK CONTINUES FROM HERE....
         //fetch the value just saved using the thId
-        $fetchedGoalFirst = getGoalFirstUsingModifiedBy($userObject->id);
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+        $fetchedGoalFirst = getGoalFirstUsingModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
         //now I need to save information on the goal_first_th table...
         saveGoalFirstTh($fetchedGoalFirst->id, $thId, $userObject->id);
         //now get the immidieatly saved goalFirstTh record so that it can be used with
         //the goalFirstG1 and the rest records...
-        $fetchedGoalFirstTh = getGoalFirstThUsingModifiedyBy($userObject->id);
+        $fetchedGoalFirstTh = getGoalFirstThUsingModifiedyByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
         //now save the goalfirstg1 value...
         saveGoalFirstG1($fetchedGoalFirstTh->id, $g1, $g1Fn, $userObject->id);
         //fetch the value using the above parameters you have used to save the values to the database...
@@ -122,7 +133,8 @@
           //now save the values to the database...
           saveGoalFirstG3ObjFn($fetchedGoalFirstG3->id, $g3ObjTextBoxValue, $g3FnSelectBoxValue, $userObject->id);
         }//end for loop i
-    }else if($userObj->user_level == '02'){
+    }else if($userObj->user_level === '02'){
+        //echo '<br/>Amazing userObj->user_level : ' . $userObj->user_level;
         //fetch the value just saved using the thId
         $fetchedGoalFirst = getGoalFirstUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
         //now I need to save information on the goal_first_th table...

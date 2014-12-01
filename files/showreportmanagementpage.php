@@ -3,8 +3,21 @@
 	require_once 'goalfirst.php';
 	require_once 'th.php';
 	require_once 'user.php';
+	require_once 'usersubdistrict.php';
 
-	$goalFirstList = getAllGoalFirstsModifiedBy($_SESSION['LOGGED_USER_ID']);
+	$userObj = getUser($_SESSION['LOGGED_USER_ID']);
+	$goalFirstList = null;
+
+	if($userObj->user_level == '02'){
+		$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+		$goalFirstList = getAllGoalFirstsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+	}else if($userObj->user_level == '01'){
+		$userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+		$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+		$goalFirstList = getAllGoalFirstsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+	}
+
+	//$goalFirstList = getAllGoalFirstsModifiedBy($_SESSION['LOGGED_USER_ID']);
 	$loggedInUserObj = getUserUsingTheUserId($_SESSION['LOGGED_USER_ID']);
 	if( !empty($goalFirstList) && ($loggedInUserObj->member_type !== 'Admin') ){
 		?>

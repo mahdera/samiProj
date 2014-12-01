@@ -33,6 +33,10 @@
 	require_once 'fnaction.php';
 	require_once 'goalfirstth.php';
 	require_once 'goalsecondfn.php';
+	require_once 'user.php';
+	require_once 'usersubdistrict.php';
+
+	$userObj = getUser($_SESSION['LOGGED_USER_ID']);
 
 	//start showing the report from form1 upto form10
 	$goalFirstObj = getGoalFirst($id);
@@ -42,7 +46,18 @@
 	<div id="printReportDiv">
 	<?php
 	//now get a form1 obj modified by the logged in user and modification date same as that of the goal first...
-	$form1Obj = getLatestForm1ModifiedByUser($_SESSION['LOGGED_USER_ID']);
+	//$form1Obj = getLatestForm1ModifiedByUser($_SESSION['LOGGED_USER_ID']);
+		$form1Obj = null;
+		//STOPPED WORKING HERE.....
+		if($userObj->user_level == '01'){
+			$userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+			$userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+			$form1Obj = getLatestForm1ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+		}else if($userObj->user_level == '02'){
+			$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+			$form1Obj = getLatestForm1ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+		}
+
 		if($form1Obj){
 		?>
 		<div id="printReportDiv">
@@ -84,6 +99,7 @@
 							</tr>
 							<?php
 									$form1Q3List = getAllForm1Q3ForThisForm1($form1Obj->id);
+
 									$colCount = 1;
 									while($form1Q3Row = mysql_fetch_object($form1Q3List)){
 											$textBoxId = "txtrowq3" . $form1Q3Row->row . $form1Q3Row->col;
@@ -146,7 +162,17 @@
 		?>
 		<table border="0" width="100%">
 			<?php
-				$form2Obj = getForm2ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				//$form2Obj = getForm2ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				$form2Obj = null;
+				if($userObj->user_level == '01'){
+					$userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+					$form2Obj = getForm2ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}else if($userObj->user_level == '02'){
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+					$form2Obj = getForm2ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}
+
 				if($form2Obj){
 			?>
 			<tr>
@@ -171,7 +197,16 @@
 		?>
 		<table border="0" width="100%">
 			<?php
-				$form3Obj = getForm3ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				//$form3Obj = getForm3ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				$form3Obj = null;
+				if($userObj->user_level == '01'){
+					$userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+					$form3Obj = getForm3ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}else if($userObj->user_level == '02'){
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+					$form3Obj = getForm3ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}
 			?>
 			<tr>
 				<td width="20%">Q3.1:</td>
@@ -187,7 +222,16 @@
 
 		<table border="0" width="100%">
 			<?php
-				$form4Obj = getForm4ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				//$form4Obj = getForm4ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				$form4Obj = null;
+				if($userObj->user_level == '01'){
+					$userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+					$form4Obj = getForm4ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}else if($userObj->user_level == '02'){
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+					$form4Obj = getForm4ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}
 			?>
 			<tr>
 				<td width="20%">Q4.1:</td>
@@ -203,7 +247,16 @@
 
 		<table border="0" width="100%">
 			<?php
-				$form5Obj = getForm5ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				//$form5Obj = getForm5ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				$form5Obj = null;
+				if($userObj->user_level == '01'){
+					$userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+					$form5Obj = getForm5ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}else if($userObj->user_level == '02'){
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+					$form5Obj = getForm5ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}
 			?>
 			<tr>
 				<td width="20%">Q5.1:</td>
@@ -219,7 +272,16 @@
 
 		<table border="0" width="100%">
 			<?php
-				$form6Obj = getForm6ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				//$form6Obj = getForm6ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				$form6Obj = null;
+				if($userObj->user_level == '01'){
+					$userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+					$form6Obj = getForm6ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}else if($userObj->user_level == '02'){
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+					$form6Obj = getForm6ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}
 			?>
 			<tr>
 				<td width="20%">Q6.1:</td>
@@ -235,7 +297,16 @@
 
 		<table border="0" width="100%">
 			<?php
-				$form7Obj = getForm7ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				//$form7Obj = getForm7ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				$form7Obj = null;
+				if($userObj->user_level == '01'){
+					$userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+					$form7Obj = getForm7ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}else if($userObj->user_level == '02'){
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+					$form7Obj = getForm7ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}
 			?>
 			<tr>
 				<td width="20%">Q7.1:</td>
@@ -251,7 +322,16 @@
 
 		<table border="0" width="100%">
 			<?php
-				$form8Obj = getForm8ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				//$form8Obj = getForm8ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				$form8Obj = null;
+				if($userObj->user_level == '01'){
+					$userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+					$form8Obj = getForm8ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}else if($userObj->user_level == '02'){
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+					$form8Obj = getForm8ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}
 			?>
 			<tr>
 				<td width="20%">Q8.1:</td>
@@ -267,7 +347,16 @@
 
 		<table border="0" width="100%">
 			<?php
-				$form9Obj = getForm9ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				//$form9Obj = getForm9ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				$form9Obj = null;
+				if($userObj->user_level == '01'){
+					$userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+					$form9Obj = getForm9ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}else if($userObj->user_level == '02'){
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+					$form9Obj = getForm9ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}
 			?>
 			<tr>
 				<td width="20%">Q9.1:</td>
@@ -282,7 +371,16 @@
 
 		<table border="0" width="100%">
 			<?php
-				$form10Obj = getForm10ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				//$form10Obj = getForm10ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				$form10Obj = null;
+				if($userObj->user_level == '01'){
+					$userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+					$form10Obj = getForm10ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}else if($userObj->user_level == '02'){
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+					$form10Obj = getForm10ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}
 			?>
 			<tr>
 				<td width="20%">Q10.1:</td>

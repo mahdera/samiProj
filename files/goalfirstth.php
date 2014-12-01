@@ -58,6 +58,24 @@
         }
     }
 
+    function getGoalFirstThUsingModifiedyByUsingUserLevel($userLevel, $divisionId){
+        $query = null;
+        try{
+          if($userLevel == '02'){
+            $query = "select tbl_goal_first_th.* from tbl_goal_first_th, tbl_user_sub_district where " .
+            "tbl_goal_first_th.modified_by = tbl_user_sub_district.user_id and tbl_user_sub_district.sub_district_id = $divisionId order by " .
+            "tbl_goal_first_th.modification_date desc limit 0,1";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+          }else if($userLevel == '01'){
+            //another sql if needed for district level fetching...
+          }
+        }catch(Exception $ex){
+          $ex->getMessage();
+        }
+    }
+
     function getAllGoalFirstThsModifiedByUsingUserLevel($userLevel, $divisionId){
         try{
             $query = null;

@@ -61,13 +61,30 @@
 
     function getLatestTopGoalSecondModifiedBy($modifiedBy){
       try{
-        $query = "select * from tbl_goal_second where modified_by = $modifiedBy order by modification_date limit 0,1";
+        $query = "select * from tbl_goal_second where modified_by = $modifiedBy order by modification_date desc limit 0,1";
         $result = read($query);
         $resultRow = mysql_fetch_object($result);
         return $resultRow;
       }catch(Exception $ex){
         $ex->getMessage();
       }
+    }
+
+    function getGoalSecondUsingModifiedByUsingUserLevel($userLevel, $divisionId){
+        try{
+          $query = null;
+          if($userLevel == '02'){
+            $query = "select tbl_goal_second.* from tbl_goal_second, tbl_user_sub_district where tbl_goal_second.modified_by = " .
+            "tbl_user_sub_district.user_id and tbl_user_sub_district.sub_district_id = $divisionId order by tbl_goal_second.modification_date desc limit 0,1";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+          }else if($userLevel == '01'){
+            //if district level fetching is required in the future...code goes here
+          }
+        }catch(Exception $ex){
+          $ex->getMessage();
+        }
     }
 
     function getGoalSecondUsingModifiedBy($modifiedBy){
@@ -105,5 +122,25 @@
             $ex->getMessage();
         }
         return false;
+    }
+
+    function getDateDifferenceForGoalSecondUsingModifiedByUsingUserLevel($userLevel, $divisionId){
+      $query = null;
+      try{
+        if($userLevel == '02'){
+          $query = "select DATEDIFF(tbl_goal_second.modification_date, NOW()) as dateDiff from tbl_goal_second, tbl_user_sub_district where tbl_goal_second.modified_by = tbl_user_sub_district.user_id and tbl_user_sub_district.sub_district_id = $divisionId order by modification_date desc limit 0,1";
+        }else if($userLevel == '01'){
+          //if there is a lenghty sql command is needed for district level..which i don't think so...
+        }
+        $result = read($query);
+        if(mysql_num_rows($result)){
+          $resultRow = mysql_fetch_object($result);
+          //echo $resultRow->dateDiff;
+          return abs($resultRow->dateDiff);
+        }
+      }catch(Exception $ex){
+        $ex->getMessage();
+      }
+      return false;
     }
 ?>

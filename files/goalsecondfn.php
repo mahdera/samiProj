@@ -60,6 +60,23 @@
         }
     }
 
+    function getGoalSecondFnUsingModifiedyByUsingUserLevel($userLevel, $divisionId){
+        try{
+          $query = null;
+          if($userLevel == '02'){
+            $query = "select tbl_goal_second_fn.* from tbl_goal_second_fn, tbl_user_sub_district where tbl_goal_second_fn.modified_by = " .
+            "tbl_user_sub_district.user_id and tbl_user_sub_district.sub_district_id = $divisionId order by modification_date desc limit 0,1";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+          }else if($userLevel == '01'){
+            //for future district level fetching if deemed necessary
+          }
+        }catch(Exception $ex){
+          $ex->getMessage();
+        }
+    }
+
     function getAllGoalSecondFnsModifiedBy($modifiedBy){
         try{
             $query = "select * from tbl_goal_second_fn where modified_by = $modifiedBy order by modification_date desc";

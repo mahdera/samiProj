@@ -9,6 +9,7 @@
     require_once 'goalsecondg3obj.php';
     require_once 'goalsecondfn.php';
     require_once 'user.php';
+    require_once 'usersubdistrict.php';
 
     //get the values...
     $fnId = $_POST['fn'];
@@ -26,8 +27,18 @@
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
 
     //$fetchedGoalSecondRecord = getGoalSecondUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
-    $dateDifference = getDateDifferenceForGoalSecondUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
+    //$dateDifference = getDateDifferenceForGoalSecondUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
     //echo "the date diff is : " . $dateDifference;
+
+    if($userObj->user_level == '02'){
+      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+      $dateDifference = getDateDifferenceForGoalSecondUsingModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    }else if($userObj->user_level == '01'){
+      $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+      $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+      $dateDifference = getDateDifferenceForGoalSecondUsingModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    }
+
     if(is_numeric($dateDifference)){
         if($dateDifference > 180){
             //last created goalFirst record is older than 6 months...hence create new...
@@ -45,11 +56,11 @@
         //if user is click save and tries to save another th without clicking the
         //next button it should grab the last goal first record saved by the current user.
         if($userObj->user_level == '01'){
-          //now get any user who is in this sub district and currently active status
-          $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-          saveGoalSecond($userObj->id);
+            //now get any user who is in this sub district and currently active status
+            $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+            saveGoalSecond($userObject->id);
         }else if($userObj->user_level == '02'){
-          saveGoalSecond($_SESSION['LOGGED_USER_ID']);
+            saveGoalSecond($_SESSION['LOGGED_USER_ID']);
         }
 
         $_SESSION['GOAL_SECOND_STATUS'] = 'existing';
@@ -58,10 +69,12 @@
     if($userObj->user_level == '01'){
         //fetch the value just saved using the thId
         $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-        $fetchedGoalSecond = getGoalSecondUsingModifiedBy($userObject->id);
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+        //a call to the new method which will consider data sharing...
+        $fetchedGoalSecond = getGoalSecondUsingModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
         //now save the goalsecondfn record in here...
         saveGoalSecondFn($fetchedGoalSecond->id, $fnId, $userObject->id);
-        $fetchedGoalSecondFn = getGoalSecondFnUsingModifiedyBy($userObject->id);
+        $fetchedGoalSecondFn = getGoalSecondFnUsingModifiedyByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
         //now save the goalfirstg1 value...
         saveGoalSecondG1($fetchedGoalSecondFn->id, $g1, $userObject->id);
         //fetch the value using the above parameters you have used to save the values to the database...
