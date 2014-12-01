@@ -14,8 +14,8 @@
       //$fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
       $thActionList = getAllThActionsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
     }else if($userObj->user_level == '01'){
-      $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+      $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+      $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
       $thActionList = getAllThActionsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
     }
     //$thActionList = getAllThActionsModifiedBy($_SESSION['LOGGED_USER_ID']);

@@ -7,6 +7,7 @@
     require_once 'usersubdistrict.php';
     require_once 'userrolelookup.php';
     require_once 'userlevellookup.php';
+    require_once 'usersubdistrict.php';
 
     $theUserId = $_SESSION['INDIVIDUAL_INT_USER_ID'];
     $loggedInUserObj = getUser($theUserId);
@@ -16,7 +17,7 @@
     }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == '02A'){
         //now get the branch id of the logged in user
         $userSubDistrictObj = getSubDistrictInfoForUser($theUserId);
-        $userList = getAllSubDistrictUsersWithDistrictId($userSubDistrictObj->sub_district_id);
+        $userList = getAllSubDistrictUsersWithDistrictId($userSubDistrictObj->sub_district_id);        
     }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == '01A'){
         //now get the zone id of the logged in user and get all zone and branch level users found under the zone id of this logged in user
         $userDistrictObj = getDistrictInfoForUser($theUserId);

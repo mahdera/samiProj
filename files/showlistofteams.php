@@ -1,5 +1,5 @@
-<?php
-    session_start();
+  <?php
+    @session_start();
 ?>
 <div>
     <?php
@@ -11,13 +11,16 @@
         //require_once 'userzone.php';
 
         $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+        //var_dump($userObj);
         $teamList = null;
         if($userObj->user_level == '02'){
             $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
             $teamList = getAllTeamsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
         }else if($userObj->user_level == '01'){
             $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+            //var_dump($userObject);
             $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+            var_dump($userSubDistrictObj);
             $teamList = getAllTeamsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
         }
         //$teamList = getAllTeamsModifiedBy($_SESSION['LOGGED_USER_ID']);

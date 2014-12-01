@@ -54,13 +54,19 @@
                 <div id="listdiv">
                     <ul class="ld">
                         <li><a href="#.php"><?php echo $fullName;?>, <?php echo $userRole . " - " . $userLevel;?> logged in</a></li>
-                        <li>
-                            <span id="subDistrictSelectionDiv">
-                              <select name="slctsubdistrictselection" id="slctsubdistrictselection" style="width:15%">
-                                <option value="" selected="selected">--Select--</option>
-                              </select>
-                            </span>
-                        </li>
+                            <?php
+                              if($userObj->user_role == '01A'){
+                            ?>
+                            <li>
+                              <span id="subDistrictSelectionDiv">
+                                <select name="slctsubdistrictselection" id="slctsubdistrictselection" style="width:15%">
+                                  <option value="" selected="selected">--Select--</option>
+                                </select>
+                              </span>
+                            </li>
+                            <?php
+                              }
+                            ?>
                         <li><a href="#.php" id="accountManagementLink">My Account</a></li>
                         <li><a href="mycalendar.php">Calendar</a></li>
                         <li><a href="step1.php">Process</a></li>

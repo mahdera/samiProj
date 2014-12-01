@@ -3,7 +3,9 @@
     $fnId = $_GET['fnId'];
     require_once 'fnaction.php';
     //now get all thActions for
-    $fnActionList = getAllFnActionsForThisFnModifiedBy($fnId, $_SESSION['LOGGED_USER_ID']);
+    //$fnActionList = getAllFnActionsForThisFnModifiedBy($fnId, $_SESSION['LOGGED_USER_ID']);
+    $fnActionList = null;
+    $fnActionList = getAllFnActionsForThisFn($fnId);
 ?>
 <table border="0" width="100%">
     <tr style="background:#ccc">
