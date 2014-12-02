@@ -27,7 +27,7 @@
         $goalFirstThList = getAllGoalFirstThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
     }
 
-    if(!empty($goalFirstThList)){
+    if(mysql_num_rows($goalFirstThList)){
         ?>
         <table border="0" width="100%">
             <tr style="background: #CCC">
@@ -69,6 +69,10 @@
                 ?>
         </table>
         <?php
+    }else{
+    ?>
+      <div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>
+    <?php
     }
 ?>
 <hr/>

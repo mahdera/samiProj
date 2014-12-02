@@ -1,17 +1,17 @@
 <?php
   require_once 'dbconnection.php';
-  function saveSubDistrict($districtId, $code, $displayName, $description){
+  function saveSubDistrict($districtId, $code, $displayName, $description, $modifiedBy){
     try{
-      $query = "insert into tbl_sub_district values(0, $districtId, '$code', '$displayName', '$description')";
+      $query = "insert into tbl_sub_district values(0, $districtId, '$code', '$displayName', '$description', $modifiedBy, NOW() )";
       save($query);
     }catch(Exception $ex){
       $ex->getMessage();
     }
   }
 
-  function updateSubDistrict($id, $districtId, $code, $displayName, $description){
+  function updateSubDistrict($id, $districtId, $code, $displayName, $description, $modifiedBy){
     try{
-      $query = "update tbl_sub_district set district_id = $districtId, code = '$code', display_name='$displayName', description = '$description' where id = $id";
+      $query = "update tbl_sub_district set district_id = $districtId, code = '$code', display_name='$displayName', description = '$description', modified_by = $modifiedBy, modification_date = NOW() where id = $id";
       save($query);
     }catch(Exception $ex){
       $ex->getMessage();

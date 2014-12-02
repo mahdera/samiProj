@@ -19,6 +19,7 @@
         $thList = getAllThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
     }
     //$thList = getAllThsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    if(mysql_num_rows($thList)){
 ?>
 <table border="0" width="100%">
     <tr style="background: #ccc">
@@ -47,6 +48,13 @@
         }//end while loop
     ?>
 </table>
+<?php
+  }else{
+    ?>
+      <div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>
+    <?php
+  }
+?>
 <script type="text/javascript">
     $(document).ready(function(){
 

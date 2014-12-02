@@ -1,8 +1,18 @@
 <?php
     require_once 'district.php';
     require_once 'subdistrict.php';
+    require_once 'user.php';
+    require_once 'userdistrict.php';
 
-    $branchList = getAllSubDistricts();
+    $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+    $branchList = null;
+    if($userObj->member_type = 'Admin'){
+      $branchList = getAllSubDistricts();
+    }else{
+      $districtId = getDistrictIdForUser($userObj->id);
+      $branchList = getAllSubDistrictsWithInThisDistrict($districtId);
+    }
+
     if(mysql_num_rows($branchList)){
         ?>
             <table border="0" width="100%">

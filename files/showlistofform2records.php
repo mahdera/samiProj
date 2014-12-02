@@ -1,5 +1,6 @@
+<h2>Form 2 Records</h2>
 <?php
-	session_start();
+	@session_start();
 	//get all form2 values created by the session owner user...
 	require_once 'form2.php';
 	require_once 'user.php';
@@ -16,7 +17,7 @@
 		$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
 		$form2List = getAllForm2ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
 	}
-
+if(mysql_num_rows($form2List)){
 ?>
 <table border="0" width="100%">
 	<tr style="background:#ccc">
@@ -52,6 +53,13 @@
 		}//end while loop
 	?>
 </table>
+<?php
+}else{
+	?>
+		<div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>
+	<?php
+}
+?>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.form2EditLink').click(function(){

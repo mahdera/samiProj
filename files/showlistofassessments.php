@@ -24,7 +24,7 @@
           $assessmentList = getAllAssessmentsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
         }
         //$assessmentList = getAllAssessmentsModifiedBy($_SESSION['LOGGED_USER_ID']);
-        if(!empty($assessmentList)){
+        if(mysql_num_rows($assessmentList)){
             ?>
                 <table border="0" width="100%">
                     <tr style="background: #ccc">
@@ -75,6 +75,10 @@
                     ?>
                 </table>
             <?php
+        }else{
+          ?>
+          <div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>
+          <?php
         }
     ?>
 </div>

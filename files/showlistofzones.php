@@ -1,7 +1,17 @@
 <?php
+    session_start();
     require_once 'district.php';
+    require_once 'user.php';
 
-    $districtList = getAllDistricts();
+    $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+    $districtList = null;
+
+    if($userObj->member_type == 'Admin'){
+        $districtList = getAllDistricts();
+    }/*else if($userObj->member_type == 'User' && $userObj->user_level == '01'){
+        $districtList = getAllDistrictsModifiedBy($userObj->id);
+    }*/
+
     if(mysql_num_rows($districtList)){
         ?>
             <table border="0" width="100%">
@@ -13,7 +23,7 @@
                   $ctr=1;
                   while($districtRow = mysql_fetch_object($districtList)){
                       ?>
-                          <tr>                              
+                          <tr>
                               <td><?php echo $districtRow->display_name;?></td>
                               <td><?php echo $districtRow->description;?></td>
                           </tr>

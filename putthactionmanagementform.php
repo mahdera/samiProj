@@ -24,7 +24,7 @@
     //$goalFirstThList = getAllGoalFirstThsModifiedBy($_SESSION['LOGGED_USER_ID']);
     //this will have to be like all goalFirsts then filter out the ths in the goal first list
 
-    if($goalFirstThList){
+    if(mysql_num_rows($goalFirstThList)){
         ?>
         <table border="0" width="100%">
             <tr style="background: #CCC">
@@ -62,6 +62,10 @@
                 ?>
         </table>
         <?php
+    }else{
+    ?>
+      <div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>
+    <?php
     }
 ?>
 <hr/>

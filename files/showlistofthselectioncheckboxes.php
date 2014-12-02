@@ -33,7 +33,7 @@
 
         //$riskList = getAllRisksModifiedBy($_SESSION['LOGGED_USER_ID']);
 
-        if(!empty($riskList)){
+        if(mysql_num_rows($riskList)){
             ?>
                 <table border="0" width="100%">
                     <tr style="background: #ccc">
@@ -86,6 +86,10 @@
                     ?>
                 </table>
             <?php
+        }else{
+        ?>
+          <div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>
+        <?php
         }
 ?>
 </div>
