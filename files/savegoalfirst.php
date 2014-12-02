@@ -136,11 +136,15 @@
     }else if($userObj->user_level === '02'){
         //echo '<br/>Amazing userObj->user_level : ' . $userObj->user_level;
         //fetch the value just saved using the thId
-        $fetchedGoalFirst = getGoalFirstUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
+        $userSubDistrictObj = getSubDistrictInfoForUser($_SESSION['LOGGED_USER_ID']);
+        $fetchedGoalFirst = getGoalFirstUsingModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+
+        //$fetchedGoalFirst = getGoalFirstUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
         //now I need to save information on the goal_first_th table...
         saveGoalFirstTh($fetchedGoalFirst->id, $thId, $_SESSION['LOGGED_USER_ID']);
         //now get the immidieatly saved goalFirstTh record so that it can be used with
         //the goalFirstG1 and the rest records...
+        //$fetchedGoalFirstTh = getGoalFirstThUsingModifiedyByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
         $fetchedGoalFirstTh = getGoalFirstThUsingModifiedyBy($_SESSION['LOGGED_USER_ID']);
         //now save the goalfirstg1 value...
         saveGoalFirstG1($fetchedGoalFirstTh->id, $g1, $g1Fn, $_SESSION['LOGGED_USER_ID']);

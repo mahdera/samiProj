@@ -113,7 +113,9 @@
         }//end for loop i
     }else if($userObj->user_level == '02'){
         //fetch the value just saved using the thId
-        $fetchedGoalSecond = getGoalSecondUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
+        //$fetchedGoalSecond = getGoalSecondUsingModifiedBy($_SESSION['LOGGED_USER_ID']);
+        $userSubDistrictObj = getSubDistrictInfoForUser($_SESSION['LOGGED_USER_ID']);
+        $fetchedGoalSecond = getGoalSecondUsingModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
         //now save the goalsecondfn record in here...
         saveGoalSecondFn($fetchedGoalSecond->id, $fnId, $_SESSION['LOGGED_USER_ID']);
         $fetchedGoalSecondFn = getGoalSecondFnUsingModifiedyBy($_SESSION['LOGGED_USER_ID']);
