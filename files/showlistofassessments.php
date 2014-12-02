@@ -28,7 +28,6 @@
             ?>
                 <table border="0" width="100%">
                     <tr style="background: #ccc">
-                        <td></td>
                         <td>Assessment Type</td>
                         <td>Assessment Date</td>
                         <td>Th(s)</td>
@@ -42,7 +41,6 @@
                             $divId = "assessmentEditDiv" . $assessmentRow->id;
                             ?>
                             <tr>
-                                <td></td>
                                 <td><?php echo $assessmentRow->assessment_type;?></td>
                                 <td><?php echo $assessmentRow->assessment_date;?></td>
                                 <td>
@@ -66,7 +64,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="7">
+                                <td colspan="6">
                                     <div id="<?php echo $divId;?>"></div>
                                 </td>
                             </tr>

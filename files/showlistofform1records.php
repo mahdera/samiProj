@@ -1,7 +1,8 @@
-<h2>Form 1 Records</h2>
 <?php
 	session_start();
-	//get all form2 values created by the session owner user...
+	?>
+	<h2>Form 1 Records</h2>
+	<?php
 	require_once 'form1.php';
 	require_once 'user.php';
 	require_once 'usersubdistrict.php';

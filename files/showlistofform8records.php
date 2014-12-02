@@ -1,5 +1,8 @@
 <?php
 	session_start();
+	?>
+	<h2>Form 8 Records</h2>
+	<?php
 	//get all form2 values created by the session owner user...
 	require_once 'form8.php';
 	require_once 'user.php';
@@ -16,6 +19,7 @@
 		$form8List = getAllForm8ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
 	}
 	//$form8List = getAllForm8sModifiedBy($_SESSION['LOGGED_USER_ID']);
+	if(mysql_num_rows($form8List)){
 ?>
 <table border="0" width="100%">
 	<tr style="background:#ccc">
@@ -47,6 +51,13 @@
 		}//end while loop
 	?>
 </table>
+<?php
+}else{
+	?>
+	<div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>
+	<?php
+}
+?>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.form8EditLink').click(function(){

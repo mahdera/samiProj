@@ -1,5 +1,8 @@
 <?php
 	session_start();
+	?>
+	<h2>Form 3 Records</h2>
+	<?php
 	//get all form2 values created by the session owner user...
 	require_once 'form3.php';
 	require_once 'user.php';
@@ -17,6 +20,7 @@
 			$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
 			$form3List = getAllForm3ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
 	}
+	if(mysql_num_rows($form3List)){
 ?>
 <table border="0" width="100%">
 	<tr style="background:#ccc">
@@ -48,6 +52,13 @@
 		}//end while loop
 	?>
 </table>
+<?php
+}else{
+	?>
+	<div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>
+	<?php
+}
+?>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.form3EditLink').click(function(){

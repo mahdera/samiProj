@@ -1,6 +1,8 @@
-<h2>Form 2 Records</h2>
 <?php
-	@session_start();
+	session_start();
+	?>
+	<h2>Form 2 Records</h2>
+	<?php
 	//get all form2 values created by the session owner user...
 	require_once 'form2.php';
 	require_once 'user.php';

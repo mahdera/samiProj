@@ -1,5 +1,8 @@
 <?php
 	session_start();
+	?>
+	<h2>Form 5 Records</h2>
+	<?php
 	//get all form2 values created by the session owner user...
 	require_once 'form5.php';
 	require_once 'user.php';
@@ -17,6 +20,7 @@
 		$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
 		$form5List = getAllForm5ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
 	}
+	if(mysql_num_rows($form5List)){
 ?>
 <table border="0" width="100%">
 	<tr style="background:#ccc">
@@ -48,6 +52,13 @@
 		}//end while loop
 	?>
 </table>
+<?php
+}else{
+	?>
+	<div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>
+	<?php
+}
+?>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.form5EditLink').click(function(){

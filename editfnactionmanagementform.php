@@ -1,4 +1,3 @@
-<h2>Edit Fn Action</h2>
 <?php
     //error_reporting( 0 );
     require_once 'files/fnaction.php';
@@ -18,6 +17,7 @@
       $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
       $fnActionList = getAllFnActionsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
     }
+    if(mysql_num_rows($fnActionList)){
 ?>
 <div id="fnActionDetailDiv">
 <table border="0" width="100%">
@@ -57,6 +57,13 @@
     ?>
 </table>
 </div>
+<?php
+}else{
+  ?>
+  <div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>
+  <?php
+}
+?>
 <script type="text/javascript">
     $(document).ready(function(){
         $('.editFnActionLinkId').click(function(){

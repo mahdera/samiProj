@@ -23,7 +23,6 @@
 ?>
 <table border="0" width="100%">
     <tr style="background: #ccc">
-        <td></td>
         <td>Th Name</td>
         <td>Edit</td>
         <td>Delete</td>
@@ -34,13 +33,12 @@
             $divId = "thEditDiv" . $thRow->id;
             ?>
                 <tr>
-                    <td></td>
                     <td><?php echo $thRow->th_name; ?></td>
                     <td><a href="#.php" id="<?php echo $thRow->id;?>" class="editThLink">Edit</a></td>
                     <td><a href="#.php" id="<?php echo $thRow->id;?>" class="deleteThLink">Delete</a></td>
                 </tr>
                 <tr>
-                    <td colspan="4">
+                    <td colspan="3">
                         <div id="<?php echo $divId;?>"></div>
                     </td>
                 </tr>

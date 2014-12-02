@@ -19,6 +19,7 @@
       $thActionList = getAllThActionsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
     }
     //$thActionList = getAllThActionsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    if(mysql_num_rows($thActionList)){
 ?>
 <div id="thActionDetailDiv">
 <table border="0" width="100%">
@@ -58,6 +59,13 @@
     ?>
 </table>
 </div>
+<?php
+}else{
+  ?>
+  <div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>
+  <?php
+}
+?>
 <script type="text/javascript">
     $(document).ready(function(){
         $('.editThActionLink').click(function(){

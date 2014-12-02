@@ -29,7 +29,6 @@
             ?>
                 <table border="0" width="100%">
                     <tr style="background: #ccc">
-                        <td></td>
                         <td>Name</td>
                         <td>Title</td>
                         <td>Organization</td>
@@ -43,8 +42,7 @@
                         $ctr=1;
                         while($teamRow = mysql_fetch_object($teamList)){
                             ?>
-                            <tr>
-                                <td></td>
+                            <tr>                                
                                 <td><?php echo $teamRow->team_name;?></td>
                                 <td><?php echo $teamRow->title;?></td>
                                 <td><?php echo $teamRow->organization;?></td>
