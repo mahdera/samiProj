@@ -46,7 +46,7 @@
         ?>
     </div>
     <table border="1" width="100%" rules="rows">
-        <tr style="background: #eee">
+        <tr style="background: #eee; font-weight:bolder">
             <td>Ser.No</td>
             <td>First Name</td>
             <td>Last Name</td>
@@ -64,13 +64,17 @@
         </tr>
         <?php
             $ctr=1;
+            $districtObj = null;
+            $subDistrictObj = null;
+
             while($userRow = mysql_fetch_object($userList)){
                 $districtObj = null;
                 $subDistrictObj = null;
                 if($userRow->user_level == '01'){
                     //fetch zone information from tbl_user_zone
                     $userDistrict = getDistrictInfoForUser($userRow->id);
-                    $districtObj = getDistrict($userDistrict->district_id);
+                    if($userDistrict != null)
+                      $districtObj = getDistrict($userDistrict->district_id);
                 }else if($userRow->user_level == '02'){
                     //fetch branch information from tbl_user_branch
                     $userSubDistrict = getSubDistrictInfoForUser($userRow->id);

@@ -31,7 +31,8 @@
             <tr>
                 <td  width="20%">Obj:</td>
                 <td>
-                    <input type="text" id="<?php echo $objControlName;?>" name="<?php echo $objControlName;?>" class="g1Obj" size="70"/>
+                    <!--<input type="text" id="<?php echo $objControlName;?>" name="<?php /*echo $objControlName;*/?>" class="g1Obj" size="70"/>-->
+                    <textarea name="<?php echo $objControlName;?>" id="<?php echo $objControlName;?>" class="g1Obj" style="width:100%" rows="4"></textarea>
                 </td>
             </tr>
             <tr>

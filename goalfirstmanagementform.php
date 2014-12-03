@@ -72,7 +72,8 @@
         <tr>
             <td width="20%">G1:</td>
             <td>
-                <input type="text" name="txtg1" id="txtg1" size="70"/>
+                <!--<input type="text" name="txtg1" id="txtg1" size="70"/>-->
+                <textarea name="txtg1" id="txtg1" style="width:100%" rows="4"></textarea>
             </td>
         </tr>
         <tr>
@@ -114,7 +115,8 @@
                     <tr>
                         <td width="20%">Obj:</td>
                         <td>
-                            <input type="text" id="txtg1obj1" name="txtg1obj1" class="g1Obj" size="70"/>
+                            <!--<input type="text" id="txtg1obj1" name="txtg1obj1" class="g1Obj" size="70"/>-->
+                            <textarea name="txtg1obj1" id="txtg1obj1" class="g1Obj" style="width:100%" rows="4"></textarea>
                         </td>
                     </tr>
                     <tr>
@@ -168,7 +170,8 @@
         <tr>
             <td width="20%">G2:</td>
             <td>
-                <input type="text" name="txtg2" id="txtg2" size="70"/>
+                <!--<input type="text" name="txtg2" id="txtg2" size="70"/>-->
+                <textarea name="txtg2" id="txtg2" style="width:100%" rows="4"></textarea>
             </td>
         </tr>
         <tr>
@@ -215,7 +218,8 @@
                     <tr>
                         <td width="20%">Obj:</td>
                         <td>
-                            <input type="text" id="txtg2obj1" name="txtg2obj1" class="g2Obj" size="70"/>
+                            <!--<input type="text" id="txtg2obj1" name="txtg2obj1" class="g2Obj" size="70"/>-->
+                            <textarea name="txtg2obj1" id="txtg2obj1" class="g2Obj" style="width:100%" rows="4"></textarea>
                         </td>
                     </tr>
                     <tr>
@@ -269,7 +273,8 @@
         <tr>
             <td width="20%">G3:</td>
             <td>
-                <input type="text" name="txtg3" id="txtg3" size="70"/>
+                <!--<input type="text" name="txtg3" id="txtg3" size="70"/>-->
+                <textarea name="txtg3" id="txtg3" style="width:100%" rows="4"></textarea>
             </td>
         </tr>
         <tr>
@@ -315,7 +320,8 @@
                     <tr>
                         <td width="20%">Obj:</td>
                         <td>
-                            <input type="text" id="txtg3obj1" name="txtg3obj1" class="g3Obj" size="70"/>
+                            <!--<input type="text" id="txtg3obj1" name="txtg3obj1" class="g3Obj" size="70"/>-->
+                            <textarea name="txtg3obj1" id="txtg3obj1" style="width:100%" rows="4" class="g3Obj"></textarea>
                         </td>
                     </tr>
                     <tr>
