@@ -20,11 +20,13 @@
             $assessmentList = getAllAssessmentsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
         }else if($userObj->user_level == '01'){
           $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-          $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-          $assessmentList = getAllAssessmentsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+          if($userObj != null){
+            $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+            $assessmentList = getAllAssessmentsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+          }
         }
         //$assessmentList = getAllAssessmentsModifiedBy($_SESSION['LOGGED_USER_ID']);
-        if(mysql_num_rows($assessmentList)){
+        if(isset($assessmentList) && mysql_num_rows($assessmentList)){
             ?>
                 <table border="0" width="100%">
                     <tr style="background: #ccc">

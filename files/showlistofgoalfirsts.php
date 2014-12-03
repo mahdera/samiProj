@@ -14,7 +14,7 @@
     //$goalFirstList = getAllGoalFirstsModifiedBy($_SESSION['LOGGED_USER_ID']);
     $goalFirstList = getAllGoalFirstThsModifiedBy($_SESSION['LOGGED_USER_ID']);
 
-    if(mysql_num_rows($goalFirstList)){
+    if(isset($goalFirstList) && mysql_num_rows($goalFirstList)){
         ?>
         <table border="0" width="100%">
             <tr style="background: #cccccc">

@@ -24,6 +24,7 @@
         $userList = getAllDistrictAndSubDistrictUsersWithDistrictId($userDistrictObj->district_id);
     }
 ?>
+<div style="overflow-y: scroll; height: 650px; border : 2px solid gray">
 <form>
     <div style="background:#eee">
         <?php
@@ -45,7 +46,7 @@
           }
         ?>
     </div>
-    <table border="1" width="100%" rules="rows">
+    <table border="1" width="100%" rules="all">
         <tr style="background: #eee; font-weight:bolder">
             <td>Ser.No</td>
             <td>First Name</td>
@@ -112,6 +113,7 @@
         ?>
     </table>
 </form>
+</div>
 <hr/>
 <div id="createUserDiv"></div>
 <script type="text/javascript">

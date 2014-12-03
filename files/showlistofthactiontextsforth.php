@@ -24,7 +24,7 @@
     </tr>
     <?php
       $ctr=1;
-      if(mysql_num_rows($thActionList)){
+      if(isset($thActionList) && mysql_num_rows($thActionList)){
           while($thActionRow = mysql_fetch_object($thActionList)){
             ?>
               <tr>

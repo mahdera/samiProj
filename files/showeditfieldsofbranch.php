@@ -40,7 +40,7 @@
                 <input type="text" name="<?php echo $branchNameControl;?>" id="<?php echo $branchNameControl;?>" size="70" value="<?php echo $branchObj->display_name;?>"/>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none;">
             <td>Description:</td>
             <td>
                 <textarea name="<?php echo $descriptionControl;?>" id="<?php echo $descriptionControl;?>" rows="3" style="width:100%"><?php echo $branchObj->description;?></textarea>
@@ -65,7 +65,7 @@
             //now get the values...
             var zoneIdVal = $('#'+zoneControl).val();
             var branchNameVal = $('#'+branchNameControl).val();
-            var descriptionVal = $('#'+descriptionControl).val();
+            var descriptionVal = "---";//$('#'+descriptionControl).val();
 
             var divId = "branchEditDiv" + branchId;
             var dataString = "zoneId="+zoneIdVal+"&branchName="+branchNameVal+"&description="+

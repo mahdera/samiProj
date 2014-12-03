@@ -19,14 +19,15 @@
               $teamList = getAllTeamsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
         }else if($userObj->user_level == '01'){
             $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-            //var_dump($userObject);
-            $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
-            $teamList = getAllTeamsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+            if($userObject != null){
+              $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+              $teamList = getAllTeamsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+            }
         }
         //$teamList = getAllTeamsModifiedBy($_SESSION['LOGGED_USER_ID']);
         //now i need to get the level of the user and the based on that i will have to
         //query the records...
-        if(mysql_num_rows($teamList)){
+        if(isset($teamList) && mysql_num_rows($teamList)){
             ?>
                 <table border="0" width="100%">
                     <tr style="background: #ccc">

@@ -58,7 +58,8 @@
                         <?php
                           $g1ControlName = "edittxtg1" . $thId;
                         ?>
-                        <input type="text" name="<?php echo $g1ControlName;?>" id="<?php echo $g1ControlName;?>" value="<?php echo $goalFirstG1Row->g1;?>" size="70"/>
+                        <!--<input type="text" name="" id="" value="" size="70"/>-->
+                        <textarea name="<?php echo $g1ControlName;?>" id="<?php echo $g1ControlName;?>" style="width:100%" rows="4"><?php echo $goalFirstG1Row->g1;?></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -67,14 +68,16 @@
                     <td>
                         <?php
                           $fn1ControlName = "editslctfn1" . $thId;
-
+                          $fnList = null;
                           if($userObj->user_level == '02'){
                             $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
                             $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
                           }else if($userObj->user_level == '01'){
                             $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-                            $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-                            $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                            if(isset($userObj)){
+                              $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                              $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                            }
                           }
                           //$fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
                         ?>
@@ -112,7 +115,8 @@
                                 <td width="5%"></td>
                                 <td width="5%">Obj</td>
                                 <td>
-                                    <input type="text" name="<?php echo $goalFirstG1ObjControlName;?>" id="<?php echo $goalFirstG1ObjControlName;?>" value="<?php echo $goalFirstG1ObjFnRow->obj;?>" size="70"/>
+                                    <!--<input type="text" name="" id="" value="" size="70"/>-->
+                                    <textarea name="<?php echo $goalFirstG1ObjControlName;?>" id="<?php echo $goalFirstG1ObjControlName;?>" style="width:100%" rows="4"><?php echo $goalFirstG1ObjFnRow->obj;?></textarea>
                                     <input type="hidden" name="<?php echo $goalFirstG1ObjHiddenIdControlName;?>" id="<?php echo $goalFirstG1ObjHiddenIdControlName;?>" value="<?php echo $goalFirstG1ObjFnId;?>"/>
                                 </td>
                             </tr>
@@ -124,13 +128,16 @@
                                         <option value="">--Select--</option>
                                         <?php
                                             //$fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
+                                            $fnList = null;
                                             if($userObj->user_level == '02'){
                                               $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
                                               $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
                                             }else if($userObj->user_level == '01'){
                                               $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-                                              $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-                                              $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                                              if(isset($userObj)){
+                                                $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                                                $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                                              }
                                             }
                                             while ($fnRow = mysql_fetch_object($fnList)) {
                                                 if($fnRow->id == $goalFirstG1ObjFnRow->fn_id){
@@ -174,7 +181,8 @@
                         <?php
                           $g2ControlName = "edittxtg2" . $thId;
                         ?>
-                        <input type="text" name="<?php echo $g2ControlName;?>" id="<?php echo $g2ControlName;?>" value="<?php echo $goalFirstG2Row->g2;?>" size="70"/>
+                        <!--<input type="text" name="" id="" value="" size="70"/>-->
+                        <textarea name="<?php echo $g2ControlName;?>" id="<?php echo $g2ControlName;?>" style="width:100%" rows="4"><?php echo $goalFirstG2Row->g2;?></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -188,13 +196,16 @@
                             <option value="">--Select--</option>
                             <?php
                                 //$fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
+                                $fnList = null;
                                 if($userObj->user_level == '02'){
                                   $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
                                   $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
                                 }else if($userObj->user_level == '01'){
                                   $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-                                  $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-                                  $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                                  if(isset($userObj)){
+                                    $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                                    $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                                  }
                                 }
                                 while ($fnRow = mysql_fetch_object($fnList)) {
                                     if($fnRow->id == $goalFirstG2Row->fn_id){
@@ -226,7 +237,8 @@
                                 <td width="5%"></td>
                                 <td width="5%">Obj</td>
                                 <td>
-                                    <input type="text" name="<?php echo $goalFirstG2ObjControlName;?>" id="<?php echo $goalFirstG2ObjControlName;?>" value="<?php echo $goalFirstG2ObjFnRow->obj;?>" size="70"/>
+                                    <!--<input type="text" name="" id="" value="" size="70"/>-->
+                                    <textarea name="<?php echo $goalFirstG2ObjControlName;?>" id="<?php echo $goalFirstG2ObjControlName;?>" style="width:100%" rows="4"><?php echo $goalFirstG2ObjFnRow->obj;?></textarea>
                                     <input type="hidden" name="<?php echo $goalFirstG2ObjHiddenIdControlName;?>" id="<?php echo $goalFirstG2ObjHiddenIdControlName;?>" value="<?php echo $goalFirstG2ObjFnId;?>"/>
                                 </td>
                             </tr>
@@ -238,13 +250,16 @@
                                     <option value="">--Select--</option>
                                     <?php
                                         //$fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
+                                        $fnList = null;
                                         if($userObj->user_level == '02'){
                                           $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
                                           $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
                                         }else if($userObj->user_level == '01'){
                                           $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-                                          $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-                                          $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                                          if(isset($userObj)){
+                                            $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                                            $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                                          }
                                         }
                                         while ($fnRow = mysql_fetch_object($fnList)) {
                                             if($fnRow->id == $goalFirstG2ObjFnRow->fn_id){
@@ -288,7 +303,8 @@
                         <?php
                           $g3ControlName = "edittxtg3" . $thId;
                         ?>
-                        <input type="text" name="<?php echo $g3ControlName;?>" id="<?php echo $g3ControlName;?>" value="<?php echo $goalFirstG3Row->g3;?>" size="70"/>
+                        <!--<input type="text" name="" id="" value="" size="70"/>-->
+                        <textarea name="<?php echo $g3ControlName;?>" id="<?php echo $g3ControlName;?>" style="width:100%" rows="4"><?php echo $goalFirstG3Row->g3;?></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -302,13 +318,16 @@
                             <option value="">--Select--</option>
                             <?php
                                 //$fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
+                                $fnList = null;
                                 if($userObj->user_level == '02'){
                                   $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
                                   $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
                                 }else if($userObj->user_level == '01'){
                                   $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-                                  $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-                                  $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                                  if(isset($userObj)){
+                                    $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                                    $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                                  }
                                 }
                                 while ($fnRow = mysql_fetch_object($fnList)) {
                                     if($fnRow->id === $goalFirstG3Row->fn_id){
@@ -340,7 +359,8 @@
                                 <td width="5%"></td>
                                 <td width="5%">Obj</td>
                                 <td>
-                                    <input type="text" name="<?php echo $goalFirstG3ObjControlName;?>" id="<?php echo $goalFirstG3ObjControlName;?>" value="<?php echo $goalFirstG3ObjFnRow->obj;?>" size="70"/>
+                                    <!--<input type="text" name="" id="" value="" size="70"/>-->
+                                    <textarea name="<?php echo $goalFirstG3ObjControlName;?>" id="<?php echo $goalFirstG3ObjControlName;?>" style="width:100%" rows="4"><?php echo $goalFirstG3ObjFnRow->obj;?></textarea>
                                     <input type="hidden" name="<?php echo $goalFirstG3ObjHiddenIdControlName;?>" id="<?php echo $goalFirstG3ObjHiddenIdControlName;?>" value="<?php echo $goalFirstG3ObjFnId;?>"/>
                                 </td>
                             </tr>
@@ -352,13 +372,16 @@
                                         <option value="">--Select--</option>
                                         <?php
                                             //$fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
+                                            $fnList = null;
                                             if($userObj->user_level == '02'){
                                               $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
                                               $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
                                             }else if($userObj->user_level == '01'){
                                               $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-                                              $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-                                              $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                                              if(isset($userObj)){
+                                                $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                                                $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                                              }
                                             }
                                             while ($fnRow = mysql_fetch_object($fnList)) {
                                                 if($fnRow->id === $goalFirstG3ObjFnRow->fn_id){

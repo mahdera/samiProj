@@ -67,4 +67,14 @@
       $ex->getMessage();
     }
   }
+
+  function getOnlyOneDistrict(){
+    try{
+      $query = "select * from tbl_district order by modification_date desc limit 0,1";
+      $result = read($query);
+      return $result;
+    }catch(Exception $ex){
+      $ex->getMessage();
+    }
+  }
 ?>

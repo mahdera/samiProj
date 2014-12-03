@@ -15,7 +15,7 @@
     </tr>
     <?php
       $ctr=1;
-      if(mysql_num_rows($fnActionList)){
+      if(isset($fnActionList) && mysql_num_rows($fnActionList)){
           while($fnActionRow = mysql_fetch_object($fnActionList)){
             ?>
               <tr>

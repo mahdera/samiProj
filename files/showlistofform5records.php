@@ -17,10 +17,12 @@
 		$form5List = getAllForm5ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
 	}else if($userObj->user_level == '01'){
 		$userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-		$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-		$form5List = getAllForm5ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+		if(isset($userObj)){
+			$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+			$form5List = getAllForm5ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+		}
 	}
-	if(mysql_num_rows($form5List)){
+	if(isset($form5List) && mysql_num_rows($form5List)){
 ?>
 <table border="0" width="100%">
 	<tr style="background:#ccc">

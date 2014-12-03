@@ -1,6 +1,6 @@
 <?php
     require_once 'district.php';
-    $zoneList = getAllDistricts();
+    $zoneList = getOnlyOneDistrict();//getAllDistricts();
 ?>
 <div>
     <table border="0" width="100%">
@@ -12,7 +12,7 @@
                     <?php
                         while($zoneRow = mysql_fetch_object($zoneList)){
                           ?>
-                            <option value="<?php echo $zoneRow->id;?>"><?php echo $zoneRow->display_name;?></option>
+                            <option value="<?php echo $zoneRow->id;?>" selected="selected"><?php echo $zoneRow->display_name;?></option>
                           <?php
                         }//end while loop
                     ?>
@@ -25,7 +25,7 @@
                 <input type="text" name="txtbranchname" id="txtbranchname" size="70"/>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none;">
             <td>Description:</td>
             <td>
                 <textarea name="textareadescription" id="textareadescription" rows="3" style="width:100%"></textarea>
@@ -43,7 +43,7 @@
         $('#btnsave').click(function(){
             var zoneId = $('#slctzone').val();
             var branchName = $('#txtbranchname').val();
-            var description = $('#textareadescription').val();
+            var description = "---";//$('#textareadescription').val();
 
             if(zoneId != "" && branchName != ""){
                 var dataString = "zoneId="+zoneId+"&branchName="+branchName+"&description="+description;

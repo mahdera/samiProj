@@ -144,7 +144,7 @@
 
     function getAllNonAdminUsers(){
         try{
-            $query = "select * from tbl_user where member_type != 'Admin'";
+            $query = "select * from tbl_user where member_type != 'Admin' order by first_name, last_name";
             $result = read($query);
             return $result;
         } catch (Exception $ex) {

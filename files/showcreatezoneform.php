@@ -7,7 +7,7 @@
                     <input type="text" name="txtzonename" id="txtzonename" size="70"/>
                 </td>
             </tr>
-            <tr>
+            <tr style="display:none">
                 <td>Description:</td>
                 <td>
                     <textarea name="textareadescription" id="textareadescription" rows="3" style="width:100%"></textarea>
@@ -25,7 +25,7 @@
   $(document).ready(function(){
     $('#btnsave').click(function(){
       var zoneName = $('#txtzonename').val();
-      var description = $('#textareadescription').val();
+      var description = "---";//$('#textareadescription').val();
 
       if(zoneName != ""){
           var dataString = "zoneName="+zoneName+"&description="+description;

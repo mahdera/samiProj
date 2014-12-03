@@ -19,8 +19,10 @@
         $fnIdArray = getAllFilteredLatestFnIdsEnteredByUserUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
     }else if($userObj->user_level == '01'){
         $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-        $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-        $fnIdArray = getAllFilteredLatestFnIdsEnteredByUserUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+        if(isset($userObj)){
+          $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+          $fnIdArray = getAllFilteredLatestFnIdsEnteredByUserUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+        }
     }
 
     //first read fns from tbl_goal_first_g1
@@ -59,13 +61,15 @@
         <tr>
             <td width="20%">G1:</td>
             <td>
-                <input type="text" name="txtg1" id="txtg1" class="g1Obj" size="70"/>
+                <!--<input type="text" name="txtg1" id="txtg1" class="g1Obj" size="70"/>-->
+                <textarea name="txtg1" id="txtg1" class="g1Obj" style="width:100%" rows="4"></textarea>
             </td>
         </tr>
         <tr>
             <td width="20%">Obj:</td>
             <td>
-                <input type="text" name="txtg1obj1" id="txtg1obj1" size="70"/>
+                <!--<input type="text" name="txtg1obj1" id="txtg1obj1" size="70"/>-->
+                <textarea name="txtg1obj1" id="txtg1obj1" style="width:100%" rows="4"></textarea>
             </td>
         </tr>
         <tr id="addMoreG1Obj1">
@@ -78,13 +82,15 @@
         <tr>
             <td width="20%">G2:</td>
             <td>
-                <input type="text" name="txtg2" id="txtg2" class="g2Obj" size="70"/>
+                <!--<input type="text" name="txtg2" id="txtg2" class="g2Obj" size="70"/>-->
+                <textarea name="txtg2" id="txtg2" class="g2Obj" style="width:100%" rows="4"></textarea>
             </td>
         </tr>
         <tr>
             <td width="20%">Obj:</td>
             <td>
-                <input type="text" name="txtg2obj1" id="txtg2obj1" size="70"/>
+                <!--<input type="text" name="txtg2obj1" id="txtg2obj1" size="70"/>-->
+                <textarea name="txtg2obj1" id="txtg2obj1" style="width:100%" rows="4"></textarea>
             </td>
         </tr>
         <tr id="addMoreG2Obj1">
@@ -97,13 +103,15 @@
         <tr>
             <td width="20%">G3:</td>
             <td>
-                <input type="text" name="txtg3" id="txtg3" class="g3Obj" size="70"/>
+                <!--<input type="text" name="txtg3" id="txtg3" class="g3Obj" size="70"/>-->
+                <textarea name="txtg3" id="txtg3" class="g3Obj" style="width:100%" rows="4"></textarea>
             </td>
         </tr>
         <tr>
             <td width="20%">Obj:</td>
             <td>
-                <input type="text" name="txtg3obj1" id="txtg3obj1" size="70"/>
+                <!--<input type="text" name="txtg3obj1" id="txtg3obj1" size="70"/>-->
+                <textarea name="txtg3obj1" id="txtg3obj1" style="width:100%" rows="3"></textarea>
             </td>
         </tr>
         <tr id="addMoreG3Obj1">

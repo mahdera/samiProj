@@ -12,7 +12,7 @@
         $districtList = getAllDistrictsModifiedBy($userObj->id);
     }*/
 
-    if(mysql_num_rows($districtList)){
+    if(isset($districtList) && mysql_num_rows($districtList)){
         ?>
             <table border="0" width="100%">
                 <tr>
