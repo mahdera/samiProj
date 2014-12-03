@@ -15,7 +15,8 @@
         $teamList = null;
         if($userObj->user_level == '02'){
             $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-            $teamList = getAllTeamsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+            if($userSubDistrictObj != null)
+              $teamList = getAllTeamsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
         }else if($userObj->user_level == '01'){
             $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
             //var_dump($userObject);
@@ -42,7 +43,7 @@
                         $ctr=1;
                         while($teamRow = mysql_fetch_object($teamList)){
                             ?>
-                            <tr>                                
+                            <tr>
                                 <td><?php echo $teamRow->team_name;?></td>
                                 <td><?php echo $teamRow->title;?></td>
                                 <td><?php echo $teamRow->organization;?></td>

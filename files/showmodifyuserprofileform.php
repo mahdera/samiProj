@@ -32,7 +32,7 @@
                 <input type="text" name="txteditemail" id="txteditemail" value="<?php echo $userObj->email;?>"/>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <td>Member Type:</td>
             <td>
                 <select name="slcteditmembertype" id="slcteditmembertype" style="width: 100%">
@@ -170,7 +170,8 @@
           $branchObj = null;
           if($userObj->user_level == '01'){
             $userZone = getDistrictInfoForUser($userObj->id);
-            $zoneObj = getDistrict($userZone->district_id);
+            if($userZone != null)
+              $zoneObj = getDistrict($userZone->district_id);
           }else if($userObj->user_level == '02'){
             $userBranch = getSubDistrictInfoForUser($userObj->id);
             if($userBranch != null){

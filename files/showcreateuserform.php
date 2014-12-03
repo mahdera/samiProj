@@ -164,9 +164,9 @@
             var phoneNumber = $('#txtphonenumber').val();
             var memberType = 'User';//$('#slctmembertype').val();
             var userStatus = 'Active';//$('#slctuserstatus').val();
-            var userLevel = "";//$('#slctuserlevel').val();
+            var userLevel = '';//$('#slctuserlevel').val();
             var userRole = $('#slctuserrole').val();
-            var subDistrictId = $('#slctsubdistrict').val();
+            
             var eitherZoneIdOrBranchId = "";
             if(userRole == '01A'){
                 eitherZoneIdOrBranchId = 1;
@@ -178,7 +178,7 @@
 
 
             if(firstName !== "" && lastName !== "" && email !== "" && userId !== "" &&
-                    password !== "" && eitherZoneIdOrBranchId !== "" && userLevel !== "" && userRole !== ""){
+                    password !== "" && eitherZoneIdOrBranchId !== "" && userRole !== ""){
 
                 var dataString = "firstName="+firstName+"&lastName="+lastName+
                         "&email="+email+"&userId="+userId+"&password="+password+
