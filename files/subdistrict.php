@@ -62,7 +62,7 @@
   function getAllSubDistrictsOfThisDistrictHavingUsersUnderIt($districtId){
     try{
       $query = "select distinct tbl_sub_district.* from tbl_sub_district, tbl_user_sub_district, tbl_user where tbl_sub_district.district_id = $districtId and " .
-      "tbl_sub_district.id = tbl_user_sub_district.sub_district_id and tbl_user_sub_district.user_id = tbl_user.id";
+      "tbl_sub_district.id = tbl_user_sub_district.sub_district_id and tbl_user_sub_district.user_id = tbl_user.id and tbl_user.user_status = 'Active'";
       //echo $query;
       $result = read($query);
       return $result;
