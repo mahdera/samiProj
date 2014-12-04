@@ -10,7 +10,9 @@
       //now get any user who is in this sub district and currently active status
       $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
       //saveTeam($name, $title, $organization, $email, $phone, rtrim($interest, ','), $userObject->id);
-      saveFnAction($fnId, $textAreaValue, $userObject->id);
+      if(!empty($userObject)){
+        saveFnAction($fnId, $textAreaValue, $userObject->id);
+      }
     }else{
       saveFnAction($fnId, $textAreaValue, $_SESSION['LOGGED_USER_ID']);
     }

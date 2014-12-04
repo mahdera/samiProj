@@ -15,13 +15,13 @@
 		$form6List = getAllForm6ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
 	}else if($userObj->user_level == '01'){
 		$userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-		if(isset($userObj)){
+		if(!empty($userObj)){
 			$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
 			$form6List = getAllForm6ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
 		}
 	}
 	//$form6List = getAllForm6sModifiedBy($_SESSION['LOGGED_USER_ID']);
-	if(isset($form6List) && mysql_num_rows($form6List)){
+	if(!empty($form6List) && mysql_num_rows($form6List)){
 ?>
 <table border="1" width="100%" rules="all">
 	<tr style="background:#ccc">

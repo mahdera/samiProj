@@ -12,7 +12,7 @@
 		updateForm5($id, $q51Value, $_SESSION['LOGGED_USER_ID']);
 	}else if($userObj->user_level == '01'){
 		$userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-		if(isset($userObj)){
+		if(!empty($userObj)){
 			updateForm5($id, $q51Value, $userObj->id);
 		}
 	}

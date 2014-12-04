@@ -22,13 +22,13 @@
             $riskList = getAllRisksModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
         }else if($userObj->user_level == '01'){
             $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-            if(isset($userObj)){
+            if(!empty($userObj)){
               $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
               $riskList = getAllRisksModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
             }
         }
         //$riskList = getAllRisksModifiedBy($_SESSION['LOGGED_USER_ID']);
-        if(isset($riskList) && mysql_num_rows($riskList)){
+        if(!empty($riskList) && mysql_num_rows($riskList)){
             ?>
                 <table border="1" width="100%" rules="all">
                     <tr style="background: #ccc">

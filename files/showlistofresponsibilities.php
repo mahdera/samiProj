@@ -6,7 +6,7 @@
         require_once 'team.php';
 
         $responsibilityList = getAllResponsibilities();
-        if(isset($responsibilityList)){
+        if(!empty($responsibilityList)){
             ?>
                 <table border="0" width="100%">
                     <tr style="background: #ccc">

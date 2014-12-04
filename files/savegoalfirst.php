@@ -43,8 +43,10 @@
       $dateDifference = getDateDifferenceForGoalFirstUsingModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
     }else if($userObj->user_level == '01'){
       $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-      $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
-      $dateDifference = getDateDifferenceForGoalFirstUsingModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+      if(!empty($userObject)){
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+        $dateDifference = getDateDifferenceForGoalFirstUsingModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+      }
     }
 
     if(is_numeric($dateDifference)){
@@ -66,7 +68,9 @@
         if($userObj->user_level == '01'){
           //now get any user who is in this sub district and currently active status
           $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-          saveGoalFirst($userObject->id);
+          if(!empty($userObject)){
+            saveGoalFirst($userObject->id);
+          }
         }else if($userObj->user_level == '02'){
           saveGoalFirst($_SESSION['LOGGED_USER_ID']);
         }
@@ -84,55 +88,57 @@
         $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
         /////HERE I NEED TO THINK AND WORK CONTINUES FROM HERE....
         //fetch the value just saved using the thId
-        $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
-        $fetchedGoalFirst = getGoalFirstUsingModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
-        //now I need to save information on the goal_first_th table...
-        saveGoalFirstTh($fetchedGoalFirst->id, $thId, $userObject->id);
-        //now get the immidieatly saved goalFirstTh record so that it can be used with
-        //the goalFirstG1 and the rest records...
-        $fetchedGoalFirstTh = getGoalFirstThUsingModifiedyByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
-        //now save the goalfirstg1 value...
-        saveGoalFirstG1($fetchedGoalFirstTh->id, $g1, $g1Fn, $userObject->id);
-        //fetch the value using the above parameters you have used to save the values to the database...
-        $fetchedGoalFirstG1 = getGoalFirstG1UsingAndModifiedBy($fetchedGoalFirstTh->id, $g1, $g1Fn, $userObject->id);
+        if(!empty($userObject)){
+          $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+          $fetchedGoalFirst = getGoalFirstUsingModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+          //now I need to save information on the goal_first_th table...
+          saveGoalFirstTh($fetchedGoalFirst->id, $thId, $userObject->id);
+          //now get the immidieatly saved goalFirstTh record so that it can be used with
+          //the goalFirstG1 and the rest records...
+          $fetchedGoalFirstTh = getGoalFirstThUsingModifiedyByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+          //now save the goalfirstg1 value...
+          saveGoalFirstG1($fetchedGoalFirstTh->id, $g1, $g1Fn, $userObject->id);
+          //fetch the value using the above parameters you have used to save the values to the database...
+          $fetchedGoalFirstG1 = getGoalFirstG1UsingAndModifiedBy($fetchedGoalFirstTh->id, $g1, $g1Fn, $userObject->id);
 
 
-        for($i = 1; $i <= $numItemsG1; $i++){
-          $g1ObjTextBoxId = "txtg1obj" . $i;
-          $g1ObjTextBoxValue = $_POST["$g1ObjTextBoxId"];
-          $g1FnSelectBoxId = "slctg1fn" . $i;
-          $g1FnSelectBoxValue = $_POST["$g1FnSelectBoxId"];
-          //now save the values to the database...
-          saveGoalFirstG1ObjFn($fetchedGoalFirstG1->id, $g1ObjTextBoxValue, $g1FnSelectBoxValue, $userObject->id);
-        }//end for loop i
+          for($i = 1; $i <= $numItemsG1; $i++){
+            $g1ObjTextBoxId = "txtg1obj" . $i;
+            $g1ObjTextBoxValue = $_POST["$g1ObjTextBoxId"];
+            $g1FnSelectBoxId = "slctg1fn" . $i;
+            $g1FnSelectBoxValue = $_POST["$g1FnSelectBoxId"];
+            //now save the values to the database...
+            saveGoalFirstG1ObjFn($fetchedGoalFirstG1->id, $g1ObjTextBoxValue, $g1FnSelectBoxValue, $userObject->id);
+          }//end for loop i
 
-        //now do the same thing for G2
-        saveGoalFirstG2($fetchedGoalFirstTh->id, $g2, $g2Fn, $userObject->id);
-        //fetch the value using the above parameters you have used to save the values to the database...
-        $fetchedGoalFirstG2 = getGoalFirstG2UsingAndModifiedBy($fetchedGoalFirstTh->id, $g2, $g2Fn, $userObject->id);
+          //now do the same thing for G2
+          saveGoalFirstG2($fetchedGoalFirstTh->id, $g2, $g2Fn, $userObject->id);
+          //fetch the value using the above parameters you have used to save the values to the database...
+          $fetchedGoalFirstG2 = getGoalFirstG2UsingAndModifiedBy($fetchedGoalFirstTh->id, $g2, $g2Fn, $userObject->id);
 
-        for($j = 1; $j <= $numItemsG2; $j++){
-          $g2ObjTextBoxId = "txtg2obj" . $j;
-          $g2ObjTextBoxValue = $_POST["$g2ObjTextBoxId"];
-          $g2FnSelectBoxId = "slctg2fn" . $j;
-          $g2FnSelectBoxValue = $_POST["$g2FnSelectBoxId"];
-          //now save the values to the database...
-          saveGoalFirstG2ObjFn($fetchedGoalFirstG2->id, $g2ObjTextBoxValue, $g2FnSelectBoxValue, $userObject->id);
-        }//end for loop i
+          for($j = 1; $j <= $numItemsG2; $j++){
+            $g2ObjTextBoxId = "txtg2obj" . $j;
+            $g2ObjTextBoxValue = $_POST["$g2ObjTextBoxId"];
+            $g2FnSelectBoxId = "slctg2fn" . $j;
+            $g2FnSelectBoxValue = $_POST["$g2FnSelectBoxId"];
+            //now save the values to the database...
+            saveGoalFirstG2ObjFn($fetchedGoalFirstG2->id, $g2ObjTextBoxValue, $g2FnSelectBoxValue, $userObject->id);
+          }//end for loop i
 
-        //now do the same thing for G3
-        saveGoalFirstG3($fetchedGoalFirstTh->id, $g3, $g3Fn, $userObject->id);
-        //fetch the value using the above parameters you have used to save the values to the database...
-        $fetchedGoalFirstG3 = getGoalFirstG3UsingAndModifiedBy($fetchedGoalFirstTh->id, $g3, $g3Fn, $userObject->id);
+          //now do the same thing for G3
+          saveGoalFirstG3($fetchedGoalFirstTh->id, $g3, $g3Fn, $userObject->id);
+          //fetch the value using the above parameters you have used to save the values to the database...
+          $fetchedGoalFirstG3 = getGoalFirstG3UsingAndModifiedBy($fetchedGoalFirstTh->id, $g3, $g3Fn, $userObject->id);
 
-        for($k = 1; $k <= $numItemsG3; $k++){
-          $g3ObjTextBoxId = "txtg3obj" . $k;
-          $g3ObjTextBoxValue = $_POST["$g3ObjTextBoxId"];
-          $g3FnSelectBoxId = "slctg3fn" . $k;
-          $g3FnSelectBoxValue = $_POST["$g3FnSelectBoxId"];
-          //now save the values to the database...
-          saveGoalFirstG3ObjFn($fetchedGoalFirstG3->id, $g3ObjTextBoxValue, $g3FnSelectBoxValue, $userObject->id);
-        }//end for loop i
+          for($k = 1; $k <= $numItemsG3; $k++){
+            $g3ObjTextBoxId = "txtg3obj" . $k;
+            $g3ObjTextBoxValue = $_POST["$g3ObjTextBoxId"];
+            $g3FnSelectBoxId = "slctg3fn" . $k;
+            $g3FnSelectBoxValue = $_POST["$g3FnSelectBoxId"];
+            //now save the values to the database...
+            saveGoalFirstG3ObjFn($fetchedGoalFirstG3->id, $g3ObjTextBoxValue, $g3FnSelectBoxValue, $userObject->id);
+          }//end for loop i
+       }
     }else if($userObj->user_level === '02'){
         //echo '<br/>Amazing userObj->user_level : ' . $userObj->user_level;
         //fetch the value just saved using the thId

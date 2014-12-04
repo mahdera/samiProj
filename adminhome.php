@@ -1,7 +1,7 @@
 <?php
 error_reporting( 0 );
     session_start();
-    if(!isset($_SESSION['USER_ID'])){
+    if(!!empty($_SESSION['USER_ID'])){
         header("Location: login.php");
     }
 ?>

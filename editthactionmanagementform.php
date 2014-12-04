@@ -15,13 +15,13 @@
       $thActionList = getAllThActionsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
     }else if($userObj->user_level == '01'){
       $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-      if(isset($userObject)){
+      if(!empty($userObject)){
         $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
         $thActionList = getAllThActionsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
       }
     }
     //$thActionList = getAllThActionsModifiedBy($_SESSION['LOGGED_USER_ID']);
-    if(isset($thActionList)){
+    if(!empty($thActionList)){
 ?>
 <div id="thActionDetailDiv">
 <table border="1" width="100%" rules="all">

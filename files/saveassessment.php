@@ -18,11 +18,15 @@
         //now save pk of the two tables to the assessmentth table...
         if($_SESSION['USER_ROLE_CODE'] === '01A'){
           $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-          saveAssessment($assessmentType, $assessmentDate, $summary, $userObject->id);
+          if(!empty($userObject)){
+            saveAssessment($assessmentType, $assessmentDate, $summary, $userObject->id);
+          }
           $fetchedAssessment = getAssessmentUsing($assessmentType, $assessmentDate);
           saveTh($thValue, $userObject->id);
           $fetchedTh = getThUsing($thValue);
-          saveAssessmentTh($fetchedAssessment->id, $fetchedTh->id, $userObject->id);
+          if(!empty($userObject)){
+            saveAssessmentTh($fetchedAssessment->id, $fetchedTh->id, $userObject->id);
+          }
         }else{
           saveAssessment($assessmentType, $assessmentDate, $summary, $_SESSION['LOGGED_USER_ID']);
           $fetchedAssessment = getAssessmentUsing($assessmentType, $assessmentDate);

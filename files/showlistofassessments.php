@@ -26,7 +26,7 @@
           }
         }
         //$assessmentList = getAllAssessmentsModifiedBy($_SESSION['LOGGED_USER_ID']);
-        if(isset($assessmentList) && mysql_num_rows($assessmentList)){
+        if(!empty($assessmentList) && mysql_num_rows($assessmentList)){
             ?>
                 <table border="1" width="100%" rules="all">
                     <tr style="background: #ccc">

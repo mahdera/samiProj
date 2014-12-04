@@ -13,7 +13,9 @@
     if($_SESSION['USER_ROLE_CODE'] === '01A'){
       //now get any user who is in this sub district and currently active status
       $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-      saveRisk($thId, $mg, $dr, $pr, $wa, $rs, $userObject->id);
+      if(!empty($userObject)){
+        saveRisk($thId, $mg, $dr, $pr, $wa, $rs, $userObject->id);
+      }
     }else{
       saveRisk($thId, $mg, $dr, $pr, $wa, $rs, $_SESSION['LOGGED_USER_ID']);
     }

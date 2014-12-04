@@ -35,8 +35,10 @@
       $dateDifference = getDateDifferenceForGoalSecondUsingModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
     }else if($userObj->user_level == '01'){
       $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-      $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
-      $dateDifference = getDateDifferenceForGoalSecondUsingModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+      if(!empty($userObject)){
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+        $dateDifference = getDateDifferenceForGoalSecondUsingModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+      }
     }
 
     if(is_numeric($dateDifference)){
@@ -58,7 +60,9 @@
         if($userObj->user_level == '01'){
             //now get any user who is in this sub district and currently active status
             $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-            saveGoalSecond($userObject->id);
+            if(!empty($userObject)){
+              saveGoalSecond($userObject->id);
+            }
         }else if($userObj->user_level == '02'){
             saveGoalSecond($_SESSION['LOGGED_USER_ID']);
         }
@@ -69,48 +73,50 @@
     if($userObj->user_level == '01'){
         //fetch the value just saved using the thId
         $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-        $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
-        //a call to the new method which will consider data sharing...
-        $fetchedGoalSecond = getGoalSecondUsingModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
-        //now save the goalsecondfn record in here...
-        saveGoalSecondFn($fetchedGoalSecond->id, $fnId, $userObject->id);
-        $fetchedGoalSecondFn = getGoalSecondFnUsingModifiedyByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
-        //now save the goalfirstg1 value...
-        saveGoalSecondG1($fetchedGoalSecondFn->id, $g1, $userObject->id);
-        //fetch the value using the above parameters you have used to save the values to the database...
-        $fetchedGoalSecondG1 = getGoalSecondG1UsingAndModifiedBy($fetchedGoalSecondFn->id, $g1, $userObject->id);
+        if(!empty($userObject)){
+            $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+            //a call to the new method which will consider data sharing...
+            $fetchedGoalSecond = getGoalSecondUsingModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+            //now save the goalsecondfn record in here...
+            saveGoalSecondFn($fetchedGoalSecond->id, $fnId, $userObject->id);
+            $fetchedGoalSecondFn = getGoalSecondFnUsingModifiedyByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+            //now save the goalfirstg1 value...
+            saveGoalSecondG1($fetchedGoalSecondFn->id, $g1, $userObject->id);
+            //fetch the value using the above parameters you have used to save the values to the database...
+            $fetchedGoalSecondG1 = getGoalSecondG1UsingAndModifiedBy($fetchedGoalSecondFn->id, $g1, $userObject->id);
 
 
-        for($i = 1; $i <= $numItemsG1; $i++){
-          $g1ObjTextBoxId = "txtg1obj" . $i;
-          $g1ObjTextBoxValue = mysql_real_escape_string($_POST["$g1ObjTextBoxId"]);
-          //now save the values to the database...
-          saveGoalSecondG1Obj($fetchedGoalSecondG1->id, $g1ObjTextBoxValue, $userObject->id);
-        }//end for loop i
+            for($i = 1; $i <= $numItemsG1; $i++){
+              $g1ObjTextBoxId = "txtg1obj" . $i;
+              $g1ObjTextBoxValue = mysql_real_escape_string($_POST["$g1ObjTextBoxId"]);
+              //now save the values to the database...
+              saveGoalSecondG1Obj($fetchedGoalSecondG1->id, $g1ObjTextBoxValue, $userObject->id);
+            }//end for loop i
 
-        //now do the same thing for G2
-        saveGoalSecondG2($fetchedGoalSecondFn->id, $g2, $userObject->id);
-        //fetch the value using the above parameters you have used to save the values to the database...
-        $fetchedGoalSecondG2 = getGoalSecondG2UsingAndModifiedBy($fetchedGoalSecondFn->id, $g2, $userObject->id);
+            //now do the same thing for G2
+            saveGoalSecondG2($fetchedGoalSecondFn->id, $g2, $userObject->id);
+            //fetch the value using the above parameters you have used to save the values to the database...
+            $fetchedGoalSecondG2 = getGoalSecondG2UsingAndModifiedBy($fetchedGoalSecondFn->id, $g2, $userObject->id);
 
-        for($j = 1; $j <= $numItemsG2; $j++){
-          $g2ObjTextBoxId = "txtg2obj" . $j;
-          $g2ObjTextBoxValue = mysql_real_escape_string($_POST["$g2ObjTextBoxId"]);
-          //now save the values to the database...
-          saveGoalSecondG2Obj($fetchedGoalSecondG2->id, $g2ObjTextBoxValue, $userObject->id);
-        }//end for loop i
+            for($j = 1; $j <= $numItemsG2; $j++){
+              $g2ObjTextBoxId = "txtg2obj" . $j;
+              $g2ObjTextBoxValue = mysql_real_escape_string($_POST["$g2ObjTextBoxId"]);
+              //now save the values to the database...
+              saveGoalSecondG2Obj($fetchedGoalSecondG2->id, $g2ObjTextBoxValue, $userObject->id);
+            }//end for loop i
 
-        //now do the same thing for G3
-        saveGoalSecondG3($fetchedGoalSecondFn->id, $g3, $userObject->id);
-        //fetch the value using the above parameters you have used to save the values to the database...
-        $fetchedGoalSecondG3 = getGoalSecondG3UsingAndModifiedBy($fetchedGoalSecondFn->id, $g3, $userObject->id);
+            //now do the same thing for G3
+            saveGoalSecondG3($fetchedGoalSecondFn->id, $g3, $userObject->id);
+            //fetch the value using the above parameters you have used to save the values to the database...
+            $fetchedGoalSecondG3 = getGoalSecondG3UsingAndModifiedBy($fetchedGoalSecondFn->id, $g3, $userObject->id);
 
-        for($k = 1; $k <= $numItemsG3; $k++){
-          $g3ObjTextBoxId = "txtg3obj" . $k;
-          $g3ObjTextBoxValue = mysql_real_escape_string($_POST["$g3ObjTextBoxId"]);
-          //now save the values to the database...
-          saveGoalSecondG3Obj($fetchedGoalSecondG3->id, $g3ObjTextBoxValue, $userObject->id);
-        }//end for loop i
+            for($k = 1; $k <= $numItemsG3; $k++){
+              $g3ObjTextBoxId = "txtg3obj" . $k;
+              $g3ObjTextBoxValue = mysql_real_escape_string($_POST["$g3ObjTextBoxId"]);
+              //now save the values to the database...
+              saveGoalSecondG3Obj($fetchedGoalSecondG3->id, $g3ObjTextBoxValue, $userObject->id);
+            }//end for loop i
+      }
     }else if($userObj->user_level == '02'){
         //fetch the value just saved using the thId
         //$fetchedGoalSecond = getGoalSecondUsingModifiedBy($_SESSION['LOGGED_USER_ID']);

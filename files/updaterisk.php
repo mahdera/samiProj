@@ -18,7 +18,7 @@
       updateRisk($id, $thId, $mg, $dr, $pr, $wa, $rs, $_SESSION['LOGGED_USER_ID']);
     }else if($userObj->user_level == '01'){
       $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-      if(isset($userObj)){
+      if(!empty($userObj)){
         updateRisk($id, $thId, $mg, $dr, $pr, $wa, $rs, $userObj->id);
       }
     }

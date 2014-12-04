@@ -2,7 +2,7 @@
     require_once 'district.php';
 
     $districtList = getAllDistricts();
-    if(isset($districtList) && mysql_num_rows($districtList)){
+    if(!empty($districtList) && mysql_num_rows($districtList)){
         ?>
             <table border="0" width="100%">
                 <tr>

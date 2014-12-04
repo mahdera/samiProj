@@ -20,7 +20,7 @@
                         //now get list of teams from the database...
                         $teamList = null;
                         $teamList = getAllTeams();
-                        if(isset($teamList)){
+                        if(!empty($teamList)){
                             while($teamRow = mysql_fetch_object($teamList)){
                                 if($responsibilityObj->team_id == $teamRow->id){
                                 ?>

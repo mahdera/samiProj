@@ -7,7 +7,9 @@
     if($_SESSION['USER_ROLE_CODE'] === '01A'){
       //now get any user who is in this sub district and currently active status
       $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-      saveFn($fnName, $userObject->id,0);
+      if(!empty($userObject)){
+        saveFn($fnName, $userObject->id,0);
+      }
     }else{
       saveFn($fnName, $_SESSION['LOGGED_USER_ID'],0);
     }

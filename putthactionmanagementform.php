@@ -19,7 +19,7 @@
         $goalFirstThList = getAllGoalFirstThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
     }else if($userObj->user_level == '01'){
         $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-        if(isset($userObj)){
+        if(!empty($userObj)){
           $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
           $goalFirstThList = getAllGoalFirstThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
         }
@@ -28,7 +28,7 @@
     //$goalFirstThList = getAllGoalFirstThsModifiedBy($_SESSION['LOGGED_USER_ID']);
     //this will have to be like all goalFirsts then filter out the ths in the goal first list
 
-    if(isset($goalFirstThList) && mysql_num_rows($goalFirstThList)){
+    if(!empty($goalFirstThList) && mysql_num_rows($goalFirstThList)){
         ?>
         <table border="1" width="100%" rules="all">
             <tr style="background: #CCC">

@@ -17,7 +17,9 @@
 
     if($userObj->user_level == '01'){
         $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-        saveForm1($title, $formDate, $plan, $q1, $q2, $userObject->id);
+        if(!empty($userObject)){
+          saveForm1($title, $formDate, $plan, $q1, $q2, $userObject->id);
+        }
     }else if($userObj->user_level == '02'){
         saveForm1($title, $formDate, $plan, $q1, $q2, $_SESSION['LOGGED_USER_ID']);
     }

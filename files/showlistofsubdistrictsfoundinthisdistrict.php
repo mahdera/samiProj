@@ -11,7 +11,7 @@
   <option value="" selected="selected">--Select--</option>
   <?php
     while($subDistrictRow = mysql_fetch_object($subDistrictList) ){
-      if( isset($_SESSION['SUB_DISTRICT_ID']) ){
+      if( !empty($_SESSION['SUB_DISTRICT_ID']) ){
         if($_SESSION['SUB_DISTRICT_ID'] == $subDistrictRow->id){
           ?>
             <option value="<?php echo $subDistrictRow->id;?>" selected="selected"><?php echo stripslashes($subDistrictRow->display_name);?></option>

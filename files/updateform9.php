@@ -12,7 +12,7 @@
 		updateForm9($id, $q91Value, $_SESSION['LOGGED_USER_ID']);
 	}else if($userObj->user_level == '01'){
 		$userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-		if(isset($userObj)){
+		if(!empty($userObj)){
 			updateForm9($id, $q91Value, $userObj->id);
 		}
 	}

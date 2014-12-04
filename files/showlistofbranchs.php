@@ -14,7 +14,7 @@
       $branchList = getAllSubDistrictsWithInThisDistrict($districtId);
     }
 
-    if(isset($branchList) && mysql_num_rows($branchList)){
+    if(!empty($branchList) && mysql_num_rows($branchList)){
         ?>
             <table border="0" width="100%">
                 <tr>

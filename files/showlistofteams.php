@@ -27,7 +27,7 @@
         //$teamList = getAllTeamsModifiedBy($_SESSION['LOGGED_USER_ID']);
         //now i need to get the level of the user and the based on that i will have to
         //query the records...
-        if(isset($teamList) && mysql_num_rows($teamList)){
+        if(!empty($teamList) && mysql_num_rows($teamList)){
             ?>
                 <table border="1" width="100%" rules="all">
                     <tr style="background: #ccc">
