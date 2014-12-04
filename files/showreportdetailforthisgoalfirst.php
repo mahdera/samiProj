@@ -51,8 +51,10 @@
 		//STOPPED WORKING HERE.....
 		if($userObj->user_level == '01'){
 			$userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-			$userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
-			$form1Obj = getLatestForm1ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+			if(isset($userObject)){
+				$userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+				$form1Obj = getLatestForm1ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+			}
 		}else if($userObj->user_level == '02'){
 			$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
 			$form1Obj = getLatestForm1ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);

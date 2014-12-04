@@ -12,16 +12,16 @@
       if( isset($_SESSION['SUB_DISTRICT_ID']) ){
         if($_SESSION['SUB_DISTRICT_ID'] == $subDistrictRow->id){
           ?>
-            <option value="<?php echo $subDistrictRow->id;?>" selected="selected"><?php echo $subDistrictRow->display_name;?></option>
+            <option value="<?php echo $subDistrictRow->id;?>" selected="selected"><?php echo stripslashes($subDistrictRow->display_name);?></option>
           <?php
         }else{
           ?>
-            <option value="<?php echo $subDistrictRow->id;?>"><?php echo $subDistrictRow->display_name;?></option>
+            <option value="<?php echo $subDistrictRow->id;?>"><?php echo stripslashes($subDistrictRow->display_name);?></option>
           <?php
         }
       }else{
         ?>
-          <option value="<?php echo $subDistrictRow->id;?>"><?php echo $subDistrictRow->display_name;?></option>
+          <option value="<?php echo $subDistrictRow->id;?>"><?php echo stripslashes($subDistrictRow->display_name);?></option>
         <?php
       }
     }//end while loop

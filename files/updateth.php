@@ -1,7 +1,7 @@
 <?php
     session_start();
     $id = $_POST['id'];
-    @$thName = mysql_real_escape_string($_POST['thName']);
+    $thName = addslashes($_POST['thName']);
     require_once 'th.php';
     require_once 'user.php';
     require_once 'usersubdistrict.php';
@@ -12,7 +12,9 @@
       updateTh($id, $thName, $_SESSION['LOGGED_USER_ID']);
     }else if($userObj->user_level == '01'){
       $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-      updateTh($id, $thName, $userObj->id);
+      if(isset($userObj)){
+        updateTh($id, $thName, $userObj->id);
+      }
     }
 ?>
 <div class="notify notify-green"><span class="symbol icon-tick"></span> Th Updated Successfully!</div>

@@ -1,9 +1,9 @@
 <?php
     session_start();
-    @$q2_1 = mysql_real_escape_string($_POST['q2_1']);
-    @$q2_2 = mysql_real_escape_string($_POST['q2_2']);
-    @$q2_3 = mysql_real_escape_string($_POST['q2_3']);
-    @$q2_4 = mysql_real_escape_string($_POST['q2_4']);
+    $q2_1 = addslashes($_POST['q2_1']);
+    $q2_2 = addslashes($_POST['q2_2']);
+    $q2_3 = addslashes($_POST['q2_3']);
+    $q2_4 = addslashes($_POST['q2_4']);
 
     require_once 'form2.php';
     require_once 'user.php';

@@ -33,7 +33,7 @@
 		while($form8Row = mysql_fetch_object($form8List)){
 			?>
 			<tr>
-				<td><?php echo $form8Row->q8_1;?></td>
+				<td><?php echo stripslashes($form8Row->q8_1);?></td>
 				<td>
 					<a href="#.php" class="form8EditLink" id="<?php echo $form8Row->id;?>">Edit</a>
 				</td>

@@ -6,11 +6,11 @@
 	require_once 'user.php';
 	require_once 'usersubdistrict.php';
 
-	@$titleValue = mysql_real_escape_string($_POST['titleValue']);
+	$titleValue = addslashes($_POST['titleValue']);
 	$dateValue = $_POST['dateValue'];
-  @$planValue = mysql_real_escape_string($_POST['planValue']);
-  @$q1Value = mysql_real_escape_string($_POST['q1Value']);
-  @$q2Value = mysql_real_escape_string($_POST['q2Value']);
+  $planValue = addslashes($_POST['planValue']);
+  $q1Value = addslashes($_POST['q1Value']);
+  $q2Value = addslashes($_POST['q2Value']);
 	$id = $_POST['id'];
 	$q3NumRows = $_POST['q3NumRows'];
 	$q4NumRows = $_POST['q4NumRows'];
@@ -21,7 +21,9 @@
 		updateForm1($id, $titleValue, $dateValue, $planValue, $q1Value, $q2Value, $_SESSION['LOGGED_USER_ID']);
 	}else if($userObj->user_level == '01'){
 		$userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-		updateForm1($id, $titleValue, $dateValue, $planValue, $q1Value, $q2Value, $userObj->id);
+		if(isset($userObj)){
+			updateForm1($id, $titleValue, $dateValue, $planValue, $q1Value, $q2Value, $userObj->id);
+		}
 	}
 	//now do the form update for q3 and q4...clear both q3 and q4 tables for the passed form1 id
 	clearQ3ValuesForForm1($id);
@@ -33,10 +35,10 @@
 			$textBoxCol3Id = "txteditrowq3" . $i . 3;
 			$textBoxCol4Id = "txteditrowq3" . $i . 4;
 
-			@$textBoxCol1Val = mysql_real_escape_string($_POST["$textBoxCol1Id"]);
-			@$textBoxCol2Val = mysql_real_escape_string($_POST["$textBoxCol2Id"]);
-			@$textBoxCol3Val = mysql_real_escape_string($_POST["$textBoxCol3Id"]);
-			@$textBoxCol4Val = mysql_real_escape_string($_POST["$textBoxCol4Id"]);
+			$textBoxCol1Val = addslashes($_POST["$textBoxCol1Id"]);
+			$textBoxCol2Val = addslashes($_POST["$textBoxCol2Id"]);
+			$textBoxCol3Val = addslashes($_POST["$textBoxCol3Id"]);
+			$textBoxCol4Val = addslashes($_POST["$textBoxCol4Id"]);
 
 			if($userObj->user_level == '02'){
 				saveForm1Q3($id, $i, 1, $textBoxCol1Val, $_SESSION['LOGGED_USER_ID']);
@@ -58,10 +60,10 @@
 			$textBoxCol3Id = "txteditrowq4" . $i . 3;
 			$textBoxCol4Id = "txteditrowq4" . $i . 4;
 
-			@$textBoxCol1Val = mysql_real_escape_string($_POST["$textBoxCol1Id"]);
-			@$textBoxCol2Val = mysql_real_escape_string($_POST["$textBoxCol2Id"]);
-			@$textBoxCol3Val = mysql_real_escape_string($_POST["$textBoxCol3Id"]);
-			@$textBoxCol4Val = mysql_real_escape_string($_POST["$textBoxCol4Id"]);
+			$textBoxCol1Val = addslashes($_POST["$textBoxCol1Id"]);
+			$textBoxCol2Val = addslashes($_POST["$textBoxCol2Id"]);
+			$textBoxCol3Val = addslashes($_POST["$textBoxCol3Id"]);
+			$textBoxCol4Val = addslashes($_POST["$textBoxCol4Id"]);
 
 			if($userObj->user_level == '02'){
 				saveForm1Q4($id, $i, 1, $textBoxCol1Val, $_SESSION['LOGGED_USER_ID']);

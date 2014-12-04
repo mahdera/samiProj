@@ -14,19 +14,19 @@
         <tr>
             <td>Q2.1:</td>
             <td>
-                <textarea name="<?php echo $q21TextAreaControlName;?>" id="<?php echo $q21TextAreaControlName;?>" style="width: 100%" rows="3"><?php echo $form2Obj->q2_1;?></textarea>
+                <textarea name="<?php echo $q21TextAreaControlName;?>" id="<?php echo $q21TextAreaControlName;?>" style="width: 100%" rows="3"><?php echo stripslashes($form2Obj->q2_1);?></textarea>
             </td>
         </tr>
         <tr>
             <td>Q2.2:</td>
             <td>
-                <textarea name="<?php echo $q22TextAreaControlName;?>" id="<?php echo $q22TextAreaControlName;?>" style="width: 100%" rows="3"><?php echo $form2Obj->q2_2;?></textarea>
+                <textarea name="<?php echo $q22TextAreaControlName;?>" id="<?php echo $q22TextAreaControlName;?>" style="width: 100%" rows="3"><?php echo stripslashes($form2Obj->q2_2);?></textarea>
             </td>
         </tr>
         <tr>
             <td>Q2.3:</td>
             <td>
-                <textarea name="<?php echo $q23TextAreaControlName;?>" id="<?php echo $q23TextAreaControlName;?>" style="width: 100%" rows="3"><?php echo $form2Obj->q2_3;?></textarea>
+                <textarea name="<?php echo $q23TextAreaControlName;?>" id="<?php echo $q23TextAreaControlName;?>" style="width: 100%" rows="3"><?php echo stripslashes($form2Obj->q2_3);?></textarea>
             </td>
         </tr>
         <tr>

@@ -4,11 +4,11 @@
     require_once 'user.php';
 
     $thId = $_POST['thId'];
-    @$mg = mysql_real_escape_string($_POST['mg']);
-    @$dr = mysql_real_escape_string($_POST['dr']);
-    @$pr = mysql_real_escape_string($_POST['pr']);
-    @$wa = mysql_real_escape_string($_POST['wa']);
-    @$rs = mysql_real_escape_string($_POST['rs']);
+    $mg = addslashes($_POST['mg']);
+    $dr = addslashes($_POST['dr']);
+    $pr = addslashes($_POST['pr']);
+    $wa = addslashes($_POST['wa']);
+    $rs = addslashes($_POST['rs']);
 
     if($_SESSION['USER_ROLE_CODE'] === '01A'){
       //now get any user who is in this sub district and currently active status

@@ -1,7 +1,7 @@
 <?php
     session_start();
-    @$fnId = mysql_real_escape_string($_POST['fnId']);
-    @$textAreaValue = mysql_real_escape_string($_POST['textAreaValue']);
+    $fnId = addslashes($_POST['fnId']);
+    $textAreaValue = addslashes($_POST['textAreaValue']);
 
     require_once 'fnaction.php';
     require_once 'user.php';

@@ -17,19 +17,19 @@
         <tr>
             <td>First Name:</td>
             <td>
-                <input type="text" name="txteditfirstname" id="txteditfirstname" value="<?php echo $userObj->first_name;?>"/>
+                <input type="text" name="txteditfirstname" id="txteditfirstname" value="<?php echo stripslashes($userObj->first_name);?>"/>
             </td>
         </tr>
         <tr>
             <td>Last Name:</td>
             <td>
-                <input type="text" name="txteditlastname" id="txteditlastname" value="<?php echo $userObj->last_name;?>"/>
+                <input type="text" name="txteditlastname" id="txteditlastname" value="<?php echo stripslashes($userObj->last_name);?>"/>
             </td>
         </tr>
         <tr>
             <td>Email:</td>
             <td>
-                <input type="text" name="txteditemail" id="txteditemail" value="<?php echo $userObj->email;?>"/>
+                <input type="text" name="txteditemail" id="txteditemail" value="<?php echo stripslashes($userObj->email);?>"/>
             </td>
         </tr>
         <tr style="display:none">

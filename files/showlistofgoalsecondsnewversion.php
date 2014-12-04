@@ -5,9 +5,9 @@
     $goalSecondList = getAllGoalSecondsModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
 <table border="1" width="100%">
-    <tr style="background: #ccc">        
+    <tr style="background: #ccc">
         <td>Fn Name</td>
-        <td>Action</td>        
+        <td>Action</td>
     </tr>
     <?php
         $ctr=1;
@@ -15,8 +15,8 @@
             $divId = "fnEditDiv" . $goalSecondRow->id;
             $fnObj = getFn($goalSecondRow->fn_id);
             ?>
-            <tr>                
-                <td><?php echo $fnObj->fn_name;?></td>
+            <tr>
+                <td><?php echo stripslashes($fnObj->fn_name);?></td>
                 <td>
                     [<a href="#.php" class="showFnDetailsLink" id="<?php echo $goalSecondRow->id;?>">Show</a> | <a href="#.php" class="hideFnDetailsLink" id="<?php echo $fnRow->id;?>">Hide</a>]
                 </td>
@@ -33,18 +33,18 @@
 </table>
 <script type="text/javascript">
     $(document).ready(function(){
-        
+
         $('.showFnDetailsLink').click(function(){
             var id = $(this).attr('id');
             var divId = "fnEditDiv" + id;
             $('#'+divId).load('files/showg1andobjsforthisgoalsecond.php?id='+id);
         });
-        
+
         $('.hideFnDetailsLink').click(function(){
             var id = $(this).attr('id');
             var divId = "fnEditDiv" + id;
             $('#'+divId).html('');
         });
-        
+
     });//end document.ready function
 </script>

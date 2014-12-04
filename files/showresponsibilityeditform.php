@@ -18,8 +18,9 @@
                     <option value="" selected="selected">--Select--</option>
                     <?php
                         //now get list of teams from the database...
+                        $teamList = null;
                         $teamList = getAllTeams();
-                        if(!empty($teamList)){
+                        if(isset($teamList)){
                             while($teamRow = mysql_fetch_object($teamList)){
                                 if($responsibilityObj->team_id == $teamRow->id){
                                 ?>
@@ -57,7 +58,7 @@
                 <input type="button" value="Update" id="<?php echo $buttonId;?>"/>
                 <input type="reset" value="Clear"/>
             </td>
-        </tr>        
+        </tr>
     </table>
 </form>
 <hr/>
@@ -66,7 +67,7 @@
         var id = "<?php echo $id;?>";
         //define the button id
         var buttonId = "btnupdate" + id;
-        
+
         $('#'+buttonId).click(function(){
             //now define the control names...
             var teamSelectControl = "slctteam" + id;
@@ -76,16 +77,16 @@
             var teamId = $('#'+teamSelectControl).val();
             var role = $('#'+roleControl).val();
             var responsibility = $('#'+responsibilityControl).val();
-            
+
             if(teamId !== "" && role !== "" && responsibility !== ""){
                 var dataString = "id="+id+"&teamId="+teamId+"&role="+role+"&responsibility="+
                         responsibility;
                 var divId = "responsibilityEditDiv" + id;
                 $.ajax({
-                    url: 'files/updateresponsibility.php',		
+                    url: 'files/updateresponsibility.php',
                     data: dataString,
                     type:'POST',
-                    success:function(response){                        
+                    success:function(response){
                         $('#'+divId).html(response);
                     },
                     error:function(error){
@@ -95,8 +96,8 @@
             }else{
                 alert("Please don't leave input boxes empty! Try again!");
             }
-            
+
         });
-        
+
     });//end document.ready function
 </script>

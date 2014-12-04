@@ -1,9 +1,9 @@
 <?php
     session_start();
-    @$assessmentType = mysql_real_escape_string($_POST['assessmentType']);
-    @$assessmentDate = mysql_real_escape_string($_POST['assessmentDate']);
-    @$summary = mysql_real_escape_string($_POST['summary']);
-    @$numItems = mysql_real_escape_string($_POST['numItems']);
+    $assessmentType = addslashes($_POST['assessmentType']);
+    $assessmentDate = addslashes($_POST['assessmentDate']);
+    $summary = addslashes($_POST['summary']);
+    $numItems = addslashes($_POST['numItems']);
 
     require_once 'th.php';
     require_once 'assessment.php';
@@ -21,7 +21,7 @@
           saveAssessment($assessmentType, $assessmentDate, $summary, $userObject->id);
           $fetchedAssessment = getAssessmentUsing($assessmentType, $assessmentDate);
           saveTh($thValue, $userObject->id);
-          $fetchedTh = getThUsing($thValue);          
+          $fetchedTh = getThUsing($thValue);
           saveAssessmentTh($fetchedAssessment->id, $fetchedTh->id, $userObject->id);
         }else{
           saveAssessment($assessmentType, $assessmentDate, $summary, $_SESSION['LOGGED_USER_ID']);

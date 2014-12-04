@@ -10,7 +10,8 @@
             <tr>
                 <td width="20%">Obj:</td>
                 <td>
-                    <input type="text" size="70" id="<?php echo $objControlName;?>" name="<?php echo $objControlName;?>" class="g2Obj"/>
+                    <!--<input type="text" size="70" id="<?php //echo $objControlName;?>" name="<?php //echo $objControlName;?>" class="g2Obj"/>-->
+                    <textarea name="<?php echo $objControlName;?>" id="<?php echo $objControlName;?>" style="width:100%" rows="4" class="g2Obj"></textarea>
                 </td>
             </tr>
         </table>

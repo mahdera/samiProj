@@ -35,9 +35,9 @@ if(isset($form2List) && mysql_num_rows($form2List)){
 		while($form2Row = mysql_fetch_object($form2List)){
 			?>
 			<tr>
-				<td><?php echo $form2Row->q2_1;?></td>
-				<td><?php echo $form2Row->q2_2;?></td>
-				<td><?php echo $form2Row->q2_3;?></td>
+				<td><?php echo stripslashes($form2Row->q2_1);?></td>
+				<td><?php echo stripslashes($form2Row->q2_2);?></td>
+				<td><?php echo stripslashes($form2Row->q2_3);?></td>
 				<td>
 					<a href="#.php" class="form2EditLink" id="<?php echo $form2Row->id;?>">Edit</a>
 				</td>

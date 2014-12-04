@@ -37,11 +37,11 @@ if(isset($form1List) && mysql_num_rows($form1List)){
 		while($form1Row = mysql_fetch_object($form1List)){
 			?>
 			<tr>
-				<td><?php echo $form1Row->title;?></td>
-				<td><?php echo $form1Row->form_date;?></td>
-				<td><?php echo $form1Row->plan;?></td>
-				<td><?php echo $form1Row->q1;?></td>
-				<td><?php echo $form1Row->q2;?></td>
+				<td><?php echo stripslashes($form1Row->title);?></td>
+				<td><?php echo stripslashes($form1Row->form_date);?></td>
+				<td><?php echo stripslashes($form1Row->plan);?></td>
+				<td><?php echo stripslashes($form1Row->q1);?></td>
+				<td><?php echo stripslashes($form1Row->q2);?></td>
 				<td>
 					<a href="#.php" class="form1EditLink" id="<?php echo $form1Row->id;?>">Edit</a>
 				</td>

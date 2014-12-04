@@ -1,8 +1,8 @@
 <?php
     session_start();
     require_once 'district.php';
-    @$zoneName = mysql_real_escape_string($_POST['zoneName']);
-    @$description = mysql_real_escape_string($_POST['description']);
+    $zoneName = addslashes($_POST['zoneName']);
+    $description = addslashes($_POST['description']);
     $zoneId = $_POST['zoneId'];
 
     updateDistrict($zoneId, $zoneName,$zoneName, $description, $_SESSION['LOGGED_USER_ID']);

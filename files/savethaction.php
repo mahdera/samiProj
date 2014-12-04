@@ -1,7 +1,7 @@
 <?php
     session_start();
-    @$thId = mysql_real_escape_string($_POST['thId']);
-    @$textAreaValue = mysql_real_escape_string($_POST['textAreaValue']);
+    $thId = addslashes($_POST['thId']);
+    $textAreaValue = addslashes($_POST['textAreaValue']);
 
     require_once 'thaction.php';
     require_once 'user.php';

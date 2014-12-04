@@ -23,7 +23,7 @@
             ?>
               <tr>
                 <td><?php echo $ctr++;?></td>
-                <td><?php echo $thActionRow->action_text;?></td>
+                <td><?php echo stripslashes($thActionRow->action_text);?></td>
                 <td>
                     <a href="#.php" id="<?php echo $thActionRow->id;?>" class="editThActionLinkId">Edit</a>
                 </td>

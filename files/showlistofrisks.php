@@ -22,11 +22,13 @@
             $riskList = getAllRisksModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
         }else if($userObj->user_level == '01'){
             $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-            $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-            $riskList = getAllRisksModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+            if(isset($userObj)){
+              $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+              $riskList = getAllRisksModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+            }
         }
         //$riskList = getAllRisksModifiedBy($_SESSION['LOGGED_USER_ID']);
-        if(mysql_num_rows($riskList)){
+        if(isset($riskList) && mysql_num_rows($riskList)){
             ?>
                 <table border="0" width="100%">
                     <tr style="background: #ccc">
@@ -46,12 +48,12 @@
                             $divId = "riskEditDiv" . $riskRow->id;
                             ?>
                             <tr>
-                                <td><?php echo $th->th_name;?></td>
-                                <td><?php echo $riskRow->mg;?></td>
-                                <td><?php echo $riskRow->dr;?></td>
-                                <td><?php echo $riskRow->pr;?></td>
-                                <td><?php echo $riskRow->wa;?></td>
-                                <td><?php echo $riskRow->rs;?></td>
+                                <td><?php echo stripslashes($th->th_name);?></td>
+                                <td><?php echo stripslashes($riskRow->mg);?></td>
+                                <td><?php echo stripslashes($riskRow->dr);?></td>
+                                <td><?php echo stripslashes($riskRow->pr);?></td>
+                                <td><?php echo stripslashes($riskRow->wa);?></td>
+                                <td><?php echo stripslashes($riskRow->rs);?></td>
                                 <td><a href="#.php" class="riskEditLink" id="<?php echo $riskRow->id;?>">Edit</a></td>
                                 <td><a href="#.php" class="riskDeleteLink" id="<?php echo $riskRow->id;?>">Delete</a></td>
                             </tr>

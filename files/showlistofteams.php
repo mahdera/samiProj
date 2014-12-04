@@ -45,11 +45,11 @@
                         while($teamRow = mysql_fetch_object($teamList)){
                             ?>
                             <tr>
-                                <td><?php echo $teamRow->team_name;?></td>
-                                <td><?php echo $teamRow->title;?></td>
-                                <td><?php echo $teamRow->organization;?></td>
-                                <td><?php echo $teamRow->email;?></td>
-                                <td><?php echo $teamRow->phone;?></td>
+                                <td><?php echo stripslashes($teamRow->team_name);?></td>
+                                <td><?php echo stripslashes($teamRow->title);?></td>
+                                <td><?php echo stripslashes($teamRow->organization);?></td>
+                                <td><?php echo stripslashes($teamRow->email);?></td>
+                                <td><?php echo stripslashes($teamRow->phone);?></td>
                                 <td><?php echo rtrim($teamRow->interest , ',');?></td>
                                 <td>
                                     <a href="#.php" class="teamEditLink" id="<?php echo $teamRow->id;?>">Edit</a>

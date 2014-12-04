@@ -35,7 +35,7 @@
             $divId = "thEditDiv" . $thRow->id;
             ?>
                 <tr>
-                    <td><?php echo $thRow->th_name; ?></td>
+                    <td><?php echo stripslashes($thRow->th_name); ?></td>
                     <td><a href="#.php" id="<?php echo $thRow->id;?>" class="editThLink">Edit</a></td>
                     <td><a href="#.php" id="<?php echo $thRow->id;?>" class="deleteThLink">Delete</a></td>
                 </tr>

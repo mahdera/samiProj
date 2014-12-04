@@ -5,11 +5,11 @@
     require_once 'form1q4.php';
     require_once 'user.php';
 
-    @$title = mysql_real_escape_string($_POST['title']);
-    @$formDate = mysql_real_escape_string($_POST['formDate']);
-    @$plan = mysql_real_escape_string($_POST['plan']);
-    @$q1 = mysql_real_escape_string($_POST['q1']);
-    @$q2 = mysql_real_escape_string($_POST['q2']);
+    $title = addslashes($_POST['title']);
+    $formDate = addslashes($_POST['formDate']);
+    $plan = addslashes($_POST['plan']);
+    $q1 = addslashes($_POST['q1']);
+    $q2 = addslashes($_POST['q2']);
     $q3NumRows = $_POST['q3NumRows'];
     $q4NumRows = $_POST['q4NumRows'];
 

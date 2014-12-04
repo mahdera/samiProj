@@ -13,18 +13,18 @@
 
     //get the values...
     $thId = $_POST['th'];
-    @$g1 = mysql_real_escape_string($_POST['g1']);
-    @$g1Fn = mysql_real_escape_string($_POST['g1Fn']);
-    @$g1Obj1 = mysql_real_escape_string($_POST['g1Obj1']);
-    @$g1Fn1 = mysql_real_escape_string($_POST['g1Fn1']);
-    @$g2 = mysql_real_escape_string($_POST['g2']);
-    @$g2Fn = mysql_real_escape_string($_POST['g2Fn']);
-    @$g2Obj1 = mysql_real_escape_string($_POST['g2Obj1']);
-    @$g2Fn1 = mysql_real_escape_string($_POST['g2Fn1']);
-    @$g3 = mysql_real_escape_string($_POST['g3']);
-    @$g3Fn = mysql_real_escape_string($_POST['g3Fn']);
-    @$g3Obj1 = mysql_real_escape_string($_POST['g3Obj1']);
-    @$g3Fn1 = mysql_real_escape_string($_POST['g3Fn1']);
+    $g1 = addslashes($_POST['g1']);
+    $g1Fn = addslashes($_POST['g1Fn']);
+    $g1Obj1 = addslashes($_POST['g1Obj1']);
+    $g1Fn1 = addslashes($_POST['g1Fn1']);
+    $g2 = addslashes($_POST['g2']);
+    $g2Fn = addslashes($_POST['g2Fn']);
+    $g2Obj1 = addslashes($_POST['g2Obj1']);
+    $g2Fn1 = addslashes($_POST['g2Fn1']);
+    $g3 = addslashes($_POST['g3']);
+    $g3Fn = addslashes($_POST['g3Fn']);
+    $g3Obj1 = addslashes($_POST['g3Obj1']);
+    $g3Fn1 = addslashes($_POST['g3Fn1']);
     $numItemsG1 = $_POST['numItemsG1'];
     $numItemsG2 = $_POST['numItemsG2'];
     $numItemsG3 = $_POST['numItemsG3'];

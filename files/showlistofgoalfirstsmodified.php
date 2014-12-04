@@ -27,7 +27,7 @@
         $goalFirstThList = getAllGoalFirstThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
     }
 
-    if(mysql_num_rows($goalFirstThList)){
+    if(isset($goalFirstThList) && mysql_num_rows($goalFirstThList)){
         ?>
         <table border="0" width="100%">
             <tr style="background: #CCC">
@@ -46,7 +46,7 @@
                         if(true){
                             ?>
                             <tr>
-                                <td><?php echo $thObj->th_name;?></td>
+                                <td><?php echo stripslashes($thObj->th_name);?></td>
                                 <td>
                                     [<a href="#.php" id="<?php echo $thObj->id;?>" class="openActionFormClass">Show Goal First Detail</a> | <a href="#.php" id="<?php echo $goalFirstThRow->th_id;?>" class="closeActionFormClass">Close Goal First Detail</a>]
                                 </td>

@@ -1,6 +1,6 @@
 <?php
     session_start();
-    @$q8_1 = mysql_real_escape_string($_POST['q8_1']);
+    $q8_1 = addslashes($_POST['q8_1']);
 
     require_once 'form8.php';
     require_once 'user.php';
@@ -11,5 +11,5 @@
       saveForm8($q8_1, $userObj->id);
     }else if($userObj->user_level == '02'){
       saveForm8($q8_1, $_SESSION['LOGGED_USER_ID']);
-    }    
+    }
 ?>

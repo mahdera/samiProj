@@ -34,15 +34,15 @@
             var id = "<?php echo $id;?>";
             var resetPassword = $('#txtresetpassword').val();
             var resetConfirmPassword = $('#txtresetconfirmpassword').val();
-            if(resetPassword !== "" && resetConfirmPassword !== ""){                
+            if(resetPassword !== "" && resetConfirmPassword !== ""){
                 if(resetPassword === resetConfirmPassword){
                     //now i can reset the user's password
                     var dataString = "id="+id+"&resetPassword="+resetPassword;
                     $.ajax({
-                        url: 'files/resetuserpassword.php',		
+                        url: 'files/resetuserpassword.php',
                         data: dataString,
                         type:'POST',
-                        success:function(response){                    
+                        success:function(response){
                             $('#createUserDiv').html(response);
                         },
                         error:function(error){

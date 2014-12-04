@@ -1,6 +1,6 @@
 <?php
     session_start();
-    @$q6_1 = mysql_real_escape_string($_POST['q6_1']);
+    $q6_1 = addslashes($_POST['q6_1']);
 
     require_once 'form6.php';
     require_once 'user.php';
@@ -11,5 +11,5 @@
       saveForm6($q6_1, $userObj->id);
     }else if($userObj->user_level == '02'){
       saveForm6($q6_1, $_SESSION['LOGGED_USER_ID']);
-    }    
+    }
 ?>

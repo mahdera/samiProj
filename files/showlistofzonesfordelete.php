@@ -15,8 +15,8 @@
                   while($districtRow = mysql_fetch_object($districtList)){
                       ?>
                           <tr>
-                              <td><?php echo $districtRow->display_name;?></td>
-                              <td><?php echo $districtRow->description;?></td>
+                              <td><?php echo stripslashes($districtRow->display_name);?></td>
+                              <td><?php echo stripslashes($districtRow->description);?></td>
                               <td>
                                   <a href="#" id="<?php echo $districtRow->id;?>" class="deleteZoneClass">Delete</a>
                               </td>

@@ -17,31 +17,31 @@
         <tr>
             <td>Title</td>
             <td>
-                <input type="text" name="<?php echo $titleControlName;?>" id="<?php echo $titleControlName;?>" value="<?php echo $form1Obj->title;?>"/>
+                <input type="text" name="<?php echo $titleControlName;?>" id="<?php echo $titleControlName;?>" value="<?php echo stripslashes($form1Obj->title);?>"/>
             </td>
         </tr>
         <tr>
             <td>Date:</td>
             <td>
-                <input type="text" id="<?php echo $dateControlName;?>" name="<?php echo $dateControlName;?>" value="<?php echo $form1Obj->form_date;?>"/>
+                <input type="text" id="<?php echo $dateControlName;?>" name="<?php echo $dateControlName;?>" value="<?php echo stripslashes($form1Obj->form_date);?>"/>
             </td>
         </tr>
         <tr>
             <td>Plan:</td>
             <td>
-                <textarea name="<?php echo $planControlName;?>" id="<?php echo $planControlName;?>" style="width: 100%" rows="3"><?php echo $form1Obj->plan;?></textarea>
+                <textarea name="<?php echo $planControlName;?>" id="<?php echo $planControlName;?>" style="width: 100%" rows="3"><?php echo stripslashes($form1Obj->plan);?></textarea>
             </td>
         </tr>
         <tr>
             <td>Q1:</td>
             <td>
-                <textarea name="<?php echo $q1ControlName;?>" id="<?php echo $q1ControlName;?>" style="width: 100%" rows="3"><?php echo $form1Obj->q1;?></textarea>
+                <textarea name="<?php echo $q1ControlName;?>" id="<?php echo $q1ControlName;?>" style="width: 100%" rows="3"><?php echo stripslashes($form1Obj->q1);?></textarea>
             </td>
         </tr>
         <tr>
             <td>Q2:</td>
             <td>
-                <textarea name="<?php echo $q2ControlName;?>" id="<?php echo $q2ControlName;?>" style="width: 100%" rows="3"><?php echo $form1Obj->q2;?></textarea>
+                <textarea name="<?php echo $q2ControlName;?>" id="<?php echo $q2ControlName;?>" style="width: 100%" rows="3"><?php echo stripslashes($form1Obj->q2);?></textarea>
             </td>
         </tr>
 				<tr>
@@ -64,11 +64,11 @@
 															echo "<tr class='$q3RowClass'>";
 														}if($colCount < 4){
 															?>
-																<td><input type="text" name="<?php echo $textBoxId;?>" id="<?php echo $textBoxId;?>" value="<?php echo $form1Q3Row->column_value;?>"/></td>
+																<td><input type="text" name="<?php echo $textBoxId;?>" id="<?php echo $textBoxId;?>" value="<?php echo stripslashes($form1Q3Row->column_value);?>"/></td>
 															<?php
 														}if($colCount == 4){
 															?>
-																<td><input type="text" name="<?php echo $textBoxId;?>" id="<?php echo $textBoxId;?>" value="<?php echo $form1Q3Row->column_value;?>"/></td>
+																<td><input type="text" name="<?php echo $textBoxId;?>" id="<?php echo $textBoxId;?>" value="<?php echo stripslashes($form1Q3Row->column_value);?>"/></td>
 															<?php
 															$colCount = 0;
 															echo "</tr>";

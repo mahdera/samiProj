@@ -28,7 +28,7 @@
     }
 
     //$goalSecondFnList = getAllGoalSecondFnsModifiedBy($_SESSION['LOGGED_USER_ID']);
-    if(mysql_num_rows($goalSecondFnList)){
+    if(isset($goalSecondFnList) && mysql_num_rows($goalSecondFnList)){
 ?>
 <table border="0" width="100%">
     <tr style="background: #ccc">
@@ -48,7 +48,7 @@
             if(true){
                 ?>
                     <tr>
-                        <td width="20%"><?php echo $fnObj->fn_name;?></td>
+                        <td width="20%"><?php echo stripslashes($fnObj->fn_name);?></td>
                         <td>
                             <a href="#.php" id="<?php echo $fnObj->id;?>" class="openActionFormClass">Show Goal Second Detail</a> | <a href="#.php" id="<?php echo $fnObj->id;?>" class="closeActionFormClass">Close Goal Second Detail</a>
                         </td>

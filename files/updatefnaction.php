@@ -13,9 +13,9 @@
 
     $fnId = $_POST['fnId'];
     $fnActionId = $_POST['fnActionId'];
-    @$txtG1Val = mysql_real_escape_string($_POST['txtG1Val']);
-    @$txtG2Val = mysql_real_escape_string($_POST['txtG2Val']);
-    @$txtG3Val = mysql_real_escape_string($_POST['txtG3Val']);
+    $txtG1Val = addslashes($_POST['txtG1Val']);
+    $txtG2Val = addslashes($_POST['txtG2Val']);
+    $txtG3Val = addslashes($_POST['txtG3Val']);
     $goalSecondG1Id = $_POST['goalSecondG1Id'];
     $goalSecondG2Id = $_POST['goalSecondG2Id'];
     $goalSecondG3Id = $_POST['goalSecondG3Id'];
@@ -23,14 +23,14 @@
     $goalSecondG1Ctr = $_POST['goalSecondG1Ctr'];
     $goalSecondG2Ctr = $_POST['goalSecondG2Ctr'];
     $goalSecondG3Ctr = $_POST['goalSecondG3Ctr'];
-    @$fnEditActionText = mysql_real_escape_string($_POST['fnEditActionText']);
+    $fnEditActionText = addslashes($_POST['fnEditActionText']);
 
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
 
     for($i=1; $i<=$goalSecondG1Ctr; $i++){
         $goalSecondG1ObjControlName = "edittxtgoalsecondg1obj" . $fnId . $i;
         $goalSecondG1ObjHiddenIdControlName = "hiddengoalsecondg1objid" . $fnId . $i;
-        @$goalSecondG1ObjVal = mysql_real_escape_string($_POST["$goalSecondG1ObjControlName"]);
+        $goalSecondG1ObjVal = addslashes($_POST["$goalSecondG1ObjControlName"]);
         $goalSecondG1ObjHiddenIdVal = $_POST["$goalSecondG1ObjHiddenIdControlName"];
         //now update the data value...
         if($userObj->user_level == '02'){
@@ -46,7 +46,7 @@
     for($j=1; $j<=$goalSecondG2Ctr; $j++){
         $goalSecondG2ObjControlName = "edittxtgoalsecondg2obj" . $fnId . $j;
         $goalSecondG2ObjHiddenIdControlName = "hiddengoalsecondg2objid" . $fnId . $j;
-        @$goalSecondG2ObjVal = mysql_real_escape_string($_POST["$goalSecondG2ObjControlName"]);
+        $goalSecondG2ObjVal = addslashes($_POST["$goalSecondG2ObjControlName"]);
         $goalSecondG2ObjHiddenIdVal = $_POST["$goalSecondG2ObjHiddenIdControlName"];
         //now update the data value...
         if($userObj->user_level == '02'){
@@ -62,7 +62,7 @@
     for($k=1; $k<=$goalSecondG3Ctr; $k++){
         $goalSecondG3ObjControlName = "edittxtgoalsecondg3obj" . $fnId . $k;
         $goalSecondG3ObjHiddenIdControlName = "hiddengoalsecondg3objid" . $fnId . $k;
-        @$goalSecondG3ObjVal = mysql_real_escape_string($_POST["$goalSecondG3ObjControlName"]);
+        $goalSecondG3ObjVal = addslashes($_POST["$goalSecondG3ObjControlName"]);
         $goalSecondG3ObjHiddenIdVal = $_POST["$goalSecondG3ObjHiddenIdControlName"];
         //now update the data value...
         if($userObj->user_level == '02'){

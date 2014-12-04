@@ -5,9 +5,9 @@
     require_once 'user.php';
     require_once 'usersubdistrict.php';
 
-    @$assessmentType = mysql_real_escape_string($_POST['assessmentType']);
+    $assessmentType = addslashes($_POST['assessmentType']);
     $assessmentDate = $_POST['assessmentDate'];
-    @$summary = mysql_real_escape_string($_POST['summary']);
+    $summary = addslashes($_POST['summary']);
     $id = $_POST['id'];
     $ctr = $_POST['ctr'];
     //now do the assessment update in here...
@@ -32,7 +32,7 @@
         }else if($userObj->user_level == '01'){
           $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
           updateTh($thIdControlValue, $thControlValue, $userObj->id);
-        }        
+        }
     }//end for loop
 ?>
 <div class="notify notify-green"><span class="symbol icon-tick"></span> Assessment Successfully Updated!</div>

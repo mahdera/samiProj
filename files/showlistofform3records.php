@@ -34,7 +34,7 @@
 		while($form3Row = mysql_fetch_object($form3List)){
 			?>
 			<tr>
-				<td><?php echo $form3Row->q3_1;?></td>
+				<td><?php echo stripslashes($form3Row->q3_1);?></td>
 				<td>
 					<a href="#.php" class="form3EditLink" id="<?php echo $form3Row->id;?>">Edit</a>
 				</td>

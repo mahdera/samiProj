@@ -53,12 +53,12 @@
                             $thObj = getTh($riskRow->th_id);
                             ?>
                             <tr>
-                                <td><?php echo $thObj->th_name;?></td>
-                                <td><?php echo $riskRow->mg;?></td>
-                                <td><?php echo $riskRow->dr;?></td>
-                                <td><?php echo $riskRow->pr;?></td>
-                                <td><?php echo $riskRow->wa;?></td>
-                                <td><?php echo $riskRow->rs;?></td>
+                                <td><?php echo stripslashes($thObj->th_name);?></td>
+                                <td><?php echo stripslashes($riskRow->mg);?></td>
+                                <td><?php echo stripslashes($riskRow->dr);?></td>
+                                <td><?php echo stripslashes($riskRow->pr);?></td>
+                                <td><?php echo stripslashes($riskRow->wa);?></td>
+                                <td><?php echo stripslashes($riskRow->rs);?></td>
                                 <td align="center">
                                     <?php
                                         $thSelected = false;
