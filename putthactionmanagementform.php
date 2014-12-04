@@ -30,7 +30,7 @@
 
     if(isset($goalFirstThList) && mysql_num_rows($goalFirstThList)){
         ?>
-        <table border="0" width="100%">
+        <table border="1" width="100%" rules="all">
             <tr style="background: #CCC">
                 <td width="20%">Th</td>
                 <td>Action</td>

@@ -1,5 +1,5 @@
 <?php
-    @session_start();
+    //session_start();
     //now search a user using the userId from the session and check if the user
     //is an admin or not and depending on the value the menu bar will change
     //accordingly...

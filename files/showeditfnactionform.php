@@ -17,7 +17,7 @@
     $buttonId = "updateFnActionButton" . $fnActionId;
     $goalSecondFnRow = getGoalSecondFnUsingFnId($fnActionObj->fn_id);
     //$goalSecondFnRow = getGoalSecondUsingFnId($fnActionObj->fn_id);
-    $goalSecondFnId = $goalSecondFnRow->id;
+
     $fnObj = getFn($fnActionObj->fn_id);
     $fnId = $fnActionObj->fn_id;
     $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
@@ -35,6 +35,8 @@
     $goalSecondG1ObjHiddenIdControlName=null;
     $goalSecondG2ObjHiddenIdControlName=null;
     $goalSecondG3ObjHiddenIdControlName=null;
+    if(!empty($goalSecondFnRow)){
+      $goalSecondFnId = $goalSecondFnRow->id;
 ?>
 <form>
     <table border="0" width="100%">
@@ -182,6 +184,13 @@
         </tr>
     </table>
 </form>
+<?php
+}else{
+  ?>
+  <div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>
+  <?php
+}
+?>
 <script type="text/javascript">
     $(document).ready(function(){
         var fnId = "<?php echo $fnId;?>";

@@ -15,14 +15,16 @@
       $thActionList = getAllThActionsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
     }else if($userObj->user_level == '01'){
       $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-      $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
-      $thActionList = getAllThActionsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+      if(isset($userObject)){
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+        $thActionList = getAllThActionsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+      }
     }
     //$thActionList = getAllThActionsModifiedBy($_SESSION['LOGGED_USER_ID']);
-    if(mysql_num_rows($thActionList)){
+    if(isset($thActionList)){
 ?>
 <div id="thActionDetailDiv">
-<table border="0" width="100%">
+<table border="1" width="100%" rules="all">
     <tr style="background: #ccc">
         <td>Ser.No</td>
         <td>Th</td>
@@ -36,8 +38,8 @@
             ?>
             <tr>
                 <td><?php echo $ctr++;?></td>
-                <td><?php echo $thObj->th_name;?></td>
-                <td><?php echo $thActionRow->action_text;?></td>
+                <td><?php echo stripslashes($thObj->th_name);?></td>
+                <td><?php echo stripslashes($thActionRow->action_text);?></td>
                 <td>
                     <?php
                         $editLinkId = $thActionRow->id;

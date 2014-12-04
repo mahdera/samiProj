@@ -23,7 +23,7 @@
 	//$form8List = getAllForm8sModifiedBy($_SESSION['LOGGED_USER_ID']);
 	if(isset($form8List) && mysql_num_rows($form8List)){
 ?>
-<table border="0" width="100%">
+<table border="1" width="100%" rules="all">
 	<tr style="background:#ccc">
 		<td>Q8.1</td>
 		<td>Edit</td>

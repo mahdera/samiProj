@@ -23,13 +23,15 @@
         $goalFirstThList = getAllGoalFirstThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
     }else if($userObj->user_level == '01'){
         $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-        $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-        $goalFirstThList = getAllGoalFirstThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+        if(isset($userObj)){
+          $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+          $goalFirstThList = getAllGoalFirstThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+        }
     }
 
     if(isset($goalFirstThList) && mysql_num_rows($goalFirstThList)){
         ?>
-        <table border="0" width="100%">
+        <table border="1" width="100%" rules="all">
             <tr style="background: #CCC">
                 <td width="20%">Th</td>
                 <td>Action</td>

@@ -23,7 +23,7 @@
 	//$form7List = getAllForm7sModifiedBy($_SESSION['LOGGED_USER_ID']);
 	if(isset($form7List) && mysql_num_rows($form7List)){
 ?>
-<table border="0" width="100%">
+<table border="1" width="100%" rules="all">
 	<tr style="background:#ccc">
 		<td>Q7.1</td>
 		<td>Edit</td>
@@ -33,7 +33,7 @@
 		while($form7Row = mysql_fetch_object($form7List)){
 			?>
 			<tr>
-				<td><?php stripslashes(echo $form7Row->q7_1);?></td>
+				<td><?php echo stripslashes($form7Row->q7_1);?></td>
 				<td>
 					<a href="#.php" class="form7EditLink" id="<?php echo $form7Row->id;?>">Edit</a>
 				</td>

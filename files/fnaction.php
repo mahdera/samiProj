@@ -118,6 +118,7 @@
           "tbl_user_branch.branch_id = tbl_branch.id and tbl_branch.zone_id = $divisionId order by modification_date desc";
         }
         //echo $query;
+        $result = null;
         $result = read($query);
         return $result;
       }catch(Exception $ex){

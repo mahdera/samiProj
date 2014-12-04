@@ -1,5 +1,5 @@
 <?php
-    error_reporting( 0 );
+    //error_reporting( 0 );
     session_start();
 ?>
 <!--to be replaced when the next button is clicked-->
@@ -22,7 +22,7 @@
     </div><!-- /col-half --><!-- /col-half -->
     <?php
         require_once 'importjsscripts.php';
-    ?>    
+    ?>
     <div id="errorDiv"></div>
     <?php
         require_once 'files/showlistofthselectioncheckboxes.php';

@@ -23,7 +23,7 @@
 	//$form10List = getAllForm10sModifiedBy($_SESSION['LOGGED_USER_ID']);
 	if(isset($form10List) && mysql_num_rows($form10List)){
 ?>
-<table border="0" width="100%">
+<table border="1" width="100%" rules="all">
 	<tr style="background:#ccc">
 		<td>Q10.1</td>
 		<td>Edit</td>

@@ -23,7 +23,7 @@
 	}
 if(isset($form2List) && mysql_num_rows($form2List)){
 ?>
-<table border="0" width="100%">
+<table border="1" width="100%" rules="all">
 	<tr style="background:#ccc">
 		<td>Q2.1</td>
 		<td>Q2.2</td>

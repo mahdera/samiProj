@@ -1,6 +1,3 @@
-<?php
-  //error_reporting( 0 );
-?>
 <h1>Fn Action</h1>
 <?php
     //first grab all fn record from the database...
@@ -28,7 +25,7 @@
     //$goalSecondFnList = getAllGoalSecondFnsModifiedBy($_SESSION['LOGGED_USER_ID']);
     if(isset($goalSecondFnList) && mysql_num_rows($goalSecondFnList)){
 ?>
-<table border="0" width="100%">
+<table border="1" width="100%" rules="all">
     <tr style="background: #ccc">
         <td>Ser.No</td>
         <td>Fn</td>
@@ -46,7 +43,7 @@
                 ?>
                     <tr>
                         <td width="10%"><?php echo $ctr++;?></td>
-                        <td width="20%"><?php echo $fnObj->fn_name;?></td>
+                        <td width="20%"><?php echo stripslashes($fnObj->fn_name);?></td>
                         <td>
                             <a href="#.php" id="<?php echo $fnObj->id;?>" class="openActionFormClass">Show Add Action Form</a> | <a href="#.php" id="<?php echo $fnObj->id;?>" class="closeActionFormClass">Close Add Action Form</a>
                         </td>

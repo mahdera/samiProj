@@ -23,7 +23,7 @@
     //$thList = getAllThsModifiedBy($_SESSION['LOGGED_USER_ID']);
     if(isset($thList) && mysql_num_rows($thList)){
 ?>
-<table border="0" width="100%">
+<table border="1" width="100%" rules="all">
     <tr style="background: #ccc">
         <td>Th Name</td>
         <td>Edit</td>

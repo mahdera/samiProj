@@ -23,14 +23,16 @@
         $goalSecondFnList = getAllGoalSecondFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
     }else if($userObj->user_level == '01'){
         $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-        $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-        $goalSecondFnList = getAllGoalSecondFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+        if(isset($userObj)){
+          $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+          $goalSecondFnList = getAllGoalSecondFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+        }
     }
 
     //$goalSecondFnList = getAllGoalSecondFnsModifiedBy($_SESSION['LOGGED_USER_ID']);
     if(isset($goalSecondFnList) && mysql_num_rows($goalSecondFnList)){
 ?>
-<table border="0" width="100%">
+<table border="1" width="100%" rules="all">
     <tr style="background: #ccc">
         <td>Fn</td>
         <td>Action</td>

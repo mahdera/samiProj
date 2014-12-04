@@ -24,7 +24,7 @@
 	}
 	if(isset($form3List) && mysql_num_rows($form3List)){
 ?>
-<table border="0" width="100%">
+<table border="1" width="100%" rules="all">
 	<tr style="background:#ccc">
 		<td>Q3.1</td>
 		<td>Edit</td>

@@ -1,9 +1,6 @@
-<?php
-error_reporting( 0 );
-?>
 <h1>Form Management</h1>
 <form>
-    <table border="0" width="100%">
+    <table border="1" width="100%" rules="all">
             <tr style="background: #ccc">
                 <td>Form</td>
                 <td>Action</td>

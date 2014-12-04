@@ -14,13 +14,15 @@
       $fnActionList = getAllFnActionsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
     }else if($userObj->user_level == '01'){
       $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-      $fnActionList = getAllFnActionsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+      if(isset($userObj)){
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+        $fnActionList = getAllFnActionsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+      }
     }
-    if(mysql_num_rows($fnActionList)){
+    if(isset($fnActionList) && mysql_num_rows($fnActionList)){
 ?>
 <div id="fnActionDetailDiv">
-<table border="0" width="100%">
+<table border="1" width="100%" rules="all">
     <tr style="background: #ccc">
         <td width="10%">Ser.No</td>
         <td>Fn</td>
@@ -34,8 +36,8 @@
             ?>
             <tr>
                 <td><?php echo $ctr++;?></td>
-                <td><?php echo $fnObj->fn_name;?></td>
-                <td><?php echo $fnActionRow->action_text;?></td>
+                <td><?php echo stripslashes($fnObj->fn_name);?></td>
+                <td><?php echo stripslashes($fnActionRow->action_text);?></td>
                 <td>
                     <?php
                         $editLinkId = $fnActionRow->id;

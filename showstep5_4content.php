@@ -1,5 +1,4 @@
-<?php
-    error_reporting( 0 );
+<?php    
     session_start();
 ?>
     <!--to be replaced when the next button is clicked-->

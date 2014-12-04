@@ -30,7 +30,7 @@
         //$riskList = getAllRisksModifiedBy($_SESSION['LOGGED_USER_ID']);
         if(isset($riskList) && mysql_num_rows($riskList)){
             ?>
-                <table border="0" width="100%">
+                <table border="1" width="100%" rules="all">
                     <tr style="background: #ccc">
                         <td>Th</td>
                         <td>MG</td>
