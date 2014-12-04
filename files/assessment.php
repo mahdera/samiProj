@@ -76,9 +76,9 @@
         try{
             $query = null;
             if($userLevel == '02'){
-                $query = "select distinct tbl_assessment.* from tbl_assessment, tbl_user_sub_district where " .
+                $query = "select tbl_assessment.* from tbl_assessment, tbl_user_sub_district where " .
                 "tbl_assessment.modified_by = tbl_user_sub_district.user_id and " .
-                "tbl_user_sub_district.sub_district_id = $divisionId group by tbl_assessment.assessment_type order by modification_date desc";
+                "tbl_user_sub_district.sub_district_id = $divisionId order by modification_date desc";
             }else if($userLevel == '01'){
                 $query = "select tbl_assessment.* from tbl_assessment, tbl_user_zone " .
                 "where tbl_assessment.modified_by = tbl_user_zone.user_id and " .

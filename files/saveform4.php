@@ -8,7 +8,7 @@
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
     if($userObj->user_level == '01'){
       $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-      saveForm4($q4_1, $userObj->id);
+      saveForm4($q4_1, $userObject->id);
     }else if($userObj->user_level == '02'){
       saveForm4($q4_1, $_SESSION['LOGGED_USER_ID']);
     }

@@ -43,10 +43,10 @@
             $textBoxCol3Id = "txtrowq3" . $i . 3;
             $textBoxCol4Id = "txtrowq3" . $i . 4;
 
-            $textBoxCol1Val = mysql_real_escape_string($_POST["$textBoxCol1Id"]);
-            $textBoxCol2Val = mysql_real_escape_string($_POST["$textBoxCol2Id"]);
-            $textBoxCol3Val = mysql_real_escape_string($_POST["$textBoxCol3Id"]);
-            $textBoxCol4Val = mysql_real_escape_string($_POST["$textBoxCol4Id"]);
+            $textBoxCol1Val = addslashes($_POST["$textBoxCol1Id"]);
+            $textBoxCol2Val = addslashes($_POST["$textBoxCol2Id"]);
+            $textBoxCol3Val = addslashes($_POST["$textBoxCol3Id"]);
+            $textBoxCol4Val = addslashes($_POST["$textBoxCol4Id"]);
             if($userObj->user_level == '01'){
               $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
               saveForm1Q3($form1Id, $i, 1, $textBoxCol1Val, $userObject->id);
@@ -67,10 +67,10 @@
             $textBoxCol3Id = "txtrowq4" . $i . 3;
             $textBoxCol4Id = "txtrowq4" . $i . 4;
 
-            $textBoxCol1Val = mysql_real_escape_string($_POST["$textBoxCol1Id"]);
-            $textBoxCol2Val = mysql_real_escape_string($_POST["$textBoxCol2Id"]);
-            $textBoxCol3Val = mysql_real_escape_string($_POST["$textBoxCol3Id"]);
-            $textBoxCol4Val = mysql_real_escape_string($_POST["$textBoxCol4Id"]);
+            $textBoxCol1Val = addslashes($_POST["$textBoxCol1Id"]);
+            $textBoxCol2Val = addslashes($_POST["$textBoxCol2Id"]);
+            $textBoxCol3Val = addslashes($_POST["$textBoxCol3Id"]);
+            $textBoxCol4Val = addslashes($_POST["$textBoxCol4Id"]);
 
             if($userObj->user_level == '01'){
               $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
