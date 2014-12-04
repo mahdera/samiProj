@@ -3,7 +3,9 @@
   require_once 'subdistrict.php';
 
   $districtId = $_GET['districtId'];
-  $subDistrictList = getAllSubDistrictsOfThisDistrict($districtId);
+  //$subDistrictList = getAllSubDistrictsOfThisDistrict($districtId);
+  //the subDistrictList should be populated with subdistricts that has at least one or more users in it.
+  $subDistrictList = getAllSubDistrictsOfThisDistrictHavingUsersUnderIt($districtId);
 ?>
 <select name="slctsubdistrictselection" id="slctsubdistrictselection" style="width:15%">
   <option value="" selected="selected">--Select--</option>
