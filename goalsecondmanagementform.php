@@ -250,6 +250,7 @@
 
         function clearFormInputField(){
             $('#goalSecondManagementForm')[0].reset();
+            //$('textarea[name="added"]').remove();
         }
 
         function showListOfGoalSeconds(){

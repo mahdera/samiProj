@@ -24,28 +24,29 @@
         $userList = getAllDistrictAndSubDistrictUsersWithDistrictId($userDistrictObj->district_id);
     }
 ?>
-<div style="overflow-y: scroll; height: 650px; border : 2px solid gray">
-<form>
-    <div style="background:#eee">
-        <?php
-          if($loggedInUserObj->member_type == 'Admin'){
-            ?>
-              <a href="#.php" id="createUserLink">Create User</a> |
-              <a href="#.php" id="zoneManagementLink">District Management</a> |
-              <a href="#.php" id="branchManagementLink">Sub District Management</a>
-            <?php
-          }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_level == '01'){
-            ?>
-              <a href="#.php" id="createUserLink">Create User</a>
-              <a href="#.php" id="branchManagementLink">Sub District Management</a>
-            <?php
-          }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_level == '02'){
-            ?>
-              <a href="#.php" id="createUserLink">Create User</a>
-            <?php
-          }
+<div style="background:#eee">
+    <?php
+      if($loggedInUserObj->member_type == 'Admin'){
         ?>
-    </div>
+          <a href="#.php" id="createUserLink">Create User</a> |
+          <a href="#.php" id="zoneManagementLink">District Management</a> |
+          <a href="#.php" id="branchManagementLink">Sub District Management</a>
+        <?php
+      }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_level == '01'){
+        ?>
+          <a href="#.php" id="createUserLink">Create User</a> |
+          <a href="#.php" id="branchManagementLink">Sub District Management</a> |
+          [<a href="#.php" id="editDistrictForDistrictAdminLink">Edit Your District</a>]
+        <?php
+      }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_level == '02'){
+        ?>
+          <a href="#.php" id="createUserLink">Create User</a>
+        <?php
+      }
+    ?>
+</div>
+<div style="overflow-y: scroll; height: 500px; border : 2px solid gray">
+    <form>
     <table border="1" width="100%" rules="all">
         <tr style="background: #eee; font-weight:bolder">
             <td>Ser.No</td>
@@ -130,6 +131,10 @@
         $('.modifyUserProfileLink').click(function(){
             var id = $(this).attr('id');
             $('#createUserDiv').load('files/showmodifyuserprofileform.php?id='+id);
+        });
+
+        $('#editDistrictForDistrictAdminLink').click(function(){
+            $('#createUserDiv').load('files/editdistrictfordistrictadminform.php');
         });
 
         $('#zoneManagementLink').click(function(){

@@ -8,6 +8,7 @@
     require_once 'files/userrolelookup.php';
     require_once 'files/subdistrict.php';
     require_once 'files/userdistrict.php';
+    require_once 'files/district.php';
 
     $userObj = null;
     $fullName = null;
@@ -19,10 +20,13 @@
 
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
     $userRoleCode = $userObj->user_role;
+    $divisionName = null;
 
     if($userRoleCode === '01A'){
       $districtId = getDistrictIdForUser($_SESSION['LOGGED_USER_ID']);
       $_SESSION['USER_ROLE_CODE'] = $userRoleCode;
+      $districtObj = getDistrict($districtId);
+      $divisionName = $districtObj->display_name;
     }
 
     if($userObj != null){

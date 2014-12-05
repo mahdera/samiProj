@@ -1,6 +1,3 @@
-<?php
-  error_reporting( 0 );
-?>
 <h1>Add Th</h1>
 <a href="#.php" id="showThManagementFormLinkId">Show Form</a>
 |
