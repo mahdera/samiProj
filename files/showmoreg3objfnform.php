@@ -28,7 +28,7 @@
     $fnOtherDivId = "fnOtherG3ObjFn" . ($numItems + 1);
     $idForSpinner = "g3fn" . ($numItems + 1);
 ?>
-<tr id="<?php echo $trRowId;?>">
+<tr id="<?php echo $trRowId;?>" class="added">
     <td colspan="2">
         <table border="0" width="100%" style="background: #fff">
             <tr>

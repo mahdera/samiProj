@@ -39,7 +39,7 @@
         $('#addMoreThLink').click(function(){
             var numItems = $('.thInputRow').length;
             var textBoxId = "txtth"+(numItems+1);
-            var newRow = $("<tr id='thRow"+(numItems+1)+"'><td>Th"+(numItems+1)+":</td><td><input type='text' class='thInputRow' name='"+textBoxId+"' id='"+textBoxId+"'/></td></tr>");
+            var newRow = $("<tr id='thRow"+(numItems+1)+"' class='added'><td>Th"+(numItems+1)+":</td><td><input type='text' class='thInputRow' name='"+textBoxId+"' id='"+textBoxId+"'/></td></tr>");
             $('#thRow'+numItems).after(newRow);
         });
 
@@ -93,6 +93,7 @@
             $('#datepicker').val('');
             $('#txtth1').val('');
             $('#textareasummary').val('');
+            $('.added').remove();
         }
 
         function showListOfAssessments(){

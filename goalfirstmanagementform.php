@@ -19,7 +19,7 @@
           $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
           $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
         }
-    }    
+    }
 ?>
 <h1>Add Goal First</h1>
 <a href="#.php" id="showGoalFirstManagementFormLinkId">Show Form</a>
@@ -506,6 +506,7 @@
 
         function clearFormInputField(){
           $('#goalFirstManagementForm')[0].reset();
+          $('.added').remove();
         }
 
         function showListOfGoalFirsts(){

@@ -213,22 +213,7 @@
 
         function clearFormInputFields(q3NumItems, q4NumItems){
             $('#form1Entry')[0].reset();
-            /*
-            $('#txttitle').val('');
-            $('#datepicker').val('');
-            $('#textareaplan').val('');
-            $('#textareaq1').val('');
-            $('#textareaq2').val('');
-
-            for(var i=1; i <= q3NumItems; i++){
-                var textBoxId = "txtrowq3"+i;
-                $('#'+textBoxId).val('');
-            }
-
-            for(var j=1; j <= q4NumItems; j++){
-                var textBoxId = "txtrowq4"+j;
-                $('#'+textBoxId).val('');
-            }*/
+            $('.added').remove();
         }
 
         function showListOfForm1Records(){
