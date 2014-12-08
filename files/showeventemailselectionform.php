@@ -59,14 +59,14 @@
                 selectedCheckBoxesIdDataString+="ctr="+(ctr-1);
                 if(ctr === 1){
                     alert("You need to select at least one th value!");
-                }else{                    
+                }else{
                 	var message = $('#textareashare').val();
                     var dataString = selectedCheckBoxesIdDataString+"&message="+message;
                     $.ajax({
-		                url: 'files/sendemailtoselectedusers.php',		
+		                url: 'files/sendemailtoselectedusers.php',
 		                data: dataString,
 		                type:'POST',
-		                success:function(response){                    
+		                success:function(response){
 		                    $('#shareEventDiv').html(response);
 		                },
 		                error:function(error){

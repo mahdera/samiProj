@@ -1,5 +1,16 @@
 <?php
-	session_start();
+@session_start();
+if(empty($_SESSION['USER_ID'])){
+	header("Location: login.php");
+}
+
+if($_SESSION['USER_ROLE_CODE'] === '01A'){
+	if(empty($_SESSION['SUB_DISTRICT_ID'])){
+		header("Location: nosubdistrictselected.php");
+	}
+}
+?>
+<?php
 	require_once 'goalfirst.php';
 	require_once 'th.php';
 	require_once 'user.php';

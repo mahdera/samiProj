@@ -25,7 +25,7 @@
             <td>
                 <select name="<?php echo $thControlName;?>" id="<?php echo $thControlName;?>" style="width: 100%">
                     <option value="" selected="selected">--Select--</option>
-                    <?php                        
+                    <?php
                         $thList = null;
                         if($userObj->user_level == '02'){
                           $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);

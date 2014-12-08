@@ -39,7 +39,7 @@
 
   function getDistrict($id){
     try{
-      $query = "select * from tbl_district where id = $id";      
+      $query = "select * from tbl_district where id = $id";
       $result = read($query);
       $resultRow = mysql_fetch_object($result);
       return $resultRow;

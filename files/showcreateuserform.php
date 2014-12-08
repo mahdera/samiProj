@@ -166,7 +166,7 @@
             var userStatus = 'Active';//$('#slctuserstatus').val();
             var userLevel = '';//$('#slctuserlevel').val();
             var userRole = $('#slctuserrole').val();
-            
+
             var eitherZoneIdOrBranchId = "";
             if(userRole == '01A'){
                 eitherZoneIdOrBranchId = 1;

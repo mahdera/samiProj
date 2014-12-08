@@ -1,4 +1,5 @@
 <?php
+    @session_start();
     require_once 'district.php';
     require_once 'subdistrict.php';
     require_once 'user.php';

@@ -1,5 +1,4 @@
-<?php
-    //error_reporting( 0 );
+<?php    
     session_start();
     $thActionId = $_GET['thId'];
     require_once 'th.php';

@@ -26,7 +26,7 @@
                                 <td><?php echo $ctr++;?></td>
                                 <td><?php echo stripslashes($team->team_name);?></td>
                                 <td><?php echo stripslashes($responsibilityRow->role);?></td>
-                                <td><?php echo stripslashes($responsibilityRow->responsibility);?></td>                                
+                                <td><?php echo stripslashes($responsibilityRow->responsibility);?></td>
                                 <td>
                                     <a href="#.php" id="<?php echo $responsibilityRow->id;?>" class="editLink">Edit</a>
                                 </td>

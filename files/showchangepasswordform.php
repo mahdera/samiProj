@@ -37,10 +37,10 @@
             if(userId !== "" && currentPassword !== "" && newPassword !== ""){
                 var dataString = "userId="+userId+"&currentPassword="+currentPassword+"&newPassword="+newPassword;
                 $.ajax({
-                    url: 'files/changepassword.php',        
+                    url: 'files/changepassword.php',
                     data: dataString,
                     type:'POST',
-                    success:function(response){                    
+                    success:function(response){
                         $('#myAccountDiv').html(response);
                     },
                     error:function(error){

@@ -1,4 +1,5 @@
 <?php
+    @session_start();
     require_once 'assessment.php';
     require_once 'th.php';
     require_once 'assessmentlookup.php';

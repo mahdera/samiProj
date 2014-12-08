@@ -3,7 +3,7 @@
 
     function saveFn($fnName, $modifiedBy, $showAll){
         try{
-            $query = "insert into tbl_fn values(0, '$fnName', $modifiedBy, NOW(), $showAll)";            
+            $query = "insert into tbl_fn values(0, '$fnName', $modifiedBy, NOW(), $showAll)";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();

@@ -9,7 +9,7 @@
         $checkBoxName = "thCheckBox" . $i;
         //now get the value...
         $selectedEmailAddress .= $_POST["$checkBoxName"] . ",";
-    }//end for loop  
+    }//end for loop
     $to = $selectedEmailAddress;
     $subject = "Sharing My Calendar";
     $message = $_POST['message'];

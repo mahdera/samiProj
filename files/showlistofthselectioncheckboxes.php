@@ -1,4 +1,4 @@
-<?php //session_start();?>
+<?php @session_start();?>
 <div class="col-half left">
   <h1>Th Check Boxes</h1>
     <?php
