@@ -1,6 +1,5 @@
 <h2>Edit Th Action</h2>
 <?php
-    //error_reporting( 0 );
     require_once 'files/thaction.php';
     require_once 'files/th.php';
     require_once 'files/user.php';
@@ -46,6 +45,8 @@
                         $editDivId = "editActionTextDiv" . $thActionRow->id;
                         $deleteLinkId = $thActionRow->id;
                     ?>
+                    <a href="#.php" id="<?php echo $editLinkId;?>" class="closeThActionLink">Close</a>
+                    |
                     <a href="#.php" id="<?php echo $editLinkId;?>" class="editThActionLink">Edit</a>
                     |
                     <a href="#.php" id="<?php echo $deleteLinkId;?>" class="deleteThActionLink">Delete</a>
@@ -70,8 +71,13 @@
 ?>
 <script type="text/javascript">
     $(document).ready(function(){
+        $('.closeThActionLink').click(function(){
+            var id = $(this).attr('id');
+            var editDivId = "editActionTextDiv" + id;
+            $('#'+editDivId).html('');
+        });
+
         $('.editThActionLink').click(function(){
-            //alert('inside editThActionLink click');
             var id = $(this).attr('id');
             var editDivId = "editActionTextDiv" + id;
             $('#'+editDivId).load('files/showeditthactionform.php?thId='+id);

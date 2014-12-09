@@ -123,4 +123,15 @@
         $ex->getMessage();
       }
     }
+
+    function getThActionForTh($thId){
+      try{
+        $query = "select * from tbl_th_action where th_id = $thId order by modification_date limit 0,1";
+        $result = read($query);
+        $resultRow = mysql_fetch_object($result);
+        return $resultRow;
+      }catch(Exception $ex){
+        $ex->getMessage();
+      }
+    }
 ?>

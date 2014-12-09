@@ -132,7 +132,7 @@
     <table border="0" width="100%">
         <tr>
             <td>Add Action</td>
-            <td>
+            <td style="padding-left:10px;padding-right:15px">
                 <?php
                     //the name should be dynamic...
                     $textAreaId = "fnAction_" . $fn_id;

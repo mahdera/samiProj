@@ -159,7 +159,7 @@
                 <td width="30%">
                     Add Action
                 </td>
-                <td>
+                <td style="padding-right:15px">
                     <?php
                         //the name should be dynamic...
                         $textAreaId = "thAction_" . $thId;

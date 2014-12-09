@@ -1,6 +1,3 @@
-<?php
-  //error_reporting( 0 );
-?>
 <h1>Th Action</h1>
 <?php
     require_once 'files/th.php';
@@ -51,7 +48,7 @@
                                     [<a href="#.php" id="<?php echo $thObj->id;?>" class="openActionFormClass">Show Add Action Form</a> | <a href="#.php" id="<?php echo $thObj->id;?>" class="closeActionFormClass">Close Add Action Form</a>]
                                 </td>
                                 <td>
-                                  [<a href="#.php" id="<?php echo $thObj->id;?>" class="viewThActionLink">View</a> | <a href="#.php" id="<?php echo $thObj->id;?>" class="editThActionLink">Edit</a> | <a href="#.php" id="<?php echo $thObj->id;?>" class="deleteThActionLink">Delete</a>]
+                                  [<!--<a href="#.php" id="<?php echo $thObj->id;?>" class="viewThActionLink">View</a> | --><a href="#.php" id="<?php echo $thObj->id;?>" class="editThActionLink">Edit</a> | <a href="#.php" id="<?php echo $thObj->id;?>" class="deleteThActionLink">Delete</a>]
                                 </td>
                             </tr>
                             <tr>
@@ -93,13 +90,15 @@
         $('.viewThActionLink').click(function(){
             var idVal = $(this).attr('id');
             var divId = "actionDiv" + idVal;
-            $('#' + divId).load('files/showlistofthactiontextsforth.php?thId='+idVal);
+            //$('#' + divId).load('files/showlistofthactiontextsforth.php?thId='+idVal);
+            $('#' + divId).load('files/showeditfieldsofthisthaction.php?thId='+idVal);
         });
 
         $('.editThActionLink').click(function(){
             var idVal = $(this).attr('id');
             var divId = "actionDiv" + idVal;
-            $('#' + divId).load('files/showlistofthactiontextsforthforedit.php?thId='+idVal);
+            //$('#' + divId).load('files/showlistofthactiontextsforth.php?thId='+idVal);
+            $('#' + divId).load('files/showeditfieldsofthisthaction.php?thId='+idVal);
         });
 
         $('.deleteThActionLink').click(function(){

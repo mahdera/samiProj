@@ -125,4 +125,15 @@
         $ex->getMessage();
       }
     }
+
+    function getFnActionForFn($fnId){
+      try{
+        $query = "select * from tbl_fn_action where fn_id = $fnId order by modification_date limit 0,1";
+        $result = read($query);
+        $resultRow = mysql_fetch_object($result);
+        return $resultRow;
+      }catch(Exception $ex){
+        $ex->getMessage();
+      }
+    }
 ?>

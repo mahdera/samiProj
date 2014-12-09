@@ -1,4 +1,4 @@
-<?php    
+<?php
     session_start();
     $thActionId = $_GET['thId'];
     require_once 'th.php';
@@ -41,7 +41,7 @@
     $goalFirstG3ObjFnId = null;
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
 ?>
-<form>
+<form style="padding-right:15px">
     <table border="0" width="100%">
             <?php
             $goalFirstG1Row = getGoalFirstG1ForGoalFirstThId($goalFirstThRow->id);

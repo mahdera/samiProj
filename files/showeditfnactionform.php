@@ -38,7 +38,7 @@
     if(!empty($goalSecondFnRow)){
       $goalSecondFnId = $goalSecondFnRow->id;
 ?>
-<form>
+<form style="padding-right:15px">
     <table border="0" width="100%">
         <?php
             $goalSecondG1Row = getGoalSecondG1ForGoalSecondFnId($goalSecondFnId);

@@ -45,6 +45,8 @@
                         $editDivId = "editActionTextDiv" . $fnActionRow->id;
                         $deleteLinkId = $fnActionRow->id;
                     ?>
+                    <a href="#.php" id="<?php echo $editLinkId;?>" class="closeFnActionLinkId">Close</a>
+                    |
                     <a href="#.php" id="<?php echo $editLinkId;?>" class="editFnActionLinkId">Edit</a>
                     |
                     <a href="#.php" id="<?php echo $deleteLinkId;?>" class="deleteFnActionLinkId">Delete</a>
@@ -69,6 +71,13 @@
 ?>
 <script type="text/javascript">
     $(document).ready(function(){
+
+        $('.closeFnActionLinkId').click(function(){
+            var id = $(this).attr('id');
+            var editDivId = "editActionTextDiv" + id;
+            $('#'+editDivId).html('');
+        });
+
         $('.editFnActionLinkId').click(function(){
             var id = $(this).attr('id');
             var editDivId = "editActionTextDiv" + id;
