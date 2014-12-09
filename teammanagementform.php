@@ -82,7 +82,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
 
-        $('#teamManagementForm').hide();
+        $('#teamManagementForm').show();
 
         $('#showTeamManagementFormLinkId').click(function(){
             $('#teamManagementForm').show('slow');

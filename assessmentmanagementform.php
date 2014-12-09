@@ -18,7 +18,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
 
-        $('#assessmentManagementForm').hide();
+        $('#assessmentManagementForm').show();
 
         $('#showAssessmentManagementFormLinkId').click(function(){
             $('#assessmentManagementForm').show('slow');

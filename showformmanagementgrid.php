@@ -1,5 +1,5 @@
 <h1>Form Management</h1>
-<form>
+<form style="padding-right:25px">
     <table border="1" width="100%" rules="all">
             <tr style="background: #ccc">
                 <td>Form</td>
@@ -13,7 +13,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <div id="form1Div"></div>
+                    <div id="form1Div" style="padding-right:15px;padding-left:15px"></div>
                 </td>
             </tr>
             <tr style="background:#eee">
@@ -24,7 +24,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <div id="form2Div"></div>
+                    <div id="form2Div" style="padding-right:15px;padding-left:15px"></div>
                 </td>
             </tr>
             <tr style="background:#eee">
@@ -35,7 +35,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <div id="form3Div"></div>
+                    <div id="form3Div" style="padding-right:15px;padding-left:15px"></div>
                 </td>
             </tr>
             <tr style="background:#eee">
@@ -46,7 +46,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <div id="form4Div"></div>
+                    <div id="form4Div" style="padding-right:15px;padding-left:15px"></div>
                 </td>
             </tr>
             <tr style="background:#eee">
@@ -57,7 +57,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <div id="form5Div"></div>
+                    <div id="form5Div" style="padding-right:15px;padding-left:15px"></div>
                 </td>
             </tr>
             <tr style="background:#eee">
@@ -68,7 +68,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <div id="form6Div"></div>
+                    <div id="form6Div" style="padding-right:15px;padding-left:15px"></div>
                 </td>
             </tr>
             <tr style="background:#eee">
@@ -79,7 +79,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <div id="form7Div"></div>
+                    <div id="form7Div" style="padding-right:15px;padding-left:15px"></div>
                 </td>
             </tr>
             <tr style="background:#eee">
@@ -90,7 +90,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <div id="form8Div"></div>
+                    <div id="form8Div" style="padding-right:15px;padding-left:15px"></div>
                 </td>
             </tr>
             <tr style="background:#eee">
@@ -101,7 +101,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <div id="form9Div"></div>
+                    <div id="form9Div" style="padding-right:15px;padding-left:15px"></div>
                 </td>
             </tr>
             <tr style="background:#eee">
@@ -112,7 +112,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <div id="form10Div"></div>
+                    <div id="form10Div" style="padding-right:15px;padding-left:15px"></div>
                 </td>
             </tr>
         </table>

@@ -25,7 +25,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
 
-        $('#thManagementForm').hide();
+        $('#thManagementForm').show();
 
         $('#showThManagementFormLinkId').click(function(){
             $('#thManagementForm').show('slow');

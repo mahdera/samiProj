@@ -123,7 +123,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
 
-        $('#riskManagementForm').hide();
+        $('#riskManagementForm').show();
 
         $('#showRiskManagementFormLinkId').click(function(){
             $('#riskManagementForm').show('slow');

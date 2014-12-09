@@ -21,7 +21,7 @@
       }
     }
     //$thActionList = getAllThActionsModifiedBy($_SESSION['LOGGED_USER_ID']);
-    if(!empty($thActionList)){
+    if(!empty($thActionList) && mysql_num_rows($thActionList)){
 ?>
 <div id="thActionDetailDiv">
 <table border="1" width="100%" rules="all">
