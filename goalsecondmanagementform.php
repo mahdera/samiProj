@@ -135,7 +135,7 @@
 
     $(document).ready(function(){
 
-        $('#goalSecondManagementForm').hide();
+        $('#goalSecondManagementForm').show();
 
         $('#showGoalSecondManagementFormLinkId').click(function(){
             $('#goalSecondManagementForm').show('slow');
@@ -250,7 +250,7 @@
 
         function clearFormInputField(){
             $('#goalSecondManagementForm')[0].reset();
-            $('.added').remove();            
+            $('.added').remove();
         }
 
         function showListOfGoalSeconds(){
