@@ -48,7 +48,7 @@
                                     [<a href="#.php" id="<?php echo $thObj->id;?>" class="openActionFormClass">Show Add Action Form</a> | <a href="#.php" id="<?php echo $thObj->id;?>" class="closeActionFormClass">Close Add Action Form</a>]
                                 </td>
                                 <td>
-                                  [<!--<a href="#.php" id="<?php echo $thObj->id;?>" class="viewThActionLink">View</a> | --><a href="#.php" id="<?php echo $thObj->id;?>" class="editThActionLink">Edit</a> | <a href="#.php" id="<?php echo $thObj->id;?>" class="deleteThActionLink">Delete</a>]
+                                  [<!--<a href="#.php" id="<?php //echo $thObj->id;?>" class="viewThActionLink">View</a> | --><a href="#.php" id="<?php echo $thObj->id;?>" class="editThActionLink">Edit</a> | <a href="#.php" id="<?php echo $thObj->id;?>" class="deleteThActionLink">Delete</a>]
                                 </td>
                             </tr>
                             <tr>
@@ -104,7 +104,10 @@
         $('.deleteThActionLink').click(function(){
             var idVal = $(this).attr('id');
             var divId = "actionDiv" + idVal;
-            $('#' + divId).load('files/showlistofthactiontextsforthfordelete.php?thId='+idVal);
+            //$('#' + divId).load('files/showlistofthactiontextsforthfordelete.php?thId='+idVal);
+            if(window.confirm('Are you sure you want to delete this record?')){
+              $('#' + divId).load('files/deletethactionforthisth.php?thId='+idVal);
+            }
         });
 
     });//end document.ready function

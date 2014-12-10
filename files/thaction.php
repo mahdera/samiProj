@@ -134,4 +134,13 @@
         $ex->getMessage();
       }
     }
+
+    function deleteThActionForTh($thId){
+      try{
+        $query = "delete from tbl_th_action where th_id = $thId";
+        save($query);
+      }catch(Exception $ex){
+        $ex->getMessage();
+      }
+    }
 ?>

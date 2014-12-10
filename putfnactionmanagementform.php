@@ -101,7 +101,10 @@
         $('.deleteFnActionLink').click(function(){
             var idVal = $(this).attr('id');
             var divId = "actionDiv" + idVal;
-            $('#' + divId).load('files/showlistoffnactiontextsforfnfordelete.php?fnId='+idVal);
+            if(window.confirm('Are you sure you want to delete this record?')){
+                $('#' + divId).load('files/deletefnactionforthisfn.php?fnId='+idVal);
+            }
+            //$('#' + divId).load('files/showlistoffnactiontextsforfnfordelete.php?fnId='+idVal);
         });
 
     });//end document.ready function

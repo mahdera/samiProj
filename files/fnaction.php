@@ -136,4 +136,13 @@
         $ex->getMessage();
       }
     }
+
+    function deleteFnActionForFn($fnId){
+      try{
+        $query = "delete from tbl_fn_action where fn_id = $fnId";
+        save($query);
+      }catch(Exception $ex){
+        $ex->getMessage();
+      }
+    }
 ?>
