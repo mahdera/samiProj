@@ -9,11 +9,16 @@
     $thUsed = null;
 
     if($userObj->user_level == '02'){
-      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-      //$fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
-      $thUsed = hasThisThBeenUsedForRiskByThisUserUsingUserLevel($thId, '02', $userSubDistrictObj->sub_district_id);
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+        $thUsed = hasThisThBeenUsedForRiskByThisUserUsingUserLevel($thId, '02', $userSubDistrictObj->sub_district_id);
+    }else if($userObj->user_level == '01'){
+        $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+        if($userObject != null){
+          $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);      
+          $thUsed = hasThisThBeenUsedForRiskByThisUserUsingUserLevel($thId, '02', $userSubDistrictObj->sub_district_id);
+        }
     }
-    //$thUsed = hasThisThBeenUsedForRiskByThisUser($thId, $_SESSION['LOGGED_USER_ID']);
+
 
     if($thUsed){
       ?>

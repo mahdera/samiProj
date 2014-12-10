@@ -50,7 +50,15 @@
                                 <td><?php echo stripslashes($teamRow->organization);?></td>
                                 <td><?php echo stripslashes($teamRow->email);?></td>
                                 <td><?php echo stripslashes($teamRow->phone);?></td>
-                                <td><?php echo rtrim($teamRow->interest , ',');?></td>
+                                <td>
+                                    <?php
+                                        $trimmedString = rtrim($teamRow->interest , ',');
+                                        $myArray = explode(',', $trimmedString);
+                                        for($i=0; $i < count($myArray); $i++){
+                                          echo $myArray[$i] . "<br/>";
+                                        }//end for...loop
+                                    ?>
+                                </td>
                                 <td>
                                     <a href="#.php" class="teamEditLink" id="<?php echo $teamRow->id;?>">Edit</a>
                                 </td>

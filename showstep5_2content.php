@@ -34,7 +34,8 @@ if($_SESSION['USER_ROLE_CODE'] === '01A'){
 ?>
 <div class="col-half left">
     <?php
-        require 'showformmanagementgrid.php';
+        //require 'showformmanagementgrid.php';
+        require_once 'editthactionmanagementform.php';
     ?>
 </div>
 <script type='text/javascript'>

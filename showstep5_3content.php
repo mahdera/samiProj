@@ -31,7 +31,8 @@ if($_SESSION['USER_ROLE_CODE'] === '01A'){
 </div><!-- /col-half --><!-- /col-half -->
 <div class="col-half left">
 <?php
-    require_once 'editthactionmanagementform.php';
+    //require_once 'editthactionmanagementform.php';
+    require 'editfnactionmanagementform.php';
     require_once 'importjsscripts.php';
 ?>
 </div>
