@@ -1,5 +1,4 @@
-<?php
-    error_reporting( 0 );
+<?php    
     require_once('files/user.php');
     require_once 'files/utility.php';
     //am sure the user entered the email address
