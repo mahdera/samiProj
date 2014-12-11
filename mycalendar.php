@@ -42,10 +42,34 @@
                 <?php
                     require 'menurow.php';
                     require 'steprowcalendar.php';
-                    require 'contentcalendar.php';
+                    //require 'contentcalendar.php';
                 ?>
+                <div id='calendar'></div>
+                <div id="event_edit_container">
+                  <form>
+                    <input type="hidden" />
+                    <ul>
+                      <li>
+                        <span>Date: </span><span class="date_holder"></span>
+                      </li>
+                      <li>
+                        <label for="start">Start Time: </label><select name="start"><option value="">Select Start Time</option></select>
+                      </li>
+                      <li>
+                        <label for="end">End Time: </label><select name="end"><option value="">Select End Time</option></select>
+                      </li>
+                      <li>
+                        <label for="title">Title: </label><input type="text" name="title" />
+                      </li>
+                      <li>
+                        <label for="body">Body: </label><textarea name="body"></textarea>
+                      </li>
+                    </ul>
+                  </form>
+                </div>
             </div>
             <?php
+                require_once 'headerfileimports.php';
                 require 'footercalendar.php';
             ?>
         </div>
