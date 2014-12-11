@@ -15,7 +15,7 @@ SET time_zone = "+00:00";
 --
 drop database if exists db_sami_proj;
 create database db_sami_proj;
-  use db_sami_proj;
+use db_sami_proj;
   -- --------------------------------------------------------
 
   --
