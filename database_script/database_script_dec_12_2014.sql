@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 11, 2014 at 08:40 PM
+-- Generation Time: Dec 12, 2014 at 03:13 PM
 -- Server version: 5.5.38
 -- PHP Version: 5.6.2
 
@@ -15,7 +15,7 @@ SET time_zone = "+00:00";
 --
 drop database if exists db_sami_proj;
 create database db_sami_proj;
-use db_sami_proj;
+  use db_sami_proj;
   -- --------------------------------------------------------
 
   --
@@ -113,7 +113,7 @@ use db_sami_proj;
   --
 
   INSERT INTO `tbl_district` (`id`, `code`, `display_name`, `description`, `modified_by`, `modification_date`) VALUES
-  (1, 'First District. updated. Sami you will love this! what do you mean?', 'First District. updated. Sami you will love this! what do you mean?', '---', 33, '2014-12-08');
+  (1, 'First District.', 'First District.', '---', 33, '2014-12-11');
 
   -- --------------------------------------------------------
 
@@ -129,7 +129,7 @@ use db_sami_proj;
     `end_time` varchar(100) NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_event_calendar`
@@ -138,7 +138,9 @@ use db_sami_proj;
   INSERT INTO `tbl_event_calendar` (`id`, `title`, `body`, `start_time`, `end_time`, `modified_by`, `modification_date`) VALUES
   (2, 'this is the title', 'this is the body. This is one of the best pic ever', '2014-12-11T08:15:00+01:00', '2014-12-11T08:45:00+01:00', 33, '2014-12-11 13:59:19'),
   (3, 'another title', 'another body', '2014-12-10T08:00:00+01:00', '2014-12-10T08:30:00+01:00', 33, '2014-12-11 13:20:46'),
-  (4, 'this is my plan for Friday', 'And this is the event detail that is going to take place on Friday. updated.', '2014-12-12T08:00:00+01:00', '2014-12-12T08:30:00+01:00', 33, '2014-12-11 13:59:00');
+  (4, 'this is my plan for Friday', 'And this is the event detail that is going to take place on Friday. updated.', '2014-12-12T08:00:00+01:00', '2014-12-12T08:30:00+01:00', 33, '2014-12-11 13:59:00'),
+  (5, 'I would like to....UPDATED', 'I would like to take a nap right now', '2014-12-11T14:00:00+01:00', '2014-12-11T14:30:00+01:00', 34, '2014-12-11 14:56:40'),
+  (6, 'This is the event', 'This is the body of the event', '2014-12-11T10:15:00+01:00', '2014-12-11T10:45:00+01:00', 33, '2014-12-11 22:07:29');
 
   -- --------------------------------------------------------
 
@@ -1072,16 +1074,20 @@ use db_sami_proj;
     `description` text NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` date NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_sub_district`
   --
 
   INSERT INTO `tbl_sub_district` (`id`, `district_id`, `code`, `display_name`, `description`, `modified_by`, `modification_date`) VALUES
-  (1, 1, 'First Sub District - FD', 'First Sub District - FD', '---gigi', 0, '0000-00-00'),
+  (1, 1, 'First Sub District - FD i love u', 'First Sub District - FD i love u', '---', 33, '2014-12-12'),
   (2, 1, 'Second Sub District - FD', 'Second Sub District - FD', '---', 0, '0000-00-00'),
-  (3, 1, 'Sample Sub District - updated.', 'Sample Sub District - updated.', '---', 25, '2014-12-03');
+  (3, 1, 'Sample Sub District - updated.', 'Sample Sub District - updated.', '---', 25, '2014-12-03'),
+  (4, 1, 'My Other Sample Sub District Nov 11', 'My Other Sample Sub District Nov 11', '---', 33, '2014-12-11'),
+  (5, 1, 'hi sub district', 'hi sub district', '---', 33, '2014-12-11'),
+  (7, 1, '1247', '1247', '---', 33, '2014-12-12'),
+  (8, 1, '222', '222', '---', 33, '2014-12-11');
 
   -- --------------------------------------------------------
 
@@ -1209,28 +1215,37 @@ use db_sami_proj;
     `user_level` varchar(20) NOT NULL,
     `user_role` varchar(20) NOT NULL,
     `modified_by` int(11) NOT NULL,
-    `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
+    `modification_date` datetime NOT NULL,
+    `deleted` tinyint(1) NOT NULL
+  ) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_user`
   --
 
-  INSERT INTO `tbl_user` (`id`, `first_name`, `last_name`, `email`, `user_id`, `password`, `phone_number`, `member_type`, `user_status`, `user_level`, `user_role`, `modified_by`, `modification_date`) VALUES
-  (2, 'Admin', 'Admin', 'mahderalem@gmail.com', 'root', '63a9f0ea7bb98050796b649e85481845', '39439483948', 'Admin', 'Active', 'Super User', 'Root', 0, '2014-10-09 00:00:00'),
-  (22, 'Biruk', 'Fikre', 'biruk@yahoo.com', 'biruk', '202cb962ac59075b964b07152d234b70', '9823749873', 'User', 'Blocked', '01', '01A', 2, '2014-12-03 23:49:13'),
-  (23, 'Rahel', 'Taye', 'rahel@gmail.com', 'rahel', '202cb962ac59075b964b07152d234b70', '983498734', 'User', 'Blocked', '02', '999', 2, '2014-12-03 23:48:30'),
-  (25, 'Mahder', 'Neway', 'mneway@americanprogress.org', 'mahder', '0f3fbc595a293952fabc8de77ae840ca', '(202) 374 3138', 'User', 'Blocked', '01', '01A', 2, '2014-12-03 23:46:08'),
-  (26, 'Lekbir', 'Gebretsadik', 'lekbirgebre@yahoo.com', 'leki', '202cb962ac59075b964b07152d234b70', '(202) 730 5250', 'User', 'Blocked', '02', '02A', 2, '2014-12-03 23:48:09'),
-  (27, 'Yefikir', 'Alemayehu', 'yefi@yahoo.com', 'yefi', '202cb962ac59075b964b07152d234b70', '98798787', 'User', 'Blocked', '02', '999', 2, '2014-12-03 23:48:57'),
-  (28, 'Miki', 'Biruk', 'miki@yahoo.com', 'miki', '202cb962ac59075b964b07152d234b70', '98798789', 'User', 'Blocked', '01', '999', 2, '2014-11-28 10:47:30'),
-  (29, 'Lala', 'Biruk', 'lala@yahoo.com', 'lala', '202cb962ac59075b964b07152d234b70', '87986876', 'User', 'Blocked', '02', '02A', 2, '2014-12-03 23:48:19'),
-  (30, 'Tona', 'Biruk', 'tona@yahoo.com', 'tona', '202cb962ac59075b964b07152d234b70', '98786876', 'User', 'Blocked', '02', '02A', 2, '2014-12-03 23:48:49'),
-  (31, 'Netsanet', 'Tadesse', 'netsanet.tadesse@gmail.com', 'netsanet', '202cb962ac59075b964b07152d234b70', '909809809', 'User', 'Blocked', '01', '01A', 2, '2014-12-03 23:46:20'),
-  (32, 'Yelfign', 'Ejigu', 'aba@gmail.com', 'aba', '202cb962ac59075b964b07152d234b70', '0934893048', 'User', 'Blocked', '02', '02A', 2, '2014-12-03 23:49:03'),
-  (33, 'Wondwossen', 'Mulugeta', 'wondisho@yahoo.com', 'wondisho', '202cb962ac59075b964b07152d234b70', '0911607338', 'User', 'Active', '01', '01A', 2, '2014-12-03 23:51:48'),
-  (34, 'Berhanu', 'Teka', 'bre.teka@yahoo.com', 'bre', '202cb962ac59075b964b07152d234b70', '09876543', 'User', 'Active', '02', '02A', 2, '2014-12-03 23:54:41'),
-  (35, 'Zelalem', 'Yesigat', 'zelalem@gmail.com', 'zele', '202cb962ac59075b964b07152d234b70', '5714281901', 'User', 'Active', '02', '999', 2, '2014-12-03 23:55:29');
+  INSERT INTO `tbl_user` (`id`, `first_name`, `last_name`, `email`, `user_id`, `password`, `phone_number`, `member_type`, `user_status`, `user_level`, `user_role`, `modified_by`, `modification_date`, `deleted`) VALUES
+  (2, 'Admin', 'Admin', 'mahderalem@gmail.com', 'root', '63a9f0ea7bb98050796b649e85481845', '39439483948', 'Admin', 'Active', 'Super User', 'Root', 0, '2014-10-09 00:00:00', 0),
+  (22, 'Biruk', 'Fikre', 'biruk@yahoo.com', 'biruk', '202cb962ac59075b964b07152d234b70', '9823749873', 'User', 'Blocked', '01', '01A', 2, '2014-12-03 23:49:13', 1),
+  (23, 'Rahel', 'Taye', 'rahel@gmail.com', 'rahel', '202cb962ac59075b964b07152d234b70', '983498734', 'User', 'Blocked', '02', '999', 2, '2014-12-03 23:48:30', 1),
+  (25, 'Mahder', 'Neway', 'mneway@americanprogress.org', 'mahder', '0f3fbc595a293952fabc8de77ae840ca', '(202) 374 3138', 'User', 'Blocked', '01', '01A', 2, '2014-12-03 23:46:08', 0),
+  (26, 'Lekbir', 'Gebretsadik', 'lekbirgebre@yahoo.com', 'leki', '202cb962ac59075b964b07152d234b70', '(202) 730 5250', 'User', 'Blocked', '02', '02A', 2, '2014-12-03 23:48:09', 1),
+  (27, 'Yefikir', 'Alemayehu', 'yefi@yahoo.com', 'yefi', '202cb962ac59075b964b07152d234b70', '98798787', 'User', 'Blocked', '02', '999', 2, '2014-12-03 23:48:57', 1),
+  (28, 'Miki', 'Biruk', 'miki@yahoo.com', 'miki', '202cb962ac59075b964b07152d234b70', '98798789', 'User', 'Blocked', '01', '02A', 33, '2014-12-11 22:51:04', 1),
+  (29, 'Lala', 'Biruk', 'lala@yahoo.com', 'lala', '202cb962ac59075b964b07152d234b70', '87986876', 'User', 'Blocked', '02', '02A', 2, '2014-12-11 17:31:04', 1),
+  (30, 'Tona', 'Biruk', 'tona@yahoo.com', 'tona', '202cb962ac59075b964b07152d234b70', '98786876', 'User', 'Blocked', '02', '02A', 2, '2014-12-03 23:48:49', 1),
+  (31, 'Netsanet', 'Tadesse', 'netsanet.tadesse@gmail.com', 'netsanet', '202cb962ac59075b964b07152d234b70', '909809809', 'User', 'Blocked', '01', '01A', 2, '2014-12-03 23:46:20', 1),
+  (32, 'Yelfign', 'Ejigu', 'aba@gmail.com', 'aba', '202cb962ac59075b964b07152d234b70', '0934893048', 'User', 'Blocked', '02', '02A', 2, '2014-12-03 23:49:03', 1),
+  (33, 'Wondwossen', 'Mulugeta', 'wondisho@yahoo.com', 'wondisho', '202cb962ac59075b964b07152d234b70', '0911607338', 'User', 'Active', '01', '01A', 2, '2014-12-03 23:51:48', 0),
+  (34, 'Berhanu', 'Teka', 'bre.teka@yahoo.com', 'bre', '202cb962ac59075b964b07152d234b70', '09876543', 'User', 'Active', '02', '02A', 2, '2014-12-03 23:54:41', 0),
+  (35, 'Zelalem', 'Yesigat', 'zelalem@gmail.com', 'zele', '202cb962ac59075b964b07152d234b70', '5714281901', 'User', 'Active', '02', '999', 33, '2014-12-11 21:33:34', 0),
+  (36, 'Alemu', 'Aga', 'alemu@yahoo.com', 'alemu', '202cb962ac59075b964b07152d234b70', '0498594', 'User', 'Active', '01', '999', 33, '2014-12-11 22:51:42', 1),
+  (37, 'Abdisa', 'Aga', 'abdisa@yahoo.com', 'abdisa', '202cb962ac59075b964b07152d234b70', '98798897', 'User', 'Active', '02', '02A', 33, '2014-12-11 21:20:11', 1),
+  (38, 'Bemnet', 'Shemeles', 'bemenet@yahoo.com', 'bement', '202cb962ac59075b964b07152d234b70', '987987987', 'User', 'Active', '02', '999', 33, '2014-12-11 21:24:18', 1),
+  (39, 'Eyob', 'Delele', 'eyob@yahoo.com', 'eyob', '202cb962ac59075b964b07152d234b70', '343434', 'User', 'Active', '02', '02A', 34, '2014-12-12 06:39:09', 0),
+  (40, 'Betesegaw', 'Dereje', 'betese@yahoo.com', 'betese', '202cb962ac59075b964b07152d234b70', '094809384', 'User', 'Active', '02', '02A', 34, '2014-12-12 07:00:07', 0),
+  (41, 'Samuel', 'Chisu', 'samichisu@yahoo.com', 'sami', '202cb962ac59075b964b07152d234b70', '098987', 'User', 'Active', '02', '02A', 33, '2014-12-12 07:12:15', 1),
+  (42, 'Sami', 'Anbessa', 'samianbessa@yahoo.com', 'samia', '202cb962ac59075b964b07152d234b70', '09809809', 'User', 'Active', '02', '999', 33, '2014-12-12 07:12:58', 1),
+  (43, 'User Created', 'By Sami Chisu', 'usersami@chisu.com', 'samicu', '202cb962ac59075b964b07152d234b70', '0948598', 'User', 'Active', '02', '999', 41, '2014-12-12 07:37:01', 1);
 
   -- --------------------------------------------------------
 
@@ -1242,7 +1257,7 @@ use db_sami_proj;
     `id` int(11) NOT NULL,
     `district_id` int(11) NOT NULL,
     `user_id` int(11) NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_user_district`
@@ -1253,7 +1268,8 @@ use db_sami_proj;
   (6, 1, 28),
   (7, 1, 31),
   (8, 1, 22),
-  (9, 1, 33);
+  (9, 1, 33),
+  (10, 1, 36);
 
   -- --------------------------------------------------------
 
@@ -1306,7 +1322,7 @@ use db_sami_proj;
     `id` int(11) NOT NULL,
     `sub_district_id` int(11) NOT NULL,
     `user_id` int(11) NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_user_sub_district`
@@ -1320,7 +1336,14 @@ use db_sami_proj;
   (20, 1, 23),
   (21, 1, 30),
   (22, 1, 34),
-  (23, 1, 35);
+  (23, 1, 35),
+  (24, 1, 37),
+  (25, 3, 38),
+  (26, 1, 39),
+  (27, 1, 40),
+  (28, 5, 41),
+  (29, 5, 42),
+  (30, 5, 43);
 
   --
   -- Indexes for dumped tables
@@ -1552,7 +1575,7 @@ use db_sami_proj;
   -- Indexes for table `tbl_sub_district`
   --
   ALTER TABLE `tbl_sub_district`
-  ADD PRIMARY KEY (`id`), ADD KEY `district_id` (`district_id`);
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `display_name` (`display_name`), ADD KEY `district_id` (`district_id`);
 
   --
   -- Indexes for table `tbl_team`
@@ -1636,7 +1659,7 @@ use db_sami_proj;
   -- AUTO_INCREMENT for table `tbl_event_calendar`
   --
   ALTER TABLE `tbl_event_calendar`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
   --
   -- AUTO_INCREMENT for table `tbl_fn`
   --
@@ -1801,7 +1824,7 @@ use db_sami_proj;
   -- AUTO_INCREMENT for table `tbl_sub_district`
   --
   ALTER TABLE `tbl_sub_district`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
   --
   -- AUTO_INCREMENT for table `tbl_team`
   --
@@ -1826,12 +1849,12 @@ use db_sami_proj;
   -- AUTO_INCREMENT for table `tbl_user`
   --
   ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=44;
   --
   -- AUTO_INCREMENT for table `tbl_user_district`
   --
   ALTER TABLE `tbl_user_district`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
   --
   -- AUTO_INCREMENT for table `tbl_user_level_lookup`
   --
@@ -1846,7 +1869,7 @@ use db_sami_proj;
   -- AUTO_INCREMENT for table `tbl_user_sub_district`
   --
   ALTER TABLE `tbl_user_sub_district`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
   --
   -- Constraints for dumped tables
   --

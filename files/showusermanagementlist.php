@@ -27,15 +27,16 @@
     }
 ?>
 <style>
-  .fixed{
+  /*.fixed{
     top:0;
     position:fixed;
     width:auto;
     display:none;
     border:none;
     background-color:white;
-  }
+  }*/
 </style>
+<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css"/>
 <div style="background:#eee">
     <?php
       if($loggedInUserObj->member_type == 'Admin'){
@@ -59,22 +60,21 @@
 </div>
 <div>
     <form>
-    <table border="1" width="100%" rules="all">
+    <table id="example" border="1" rules="rows" class="display" cellspacing="0" width="100%" style="display: block;">
       <thead>
-        <tr style="background: #eee; font-weight:bolder">
-            <td style="display:none">Ser.No</td>
-            <td width="4%">Full Name</td>
-            <td width="8%">Email</td>
-            <td width="2%">User Id</td>
-            <td style="display:none">Member Type</td>
-            <td width="2%">Status</td>
-            <td style="display:none">User Level</td>
-            <td width="2%">User Role</td>
-            <td width="2%">District</td>
-            <td width="2%">Sub District</td>
-            <td style="display:none">Modification Date</td>
-            <td width="5%">Reset Password</td>
-            <td width="5%">Modify Status</td>
+        <tr>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>User Id</th>
+            <th style="display:none">Member Type</th>
+            <th>Status</th>
+            <th style="display:none">User Level</th>
+            <th>User Role</th>
+            <th>District</th>
+            <th>Sub District</th>
+            <th style="display:none">Modification Date</th>
+            <th>Reset Password</th>
+            <th>Modify Status</th>
         </tr>
       </thead>
       <tbody>
@@ -104,7 +104,6 @@
                 $userLevel = getUserLevelLookUpUsingCode($userRow->user_level);
                 ?>
                 <tr>
-                    <td style="display:none"><?php echo $ctr++;?></td>
                     <td><?php echo $userRow->first_name . " " . $userRow->last_name;?></td>
                     <td><?php echo $userRow->email;?></td>
                     <td><?php echo $userRow->user_id;?></td>
@@ -121,18 +120,35 @@
                     <td>
                         <a href="#.php" class="modifyUserProfileLink" id="<?php echo $userRow->id;?>">Modify Profile</a>
                         |
-                        [<a href="#.php" class="softDeleteLink" id="<?php echo $userRow->id;?>"><font color="red">Delete</font></a>]
+                        [<a href="#.php" class="softDeleteLink" id="<?php echo $userRow->id;?>"><font color="red">X</font></a>]
                     </td>
                 </tr>
                 <?php
             }//end while loop
         ?>
       </tbody>
+      <tfoot>
+        <tr>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>User Id</th>
+          <th style="display:none">Member Type</th>
+          <th>Status</th>
+          <th style="display:none">User Level</th>
+          <th>User Role</th>
+          <th>District</th>
+          <th>Sub District</th>
+          <th style="display:none">Modification Date</th>
+          <th>Reset Password</th>
+          <th>Modify Status</th>
+        </tr>
+      </tfoot>
     </table>
 </form>
 </div>
 <hr/>
 <div id="createUserDiv"></div>
+<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         $('#createUserLink').click(function(){
@@ -170,7 +186,7 @@
 
     });//end document.ready function
 
-    ;(function($) {
+    /*;(function($) {
       $.fn.fixMe = function() {
         return this.each(function() {
           var $this = $(this),
@@ -204,6 +220,16 @@
 
         $(document).ready(function(){
           $("table").fixMe();
-        });
+        });*/
+
+        $(document).ready(function() {
+
+            $('#example').DataTable({
+
+            });
+
+
+        });//end document.ready function
+
 </script>
 </div>
