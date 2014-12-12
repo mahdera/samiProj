@@ -13,7 +13,7 @@
 ?>
 <div>
     <table border="0" width="100%">
-        <tr>
+        <tr style="display:none">
             <td>Zone:</td>
             <td>
                 <select name="<?php echo $zoneControl;?>" id="<?php echo $zoneControl;?>" style="width:100%">
@@ -63,7 +63,7 @@
             var branchNameControl = "txtbranchname" + branchId;
             var descriptionControl = "textareadescription" + branchId;
             //now get the values...
-            var zoneIdVal = $('#'+zoneControl).val();
+            var zoneIdVal = 1;//$('#'+zoneControl).val();
             var branchNameVal = $('#'+branchNameControl).val();
             var descriptionVal = "---";//$('#'+descriptionControl).val();
 

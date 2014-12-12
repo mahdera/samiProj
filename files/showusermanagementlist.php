@@ -1,3 +1,4 @@
+<div>
 <?php
     @session_start();
     require_once 'user.php';
@@ -24,6 +25,16 @@
         $userList = getAllDistrictAndSubDistrictUsersWithDistrictId($userDistrictObj->district_id);
     }
 ?>
+<style>
+  .fixed{
+    top:0;
+    position:fixed;
+    width:auto;
+    display:none;
+    border:none;
+    background-color:white;
+  }
+</style>
 <div style="background:#eee">
     <?php
       if($loggedInUserObj->member_type == 'Admin'){
@@ -45,25 +56,27 @@
       }
     ?>
 </div>
-<div style="overflow-y: scroll; height: 500px; border : 2px solid gray">
+<div>
     <form>
     <table border="1" width="100%" rules="all">
+      <thead>
         <tr style="background: #eee; font-weight:bolder">
-            <td>Ser.No</td>
-            <td>First Name</td>
-            <td>Last Name</td>
-            <td>Email</td>
-            <td>User Id</td>
-            <td>Member Type</td>
-            <td>Member Status</td>
-            <td>User Level</td>
-            <td>User Role</td>
-            <td>District</td>
-            <td>Sub District</td>
-            <td>Modification Date</td>
-            <td>Reset Password</td>
-            <td>Modify Status</td>
+            <td style="display:none">Ser.No</td>
+            <td width="13.8%">Full Name</td>
+            <td width="20.39%">Email</td>
+            <td width="6.16%">User Id</td>
+            <td style="display:none">Member Type</td>
+            <td width="5.2%">Status</td>
+            <td style="display:none">User Level</td>
+            <td width="10.67%">User Role</td>
+            <td width="7.29%">District</td>
+            <td width="17.53%">Sub District</td>
+            <td style="display:none">Modification Date</td>
+            <td width="10.06%">Reset Password</td>
+            <td width="8.68%">Modify Status</td>
         </tr>
+      </thead>
+      <tbody>
         <?php
             $ctr=1;
             $districtObj = null;
@@ -90,18 +103,17 @@
                 $userLevel = getUserLevelLookUpUsingCode($userRow->user_level);
                 ?>
                 <tr>
-                    <td><?php echo $ctr++;?></td>
-                    <td><?php echo $userRow->first_name;?></td>
-                    <td><?php echo $userRow->last_name;?></td>
-                    <td><?php echo $userRow->email;?></td>
+                    <td style="display:none"><?php echo $ctr++;?></td>
+                    <td width="13.8%"><?php echo $userRow->first_name . " " . $userRow->last_name;?></td>
+                    <td width="20.39%"><?php echo $userRow->email;?></td>
                     <td><?php echo $userRow->user_id;?></td>
-                    <td><?php echo $userRow->member_type;?></td>
+                    <td style="display:none"><?php echo $userRow->member_type;?></td>
                     <td><?php echo $userRow->user_status;?></td>
-                    <td><?php echo ($userLevel != null ? $userLevel->value : '---');?></td>
+                    <td style="display:none"><?php echo ($userLevel != null ? $userLevel->value : '---');?></td>
                     <td><?php echo ($userRole != null ? $userRole->value : '---');?></td>
                     <td><?php echo ($districtObj != null ? $districtObj->display_name : '---');?></td>
                     <td><?php echo ($subDistrictObj != null ? $subDistrictObj->display_name : '---');?></td>
-                    <td><?php echo $userRow->modification_date;?></td>
+                    <td style="display:none"><?php echo $userRow->modification_date;?></td>
                     <td>
                         <a href="#.php" class="resetUserPasswordLink" id="<?php echo $userRow->id;?>">Reset Password</a>
                     </td>
@@ -112,6 +124,7 @@
                 <?php
             }//end while loop
         ?>
+      </tbody>
     </table>
 </form>
 </div>
@@ -144,5 +157,43 @@
         $('#branchManagementLink').click(function(){
             $('#createUserDiv').load('files/showbranchmanagementmenu.php');
         });
+
     });//end document.ready function
+
+    ;(function($) {
+      $.fn.fixMe = function() {
+        return this.each(function() {
+          var $this = $(this),
+          $t_fixed;
+          function init() {
+            $this.wrap('<div class="container" />');
+            $t_fixed = $this.clone();
+            $t_fixed.find("tbody").remove().end().addClass("fixed").insertBefore($this);
+            resizeFixed();
+          }
+          function resizeFixed() {
+            $t_fixed.find("th").each(function(index) {
+              $(this).css("width",$this.find("th").eq(index).outerWidth()+"px");
+            });
+          }
+          function scrollFixed() {
+            var offset = $(this).scrollTop(),
+            tableOffsetTop = $this.offset().top,
+            tableOffsetBottom = tableOffsetTop + $this.height() - $this.find("thead").height();
+            if(offset < tableOffsetTop || offset > tableOffsetBottom)
+              $t_fixed.hide();
+              else if(offset >= tableOffsetTop && offset <= tableOffsetBottom && $t_fixed.is(":hidden"))
+                $t_fixed.show();
+              }
+              $(window).resize(resizeFixed);
+              $(window).scroll(scrollFixed);
+              init();
+            });
+          };
+        })(jQuery);
+
+        $(document).ready(function(){
+          $("table").fixMe();
+        });
 </script>
+</div>

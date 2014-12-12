@@ -4,7 +4,7 @@
 ?>
 <div>
     <table border="0" width="100%">
-        <tr>
+        <tr style="display:none">
             <td>District:</td>
             <td>
                 <select name="slctzone" id="slctzone" style="width:100%">
@@ -41,9 +41,9 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('#btnsave').click(function(){
-            var zoneId = $('#slctzone').val();
+            var zoneId = 1;//$('#slctzone').val();
             var branchName = $('#txtbranchname').val();
-            var description = "---";//$('#textareadescription').val();
+            var description = "---";//$('#textareadescription').val();            
 
             if(zoneId != "" && branchName != ""){
                 var dataString = "zoneId="+zoneId+"&branchName="+branchName+"&description="+description;

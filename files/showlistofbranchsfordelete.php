@@ -20,7 +20,7 @@
                 <tr>
                     <td>District</td>
                     <td>Sub District Name</td>
-                    <td>Description</td>
+                    <td style="display:none">Description</td>
                     <td>Delete</td>
                 </tr>
                 <?php
@@ -29,10 +29,10 @@
                       $zoneObj = getDistrict($branchRow->district_id);
                       ?>
                           <tr>
-                              <td><?php echo $ctr++;?></td>
+                              <td style="display:none"><?php echo $ctr++;?></td>
                               <td><?php echo $zoneObj->display_name;?></td>
                               <td><?php echo $branchRow->display_name;?></td>
-                              <td><?php echo $branchRow->description;?></td>
+                              <td style="display:none"><?php echo $branchRow->description;?></td>
                               <td>
                                   <a href="#.php" id="<?php echo $branchRow->id;?>" class="deleteBranchClass">Delete</a>
                               </td>

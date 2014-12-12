@@ -59,6 +59,20 @@
     }
   }
 
+  function hasThisBranchAlreadySavedInDatabase($displayName){
+    $count = 0;
+    try{
+      $query = "select count(*) as cnt from tbl_sub_district where display_name = '$displayName'";
+      //echo $query;
+      $result = read($query);
+      $resultRow = mysql_fetch_object($result);
+      $count = $resultRow->cnt;
+      return $count;
+    }catch(Exception $ex){
+      $ex->getMessage();
+    }
+  }
+
   function getAllSubDistrictsOfThisDistrictHavingUsersUnderIt($districtId){
     try{
       $query = "select distinct tbl_sub_district.* from tbl_sub_district, tbl_user_sub_district, tbl_user where tbl_sub_district.district_id = $districtId and " .

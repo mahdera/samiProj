@@ -8,12 +8,15 @@
 
   $theUserId = $_SESSION['INDIVIDUAL_INT_USER_ID'];
   $loggedInUserObj = getUser($theUserId);
+  $loggedInUserRole = $loggedInUserObj->user_role;
   $zoneList = null;
   if($loggedInUserObj->member_type == 'Admin'){
         $zoneList = getAllDistricts();
   }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == '01A'){
         $userZoneObj = getDistrictInfoForUser($theUserId);
-        $zoneList = getAllDistrictsWithDistrictId($userZoneObj->district_id);
+        if(!empty($userZoneObj)){
+          $zoneList = getAllDistrictsWithDistrictId($userZoneObj->district_id);
+        }
   }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == '02A'){
         //no need to have something written downhere...
   }
@@ -21,7 +24,7 @@
 ?>
 <h1>Create User</h1>
 <form>
-    <table border="0" width="100%">
+    <table border="1" width="100%" rules="all">
         <tr>
             <td width="15%"><font color='red'>*</font> First Name:</td>
             <td>
@@ -41,21 +44,21 @@
             </td>
         </tr>
         <tr>
+          <td>Phone Number:</td>
+          <td>
+            <input type="text" name="txtphonenumber" id="txtphonenumber" size="70"/>
+          </td>
+        </tr>
+        <tr>
+          <td><font color='red'>*</font> Password:</td>
+          <td>
+            <input type="password" name="txtpassword" id="txtpassword" size="70"/>
+          </td>
+        </tr>
+        <tr>
             <td><font color='red'>*</font> User Id:</td>
             <td>
                 <input type="text" name="txtuserid" id="txtuserid" size="70"/>
-            </td>
-        </tr>
-        <tr>
-            <td><font color='red'>*</font> Password:</td>
-            <td>
-                <input type="password" name="txtpassword" id="txtpassword" size="70"/>
-            </td>
-        </tr>
-        <tr>
-            <td>Phone Number:</td>
-            <td>
-                <input type="text" name="txtphonenumber" id="txtphonenumber" size="70"/>
             </td>
         </tr>
         <!--<tr>
@@ -105,30 +108,41 @@
                 <div id="userRoleDiv_MODIFIED">
                   <select name="slctuserrole" id="slctuserrole" style="width:100%">
                     <option value="" selected="selected">--Select--</option>
-                    <option value="01A">District Administrator</option>
-                    <option value="02A">Sub District Administrator</option>
-                    <option value="999">Sub District User</option>
-                    <!--<option value="">Sub District User (Read-Only)</option>-->
+                    <?php
+                      if($loggedInUserRole == '01A'){
+                    ?>
+                      <option value="01A">District Administrator</option>
+                      <option value="02A">Sub District Administrator</option>
+                      <option value="999">Sub District User</option>
+                      <!--<option value="">Sub District User (Read-Only)</option>-->
+                    <?php
+                      }else{
+                    ?>
+                      <option value="02A">Sub District Administrator</option>
+                      <option value="999">Sub District User</option>
+                    <?php
+                      }
+                    ?>
                   </select>
                 </div>
             </td>
         </tr>
-        <!--<tr id="zoneRow">
+        <tr id="districtRow" style="display:none">
             <td><font color='red'>*</font> District:</td>
             <td>
                 <select name="slctzone" id="slctzone" style="width:100%">
                     <option value="" selected="selected">--Select--</option>
                     <?php
-                        /*while($zoneRow = mysql_fetch_object($zoneList)){
+                        while($zoneRow = mysql_fetch_object($zoneList)){
                             ?>
                               <option value="<?php echo $zoneRow->id;?>"><?php echo $zoneRow->display_name;?></option>
                             <?php
-                        }//end while loop*/
+                        }//end while loop
                     ?>
                 </select>
             </td>
-        </tr>-->
-        <tr id="subDistrictRow">
+        </tr>
+        <tr id="subDistrictRow" style="display:none">
             <td><font color="red">*</font> Sub District</td>
             <td>
                 <select name="slctsubdistrict" id="slctsubdistrict" style="width:100%">
@@ -263,8 +277,10 @@
           if(userRole !== ""){
             if(userRole == "01A"){
               $('#subDistrictRow').hide();
-            }else{
+              $('#districtRow').show();
+            }else if(userRole == "02A" || userRole == "999"){
               $('#subDistrictRow').show();
+              $('#districtRow').hide();
             }
           }
         });
