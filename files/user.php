@@ -209,11 +209,25 @@
         }
     }
 
+    function getAllSubDistrictUsersWithSubDistrictId($subDistrictId){
+        try{
+          $query = "select tbl_user.* from tbl_user, tbl_user_sub_district, tbl_sub_district " .
+          "where tbl_user.id = tbl_user_sub_district.user_id and tbl_user_sub_district.sub_district_id = tbl_sub_district.id and " .
+          "tbl_sub_district.id = $subDistrictId order by first_name, last_name";
+          //echo $query;
+          $result = read($query);
+          return $result;
+        }catch(Exception $ex){
+          $ex->getMessage();
+        }
+    }
+
     function getAllSubDistrictUsersWithDistrictId($districtId){
         try{
           $query = "select tbl_user.* from tbl_user, tbl_user_sub_district, tbl_sub_district " .
           "where tbl_user.id = tbl_user_sub_district.user_id and tbl_user_sub_district.sub_district_id = tbl_sub_district.id and " .
           "tbl_sub_district.district_id = $districtId order by first_name, last_name";
+          echo $query;
           $result = read($query);
           return $result;
         }catch(Exception $ex){

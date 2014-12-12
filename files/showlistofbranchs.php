@@ -16,11 +16,11 @@
 
     if(!empty($branchList) && mysql_num_rows($branchList)){
         ?>
-            <table border="0" width="100%">
-                <tr>
-                    <td>District</td>
+            <table border="1" width="100%" rules="all">
+                <tr style="background:#eee;font-weight:bolder;">
+                    <td style="display:none;">District</td>
                     <td>Sub District Name</td>
-                    <td>Description</td>
+                    <td style="display:none">Description</td>
                 </tr>
                 <?php
                   $ctr=1;
@@ -28,9 +28,9 @@
                       $zoneObj = getDistrict($branchRow->district_id);
                       ?>
                           <tr>
-                              <td><?php echo $zoneObj->display_name;?></td>
+                              <td style="display:none;"><?php echo $zoneObj->display_name;?></td>
                               <td><?php echo $branchRow->display_name;?></td>
-                              <td><?php echo $branchRow->description;?></td>
+                              <td style="display:none"><?php echo $branchRow->description;?></td>
                           </tr>
                       <?php
                   }//end while loop

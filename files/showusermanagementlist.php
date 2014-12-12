@@ -18,7 +18,8 @@
     }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == '02A'){
         //now get the branch id of the logged in user
         $userSubDistrictObj = getSubDistrictInfoForUser($theUserId);
-        $userList = getAllSubDistrictUsersWithDistrictId($userSubDistrictObj->sub_district_id);
+        //echo 'sub district id : ' . $userSubDistrictObj->sub_district_id;
+        $userList = getAllSubDistrictUsersWithSubDistrictId($userSubDistrictObj->sub_district_id);
     }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == '01A'){
         //now get the zone id of the logged in user and get all zone and branch level users found under the zone id of this logged in user
         $userDistrictObj = getDistrictInfoForUser($theUserId);
@@ -62,18 +63,18 @@
       <thead>
         <tr style="background: #eee; font-weight:bolder">
             <td style="display:none">Ser.No</td>
-            <td width="13.8%">Full Name</td>
-            <td width="20.39%">Email</td>
-            <td width="6.16%">User Id</td>
+            <td width="4%">Full Name</td>
+            <td width="8%">Email</td>
+            <td width="2%">User Id</td>
             <td style="display:none">Member Type</td>
-            <td width="5.2%">Status</td>
+            <td width="2%">Status</td>
             <td style="display:none">User Level</td>
-            <td width="10.67%">User Role</td>
-            <td width="7.29%">District</td>
-            <td width="17.53%">Sub District</td>
+            <td width="2%">User Role</td>
+            <td width="2%">District</td>
+            <td width="2%">Sub District</td>
             <td style="display:none">Modification Date</td>
-            <td width="10.06%">Reset Password</td>
-            <td width="8.68%">Modify Status</td>
+            <td width="5%">Reset Password</td>
+            <td width="5%">Modify Status</td>
         </tr>
       </thead>
       <tbody>
@@ -104,8 +105,8 @@
                 ?>
                 <tr>
                     <td style="display:none"><?php echo $ctr++;?></td>
-                    <td width="13.8%"><?php echo $userRow->first_name . " " . $userRow->last_name;?></td>
-                    <td width="20.39%"><?php echo $userRow->email;?></td>
+                    <td><?php echo $userRow->first_name . " " . $userRow->last_name;?></td>
+                    <td><?php echo $userRow->email;?></td>
                     <td><?php echo $userRow->user_id;?></td>
                     <td style="display:none"><?php echo $userRow->member_type;?></td>
                     <td><?php echo $userRow->user_status;?></td>

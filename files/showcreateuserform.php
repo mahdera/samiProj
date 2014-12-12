@@ -10,6 +10,11 @@
   $loggedInUserObj = getUser($theUserId);
   $loggedInUserRole = $loggedInUserObj->user_role;
   $zoneList = null;
+  $userSubDistrictObj = getSubDistrictInfoForUser($theUserId);
+  $loggedInUserSubDistrictId = "";//$userSubDistrictObj->sub_district_id;
+  if(!empty($userSubDistrictObj)){
+    $loggedInUserSubDistrictId = $userSubDistrictObj->sub_district_id;
+  }
   if($loggedInUserObj->member_type == 'Admin'){
         $zoneList = getAllDistricts();
   }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == '01A'){
@@ -18,7 +23,7 @@
           $zoneList = getAllDistrictsWithDistrictId($userZoneObj->district_id);
         }
   }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == '02A'){
-        //no need to have something written downhere...
+        //no need to have something written downhere...        
   }
 
 ?>
@@ -169,6 +174,7 @@
     $(document).ready(function(){
         $('#txtfirstname').focus();
 
+
         $('#btncreateuser').click(function(){
             var firstName = $('#txtfirstname').val();
             var lastName = $('#txtlastname').val();
@@ -186,7 +192,15 @@
                 eitherZoneIdOrBranchId = 1;
                 userLevel = "01";
             }else{
-                eitherZoneIdOrBranchId = $('#slctsubdistrict').val();
+                //eitherZoneIdOrBranchId = $('#slctsubdistrict').val();
+                //get the loggedinuser sub distrit id
+                var loggedInUserRole = "<?php echo $loggedInUserRole;?>";
+                var loggedInUserSubDistrictId = "<?php echo $loggedInUserSubDistrictId;?>";
+                if(loggedInUserRole == '02A'){
+                  eitherZoneIdOrBranchId = loggedInUserSubDistrictId;
+                }else{
+                  eitherZoneIdOrBranchId = $('#slctsubdistrict').val();
+                }
                 userLevel = "02";
             }
 
@@ -264,23 +278,26 @@
 
         $('#slctuserrole').change(function(){
           var userRole = $(this).val();
-          /*var userLevel = $('#slctuserlevel').val();
-          if(userRole !== '' && userLevel !== ''){
-              if(userLevel == '02' && userRole == '01A'){
-                  alert('A sub district level user can not have a District Admin role! Please select again!');
-                  $('#slctuserrole').val('');
-              }else if(userLevel == '01' && userRole == '02A'){
-                  alert('A district level user can not have a Sub District Admin role! Please select again!');
-                  $('#slctuserrole').val('');
+          var loggedInUserRole = "<?php echo $loggedInUserRole;?>";
+          if(loggedInUserRole == '01A'){
+            if(userRole !== ""){
+              if(userRole == "01A"){
+                $('#subDistrictRow').hide();
+                $('#districtRow').show();
+              }else if(userRole == "02A" || userRole == "999"){
+                $('#subDistrictRow').show();
+                $('#districtRow').hide();
               }
-          }*/
-          if(userRole !== ""){
-            if(userRole == "01A"){
-              $('#subDistrictRow').hide();
-              $('#districtRow').show();
-            }else if(userRole == "02A" || userRole == "999"){
-              $('#subDistrictRow').show();
-              $('#districtRow').hide();
+            }
+          }else{
+             if(userRole !== ""){
+              if(userRole == "01A"){
+                $('#subDistrictRow').hide();
+                $('#districtRow').show();
+              }else if(userRole == "02A" || userRole == "999"){
+                $('#subDistrictRow').hide();
+                $('#districtRow').hide();
+              }
             }
           }
         });

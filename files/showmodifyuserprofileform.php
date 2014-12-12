@@ -12,6 +12,7 @@
     //now get the user info using the id value
     $userObj = getUser($id);
     $userLevel = $userObj->user_level;
+    $memberType = $userObj->member_type;
 ?>
 <h1>Update User Profile</h1>
 <form>
@@ -269,25 +270,24 @@
 </form>
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#btnupdate').click(function(){
+        $('#btnupdate').click(function(){          
             var firstName = $('#txteditfirstname').val();
             var lastName = $('#txteditlastname').val();
             var email = $('#txteditemail').val();
-            var memberType = $('#slcteditmembertype').val();
+            var memberType = "<?php echo $memberType;?>";//$('#slcteditmembertype').val();
             var userStatus = $('#slctedituserstatus').val();
             var phoneNumber = $('#txteditphonenumber').val();
             var id = "<?php echo $id;?>";
-            var userLevel = $('#slctuserlevel').val();
+            var userLevel = "<?php echo $userLevel;?>";//$('#slctuserlevel').val();
             var eitherZoneIdOrBranchId = "";
             var userRole = $('#slctuserrole').val();
             if(userLevel == '01'){
-                eitherZoneIdOrBranchId = $('#slctzone').val();
+                eitherZoneIdOrBranchId = 1;//$('#slctzone').val();
             }else if(userLevel == '02'){
                 eitherZoneIdOrBranchId = $('#slctbranch').val();
             }
 
-            if(firstName !== "" && lastName !== "" && email !== "" && memberType !== "" &&
-                    userStatus !== "" && eitherZoneIdOrBranchId !== "" && userRole !== ""){
+            if(firstName !== "" && lastName !== "" && email !== "" && userStatus !== "" && eitherZoneIdOrBranchId !== "" && userRole !== ""){
                 var dataString = "id="+id+"&firstName="+firstName+"&lastName="+lastName+"&email="+email+
                         "&memberType="+memberType+"&userStatus="+userStatus+"&phoneNumber="+phoneNumber+
                         "&userLevel="+encodeURIComponent(userLevel)+"&eitherZoneIdOrBranchId="+
