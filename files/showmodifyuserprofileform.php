@@ -270,7 +270,7 @@
 </form>
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#btnupdate').click(function(){          
+        $('#btnupdate').click(function(){
             var firstName = $('#txteditfirstname').val();
             var lastName = $('#txteditlastname').val();
             var email = $('#txteditemail').val();

@@ -120,6 +120,8 @@
                     </td>
                     <td>
                         <a href="#.php" class="modifyUserProfileLink" id="<?php echo $userRow->id;?>">Modify Profile</a>
+                        |
+                        [<a href="#.php" class="softDeleteLink" id="<?php echo $userRow->id;?>"><font color="red">Delete</font></a>]
                     </td>
                 </tr>
                 <?php
@@ -145,6 +147,13 @@
         $('.modifyUserProfileLink').click(function(){
             var id = $(this).attr('id');
             $('#createUserDiv').load('files/showmodifyuserprofileform.php?id='+id);
+        });
+
+        $('.softDeleteLink').click(function(){
+            if(window.confirm('Are you sure you want to delete this user?')){
+                var id = $(this).attr('id');
+                $('.content').load('files/softdeletedthisuser.php?id='+id);
+            }
         });
 
         $('#editDistrictForDistrictAdminLink').click(function(){
