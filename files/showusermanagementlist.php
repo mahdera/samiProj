@@ -114,13 +114,13 @@
                     <td><?php echo ($districtObj != null ? $districtObj->display_name : '---');?></td>
                     <td><?php echo ($subDistrictObj != null ? $subDistrictObj->display_name : '---');?></td>
                     <td style="display:none"><?php echo $userRow->modification_date;?></td>
-                    <td>
-                        <a href="#.php" class="resetUserPasswordLink" id="<?php echo $userRow->id;?>">Reset Password</a>
+                    <td align="center">
+                        <a href="#.php" class="resetUserPasswordLink" id="<?php echo $userRow->id;?>"><img src="images/reset.gif" border="0" align="absmiddle"/></a>
                     </td>
-                    <td>
-                        <a href="#.php" class="modifyUserProfileLink" id="<?php echo $userRow->id;?>">Modify Profile</a>
+                    <td align="center">
+                        <a href="#.php" class="modifyUserProfileLink" id="<?php echo $userRow->id;?>"><img src="images/edit.png" border="0" align="absmiddle"/></a>
                         |
-                        [<a href="#.php" class="softDeleteLink" id="<?php echo $userRow->id;?>"><font color="red">X</font></a>]
+                        [<a href="#.php" class="softDeleteLink" id="<?php echo $userRow->id;?>"><img src="images/delete.png" border="0" align="absmiddle"/></a>]
                     </td>
                 </tr>
                 <?php

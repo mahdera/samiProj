@@ -7,8 +7,8 @@
             </tr>
             <tr style="background:#eee">
                 <td>Form 1</td>
-                <td>
-                    <a href="#.php" id="showForm1Link">Show</a> | <a href="#.php" id="hideForm1Link">Hide</a>
+                <td align="middle">
+                    <a href="#.php" id="showForm1Link"><img src="images/open.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="hideForm1Link"><img src="images/close.png" border="0" align="absmiddle"/></a>
                 </td>
             </tr>
             <tr>
@@ -18,8 +18,8 @@
             </tr>
             <tr style="background:#eee">
                 <td>Form 2</td>
-                <td>
-                    <a href="#.php" id="showForm2Link">Show</a> | <a href="#.php" id="hideForm2Link">Hide</a>
+                <td align="middle">
+                    <a href="#.php" id="showForm2Link"><img src="images/open.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="hideForm2Link"><img src="images/close.png" border="0" align="absmiddle"/></a>
                 </td>
             </tr>
             <tr>
@@ -29,8 +29,8 @@
             </tr>
             <tr style="background:#eee">
                 <td>Form 3</td>
-                <td>
-                    <a href="#.php" id="showForm3Link">Show</a> | <a href="#.php" id="hideForm3Link">Hide</a>
+                <td align="middle">
+                    <a href="#.php" id="showForm3Link"><img src="images/open.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="hideForm3Link"><img src="images/close.png" border="0" align="absmiddle"/></a>
                 </td>
             </tr>
             <tr>
@@ -40,8 +40,8 @@
             </tr>
             <tr style="background:#eee">
                 <td>Form 4</td>
-                <td>
-                    <a href="#.php" id="showForm4Link">Show</a> | <a href="#.php" id="hideForm4Link">Hide</a>
+                <td align="middle">
+                    <a href="#.php" id="showForm4Link"><img src="images/open.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="hideForm4Link"><img src="images/close.png" border="0" align="absmiddle"/></a>
                 </td>
             </tr>
             <tr>
@@ -51,8 +51,8 @@
             </tr>
             <tr style="background:#eee">
                 <td>Form 5</td>
-                <td>
-                    <a href="#.php" id="showForm5Link">Show</a> | <a href="#.php" id="hideForm5Link">Hide</a>
+                <td align="middle">
+                    <a href="#.php" id="showForm5Link"><img src="images/open.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="hideForm5Link"><img src="images/close.png" border="0" align="absmiddle"/></a>
                 </td>
             </tr>
             <tr>
@@ -62,8 +62,8 @@
             </tr>
             <tr style="background:#eee">
                 <td>Form 6</td>
-                <td>
-                    <a href="#.php" id="showForm6Link">Show</a> | <a href="#.php" id="hideForm6Link">Hide</a>
+                <td align="middle">
+                    <a href="#.php" id="showForm6Link"><img src="images/open.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="hideForm6Link"><img src="images/close.png" border="0" align="absmiddle"/></a>
                 </td>
             </tr>
             <tr>
@@ -73,8 +73,8 @@
             </tr>
             <tr style="background:#eee">
                 <td>Form 7</td>
-                <td>
-                    <a href="#.php" id="showForm7Link">Show</a> | <a href="#.php" id="hideForm7Link">Hide</a>
+                <td align="middle">
+                    <a href="#.php" id="showForm7Link"><img src="images/open.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="hideForm7Link"><img src="images/close.png" border="0" align="absmiddle"/></a>
                 </td>
             </tr>
             <tr>
@@ -84,8 +84,8 @@
             </tr>
             <tr style="background:#eee">
                 <td>Form 8</td>
-                <td>
-                    <a href="#.php" id="showForm8Link">Show</a> | <a href="#.php" id="hideForm8Link">Hide</a>
+                <td align="middle">
+                    <a href="#.php" id="showForm8Link"><img src="images/open.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="hideForm8Link"><img src="images/close.png" border="0" align="absmiddle"/></a>
                 </td>
             </tr>
             <tr>
@@ -95,8 +95,8 @@
             </tr>
             <tr style="background:#eee">
                 <td>Form 9</td>
-                <td>
-                    <a href="#.php" id="showForm9Link">Show</a> | <a href="#.php" id="hideForm9Link">Hide</a>
+                <td align="middle">
+                    <a href="#.php" id="showForm9Link"><img src="images/open.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="hideForm9Link"><img src="images/close.png" border="0" align="absmiddle"/></a>
                 </td>
             </tr>
             <tr>
@@ -106,8 +106,8 @@
             </tr>
             <tr style="background:#eee">
                 <td>Form 10</td>
-                <td>
-                    <a href="#.php" id="showForm10Link">Show</a> | <a href="#.php" id="hideForm10Link">Hide</a>
+                <td align="middle">
+                    <a href="#.php" id="showForm10Link"><img src="images/open.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="hideForm10Link"><img src="images/close.png" border="0" align="absmiddle"/></a>
                 </td>
             </tr>
             <tr>

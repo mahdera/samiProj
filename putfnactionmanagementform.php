@@ -47,8 +47,8 @@
                         <td>
                             <a href="#.php" id="<?php echo $fnObj->id;?>" class="openActionFormClass">Show Add Action Form</a> | <a href="#.php" id="<?php echo $fnObj->id;?>" class="closeActionFormClass">Close Add Action Form</a>
                         </td>
-                        <td>
-                          [<!--<a href="#.php" id="<?php echo $fnObj->id;?>" class="viewFnActionLink">View</a> | --><a href="#.php" id="<?php echo $fnObj->id;?>" class="editFnActionLink">Edit</a> | <a href="#.php" id="<?php echo $fnObj->id;?>" class="deleteFnActionLink">Delete</a>]
+                        <td align="middle">
+                          [<!--<a href="#.php" id="<?php echo $fnObj->id;?>" class="viewFnActionLink">View</a> | --><a href="#.php" id="<?php echo $fnObj->id;?>" class="editFnActionLink"><img src="images/edit.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="<?php echo $fnObj->id;?>" class="deleteFnActionLink"><img src="images/delete.png" border="0" align="absmiddle"/></a>]
                         </td>
                     </tr>
                     <tr>

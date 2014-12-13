@@ -35,11 +35,11 @@
 			?>
 			<tr>
 				<td><?php echo stripslashes($form5Row->q5_1);?></td>
-				<td>
-					<a href="#.php" class="form5EditLink" id="<?php echo $form5Row->id;?>">Edit</a>
+				<td align="middle">
+					<a href="#.php" class="form5EditLink" id="<?php echo $form5Row->id;?>"><img src="images/edit.png" border="0" align="absmiddle"/></a>
 				</td>
-				<td>
-					<a href="#.php" class="form5DeleteLink" id="<?php echo $form5Row->id;?>">Delete</a>
+				<td align="middle">
+					<a href="#.php" class="form5DeleteLink" id="<?php echo $form5Row->id;?>"><img src="images/delete.png" border="0" align="absmiddle"/></a>
 				</td>
 			</tr>
 			<?php

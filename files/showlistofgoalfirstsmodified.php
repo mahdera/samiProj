@@ -52,11 +52,11 @@
                                 <td>
                                     [<a href="#.php" id="<?php echo $thObj->id;?>" class="openActionFormClass">Show Goal First Detail</a> | <a href="#.php" id="<?php echo $goalFirstThRow->th_id;?>" class="closeActionFormClass">Close Goal First Detail</a>]
                                 </td>
-                                <td>
-                                    <a href="#.php" id="<?php echo $goalFirstThRow->th_id;?>" class="openGoalFirstDetailForEditClass">Edit</a>
+                                <td align="middle">
+                                    <a href="#.php" id="<?php echo $goalFirstThRow->th_id;?>" class="openGoalFirstDetailForEditClass"><img src="images/edit.png" border="0" align="absmiddle"/></a>
                                 </td>
-                                <td>
-                                    <a href="#.php" id="<?php echo $goalFirstThRow->id;?>" class="deleteGoalFirstDetailClass">Delete</a>
+                                <td align="middle">
+                                    <a href="#.php" id="<?php echo $goalFirstThRow->id;?>" class="deleteGoalFirstDetailClass"><img src="images/delete.png" border="0" align="absmiddle"/></a>
                                 </td>
                             </tr>
                             <tr>

@@ -23,7 +23,7 @@
           $zoneList = getAllDistrictsWithDistrictId($userZoneObj->district_id);
         }
   }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == '02A'){
-        //no need to have something written downhere...        
+        //no need to have something written downhere...
   }
 
 ?>
@@ -283,7 +283,7 @@
             if(userRole !== ""){
               if(userRole == "01A"){
                 $('#subDistrictRow').hide();
-                $('#districtRow').show();
+                $('#districtRow').hide();
               }else if(userRole == "02A" || userRole == "999"){
                 $('#subDistrictRow').show();
                 $('#districtRow').hide();

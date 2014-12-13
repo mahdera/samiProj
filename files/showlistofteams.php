@@ -59,11 +59,11 @@
                                         }//end for...loop
                                     ?>
                                 </td>
-                                <td>
-                                    <a href="#.php" class="teamEditLink" id="<?php echo $teamRow->id;?>">Edit</a>
+                                <td align="middle">
+                                    <a href="#.php" class="teamEditLink" id="<?php echo $teamRow->id;?>"><img src="images/edit.png" align="absmiddle" border="0"/></a>
                                 </td>
-                                <td>
-                                    <a href="#.php" class="teamDeleteLink" id="<?php echo $teamRow->id;?>">Delete</a>
+                                <td align="middle">
+                                    <a href="#.php" class="teamDeleteLink" id="<?php echo $teamRow->id;?>"><img src="images/delete.png"/ align="absmiddle" border="0"/></a>
                                 </td>
                             </tr>
                             <?php

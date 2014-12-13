@@ -38,11 +38,11 @@ if(!empty($form2List) && mysql_num_rows($form2List)){
 				<td><?php echo stripslashes($form2Row->q2_1);?></td>
 				<td><?php echo stripslashes($form2Row->q2_2);?></td>
 				<td><?php echo stripslashes($form2Row->q2_3);?></td>
-				<td>
-					<a href="#.php" class="form2EditLink" id="<?php echo $form2Row->id;?>">Edit</a>
+				<td align="middle">
+					<a href="#.php" class="form2EditLink" id="<?php echo $form2Row->id;?>"><img src="images/edit.png" border="0" align="absmiddle"/></a>
 				</td>
-				<td>
-					<a href="#.php" class="form2DeleteLink" id="<?php echo $form2Row->id;?>">Delete</a>
+				<td align="middle">
+					<a href="#.php" class="form2DeleteLink" id="<?php echo $form2Row->id;?>"><img src="images/delete.png" border="0" align="absmiddle"/></a>
 				</td>
 			</tr>
 			<?php

@@ -54,8 +54,8 @@
                                 <td><?php echo stripslashes($riskRow->pr);?></td>
                                 <td><?php echo stripslashes($riskRow->wa);?></td>
                                 <td><?php echo stripslashes($riskRow->rs);?></td>
-                                <td><a href="#.php" class="riskEditLink" id="<?php echo $riskRow->id;?>">Edit</a></td>
-                                <td><a href="#.php" class="riskDeleteLink" id="<?php echo $riskRow->id;?>">Delete</a></td>
+                                <td align="middle"><a href="#.php" class="riskEditLink" id="<?php echo $riskRow->id;?>"><img src="images/edit.png" border="0" align="absmiddle"/></a></td>
+                                <td align="middle"><a href="#.php" class="riskDeleteLink" id="<?php echo $riskRow->id;?>"><img src="images/delete.png" border="0" align="absmiddle"/></a></td>
                             </tr>
                             <tr>
                                 <td colspan="8">

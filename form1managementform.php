@@ -38,9 +38,9 @@
             <td>Q3:</td>
             <td>
                 <div style="text-align: right">
-                    <a href="#.php" id="addRowsQ3Link">Add Row</a>
+                    <a href="#.php" id="addRowsQ3Link"><img src="images/addrow.png" border="0" align="absmiddle"/></a>
                     |
-                    <a href="#.php" id="removeRowsQ3Link">Remove Row</a>
+                    <a href="#.php" id="removeRowsQ3Link"><img src="images/removerow.png" border="0" align="absmiddle"/></a>
                 </div>
                 <table border="0" width="100%">
                     <tr style="background: #eee">
@@ -62,9 +62,9 @@
             <td>Q4:</td>
             <td>
                 <div style="text-align: right">
-                    <a href="#.php" id="addRowsQ4Link">Add Row</a>
+                    <a href="#.php" id="addRowsQ4Link"><img src="images/addrow.png" border="0" align="absmiddle"/></a>
                     |
-                    <a href="#.php" id="removeRowsQ4Link">Remove Row</a>
+                    <a href="#.php" id="removeRowsQ4Link"><img src="images/removerow.png" border="0" align="absmiddle"/></a>
                 </div>
                 <table border="0" width="100%">
                     <tr style="background: #eee">

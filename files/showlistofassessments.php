@@ -58,11 +58,11 @@
                                     ?>
                                 </td>
                                 <td><?php echo $assessmentRow->summary;?></td>
-                                <td>
-                                    <a href="#.php" id="<?php echo $assessmentRow->id;?>" class="editAssessmentLink">Edit</a>
+                                <td align="middle">
+                                    <a href="#.php" id="<?php echo $assessmentRow->id;?>" class="editAssessmentLink"><img src="images/edit.png" border="0" align="absmiddle"/></a>
                                 </td>
-                                <td>
-                                    <a href="#.php" id="<?php echo $assessmentRow->id;?>" class="deleteAssessmentLink">Delete</a>
+                                <td align="middle">
+                                    <a href="#.php" id="<?php echo $assessmentRow->id;?>" class="deleteAssessmentLink"><img src="images/delete.png" border="0" align="absmiddle"/></a>
                                 </td>
                             </tr>
                             <tr>

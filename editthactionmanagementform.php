@@ -25,7 +25,6 @@
 <div id="thActionDetailDiv">
 <table border="1" width="100%" rules="all">
     <tr style="background: #ccc">
-        <td>Ser.No</td>
         <td>Th</td>
         <td>Th Action Text</td>
         <td>Action</td>
@@ -36,24 +35,23 @@
             $thObj = getTh($thActionRow->th_id);
             ?>
             <tr>
-                <td><?php echo $ctr++;?></td>
                 <td><?php echo stripslashes($thObj->th_name);?></td>
                 <td><?php echo stripslashes($thActionRow->action_text);?></td>
-                <td>
+                <td align="middle">
                     <?php
                         $editLinkId = $thActionRow->id;
                         $editDivId = "editActionTextDiv" . $thActionRow->id;
                         $deleteLinkId = $thActionRow->id;
                     ?>
-                    <a href="#.php" id="<?php echo $editLinkId;?>" class="closeThActionLink">Close</a>
+                    <a href="#.php" id="<?php echo $editLinkId;?>" class="closeThActionLink"><img src="images/close.png" border="0" align="absmiddle"/></a>
                     |
-                    <a href="#.php" id="<?php echo $editLinkId;?>" class="editThActionLink">Edit</a>
+                    <a href="#.php" id="<?php echo $editLinkId;?>" class="editThActionLink"><img src="images/edit.png" border="0" align="absmiddle"/></a>
                     |
-                    <a href="#.php" id="<?php echo $deleteLinkId;?>" class="deleteThActionLink">Delete</a>
+                    <a href="#.php" id="<?php echo $deleteLinkId;?>" class="deleteThActionLink"><img src="images/delete.png" border="0" align="absmiddle"/></a>
                 </td>
             </tr>
             <tr>
-                <td colspan="4">
+                <td colspan="3">
                     <div id="<?php echo $editDivId;?>"></div>
                 </td>
             </tr>

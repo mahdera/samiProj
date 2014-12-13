@@ -204,7 +204,7 @@
           }
           $zoneList = getAllDistricts();
         ?>
-        <tr id="zoneRow">
+        <tr id="zoneRow" style="display:none">
             <td><font color='red'>*</font> District:</td>
             <td>
                 <select name="slctzone" id="slctzone" style="width:100%">
@@ -367,7 +367,8 @@
                       data: dataString,
                       type:'POST',
                       success:function(response){
-                        //$('#branchRowDetail').remove();
+                        $('#branchRowDetail').remove();
+                        $('#branchRow').remove();
                         $('#zoneRow').after(response);
                       },
                       error:function(error){

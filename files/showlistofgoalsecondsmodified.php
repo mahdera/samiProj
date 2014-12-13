@@ -54,11 +54,11 @@
                         <td>
                             <a href="#.php" id="<?php echo $fnObj->id;?>" class="openActionFormClass">Show Goal Second Detail</a> | <a href="#.php" id="<?php echo $fnObj->id;?>" class="closeActionFormClass">Close Goal Second Detail</a>
                         </td>
-                        <td>
-                            <a href="#.php" id="<?php echo $fnObj->id;?>" class="editGoalSecondLink">Edit</a>
+                        <td align="middle">
+                            <a href="#.php" id="<?php echo $fnObj->id;?>" class="editGoalSecondLink"><img src="images/edit.png" border="0" align="absmiddle"/></a>
                         </td>
-                        <td>
-                            <a href="#.php" id="<?php echo $goalSecondFnRow->id;?>" class="deleteGoalSecondLink">Delete</a>
+                        <td align="middle">
+                            <a href="#.php" id="<?php echo $goalSecondFnRow->id;?>" class="deleteGoalSecondLink"><img src="images/delete.png" border="0" align="absmiddle"/></a>
                         </td>
                     </tr>
                     <tr>

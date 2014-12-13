@@ -34,11 +34,11 @@
 			?>
 			<tr>
 				<td><?php echo $form10Row->q10_1;?></td>
-				<td>
-					<a href="#.php" class="form10EditLink" id="<?php echo $form10Row->id;?>">Edit</a>
+				<td align="middle">
+					<a href="#.php" class="form10EditLink" id="<?php echo $form10Row->id;?>"><img src="images/edit.png" border="0" align="absmiddle"/></a>
 				</td>
-				<td>
-					<a href="#.php" class="form10DeleteLink" id="<?php echo $form10Row->id;?>">Delete</a>
+				<td align="middle">
+					<a href="#.php" class="form10DeleteLink" id="<?php echo $form10Row->id;?>"><img src="images/delete.png" border="0" align="absmiddle"/></a>
 				</td>
 			</tr>
 			<?php
