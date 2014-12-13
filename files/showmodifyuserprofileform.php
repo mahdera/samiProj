@@ -230,7 +230,9 @@
             //get the zone info of this user and based on that populate the branch dropdown...
             $branchList = null;
             if($zoneObj != null){
-                $branchList = getAllSubDistrictsOfThisDistrict($zoneObj->id);
+                $userSubDistrictInfo = getSubDistrictInfoForUser($_SESSION['LOGGED_USER_ID']);//getAllSubDistrictsOfThisDistrict($zoneObj->id);
+                //now based on that get Sub district list for user
+                $branchList = getAllSubDistrictWithSubDistrictId($userSubDistrictInfo->sub_district_id);
             }
             ?>
             <tr id="branchRow">
@@ -278,9 +280,17 @@
             var userStatus = $('#slctedituserstatus').val();
             var phoneNumber = $('#txteditphonenumber').val();
             var id = "<?php echo $id;?>";
-            var userLevel = "<?php echo $userLevel;?>";//$('#slctuserlevel').val();
+            //userLevel should be calculated by the value of the user role field...
+            var userLevel = null;
             var eitherZoneIdOrBranchId = "";
             var userRole = $('#slctuserrole').val();
+
+            if(userRole == '01A'){
+                userLevel = '01';
+            }else if(userRole == '02A' || userRole == '999'){
+                userLevel = '02';
+            }
+
             if(userLevel == '01'){
                 eitherZoneIdOrBranchId = 1;//$('#slctzone').val();
             }else if(userLevel == '02'){
@@ -359,8 +369,8 @@
             if(loggedInUserLevel == '01'){
                 if(userRole == "02A" || userRole == "999"){
                     //time to show the district dropdown...
-                    var zoneId = $('#slctzone').val();
-                    var dataString = "zoneId="+zoneId;
+                    //var zoneId = $('#slctzone').val();
+                    var dataString = "zoneId=1";
                     //alert(dataString);
                     $.ajax({
                       url: 'files/showlistofbranchsforthiszone.php',

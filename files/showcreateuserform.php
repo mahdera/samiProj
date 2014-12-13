@@ -29,6 +29,7 @@
 ?>
 <h1>Create User</h1>
 <form>
+    <div id="errorDiv"></div>
     <table border="1" width="100%" rules="all">
         <tr>
             <td width="15%"><font color='red'>*</font> First Name:</td>
@@ -228,6 +229,32 @@
             }else{
                 alert('Enter the required filed members!');
             }
+        });
+
+        $('#txtuserid').focusout(function(){
+          var userId = $(this).val();
+          if(userId != ""){
+            var dataString = "userId="+userId;
+            $.ajax({
+              url: 'files/checkifthisuseridisalreadytaken.php',
+              data: dataString,
+              type:'POST',
+              success:function(response){
+                if(response == 'Taken'){
+                  $('#errorDiv').html("<div class='notify notify-red'><span class='symbol icon-error'></span> This User ID is already taken!</div>");
+                  $('#txtuserid').focus();
+                  $('#btncreateuser').hide();
+                }else{
+                  $('#errorDiv').html('');
+                  $('#btncreateuser').show();
+                }
+                //$('#errorDiv').html(response);
+              },
+              error:function(error){
+                alert(error);
+              }
+            });
+          }
         });
 
         /*$('#slctzone').change(function(){

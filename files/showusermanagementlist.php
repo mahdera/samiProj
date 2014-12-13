@@ -26,16 +26,6 @@
         $userList = getAllDistrictAndSubDistrictUsersWithDistrictId($userDistrictObj->district_id);
     }
 ?>
-<style>
-  /*.fixed{
-    top:0;
-    position:fixed;
-    width:auto;
-    display:none;
-    border:none;
-    background-color:white;
-  }*/
-</style>
 <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css"/>
 <div style="background:#eee">
     <?php
@@ -152,16 +142,25 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('#createUserLink').click(function(){
+            $('html, body').animate({
+              'scrollTop' : $("#createUserDiv").position().top
+            });
             $('#createUserDiv').load('files/showcreateuserform.php');
         });
 
         $('.resetUserPasswordLink').click(function(){
             var id = $(this).attr('id');
+            $('html, body').animate({
+              'scrollTop' : $("#createUserDiv").position().top
+            });
             $('#createUserDiv').load('files/showresetuserpasswordform.php?id='+id);
         });
 
         $('.modifyUserProfileLink').click(function(){
             var id = $(this).attr('id');
+            $('html, body').animate({
+              'scrollTop' : $("#createUserDiv").position().top
+            });
             $('#createUserDiv').load('files/showmodifyuserprofileform.php?id='+id);
         });
 
@@ -173,14 +172,23 @@
         });
 
         $('#editDistrictForDistrictAdminLink').click(function(){
+            $('html, body').animate({
+              'scrollTop' : $("#createUserDiv").position().top
+            });
             $('#createUserDiv').load('files/editdistrictfordistrictadminform.php');
         });
 
         $('#zoneManagementLink').click(function(){
+            $('html, body').animate({
+              'scrollTop' : $("#createUserDiv").position().top
+            });
             $('#createUserDiv').load('files/showzonemanagementmenu.php');
         });
 
         $('#branchManagementLink').click(function(){
+            $('html, body').animate({
+              'scrollTop' : $("#createUserDiv").position().top
+            });
             $('#createUserDiv').load('files/showbranchmanagementmenu.php');
         });
 

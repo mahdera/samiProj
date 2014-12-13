@@ -259,4 +259,15 @@
         $ex->getMessage();
       }
     }
+
+    function isThisUserAccountAlreadyTaken($userId){
+      try{
+        $query = "select count(*) as cnt from tbl_user where user_id = '$userId'";
+        $result = read($query);
+        $resultRow = mysql_fetch_object($result);
+        return $resultRow->cnt;
+      }catch(Exception $ex){
+        $ex->getMessage();
+      }
+    }
 ?>

@@ -84,4 +84,14 @@
       $ex->getMessage();
     }
   }
+
+  function getAllSubDistrictWithSubDistrictId($subDistrictId){
+    try{
+      $query = "select * from tbl_sub_district where id = $subDistrictId";
+      $result = read($query);
+      return $result;
+    }catch(Exception $ex){
+      $ex->getMessage();
+    }
+  }
 ?>
