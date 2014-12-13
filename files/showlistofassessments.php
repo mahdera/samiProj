@@ -11,10 +11,7 @@
         //require_once 'userzone.php';
         $userObj = getUser($_SESSION['LOGGED_USER_ID']);
         $assessmentList = null;
-        /*if($userObj->user_level == 'Zone Level'){
-            $userZoneObj = getZoneInfoForUser($userObj->id);
-            $assessmentList = getAllAssessmentsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
-        }*/
+        
         if($userObj->user_level == '02'){
             $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
             $assessmentList = getAllAssessmentsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);

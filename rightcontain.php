@@ -55,7 +55,7 @@
     }else if($userObj->member_type == 'User' && ($userObj->user_role == '02A' || $userObj->user_role == '01A')){
         ?>
             <div id="rightcontain">
-                <div id="listdiv">
+                <div id="listdiv" style="padding-botton: 5px;">
                     <ul class="ld">
                         <li><a href="#.php"><?php echo $fullName;?>, <?php echo $userRole . " - " . $userLevel;?> logged in</a></li>
                             <?php

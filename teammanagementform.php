@@ -84,6 +84,10 @@
 
         $('#teamManagementForm').show();
 
+        $('html, body').animate({
+          'scrollTop' : $("#teamManagementForm").position().top
+        });
+
         $('#showTeamManagementFormLinkId').click(function(){
             $('#teamManagementForm').show('slow');
         });

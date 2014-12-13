@@ -319,6 +319,7 @@
                 type:'POST',
                 success:function(response){
                     $('#'+divId).html(response);
+                    $('#subDetailDiv').load('files/showlistofrisks.php');
                 },
                 error:function(error){
                     alert(error);

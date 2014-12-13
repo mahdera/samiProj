@@ -1,4 +1,3 @@
-<h2>Edit Th Action</h2>
 <?php
     require_once 'files/thaction.php';
     require_once 'files/th.php';

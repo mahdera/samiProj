@@ -1,6 +1,6 @@
 <h1>Change Password</h1>
 <form>
-    <table border="0" width="100%">
+    <table border="1" width="100%" rules="all">
         <tr>
             <td>Enter User-Id:</td>
             <td>

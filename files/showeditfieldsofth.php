@@ -41,6 +41,7 @@
                     type:'POST',
                     success:function(response){
                         $('#'+divId).html(response);
+                        $('#subDetailDiv').load('files/showlistofths.php');
                     },
                     error:function(error){
                         alert(error);

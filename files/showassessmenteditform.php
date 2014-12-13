@@ -13,7 +13,7 @@
 ?>
 <h2>Edit Assessment</h2>
 <form>
-    <table border="0" width="100%">
+    <table border="0" width="100%" style="padding:5px">
         <tr>
             <td>Assessment Type:</td>
             <td>
@@ -99,15 +99,6 @@
             changeYear:true
         });
 
-
-
-        /*$( ".datepicker" ).datepicker({
-            //format: "YYYY-mm-dd",
-            //changeMonth: true,//this option for allowing user to select month
-            //changeYear: true //this option for allowing user to select from year range
-            "option", "dateFormat", "yy-mm-dd"
-        });*/
-
         var id = "<?php echo $id;?>";
         var buttonId = "btnupdate" + id;
 
@@ -139,6 +130,7 @@
                 data: dataString,
                 type:'POST',
                 success:function(response){
+                    $('#subDetailDiv').load('files/showlistofassessments.php');
                     $('#'+divId).html(response);
                 },
                 error:function(error){

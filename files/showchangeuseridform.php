@@ -1,6 +1,6 @@
 <h1>Change User-Id</h1>
 <form>
-    <table border="0" width="100%">
+    <table border="1" width="100%" rules="all">
         <tr>
             <td>Enter Current User-Id:</td>
             <td>

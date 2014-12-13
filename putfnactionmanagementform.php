@@ -27,7 +27,6 @@
 ?>
 <table border="1" width="100%" rules="all">
     <tr style="background: #ccc">
-        <td>Ser.No</td>
         <td>Fn</td>
         <td>Action</td>
         <td>View/Edit/Delete</td>
@@ -42,17 +41,16 @@
             if(true){
                 ?>
                     <tr>
-                        <td width="10%"><?php echo $ctr++;?></td>
                         <td width="20%"><?php echo stripslashes($fnObj->fn_name);?></td>
-                        <td>
-                            <a href="#.php" id="<?php echo $fnObj->id;?>" class="openActionFormClass">Show Add Action Form</a> | <a href="#.php" id="<?php echo $fnObj->id;?>" class="closeActionFormClass">Close Add Action Form</a>
+                        <td align="middle">
+                            <a href="#.php" id="<?php echo $fnObj->id;?>" class="openActionFormClass"><img src="images/open.png" align="absmiddle" border="0"/></a> | <a href="#.php" id="<?php echo $fnObj->id;?>" class="closeActionFormClass"><img src="images/close.png" border="0" align="absmiddle"/></a>
                         </td>
                         <td align="middle">
-                          [<!--<a href="#.php" id="<?php echo $fnObj->id;?>" class="viewFnActionLink">View</a> | --><a href="#.php" id="<?php echo $fnObj->id;?>" class="editFnActionLink"><img src="images/edit.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="<?php echo $fnObj->id;?>" class="deleteFnActionLink"><img src="images/delete.png" border="0" align="absmiddle"/></a>]
+                          <!--<a href="#.php" id="<?php //echo $fnObj->id;?>" class="viewFnActionLink">View</a> | --><a href="#.php" id="<?php echo $fnObj->id;?>" class="editFnActionLink"><img src="images/edit.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="<?php echo $fnObj->id;?>" class="deleteFnActionLink"><img src="images/delete.png" border="0" align="absmiddle"/></a>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="4">
+                        <td colspan="3">
                             <div id="<?php echo $divId;?>"></div>
                         </td>
                     </tr>

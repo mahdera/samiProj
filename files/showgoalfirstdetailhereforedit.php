@@ -42,7 +42,7 @@
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
 ?>
 <form>
-    <table border="0" width="100%">
+    <table border="0" width="100%" style="padding:5px">
             <?php
             $goalFirstG1Row = getGoalFirstG1ForGoalFirstThId($goalFirstThRow->id);
             $goalFirstG1Id = $goalFirstG1Row->id;
@@ -156,7 +156,7 @@
             ?>
         </table>
         <!--doing the samething for goalfirstg2...-->
-        <table border="0" width="100%">
+        <table border="0" width="100%" style="padding:5px">
             <?php
             $goalFirstG2Row = getGoalFirstG2ForGoalFirstThId($goalFirstThRow->id);
             //$goalFirstG2Row = getGoalFirstG2ForGoalFirst($goalFirstRow->id);
@@ -272,7 +272,7 @@
             ?>
         </table>
         <!--doing the samething for goalfirstg3...-->
-        <table border="0" width="100%">
+        <table border="0" width="100%" style="padding:5px">
             <?php
             $goalFirstG3Row = getGoalFirstG3ForGoalFirstThId($goalFirstThRow->id);
             //$goalFirstG3Row = getGoalFirstG3ForGoalFirst($goalFirstRow->id);

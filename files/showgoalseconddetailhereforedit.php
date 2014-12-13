@@ -32,7 +32,7 @@
     $goalSecondG3ObjHiddenIdControlName=null;
 ?>
 <form>
-    <table border="0" width="100%">
+    <table border="0" width="100%" style="padding:5px">
         <?php
             $goalSecondG1Row = getGoalSecondG1ForGoalSecondFnId($goalSecondFnId);
             if(!empty($goalSecondG1Row)){
@@ -74,7 +74,7 @@
         ?>
     </table>
 
-    <table border="0" width="100%">
+    <table border="0" width="100%" style="padding:5px">
         <?php
             $goalSecondG2Row = getGoalSecondG2ForGoalSecondFnId($goalSecondFnId);
             if(!empty($goalSecondG2Row)){
@@ -116,7 +116,7 @@
         ?>
     </table>
 
-    <table border="0" width="100%">
+    <table border="0" width="100%" style="padding:5px">
         <?php
             $goalSecondG3Row = getGoalSecondG3ForGoalSecondFnId($goalSecondFnId);
             if(!empty($goalSecondG3Row)){

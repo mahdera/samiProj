@@ -44,11 +44,11 @@
                             ?>
                             <tr>
                                 <td><?php echo $thObj->th_name;?></td>
-                                <td>
-                                    [<a href="#.php" id="<?php echo $thObj->id;?>" class="openActionFormClass">Show Add Action Form</a> | <a href="#.php" id="<?php echo $thObj->id;?>" class="closeActionFormClass">Close Add Action Form</a>]
+                                <td align="middle">
+                                    <a href="#.php" id="<?php echo $thObj->id;?>" class="openActionFormClass"><img src="images/open.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="<?php echo $thObj->id;?>" class="closeActionFormClass"><img src="images/close.png" border="0" align="absmiddle"/></a>
                                 </td>
                                 <td align="middle">
-                                  [<!--<a href="#.php" id="<?php //echo $thObj->id;?>" class="viewThActionLink">View</a> | --><a href="#.php" id="<?php echo $thObj->id;?>" class="editThActionLink"><img src="images/edit.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="<?php echo $thObj->id;?>" class="deleteThActionLink"><img src="images/delete.png" border="0" align="absmiddle"/></a>]
+                                  <!--<a href="#.php" id="<?php //echo $thObj->id;?>" class="viewThActionLink">View</a> | --><a href="#.php" id="<?php echo $thObj->id;?>" class="editThActionLink"><img src="images/edit.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="<?php echo $thObj->id;?>" class="deleteThActionLink"><img src="images/delete.png" border="0" align="absmiddle"/></a>
                                 </td>
                             </tr>
                             <tr>
