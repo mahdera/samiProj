@@ -23,17 +23,19 @@
     $(document).ready(function(){
 
         $('#rightArrowButton').click(function(){
-            var currentPageTag = $('#currentPageTag').html();
+            /*var currentPageTag = $('#currentPageTag').html();
             if(currentPageTag === 'Step 5-1'){
                 $('#step5Content').load('showstep5_2content.php');
-            }
+            }*/
+            window.location.replace('step5_2fullstatic.php');
         });
 
         $('#leftArrowButton').click(function(){
-            var currentPageTag = $('#currentPageTag').html();
+            /*var currentPageTag = $('#currentPageTag').html();
             if(currentPageTag === 'Step 5-1'){
                 window.location.replace("step4.php");
-            }
+            }*/
+            window.location.replace('step4_4fullstatic.php');
         });
 
     });//end document.ready function

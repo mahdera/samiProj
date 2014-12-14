@@ -23,10 +23,11 @@
     $(document).ready(function(){
 
         $('#rightArrowButton').click(function(){
-            var currentPageTag = $('#currentPageTag').html();
+            /*var currentPageTag = $('#currentPageTag').html();
             if(currentPageTag === 'Step 1-1'){
                 $('#step1Content').load('showstep1_2content.php');
-            }
+            }*/
+            window.location.replace('step1_2fullstatic.php');
         });
 
         $('#leftArrowButton').click(function(){

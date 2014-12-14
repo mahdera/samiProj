@@ -67,5 +67,12 @@
             $('#subDetailDiv').load('files/showlistofths.php');
         }
 
+        $('.editThLink').click(function(){
+          var id = $(this).attr('id');
+          var divId = "thEditDiv" + id;
+          alert(divId);
+          $('#'+divId).load('files/showeditfieldsofth.php?id='+id);
+        });
+
     });//end document.ready function
 </script>
