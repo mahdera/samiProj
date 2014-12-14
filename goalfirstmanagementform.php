@@ -40,7 +40,7 @@
                     <option value="" selected="selected">--Select--</option>
                     <?php
                         //loop the array instead...
-                        if($selectedThIdArray == NULL){
+                        if(@$selectedThIdArray == NULL){
                           if($userObj->user_level == '02'){
                               $thList = getAllThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
                           }else if($userObj->user_level == '01'){
