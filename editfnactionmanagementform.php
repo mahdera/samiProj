@@ -62,8 +62,9 @@
 <?php
 }else{
   ?>
-  <div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>
+    <!--<div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>-->
   <?php
+  require_once 'files/showlistofgoalsecondsmodified.php';
 }
 ?>
 <script type="text/javascript">

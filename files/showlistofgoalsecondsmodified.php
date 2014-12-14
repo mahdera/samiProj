@@ -51,8 +51,8 @@
                 ?>
                     <tr>
                         <td width="20%"><?php echo stripslashes($fnObj->fn_name);?></td>
-                        <td>
-                            <a href="#.php" id="<?php echo $fnObj->id;?>" class="openActionFormClass">Show Goal Second Detail</a> | <a href="#.php" id="<?php echo $fnObj->id;?>" class="closeActionFormClass">Close Goal Second Detail</a>
+                        <td align="middle">
+                            <a href="#.php" id="<?php echo $fnObj->id;?>" class="openActionFormClass"><img src="images/open.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="<?php echo $fnObj->id;?>" class="closeActionFormClass"><img src="images/close.png" border="0" align="absmiddle"/></a>
                         </td>
                         <td align="middle">
                             <a href="#.php" id="<?php echo $fnObj->id;?>" class="editGoalSecondLink"><img src="images/edit.png" border="0" align="absmiddle"/></a>

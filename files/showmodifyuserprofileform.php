@@ -232,7 +232,12 @@
             if($zoneObj != null){
                 $userSubDistrictInfo = getSubDistrictInfoForUser($_SESSION['LOGGED_USER_ID']);//getAllSubDistrictsOfThisDistrict($zoneObj->id);
                 //now based on that get Sub district list for user
-                $branchList = getAllSubDistrictWithSubDistrictId($userSubDistrictInfo->sub_district_id);
+                if(!empty($userSubDistrictInfo)){
+                  $branchList = getAllSubDistrictWithSubDistrictId($userSubDistrictInfo->sub_district_id);
+                }else{
+                  //the logged in user is a district user so get all sub districts...
+                  $branchList = getAllSubDistrictsOfThisDistrict(1);
+                }
             }
             ?>
             <tr id="branchRow">

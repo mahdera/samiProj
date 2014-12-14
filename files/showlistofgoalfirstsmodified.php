@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    @session_start();
 ?>
 <h1>Goal First List</h1>
 <?php
@@ -49,8 +49,8 @@
                             ?>
                             <tr>
                                 <td><?php echo stripslashes($thObj->th_name);?></td>
-                                <td>
-                                    [<a href="#.php" id="<?php echo $thObj->id;?>" class="openActionFormClass">Show Goal First Detail</a> | <a href="#.php" id="<?php echo $goalFirstThRow->th_id;?>" class="closeActionFormClass">Close Goal First Detail</a>]
+                                <td align="middle">
+                                    <a href="#.php" id="<?php echo $thObj->id;?>" class="openActionFormClass"><img src="images/open.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="<?php echo $goalFirstThRow->th_id;?>" class="closeActionFormClass"><img src="images/close.png" border="0" align="absmiddle"/></a>
                                 </td>
                                 <td align="middle">
                                     <a href="#.php" id="<?php echo $goalFirstThRow->th_id;?>" class="openGoalFirstDetailForEditClass"><img src="images/edit.png" border="0" align="absmiddle"/></a>
