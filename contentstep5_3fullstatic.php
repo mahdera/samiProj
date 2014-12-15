@@ -8,7 +8,7 @@ a<div class="content" id='step1Content'>
     </div>
     <div id="resourcearea">
       <ul>
-        <li class="sb-toggle-right"><img src="images/resource_icon.png" alt="Resource Toolkit" /> Resource Toolkit</li>
+        <li class="sb-toggle-right" id="step5_3"><img src="images/resource_icon.png" alt="Resource Toolkit" /> Resource Toolkit</li>
       </ul>
     </div>
   </div>

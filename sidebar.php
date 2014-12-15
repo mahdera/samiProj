@@ -1,3 +1,6 @@
+<?php
+  $idVal = null;
+?>
 <div class="sb-slidebar sb-left sb-style-push">
     <div id="close_slide">
         <ul class="ximg">
@@ -67,34 +70,512 @@
     <div class="rthead">
         <h3 class="rtheading">Resource Toolkit</h3>
     </div>
-    <div id="slidecontent2">
-        <h3 class="clicker resources guidanceimg">Guidance</h3>
-        <ul class="reveal">
-            <li><a href="#">Guidance Link 1</a></li>
-            <li><a href="#">Guidance Link 2</a></li>
-            <li><a href="#">Guidance Link 3</a></li>
-            <li><a href="#">Guidance Link 4</a></li>
-        </ul>
-        <h3 class="clicker resources resourceimg">Resources</h3>
-        <ul class="reveal">
-            <li><a href="#">Resources Link 1</a></li>
-            <li><a href="#">Resources Link 2</a></li>
-            <li><a href="#">Resources Link 3</a></li>
-            <li><a href="#">Resources Link 4</a></li>
-        </ul>
-        <h3 class="clicker resources exampleimg">Examples</h3>
-        <ul class="reveal">
-            <li><a href="#">Examples Link 1</a></li>
-            <li><a href="#">Examples Link 2</a></li>
-            <li><a href="#">Examples Link 3</a></li>
-            <li><a href="#">Examples Link 4</a></li>
-        </ul>
+    <div id="slidecontent2" style="display: none">
+        <?php require 'sidebars/toolkit_intro_one.php';?>
+        <?php require 'sidebars/toolkit_intro_two.php';?>
+        <?php require 'sidebars/toolkit_intro_three.php';?>
+        <?php require 'sidebars/toolkit_step_1_1.php';?>
+        <?php require 'sidebars/toolkit_step_1_2.php';?>
+        <?php require 'sidebars/toolkit_step_1_3.php';?>
+        <?php require 'sidebars/toolkit_step_1_4.php';?>
+        <?php require 'sidebars/toolkit_step_2_1.php';?>
+        <?php require 'sidebars/toolkit_step_2_2.php';?>
+        <?php require 'sidebars/toolkit_step_2_3.php';?>
+        <?php require 'sidebars/toolkit_step_2_4.php';?>
+        <?php require 'sidebars/toolkit_step_3_1.php';?>
+        <?php require 'sidebars/toolkit_step_3_2.php';?>
+        <?php require 'sidebars/toolkit_step_3_3.php';?>
+        <?php require 'sidebars/toolkit_step_3_4.php';?>
+        <?php require 'sidebars/toolkit_step_4_1.php';?>
+        <?php require 'sidebars/toolkit_step_4_2.php';?>
+        <?php require 'sidebars/toolkit_step_4_3.php';?>
+        <?php require 'sidebars/toolkit_step_4_4.php';?>
+        <?php require 'sidebars/toolkit_step_5_1.php';?>
+        <?php require 'sidebars/toolkit_step_5_2.php';?>
+        <?php require 'sidebars/toolkit_step_5_3.php';?>
+        <?php require 'sidebars/toolkit_step_5_4.php';?>
+        <?php require 'sidebars/toolkit_step_6_1.php';?>
+        <?php require 'sidebars/toolkit_step_6_2.php';?>
+        <?php require 'sidebars/toolkit_step_6_3.php';?>
+        <?php require 'sidebars/toolkit_step_6_4.php';?>
+        <?php require 'sidebars/toolkit_step_6_5.php';?>
     </div>
 </div>
 <script type="text/javascript">
     $(document).ready(function(){
 
-        jQuery.slidebars();
+      jQuery.slidebars();
+
+        $('li').click(function(){
+          var idVal = $(this).attr('id');
+          if(idVal != ""){
+            if(idVal == 'intro1'){
+              $('#slidecontent2').show();
+              $('#toolkitIntroOne').show();
+            }else if(idVal == 'intro2'){
+              $('#toolkitIntroOne').hide();
+              $('#slidecontent2').show();
+              $('#toolkitIntroTwo').show();
+            }else if(idVal == 'intro3'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#slidecontent2').show();
+              $('#toolkitIntroThree').show();
+            }else if(idVal == 'step1_1'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#toolkitIntroThree').hide();
+              $('#slidecontent2').show();
+              $('#toolkitStep1_1').show();
+            }else if(idVal == 'step1_2'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#toolkitIntroThree').hide();
+              $('#toolkitStep1_1').hide();
+              $('#slidecontent2').show();
+              $('#toolkitStep1_2').show();
+            }else if(idVal == 'step1_3'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#toolkitIntroThree').hide();
+              $('#toolkitStep1_1').hide();
+              $('#toolkitStep1_2').hide();
+              $('#slidecontent2').show();
+              $('#toolkitStep1_3').show();
+            }else if(idVal == 'step1_4'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#toolkitIntroThree').hide();
+              $('#toolkitStep1_1').hide();
+              $('#toolkitStep1_2').hide();
+              $('#toolkitStep1_3').hide();
+              $('#slidecontent2').show();
+              $('#toolkitStep1_4').show();
+            }else if(idVal == 'step2_1'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#toolkitIntroThree').hide();
+              $('#toolkitStep1_1').hide();
+              $('#toolkitStep1_2').hide();
+              $('#toolkitStep1_3').hide();
+              $('#toolkitStep1_4').hide();
+              $('#slidecontent2').show();
+              $('#toolkitStep2_1').show();
+            }else if(idVal == 'step2_2'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#toolkitIntroThree').hide();
+              $('#toolkitStep1_1').hide();
+              $('#toolkitStep1_2').hide();
+              $('#toolkitStep1_3').hide();
+              $('#toolkitStep1_4').hide();
+              $('#toolkitStep2_1').hide();
+              $('#slidecontent2').show();
+              $('#toolkitStep2_2').show();
+            }else if(idVal == 'step2_3'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#toolkitIntroThree').hide();
+              $('#toolkitStep1_1').hide();
+              $('#toolkitStep1_2').hide();
+              $('#toolkitStep1_3').hide();
+              $('#toolkitStep1_4').hide();
+              $('#toolkitStep2_1').hide();
+              $('#toolkitStep2_2').hide();
+              $('#slidecontent2').show();
+              $('#toolkitStep2_3').show();
+            }else if(idVal == 'step2_4'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#toolkitIntroThree').hide();
+              $('#toolkitStep1_1').hide();
+              $('#toolkitStep1_2').hide();
+              $('#toolkitStep1_3').hide();
+              $('#toolkitStep1_4').hide();
+              $('#toolkitStep2_1').hide();
+              $('#toolkitStep2_2').hide();
+              $('#toolkitStep2_3').hide();
+              $('#slidecontent2').show();
+              $('#toolkitStep2_4').show();
+            }else if(idVal == 'step3_1'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#toolkitIntroThree').hide();
+              $('#toolkitStep1_1').hide();
+              $('#toolkitStep1_2').hide();
+              $('#toolkitStep1_3').hide();
+              $('#toolkitStep1_4').hide();
+              $('#toolkitStep2_1').hide();
+              $('#toolkitStep2_2').hide();
+              $('#toolkitStep2_3').hide();
+              $('#toolkitStep2_4').hide();
+              $('#slidecontent2').show();
+              $('#toolkitStep3_1').show();
+            }else if(idVal == 'step3_2'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#toolkitIntroThree').hide();
+              $('#toolkitStep1_1').hide();
+              $('#toolkitStep1_2').hide();
+              $('#toolkitStep1_3').hide();
+              $('#toolkitStep1_4').hide();
+              $('#toolkitStep2_1').hide();
+              $('#toolkitStep2_2').hide();
+              $('#toolkitStep2_3').hide();
+              $('#toolkitStep2_4').hide();
+              $('#toolkitStep3_1').hide();
+              $('#slidecontent2').show();
+              $('#toolkitStep3_2').show();
+            }else if(idVal == 'step3_3'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#toolkitIntroThree').hide();
+              $('#toolkitStep1_1').hide();
+              $('#toolkitStep1_2').hide();
+              $('#toolkitStep1_3').hide();
+              $('#toolkitStep1_4').hide();
+              $('#toolkitStep2_1').hide();
+              $('#toolkitStep2_2').hide();
+              $('#toolkitStep2_3').hide();
+              $('#toolkitStep2_4').hide();
+              $('#toolkitStep3_1').hide();
+              $('#toolkitStep3_2').hide();
+              $('#slidecontent2').show();
+              $('#toolkitStep3_3').show();
+            }else if(idVal == 'step3_4'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#toolkitIntroThree').hide();
+              $('#toolkitStep1_1').hide();
+              $('#toolkitStep1_2').hide();
+              $('#toolkitStep1_3').hide();
+              $('#toolkitStep1_4').hide();
+              $('#toolkitStep2_1').hide();
+              $('#toolkitStep2_2').hide();
+              $('#toolkitStep2_3').hide();
+              $('#toolkitStep2_4').hide();
+              $('#toolkitStep3_1').hide();
+              $('#toolkitStep3_2').hide();
+              $('#toolkitStep3_3').hide();
+              $('#slidecontent2').show();
+              $('#toolkitStep3_4').show();
+            }else if(idVal == 'step4_1'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#toolkitIntroThree').hide();
+              $('#toolkitStep1_1').hide();
+              $('#toolkitStep1_2').hide();
+              $('#toolkitStep1_3').hide();
+              $('#toolkitStep1_4').hide();
+              $('#toolkitStep2_1').hide();
+              $('#toolkitStep2_2').hide();
+              $('#toolkitStep2_3').hide();
+              $('#toolkitStep2_4').hide();
+              $('#toolkitStep3_1').hide();
+              $('#toolkitStep3_2').hide();
+              $('#toolkitStep3_3').hide();
+              $('#toolkitStep3_4').hide();
+              $('#slidecontent2').show();
+              $('#toolkitStep4_1').show();
+            }else if(idVal == 'step4_2'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#toolkitIntroThree').hide();
+              $('#toolkitStep1_1').hide();
+              $('#toolkitStep1_2').hide();
+              $('#toolkitStep1_3').hide();
+              $('#toolkitStep1_4').hide();
+              $('#toolkitStep2_1').hide();
+              $('#toolkitStep2_2').hide();
+              $('#toolkitStep2_3').hide();
+              $('#toolkitStep2_4').hide();
+              $('#toolkitStep3_1').hide();
+              $('#toolkitStep3_2').hide();
+              $('#toolkitStep3_3').hide();
+              $('#toolkitStep3_4').hide();
+              $('#toolkitStep4_1').hide();
+              $('#slidecontent2').show();
+              $('#toolkitStep4_2').show();
+            }else if(idVal == 'step4_3'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#toolkitIntroThree').hide();
+              $('#toolkitStep1_1').hide();
+              $('#toolkitStep1_2').hide();
+              $('#toolkitStep1_3').hide();
+              $('#toolkitStep1_4').hide();
+              $('#toolkitStep2_1').hide();
+              $('#toolkitStep2_2').hide();
+              $('#toolkitStep2_3').hide();
+              $('#toolkitStep2_4').hide();
+              $('#toolkitStep3_1').hide();
+              $('#toolkitStep3_2').hide();
+              $('#toolkitStep3_3').hide();
+              $('#toolkitStep3_4').hide();
+              $('#toolkitStep4_1').hide();
+              $('#toolkitStep4_2').hide();
+              $('#slidecontent2').show();
+              $('#toolkitStep4_3').show();
+            }else if(idVal == 'step4_4'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#toolkitIntroThree').hide();
+              $('#toolkitStep1_1').hide();
+              $('#toolkitStep1_2').hide();
+              $('#toolkitStep1_3').hide();
+              $('#toolkitStep1_4').hide();
+              $('#toolkitStep2_1').hide();
+              $('#toolkitStep2_2').hide();
+              $('#toolkitStep2_3').hide();
+              $('#toolkitStep2_4').hide();
+              $('#toolkitStep3_1').hide();
+              $('#toolkitStep3_2').hide();
+              $('#toolkitStep3_3').hide();
+              $('#toolkitStep3_4').hide();
+              $('#toolkitStep4_1').hide();
+              $('#toolkitStep4_2').hide();
+              $('#toolkitStep4_3').hide();
+              $('#slidecontent2').show();
+              $('#toolkitStep4_4').show();
+            }else if(idVal == 'step5_1'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#toolkitIntroThree').hide();
+              $('#toolkitStep1_1').hide();
+              $('#toolkitStep1_2').hide();
+              $('#toolkitStep1_3').hide();
+              $('#toolkitStep1_4').hide();
+              $('#toolkitStep2_1').hide();
+              $('#toolkitStep2_2').hide();
+              $('#toolkitStep2_3').hide();
+              $('#toolkitStep2_4').hide();
+              $('#toolkitStep3_1').hide();
+              $('#toolkitStep3_2').hide();
+              $('#toolkitStep3_3').hide();
+              $('#toolkitStep3_4').hide();
+              $('#toolkitStep4_1').hide();
+              $('#toolkitStep4_2').hide();
+              $('#toolkitStep4_3').hide();
+              $('#toolkitStep4_4').hide();
+              $('#slidecontent2').show();
+              $('#toolkitStep5_1').show();
+            }else if(idVal == 'step5_2'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#toolkitIntroThree').hide();
+              $('#toolkitStep1_1').hide();
+              $('#toolkitStep1_2').hide();
+              $('#toolkitStep1_3').hide();
+              $('#toolkitStep1_4').hide();
+              $('#toolkitStep2_1').hide();
+              $('#toolkitStep2_2').hide();
+              $('#toolkitStep2_3').hide();
+              $('#toolkitStep2_4').hide();
+              $('#toolkitStep3_1').hide();
+              $('#toolkitStep3_2').hide();
+              $('#toolkitStep3_3').hide();
+              $('#toolkitStep3_4').hide();
+              $('#toolkitStep4_1').hide();
+              $('#toolkitStep4_2').hide();
+              $('#toolkitStep4_3').hide();
+              $('#toolkitStep4_4').hide();
+              $('#toolkitStep5_1').hide();
+              $('#slidecontent2').show();
+              $('#toolkitStep5_2').show();
+            }else if(idVal == 'step5_3'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#toolkitIntroThree').hide();
+              $('#toolkitStep1_1').hide();
+              $('#toolkitStep1_2').hide();
+              $('#toolkitStep1_3').hide();
+              $('#toolkitStep1_4').hide();
+              $('#toolkitStep2_1').hide();
+              $('#toolkitStep2_2').hide();
+              $('#toolkitStep2_3').hide();
+              $('#toolkitStep2_4').hide();
+              $('#toolkitStep3_1').hide();
+              $('#toolkitStep3_2').hide();
+              $('#toolkitStep3_3').hide();
+              $('#toolkitStep3_4').hide();
+              $('#toolkitStep4_1').hide();
+              $('#toolkitStep4_2').hide();
+              $('#toolkitStep4_3').hide();
+              $('#toolkitStep4_4').hide();
+              $('#toolkitStep5_1').hide();
+              $('#toolkitStep5_2').hide();
+              $('#slidecontent2').show();
+              $('#toolkitStep5_3').show();
+            }else if(idVal == 'step5_4'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#toolkitIntroThree').hide();
+              $('#toolkitStep1_1').hide();
+              $('#toolkitStep1_2').hide();
+              $('#toolkitStep1_3').hide();
+              $('#toolkitStep1_4').hide();
+              $('#toolkitStep2_1').hide();
+              $('#toolkitStep2_2').hide();
+              $('#toolkitStep2_3').hide();
+              $('#toolkitStep2_4').hide();
+              $('#toolkitStep3_1').hide();
+              $('#toolkitStep3_2').hide();
+              $('#toolkitStep3_3').hide();
+              $('#toolkitStep3_4').hide();
+              $('#toolkitStep4_1').hide();
+              $('#toolkitStep4_2').hide();
+              $('#toolkitStep4_3').hide();
+              $('#toolkitStep4_4').hide();
+              $('#toolkitStep5_1').hide();
+              $('#toolkitStep5_2').hide();
+              $('#toolkitStep5_3').hide();
+              $('#slidecontent2').show();
+              $('#toolkitStep5_4').show();
+            }else if(idVal == 'step6_1'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#toolkitIntroThree').hide();
+              $('#toolkitStep1_1').hide();
+              $('#toolkitStep1_2').hide();
+              $('#toolkitStep1_3').hide();
+              $('#toolkitStep1_4').hide();
+              $('#toolkitStep2_1').hide();
+              $('#toolkitStep2_2').hide();
+              $('#toolkitStep2_3').hide();
+              $('#toolkitStep2_4').hide();
+              $('#toolkitStep3_1').hide();
+              $('#toolkitStep3_2').hide();
+              $('#toolkitStep3_3').hide();
+              $('#toolkitStep3_4').hide();
+              $('#toolkitStep4_1').hide();
+              $('#toolkitStep4_2').hide();
+              $('#toolkitStep4_3').hide();
+              $('#toolkitStep4_4').hide();
+              $('#toolkitStep5_1').hide();
+              $('#toolkitStep5_2').hide();
+              $('#toolkitStep5_3').hide();
+              $('#toolkitStep5_4').hide();
+              $('#slidecontent2').show();
+              $('#toolkitStep6_1').show();
+            }else if(idVal == 'step6_2'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#toolkitIntroThree').hide();
+              $('#toolkitStep1_1').hide();
+              $('#toolkitStep1_2').hide();
+              $('#toolkitStep1_3').hide();
+              $('#toolkitStep1_4').hide();
+              $('#toolkitStep2_1').hide();
+              $('#toolkitStep2_2').hide();
+              $('#toolkitStep2_3').hide();
+              $('#toolkitStep2_4').hide();
+              $('#toolkitStep3_1').hide();
+              $('#toolkitStep3_2').hide();
+              $('#toolkitStep3_3').hide();
+              $('#toolkitStep3_4').hide();
+              $('#toolkitStep4_1').hide();
+              $('#toolkitStep4_2').hide();
+              $('#toolkitStep4_3').hide();
+              $('#toolkitStep4_4').hide();
+              $('#toolkitStep5_1').hide();
+              $('#toolkitStep5_2').hide();
+              $('#toolkitStep5_3').hide();
+              $('#toolkitStep5_4').hide();
+              $('#toolkitStep6_1').hide();
+              $('#slidecontent2').show();
+              $('#toolkitStep6_2').show();
+            }else if(idVal == 'step6_3'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#toolkitIntroThree').hide();
+              $('#toolkitStep1_1').hide();
+              $('#toolkitStep1_2').hide();
+              $('#toolkitStep1_3').hide();
+              $('#toolkitStep1_4').hide();
+              $('#toolkitStep2_1').hide();
+              $('#toolkitStep2_2').hide();
+              $('#toolkitStep2_3').hide();
+              $('#toolkitStep2_4').hide();
+              $('#toolkitStep3_1').hide();
+              $('#toolkitStep3_2').hide();
+              $('#toolkitStep3_3').hide();
+              $('#toolkitStep3_4').hide();
+              $('#toolkitStep4_1').hide();
+              $('#toolkitStep4_2').hide();
+              $('#toolkitStep4_3').hide();
+              $('#toolkitStep4_4').hide();
+              $('#toolkitStep5_1').hide();
+              $('#toolkitStep5_2').hide();
+              $('#toolkitStep5_3').hide();
+              $('#toolkitStep5_4').hide();
+              $('#toolkitStep6_1').hide();
+              $('#toolkitStep6_2').hide();
+              $('#slidecontent2').show();
+              $('#toolkitStep6_3').show();
+            }else if(idVal == 'step6_4'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#toolkitIntroThree').hide();
+              $('#toolkitStep1_1').hide();
+              $('#toolkitStep1_2').hide();
+              $('#toolkitStep1_3').hide();
+              $('#toolkitStep1_4').hide();
+              $('#toolkitStep2_1').hide();
+              $('#toolkitStep2_2').hide();
+              $('#toolkitStep2_3').hide();
+              $('#toolkitStep2_4').hide();
+              $('#toolkitStep3_1').hide();
+              $('#toolkitStep3_2').hide();
+              $('#toolkitStep3_3').hide();
+              $('#toolkitStep3_4').hide();
+              $('#toolkitStep4_1').hide();
+              $('#toolkitStep4_2').hide();
+              $('#toolkitStep4_3').hide();
+              $('#toolkitStep4_4').hide();
+              $('#toolkitStep5_1').hide();
+              $('#toolkitStep5_2').hide();
+              $('#toolkitStep5_3').hide();
+              $('#toolkitStep5_4').hide();
+              $('#toolkitStep6_1').hide();
+              $('#toolkitStep6_2').hide();
+              $('#toolkitStep6_3').hide();
+              $('#slidecontent2').show();
+              $('#toolkitStep6_4').show();
+            }else if(idVal == 'step6_5'){
+              $('#toolkitIntroOne').hide();
+              $('#toolkitIntroTwo').hide();
+              $('#toolkitIntroThree').hide();
+              $('#toolkitStep1_1').hide();
+              $('#toolkitStep1_2').hide();
+              $('#toolkitStep1_3').hide();
+              $('#toolkitStep1_4').hide();
+              $('#toolkitStep2_1').hide();
+              $('#toolkitStep2_2').hide();
+              $('#toolkitStep2_3').hide();
+              $('#toolkitStep2_4').hide();
+              $('#toolkitStep3_1').hide();
+              $('#toolkitStep3_2').hide();
+              $('#toolkitStep3_3').hide();
+              $('#toolkitStep3_4').hide();
+              $('#toolkitStep4_1').hide();
+              $('#toolkitStep4_2').hide();
+              $('#toolkitStep4_3').hide();
+              $('#toolkitStep4_4').hide();
+              $('#toolkitStep5_1').hide();
+              $('#toolkitStep5_2').hide();
+              $('#toolkitStep5_3').hide();
+              $('#toolkitStep5_4').hide();
+              $('#toolkitStep6_1').hide();
+              $('#toolkitStep6_2').hide();
+              $('#toolkitStep6_3').hide();
+              $('#toolkitStep6_4').hide();
+              $('#slidecontent2').show();
+              $('#toolkitStep6_5').show();
+            }
+          }
+        });
+
+
 
         $('#stepOneMenuLink').click(function(){
             //window.location.replace('step1.php');

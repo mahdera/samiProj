@@ -11,7 +11,7 @@
         </div>
         <div id="resourcearea">
             <ul>
-                <li class="sb-toggle-right"><img src="images/resource_icon.png" alt="Resource Toolkit" /> Resource Toolkit</li>
+                <li class="sb-toggle-right" id="intro2"><img src="images/resource_icon.png" alt="Resource Toolkit" /> Resource Toolkit</li>
             </ul>
         </div>
     </div>

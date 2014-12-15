@@ -8,7 +8,9 @@
         </div>
         <div id="resourcearea">
             <ul>
-                <li class="sb-toggle-right"><img src="images/resource_icon.png" alt="Resource Toolkit" /> Resource Toolkit</li>
+                <li class="sb-toggle-right" id="intro1">
+                  <img src="images/resource_icon.png" alt="Resource Toolkit"/> Resource Toolkit
+                </li>
             </ul>
         </div>
     </div>
@@ -39,6 +41,10 @@
                 window.location.replace("intro2.php");
             }*/
             window.location.replace('step6_5fullstatic.php');
+        });
+
+        $('#resourcetoolkit_intro_1_link').click(function(){
+          alert('tool kit for intro 1 clicked');
         });
 
     });//end document.ready function

@@ -1,6 +1,3 @@
-<?php
-  error_reporting( 0 );
-?>
 <div class="content" id='step2Content'>
     <!--to be replaced when the next button is clicked-->
     <div id="topcontain">
@@ -11,7 +8,7 @@
         </div>
         <div id="resourcearea">
             <ul>
-                <li class="sb-toggle-right"><img src="images/resource_icon.png" alt="Resource Toolkit" /> Resource Toolkit</li>
+                <li class="sb-toggle-right" id="step2_1"><img src="images/resource_icon.png" alt="Resource Toolkit" /> Resource Toolkit</li>
             </ul>
         </div>
     </div>
