@@ -31,18 +31,18 @@ if($_SESSION['USER_ROLE_CODE'] === '01A'){
   <div id="sb-site">
     <div id="dtool" class="5dcontain">
       <?php
-      require 'menurow.php';
-      require 'steprowstep3.php';
-      require 'contentstep3_2fullstatic.php';
+        require 'menurow.php';
+        require 'steprowstep3.php';
+        require 'contentstep3_2fullstatic.php';
       ?>
     </div>
     <?php
-    require 'footer.php';
+      require 'footer.php';
     ?>
   </div>
   <?php
-  require 'sidebar.php';
-  require 'importjsscripts.php';
+    require 'sidebar.php';
+    require 'importjsscripts.php';
   ?>
 </body>
 </html>

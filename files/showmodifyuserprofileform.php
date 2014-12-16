@@ -12,7 +12,9 @@
     //now get the user info using the id value
     $userObj = getUser($id);
     $userLevel = $userObj->user_level;
+    $userRole = $userObj->user_role;
     $memberType = $userObj->member_type;
+    $userStatus = $userObj->user_status;
 ?>
 <h1>Update User Profile</h1>
 <form>
@@ -67,7 +69,17 @@
                 <input type="text" name="txteditphonenumber" id="txteditphonenumber" value="<?php echo $userObj->phone_number;?>"/>
             </td>
         </tr>
-        <tr>
+        <?php
+          if($theUserId == $id){
+            ?>
+              <tr style="display:none">
+            <?php
+          }else{
+            ?>
+              <tr>
+            <?php
+          }
+        ?>
             <td>Status:</td>
             <td>
                 <select name="slctedituserstatus" id="slctedituserstatus" style="width: 100%">
@@ -133,7 +145,17 @@
                 </select>
             </td>
         </tr>
-        <tr>
+        <?php
+        if($theUserId == $id){
+          ?>
+          <tr style="display:none">
+            <?php
+          }else{
+            ?>
+            <tr>
+              <?php
+            }
+        ?>
             <td>User Role:</td>
             <td>
                 <select name="slctuserrole" id="slctuserrole" style="width:100%">
@@ -282,13 +304,27 @@
             var lastName = $('#txteditlastname').val();
             var email = $('#txteditemail').val();
             var memberType = "<?php echo $memberType;?>";//$('#slcteditmembertype').val();
-            var userStatus = $('#slctedituserstatus').val();
-            var phoneNumber = $('#txteditphonenumber').val();
+            var userStatus = null;
+            var theUserId = "<?php $theUserId;?>";
             var id = "<?php echo $id;?>";
+            if(theUserId == id){
+                userStatus = 'Active';
+            }else{
+                userStatus = $('#slctedituserstatus').val();
+            }
+
+            var phoneNumber = $('#txteditphonenumber').val();
+
             //userLevel should be calculated by the value of the user role field...
             var userLevel = null;
             var eitherZoneIdOrBranchId = "";
-            var userRole = $('#slctuserrole').val();
+            var userRole = null;
+
+            if(theUserId == id){
+              userRole = "<?php echo $userRole;?>";
+            }else{
+              userRole = $('#slctuserrole').val();
+            }
 
             if(userRole == '01A'){
                 userLevel = '01';

@@ -22,6 +22,7 @@
     $thId = $thObj->id;
     $goalFirstThRow = getGoalFirstThUsingThId($thObj->id);
     //$goalFirstRow = getGoalFirstUsingThId($thObj->id);
+    if(!empty($goalFirstThRow)){
     $goalFirstThId = $goalFirstThRow->id;
     //define the control names in here
     $goalFirstG1Ctr = 1;
@@ -425,6 +426,11 @@
         </tr>
     </table>
 </form>
+<?php
+}else{
+  echo 'No data found!';//added for debugging purpose.
+}
+?>
 <script type="text/javascript">
     $(document).ready(function(){
         var thId = "<?php echo $thId;?>";

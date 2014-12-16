@@ -175,6 +175,16 @@
     $(document).ready(function(){
         $('#txtfirstname').focus();
 
+        $('#txtemail').blur(function(){
+          var email = $('#txtemail').val(),
+          emailReg = /^([w-.]+@([w-]+.)+[w-]{2,4})?$/;
+          if(!emailReg.test(email) || email == '')
+            {
+              alert('Please enter a valid email address.');
+              return false;
+            }
+        });
+
 
         $('#btncreateuser').click(function(){
             var firstName = $('#txtfirstname').val();
@@ -187,6 +197,8 @@
             var userStatus = 'Active';//$('#slctuserstatus').val();
             var userLevel = '';//$('#slctuserlevel').val();
             var userRole = $('#slctuserrole').val();
+
+
 
             var eitherZoneIdOrBranchId = "";
             if(userRole == '01A'){
@@ -205,6 +217,17 @@
                 userLevel = "02";
             }
 
+            if(phoneNumber !== ""){
+                //validate phone
+                var intRegex = /[0-9 -()+]+$/;
+                if((phoneNumber.length < 6) || (!intRegex.test(phoneNumber))){
+                  alert('Please enter a valid phone number.');
+                  return false;
+                }
+            }
+
+
+
 
             if(firstName !== "" && lastName !== "" && email !== "" && userId !== "" &&
                     password !== "" && eitherZoneIdOrBranchId !== "" && userRole !== ""){
@@ -214,6 +237,14 @@
                         "&phoneNumber="+phoneNumber+"&memberType="+memberType+
                         "&userStatus="+userStatus+"&userLevel="+encodeURIComponent(userLevel)+"&eitherZoneIdOrBranchId="+
                         eitherZoneIdOrBranchId+"&userRole="+encodeURIComponent(userRole);
+
+                //validate email
+                var txt = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                if (!txt.test(email)) {
+                  alert('Please enter a valid email address!');
+                  return false;
+                }
+
                 $.ajax({
                     url: 'files/createuser.php',
                     data: dataString,

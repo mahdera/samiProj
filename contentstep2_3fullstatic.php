@@ -2,7 +2,7 @@
   <!--to be replaced when the next button is clicked-->
   <div id="topcontain">
     <div id="titlearea">
-      <h1 id='currentPageTag'>Step 2-3</h1>
+      <h1 id='currentPageTag'>Step 2-2</h1>
       <h2></h2>
       <h3></h3>
     </div>

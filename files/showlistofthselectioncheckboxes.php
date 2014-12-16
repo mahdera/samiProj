@@ -1,4 +1,3 @@
-<?php @session_start();?>
 <div class="col-half left">
   <h1>Th Check Boxes</h1>
     <?php
@@ -16,12 +15,12 @@
         }*/
         if($userObj->user_level == '02'){
             $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-            $riskList = getAllRisksModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+            $riskList = getAllThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
         }else if($userObj->user_level == '01'){
             $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
             if($userObj != null){
               $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-              $riskList = getAllRisksModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+              $riskList = getAllThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
             }
         }
 
@@ -40,25 +39,25 @@
                 <table border="1" width="100%" rules="all">
                     <tr style="background: #ccc">
                         <td>Th</td>
-                        <td>MG</td>
+                        <!--<td>MG</td>
                         <td>DR</td>
                         <td>PR</td>
                         <td>WA</td>
-                        <td>RS</td>
+                        <td>RS</td>-->
                         <td>Select</td>
                     </tr>
                     <?php
                         $ctr=1;
                         while($riskRow = mysql_fetch_object($riskList)){
-                            $thObj = getTh($riskRow->th_id);
+                            //$thObj = getTh($riskRow->th_id);
                             ?>
                             <tr>
-                                <td><?php echo stripslashes($thObj->th_name);?></td>
-                                <td><?php echo stripslashes($riskRow->mg);?></td>
-                                <td><?php echo stripslashes($riskRow->dr);?></td>
-                                <td><?php echo stripslashes($riskRow->pr);?></td>
-                                <td><?php echo stripslashes($riskRow->wa);?></td>
-                                <td><?php echo stripslashes($riskRow->rs);?></td>
+                                <td><?php echo $riskRow->th_name;//echo stripslashes($thObj->th_name);?></td>
+                                <!--<td><?php //echo stripslashes($riskRow->mg);?></td>
+                                <td><?php //echo stripslashes($riskRow->dr);?></td>
+                                <td><?php //echo stripslashes($riskRow->pr);?></td>
+                                <td><?php //echo stripslashes($riskRow->wa);?></td>
+                                <td><?php //echo stripslashes($riskRow->rs);?></td>-->
                                 <td align="center">
                                     <?php
                                         $thSelected = false;

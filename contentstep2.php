@@ -27,7 +27,7 @@
             if(currentPageTag === 'Step 2-1'){
                 $('#step2Content').load('showstep2_2content.php');
             }*/
-            window.location.replace('step2_2fullstatic.php');
+            window.location.replace('step2_3fullstatic.php');
         });
 
         $('#leftArrowButton').click(function(){

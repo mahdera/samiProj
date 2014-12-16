@@ -2,7 +2,7 @@
   <!--to be replaced when the next button is clicked-->
   <div id="topcontain">
     <div id="titlearea">
-      <h1 id='currentPageTag'>Step 2-4</h1>
+      <h1 id='currentPageTag'>Step 2-3</h1>
       <h2></h2>
       <h3></h3>
     </div>
@@ -22,7 +22,7 @@
   ?>
   <div class="col-half left">
     <?php
-    require_once 'riskmanagementform.php';
+    //require_once 'riskmanagementform.php';
     ?>
   </div>
   <!--end to be replaced content-->
