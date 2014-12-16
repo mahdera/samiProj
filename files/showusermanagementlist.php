@@ -138,6 +138,7 @@
 </div>
 <hr/>
 <div id="createUserDiv"></div>
+<div id="branchManagementDiv"></div>
 <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
@@ -190,6 +191,7 @@
               'scrollTop' : $("#createUserDiv").position().top
             });
             $('#createUserDiv').load('files/showbranchmanagementmenu.php');
+            $('#branchManagementDiv').load('files/showlistofbranchs.php');
         });
 
     });//end document.ready function

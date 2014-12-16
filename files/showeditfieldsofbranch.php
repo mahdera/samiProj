@@ -76,6 +76,8 @@
                 type:'POST',
                 success:function(response){
                     $('#'+divId).html(response);
+                    $('#branchManagementDiv').html('');
+                    $('#branchManagementDiv').load('files/showlistofbranchs.php');
                 },
                 error:function(error){
                     alert(error);

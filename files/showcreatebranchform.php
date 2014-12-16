@@ -43,7 +43,7 @@
         $('#btnsave').click(function(){
             var zoneId = 1;//$('#slctzone').val();
             var branchName = $('#txtbranchname').val();
-            var description = "---";//$('#textareadescription').val();            
+            var description = "---";//$('#textareadescription').val();
 
             if(zoneId != "" && branchName != ""){
                 var dataString = "zoneId="+zoneId+"&branchName="+branchName+"&description="+description;
@@ -52,7 +52,9 @@
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        $('#branchManagementDiv').html(response);
+                        //$('#branchManagementDiv').html(response);
+                        $('#branchManagementDiv').html('');
+                        $('#branchManagementDiv').load('files/showlistofbranchs.php');
                     },
                     error:function(error){
                         alert(error);

@@ -18,9 +18,8 @@
         ?>
             <table border="1" width="100%" rules="all">
                 <tr style="background:#eee;font-weight:bolder;">
-                    <td style="display:none;">District</td>
                     <td>Sub District Name</td>
-                    <td style="display:none">Description</td>
+                    <td>Action</td>
                 </tr>
                 <?php
                   $ctr=1;
@@ -28,9 +27,20 @@
                       $zoneObj = getDistrict($branchRow->district_id);
                       ?>
                           <tr>
-                              <td style="display:none;"><?php echo $zoneObj->display_name;?></td>
                               <td><?php echo $branchRow->display_name;?></td>
-                              <td style="display:none"><?php echo $branchRow->description;?></td>
+                              <td align="middle">
+                                  <a href="#.php" id="<?php echo $branchRow->id;?>" class="editBranchClass"><img src="images/edit.png" border="0" align="absmiddle"/></a>
+                                  |
+                                  <a href="#.php" id="<?php echo $branchRow->id;?>" class="deleteBranchClass"><img src="images/delete.png" border="0" align="absmiddle"/></a>
+                              </td>
+                          </tr>
+                          <?php
+                            $divId = "branchEditDiv" . $branchRow->id;
+                          ?>
+                          <tr>
+                              <td colspan="2">
+                                  <div id="<?php echo $divId;?>"></div>
+                              </td>
                           </tr>
                       <?php
                   }//end while loop
@@ -43,3 +53,33 @@
       <?php
     }
 ?>
+<script type="text/javascript">
+  $(document).ready(function(){
+      $('.editBranchClass').click(function(){
+          var idVal = $(this).attr('id');
+          var divId = "branchEditDiv" + idVal;
+          $('#'+divId).load('files/showeditfieldsofbranch.php?branchId='+idVal);
+      });
+
+      $('.deleteBranchClass').click(function(){
+        var idVal = $(this).attr('id');
+
+        if(window.confirm('Are you sure you want to delete this record?')){
+          var dataString = "branchId="+idVal;
+          $.ajax({
+            url: 'files/deletebranch.php',
+            data: dataString,
+            type:'POST',
+            success:function(response){
+              //$('#branchManagementDiv').load('files/showlistofbranchsfordelete.php');
+              $('#branchManagementDiv').load('files/showlistofbranchs.php');
+            },
+            error:function(error){
+              alert(error);
+            }
+          });
+        }
+      });
+
+  });//end document.ready function
+</script>
