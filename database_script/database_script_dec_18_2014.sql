@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 18, 2014 at 05:08 PM
+-- Generation Time: Dec 18, 2014 at 09:54 PM
 -- Server version: 5.5.38
 -- PHP Version: 5.6.2
 
@@ -13,9 +13,11 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_sami_proj`
 --
+
 drop database if exists db_sami_proj;
 create database db_sami_proj;
   use db_sami_proj;
+
   -- --------------------------------------------------------
 
   --
@@ -131,21 +133,23 @@ create database db_sami_proj;
     `body` text NOT NULL,
     `start_time` varchar(100) NOT NULL,
     `end_time` varchar(100) NOT NULL,
+    `location` text NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_event_calendar`
   --
 
-  INSERT INTO `tbl_event_calendar` (`id`, `title`, `body`, `start_time`, `end_time`, `modified_by`, `modification_date`) VALUES
-  (2, 'this is the title', 'this is the body. This is one of the best pic ever', '2014-12-11T08:15:00+01:00', '2014-12-11T08:45:00+01:00', 33, '2014-12-11 13:59:19'),
-  (3, 'another title', 'another body', '2014-12-10T08:00:00+01:00', '2014-12-10T08:30:00+01:00', 33, '2014-12-11 13:20:46'),
-  (4, 'this is my plan for Friday', 'And this is the event detail that is going to take place on Friday. updated.', '2014-12-12T08:00:00+01:00', '2014-12-12T08:30:00+01:00', 33, '2014-12-11 13:59:00'),
-  (5, 'I would like to....UPDATED', 'I would like to take a nap right now', '2014-12-11T14:00:00+01:00', '2014-12-11T14:30:00+01:00', 34, '2014-12-11 14:56:40'),
-  (6, 'This is the event', 'This is the body of the event, updated.', '2014-12-11T10:15:00+01:00', '2014-12-11T10:45:00+01:00', 33, '2014-12-14 09:28:43'),
-  (7, 'What a Day', 'This Saturday was amazing and I really enjoyed it.', '2014-12-13T09:15:00+01:00', '2014-12-13T09:45:00+01:00', 33, '2014-12-13 21:59:28');
+  INSERT INTO `tbl_event_calendar` (`id`, `title`, `body`, `start_time`, `end_time`, `location`, `modified_by`, `modification_date`) VALUES
+  (2, 'this is the title', 'this is the body. This is one of the best pic ever', '2014-12-11T08:15:00+01:00', '2014-12-11T08:45:00+01:00', '', 33, '2014-12-11 13:59:19'),
+  (3, 'another title', 'another body', '2014-12-10T08:00:00+01:00', '2014-12-10T08:30:00+01:00', '', 33, '2014-12-11 13:20:46'),
+  (4, 'this is my plan for Friday', 'And this is the event detail that is going to take place on Friday. updated.', '2014-12-12T08:00:00+01:00', '2014-12-12T08:30:00+01:00', '', 33, '2014-12-11 13:59:00'),
+  (5, 'I would like to....UPDATED', 'I would like to take a nap right now', '2014-12-11T14:00:00+01:00', '2014-12-11T14:30:00+01:00', '', 34, '2014-12-11 14:56:40'),
+  (6, 'This is the event', 'This is the body of the event, updated.', '2014-12-11T10:15:00+01:00', '2014-12-11T10:45:00+01:00', '', 33, '2014-12-14 09:28:43'),
+  (7, 'What a Day', 'This Saturday was amazing and I really enjoyed it.', '2014-12-13T09:15:00+01:00', '2014-12-13T09:45:00+01:00', '', 33, '2014-12-13 21:59:28'),
+  (8, 'The new title', 'This is the body of the new event', '2014-12-18T13:15:00+01:00', '2014-12-18T13:45:00+01:00', '1333 Hst Washington DC. Updated.', 33, '2014-12-18 14:06:41');
 
   -- --------------------------------------------------------
 
@@ -439,7 +443,7 @@ create database db_sami_proj;
     `q10_1` text NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_form_10`
@@ -448,11 +452,7 @@ create database db_sami_proj;
   INSERT INTO `tbl_form_10` (`id`, `q10_1`, `modified_by`, `modification_date`) VALUES
   (9, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:14:05'),
   (13, 'This is Form 10 added by Wondisho!', 33, '2014-12-04 08:10:22'),
-  (14, 'Form 10 By Wondisho', 34, '2014-12-04 08:11:37'),
-  (15, 'This is another form 10 by wondisho', 34, '2014-12-04 08:18:33'),
-  (16, 'it better be working by wondisho', 34, '2014-12-09 06:49:09'),
-  (17, 'It better be working by Bre', 34, '2014-12-09 06:49:58'),
-  (18, 'It better be working by Zele. When are you going to Ethiopia?', 44, '0000-00-00 00:00:00');
+  (19, 'Now it should work. This is updated.', 44, '0000-00-00 00:00:00');
 
   -- --------------------------------------------------------
 
@@ -1339,7 +1339,7 @@ create database db_sami_proj;
   -- AUTO_INCREMENT for table `tbl_event_calendar`
   --
   ALTER TABLE `tbl_event_calendar`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
   --
   -- AUTO_INCREMENT for table `tbl_fn`
   --
@@ -1409,7 +1409,7 @@ create database db_sami_proj;
   -- AUTO_INCREMENT for table `tbl_form_10`
   --
   ALTER TABLE `tbl_form_10`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
   --
   -- AUTO_INCREMENT for table `tbl_goal_first`
   --
