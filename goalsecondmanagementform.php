@@ -1,5 +1,4 @@
 <?php
-    //error_reporting( 0 );
     @session_start();
     require_once 'files/th.php';
     require_once 'files/fn.php';
@@ -10,10 +9,7 @@
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
     $fnIdArray = array();
 
-    /*if($userObj->user_level == 'Zone Level'){
-        $userZoneObj = getZoneInfoForUser($userObj->id);
-        $fnIdArray = getAllFilteredLatestFnIdsEnteredByUserUsingUserLevel('Zone Level', $userZoneObj->zone_id);
-    }*/
+
     if($userObj->user_level == '02'){
         $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
         $fnIdArray = getAllFilteredLatestFnIdsEnteredByUserUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
@@ -25,9 +21,6 @@
         }
     }
 
-    //first read fns from tbl_goal_first_g1
-    //$fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
-    //var_dump($fnIdArray);
 ?>
 <div class="col-half left">
 <a href="#.php" id="showGoalSecondManagementFormLinkId">Show</a>
@@ -157,6 +150,11 @@
                     type:'POST',
                     success:function(response){
                         $('#fnDuplicationErrorDiv').html(response);
+                        if(response !== ""){
+                          $('#btnsave').hide();
+                        }else{
+                          $('#btnsave').show();
+                        }
                     },
                     error:function(error){
                         alert(error);

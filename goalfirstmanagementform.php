@@ -408,6 +408,11 @@
                     type:'POST',
                     success:function(response){
                         $('#thDuplicationErrorDiv').html(response);
+                        if(response !== ""){
+                          $('#btnsave').hide();
+                        }else{
+                          $('#btnsave').show();
+                        }
                     },
                     error:function(error){
                         alert(error);
