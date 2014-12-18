@@ -91,7 +91,7 @@
     function doesThisUserAccountExistUsingEmail($email){
         try{
             $cnt = 0;
-            $query = "select count(*) as cnt from tbl_user where email = '$email'";
+            $query = "select count(*) as cnt from tbl_user where email = '$email' and deleted = 0";
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow->cnt;

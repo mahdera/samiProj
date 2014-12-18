@@ -385,6 +385,7 @@
                 $('#districtRow').hide();
               }
             }
+
           }
         });
 
