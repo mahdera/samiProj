@@ -1,6 +1,6 @@
 <?php
     function connect(){
-        @$connection = mysql_pconnect("localhost", "samson", "samson");
+        @$connection = mysql_pconnect("localhost", "root", "root");
         return $connection;
     }
 

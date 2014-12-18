@@ -13,6 +13,7 @@
     $(document).ready(function(){
         $('#createBranchLinkId').click(function(){
           $('#branchManagementDiv').load('files/showcreatebranchform.php');
+          $('#duplicationErrorDiv').html('');
         });
 
         $('#viewBranchLinkId').click(function(){

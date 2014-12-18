@@ -6,7 +6,7 @@
     $description  = addslashes($_POST['description']);
     //first check if this sub district is already saved...by the given name...
     $isBranchAlreadySaved = hasThisBranchAlreadySavedInDatabase($branchName);
-    
+
     if($isBranchAlreadySaved == 0){
       saveSubDistrict($zoneId, $branchName,$branchName, $description, $_SESSION['LOGGED_USER_ID']);
       ?>

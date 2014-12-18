@@ -138,6 +138,7 @@
 </div>
 <hr/>
 <div id="createUserDiv"></div>
+<div id="duplicationErrorDiv"></div>
 <div id="branchManagementDiv"></div>
 <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
@@ -147,6 +148,8 @@
               'scrollTop' : $("#createUserDiv").position().top
             });
             $('#createUserDiv').load('files/showcreateuserform.php');
+            $('#branchManagementDiv').html('');
+            $('#duplicationErrorDiv').html('');
         });
 
         $('.resetUserPasswordLink').click(function(){
@@ -155,6 +158,8 @@
               'scrollTop' : $("#createUserDiv").position().top
             });
             $('#createUserDiv').load('files/showresetuserpasswordform.php?id='+id);
+            $('#branchManagementDiv').html('');
+            $('#duplicationErrorDiv').html('');
         });
 
         $('.modifyUserProfileLink').click(function(){
@@ -163,6 +168,8 @@
               'scrollTop' : $("#createUserDiv").position().top
             });
             $('#createUserDiv').load('files/showmodifyuserprofileform.php?id='+id);
+            $('#branchManagementDiv').html('');
+            $('#duplicationErrorDiv').html('');
         });
 
         $('.softDeleteLink').click(function(){
@@ -177,6 +184,8 @@
               'scrollTop' : $("#createUserDiv").position().top
             });
             $('#createUserDiv').load('files/editdistrictfordistrictadminform.php');
+            $('#branchManagementDiv').html('');
+            $('#duplicationErrorDiv').html('');
         });
 
         $('#zoneManagementLink').click(function(){
@@ -184,6 +193,8 @@
               'scrollTop' : $("#createUserDiv").position().top
             });
             $('#createUserDiv').load('files/showzonemanagementmenu.php');
+            $('#branchManagementDiv').html('');
+            $('#duplicationErrorDiv').html('');
         });
 
         $('#branchManagementLink').click(function(){
@@ -192,6 +203,7 @@
             });
             $('#createUserDiv').load('files/showbranchmanagementmenu.php');
             $('#branchManagementDiv').load('files/showlistofbranchs.php');
+            $('#duplicationErrorDiv').html('');
         });
 
     });//end document.ready function
@@ -235,7 +247,8 @@
         $(document).ready(function() {
 
             $('#example').DataTable({
-
+              "bFilter": false,
+              "bInfo": false//to take out search filter in the bar...
             });
 
 

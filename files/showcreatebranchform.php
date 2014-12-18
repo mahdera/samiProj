@@ -53,7 +53,7 @@
                     type:'POST',
                     success:function(response){
                         //$('#branchManagementDiv').html(response);
-                        $('#branchManagementDiv').html('');
+                        $('#duplicationErrorDiv').html(response);
                         $('#branchManagementDiv').load('files/showlistofbranchs.php');
                     },
                     error:function(error){
