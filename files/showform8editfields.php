@@ -7,7 +7,7 @@
 	$buttonId = "btnupdateform8" . $id;
 ?>
 <form>
-    <table border="0" width="100%">
+    <table border="0" width="100%" style="padding: 5px">
         <tr>
             <td>Q8.1:</td>
             <td>
@@ -37,7 +37,8 @@
                 data: dataString,
                 type:'POST',
                 success:function(response){
-                    $('#'+divId).html(response);
+                    //$('#'+divId).html(response);
+										$('#form8Div').load('files/showlistofform8records.php');
                 },
                 error:function(error){
                     alert(error);
