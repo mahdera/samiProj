@@ -105,12 +105,12 @@
                     <td><?php echo ($subDistrictObj != null ? $subDistrictObj->display_name : '---');?></td>
                     <td style="display:none"><?php echo $userRow->modification_date;?></td>
                     <td align="center">
-                        <a href="#.php" class="resetUserPasswordLink" id="<?php echo $userRow->id;?>"><img src="images/reset.gif" border="0" align="absmiddle"/></a>
+                        <a href="#.php" class="resetUserPasswordLink" id="<?php echo $userRow->id;?>">Reset<a>
                     </td>
                     <td align="center">
-                        <a href="#.php" class="modifyUserProfileLink" id="<?php echo $userRow->id;?>"><img src="images/edit.png" border="0" align="absmiddle"/></a>
-                        |
-                        [<a href="#.php" class="softDeleteLink" id="<?php echo $userRow->id;?>"><img src="images/delete.png" border="0" align="absmiddle"/></a>]
+                        <a href="#.php" class="modifyUserProfileLink" id="<?php echo $userRow->id;?>">Edit</a>
+                        <!--|
+                        [<a href="#.php" class="softDeleteLink" id="<?php //echo $userRow->id;?>"><img src="images/delete.png" border="0" align="absmiddle"/></a>]-->
                     </td>
                 </tr>
                 <?php

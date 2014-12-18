@@ -43,7 +43,7 @@
 	$goalFirstId = $goalFirstObj->id;
 	$goalFirstG1Id;
 	?>
-	<div id="printReportDiv">
+	<div id="printReportDiv" style="display:none">
 	<?php
 	//now get a form1 obj modified by the logged in user and modification date same as that of the goal first...
 	//$form1Obj = getLatestForm1ModifiedByUser($_SESSION['LOGGED_USER_ID']);
@@ -747,10 +747,10 @@
 	</div><!--end printDiv-->
 	<table border="0" width="100%">
 		<tr>
-			<td align="right">
-				<a href="#.jsp" onclick="printDiv('printReportDiv')"><img src="images/printer.jpg" align="absmiddle"/> Print</a>
-				|
-				<a href="files/exportreporttoword.php?id=<?php echo $id;?>" target="_blank" id="wordReportLinkId123"><img src="images/word.jpeg" align="absmiddle"/> Generate Word Doc</a>
+			<td align="center">
+				<!--<a href="#.jsp" onclick="printDiv('printReportDiv')"><img src="images/printer.jpg" align="absmiddle"/> Print</a>
+				|-->
+				<a href="files/exportreporttoword.php?id=<?php echo $id;?>" target="_blank" id="wordReportLinkId123"><img src="images/word.jpeg" align="absmiddle"/> Download Report in Word Document</a>
 			</td>
 		</tr>
 	</table>
