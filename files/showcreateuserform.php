@@ -8,12 +8,20 @@
 
   $theUserId = $_SESSION['INDIVIDUAL_INT_USER_ID'];
   $loggedInUserObj = getUser($theUserId);
+  $loggedInUserRole = $loggedInUserObj->user_role;
   $zoneList = null;
+  $userSubDistrictObj = getSubDistrictInfoForUser($theUserId);
+  $loggedInUserSubDistrictId = "";//$userSubDistrictObj->sub_district_id;
+  if(!empty($userSubDistrictObj)){
+    $loggedInUserSubDistrictId = $userSubDistrictObj->sub_district_id;
+  }
   if($loggedInUserObj->member_type == 'Admin'){
         $zoneList = getAllDistricts();
   }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == '01A'){
         $userZoneObj = getDistrictInfoForUser($theUserId);
-        $zoneList = getAllDistrictsWithDistrictId($userZoneObj->district_id);
+        if(!empty($userZoneObj)){
+          $zoneList = getAllDistrictsWithDistrictId($userZoneObj->district_id);
+        }
   }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == '02A'){
         //no need to have something written downhere...
   }
@@ -21,7 +29,8 @@
 ?>
 <h1>Create User</h1>
 <form>
-    <table border="0" width="100%">
+    <div id="errorDiv"></div>
+    <table border="1" width="100%" rules="all">
         <tr>
             <td width="15%"><font color='red'>*</font> First Name:</td>
             <td>
@@ -41,24 +50,24 @@
             </td>
         </tr>
         <tr>
+          <td>Phone Number:</td>
+          <td>
+            <input type="text" name="txtphonenumber" id="txtphonenumber" size="70"/>
+          </td>
+        </tr>
+        <tr>
+          <td><font color='red'>*</font> Password:</td>
+          <td>
+            <input type="password" name="txtpassword" id="txtpassword" size="70"/>
+          </td>
+        </tr>
+        <tr>
             <td><font color='red'>*</font> User Id:</td>
             <td>
                 <input type="text" name="txtuserid" id="txtuserid" size="70"/>
             </td>
         </tr>
-        <tr>
-            <td><font color='red'>*</font> Password:</td>
-            <td>
-                <input type="password" name="txtpassword" id="txtpassword" size="70"/>
-            </td>
-        </tr>
-        <tr>
-            <td>Phone Number:</td>
-            <td>
-                <input type="text" name="txtphonenumber" id="txtphonenumber" size="70"/>
-            </td>
-        </tr>
-        <tr>
+        <!--<tr>
             <td><font color='red'>*</font> Member Type:</td>
             <td>
                 <select name="slctmembertype" id="slctmembertype" style="width: 100%">
@@ -83,7 +92,7 @@
             <td>
                 <select name="slctuserlevel" id="slctuserlevel" style="width:100%">
                     <?php
-                      if($loggedInUserObj->user_role == '02A'){
+                      /*if($loggedInUserObj->user_role == '02A'){
                         ?>
                             <option value="" selected="selected">--Select--</option>
                             <option value="02">Sub District Level</option>
@@ -91,26 +100,40 @@
                       }else{
                         ?>
                             <option value="" selected="selected">--Select--</option>
-                            <option value="02">Sub District Level</option>
                             <option value="01">District Level</option>
+                            <option value="02">Sub District Level</option>
                         <?php
-                      }
+                      }*/
                     ?>
                 </select>
             </td>
-        </tr>
+        </tr>-->
         <tr>
             <td><font color="red">*</font> User Role:</td>
             <td>
-                <select name="slctuserrole" id="slctuserrole" style="width:100%">
+                <div id="userRoleDiv_MODIFIED">
+                  <select name="slctuserrole" id="slctuserrole" style="width:100%">
                     <option value="" selected="selected">--Select--</option>
-                    <option value="02A">Sub District Admin</option>
-                    <option value="999">User</option>
-                    <option value="01A">District Admin</option>
-                </select>
+                    <?php
+                      if($loggedInUserRole == '01A'){
+                    ?>
+                      <option value="01A">District Administrator</option>
+                      <option value="02A">Sub District Administrator</option>
+                      <option value="999">Sub District User</option>
+                      <!--<option value="">Sub District User (Read-Only)</option>-->
+                    <?php
+                      }else{
+                    ?>
+                      <option value="02A">Sub District Administrator</option>
+                      <option value="999">Sub District User</option>
+                    <?php
+                      }
+                    ?>
+                  </select>
+                </div>
             </td>
         </tr>
-        <tr id="zoneRow">
+        <tr id="districtRow" style="display:none">
             <td><font color='red'>*</font> District:</td>
             <td>
                 <select name="slctzone" id="slctzone" style="width:100%">
@@ -121,6 +144,22 @@
                               <option value="<?php echo $zoneRow->id;?>"><?php echo $zoneRow->display_name;?></option>
                             <?php
                         }//end while loop
+                    ?>
+                </select>
+            </td>
+        </tr>
+        <tr id="subDistrictRow" style="display:none">
+            <td><font color="red">*</font> Sub District</td>
+            <td>
+                <select name="slctsubdistrict" id="slctsubdistrict" style="width:100%">
+                    <option value="" selected="selected">--Select--</option>
+                    <?php
+                       $subDistrictList = getAllSubDistricts();
+                       while( $subDistrictRow = mysql_fetch_object($subDistrictList) ){
+                         ?>
+                            <option value="<?php echo $subDistrictRow->id;?>"><?php echo $subDistrictRow->display_name;?></option>
+                         <?php
+                       }//end while loop
                     ?>
                 </select>
             </td>
@@ -136,6 +175,45 @@
     $(document).ready(function(){
         $('#txtfirstname').focus();
 
+
+        $('#txtemail').blur(function(){
+          var email = $('#txtemail').val();
+          var txt = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+          if (!txt.test(email)) {
+            alert('Please enter a valid email address!');
+            $('#txtemail').focus();
+            $('#btncreateuser').hide();
+            return false;
+          }
+
+          //alert(email);
+
+          if(email !== ""){
+              //now check if there are duplicates...
+              var dataString = "email="+email;
+              $.ajax({
+                url: 'files/isthereausersavedwiththisemailaddress.php',
+                data: dataString,
+                type:'POST',
+                success:function(response){
+                  if(response != 0){
+                    alert('The email address "'+email+'" already exists. Please use another email address!');
+                    $('#txtemail').val('');
+                    $('#txtemail').focus();
+                    $('#btncreateuser').hide();
+                  }else{
+                    $('#btncreateuser').show();
+                  }
+                },
+                error:function(error){
+                  alert(error);
+                }
+              });
+          }
+
+        });
+
+
         $('#btncreateuser').click(function(){
             var firstName = $('#txtfirstname').val();
             var lastName = $('#txtlastname').val();
@@ -143,25 +221,58 @@
             var userId = $('#txtuserid').val();
             var password = $('#txtpassword').val();
             var phoneNumber = $('#txtphonenumber').val();
-            var memberType = $('#slctmembertype').val();
-            var userStatus = $('#slctuserstatus').val();
-            var userLevel = $('#slctuserlevel').val();
+            var memberType = 'User';//$('#slctmembertype').val();
+            var userStatus = 'Active';//$('#slctuserstatus').val();
+            var userLevel = '';//$('#slctuserlevel').val();
             var userRole = $('#slctuserrole').val();
+
+
+
             var eitherZoneIdOrBranchId = "";
-            if(userLevel == '01'){
-                eitherZoneIdOrBranchId = $('#slctzone').val();
-            }else if(userLevel == '02'){
-                eitherZoneIdOrBranchId = $('#slctbranch').val();
+            if(userRole == '01A'){
+                eitherZoneIdOrBranchId = 1;
+                userLevel = "01";
+            }else{
+                //eitherZoneIdOrBranchId = $('#slctsubdistrict').val();
+                //get the loggedinuser sub distrit id
+                var loggedInUserRole = "<?php echo $loggedInUserRole;?>";
+                var loggedInUserSubDistrictId = "<?php echo $loggedInUserSubDistrictId;?>";
+                if(loggedInUserRole == '02A'){
+                  eitherZoneIdOrBranchId = loggedInUserSubDistrictId;
+                }else{
+                  eitherZoneIdOrBranchId = $('#slctsubdistrict').val();
+                }
+                userLevel = "02";
             }
 
+            if(phoneNumber !== ""){
+                //validate phone
+                var intRegex = /[0-9 -()+]+$/;
+                if((phoneNumber.length < 6) || (!intRegex.test(phoneNumber))){
+                  alert('Please enter a valid phone number.');
+                  return false;
+                }
+            }
+
+
+
+
             if(firstName !== "" && lastName !== "" && email !== "" && userId !== "" &&
-                    password !== "" && memberType !== "" && userStatus !== "" && eitherZoneIdOrBranchId !== "" &&
-                    userLevel !== "" && userRole !== ""){
+                    password !== "" && eitherZoneIdOrBranchId !== "" && userRole !== ""){
+
                 var dataString = "firstName="+firstName+"&lastName="+lastName+
                         "&email="+email+"&userId="+userId+"&password="+password+
                         "&phoneNumber="+phoneNumber+"&memberType="+memberType+
                         "&userStatus="+userStatus+"&userLevel="+encodeURIComponent(userLevel)+"&eitherZoneIdOrBranchId="+
                         eitherZoneIdOrBranchId+"&userRole="+encodeURIComponent(userRole);
+
+                //validate email
+                var txt = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                if (!txt.test(email)) {
+                  alert('Please enter a valid email address!');
+                  return false;
+                }
+
                 $.ajax({
                     url: 'files/createuser.php',
                     data: dataString,
@@ -179,7 +290,33 @@
             }
         });
 
-        $('#slctzone').change(function(){
+        $('#txtuserid').focusout(function(){
+          var userId = $(this).val();
+          if(userId != ""){
+            var dataString = "userId="+userId;
+            $.ajax({
+              url: 'files/checkifthisuseridisalreadytaken.php',
+              data: dataString,
+              type:'POST',
+              success:function(response){
+                if(response == 'Taken'){
+                  $('#errorDiv').html("<div class='notify notify-red'><span class='symbol icon-error'></span> This User ID is already taken!</div>");
+                  $('#txtuserid').focus();
+                  $('#btncreateuser').hide();
+                }else{
+                  $('#errorDiv').html('');
+                  $('#btncreateuser').show();
+                }
+                //$('#errorDiv').html(response);
+              },
+              error:function(error){
+                alert(error);
+              }
+            });
+          }
+        });
+
+        /*$('#slctzone').change(function(){
             var zoneId = $(this).val();
             var userLevel = $('#slctuserlevel').val();
             if(zoneId !== '' && userLevel == '02'){
@@ -197,13 +334,14 @@
                     }
                 });
             }
-        });
+        });*/
 
-        $('#slctuserlevel').change(function(){
+        /*$('#slctuserlevel').change(function(){
             var userLevel = $(this).val();
             if(userLevel != ''){
                 if(userLevel == '01'){
                     $('#branchRow').remove();
+                    $('#userRoleDiv').load('files/showuserrolefordistrictleveluser.php');
                 }else if(userLevel == '02'){
                     var zoneId = $('#slctzone').val();
                     var dataString = "zoneId="+zoneId;
@@ -219,21 +357,34 @@
                             alert(error);
                         }
                     });
+                    $('#userRoleDiv').load('files/showuserroleforsubdistrictleveluser.php');
                 }
             }
-        });
+        });*/
 
         $('#slctuserrole').change(function(){
           var userRole = $(this).val();
-          var userLevel = $('#slctuserlevel').val();
-          if(userRole !== '' && userLevel !== ''){
-              if(userLevel == '02' && userRole == '01A'){
-                  alert('A sub district level user can not have a District Admin role! Please select again!');
-                  $('#slctuserrole').val('');
-              }else if(userLevel == '01' && userRole == '02A'){
-                  alert('A district level user can not have a Sub District Admin role! Please select again!');
-                  $('#slctuserrole').val('');
+          var loggedInUserRole = "<?php echo $loggedInUserRole;?>";
+          if(loggedInUserRole == '01A'){
+            if(userRole !== ""){
+              if(userRole == "01A"){
+                $('#subDistrictRow').hide();
+                $('#districtRow').hide();
+              }else if(userRole == "02A" || userRole == "999"){
+                $('#subDistrictRow').show();
+                $('#districtRow').hide();
               }
+            }
+          }else{
+             if(userRole !== ""){
+              if(userRole == "01A"){
+                $('#subDistrictRow').hide();
+                $('#districtRow').show();
+              }else if(userRole == "02A" || userRole == "999"){
+                $('#subDistrictRow').hide();
+                $('#districtRow').hide();
+              }
+            }
           }
         });
 

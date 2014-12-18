@@ -13,7 +13,7 @@
 ?>
 <div>
     <table border="0" width="100%">
-        <tr>
+        <tr style="display:none">
             <td>Zone:</td>
             <td>
                 <select name="<?php echo $zoneControl;?>" id="<?php echo $zoneControl;?>" style="width:100%">
@@ -40,7 +40,7 @@
                 <input type="text" name="<?php echo $branchNameControl;?>" id="<?php echo $branchNameControl;?>" size="70" value="<?php echo $branchObj->display_name;?>"/>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none;">
             <td>Description:</td>
             <td>
                 <textarea name="<?php echo $descriptionControl;?>" id="<?php echo $descriptionControl;?>" rows="3" style="width:100%"><?php echo $branchObj->description;?></textarea>
@@ -63,9 +63,9 @@
             var branchNameControl = "txtbranchname" + branchId;
             var descriptionControl = "textareadescription" + branchId;
             //now get the values...
-            var zoneIdVal = $('#'+zoneControl).val();
+            var zoneIdVal = 1;//$('#'+zoneControl).val();
             var branchNameVal = $('#'+branchNameControl).val();
-            var descriptionVal = $('#'+descriptionControl).val();
+            var descriptionVal = "---";//$('#'+descriptionControl).val();
 
             var divId = "branchEditDiv" + branchId;
             var dataString = "zoneId="+zoneIdVal+"&branchName="+branchNameVal+"&description="+
@@ -76,6 +76,8 @@
                 type:'POST',
                 success:function(response){
                     $('#'+divId).html(response);
+                    $('#branchManagementDiv').html('');
+                    $('#branchManagementDiv').load('files/showlistofbranchs.php');
                 },
                 error:function(error){
                     alert(error);

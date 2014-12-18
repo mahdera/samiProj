@@ -1,10 +1,10 @@
 <?php
     require_once 'district.php';
-    $zoneList = getAllDistricts();
+    $zoneList = getOnlyOneDistrict();//getAllDistricts();
 ?>
 <div>
     <table border="0" width="100%">
-        <tr>
+        <tr style="display:none">
             <td>District:</td>
             <td>
                 <select name="slctzone" id="slctzone" style="width:100%">
@@ -12,7 +12,7 @@
                     <?php
                         while($zoneRow = mysql_fetch_object($zoneList)){
                           ?>
-                            <option value="<?php echo $zoneRow->id;?>"><?php echo $zoneRow->display_name;?></option>
+                            <option value="<?php echo $zoneRow->id;?>" selected="selected"><?php echo $zoneRow->display_name;?></option>
                           <?php
                         }//end while loop
                     ?>
@@ -25,7 +25,7 @@
                 <input type="text" name="txtbranchname" id="txtbranchname" size="70"/>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none;">
             <td>Description:</td>
             <td>
                 <textarea name="textareadescription" id="textareadescription" rows="3" style="width:100%"></textarea>
@@ -41,9 +41,9 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('#btnsave').click(function(){
-            var zoneId = $('#slctzone').val();
+            var zoneId = 1;//$('#slctzone').val();
             var branchName = $('#txtbranchname').val();
-            var description = $('#textareadescription').val();
+            var description = "---";//$('#textareadescription').val();
 
             if(zoneId != "" && branchName != ""){
                 var dataString = "zoneId="+zoneId+"&branchName="+branchName+"&description="+description;
@@ -52,7 +52,9 @@
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        $('#branchManagementDiv').html(response);
+                        //$('#branchManagementDiv').html(response);
+                        $('#duplicationErrorDiv').html(response);
+                        $('#branchManagementDiv').load('files/showlistofbranchs.php');
                     },
                     error:function(error){
                         alert(error);

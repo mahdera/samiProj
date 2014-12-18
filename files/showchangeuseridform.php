@@ -1,6 +1,6 @@
 <h1>Change User-Id</h1>
 <form>
-    <table border="0" width="100%">
+    <table border="1" width="100%" rules="all">
         <tr>
             <td>Enter Current User-Id:</td>
             <td>
@@ -32,15 +32,15 @@
             var currentUserId = $('#txtcurrentuserid').val();
             var newUserId = $('#txtnewuserid').val();
             var password = $('#txtpassword').val();
-            
+
 
             if(currentUserId !== "" && newUserId !== "" && password !== ""){
                 var dataString = "currentUserId="+currentUserId+"&newUserId="+newUserId+"&password="+password;
                 $.ajax({
-                    url: 'files/changeuserid.php',        
+                    url: 'files/changeuserid.php',
                     data: dataString,
                     type:'POST',
-                    success:function(response){                    
+                    success:function(response){
                         $('#myAccountDiv').html(response);
                     },
                     error:function(error){

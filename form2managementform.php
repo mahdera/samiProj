@@ -1,6 +1,24 @@
 <?php
-error_reporting( 0 );
-?>
+session_start();
+require_once 'files/form2.php';
+require_once 'files/user.php';
+require_once 'files/usersubdistrict.php';
+
+$userObj = getUser($_SESSION['LOGGED_USER_ID']);
+//check if tbl_form_1 has record by any member of the sub district members of the logged in user...
+if($userObj->user_level == '02'){
+  $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+  $isForm2AlreadyFilled = checkIfForm2RecordIsAlreadyEntered('02', $userSubDistrictObj->sub_district_id);
+}else if($userObj->user_level == '01'){
+  $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+  if(!empty($userObj)){
+    $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+    $isForm2AlreadyFilled = checkIfForm2RecordIsAlreadyEntered('02', $userSubDistrictObj->sub_district_id);
+  }
+}
+
+if(!$isForm2AlreadyFilled){
+  ?>
 <h2>Form 2</h2>
 <form>
     <table border="0" width="100%">
@@ -35,11 +53,18 @@ error_reporting( 0 );
         </tr>
     </table>
 </form>
+<?php
+}else{
+  ?>
+  <div class="notify notify-yellow"><span class="symbol icon-info"></span> Record already exists in database.</div>
+  <?php
+}
+?>
 <div id="form2ManagementDetailDiv"></div>
 <script type="text/javascript">
     $(document).ready(function(){
 
-        showListOfForm2Records();
+        //showListOfForm2Records();
 
         $('#btnsaveform2').click(function(){
             var q2_1 = $('#q2_1').val();
@@ -56,7 +81,7 @@ error_reporting( 0 );
                     type:'POST',
                     success:function(response){
                         //alert('Form Two Saved Successfully!');
-                        $('#form2Div').html('<div class="notify notify-green"><span class="symbol icon-tick"></span> Form Tow Saved Successfully!</div>');
+                        $('#form2Div').html('<div class="notify notify-green"><span class="symbol icon-tick"></span> Saved Successfully</div>');
                         clearInputFields();
                         showListOfForm2Records();
                     },

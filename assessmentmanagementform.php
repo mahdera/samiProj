@@ -1,10 +1,7 @@
-<?php
-  //error_reporting( 0 );
-?>
 <h1>Add Assessment</h1>
-<a href="#.php" id="showAssessmentManagementFormLinkId">Show Form</a>
+<a href="#.php" id="showAssessmentManagementFormLinkId">Show</a>
 |
-<a href="#.php" id="hideAssessmentManagementFormLinkId">Hide Form</a>
+<a href="#.php" id="hideAssessmentManagementFormLinkId">Hide</a>
 <div id="assessmentManagementDiv">
     <?php
         require_once 'showassessmentaddform.php';
@@ -18,7 +15,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
 
-        $('#assessmentManagementForm').hide();
+        $('#assessmentManagementForm').show();
 
         $('#showAssessmentManagementFormLinkId').click(function(){
             $('#assessmentManagementForm').show('slow');
@@ -39,7 +36,7 @@
         $('#addMoreThLink').click(function(){
             var numItems = $('.thInputRow').length;
             var textBoxId = "txtth"+(numItems+1);
-            var newRow = $("<tr id='thRow"+(numItems+1)+"'><td>Th"+(numItems+1)+":</td><td><input type='text' class='thInputRow' name='"+textBoxId+"' id='"+textBoxId+"'/></td></tr>");
+            var newRow = $("<tr id='thRow"+(numItems+1)+"' class='added'><td>Th"+(numItems+1)+":</td><td><input type='text' class='thInputRow' name='"+textBoxId+"' id='"+textBoxId+"'/></td></tr>");
             $('#thRow'+numItems).after(newRow);
         });
 
@@ -93,6 +90,7 @@
             $('#datepicker').val('');
             $('#txtth1').val('');
             $('#textareasummary').val('');
+            $('.added').remove();
         }
 
         function showListOfAssessments(){

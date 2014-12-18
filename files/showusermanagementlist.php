@@ -1,3 +1,4 @@
+<div>
 <?php
     @session_start();
     require_once 'user.php';
@@ -7,6 +8,7 @@
     require_once 'usersubdistrict.php';
     require_once 'userrolelookup.php';
     require_once 'userlevellookup.php';
+    require_once 'usersubdistrict.php';
 
     $theUserId = $_SESSION['INDIVIDUAL_INT_USER_ID'];
     $loggedInUserObj = getUser($theUserId);
@@ -16,55 +18,69 @@
     }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == '02A'){
         //now get the branch id of the logged in user
         $userSubDistrictObj = getSubDistrictInfoForUser($theUserId);
-        $userList = getAllSubDistrictUsersWithDistrictId($userSubDistrictObj->sub_district_id);
+        //echo 'sub district id : ' . $userSubDistrictObj->sub_district_id;
+        $userList = getAllSubDistrictUsersWithSubDistrictId($userSubDistrictObj->sub_district_id);
     }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == '01A'){
         //now get the zone id of the logged in user and get all zone and branch level users found under the zone id of this logged in user
         $userDistrictObj = getDistrictInfoForUser($theUserId);
         $userList = getAllDistrictAndSubDistrictUsersWithDistrictId($userDistrictObj->district_id);
     }
 ?>
-<form>
-    <div style="background:#eee">
-        <?php
-          if($loggedInUserObj->member_type == 'Admin'){
-            ?>
-              <a href="#.php" id="createUserLink">Create User</a> |
-              <a href="#.php" id="zoneManagementLink">District Management</a> |
-              <a href="#.php" id="branchManagementLink">Sub District Management</a>
-            <?php
-          }else{
-            ?>
-              <a href="#.php" id="createUserLink">Create User</a>
-            <?php
-          }
+<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css"/>
+<div style="background:#eee">
+    <?php
+      if($loggedInUserObj->member_type == 'Admin'){
         ?>
-    </div>
-    <table border="1" width="100%" rules="rows">
-        <tr style="background: #eee">
-            <td>Ser.No</td>
-            <td>First Name</td>
-            <td>Last Name</td>
-            <td>Email</td>
-            <td>User Id</td>
-            <td>Member Type</td>
-            <td>Member Status</td>
-            <td>User Level</td>
-            <td>User Role</td>
-            <td>District</td>
-            <td>Sub District</td>
-            <td>Modification Date</td>
-            <td>Reset Password</td>
-            <td>Modify Status</td>
+          <a href="#.php" id="createUserLink">Create User</a> |
+          <a href="#.php" id="zoneManagementLink">District Management</a> |
+          <a href="#.php" id="branchManagementLink">Sub District Management</a>
+        <?php
+      }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_level == '01'){
+        ?>
+          <a href="#.php" id="createUserLink">Create User</a> |
+          <a href="#.php" id="branchManagementLink">Sub District Management</a> |
+          [<a href="#.php" id="editDistrictForDistrictAdminLink">Edit Your District</a>]
+        <?php
+      }else if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_level == '02'){
+        ?>
+          <a href="#.php" id="createUserLink">Create User</a>
+        <?php
+      }
+    ?>
+</div>
+<div>
+    <form>
+    <table id="example" border="1" rules="rows" class="display" cellspacing="0" width="100%" style="display: block;">
+      <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>User Id</th>
+            <th style="display:none">Member Type</th>
+            <th>Status</th>
+            <th style="display:none">User Level</th>
+            <th>User Role</th>
+            <th>District</th>
+            <th>Sub District</th>
+            <th style="display:none">Modification Date</th>
+            <th>Reset Password</th>
+            <th>Modify Status</th>
         </tr>
+      </thead>
+      <tbody>
         <?php
             $ctr=1;
+            $districtObj = null;
+            $subDistrictObj = null;
+
             while($userRow = mysql_fetch_object($userList)){
                 $districtObj = null;
                 $subDistrictObj = null;
                 if($userRow->user_level == '01'){
                     //fetch zone information from tbl_user_zone
                     $userDistrict = getDistrictInfoForUser($userRow->id);
-                    $districtObj = getDistrict($userDistrict->district_id);
+                    if($userDistrict != null)
+                      $districtObj = getDistrict($userDistrict->district_id);
                 }else if($userRow->user_level == '02'){
                     //fetch branch information from tbl_user_branch
                     $userSubDistrict = getSubDistrictInfoForUser($userRow->id);
@@ -78,54 +94,165 @@
                 $userLevel = getUserLevelLookUpUsingCode($userRow->user_level);
                 ?>
                 <tr>
-                    <td><?php echo $ctr++;?></td>
-                    <td><?php echo $userRow->first_name;?></td>
-                    <td><?php echo $userRow->last_name;?></td>
+                    <td><?php echo $userRow->first_name . " " . $userRow->last_name;?></td>
                     <td><?php echo $userRow->email;?></td>
                     <td><?php echo $userRow->user_id;?></td>
-                    <td><?php echo $userRow->member_type;?></td>
+                    <td style="display:none"><?php echo $userRow->member_type;?></td>
                     <td><?php echo $userRow->user_status;?></td>
-                    <td><?php echo ($userLevel != null ? $userLevel->value : '---');?></td>
+                    <td style="display:none"><?php echo ($userLevel != null ? $userLevel->value : '---');?></td>
                     <td><?php echo ($userRole != null ? $userRole->value : '---');?></td>
                     <td><?php echo ($districtObj != null ? $districtObj->display_name : '---');?></td>
                     <td><?php echo ($subDistrictObj != null ? $subDistrictObj->display_name : '---');?></td>
-                    <td><?php echo $userRow->modification_date;?></td>
-                    <td>
-                        <a href="#.php" class="resetUserPasswordLink" id="<?php echo $userRow->id;?>">Reset Password</a>
+                    <td style="display:none"><?php echo $userRow->modification_date;?></td>
+                    <td align="center">
+                        <a href="#.php" class="resetUserPasswordLink" id="<?php echo $userRow->id;?>">Reset<a>
                     </td>
-                    <td>
-                        <a href="#.php" class="modifyUserProfileLink" id="<?php echo $userRow->id;?>">Modify Profile</a>
+                    <td align="center">
+                        <a href="#.php" class="modifyUserProfileLink" id="<?php echo $userRow->id;?>">Edit</a>
+                        <!--|
+                        [<a href="#.php" class="softDeleteLink" id="<?php //echo $userRow->id;?>"><img src="images/delete.png" border="0" align="absmiddle"/></a>]-->
                     </td>
                 </tr>
                 <?php
             }//end while loop
         ?>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>User Id</th>
+          <th style="display:none">Member Type</th>
+          <th>Status</th>
+          <th style="display:none">User Level</th>
+          <th>User Role</th>
+          <th>District</th>
+          <th>Sub District</th>
+          <th style="display:none">Modification Date</th>
+          <th>Reset Password</th>
+          <th>Modify Status</th>
+        </tr>
+      </tfoot>
     </table>
 </form>
+</div>
 <hr/>
 <div id="createUserDiv"></div>
+<div id="duplicationErrorDiv"></div>
+<div id="branchManagementDiv"></div>
+<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         $('#createUserLink').click(function(){
+            $('html, body').animate({
+              'scrollTop' : $("#createUserDiv").position().top
+            });
             $('#createUserDiv').load('files/showcreateuserform.php');
+            $('#branchManagementDiv').html('');
+            $('#duplicationErrorDiv').html('');
         });
 
         $('.resetUserPasswordLink').click(function(){
             var id = $(this).attr('id');
+            $('html, body').animate({
+              'scrollTop' : $("#createUserDiv").position().top
+            });
             $('#createUserDiv').load('files/showresetuserpasswordform.php?id='+id);
+            $('#branchManagementDiv').html('');
+            $('#duplicationErrorDiv').html('');
         });
 
         $('.modifyUserProfileLink').click(function(){
             var id = $(this).attr('id');
+            $('html, body').animate({
+              'scrollTop' : $("#createUserDiv").position().top
+            });
             $('#createUserDiv').load('files/showmodifyuserprofileform.php?id='+id);
+            $('#branchManagementDiv').html('');
+            $('#duplicationErrorDiv').html('');
+        });
+
+        $('.softDeleteLink').click(function(){
+            if(window.confirm('Are you sure you want to delete this user?')){
+                var id = $(this).attr('id');
+                $('.content').load('files/softdeletedthisuser.php?id='+id);
+            }
+        });
+
+        $('#editDistrictForDistrictAdminLink').click(function(){
+            $('html, body').animate({
+              'scrollTop' : $("#createUserDiv").position().top
+            });
+            $('#createUserDiv').load('files/editdistrictfordistrictadminform.php');
+            $('#branchManagementDiv').html('');
+            $('#duplicationErrorDiv').html('');
         });
 
         $('#zoneManagementLink').click(function(){
+            $('html, body').animate({
+              'scrollTop' : $("#createUserDiv").position().top
+            });
             $('#createUserDiv').load('files/showzonemanagementmenu.php');
+            $('#branchManagementDiv').html('');
+            $('#duplicationErrorDiv').html('');
         });
 
         $('#branchManagementLink').click(function(){
+            $('html, body').animate({
+              'scrollTop' : $("#createUserDiv").position().top
+            });
             $('#createUserDiv').load('files/showbranchmanagementmenu.php');
+            $('#branchManagementDiv').load('files/showlistofbranchs.php');
+            $('#duplicationErrorDiv').html('');
         });
+
     });//end document.ready function
+
+    /*;(function($) {
+      $.fn.fixMe = function() {
+        return this.each(function() {
+          var $this = $(this),
+          $t_fixed;
+          function init() {
+            $this.wrap('<div class="container" />');
+            $t_fixed = $this.clone();
+            $t_fixed.find("tbody").remove().end().addClass("fixed").insertBefore($this);
+            resizeFixed();
+          }
+          function resizeFixed() {
+            $t_fixed.find("th").each(function(index) {
+              $(this).css("width",$this.find("th").eq(index).outerWidth()+"px");
+            });
+          }
+          function scrollFixed() {
+            var offset = $(this).scrollTop(),
+            tableOffsetTop = $this.offset().top,
+            tableOffsetBottom = tableOffsetTop + $this.height() - $this.find("thead").height();
+            if(offset < tableOffsetTop || offset > tableOffsetBottom)
+              $t_fixed.hide();
+              else if(offset >= tableOffsetTop && offset <= tableOffsetBottom && $t_fixed.is(":hidden"))
+                $t_fixed.show();
+              }
+              $(window).resize(resizeFixed);
+              $(window).scroll(scrollFixed);
+              init();
+            });
+          };
+        })(jQuery);
+
+        $(document).ready(function(){
+          $("table").fixMe();
+        });*/
+
+        $(document).ready(function() {
+
+            $('#example').DataTable({
+              "bFilter": false,
+              "bInfo": false//to take out search filter in the bar...
+            });
+
+
+        });//end document.ready function
+
 </script>
+</div>

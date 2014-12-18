@@ -1,7 +1,15 @@
 <?php
-    $fnActionId = $_GET['fnActionId'];
     $fnId = $_GET['fnId'];
     require_once 'fnaction.php';
+    //now get the fnAction object for this fnId
+    $fnActionObj = getFnActionForFn($fnId);
+    $fnActionId = null;
+
+    if(!empty($fnActionObj)){
+
+    $fnActionId = $fnActionObj->id;
+
+
     //now define the control names in here...
     $fnActionControlName = "textareafnactionedit" . $fnActionId;
     $buttonId = "btnupdatefnaction" . $fnActionId;
@@ -10,7 +18,7 @@
 <form>
   <table border="0" width="100%">
       <tr>
-          <td>
+          <td style="padding-left:10px;padding-right:15px">
               <textarea name="<?php echo $fnActionControlName;?>" id="<?php echo $fnActionControlName;?>" rows="3" style="width:100%"><?php echo $fnActionObj->action_text;?></textarea>
           </td>
       </tr>
@@ -21,6 +29,13 @@
       </tr>
   </table>
 </form>
+<?php
+}else{
+  ?>
+    <div class="notify notify-yellow"><span class="symbol icon-info"></span> No Action Texts Found!</div>
+  <?php
+}
+?>
 <script type="text/javascript">
   $(document).ready(function(){
       var fnActionId = "<?php echo $fnActionId;?>";

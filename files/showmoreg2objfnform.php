@@ -7,14 +7,19 @@
     $fnList = null;
     //$fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
-    /*if($userObj->user_level == 'Zone Level'){
-        $userZoneObj = getZoneInfoForUser($userObj->id);
-        $fnList = getAllFnsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
-    }else if($userObj->user_level == 'Branch Level'){
-        $userBranchObj = getBranchInfoForUser($userObj->id);
-        $fnList = getAllFnsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
-    }*/
-    $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
+
+    if($userObj->user_level == '02'){
+      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+      $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    }else if($userObj->user_level == '01'){
+      $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+      if(!empty($userObj)){
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+        $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+      }
+    }
+
+    //$fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
     $numItems = $_POST['numItems'];
     //now define the control names in here...
     $objControlName = "txtg2obj" . ($numItems + 1);
@@ -23,13 +28,14 @@
     $fnOtherDivId = "fnOtherG2ObjFn" . ($numItems + 1);
     $idForSpinner = "g2fn" . ($numItems + 1);
 ?>
-<tr id="<?php echo $trRowId;?>">
+<tr id="<?php echo $trRowId;?>" class="added">
     <td colspan="2">
         <table border="0" width="100%" style="background: #fff">
             <tr>
                 <td width="20%">Obj:</td>
                 <td>
-                    <input type="text" id="<?php echo $objControlName;?>" name="<?php echo $objControlName;?>" class="g2Obj" size="70"/>
+                    <!--<input type="text" id="<?php /*echo $objControlName;*/?>" name="<?php /*echo $objControlName;*/?>" class="g2Obj" size="70"/>-->
+                    <textarea name="<?php echo $objControlName;?>" id="<?php echo $objControlName;?>" class="g2Obj" style="width:100%" rows="4"></textarea>
                 </td>
             </tr>
             <tr>

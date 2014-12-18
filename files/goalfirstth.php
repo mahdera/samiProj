@@ -58,13 +58,31 @@
         }
     }
 
+    function getGoalFirstThUsingModifiedyByUsingUserLevel($userLevel, $divisionId){
+        $query = null;
+        try{
+          if($userLevel == '02'){
+            $query = "select tbl_goal_first_th.* from tbl_goal_first_th, tbl_user_sub_district where " .
+            "tbl_goal_first_th.modified_by = tbl_user_sub_district.user_id and tbl_user_sub_district.sub_district_id = $divisionId order by " .
+            "tbl_goal_first_th.modification_date desc limit 0,1";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+          }else if($userLevel == '01'){
+            //another sql if needed for district level fetching...
+          }
+        }catch(Exception $ex){
+          $ex->getMessage();
+        }
+    }
+
     function getAllGoalFirstThsModifiedByUsingUserLevel($userLevel, $divisionId){
         try{
             $query = null;
-            if($userLevel == 'Branch Level'){
-                $query = "select tbl_goal_first_th.* from tbl_goal_first_th, tbl_user_branch where " .
-                "tbl_goal_first_th.modified_by = tbl_user_branch.user_id and " .
-                "tbl_user_branch.branch_id = $divisionId order by modification_date desc";
+            if($userLevel == '02'){
+                $query = "select tbl_goal_first_th.* from tbl_goal_first_th, tbl_user_sub_district where " .
+                "tbl_goal_first_th.modified_by = tbl_user_sub_district.user_id and " .
+                "tbl_user_sub_district.sub_district_id = $divisionId order by modification_date desc";
             }else if($userLevel == 'Zone Level'){
                 $query = "select tbl_goal_first_th.* from tbl_goal_first_th, tbl_user_zone " .
                 "where tbl_goal_first_th.modified_by = tbl_user_zone.user_id and " .
@@ -120,6 +138,27 @@
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
+
+    function hasThisThBeenUsedForGoalFirstByUsingUserLevel($thId, $userLevel, $divisionId){
+        $cntVal = 0;
+        try{
+            if($userLevel = '02'){
+                $query = "select count(*) as cnt from tbl_goal_first_th, tbl_user_sub_district where th_id = $thId and " .
+                "tbl_goal_first_th.modified_by = tbl_user_sub_district.user_id and tbl_user_sub_district.sub_district_id = $divisionId";
+                //echo $query;
+            }
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            $cntVal = $resultRow->cnt;
+            if($cntVal != 0){
+                return true;
+            }else{
+                return false;
+            }
         }catch(Exception $ex){
             $ex->getMessage();
         }

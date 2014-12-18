@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    @session_start();
 ?>
 <h1>Goal First List</h1>
 <?php
@@ -8,28 +8,34 @@
     require_once 'goalfirst.php';
     require_once 'goalfirstth.php';
     require_once 'user.php';
-    require_once 'userbranch.php';
-    require_once 'userzone.php';
+    require_once 'usersubdistrict.php';
+    //require_once 'userzone.php';
     //$goalFirstList = getAllGoalFirstsModifiedBy($_SESSION['LOGGED_USER_ID']);
-    $goalFirstThList = getAllGoalFirstThsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    //$goalFirstThList = getAllGoalFirstThsModifiedBy($_SESSION['LOGGED_USER_ID']);
     //this will have to be like all goalFirsts then filter out the ths in the goal first list
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
     /*if($userObj->user_level == 'Zone Level'){
         $userZoneObj = getZoneInfoForUser($userObj->id);
         $goalFirstThList = getAllGoalFirstThsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
-    }else if($userObj->user_level == 'Branch Level'){
-        $userBranchObj = getBranchInfoForUser($userObj->id);
-        $goalFirstThList = getAllGoalFirstThsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
     }*/
+    if($userObj->user_level == '02'){
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+        $goalFirstThList = getAllGoalFirstThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    }else if($userObj->user_level == '01'){
+        $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+        if(!empty($userObj)){
+          $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+          $goalFirstThList = getAllGoalFirstThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+        }
+    }
 
-    if(!empty($goalFirstThList)){
+    if(!empty($goalFirstThList) && mysql_num_rows($goalFirstThList)){
         ?>
-        <table border="0" width="100%">
-            <tr style="background: #CCC">                
+        <table border="1" width="100%" rules="all">
+            <tr style="background: #CCC">
                 <td width="20%">Th</td>
-                <td>Action</td>
-                <td>Edit</td>
-                <td>Delete</td>
+                <td></td>
+
             </tr>
             <?php
                 $ctr=1;
@@ -41,19 +47,18 @@
                         if(true){
                             ?>
                             <tr>
-                                <td><?php echo $thObj->th_name;?></td>
-                                <td>
-                                    [<a href="#.php" id="<?php echo $thObj->id;?>" class="openActionFormClass">Show Goal First Detail</a> | <a href="#.php" id="<?php echo $goalFirstThRow->th_id;?>" class="closeActionFormClass">Close Goal First Detail</a>]
-                                </td>
-                                <td>
+                                <td width="50%"><?php echo stripslashes($thObj->th_name);?></td>
+                                <td align="right">
+
                                     <a href="#.php" id="<?php echo $goalFirstThRow->th_id;?>" class="openGoalFirstDetailForEditClass">Edit</a>
-                                </td>
-                                <td>
+                                    |
                                     <a href="#.php" id="<?php echo $goalFirstThRow->id;?>" class="deleteGoalFirstDetailClass">Delete</a>
+                                    |
+                                    <a href="#.php" id="<?php echo $goalFirstThRow->th_id;?>" class="closeActionFormClass">Close</a>
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="4">
+                                <td colspan="2">
                                     <div id="<?php echo $divId;?>"></div>
                                 </td>
                             </tr>
@@ -64,6 +69,10 @@
                 ?>
         </table>
         <?php
+    }else{
+    ?>
+      <div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>
+    <?php
     }
 ?>
 <hr/>
@@ -91,7 +100,7 @@
         });
 
         $('.deleteGoalFirstDetailClass').click(function(){
-          if(window.confirm('Are you sure you want to delete this goal first record?')){
+          if(window.confirm('Are you sure you want to delete this record?')){
             var idVal = $(this).attr('id');
             var divId = "subDetailDiv";
             var dataString = "goalFirstThId=" + idVal;

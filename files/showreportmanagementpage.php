@@ -1,10 +1,36 @@
 <?php
-	session_start();
+@session_start();
+if(empty($_SESSION['USER_ID'])){
+	header("Location: login.php");
+}
+
+if($_SESSION['USER_ROLE_CODE'] === '01A'){
+	if(empty($_SESSION['SUB_DISTRICT_ID'])){
+		header("Location: nosubdistrictselected.php");
+	}
+}
+?>
+<?php
 	require_once 'goalfirst.php';
 	require_once 'th.php';
 	require_once 'user.php';
+	require_once 'usersubdistrict.php';
 
-	$goalFirstList = getAllGoalFirstsModifiedBy($_SESSION['LOGGED_USER_ID']);
+	$userObj = getUser($_SESSION['LOGGED_USER_ID']);
+	$goalFirstList = null;
+
+	if($userObj->user_level == '02'){
+		$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+		$goalFirstList = getAllGoalFirstsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+	}else if($userObj->user_level == '01'){
+		$userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+		if(!empty($userObj)){
+			$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+			$goalFirstList = getAllGoalFirstsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+		}
+	}
+
+	//$goalFirstList = getAllGoalFirstsModifiedBy($_SESSION['LOGGED_USER_ID']);
 	$loggedInUserObj = getUserUsingTheUserId($_SESSION['LOGGED_USER_ID']);
 	if( !empty($goalFirstList) && ($loggedInUserObj->member_type !== 'Admin') ){
 		?>

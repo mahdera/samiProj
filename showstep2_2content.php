@@ -1,3 +1,16 @@
+<?php
+@session_start();
+if(empty($_SESSION['USER_ID'])){
+  header("Location: login.php");
+}
+
+if($_SESSION['USER_ROLE_CODE'] === '01A'){
+  if(empty($_SESSION['SUB_DISTRICT_ID'])){
+    header("Location: nosubdistrictselected.php");
+  }
+}
+?>
+
 <div id="topcontain">
     <div id="titlearea">
         <h1 id='currentPageTag'>Step 2-2</h1>
@@ -18,7 +31,7 @@
 <?php
     require_once 'importjsscripts.php';
 ?>
-<div>
+<div class="col-half left">
     <?php
         require_once 'assessmentmanagementform.php';
     ?>

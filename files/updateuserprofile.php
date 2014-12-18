@@ -7,14 +7,14 @@
     $adminUser = getUserUsingUserId($_SESSION['USER_ID']);
     //get the values...
     $id = $_POST['id'];
-    @$firstName = mysql_real_escape_string($_POST['firstName']);
-    @$lastName = mysql_real_escape_string($_POST['lastName']);
-    @$email = mysql_real_escape_string($_POST['email']);
-    @$phoneNumber = mysql_real_escape_string($_POST['phoneNumber']);
-    @$memberType = mysql_real_escape_string($_POST['memberType']);
-    @$userStatus = mysql_real_escape_string($_POST['userStatus']);
-    @$userLevel = mysql_real_escape_string($_POST['userLevel']);
-    @$userRole = mysql_real_escape_string($_POST['userRole']);
+    $firstName = addslashes($_POST['firstName']);
+    $lastName = addslashes($_POST['lastName']);
+    $email = addslashes($_POST['email']);
+    $phoneNumber = addslashes($_POST['phoneNumber']);
+    $memberType = addslashes($_POST['memberType']);
+    $userStatus = addslashes($_POST['userStatus']);
+    $userLevel = addslashes($_POST['userLevel']);
+    $userRole = addslashes($_POST['userRole']);
     $eitherZoneIdOrBranchId = $_POST['eitherZoneIdOrBranchId'];
     //now I can save this info to the database...
     if($userLevel == '02'){

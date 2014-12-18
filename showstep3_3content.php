@@ -1,6 +1,17 @@
-    <?php
-        error_reporting( 0 );
-        session_start();
+<?php
+@session_start();
+if(empty($_SESSION['USER_ID'])){
+  header("Location: login.php");
+}
+
+if($_SESSION['USER_ROLE_CODE'] === '01A'){
+  if(empty($_SESSION['SUB_DISTRICT_ID'])){
+    header("Location: nosubdistrictselected.php");
+  }
+}
+?>
+
+<?php
         @$ctr = $_GET['ctr'];
         $selectedThIdArray = array();
         for($i=1; $i <= $ctr; $i++){
@@ -32,7 +43,7 @@
     <?php
         require_once 'importjsscripts.php';
     ?>
-    <div>
+    <div class="col-half left">
         <?php
             require 'goalfirstmanagementform.php';
         ?>

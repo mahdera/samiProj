@@ -8,31 +8,42 @@
     require_once 'subdistrict.php';
     $theUserId = $_SESSION['INDIVIDUAL_INT_USER_ID'];
     $loggedInUserObj = getUser($theUserId);
+    $loggedInUserLevel = $loggedInUserObj->user_level;
     //now get the user info using the id value
     $userObj = getUser($id);
+    $userLevel = $userObj->user_level;
+    $userRole = $userObj->user_role;
+    $memberType = $userObj->member_type;
+    $userStatus = $userObj->user_status;
 ?>
 <h1>Update User Profile</h1>
 <form>
-    <table border="0" width="100%">
+    <table border="1" width="100%" rules="all">
         <tr>
             <td>First Name:</td>
             <td>
-                <input type="text" name="txteditfirstname" id="txteditfirstname" value="<?php echo $userObj->first_name;?>"/>
+                <input type="text" name="txteditfirstname" id="txteditfirstname" value="<?php echo stripslashes($userObj->first_name);?>"/>
             </td>
         </tr>
         <tr>
             <td>Last Name:</td>
             <td>
-                <input type="text" name="txteditlastname" id="txteditlastname" value="<?php echo $userObj->last_name;?>"/>
+                <input type="text" name="txteditlastname" id="txteditlastname" value="<?php echo stripslashes($userObj->last_name);?>"/>
             </td>
         </tr>
         <tr>
             <td>Email:</td>
             <td>
-                <input type="text" name="txteditemail" id="txteditemail" value="<?php echo $userObj->email;?>"/>
+                <input type="text" name="txteditemail" id="txteditemail" value="<?php echo stripslashes($userObj->email);?>"/>
             </td>
         </tr>
         <tr>
+            <td>User-Id:</td>
+            <td>
+                <?php echo $userObj->user_id;?>
+            </td>
+        </tr>
+        <tr style="display:none">
             <td>Member Type:</td>
             <td>
                 <select name="slcteditmembertype" id="slcteditmembertype" style="width: 100%">
@@ -64,8 +75,18 @@
                 <input type="text" name="txteditphonenumber" id="txteditphonenumber" value="<?php echo $userObj->phone_number;?>"/>
             </td>
         </tr>
-        <tr>
-            <td>User Status:</td>
+        <?php
+          if($theUserId == $id){
+            ?>
+              <tr style="display:none">
+            <?php
+          }else{
+            ?>
+              <tr>
+            <?php
+          }
+        ?>
+            <td>Status:</td>
             <td>
                 <select name="slctedituserstatus" id="slctedituserstatus" style="width: 100%">
                     <?php
@@ -73,19 +94,19 @@
                             ?>
                                 <option value="Active" selected="selected">Active</option>
                                 <option value="Blocked">Blocked</option>
-                                <option value="Pending">Pending</option>
+                                <!--<option value="Pending">Pending</option>-->
                             <?php
                         }else if($userObj->user_status === "Blocked"){
                             ?>
                                 <option value="Active">Active</option>
                                 <option value="Blocked" selected="selected">Blocked</option>
-                                <option value="Pending">Pending</option>
+                                <!--<option value="Pending">Pending</option>-->
                             <?php
                         }else if($userObj->user_status === "Pending"){
                             ?>
                                 <option value="Active">Active</option>
                                 <option value="Blocked">Blocked</option>
-                                <option value="Pending" selected="selected">Pending</option>
+                                <!--<option value="Pending" selected="selected">Pending</option>-->
                             <?php
                         }else{
                             ?>
@@ -98,7 +119,7 @@
                 </select>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <td><font color='red'>*</font> User Level:</td>
             <td>
                 <select name="slctuserlevel" id="slctuserlevel" style="width:100%">
@@ -130,38 +151,68 @@
                 </select>
             </td>
         </tr>
-        <tr>
+        <?php
+        if($theUserId == $id){
+          ?>
+          <tr style="display:none">
+            <?php
+          }else{
+            ?>
+            <tr>
+              <?php
+            }
+        ?>
             <td>User Role:</td>
             <td>
                 <select name="slctuserrole" id="slctuserrole" style="width:100%">
                     <option value="" selected="selected">--Select--</option>
                     <?php
+                    if($loggedInUserLevel == '01'){
                       if($userObj->user_role === '02A'){
                         ?>
-                            <option value="02A" selected="selected">Sub District Admin</option>
-                            <option value="999">User</option>
                             <option value="01A">District Admin</option>
+                            <option value="02A" selected="selected">Sub District Admin</option>
+                            <option value="999">Sub District User</option>
                         <?php
                       }else if($userObj->user_role === '999'){
                         ?>
-                            <option value="02A">Sub District Admin</option>
-                            <option value="999" selected="selected">User</option>
                             <option value="01A">District Admin</option>
+                            <option value="02A">Sub District Admin</option>
+                            <option value="999" selected="selected">Sub District User</option>
                         <?php
                       }else if($userObj->user_role === '01A'){
                         ?>
-                            <option value="02A">Sub District Admin</option>
-                            <option value="999">User</option>
                             <option value="01A" selected="selected">District Admin</option>
+                            <option value="02A">Sub District Admin</option>
+                            <option value="999">Sub District User</option>
                         <?php
                       }else{
                         ?>
-                            <option value="02A">Sub District Admin</option>
-                            <option value="999">User</option>
                             <option value="01A">District Admin</option>
+                            <option value="02A">Sub District Admin</option>
+                            <option value="999">Sub District User</option>
                         <?php
                       }
+                    }else{
+                      //if the logged-in user is a sub district admin-level 02
+                      if($userObj->user_role === '02A'){
                         ?>
+                        <option value="02A" selected="selected">Sub District Admin</option>
+                        <option value="999">Sub District User</option>
+                        <?php
+                      }else if($userObj->user_role === '999'){
+                        ?>
+                        <option value="02A">Sub District Admin</option>
+                        <option value="999" selected="selected">Sub District User</option>
+                        <?php
+                      }else{
+                        ?>
+                        <option value="02A">Sub District Admin</option>
+                        <option value="999" selected="selected">Sub District User</option>
+                        <?php
+                      }
+                    }
+                    ?>
                 </select>
             </td>
         </tr>
@@ -170,7 +221,8 @@
           $branchObj = null;
           if($userObj->user_level == '01'){
             $userZone = getDistrictInfoForUser($userObj->id);
-            $zoneObj = getDistrict($userZone->district_id);
+            if($userZone != null)
+              $zoneObj = getDistrict($userZone->district_id);
           }else if($userObj->user_level == '02'){
             $userBranch = getSubDistrictInfoForUser($userObj->id);
             if($userBranch != null){
@@ -180,7 +232,7 @@
           }
           $zoneList = getAllDistricts();
         ?>
-        <tr id="zoneRow">
+        <tr id="zoneRow" style="display:none">
             <td><font color='red'>*</font> District:</td>
             <td>
                 <select name="slctzone" id="slctzone" style="width:100%">
@@ -206,7 +258,14 @@
             //get the zone info of this user and based on that populate the branch dropdown...
             $branchList = null;
             if($zoneObj != null){
-                $branchList = getAllSubDistrictsOfThisDistrict($zoneObj->id);
+                $userSubDistrictInfo = getSubDistrictInfoForUser($_SESSION['LOGGED_USER_ID']);//getAllSubDistrictsOfThisDistrict($zoneObj->id);
+                //now based on that get Sub district list for user
+                if(!empty($userSubDistrictInfo)){
+                  $branchList = getAllSubDistrictWithSubDistrictId($userSubDistrictInfo->sub_district_id);
+                }else{
+                  //the logged in user is a district user so get all sub districts...
+                  $branchList = getAllSubDistrictsOfThisDistrict(1);
+                }
             }
             ?>
             <tr id="branchRow">
@@ -233,6 +292,8 @@
                 </td>
             </tr>
             <?php
+          }else if($userObj->user_level == '01'){
+            //no need to add something here...
           }
         ?>
         <tr>
@@ -248,21 +309,42 @@
             var firstName = $('#txteditfirstname').val();
             var lastName = $('#txteditlastname').val();
             var email = $('#txteditemail').val();
-            var memberType = $('#slcteditmembertype').val();
-            var userStatus = $('#slctedituserstatus').val();
-            var phoneNumber = $('#txteditphonenumber').val();
+            var memberType = "<?php echo $memberType;?>";//$('#slcteditmembertype').val();
+            var userStatus = null;
+            var theUserId = "<?php $theUserId;?>";
             var id = "<?php echo $id;?>";
-            var userLevel = $('#slctuserlevel').val();
+            if(theUserId == id){
+                userStatus = 'Active';
+            }else{
+                userStatus = $('#slctedituserstatus').val();
+            }
+
+            var phoneNumber = $('#txteditphonenumber').val();
+
+            //userLevel should be calculated by the value of the user role field...
+            var userLevel = null;
             var eitherZoneIdOrBranchId = "";
-            var userRole = $('#slctuserrole').val();
+            var userRole = null;
+
+            if(theUserId == id){
+              userRole = "<?php echo $userRole;?>";
+            }else{
+              userRole = $('#slctuserrole').val();
+            }
+
+            if(userRole == '01A'){
+                userLevel = '01';
+            }else if(userRole == '02A' || userRole == '999'){
+                userLevel = '02';
+            }
+
             if(userLevel == '01'){
-                eitherZoneIdOrBranchId = $('#slctzone').val();
+                eitherZoneIdOrBranchId = 1;//$('#slctzone').val();
             }else if(userLevel == '02'){
                 eitherZoneIdOrBranchId = $('#slctbranch').val();
             }
 
-            if(firstName !== "" && lastName !== "" && email !== "" && memberType !== "" &&
-                    userStatus !== "" && eitherZoneIdOrBranchId !== "" && userRole !== ""){
+            if(firstName !== "" && lastName !== "" && email !== "" && userStatus !== "" && eitherZoneIdOrBranchId !== "" && userRole !== ""){
                 var dataString = "id="+id+"&firstName="+firstName+"&lastName="+lastName+"&email="+email+
                         "&memberType="+memberType+"&userStatus="+userStatus+"&phoneNumber="+phoneNumber+
                         "&userLevel="+encodeURIComponent(userLevel)+"&eitherZoneIdOrBranchId="+
@@ -328,17 +410,33 @@
         });
 
         $('#slctuserrole').change(function(){
-          var userRole = $(this).val();
-          var userLevel = $('#slctuserlevel').val();
-          if(userRole !== '' && userLevel !== ''){
-              if(userLevel == '02' && userRole == '01A'){
-                  alert('A sub district level user can not have a District Admin role! Please select again!');
-                  $('#slctuserrole').val('');
-              }else if(userLevel == '01' && userRole == '02A'){
-                  alert('A district level user can not have a Sub District Admin role! Please select again!');
-                  $('#slctuserrole').val('');
-              }
-          }
+            var loggedInUserLevel = "<?php echo $loggedInUserLevel;?>";
+            var userRole = $(this).val();
+            //alert(userRole);
+            if(loggedInUserLevel == '01'){
+                if(userRole == "02A" || userRole == "999"){
+                    //time to show the district dropdown...
+                    //var zoneId = $('#slctzone').val();
+                    var dataString = "zoneId=1";
+                    //alert(dataString);
+                    $.ajax({
+                      url: 'files/showlistofbranchsforthiszone.php',
+                      data: dataString,
+                      type:'POST',
+                      success:function(response){
+                        $('#branchRowDetail').remove();
+                        $('#branchRow').remove();
+                        $('#zoneRow').after(response);
+                      },
+                      error:function(error){
+                        alert(error);
+                      }
+                    });
+                }else{
+                  $('#branchRowDetail').remove();
+                  $('#branchRow').remove();
+                }
+            }
         });
 
     });//end document.ready function

@@ -16,7 +16,7 @@
                     <input type="text" name="<?php echo $zoneNameControl;?>" id="<?php echo $zoneNameControl;?>" size="70" value="<?php echo $zoneObj->display_name;?>"/>
                 </td>
             </tr>
-            <tr>
+            <tr style="display:none">
                 <td>Description:</td>
                 <td>
                     <textarea name="<?php echo $descriptionControl;?>" id="<?php echo $descriptionControl;?>" rows="3" style="width:100%"><?php echo $zoneObj->description;?></textarea>
@@ -40,7 +40,7 @@
             var descriptionControl = "textareadescription" + zoneId;
             //now get the values...
             var zoneNameVal = $('#'+zoneNameControl).val();
-            var descriptionVal = $('#'+descriptionControl).val();
+            var descriptionVal = "---";//$('#'+descriptionControl).val();
             var dataString = "zoneName="+zoneNameVal+"&description="+descriptionVal+"&zoneId="+zoneId;
             var divId = "zoneEditDiv" + zoneId;
             $.ajax({

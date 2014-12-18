@@ -95,10 +95,11 @@
     function getAllThsModifiedByUsingUserLevel($userLevel, $divisionId){
         try{
             $query = null;
-            if($userLevel == 'Branch Level'){
-                $query = "select tbl_th.* from tbl_th, tbl_user_branch where " .
-                "tbl_th.modified_by = tbl_user_branch.user_id and " .
-                "tbl_user_branch.branch_id = $divisionId order by th_name asc";
+            if($userLevel == '02'){
+                $query = "select tbl_th.* from tbl_th, tbl_user_sub_district where " .
+                "tbl_th.modified_by = tbl_user_sub_district.user_id and " .
+                "tbl_user_sub_district.sub_district_id = $divisionId order by th_name asc";
+                //echo $query;
             }else if($userLevel == 'Zone Level'){
                 $query = "select tbl_th.* from tbl_th, tbl_user_zone " .
                 "where tbl_th.modified_by = tbl_user_zone.user_id and " .

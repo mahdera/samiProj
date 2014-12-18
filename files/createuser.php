@@ -27,6 +27,8 @@
     if($userLevel == '02'){
         saveUserSubDistrict($eitherZoneIdOrBranchId, $fetchedUser->id);
     }else if($userLevel == '01'){
+        //According to the email recieved from here dated Dec 02, there is no
+        //need to create a District level user...
         saveUserDistrict($eitherZoneIdOrBranchId, $fetchedUser->id);
     }
     require_once 'showusermanagementlist.php';

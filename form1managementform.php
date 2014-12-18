@@ -1,5 +1,23 @@
 <?php
-  error_reporting( 0 );
+  session_start();
+  require_once 'files/form1.php';
+  require_once 'files/user.php';
+  require_once 'files/usersubdistrict.php';
+
+  $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+  //check if tbl_form_1 has record by any member of the sub district members of the logged in user...
+  if($userObj->user_level == '02'){
+    $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+    $isForm1AlreadyFilled = checkIfForm1RecordIsAlreadyEntered('02', $userSubDistrictObj->sub_district_id);
+  }else if($userObj->user_level == '01'){
+    $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+    if(!empty($userObj)){
+      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+      $isForm1AlreadyFilled = checkIfForm1RecordIsAlreadyEntered('02', $userSubDistrictObj->sub_district_id);
+    }
+  }
+
+  if(!$isForm1AlreadyFilled){
 ?>
 <h2>Form 1</h2>
 <form style="background:white" id="form1Entry">
@@ -38,9 +56,9 @@
             <td>Q3:</td>
             <td>
                 <div style="text-align: right">
-                    <a href="#.php" id="addRowsQ3Link">Add Row</a>
+                    <a href="#.php" id="addRowsQ3Link"><img src="images/addrow.png" border="0" align="absmiddle"/></a>
                     |
-                    <a href="#.php" id="removeRowsQ3Link">Remove Row</a>
+                    <a href="#.php" id="removeRowsQ3Link"><img src="images/removerow.png" border="0" align="absmiddle"/></a>
                 </div>
                 <table border="0" width="100%">
                     <tr style="background: #eee">
@@ -62,9 +80,9 @@
             <td>Q4:</td>
             <td>
                 <div style="text-align: right">
-                    <a href="#.php" id="addRowsQ4Link">Add Row</a>
+                    <a href="#.php" id="addRowsQ4Link"><img src="images/addrow.png" border="0" align="absmiddle"/></a>
                     |
-                    <a href="#.php" id="removeRowsQ4Link">Remove Row</a>
+                    <a href="#.php" id="removeRowsQ4Link"><img src="images/removerow.png" border="0" align="absmiddle"/></a>
                 </div>
                 <table border="0" width="100%">
                     <tr style="background: #eee">
@@ -89,11 +107,18 @@
         </tr>
     </table>
 </form>
+<?php
+}else{
+  ?>
+  <div class="notify notify-yellow"><span class="symbol icon-info"></span> Record already exists in database.</div>
+  <?php
+}
+?>
 <div id="form1ManagementDetailDiv"></div>
 <script type="text/javascript">
     $(document).ready(function(){
 
-        showListOfForm1Records();
+        //showListOfForm1Records();
 
         $('txttitle').focus();
 
@@ -198,8 +223,8 @@
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        //alert('Form One Saved Successfully!');
-                        $('#form1Div').html('<div class="notify notify-green"><span class="symbol icon-tick"></span> Form One Saved Successfully!</div>');
+                        //alert('Saved Successfully');
+                        $('#form1Div').html('<div class="notify notify-green"><span class="symbol icon-tick"></span> Saved Successfully</div>');
                         //clearFormInputFields(q3NumItems, q4NumItems);
                         showListOfForm1Records();
                     },
@@ -213,22 +238,7 @@
 
         function clearFormInputFields(q3NumItems, q4NumItems){
             $('#form1Entry')[0].reset();
-            /*
-            $('#txttitle').val('');
-            $('#datepicker').val('');
-            $('#textareaplan').val('');
-            $('#textareaq1').val('');
-            $('#textareaq2').val('');
-
-            for(var i=1; i <= q3NumItems; i++){
-                var textBoxId = "txtrowq3"+i;
-                $('#'+textBoxId).val('');
-            }
-
-            for(var j=1; j <= q4NumItems; j++){
-                var textBoxId = "txtrowq4"+j;
-                $('#'+textBoxId).val('');
-            }*/
+            $('.added').remove();
         }
 
         function showListOfForm1Records(){

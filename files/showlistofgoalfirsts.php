@@ -14,7 +14,7 @@
     //$goalFirstList = getAllGoalFirstsModifiedBy($_SESSION['LOGGED_USER_ID']);
     $goalFirstList = getAllGoalFirstThsModifiedBy($_SESSION['LOGGED_USER_ID']);
 
-    if(mysql_num_rows($goalFirstList)){
+    if(!empty($goalFirstList) && mysql_num_rows($goalFirstList)){
         ?>
         <table border="0" width="100%">
             <tr style="background: #cccccc">
@@ -45,8 +45,8 @@
                                         $fn_row = getFn($fn_id);
                                         ?>
                                         <tr>
-                                            <td><?php echo $goalFirstG1Row->g1;?></td>
-                                            <td><?php echo $fn_row->fn_name;?></td>
+                                            <td><?php echo stripslashes($goalFirstG1Row->g1);?></td>
+                                            <td><?php echo stripslashes($fn_row->fn_name);?></td>
                                             <td>
                                                 <table border="0" width="100%">
                                                     <tr style="background: lightblue">
@@ -58,8 +58,8 @@
                                                             $fn_row = getFn($goalFirstG1ObjFnRow->fn_id);
                                                             ?>
                                                             <tr>
-                                                                <td><?php echo $goalFirstG1ObjFnRow->obj;?></td>
-                                                                <td><?php echo $fn_row->fn_name;?></td>
+                                                                <td><?php echo stripslashes($goalFirstG1ObjFnRow->obj);?></td>
+                                                                <td><?php echo stripslashes($fn_row->fn_name);?></td>
                                                             </tr>
                                                             <?php
                                                         }//end while loop obj & fn

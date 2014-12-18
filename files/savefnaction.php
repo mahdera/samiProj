@@ -1,9 +1,22 @@
 <?php
     session_start();
-    @$fnId = mysql_real_escape_string($_POST['fnId']);
-    @$textAreaValue = mysql_real_escape_string($_POST['textAreaValue']);
+    $fnId = addslashes($_POST['fnId']);
+    $textAreaValue = addslashes($_POST['textAreaValue']);
 
     require_once 'fnaction.php';
-    saveFnAction($fnId, $textAreaValue, $_SESSION['LOGGED_USER_ID']);
+    require_once 'user.php';
+
+    if($_SESSION['USER_ROLE_CODE'] === '01A'){
+      //now get any user who is in this sub district and currently active status
+      $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+      //saveTeam($name, $title, $organization, $email, $phone, rtrim($interest, ','), $userObject->id);
+      if(!empty($userObject)){
+        saveFnAction($fnId, $textAreaValue, $userObject->id);
+      }
+    }else{
+      saveFnAction($fnId, $textAreaValue, $_SESSION['LOGGED_USER_ID']);
+    }
+
+
 ?>
-<div class="notify notify-green"><span class="symbol icon-tick"></span> Fn Action Saved Successfully!</div>
+<div class="notify notify-green"><span class="symbol icon-tick"></span> Saved Successfully</div>

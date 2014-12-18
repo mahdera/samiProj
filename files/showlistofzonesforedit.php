@@ -2,7 +2,7 @@
     require_once 'district.php';
 
     $districtList = getAllDistricts();
-    if(mysql_num_rows($districtList)){
+    if(!empty($districtList) && mysql_num_rows($districtList)){
         ?>
             <table border="0" width="100%">
                 <tr>
@@ -15,8 +15,8 @@
                   while($districtRow = mysql_fetch_object($districtList)){
                       ?>
                           <tr>
-                              <td><?php echo $districtRow->display_name;?></td>
-                              <td><?php echo $districtRow->description;?></td>
+                              <td><?php echo stripslashes($districtRow->display_name);?></td>
+                              <td><?php echo stripslashes($districtRow->description);?></td>
                               <td>
                                   <a href="#" id="<?php echo $districtRow->id;?>" class="editZoneClass">Edit</a>
                               </td>

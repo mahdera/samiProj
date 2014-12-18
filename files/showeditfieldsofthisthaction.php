@@ -1,7 +1,12 @@
 <?php
-    $thActionId = $_GET['thActionId'];
     $thId = $_GET['thId'];
     require_once 'thaction.php';
+    //now get the thActionId for this thId
+    $thActionObj = getThActionForTh($thId);
+    //$thActionId = $_GET['thActionId'];
+
+    if(!empty($thActionObj)){
+      $thActionId = $thActionObj->id;
     //now define the control names in here...
     $thActionControlName = "textareathactionedit" . $thActionId;
     $buttonId = "btnupdatethaction" . $thActionId;
@@ -10,7 +15,7 @@
 <form>
   <table border="0" width="100%">
       <tr>
-          <td>
+          <td style="padding-left:10px;padding-right:15px;">
               <textarea name="<?php echo $thActionControlName;?>" id="<?php echo $thActionControlName;?>" rows="3" style="width:100%"><?php echo $thActionObj->action_text;?></textarea>
           </td>
       </tr>
@@ -21,6 +26,13 @@
       </tr>
   </table>
 </form>
+<?php
+}else{
+  ?>
+    <div class="notify notify-yellow"><span class="symbol icon-info"></span> No Action Texts Found!</div>
+  <?php
+}
+?>
 <script type="text/javascript">
   $(document).ready(function(){
       var thActionId = "<?php echo $thActionId;?>";

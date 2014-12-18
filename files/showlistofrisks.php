@@ -8,23 +8,29 @@
         require_once 'risk.php';
         require_once 'th.php';
         require_once 'user.php';
-        require_once 'userbranch.php';
-        require_once 'userzone.php';
+        require_once 'usersubdistrict.php';
+        //require_once 'userzone.php';
 
         $userObj = getUser($_SESSION['LOGGED_USER_ID']);
         $riskList = null;
         /*if($userObj->user_level == 'Zone Level'){
             $userZoneObj = getZoneInfoForUser($userObj->id);
             $riskList = getAllRisksModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
-        }else if($userObj->user_level == 'Branch Level'){
-            $userBranchObj = getBranchInfoForUser($userObj->id);
-            $riskList = getAllRisksModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
         }*/
-
-        $riskList = getAllRisksModifiedBy($_SESSION['LOGGED_USER_ID']);
-        if(!empty($riskList)){
+        if($userObj->user_level == '02'){
+            $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+            $riskList = getAllRisksModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+        }else if($userObj->user_level == '01'){
+            $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+            if(!empty($userObj)){
+              $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+              $riskList = getAllRisksModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+            }
+        }
+        //$riskList = getAllRisksModifiedBy($_SESSION['LOGGED_USER_ID']);
+        if(!empty($riskList) && mysql_num_rows($riskList)){
             ?>
-                <table border="0" width="100%">
+                <table border="1" width="100%" rules="all">
                     <tr style="background: #ccc">
                         <td>Th</td>
                         <td>MG</td>
@@ -42,14 +48,14 @@
                             $divId = "riskEditDiv" . $riskRow->id;
                             ?>
                             <tr>
-                                <td><?php echo $th->th_name;?></td>
-                                <td><?php echo $riskRow->mg;?></td>
-                                <td><?php echo $riskRow->dr;?></td>
-                                <td><?php echo $riskRow->pr;?></td>
-                                <td><?php echo $riskRow->wa;?></td>
-                                <td><?php echo $riskRow->rs;?></td>
-                                <td><a href="#.php" class="riskEditLink" id="<?php echo $riskRow->id;?>">Edit</a></td>
-                                <td><a href="#.php" class="riskDeleteLink" id="<?php echo $riskRow->id;?>">Delete</a></td>
+                                <td><?php echo stripslashes($th->th_name);?></td>
+                                <td><?php echo stripslashes($riskRow->mg);?></td>
+                                <td><?php echo stripslashes($riskRow->dr);?></td>
+                                <td><?php echo stripslashes($riskRow->pr);?></td>
+                                <td><?php echo stripslashes($riskRow->wa);?></td>
+                                <td><?php echo stripslashes($riskRow->rs);?></td>
+                                <td align="middle"><a href="#.php" class="riskEditLink" id="<?php echo $riskRow->id;?>"><img src="images/edit.png" border="0" align="absmiddle"/></a></td>
+                                <td align="middle"><a href="#.php" class="riskDeleteLink" id="<?php echo $riskRow->id;?>"><img src="images/delete.png" border="0" align="absmiddle"/></a></td>
                             </tr>
                             <tr>
                                 <td colspan="8">
@@ -62,6 +68,10 @@
                     ?>
                 </table>
             <?php
+        }else{
+        ?>
+          <div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>
+        <?php
         }
 ?>
 </div>
@@ -76,7 +86,7 @@
 
         $('.riskDeleteLink').click(function(){
             var id = $(this).attr('id');
-            if(window.confirm('Are you sure you want to delete this risk record?')){
+            if(window.confirm('Are you sure you want to delete this record?')){
                 var dataString = "id="+id;
                 $.ajax({
                     url: 'files/deleterisk.php',

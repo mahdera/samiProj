@@ -16,7 +16,7 @@
             <fieldset id="signin_menu">
                 <form method="post" id="signin" name="signin" action="ValidateUser.php" onsubmit="return isLoginFormBlank();">
                     <input type="hidden" id ="messageToUser" value="<?php
-                    if (isset($_SESSION['messageToUser'])) {
+                    if (!empty($_SESSION['messageToUser'])) {
                         echo $_SESSION['messageToUser'];
                         unset($_SESSION['messageToUser']);
                     }

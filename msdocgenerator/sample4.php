@@ -1,5 +1,5 @@
 <?php
-if(isset($_POST['submit'])){
+if(!empty($_POST['submit'])){
 	require_once('clsMsDocGenerator.php');
 		
 	$titleFormat = array(

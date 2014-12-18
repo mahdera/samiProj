@@ -71,13 +71,30 @@
         }
     }
 
+    function getGoalFirstUsingModifiedByUsingUserLevel($userLevel, $divisionId){
+        $query = null;
+        try{
+          if($userLevel == '02'){
+            $query = "select tbl_goal_first.* from tbl_goal_first, tbl_user_sub_district where tbl_goal_first.modified_by = tbl_user_sub_district.user_id and " .
+            "tbl_user_sub_district.sub_district_id = $divisionId order by tbl_goal_first.modification_date desc limit 0,1";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+          }else if($userLevel == '01'){
+            //lengthy sql command if district level fetching is required in the future
+          }
+        }catch(Exception $ex){
+          $ex->getMessage();
+        }
+    }
+
     function getAllGoalFirstsModifiedByUsingUserLevel($userLevel, $divisionId){
         try{
             $query = null;
-            if($userLevel == 'Branch Level'){
-                $query = "select tbl_goal_first.* from tbl_goal_first, tbl_user_branch where " .
-                "tbl_goal_first.modified_by = tbl_user_branch.user_id and " .
-                "tbl_user_branch.branch_id = $divisionId order by modification_date desc";
+            if($userLevel == '02'){
+                $query = "select tbl_goal_first.* from tbl_goal_first, tbl_user_sub_district where " .
+                "tbl_goal_first.modified_by = tbl_user_sub_district.user_id and " .
+                "tbl_user_sub_district.sub_district_id = $divisionId order by modification_date desc";
             }else if($userLevel == 'Zone Level'){
                 $query = "select tbl_goal_first.* from tbl_goal_first, tbl_user_zone " .
                 "where tbl_goal_first.modified_by = tbl_user_zone.user_id and " .
@@ -85,7 +102,7 @@
                 "where tbl_goal_first.modified_by = tbl_user_branch.user_id and ".
                 "tbl_user_branch.branch_id = tbl_branch.id and tbl_branch.zone_id = $divisionId order by modification_date desc";
             }
-            echo $query;
+            //echo $query;
             $result = read($query);
             return $result;
         }catch(Exception $ex){
@@ -105,5 +122,25 @@
             $ex->getMessage();
         }
         return false;
+    }
+
+    function getDateDifferenceForGoalFirstUsingModifiedByUsingUserLevel($userLevel, $divisionId){
+      $query = null;
+      try{
+        if($userLevel == '02'){
+          $query = "select DATEDIFF(tbl_goal_first.modification_date, NOW()) as dateDiff from tbl_goal_first, tbl_user_sub_district where tbl_goal_first.modified_by = tbl_user_sub_district.user_id and tbl_user_sub_district.sub_district_id = $divisionId order by modification_date desc limit 0,1";
+          //echo $query;
+        }else if($userLevel == '01'){
+          //if there is a need to implement a lengthy sql statement...
+        }
+        $result = read($query);
+        if(mysql_num_rows($result)){
+          $resultRow = mysql_fetch_object($result);
+          return abs($resultRow->dateDiff);
+        }
+      }catch(Exception $ex){
+        $ex->getMessage();
+      }
+      return false;
     }
 ?>

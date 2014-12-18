@@ -1,4 +1,5 @@
 <?php
+    @session_start();
     require_once 'assessment.php';
     require_once 'th.php';
     require_once 'assessmentlookup.php';
@@ -12,7 +13,7 @@
 ?>
 <h2>Edit Assessment</h2>
 <form>
-    <table border="0" width="100%">
+    <table border="0" width="100%" style="padding:5px">
         <tr>
             <td>Assessment Type:</td>
             <td>
@@ -23,7 +24,7 @@
                     <option value="" selected="selected">--Select--</option>
                     <?php
                     while($assessmentLookupRow = mysql_fetch_object($assessmentLookupList)){
-                      if($assessmentObj->id == $assessmentLookupRow->id){
+                      if($assessmentObj->assessment_type == $assessmentLookupRow->value){
                         ?>
                             <option value="<?php echo $assessmentLookupRow->value;?>" selected="selected"><?php echo $assessmentLookupRow->value;?></option>
                         <?php
@@ -98,15 +99,6 @@
             changeYear:true
         });
 
-
-
-        /*$( ".datepicker" ).datepicker({
-            //format: "YYYY-mm-dd",
-            //changeMonth: true,//this option for allowing user to select month
-            //changeYear: true //this option for allowing user to select from year range
-            "option", "dateFormat", "yy-mm-dd"
-        });*/
-
         var id = "<?php echo $id;?>";
         var buttonId = "btnupdate" + id;
 
@@ -138,6 +130,7 @@
                 data: dataString,
                 type:'POST',
                 success:function(response){
+                    $('#subDetailDiv').load('files/showlistofassessments.php');
                     $('#'+divId).html(response);
                 },
                 error:function(error){

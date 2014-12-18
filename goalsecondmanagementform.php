@@ -1,6 +1,5 @@
 <?php
-    //error_reporting( 0 );
-    session_start();
+    @session_start();
     require_once 'files/th.php';
     require_once 'files/fn.php';
     require_once 'files/user.php';
@@ -10,22 +9,23 @@
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
     $fnIdArray = array();
 
-    /*if($userObj->user_level == 'Zone Level'){
-        $userZoneObj = getZoneInfoForUser($userObj->id);
-        $fnIdArray = getAllFilteredLatestFnIdsEnteredByUserUsingUserLevel('Zone Level', $userZoneObj->zone_id);
-    }else if($userObj->user_level == 'Branch Level'){
-        $userBranchObj = getBranchInfoForUser($userObj->id);
-        $fnIdArray = getAllFilteredLatestFnIdsEnteredByUserUsingUserLevel('Branch Level', $userBranchObj->branch_id);
-    }*/
 
-    //first read fns from tbl_goal_first_g1
-    $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
-    //var_dump($fnIdArray);
+    if($userObj->user_level == '02'){
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+        $fnIdArray = getAllFilteredLatestFnIdsEnteredByUserUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    }else if($userObj->user_level == '01'){
+        $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+        if(!empty($userObj)){
+          $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+          $fnIdArray = getAllFilteredLatestFnIdsEnteredByUserUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+        }
+    }
+
 ?>
-<h1>Add Goal Second</h1>
-<a href="#.php" id="showGoalSecondManagementFormLinkId">Show Form</a>
+<div class="col-half left">
+<a href="#.php" id="showGoalSecondManagementFormLinkId">Show</a>
 |
-<a href="#.php" id="hideGoalSecondManagementFormLinkId">Hide Form</a>
+<a href="#.php" id="hideGoalSecondManagementFormLinkId">Hide</a>
 <form id="goalSecondManagementForm">
   <fieldset>
     <legend>Add Goal Second</legend>
@@ -39,7 +39,7 @@
             <td>Fn:</td>
             <td>
                 <select name="slctfn" id="slctfn" style="width: 100%">
-                    <option value="" selected="selected">--Select--</option>                    
+                    <option value="" selected="selected">--Select--</option>
                     <?php
                         foreach ($fnIdArray as $fnId) {
                             $fnObj = getFn($fnId);
@@ -54,13 +54,15 @@
         <tr>
             <td width="20%">G1:</td>
             <td>
-                <input type="text" name="txtg1" id="txtg1" class="g1Obj" size="70"/>
+                <!--<input type="text" name="txtg1" id="txtg1" class="g1Obj" size="70"/>-->
+                <textarea name="txtg1" id="txtg1" class="g1Obj" style="width:100%" rows="4"></textarea>
             </td>
         </tr>
         <tr>
             <td width="20%">Obj:</td>
             <td>
-                <input type="text" name="txtg1obj1" id="txtg1obj1" size="70"/>
+                <!--<input type="text" name="txtg1obj1" id="txtg1obj1" size="70"/>-->
+                <textarea name="txtg1obj1" id="txtg1obj1" style="width:100%" rows="4"></textarea>
             </td>
         </tr>
         <tr id="addMoreG1Obj1">
@@ -73,13 +75,15 @@
         <tr>
             <td width="20%">G2:</td>
             <td>
-                <input type="text" name="txtg2" id="txtg2" class="g2Obj" size="70"/>
+                <!--<input type="text" name="txtg2" id="txtg2" class="g2Obj" size="70"/>-->
+                <textarea name="txtg2" id="txtg2" class="g2Obj" style="width:100%" rows="4"></textarea>
             </td>
         </tr>
         <tr>
             <td width="20%">Obj:</td>
             <td>
-                <input type="text" name="txtg2obj1" id="txtg2obj1" size="70"/>
+                <!--<input type="text" name="txtg2obj1" id="txtg2obj1" size="70"/>-->
+                <textarea name="txtg2obj1" id="txtg2obj1" style="width:100%" rows="4"></textarea>
             </td>
         </tr>
         <tr id="addMoreG2Obj1">
@@ -92,13 +96,15 @@
         <tr>
             <td width="20%">G3:</td>
             <td>
-                <input type="text" name="txtg3" id="txtg3" class="g3Obj" size="70"/>
+                <!--<input type="text" name="txtg3" id="txtg3" class="g3Obj" size="70"/>-->
+                <textarea name="txtg3" id="txtg3" class="g3Obj" style="width:100%" rows="4"></textarea>
             </td>
         </tr>
         <tr>
             <td width="20%">Obj:</td>
             <td>
-                <input type="text" name="txtg3obj1" id="txtg3obj1" size="70"/>
+                <!--<input type="text" name="txtg3obj1" id="txtg3obj1" size="70"/>-->
+                <textarea name="txtg3obj1" id="txtg3obj1" style="width:100%" rows="3"></textarea>
             </td>
         </tr>
         <tr id="addMoreG3Obj1">
@@ -117,6 +123,7 @@
 </form>
 <hr/>
 <div id="subDetailDiv"></div>
+</div>
 <script type="text/javascript">
 
     $(document).ready(function(){
@@ -143,6 +150,11 @@
                     type:'POST',
                     success:function(response){
                         $('#fnDuplicationErrorDiv').html(response);
+                        if(response !== ""){
+                          $('#btnsave').hide();
+                        }else{
+                          $('#btnsave').show();
+                        }
                     },
                     error:function(error){
                         alert(error);
@@ -236,6 +248,7 @@
 
         function clearFormInputField(){
             $('#goalSecondManagementForm')[0].reset();
+            $('.added').remove();
         }
 
         function showListOfGoalSeconds(){

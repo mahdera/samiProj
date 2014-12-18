@@ -1,12 +1,33 @@
 <?php
 	session_start();
+	?>
+	<h2>Form 9 Records</h2>
+	<?php
 	//get all form2 values created by the session owner user...
 	require_once 'form9.php';
-	$form9List = getAllForm9sModifiedBy($_SESSION['LOGGED_USER_ID']);	
+	require_once 'user.php';
+	require_once 'usersubdistrict.php';
+
+	$form9List = null;
+	$userObj = getUser($_SESSION['LOGGED_USER_ID']);
+	if($userObj->user_level == '02'){
+		$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+		//$form9List = getAllForm9ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+		$form9List = getLatestForm9ModifiedByUsingUserLevelResultSet('02', $userSubDistrictObj->sub_district_id);
+	}else if($userObj->user_level == '01'){
+		$userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+		if(!empty($userObj)){
+			$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+			//$form9List = getAllForm9ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+			$form9List = getLatestForm9ModifiedByUsingUserLevelResultSet('02', $userSubDistrictObj->sub_district_id);
+		}
+	}
+	//$form9List = getAllForm9sModifiedBy($_SESSION['LOGGED_USER_ID']);
+	if(!empty($form9List) && mysql_num_rows($form9List)){
 ?>
-<table border="0" width="100%">
+<table border="1" width="100%" rules="all">
 	<tr style="background:#ccc">
-		<td>Q9.1</td>		
+		<td>Q9.1</td>
 		<td>Edit</td>
 		<td>Delete</td>
 	</tr>
@@ -14,12 +35,12 @@
 		while($form9Row = mysql_fetch_object($form9List)){
 			?>
 			<tr>
-				<td><?php echo $form9Row->q9_1;?></td>				
-				<td>
+				<td><?php echo stripslashes($form9Row->q9_1);?></td>
+				<td align="middle">
 					<a href="#.php" class="form9EditLink" id="<?php echo $form9Row->id;?>">Edit</a>
 				</td>
-				<td>
-					<a href="#.php" class="form9DeleteLink" id="<?php echo $form9Row->id;?>">Delete</a>	
+				<td align="middle">
+					<a href="#.php" class="form9DeleteLink" id="<?php echo $form9Row->id;?>">Delete</a>
 				</td>
 			</tr>
 			<?php
@@ -34,6 +55,13 @@
 		}//end while loop
 	?>
 </table>
+<?php
+}else{
+	?>
+	<div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>
+	<?php
+}
+?>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.form9EditLink').click(function(){
@@ -43,9 +71,21 @@
 		});
 
 		$('.form9DeleteLink').click(function(){
-			if(window.confirm('Are you sure you want to delete this form9 record?')){
+			if(window.confirm('Are you sure you want to delete this record?')){
 				var id = $(this).attr('id');
-				$('#form9ManagementDetailDiv').load('files/deletethisform9.php?id='+id);
+				//$('#form9ManagementDetailDiv').load('files/deletethisform9.php?id='+id);
+				dataString = "id="+id;
+				$.ajax({
+					url: 'files/deletethisform9.php',
+					data: dataString,
+					type:'GET',
+					success:function(response){
+						$('#form9Div').html(response);
+					},
+					error:function(error){
+						alert(error);
+					}
+				});
 			}
 		});
 	});//end document.ready function

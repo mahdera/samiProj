@@ -43,7 +43,7 @@
                 <input type="text" name="txtphonenumber" id="txtphonenumber"/>
             </td>
         </tr>
-        <tr>
+        <!--<tr>
             <td><font color='red'>*</font> Member Type:</td>
             <td>
                 <select name="slctmembertype" id="slctmembertype" style="width: 100%">
@@ -81,22 +81,52 @@
                     </select>
                 </div>
             </td>
+        </tr>-->
+        <tr>
+          <td><font color="red">*</font> User Role:</td>
+          <td>
+            <div id="userRoleDiv_MODIFIED">
+              <select name="slctuserrole" id="slctuserrole" style="width:100%">
+                <option value="" selected="selected">--Select--</option>
+                <option value="01A">District Administrator</option>
+                <option value="02A">Sub District Administrator</option>
+                <option value="999">Sub District User</option>
+                <!--<option value="">Sub District User (Read-Only)</option>-->
+              </select>
+            </div>
+          </td>
         </tr>
-        <tr id="zoneRow">
+        <tr id="subDistrictRow">
+          <td><font color="red">*</font> Sub District</td>
+          <td>
+            <select name="slctsubdistrict" id="slctsubdistrict" style="width:100%">
+              <option value="" selected="selected">--Select--</option>
+              <?php
+              $subDistrictList = getAllSubDistricts();
+              while( $subDistrictRow = mysql_fetch_object($subDistrictList) ){
+                ?>
+                <option value="<?php echo $subDistrictRow->id;?>"><?php echo $subDistrictRow->display_name;?></option>
+                <?php
+              }//end while loop
+              ?>
+            </select>
+          </td>
+        </tr>
+        <!--<tr id="zoneRow">
             <td><font color='red'>*</font> District:</td>
             <td>
                 <select name="slctzone" id="slctzone" style="width:100%">
                     <option value="" selected="selected">--Select--</option>
                     <?php
-                        while($zoneRow = mysql_fetch_object($zoneList)){
+                        /*while($zoneRow = mysql_fetch_object($zoneList)){
                             ?>
                               <option value="<?php echo $zoneRow->id;?>"><?php echo $zoneRow->display_name;?></option>
                             <?php
-                        }//end while loop
+                        }//end while loop*/
                     ?>
                 </select>
             </td>
-        </tr>
+        </tr>-->
         <tr>
             <td colspan="2" align="right">
                 <input type="button" value="Create User" id="btncreateuser"/>
@@ -108,7 +138,7 @@
     $(document).ready(function(){
         $('#txtfirstname').focus();
 
-        $('#slctzone').change(function(){
+        /*$('#slctzone').change(function(){
             var zoneId = $(this).val();
             var userLevel = $('#slctuserlevel').val();
             if(zoneId !== '' && userLevel == '02'){
@@ -150,7 +180,7 @@
                     });
                 }
             }
-        });
+        });*/
 
         $('#btncreateuser').click(function(){
             var firstName = $('#txtfirstname').val();
@@ -159,20 +189,22 @@
             var userId = $('#txtuserid').val();
             var password = $('#txtpassword').val();
             var phoneNumber = $('#txtphonenumber').val();
-            var memberType = $('#slctmembertype').val();
-            var userStatus = $('#slctuserstatus').val();
-            var userLevel = $('#slctuserlevel').val();
+            var memberType = 'User';//$('#slctmembertype').val();
+            var userStatus = 'Pending';//$('#slctuserstatus').val();
+            var userLevel = '';//$('#slctuserlevel').val();
             var userRole = $('#slctuserrole').val();
-            var eitherZoneIdOrBranchId = "";
-            if(userLevel == '01'){
-                eitherZoneIdOrBranchId = $('#slctzone').val();
-            }else if(userLevel == '02'){
-                eitherZoneIdOrBranchId = $('#slctbranch').val();
+            var eitherZoneIdOrBranchId = '';
+
+            if(userRole == '01A'){
+                eitherZoneIdOrBranchId = 1;
+                userLevel = '01';
+            }else{
+                eitherZoneIdOrBranchId = $('#slctsubdistrict').val();
+                userLevel = '02';
             }
 
             if(firstName !== "" && lastName !== "" && email !== "" && userId !== "" &&
-                    password !== "" && memberType !== "" && userStatus !== "" && userLevel !== "" &&
-                    eitherZoneIdOrBranchId !== "" && userRole !== ""){
+                    password !== "" && eitherZoneIdOrBranchId !== "" && userRole !== ""){
                 var dataString = "firstName="+firstName+"&lastName="+lastName+
                         "&email="+email+"&userId="+userId+"&password="+password+
                         "&phoneNumber="+phoneNumber+"&memberType="+memberType+
@@ -197,7 +229,7 @@
 
         $('#slctuserrole').change(function(){
           var userRole = $(this).val();
-          var userLevel = $('#slctuserlevel').val();
+          /*var userLevel = $('#slctuserlevel').val();
           if(userRole !== '' && userLevel !== ''){
               if(userLevel == '02' && userRole == '01A'){
                   alert('A sub district level user can not have a District Admin role! Please select again!');
@@ -206,10 +238,17 @@
                   alert('A district level user can not have a Sub District Admin role! Please select again!');
                   $('#slctuserrole').val('');
               }
+          }*/
+          if(userRole !== ""){
+            if(userRole == "01A"){
+              $('#subDistrictRow').hide();
+            }else{
+              $('#subDistrictRow').show();
+            }
           }
         });
 
-        $('#slctuserlevel').change(function(){
+        /*$('#slctuserlevel').change(function(){
             var userLevel = $(this).val();
             if(userLevel != ""){
                 if(userLevel == "01"){
@@ -218,6 +257,6 @@
                     $('#userLevelDiv').load('showuserroleforsubdistrictlevel.php');
                 }
             }
-        });
+        });*/
     });//end document.ready function
 </script>

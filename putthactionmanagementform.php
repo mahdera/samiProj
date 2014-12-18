@@ -1,23 +1,36 @@
-<?php
-  error_reporting( 0 );
-?>
 <h1>Th Action</h1>
 <?php
     require_once 'files/th.php';
     require_once 'files/thaction.php';
     require_once 'files/goalfirst.php';
     require_once 'files/goalfirstth.php';
+    require_once 'files/usersubdistrict.php';
+    require_once 'files/user.php';
 
-    $goalFirstThList = getAllGoalFirstThsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+
+    $goalFirstThList = null;
+
+    if($userObj->user_level == '02'){
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+        $goalFirstThList = getAllGoalFirstThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    }else if($userObj->user_level == '01'){
+        $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+        if(!empty($userObj)){
+          $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+          $goalFirstThList = getAllGoalFirstThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+        }
+    }
+
+    //$goalFirstThList = getAllGoalFirstThsModifiedBy($_SESSION['LOGGED_USER_ID']);
     //this will have to be like all goalFirsts then filter out the ths in the goal first list
 
-    if($goalFirstThList){
+    if(!empty($goalFirstThList) && mysql_num_rows($goalFirstThList)){
         ?>
-        <table border="0" width="100%">
+        <table border="1" width="100%" rules="all">
             <tr style="background: #CCC">
                 <td width="20%">Th</td>
-                <td>Action</td>
-                <td>View/Edit/Delete</td>
+                <td></td>
             </tr>
             <?php
                 $ctr=1;
@@ -29,16 +42,17 @@
                         if(true){
                             ?>
                             <tr>
-                                <td><?php echo $thObj->th_name;?></td>
-                                <td>
-                                    [<a href="#.php" id="<?php echo $thObj->id;?>" class="openActionFormClass">Show Add Action Form</a> | <a href="#.php" id="<?php echo $thObj->id;?>" class="closeActionFormClass">Close Add Action Form</a>]
-                                </td>
-                                <td>
-                                  [<a href="#.php" id="<?php echo $thObj->id;?>" class="viewThActionLink">View</a> | <a href="#.php" id="<?php echo $thObj->id;?>" class="editThActionLink">Edit</a> | <a href="#.php" id="<?php echo $thObj->id;?>" class="deleteThActionLink">Delete</a>]
+                                <td width="50%"><a href="#.php" id="<?php echo $thObj->id;?>" class="openActionFormClass"><?php echo $thObj->th_name;?></a></td>
+                                <td align="right">
+                                  <a href="#.php" id="<?php echo $thObj->id;?>" class="editThActionLink">Edit</a>
+                                  |
+                                  <a href="#.php" id="<?php echo $thObj->id;?>" class="deleteThActionLink">Delete</a>
+                                  |
+                                  <a href="#.php" id="<?php echo $thObj->id;?>" class="closeActionFormClass">Close</a>
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="3">
+                                <td colspan="2">
                                     <div id="<?php echo $divId;?>"></div>
                                 </td>
                             </tr>
@@ -49,6 +63,10 @@
                 ?>
         </table>
         <?php
+    }else{
+    ?>
+      <div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>
+    <?php
     }
 ?>
 <hr/>
@@ -72,19 +90,24 @@
         $('.viewThActionLink').click(function(){
             var idVal = $(this).attr('id');
             var divId = "actionDiv" + idVal;
-            $('#' + divId).load('files/showlistofthactiontextsforth.php?thId='+idVal);
+            //$('#' + divId).load('files/showlistofthactiontextsforth.php?thId='+idVal);
+            $('#' + divId).load('files/showeditfieldsofthisthaction.php?thId='+idVal);
         });
 
         $('.editThActionLink').click(function(){
             var idVal = $(this).attr('id');
             var divId = "actionDiv" + idVal;
-            $('#' + divId).load('files/showlistofthactiontextsforthforedit.php?thId='+idVal);
+            //$('#' + divId).load('files/showlistofthactiontextsforth.php?thId='+idVal);
+            $('#' + divId).load('files/showeditfieldsofthisthaction.php?thId='+idVal);
         });
 
         $('.deleteThActionLink').click(function(){
             var idVal = $(this).attr('id');
             var divId = "actionDiv" + idVal;
-            $('#' + divId).load('files/showlistofthactiontextsforthfordelete.php?thId='+idVal);
+            //$('#' + divId).load('files/showlistofthactiontextsforthfordelete.php?thId='+idVal);
+            if(window.confirm('Are you sure you want to delete this record?')){
+              $('#' + divId).load('files/deletethactionforthisth.php?thId='+idVal);
+            }
         });
 
     });//end document.ready function

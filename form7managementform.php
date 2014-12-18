@@ -1,6 +1,24 @@
 <?php
-error_reporting( 0 );
-?>
+session_start();
+require_once 'files/form7.php';
+require_once 'files/user.php';
+require_once 'files/usersubdistrict.php';
+
+$userObj = getUser($_SESSION['LOGGED_USER_ID']);
+//check if tbl_form_1 has record by any member of the sub district members of the logged in user...
+if($userObj->user_level == '02'){
+  $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+  $isForm7AlreadyFilled = checkIfForm7RecordIsAlreadyEntered('02', $userSubDistrictObj->sub_district_id);
+}else if($userObj->user_level == '01'){
+  $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+  if(!empty($userObj)){
+    $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+    $isForm7AlreadyFilled = checkIfForm7RecordIsAlreadyEntered('02', $userSubDistrictObj->sub_district_id);
+  }
+}
+
+if(!$isForm7AlreadyFilled){
+  ?>
 <h2>Form 7</h2>
 <form>
     <table border="0" width="100%">
@@ -17,11 +35,18 @@ error_reporting( 0 );
         </tr>
     </table>
 </form>
+<?php
+}else{
+  ?>
+  <div class="notify notify-yellow"><span class="symbol icon-info"></span> Record already exists in database.</div>
+  <?php
+}
+?>
 <div id="form7ManagementDetailDiv"></div>
 <script type="text/javascript">
     $(document).ready(function(){
 
-        showListOfForm7Records();
+        //showListOfForm7Records();
 
         $('#btnsaveform7').click(function(){
             var q7_1 = $('#q7_1').val();
@@ -33,7 +58,7 @@ error_reporting( 0 );
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        //alert('Form Seven Saved Successfully!');
+                        //alert('Saved Successfully');
                         $('#form7Div').html('<div class="notify notify-green"><span class="symbol icon-tick"></span> Form Serven Saved Successfully!</div>');
                         clearInputFields();
                         showListOfForm7Records();

@@ -159,7 +159,7 @@
                 <td width="30%">
                     Add Action
                 </td>
-                <td>
+                <td style="padding-right:15px">
                     <?php
                         //the name should be dynamic...
                         $textAreaId = "thAction_" . $thId;
@@ -179,7 +179,7 @@
         echo '<div class="notify notify-red"><span class="symbol icon-error"></span> No Associated Th Record Found!</div>';
     }
 }else{
-    echo '<div class="notify notify-yellow"><span class="symbol icon-excl"></span> You Already Added Action to this Th Record!</div>';
+    echo '<div class="notify notify-yellow"><span class="symbol icon-excl"></span> You Already Added Record!</div>';
 }
 ?>
 <script type="text/javascript">

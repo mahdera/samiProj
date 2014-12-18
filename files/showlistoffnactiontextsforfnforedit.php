@@ -2,8 +2,12 @@
     session_start();
     $fnId = $_GET['fnId'];
     require_once 'fnaction.php';
+    require_once 'usersubdistrict.php';
+    require_once 'user.php';
     //now get all thActions for
-    $fnActionList = getAllFnActionsForThisFnModifiedBy($fnId, $_SESSION['LOGGED_USER_ID']);
+    //$fnActionList = getAllFnActionsForThisFnModifiedBy($fnId, $_SESSION['LOGGED_USER_ID']);
+    $fnActionList = null;
+    $fnActionList = getAllFnActionsForThisFn($fnId);
 ?>
 <table border="0" width="100%">
     <tr style="background:#ccc">
@@ -13,7 +17,7 @@
     </tr>
     <?php
       $ctr=1;
-      if(mysql_num_rows($fnActionList)){
+      if(!empty($fnActionList) && mysql_num_rows($fnActionList)){
           while($fnActionRow = mysql_fetch_object($fnActionList)){
             ?>
               <tr>

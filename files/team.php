@@ -53,11 +53,11 @@
     function getAllTeamsModifiedByUsingUserLevel($userLevel, $divisionId){
         try{
             $query = null;
-            if($userLevel == 'Branch Level'){
-                $query = "select tbl_team.* from tbl_team, tbl_user_branch where " .
-                "tbl_team.modified_by = tbl_user_branch.user_id and " .
-                "tbl_user_branch.branch_id = $divisionId order by team_name asc";
-            }else if($userLevel == 'Zone Level'){
+            if($userLevel == '02'){
+                $query = "select tbl_team.* from tbl_team, tbl_user_sub_district where " .
+                "tbl_team.modified_by = tbl_user_sub_district.user_id and " .
+                "tbl_user_sub_district.sub_district_id = $divisionId order by team_name asc";
+            }else if($userLevel == '01'){
                 $query = "select tbl_team.* from tbl_team, tbl_user_zone " .
                 "where tbl_team.modified_by = tbl_user_zone.user_id and " .
                 "tbl_user_zone.zone_id = $divisionId  UNION select tbl_team.* from tbl_team, tbl_user_branch, tbl_branch " .

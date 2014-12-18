@@ -1,14 +1,29 @@
-<h2>Edit Th Action</h2>
 <?php
-    error_reporting( 0 );
     require_once 'files/thaction.php';
     require_once 'files/th.php';
-    $thActionList = getAllThActionsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    require_once 'files/user.php';
+    require_once 'files/usersubdistrict.php';
+
+    $thActionList = null;
+
+    $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+    if($userObj->user_level == '02'){
+      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+      //$fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+      $thActionList = getAllThActionsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    }else if($userObj->user_level == '01'){
+      $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+      if(!empty($userObject)){
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+        $thActionList = getAllThActionsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+      }
+    }
+    //$thActionList = getAllThActionsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    if( !empty($thActionList) && mysql_num_rows($thActionList) ){
 ?>
 <div id="thActionDetailDiv">
-<table border="0" width="100%">
+<table border="1" width="100%" rules="all">
     <tr style="background: #ccc">
-        <td>Ser.No</td>
         <td>Th</td>
         <td>Th Action Text</td>
         <td>Action</td>
@@ -19,22 +34,23 @@
             $thObj = getTh($thActionRow->th_id);
             ?>
             <tr>
-                <td><?php echo $ctr++;?></td>
-                <td><?php echo $thObj->th_name;?></td>
-                <td><?php echo $thActionRow->action_text;?></td>
-                <td>
+                <td><?php echo stripslashes($thObj->th_name);?></td>
+                <td><?php echo stripslashes($thActionRow->action_text);?></td>
+                <td align="middle">
                     <?php
                         $editLinkId = $thActionRow->id;
                         $editDivId = "editActionTextDiv" . $thActionRow->id;
                         $deleteLinkId = $thActionRow->id;
-                    ?>
+                    ?>                   
                     <a href="#.php" id="<?php echo $editLinkId;?>" class="editThActionLink">Edit</a>
                     |
                     <a href="#.php" id="<?php echo $deleteLinkId;?>" class="deleteThActionLink">Delete</a>
+                    |
+                    <a href="#.php" id="<?php echo $editLinkId;?>" class="closeThActionLink">Close</a>
                 </td>
             </tr>
             <tr>
-                <td colspan="4">
+                <td colspan="3">
                     <div id="<?php echo $editDivId;?>"></div>
                 </td>
             </tr>
@@ -43,10 +59,23 @@
     ?>
 </table>
 </div>
+<?php
+}else{
+  ?>
+    <!--<div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>-->
+  <?php
+  require_once 'files/showlistofgoalfirstsmodified.php';
+}
+?>
 <script type="text/javascript">
     $(document).ready(function(){
+        $('.closeThActionLink').click(function(){
+            var id = $(this).attr('id');
+            var editDivId = "editActionTextDiv" + id;
+            $('#'+editDivId).html('');
+        });
+
         $('.editThActionLink').click(function(){
-            //alert('inside editThActionLink click');
             var id = $(this).attr('id');
             var editDivId = "editActionTextDiv" + id;
             $('#'+editDivId).load('files/showeditthactionform.php?thId='+id);

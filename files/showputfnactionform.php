@@ -11,6 +11,7 @@
     require_once 'fnaction.php';
     require_once 'fn.php';
     require_once 'goalsecondfn.php';
+    require_once 'user.php';
 
     //$fnActionId = $_GET['fn_id'];
     //$fnActionObj = getFnAction($fnActionId);
@@ -22,8 +23,10 @@
     $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
     //now I got all the result set read from the database...lets do the iteration thing now...
     $fn = getFn($fn_id);
-    @$countVal=0;
-    @$countVal = doesThisFnAlreadyActionFilledForItByUser($fn_id,$_SESSION['LOGGED_USER_ID']);
+    $countVal=0;
+    //@$countVal = doesThisFnAlreadyActionFilledForItByUser($fn_id,$_SESSION['LOGGED_USER_ID']);
+    @$countVal = doesThisFnAlreadyActionFilledForIt($fn_id);
+
     if($countVal == 0){
 ?>
 <form>
@@ -129,7 +132,7 @@
     <table border="0" width="100%">
         <tr>
             <td>Add Action</td>
-            <td>
+            <td style="padding-left:10px;padding-right:15px">
                 <?php
                     //the name should be dynamic...
                     $textAreaId = "fnAction_" . $fn_id;
@@ -147,7 +150,7 @@
 </form>
 <?php
 }else{
-    echo '<div class="notify notify-yellow"><span class="symbol icon-excl"></span> You Already Added Action to this Fn Record!</div>';
+    echo '<div class="notify notify-yellow"><span class="symbol icon-excl"></span> You Already Added Record!</div>';
 }
 ?>
 <script type="text/javascript">

@@ -2,9 +2,9 @@
     require_once 'files/team.php';
 ?>
 <h2>Add Responsibility</h2>
-<a href="#.php" id="showResponsibilityManagementFormLinkId">Show Form</a>
+<a href="#.php" id="showResponsibilityManagementFormLinkId">Show</a>
 |
-<a href="#.php" id="hideResponsibilityManagementFormLinkId">Hide Form</a>
+<a href="#.php" id="hideResponsibilityManagementFormLinkId">Hide</a>
 <form id="responsibilityManagementForm">
     <table border="0" width="100%">
         <tr>

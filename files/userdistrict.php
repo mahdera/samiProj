@@ -94,4 +94,17 @@
         $ex->getMessage();
       }
     }
+
+    function getDistrictIdForUser($userId){
+      try{
+        //Dont forget A single user can ONLY have ONE District...Nov 28, 2014
+        $query = "select * from tbl_user_district where user_id = $userId";
+        //echo $query;
+        $result = read($query);
+        $resultRow = mysql_fetch_object($result);
+        return $resultRow->district_id;
+      }catch(Exception $ex){
+        $ex->getMessage();
+      }
+    }
 ?>

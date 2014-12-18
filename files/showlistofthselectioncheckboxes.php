@@ -1,21 +1,28 @@
-<?php session_start();?>
-<div>
+<div class="col-half left">
+  <h1>Th Check Boxes</h1>
     <?php
         require_once 'risk.php';
         require_once 'th.php';
         require_once 'user.php';
         require_once 'usersubdistrict.php';
-        require_once 'userdistrict.php';
+        //require_once 'userdistrict.php';
 
         $userObj = getUser($_SESSION['LOGGED_USER_ID']);
         $riskList = null;
         /*if($userObj->user_level == 'Zone Level'){
             $userZoneObj = getZoneInfoForUser($userObj->id);
             $riskList = getAllRisksModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
-        }else if($userObj->user_level == 'Branch Level'){
-            $userBranchObj = getBranchInfoForUser($userObj->id);
-            $riskList = getAllRisksModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
         }*/
+        if($userObj->user_level == '02'){
+            $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+            $riskList = getAllThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+        }else if($userObj->user_level == '01'){
+            $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+            if($userObj != null){
+              $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+              $riskList = getAllThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+            }
+        }
 
         $selectedThIdArray = null;
         //var_dump($_SESSION['SELECTED_THS']);
@@ -25,38 +32,39 @@
           $selectedThIdArray = $_SESSION['SELECTED_THS'];
         }
 
-        $riskList = getAllRisksModifiedBy($_SESSION['LOGGED_USER_ID']);
+        //$riskList = getAllRisksModifiedBy($_SESSION['LOGGED_USER_ID']);
 
-        if(!empty($riskList)){
+        if(!empty($riskList) && mysql_num_rows($riskList)){
             ?>
-                <table border="0" width="100%">
+                <table border="1" width="100%" rules="all">
                     <tr style="background: #ccc">
                         <td>Th</td>
-                        <td>MG</td>
+                        <!--<td>MG</td>
                         <td>DR</td>
                         <td>PR</td>
                         <td>WA</td>
-                        <td>RS</td>
+                        <td>RS</td>-->
                         <td>Select</td>
                     </tr>
                     <?php
                         $ctr=1;
                         while($riskRow = mysql_fetch_object($riskList)){
-                            $thObj = getTh($riskRow->th_id);
+                            //$thObj = getTh($riskRow->th_id);
+                            $thObj = $riskRow;
                             ?>
-                            <tr>                                
-                                <td><?php echo $thObj->th_name;?></td>
-                                <td><?php echo $riskRow->mg;?></td>
-                                <td><?php echo $riskRow->dr;?></td>
-                                <td><?php echo $riskRow->pr;?></td>
-                                <td><?php echo $riskRow->wa;?></td>
-                                <td><?php echo $riskRow->rs;?></td>
+                            <tr>
+                                <td><?php echo $riskRow->th_name;//echo stripslashes($thObj->th_name);?></td>
+                                <!--<td><?php //echo stripslashes($riskRow->mg);?></td>
+                                <td><?php //echo stripslashes($riskRow->dr);?></td>
+                                <td><?php //echo stripslashes($riskRow->pr);?></td>
+                                <td><?php //echo stripslashes($riskRow->wa);?></td>
+                                <td><?php //echo stripslashes($riskRow->rs);?></td>-->
                                 <td align="center">
                                     <?php
                                         $thSelected = false;
                                         $chkName = "chk_" . $ctr;
                                         for($i=0; $i<count($selectedThIdArray); $i++){
-                                          if($selectedThIdArray[$i] === $riskRow->th_id){
+                                          if($selectedThIdArray[$i] === $riskRow->id){
                                             $thSelected = true;
                                             //break;
                                           }
@@ -80,6 +88,10 @@
                     ?>
                 </table>
             <?php
+        }else{
+        ?>
+          <div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>
+        <?php
         }
 ?>
 </div>

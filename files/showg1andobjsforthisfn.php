@@ -11,7 +11,7 @@
     ?>
     <table border="1" width="100%">
         <tr style="background: #eee">
-            <td width="30%">G1</td>            
+            <td width="30%">G1</td>
             <td>Obj Detail</td>
         </tr>
     <?php
@@ -23,7 +23,7 @@
                 $innerDivId = "g1ObjDetailDiv" . $goalSecondG1Row->id;
                 ?>
                 <tr>
-                    <td><?php echo $goalSecondG1->g1;?></td>                    
+                    <td><?php echo $goalSecondG1->g1;?></td>
                     <td>
                         [<a href="#.php" class="showG1ObjDetailLink" id="<?php echo $goalSecondG1Row->id;?>">Show Detail</a> | <a href="#.php" class="hideG1ObjDetailLink" id="<?php echo $goalSecondG1Row->id;?>">Hide Detail</a>]
                     </td>
@@ -38,9 +38,9 @@
             //Now I need to do the same thing for goalfirstg2 for each particular goalFirstRows...
        ?>
         <tr style="background: #eee">
-            <td width="30%">G2</td>            
+            <td width="30%">G2</td>
             <td>Obj Detail</td>
-        </tr>         
+        </tr>
        <?php
             $goalSecondG2List = getAllGoalSecondG2ForThisGoalSecondId($goalSecondRow->id);
             while($goalSecondG2Row = mysql_fetch_object($goalSecondG2List)){
@@ -48,10 +48,10 @@
                 $innerDivId = "g2ObjDetailDiv" . $goalSecondG2Row->id;
                 ?>
                 <tr>
-                    <td><?php echo $goalSecondG2->g2;?></td>                    
+                    <td><?php echo $goalSecondG2->g2;?></td>
                     <td>
                         [<a href="#.php" class="showG2ObjDetailLink" id="<?php echo $goalSecondG2Row->id;?>">Show Detail</a> | <a href="#.php" class="hideG2ObjDetailLink" id="<?php echo $goalSecondG2Row->id;?>">Hide Detail</a>]
-                    </td>                    
+                    </td>
                 </tr>
                 </tr>
                 <tr>
@@ -61,13 +61,13 @@
                 </tr>
                 <?php
             }//end goalFirstG2List
-        
-        //Now I need to do the same thing for goalfirstg3 for each particular goalfirst rows...        
+
+        //Now I need to do the same thing for goalfirstg3 for each particular goalfirst rows...
         ?>
          <tr style="background: #eee">
-            <td width="30%">G3</td>            
+            <td width="30%">G3</td>
             <td>Obj Detail</td>
-        </tr>         
+        </tr>
         <?php
             $goalSecondG3List = getAllGoalSecondG3ForThisGoalSecondId($goalSecondRow->id);
             while($goalSecondG3Row = mysql_fetch_object($goalSecondG3List)){
@@ -75,10 +75,10 @@
                 $innerDivId = "g3ObjDetailDiv" . $goalSecondG3Row->id;
                 ?>
                 <tr>
-                    <td><?php echo $goalSecondG3->g3;?></td>                    
+                    <td><?php echo $goalSecondG3->g3;?></td>
                     <td>
                         [<a href="#.php" class="showG3ObjDetailLink" id="<?php echo $goalSecondG3Row->id;?>">Show Detail</a> | <a href="#.php" class="hideG3ObjDetailLink" id="<?php echo $goalSecondG3Row->id;?>">Hide Detail</a>]
-                    </td>                    
+                    </td>
                 </tr>
                 </tr>
                 <tr>
@@ -89,7 +89,7 @@
                 <?php
             }//end goalFirstG2List
         }//end goalFirstList while loop
-        ?>    
+        ?>
 </table>
 <script type="text/javascript">
     $(document).ready(function(){
@@ -99,38 +99,38 @@
             var divId = "g1ObjDetailDiv" + id;
             $('#'+divId).load('files/showg1objdetail.php?id='+id);
         });
-        
+
         $('.hideG1ObjDetailLink').click(function(){
             var id = $(this).attr('id');
             var divId = "g1ObjDetailDiv" + id;
             $('#'+divId).html('');
         });
-        
+
         //This part will deal with the GoalFirstG2 part
         $('.showG2ObjDetailLink').click(function(){
             var id = $(this).attr('id');
             var divId = "g2ObjDetailDiv" + id;
             $('#'+divId).load('files/showg2objdetail.php?id='+id);
         });
-        
+
         $('.hideG2ObjDetailLink').click(function(){
             var id = $(this).attr('id');
             var divId = "g2ObjDetailDiv" + id;
             $('#'+divId).html('');
         });
-        
+
         //This part will deal with the GoalFirstG3 part
         $('.showG3ObjDetailLink').click(function(){
             var id = $(this).attr('id');
             var divId = "g3ObjDetailDiv" + id;
             $('#'+divId).load('files/showg3objdetail.php?id='+id);
         });
-        
+
         $('.hideG3ObjDetailLink').click(function(){
             var id = $(this).attr('id');
             var divId = "g3ObjDetailDiv" + id;
             $('#'+divId).html('');
         });
-        
+
     });//end document.ready function
 </script>

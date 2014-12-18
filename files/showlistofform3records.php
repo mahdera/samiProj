@@ -1,12 +1,35 @@
 <?php
 	session_start();
+	?>
+	<h2>Form 3 Records</h2>
+	<?php
 	//get all form2 values created by the session owner user...
 	require_once 'form3.php';
-	$form3List = getAllForm3sModifiedBy($_SESSION['LOGGED_USER_ID']);	
+	require_once 'user.php';
+	require_once 'usersubdistrict.php';
+
+	//$form3List = getAllForm3sModifiedBy($_SESSION['LOGGED_USER_ID']);
+
+	$form3List = null;
+	$userObj = getUser($_SESSION['LOGGED_USER_ID']);
+	if($userObj->user_level == '02'){
+			$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+			//$form3List = getAllForm3ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+			$form3List = getLatestForm3ModifiedByUsingUserLevelResultSet('02', $userSubDistrictObj->sub_district_id);
+	}else if($userObj->user_level == '01'){
+			$userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+			//var_dump($userObj);
+			if(!empty($userObj)){
+				$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+				//$form3List = getAllForm3ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+				$form3List = getLatestForm3ModifiedByUsingUserLevelResultSet('02', $userSubDistrictObj->sub_district_id);
+			}
+	}
+	if(!empty($form3List) && mysql_num_rows($form3List)){
 ?>
-<table border="0" width="100%">
+<table border="1" width="100%" rules="all">
 	<tr style="background:#ccc">
-		<td>Q3.1</td>		
+		<td>Q3.1</td>
 		<td>Edit</td>
 		<td>Delete</td>
 	</tr>
@@ -14,12 +37,12 @@
 		while($form3Row = mysql_fetch_object($form3List)){
 			?>
 			<tr>
-				<td><?php echo $form3Row->q3_1;?></td>				
-				<td>
+				<td><?php echo stripslashes($form3Row->q3_1);?></td>
+				<td align="middle">
 					<a href="#.php" class="form3EditLink" id="<?php echo $form3Row->id;?>">Edit</a>
 				</td>
-				<td>
-					<a href="#.php" class="form3DeleteLink" id="<?php echo $form3Row->id;?>">Delete</a>	
+				<td align="middle">
+					<a href="#.php" class="form3DeleteLink" id="<?php echo $form3Row->id;?>">Delete</a>
 				</td>
 			</tr>
 			<?php
@@ -34,6 +57,13 @@
 		}//end while loop
 	?>
 </table>
+<?php
+}else{
+	?>
+	<div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>
+	<?php
+}
+?>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.form3EditLink').click(function(){
@@ -43,9 +73,21 @@
 		});
 
 		$('.form3DeleteLink').click(function(){
-			if(window.confirm('Are you sure you want to delete this form3 record?')){
+			if(window.confirm('Are you sure you want to delete this record?')){
 				var id = $(this).attr('id');
-				$('#form3ManagementDetailDiv').load('files/deletethisform3.php?id='+id);
+				//$('#form3ManagementDetailDiv').load('files/deletethisform3.php?id='+id);
+				dataString = "id="+id;
+				$.ajax({
+					url: 'files/deletethisform3.php',
+					data: dataString,
+					type:'GET',
+					success:function(response){
+						$('#form3Div').html(response);
+					},
+					error:function(error){
+						alert(error);
+					}
+				});
 			}
 		});
 	});//end document.ready function

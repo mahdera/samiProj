@@ -30,7 +30,7 @@
     //now send an activation email for this particular user via email.
     $activationLink = "http://www.domain.com/project_name/activateuserviaemail.php?email=".$email;
     $subject = "Your Account Activation";
-    $from = "mahderalem@gmail.com";
+    $from = "samsonaklilu@gmail.com";
     $message = "Welcome $firstName $lastName.<br/><br/>Please click or copy-paste to your browser URL bar the link below to activate your account." .
     "<a href='$activationLink'>$activationLink</a>";
     sendEmail($email, $subject, $message, $from, $ccTo = null, $bcc = null);

@@ -1,5 +1,5 @@
-<?php
-    session_start();
+  <?php
+    @session_start();
 ?>
 <div>
     <?php
@@ -7,26 +7,30 @@
         require_once 'dbconnection.php';
         require_once 'team.php';
         require_once 'user.php';
-        require_once 'userbranch.php';
-        require_once 'userzone.php';
+        require_once 'usersubdistrict.php';
+        //require_once 'userzone.php';
 
         $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+        //var_dump($userObj);
         $teamList = null;
-        /*if($userObj->user_level == 'Zone Level'){
-            $userZoneObj = getZoneInfoForUser($userObj->id);
-            $teamList = getAllTeamsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
-        }else if($userObj->user_level == 'Branch Level'){
-            $userBranchObj = getBranchInfoForUser($userObj->id);
-            $teamList = getAllTeamsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
-        }*/
-        $teamList = getAllTeamsModifiedBy($_SESSION['LOGGED_USER_ID']);
+        if($userObj->user_level == '02'){
+            $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+            if($userSubDistrictObj != null)
+              $teamList = getAllTeamsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+        }else if($userObj->user_level == '01'){
+            $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+            if($userObject != null){
+              $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+              $teamList = getAllTeamsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+            }
+        }
+        //$teamList = getAllTeamsModifiedBy($_SESSION['LOGGED_USER_ID']);
         //now i need to get the level of the user and the based on that i will have to
         //query the records...
-        if(!empty($teamList)){
+        if(!empty($teamList) && mysql_num_rows($teamList)){
             ?>
-                <table border="0" width="100%">
+                <table border="1" width="100%" rules="all">
                     <tr style="background: #ccc">
-                        <td></td>
                         <td>Name</td>
                         <td>Title</td>
                         <td>Organization</td>
@@ -41,18 +45,25 @@
                         while($teamRow = mysql_fetch_object($teamList)){
                             ?>
                             <tr>
-                                <td></td>
-                                <td><?php echo $teamRow->team_name;?></td>
-                                <td><?php echo $teamRow->title;?></td>
-                                <td><?php echo $teamRow->organization;?></td>
-                                <td><?php echo $teamRow->email;?></td>
-                                <td><?php echo $teamRow->phone;?></td>
-                                <td><?php echo rtrim($teamRow->interest , ',');?></td>
+                                <td><?php echo stripslashes($teamRow->team_name);?></td>
+                                <td><?php echo stripslashes($teamRow->title);?></td>
+                                <td><?php echo stripslashes($teamRow->organization);?></td>
+                                <td><?php echo stripslashes($teamRow->email);?></td>
+                                <td><?php echo stripslashes($teamRow->phone);?></td>
                                 <td>
-                                    <a href="#.php" class="teamEditLink" id="<?php echo $teamRow->id;?>">Edit</a>
+                                    <?php
+                                        $trimmedString = rtrim($teamRow->interest , ',');
+                                        $myArray = explode(',', $trimmedString);
+                                        for($i=0; $i < count($myArray); $i++){
+                                          echo $myArray[$i] . "<br/>";
+                                        }//end for...loop
+                                    ?>
                                 </td>
-                                <td>
-                                    <a href="#.php" class="teamDeleteLink" id="<?php echo $teamRow->id;?>">Delete</a>
+                                <td align="middle">
+                                    <a href="#.php" class="teamEditLink" id="<?php echo $teamRow->id;?>"><img src="images/edit.png" align="absmiddle" border="0"/></a>
+                                </td>
+                                <td align="middle">
+                                    <a href="#.php" class="teamDeleteLink" id="<?php echo $teamRow->id;?>"><img src="images/delete.png"/ align="absmiddle" border="0"/></a>
                                 </td>
                             </tr>
                             <?php
@@ -61,6 +72,10 @@
                 </table>
                 <div id="teamEditDiv"></div>
             <?php
+        }else{
+          ?>
+            <div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>
+          <?php
         }
     ?>
 </div>

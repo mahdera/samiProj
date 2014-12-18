@@ -1,5 +1,4 @@
 <?php
-
     require_once 'dbconnection.php';
 
     function saveRisk($thId, $mg, $dr, $pr, $wa, $rs, $modifiedBy){
@@ -64,10 +63,10 @@
     function getAllRisksModifiedByUsingUserLevel($userLevel, $divisionId){
         try{
             $query = null;
-            if($userLevel == 'Branch Level'){
-                $query = "select tbl_risk.* from tbl_risk, tbl_user_branch where " .
-                "tbl_risk.modified_by = tbl_user_branch.user_id and " .
-                "tbl_user_branch.branch_id = $divisionId order by modification_date desc";
+            if($userLevel == '02'){
+                $query = "select tbl_risk.* from tbl_risk, tbl_user_sub_district where " .
+                "tbl_risk.modified_by = tbl_user_sub_district.user_id and " .
+                "tbl_user_sub_district.sub_district_id = $divisionId order by modification_date desc";
             }else if($userLevel == 'Zone Level'){
                 $query = "select tbl_risk.* from tbl_risk, tbl_user_zone " .
                 "where tbl_risk.modified_by = tbl_user_zone.user_id and " .
@@ -96,6 +95,34 @@
               return false;
       }catch(Exception $ex){
           $ex->getMessage();
+      }
+    }
+
+    /*
+    if($userLevel = '02'){
+    $query = "select count(*) as cnt from tbl_goal_first_th, tbl_user_sub_district where th_id = $thId and " .
+    "tbl_goal_first_th.modified_by = tbl_user_sub_district.user_id and tbl_user_sub_district.sub_district_id = $divisionId";
+    //echo $query;
+  }
+    */
+
+    function hasThisThBeenUsedForRiskByThisUserUsingUserLevel($thId, $userLevel, $divisionId){
+      $cntVal = 0;
+      try{
+        $query = null;
+        if($userLevel = '02'){
+          $query = "select count(*) as cnt from tbl_risk, tbl_user_sub_district where th_id = $thId and " .
+          "tbl_risk.modified_by = tbl_user_sub_district.user_id and tbl_user_sub_district.sub_district_id = $divisionId";
+        }
+        $result = read($query);
+        $resultRow = mysql_fetch_object($result);
+        $cntVal = $resultRow->cnt;
+        if($cntVal != 0)
+        return true;
+        else
+        return false;
+      }catch(Exception $ex){
+        $ex->getMessage();
       }
     }
 

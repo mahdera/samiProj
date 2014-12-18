@@ -1,7 +1,16 @@
 <?php
-    error_reporting( 0 );
-    session_start();
+@session_start();
+if(empty($_SESSION['USER_ID'])){
+  header("Location: login.php");
+}
+
+if($_SESSION['USER_ROLE_CODE'] === '01A'){
+  if(empty($_SESSION['SUB_DISTRICT_ID'])){
+    header("Location: nosubdistrictselected.php");
+  }
+}
 ?>
+
     <!--to be replaced when the next button is clicked-->
     <div id="topcontain">
         <div id="titlearea">
@@ -23,7 +32,7 @@
     <?php
     require_once 'importjsscripts.php';
 ?>
-    <div id="fnActionManagementDiv">
+    <div id="fnActionManagementDiv" class="col-half left">
         <?php
             require 'putfnactionmanagementform.php';
         ?>

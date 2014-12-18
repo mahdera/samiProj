@@ -5,15 +5,20 @@
     require_once 'usersubdistrict.php';
     require_once 'userdistrict.php';
     $fnList = null;
-    $fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
+    //$fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
-    /*if($userObj->user_level == 'Zone Level'){
-        $userZoneObj = getZoneInfoForUser($userObj->id);
-        $fnList = getAllFnsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
-    }else if($userObj->user_level == 'Branch Level'){
-        $userBranchObj = getBranchInfoForUser($userObj->id);
-        $fnList = getAllFnsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
-    }*/
+
+    if($userObj->user_level == '02'){
+      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+      $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    }else if($userObj->user_level == '01'){
+      $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+      if(!empty($userObj)){
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+        $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+      }
+    }
+
     $numItems = $_POST['numItems'];
     //now define the control names in here...
     $objControlName = "txtg1obj" . ($numItems + 1);
@@ -22,16 +27,17 @@
     $fnOtherDivId = "fnOtherG1ObjFn" . ($numItems + 1);
     $idForSpinner = "g1fn" . ($numItems + 1);
 ?>
-<tr id="<?php echo $trRowId;?>">
+<tr id="<?php echo $trRowId;?>" class="added">
     <td colspan="2">
-        <table border="0" width="100%" style="background: #fff">
-            <tr>
+        <table border="0" width="100%" style="background: #fff; border-line: 0px solid red">
+            <tr style="background: red">
                 <td  width="20%">Obj:</td>
                 <td>
-                    <input type="text" id="<?php echo $objControlName;?>" name="<?php echo $objControlName;?>" class="g1Obj" size="70"/>
+                    <!--<input type="text" id="<?php echo $objControlName;?>" name="<?php /*echo $objControlName;*/?>" class="g1Obj" size="70"/>-->
+                    <textarea name="<?php echo $objControlName;?>" id="<?php echo $objControlName;?>" class="g1Obj" style="width:100%" rows="4"></textarea>
                 </td>
             </tr>
-            <tr>
+            <tr style="background: red">
                 <td width="20%">Fn:</td>
                 <td>
                     <select name="<?php echo $fnSelectControlName;?>" id="<?php echo $fnSelectControlName;?>" style="width: 95%" onchange="showOtherFnDataEntryForm(this.value, '<?php echo $fnOtherDivId;?>', <?php echo $numItems + 1;?>);">
@@ -48,7 +54,7 @@
                     <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $idForSpinner;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
                 </td>
             </tr>
-            <tr>
+            <tr style="background: red">
                 <td colspan="2">
                     <div id="<?php echo $fnOtherDivId;?>"></div>
                 </td>

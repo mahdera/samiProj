@@ -33,16 +33,33 @@
 	require_once 'fnaction.php';
 	require_once 'goalfirstth.php';
 	require_once 'goalsecondfn.php';
+	require_once 'user.php';
+	require_once 'usersubdistrict.php';
+
+	$userObj = getUser($_SESSION['LOGGED_USER_ID']);
 
 	//start showing the report from form1 upto form10
 	$goalFirstObj = getGoalFirst($id);
 	$goalFirstId = $goalFirstObj->id;
 	$goalFirstG1Id;
 	?>
-	<div id="printReportDiv">
+	<div id="printReportDiv" style="display:none">
 	<?php
 	//now get a form1 obj modified by the logged in user and modification date same as that of the goal first...
-	$form1Obj = getLatestForm1ModifiedByUser($_SESSION['LOGGED_USER_ID']);
+	//$form1Obj = getLatestForm1ModifiedByUser($_SESSION['LOGGED_USER_ID']);
+		$form1Obj = null;
+		//STOPPED WORKING HERE.....
+		if($userObj->user_level == '01'){
+			$userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+			if(!empty($userObject)){
+				$userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+				$form1Obj = getLatestForm1ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+			}
+		}else if($userObj->user_level == '02'){
+			$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+			$form1Obj = getLatestForm1ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+		}
+
 		if($form1Obj){
 		?>
 		<div id="printReportDiv">
@@ -84,6 +101,7 @@
 							</tr>
 							<?php
 									$form1Q3List = getAllForm1Q3ForThisForm1($form1Obj->id);
+
 									$colCount = 1;
 									while($form1Q3Row = mysql_fetch_object($form1Q3List)){
 											$textBoxId = "txtrowq3" . $form1Q3Row->row . $form1Q3Row->col;
@@ -146,7 +164,19 @@
 		?>
 		<table border="0" width="100%">
 			<?php
-				$form2Obj = getForm2ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				//$form2Obj = getForm2ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				$form2Obj = null;
+				if($userObj->user_level == '01'){
+					$userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+					if(!empty($userObject)){
+						$userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+						$form2Obj = getForm2ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+					}
+				}else if($userObj->user_level == '02'){
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+					$form2Obj = getForm2ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}
+
 				if($form2Obj){
 			?>
 			<tr>
@@ -161,17 +191,24 @@
 				<td>Q2.3:</td>
 				<td><?php if(!empty($form2Obj))echo $form2Obj->q2_3;?></td>
 			</tr>
-			<tr>
-				<td>Q2.4:</td>
-				<td><?php if(!empty($form2Obj))echo $form2Obj->q2_4;?></td>
-			</tr>
 		</table>
 		<?php
 	}//end empty form2Obj checker
 		?>
 		<table border="0" width="100%">
 			<?php
-				$form3Obj = getForm3ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				//$form3Obj = getForm3ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				$form3Obj = null;
+				if($userObj->user_level == '01'){
+					$userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+					if(!empty($userObject)){
+						$userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+						$form3Obj = getForm3ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+					}
+				}else if($userObj->user_level == '02'){
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+					$form3Obj = getForm3ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}
 			?>
 			<tr>
 				<td width="20%">Q3.1:</td>
@@ -187,7 +224,18 @@
 
 		<table border="0" width="100%">
 			<?php
-				$form4Obj = getForm4ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				//$form4Obj = getForm4ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				$form4Obj = null;
+				if($userObj->user_level == '01'){
+					$userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+					if(!empty($userObject)){
+						$userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+						$form4Obj = getForm4ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+					}
+				}else if($userObj->user_level == '02'){
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+					$form4Obj = getForm4ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}
 			?>
 			<tr>
 				<td width="20%">Q4.1:</td>
@@ -203,7 +251,18 @@
 
 		<table border="0" width="100%">
 			<?php
-				$form5Obj = getForm5ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				//$form5Obj = getForm5ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				$form5Obj = null;
+				if($userObj->user_level == '01'){
+					$userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+					if(!empty($userObject)){
+						$userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+						$form5Obj = getForm5ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+					}
+				}else if($userObj->user_level == '02'){
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+					$form5Obj = getForm5ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}
 			?>
 			<tr>
 				<td width="20%">Q5.1:</td>
@@ -219,7 +278,18 @@
 
 		<table border="0" width="100%">
 			<?php
-				$form6Obj = getForm6ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				//$form6Obj = getForm6ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				$form6Obj = null;
+				if($userObj->user_level == '01'){
+					$userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+					if(!empty($userObject)){
+						$userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+						$form6Obj = getForm6ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+					}
+				}else if($userObj->user_level == '02'){
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+					$form6Obj = getForm6ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}
 			?>
 			<tr>
 				<td width="20%">Q6.1:</td>
@@ -235,7 +305,18 @@
 
 		<table border="0" width="100%">
 			<?php
-				$form7Obj = getForm7ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				//$form7Obj = getForm7ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				$form7Obj = null;
+				if($userObj->user_level == '01'){
+					$userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+					if(!empty($userObject)){
+						$userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+						$form7Obj = getForm7ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+					}
+				}else if($userObj->user_level == '02'){
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+					$form7Obj = getForm7ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}
 			?>
 			<tr>
 				<td width="20%">Q7.1:</td>
@@ -251,7 +332,18 @@
 
 		<table border="0" width="100%">
 			<?php
-				$form8Obj = getForm8ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				//$form8Obj = getForm8ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				$form8Obj = null;
+				if($userObj->user_level == '01'){
+					$userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+					if(!empty($userObject)){
+						$userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+						$form8Obj = getForm8ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+					}
+				}else if($userObj->user_level == '02'){
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+					$form8Obj = getForm8ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}
 			?>
 			<tr>
 				<td width="20%">Q8.1:</td>
@@ -267,7 +359,18 @@
 
 		<table border="0" width="100%">
 			<?php
-				$form9Obj = getForm9ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				//$form9Obj = getForm9ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				$form9Obj = null;
+				if($userObj->user_level == '01'){
+					$userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+					if(!empty($userObject)){
+						$userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+						$form9Obj = getForm9ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+					}
+				}else if($userObj->user_level == '02'){
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+					$form9Obj = getForm9ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}
 			?>
 			<tr>
 				<td width="20%">Q9.1:</td>
@@ -282,7 +385,18 @@
 
 		<table border="0" width="100%">
 			<?php
-				$form10Obj = getForm10ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				//$form10Obj = getForm10ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
+				$form10Obj = null;
+				if($userObj->user_level == '01'){
+					$userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+					if(!empty($userObject)){
+						$userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+						$form10Obj = getForm10ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+					}
+				}else if($userObj->user_level == '02'){
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+					$form10Obj = getForm10ModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}
 			?>
 			<tr>
 				<td width="20%">Q10.1:</td>
@@ -305,7 +419,7 @@
 						?>
 							<tr>
 									<td>
-											<?php echo $thObj->th_name;?>
+											<?php echo stripslashes($thObj->th_name);?>
 									</td>
 							</tr>
 							<!--now for each Th record show all the details here-->
@@ -321,12 +435,12 @@
 															<tr>
 																	<td width="20%"></td>
 																	<td width="30%">G1</td>
-																	<td><?php echo $goalFirstG1Row->g1;?></td>
+																	<td><?php echo stripslashes($goalFirstG1Row->g1);?></td>
 															</tr>
 															<tr>
 																	<td width="20%"></td>
 																	<td width="30%">Fn</td>
-																	<td><?php echo $fn_row->fn_name;?></td>
+																	<td><?php echo stripslashes($fn_row->fn_name);?></td>
 															</tr>
 															<?php
 																	//now get all the obj fn values for this particular goalFirstG1Id
@@ -338,12 +452,12 @@
 																					<tr>
 																							<td width="20%"></td>
 																							<td width="30%">Obj</td>
-																							<td><?php echo $goalFirstG1ObjFnRow->obj;?></td>
+																							<td><?php echo stripslashes($goalFirstG1ObjFnRow->obj);?></td>
 																					</tr>
 																					<tr>
 																							<td width="20%"></td>
 																							<td width="30%">Fn</td>
-																							<td><?php echo $fn_row->fn_name;?></td>
+																							<td><?php echo stripslashes($fn_row->fn_name);?></td>
 																					</tr>
 																					<?php
 																			}//end while loop
@@ -365,12 +479,12 @@
 															<tr>
 																	<td width="20%"></td>
 																	<td width="30%">G2</td>
-																	<td><?php echo $goalFirstG2Row->g2;?></td>
+																	<td><?php echo stripslashes($goalFirstG2Row->g2);?></td>
 															</tr>
 															<tr>
 																	<td width="20%"></td>
 																	<td width="30%">Fn</td>
-																	<td><?php echo $fn_row->fn_name;?></td>
+																	<td><?php echo stripslashes($fn_row->fn_name);?></td>
 															</tr>
 															<?php
 																	//now get all the obj fn values for this particular goalFirstG1Id
@@ -382,12 +496,12 @@
 																					<tr>
 																							<td width="20%"></td>
 																							<td width="30%">Obj</td>
-																							<td><?php echo $goalFirstG2ObjFnRow->obj;?></td>
+																							<td><?php echo stripslashes($goalFirstG2ObjFnRow->obj);?></td>
 																					</tr>
 																					<tr>
 																							<td width="20%"></td>
 																							<td width="30%">Fn</td>
-																							<td><?php echo $fn_row->fn_name;?></td>
+																							<td><?php echo stripslashes($fn_row->fn_name);?></td>
 																					</tr>
 																					<?php
 																			}//end while loop
@@ -409,12 +523,12 @@
 															<tr>
 																	<td width="20%"></td>
 																	<td width="30%">G3</td>
-																	<td><?php echo $goalFirstG3Row->g3;?></td>
+																	<td><?php echo stripslashes($goalFirstG3Row->g3);?></td>
 															</tr>
 															<tr>
 																	<td width="20%"></td>
 																	<td width="30%">Fn</td>
-																	<td><?php echo $fn_row->fn_name;?></td>
+																	<td><?php echo stripslashes($fn_row->fn_name);?></td>
 															</tr>
 															<?php
 																	//now get all the obj fn values for this particular goalFirstG1Id
@@ -426,12 +540,12 @@
 																					<tr>
 																							<td width="20%"></td>
 																							<td width="30%">Obj</td>
-																							<td><?php echo $goalFirstG3ObjFnRow->obj;?></td>
+																							<td><?php echo stripslashes($goalFirstG3ObjFnRow->obj);?></td>
 																					</tr>
 																					<tr>
 																							<td width="20%"></td>
 																							<td width="30%">Fn</td>
-																							<td><?php echo $fn_row->fn_name;?></td>
+																							<td><?php echo stripslashes($fn_row->fn_name);?></td>
 																					</tr>
 																					<?php
 																			}//end while loop
@@ -458,7 +572,7 @@
 																				<tr>
 																						<td width="20%">Action:</td>
 																						<td>
-																								<?php echo $thActionRow->action_text;?>
+																								<?php echo stripslashes($thActionRow->action_text);?>
 																						</td>
 																				</tr>
 																		<?php
@@ -474,7 +588,18 @@
 		<!--now get the latest goal-second record from the database saved by the logged in user-->
 		<?php
 				//$latestGoalSecondRow = getTheLatestGoalSecondRecordModifiedBy($_SESSION['LOGGED_USER_ID']);
-				$goalSecondListByUser = getAllGoalSecondsModifiedBy($_SESSION['LOGGED_USER_ID']);
+				$goalSecondListByUser = null;
+				if($userObj->user_level == '01'){
+					$userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+					if(!empty($userObject)){
+						$userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+						$goalSecondListByUser = getAllGoalSecondsModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+					}
+				}else if($userObj->user_level == '02'){
+					$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+					$goalSecondListByUser = getAllGoalSecondsModifiedByUserUsingLevel('02', $userSubDistrictObj->sub_district_id);
+				}
+				//$goalSecondListByUser = getAllGoalSecondsModifiedBy($_SESSION['LOGGED_USER_ID']);
 				while($latestGoalSecondRow = mysql_fetch_object($goalSecondListByUser)){
 				//now get list of goalSecondFnList for this particular goal-second-id
 				$goalSecondFnList = getAllGoalSecondFnsForThisGoalSecondId($latestGoalSecondRow->id);
@@ -622,10 +747,10 @@
 	</div><!--end printDiv-->
 	<table border="0" width="100%">
 		<tr>
-			<td align="right">
-				<a href="#.jsp" onclick="printDiv('printReportDiv')"><img src="images/printer.jpg" align="absmiddle"/> Print</a>
-				|
-				<a href="files/exportreporttoword.php?id=<?php echo $id;?>" target="_blank" id="wordReportLinkId123"><img src="images/word.jpeg" align="absmiddle"/> Generate Word Doc</a>
+			<td align="center">
+				<!--<a href="#.jsp" onclick="printDiv('printReportDiv')"><img src="images/printer.jpg" align="absmiddle"/> Print</a>
+				|-->
+				<a href="files/exportreporttoword.php?id=<?php echo $id;?>" target="_blank" id="wordReportLinkId123"><img src="images/word.jpeg" align="absmiddle"/> Download Report in Word Document</a>
 			</td>
 		</tr>
 	</table>

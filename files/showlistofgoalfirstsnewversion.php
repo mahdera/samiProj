@@ -18,7 +18,7 @@
             ?>
             <tr>
                 <td><?php echo $ctr;?></td>
-                <td><?php echo $thRow->th_name;?></td>
+                <td><?php echo stripslashes($thRow->th_name);?></td>
                 <td>
                     [<a href="#.php" class="showThDetailsLink" id="<?php echo $thRow->id;?>">Show</a> | <a href="#.php" class="hideThDetailsLink" id="<?php echo $thRow->id;?>">Hide</a>]
                 </td>
@@ -35,18 +35,18 @@
 </table>
 <script type="text/javascript">
     $(document).ready(function(){
-        
+
         $('.showThDetailsLink').click(function(){
             var id = $(this).attr('id');
             var divId = "thEditDiv" + id;
             $('#'+divId).load('files/showg1andfnsforthisth.php?id='+id);
         });
-        
+
         $('.hideThDetailsLink').click(function(){
             var id = $(this).attr('id');
             var divId = "thEditDiv" + id;
             $('#'+divId).html('');
         });
-        
+
     });//end document.ready function
 </script>

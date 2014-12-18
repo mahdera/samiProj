@@ -9,6 +9,18 @@
 <form>
     <table border="0" width="100%">
         <tr>
+            <td>First Name:</td>
+            <td><?php echo $userObj->first_name;?></td>
+        </tr>
+        <tr>
+            <td>Last Name:</td>
+            <td><?php echo $userObj->last_name;?></td>
+        </tr>
+        <tr>
+            <td>User Id:</td>
+            <td><?php echo $userObj->user_id;?></td>
+        </tr>
+        <tr>
             <td>Enter Password:</td>
             <td>
                 <input type="password" name="txtresetpassword" id="txtresetpassword"/>
@@ -34,15 +46,15 @@
             var id = "<?php echo $id;?>";
             var resetPassword = $('#txtresetpassword').val();
             var resetConfirmPassword = $('#txtresetconfirmpassword').val();
-            if(resetPassword !== "" && resetConfirmPassword !== ""){                
+            if(resetPassword !== "" && resetConfirmPassword !== ""){
                 if(resetPassword === resetConfirmPassword){
                     //now i can reset the user's password
                     var dataString = "id="+id+"&resetPassword="+resetPassword;
                     $.ajax({
-                        url: 'files/resetuserpassword.php',		
+                        url: 'files/resetuserpassword.php',
                         data: dataString,
                         type:'POST',
-                        success:function(response){                    
+                        success:function(response){
                             $('#createUserDiv').html(response);
                         },
                         error:function(error){

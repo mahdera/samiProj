@@ -1,10 +1,7 @@
-<?php
-  error_reporting( 0 );
-?>
 <h1>Add Th</h1>
-<a href="#.php" id="showThManagementFormLinkId">Show Form</a>
+<a href="#.php" id="showThManagementFormLinkId">Show</a>
 |
-<a href="#.php" id="hideThManagementFormLinkId">Hide Form</a>
+<a href="#.php" id="hideThManagementFormLinkId">Hide</a>
 <form id="thManagementForm">
     <fieldset>
       <legend>Add Th Form</legend>
@@ -28,7 +25,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
 
-        $('#thManagementForm').hide();
+        $('#thManagementForm').show();
 
         $('#showThManagementFormLinkId').click(function(){
             $('#thManagementForm').show('slow');
@@ -69,6 +66,13 @@
         function showListOfThs(){
             $('#subDetailDiv').load('files/showlistofths.php');
         }
+
+        $('.editThLink').click(function(){
+          var id = $(this).attr('id');
+          var divId = "thEditDiv" + id;
+          alert(divId);
+          $('#'+divId).load('files/showeditfieldsofth.php?id='+id);
+        });
 
     });//end document.ready function
 </script>

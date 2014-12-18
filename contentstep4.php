@@ -1,6 +1,3 @@
-<?php
-error_reporting( 0 );
-?>
 <div class="content" id='step4Content'>
     <!--to be replaced when the next button is clicked-->
     <div id="topcontain">
@@ -11,7 +8,7 @@ error_reporting( 0 );
         </div>
         <div id="resourcearea">
             <ul>
-                <li class="sb-toggle-right"><img src="images/resource_icon.png" alt="Resource Toolkit" /> Resource Toolkit</li>
+                <li class="sb-toggle-right" id="step4_1"><img src="images/resource_icon.png" alt="Resource Toolkit" /> Resource Toolkit</li>
             </ul>
         </div>
     </div>
@@ -26,17 +23,19 @@ error_reporting( 0 );
     $(document).ready(function(){
 
         $('#rightArrowButton').click(function(){
-            var currentPageTag = $('#currentPageTag').html();
+            /*var currentPageTag = $('#currentPageTag').html();
             if(currentPageTag === 'Step 4-1'){
                 $('#step4Content').load('showstep4_2content.php');
-            }
+            }*/
+            window.location.replace('step4_2fullstatic.php');
         });
 
         $('#leftArrowButton').click(function(){
-            var currentPageTag = $('#currentPageTag').html();
+            /*var currentPageTag = $('#currentPageTag').html();
             if(currentPageTag === 'Step 4-1'){
                 window.location.replace("step3.php");
-            }
+            }*/
+            window.location.replace('step3_4fullstatic.php');
         });
 
     });//end document.ready function

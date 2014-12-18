@@ -4,13 +4,14 @@
     $objControlName = "txtg3obj" . ($numItems + 1);
     $trRowId = "addMoreG3Obj" . ($numItems + 1);
 ?>
-<tr id="<?php echo $trRowId;?>">
+<tr id="<?php echo $trRowId;?>" class="added">
     <td colspan="2">
         <table border="0" width="100%" style="background: #fff">
             <tr>
                 <td width="20%">Obj:</td>
                 <td>
-                    <input type="text" id="<?php echo $objControlName;?>" name="<?php echo $objControlName;?>" class="g3Obj" size="70"/>
+                    <!--<input type="text" id="<?php //echo $objControlName;?>" name="<?php //echo $objControlName;?>" class="g3Obj" size="70"/>-->
+                    <textarea name="<?php echo $objControlName;?>" id="<?php echo $objControlName;?>" style="width:100%" rows="4" class="g3Obj"></textarea>
                 </td>
             </tr>
         </table>

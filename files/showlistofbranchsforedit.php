@@ -1,15 +1,26 @@
 <?php
+    @session_start();
     require_once 'district.php';
     require_once 'subdistrict.php';
+    require_once 'user.php';
+    require_once 'userdistrict.php';
 
-    $branchList = getAllSubDistricts();
-    if(mysql_num_rows($branchList)){
+    $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+    $branchList = null;
+    if($userObj->member_type = 'Admin'){
+      $branchList = getAllSubDistricts();
+    }else{
+      $districtId = getDistrictIdForUser($userObj->id);
+      $branchList = getAllSubDistrictsWithInThisDistrict($districtId);
+    }
+
+    if(!empty($branchList) && mysql_num_rows($branchList)){
         ?>
-            <table border="0" width="100%">
-                <tr>
-                    <td>District</td>
+            <table border="1" width="100%" rules="all">
+                <tr style="background:#eee;font-weight:bolder">
+                    <td style="display:none">District</td>
                     <td>Sub District Name</td>
-                    <td>Description</td>
+                    <td style="display:none">Description</td>
                     <td>Edit</td>
                 </tr>
                 <?php
@@ -18,9 +29,9 @@
                       $zoneObj = getDistrict($branchRow->district_id);
                       ?>
                           <tr>
-                              <td><?php echo $zoneObj->display_name;?></td>
+                              <td style="display:none"><?php echo $zoneObj->display_name;?></td>
                               <td><?php echo $branchRow->display_name;?></td>
-                              <td><?php echo $branchRow->description;?></td>
+                              <td style="display:none"><?php echo $branchRow->description;?></td>
                               <td>
                                   <a href="#.php" id="<?php echo $branchRow->id;?>" class="editBranchClass">Edit</a>
                               </td>
@@ -29,7 +40,7 @@
                               $divId = "branchEditDiv" . $branchRow->id;
                           ?>
                           <tr>
-                              <td colspan="4">
+                              <td colspan="2">
                                   <div id="<?php echo $divId;?>"></div>
                               </td>
                           </tr>

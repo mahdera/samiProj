@@ -1,14 +1,29 @@
-<h2>Edit Fn Action</h2>
 <?php
-    error_reporting( 0 );
+    //error_reporting( 0 );
     require_once 'files/fnaction.php';
     require_once 'files/fn.php';
-    $fnActionList = getAllFnActionsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    require_once 'files/user.php';
+    require_once 'files/usersubdistrict.php';
+    //$fnActionList = getAllFnActionsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    $fnActionList = null;
+
+    $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+    if($userObj->user_level == '02'){
+      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+      //$fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+      $fnActionList = getAllFnActionsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    }else if($userObj->user_level == '01'){
+      $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+      if(!empty($userObj)){
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+        $fnActionList = getAllFnActionsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+      }
+    }
+    if(!empty($fnActionList) && mysql_num_rows($fnActionList)){
 ?>
 <div id="fnActionDetailDiv">
-<table border="0" width="100%">
+<table border="1" width="100%" rules="all">
     <tr style="background: #ccc">
-        <td width="10%">Ser.No</td>
         <td>Fn</td>
         <td>Fn Action Text</td>
         <td>Action</td>
@@ -19,22 +34,23 @@
             $fnObj = getFn($fnActionRow->fn_id);
             ?>
             <tr>
-                <td><?php echo $ctr++;?></td>
-                <td><?php echo $fnObj->fn_name;?></td>
-                <td><?php echo $fnActionRow->action_text;?></td>
-                <td>
+                <td><?php echo stripslashes($fnObj->fn_name);?></td>
+                <td><?php echo stripslashes($fnActionRow->action_text);?></td>
+                <td align="right">
                     <?php
                         $editLinkId = $fnActionRow->id;
                         $editDivId = "editActionTextDiv" . $fnActionRow->id;
                         $deleteLinkId = $fnActionRow->id;
-                    ?>
+                    ?>                     
                     <a href="#.php" id="<?php echo $editLinkId;?>" class="editFnActionLinkId">Edit</a>
                     |
                     <a href="#.php" id="<?php echo $deleteLinkId;?>" class="deleteFnActionLinkId">Delete</a>
+                    |
+                    <a href="#.php" id="<?php echo $editLinkId;?>" class="closeFnActionLinkId">Close</a>
                 </td>
             </tr>
             <tr>
-                <td colspan="4">
+                <td colspan="3">
                     <div id="<?php echo $editDivId;?>"></div>
                 </td>
             </tr>
@@ -43,8 +59,23 @@
     ?>
 </table>
 </div>
+<?php
+}else{
+  ?>
+    <!--<div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>-->
+  <?php
+  require_once 'files/showlistofgoalsecondsmodified.php';
+}
+?>
 <script type="text/javascript">
     $(document).ready(function(){
+
+        $('.closeFnActionLinkId').click(function(){
+            var id = $(this).attr('id');
+            var editDivId = "editActionTextDiv" + id;
+            $('#'+editDivId).html('');
+        });
+
         $('.editFnActionLinkId').click(function(){
             var id = $(this).attr('id');
             var editDivId = "editActionTextDiv" + id;

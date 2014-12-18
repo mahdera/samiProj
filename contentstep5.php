@@ -8,7 +8,7 @@
         </div>
         <div id="resourcearea">
             <ul>
-                <li class="sb-toggle-right"><img src="images/resource_icon.png" alt="Resource Toolkit" /> Resource Toolkit</li>
+                <li class="sb-toggle-right" id="step5_1"><img src="images/resource_icon.png" alt="Resource Toolkit" /> Resource Toolkit</li>
             </ul>
         </div>
     </div>
@@ -23,17 +23,19 @@
     $(document).ready(function(){
 
         $('#rightArrowButton').click(function(){
-            var currentPageTag = $('#currentPageTag').html();
+            /*var currentPageTag = $('#currentPageTag').html();
             if(currentPageTag === 'Step 5-1'){
                 $('#step5Content').load('showstep5_2content.php');
-            }
+            }*/
+            window.location.replace('step5_2fullstatic.php');
         });
 
         $('#leftArrowButton').click(function(){
-            var currentPageTag = $('#currentPageTag').html();
+            /*var currentPageTag = $('#currentPageTag').html();
             if(currentPageTag === 'Step 5-1'){
                 window.location.replace("step4.php");
-            }
+            }*/
+            window.location.replace('step4_4fullstatic.php');
         });
 
     });//end document.ready function

@@ -1,7 +1,16 @@
 <?php
-    error_reporting( 0 );
-    session_start();
+@session_start();
+if(empty($_SESSION['USER_ID'])){
+  header("Location: login.php");
+}
+
+if($_SESSION['USER_ROLE_CODE'] === '01A'){
+  if(empty($_SESSION['SUB_DISTRICT_ID'])){
+    header("Location: nosubdistrictselected.php");
+  }
+}
 ?>
+
 <!--to be replaced when the next button is clicked-->
     <div id="topcontain">
         <div id="titlearea">
@@ -23,9 +32,6 @@
     <?php
         require_once 'importjsscripts.php';
     ?>
-    <div>
-        <h1>Th Check Boxes</h1>
-    </div>
     <div id="errorDiv"></div>
     <?php
         require_once 'files/showlistofthselectioncheckboxes.php';
@@ -49,7 +55,7 @@
                 });
                 selectedCheckBoxesIdDataString+="ctr="+(ctr-1);
                 /*if(ctr === 1){
-                    $('#errorDiv').html('<div class="notify notify-red"><span class="symbol icon-error"></span> You need to select at least one th value!</div>');
+                    $('#errorDiv').html('<div class="notify notify-red"><span class="symbol icon-error"></span> You need to select at least one value!</div>');
                     var divLoc = $('#errorDiv').offset();
                     $('html, body').animate({scrollTop: divLoc.top}, "slow");
                 }else*/{

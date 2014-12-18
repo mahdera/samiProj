@@ -7,23 +7,26 @@
         require_once 'assessment.php';
         require_once 'th.php';
         require_once 'user.php';
-        require_once 'userbranch.php';
-        require_once 'userzone.php';
+        require_once 'usersubdistrict.php';
+        //require_once 'userzone.php';
         $userObj = getUser($_SESSION['LOGGED_USER_ID']);
         $assessmentList = null;
-        /*if($userObj->user_level == 'Zone Level'){
-            $userZoneObj = getZoneInfoForUser($userObj->id);
-            $assessmentList = getAllAssessmentsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
-        }else{
-            $userBranchObj = getBranchInfoForUser($userObj->id);
-            $assessmentList = getAllAssessmentsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
-        }*/
-        $assessmentList = getAllAssessmentsModifiedBy($_SESSION['LOGGED_USER_ID']);
-        if(!empty($assessmentList)){
+        
+        if($userObj->user_level == '02'){
+            $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+            $assessmentList = getAllAssessmentsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+        }else if($userObj->user_level == '01'){
+          $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+          if($userObj != null){
+            $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+            $assessmentList = getAllAssessmentsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+          }
+        }
+        //$assessmentList = getAllAssessmentsModifiedBy($_SESSION['LOGGED_USER_ID']);
+        if(!empty($assessmentList) && mysql_num_rows($assessmentList)){
             ?>
-                <table border="0" width="100%">
+                <table border="1" width="100%" rules="all">
                     <tr style="background: #ccc">
-                        <td></td>
                         <td>Assessment Type</td>
                         <td>Assessment Date</td>
                         <td>Th(s)</td>
@@ -37,7 +40,6 @@
                             $divId = "assessmentEditDiv" . $assessmentRow->id;
                             ?>
                             <tr>
-                                <td></td>
                                 <td><?php echo $assessmentRow->assessment_type;?></td>
                                 <td><?php echo $assessmentRow->assessment_date;?></td>
                                 <td>
@@ -53,15 +55,15 @@
                                     ?>
                                 </td>
                                 <td><?php echo $assessmentRow->summary;?></td>
-                                <td>
-                                    <a href="#.php" id="<?php echo $assessmentRow->id;?>" class="editAssessmentLink">Edit</a>
+                                <td align="middle">
+                                    <a href="#.php" id="<?php echo $assessmentRow->id;?>" class="editAssessmentLink"><img src="images/edit.png" border="0" align="absmiddle"/></a>
                                 </td>
-                                <td>
-                                    <a href="#.php" id="<?php echo $assessmentRow->id;?>" class="deleteAssessmentLink">Delete</a>
+                                <td align="middle">
+                                    <a href="#.php" id="<?php echo $assessmentRow->id;?>" class="deleteAssessmentLink"><img src="images/delete.png" border="0" align="absmiddle"/></a>
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="7">
+                                <td colspan="6">
                                     <div id="<?php echo $divId;?>"></div>
                                 </td>
                             </tr>
@@ -70,6 +72,10 @@
                     ?>
                 </table>
             <?php
+        }else{
+          ?>
+          <div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>
+          <?php
         }
     ?>
 </div>
@@ -84,7 +90,7 @@
 
         $('.deleteAssessmentLink').click(function(){
             var id = $(this).attr('id');
-            if(window.confirm('Are you sure you want to delete this assessment record?')){
+            if(window.confirm('Are you sure you want to delete this record?')){
                 var dataString = "id="+id;
                 $.ajax({
                     url: 'files/deleteassessment.php',

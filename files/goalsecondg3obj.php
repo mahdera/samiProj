@@ -1,6 +1,6 @@
 <?php
     require_once 'dbconnection.php';
-    
+
     function saveGoalSecondG3Obj($goalSecondG3Id, $obj, $modifiedBy){
         try{
             $query = "insert into tbl_goal_second_g3_obj values(0, $goalSecondG3Id, '$obj', $modifiedBy, NOW())";
@@ -9,7 +9,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function updateGoalSecondG3Obj($id, $goalSecondG3Id, $obj, $modifiedBy){
         try{
             $query = "update tbl_goal_second_g3_obj set goal_second_g3_id = $goalSecondG3Id, obj = '$obj', modified_by = $modifiedBy, modification_date = NOW() where id = $id";
@@ -18,7 +18,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function deleteGoalSecondG3Obj($id){
         try{
             $query = "delete from tbl_goal_second_g3_obj where id = $id";
@@ -27,7 +27,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function getAllGoalSecondG3Objs(){
         try{
             $query = "select * from tbl_goal_second_g3_obj";
@@ -37,7 +37,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function getAllGoalSecondG3ObjsForThisGoalSecondG3Id($goalSecondG3Id){
         try{
             $query = "select * from tbl_goal_second_g3_obj where goal_second_g3_id = $goalSecondG3Id";
@@ -57,7 +57,7 @@
             $ex->getMessage();
         }
     }
-    
+
     function getGoalSecondG3Obj($id){
         try{
             $query = "select * from tbl_goal_second_g3_obj where id = $id";

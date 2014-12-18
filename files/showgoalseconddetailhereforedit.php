@@ -12,6 +12,7 @@
     require_once 'goalsecondfn.php';
 
     $fnId = $_GET['fn_id'];
+    //echo $fnId;
     $buttonId = "updateGoalSecondButton" . $fnId;
     $goalSecondFnRow = getGoalSecondFnUsingFnId($fnId);
     $goalSecondFnId = $goalSecondFnRow->id;
@@ -32,7 +33,7 @@
     $goalSecondG3ObjHiddenIdControlName=null;
 ?>
 <form>
-    <table border="0" width="100%">
+    <table border="0" width="100%" style="padding:5px">
         <?php
             $goalSecondG1Row = getGoalSecondG1ForGoalSecondFnId($goalSecondFnId);
             if(!empty($goalSecondG1Row)){
@@ -45,7 +46,8 @@
                         <?php
                           $g1ControlName = "edittxtg1" . $fnId;
                         ?>
-                        <input type="text" name="<?php echo $g1ControlName;?>" id="<?php echo $g1ControlName;?>" value="<?php echo $goalSecondG1Row->g1;?>" size="70"/>
+                        <!--<input type="text" name="<?php //echo $g1ControlName;?>" id="<?php //echo $g1ControlName;?>" value="<?php //echo $goalSecondG1Row->g1;?>" size="70"/>-->
+                        <textarea name="<?php echo $g1ControlName;?>" id="<?php echo $g1ControlName;?>" style="width:100%" rows="4"><?php echo $goalSecondG1Row->g1;?></textarea>
                     </td>
                 </tr>
             <?php
@@ -60,7 +62,8 @@
                                 <td></td>
                                 <td>Obj</td>
                                 <td>
-                                    <input type="text" name="<?php echo $goalSecondG1ObjControlName;?>" id="<?php echo $goalSecondG1ObjControlName;?>" value="<?php echo $goalSecondG1ObjRow->obj;?>" size="70"/>
+                                    <!--<input type="text" name="" id="" value="" size="70"/>-->
+                                    <textarea name="<?php echo $goalSecondG1ObjControlName;?>" id="<?php echo $goalSecondG1ObjControlName;?>" style="width:100%" rows="4"><?php echo $goalSecondG1ObjRow->obj;?></textarea>
                                     <input type="hidden" name="<?php echo $goalSecondG1ObjHiddenIdControlName;?>" id="<?php echo $goalSecondG1ObjHiddenIdControlName;?>" value="<?php echo $goalSecondG1ObjId;?>"/>
                                 </td>
                             </tr>
@@ -72,7 +75,7 @@
         ?>
     </table>
 
-    <table border="0" width="100%">
+    <table border="0" width="100%" style="padding:5px">
         <?php
             $goalSecondG2Row = getGoalSecondG2ForGoalSecondFnId($goalSecondFnId);
             if(!empty($goalSecondG2Row)){
@@ -85,7 +88,8 @@
                         <?php
                           $g2ControlName = "edittxtg2" . $fnId;
                         ?>
-                        <input type="text" name="<?php echo $g2ControlName;?>" id="<?php echo $g2ControlName;?>" value="<?php echo $goalSecondG2Row->g2;?>" size="70"/>
+                        <!--<input type="text" name="" id="" value="" size="70"/>-->
+                        <textarea name="<?php echo $g2ControlName;?>" id="<?php echo $g2ControlName;?>" style="width:100%" rows="4"><?php echo $goalSecondG2Row->g2;?></textarea>
                     </td>
                 </tr>
             <?php
@@ -100,7 +104,8 @@
                                 <td></td>
                                 <td>Obj</td>
                                 <td>
-                                    <input type="text" name="<?php echo $goalSecondG2ObjControlName;?>" id="<?php echo $goalSecondG2ObjControlName;?>" value="<?php echo $goalSecondG2ObjRow->obj;?>" size="70"/>
+                                    <!--<input type="text" name="" id="" value="" size="70"/>-->
+                                    <textarea name="<?php echo $goalSecondG2ObjControlName;?>" id="<?php echo $goalSecondG2ObjControlName;?>" style="width:100%" rows="4"><?php echo $goalSecondG2ObjRow->obj;?></textarea>
                                     <input type="hidden" name="<?php echo $goalSecondG2ObjHiddenIdControlName;?>" id="<?php echo $goalSecondG2ObjHiddenIdControlName;?>" value="<?php echo $goalSecondG2ObjId;?>"/>
                                 </td>
                             </tr>
@@ -112,7 +117,7 @@
         ?>
     </table>
 
-    <table border="0" width="100%">
+    <table border="0" width="100%" style="padding:5px">
         <?php
             $goalSecondG3Row = getGoalSecondG3ForGoalSecondFnId($goalSecondFnId);
             if(!empty($goalSecondG3Row)){
@@ -125,7 +130,8 @@
                         <?php
                           $g3ControlName = "edittxtg3" . $fnId;
                         ?>
-                        <input type="text" name="<?php echo $g3ControlName;?>" id="<?php echo $g3ControlName;?>" value="<?php echo $goalSecondG3Row->g3;?>" size="70"/>
+                        <!--<input type="text" name="" id="" value="" size="70"/>-->
+                        <textarea name="<?php echo $g3ControlName;?>" id="<?php echo $g3ControlName;?>" style="width:100%" rows="4"><?php echo $goalSecondG3Row->g3;?></textarea>
                     </td>
                 </tr>
             <?php
@@ -140,7 +146,8 @@
                                 <td></td>
                                 <td>Obj</td>
                                 <td>
-                                    <input type="text" name="<?php echo $goalSecondG3ObjControlName;?>" id="<?php echo $goalSecondG3ObjControlName;?>" value="<?php echo $goalSecondG3ObjRow->obj;?>" size="70"/>
+                                    <!--<input type="text" name="" id="" value="" size="70"/>-->
+                                    <textarea name="<?php echo $goalSecondG3ObjControlName;?>" id="<?php echo $goalSecondG3ObjControlName;?>" style="width:100%" rows="4"><?php echo $goalSecondG3ObjRow->obj;?></textarea>
                                     <input type="hidden" name="<?php echo $goalSecondG3ObjHiddenIdControlName;?>" id="<?php echo $goalSecondG3ObjHiddenIdControlName;?>" value="<?php echo $goalSecondG3ObjId;?>"/>
                                 </td>
                             </tr>

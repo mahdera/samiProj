@@ -1,6 +1,6 @@
 <h1>Change Password</h1>
 <form>
-    <table border="0" width="100%">
+    <table border="1" width="100%" rules="all">
         <tr>
             <td>Enter User-Id:</td>
             <td>
@@ -37,10 +37,10 @@
             if(userId !== "" && currentPassword !== "" && newPassword !== ""){
                 var dataString = "userId="+userId+"&currentPassword="+currentPassword+"&newPassword="+newPassword;
                 $.ajax({
-                    url: 'files/changepassword.php',        
+                    url: 'files/changepassword.php',
                     data: dataString,
                     type:'POST',
-                    success:function(response){                    
+                    success:function(response){
                         $('#myAccountDiv').html(response);
                     },
                     error:function(error){

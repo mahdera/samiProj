@@ -1,10 +1,10 @@
 <?php
-  error_reporting( 0 );
+  //error_reporting( 0 );
 ?>
 <h1>Add Team</h1>
-<a href="#.php" id="showTeamManagementFormLinkId">Show Form</a>
+<a href="#.php" id="showTeamManagementFormLinkId">Show</a>
 |
-<a href="#.php" id="hideTeamManagementFormLinkId">Hide Form</a>
+<a href="#.php" id="hideTeamManagementFormLinkId">Hide</a>
 
 <form id="teamManagementForm">
     <fieldset>
@@ -82,7 +82,11 @@
 <script type="text/javascript">
     $(document).ready(function(){
 
-        $('#teamManagementForm').hide();
+        $('#teamManagementForm').show();
+
+        $('html, body').animate({
+          'scrollTop' : $("#teamManagementForm").position().top
+        });
 
         $('#showTeamManagementFormLinkId').click(function(){
             $('#teamManagementForm').show('slow');

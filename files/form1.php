@@ -31,6 +31,7 @@
     function deleteForm1($id){
         try{
             $query = "delete from tbl_form_1 where id = $id";
+            //echo $query;
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -55,6 +56,47 @@
         } catch (Exception $ex) {
             $ex->getMessage();
         }
+    }
+
+    function getAllForm1ModifiedByUsingUserLevel($userLevel, $divisionId){
+        try{
+          $query = null;
+          if($userLevel == '02'){
+            $query = "select tbl_form_1.* from tbl_form_1, tbl_user_sub_district where " .
+            "tbl_form_1.modified_by = tbl_user_sub_district.user_id and " .
+            "tbl_user_sub_district.sub_district_id = $divisionId order by modification_date desc";
+          }else if($userLevel == 'Zone Level'){
+            $query = "select tbl_goal_first_th.* from tbl_goal_first_th, tbl_user_zone " .
+            "where tbl_goal_first_th.modified_by = tbl_user_zone.user_id and " .
+            "tbl_user_zone.zone_id = $divisionId  UNION select tbl_goal_first_th.* from tbl_goal_first_th, tbl_user_branch, tbl_branch " .
+            "where tbl_goal_first_th.modified_by = tbl_user_branch.user_id and ".
+            "tbl_user_branch.branch_id = tbl_branch.id and tbl_branch.zone_id = $divisionId order by modification_date desc";
+          }
+          //echo $query;
+          $result = read($query);
+          return $result;
+        }catch(Exception $ex){
+          $ex->getMessage();
+        }
+    }
+
+    function checkIfForm1RecordIsAlreadyEntered($userLevel, $divisionId){
+      try{
+        $query = null;
+        $cnt = 0;
+        if($userLevel == '02'){
+          $query = "select count(*) as cnt from tbl_form_1, tbl_user_sub_district where " .
+          "tbl_form_1.modified_by = tbl_user_sub_district.user_id and " .
+          "tbl_user_sub_district.sub_district_id = $divisionId";
+          //echo $query;
+          $result = read($query);
+          $resultRow = mysql_fetch_object($result);
+          $cnt = $resultRow->cnt;
+          return $cnt;
+        }
+      }catch(Exception $ex){
+        $ex->getMessage();
+      }
     }
 
     function getForm1($id){
@@ -101,6 +143,41 @@
         }catch(Exception $ex){
             $ex->getMessage();
         }
+    }
+
+    function getLatestForm1ModifiedByUserUsingLevel($userLevel, $divisionId){
+      $query = null;
+      try{
+        if($userLevel == '02'){
+          $query = "select tbl_form_1.* from tbl_form_1, tbl_user_sub_district where " .
+          "tbl_form_1.modified_by = tbl_user_sub_district.user_id and " .
+          "tbl_user_sub_district.sub_district_id = $divisionId order by modification_date desc limit 0,1";
+          $result = read($query);
+          $resultRow = mysql_fetch_object($result);
+          return $resultRow;
+        }else if($userLevel == '01'){
+          //code goes here for future need...
+        }
+      }catch(Exception $ex){
+        $ex->getMessage();
+      }
+    }
+
+    function getLatestForm1ModifiedByUserUsingLevelResultSet($userLevel, $divisionId){
+      $query = null;
+      try{
+        if($userLevel == '02'){
+          $query = "select tbl_form_1.* from tbl_form_1, tbl_user_sub_district where " .
+          "tbl_form_1.modified_by = tbl_user_sub_district.user_id and " .
+          "tbl_user_sub_district.sub_district_id = $divisionId order by modification_date desc limit 0,1";
+          $result = read($query);
+          return $result;
+        }else if($userLevel == '01'){
+          //code goes here for future need...
+        }
+      }catch(Exception $ex){
+        $ex->getMessage();
+      }
     }
 
     function getMaxFormIdForUser($modifiedBy){

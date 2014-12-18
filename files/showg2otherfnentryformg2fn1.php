@@ -18,10 +18,10 @@
             if(fnName !== ""){
                 var dataString = "fnName="+encodeURIComponent(fnName);
                 $.ajax({
-                    url: 'files/savefn.php',		
+                    url: 'files/savefn.php',
                     data: dataString,
                     type:'POST',
-                    success:function(response){                        
+                    success:function(response){
                         $('#g2fnObjOtherDiv').html(response);
                     },
                     error:function(error){

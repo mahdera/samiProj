@@ -1,6 +1,3 @@
-<?php
-error_reporting( 0 );
-?>
 <div class="content" id='introOneContent'>
     <!--to be replaced when the next button is clicked-->
     <div id="topcontain">
@@ -11,7 +8,9 @@ error_reporting( 0 );
         </div>
         <div id="resourcearea">
             <ul>
-                <li class="sb-toggle-right"><img src="images/resource_icon.png" alt="Resource Toolkit" /> Resource Toolkit</li>
+                <li class="sb-toggle-right" id="intro1">
+                  <img src="images/resource_icon.png" alt="Resource Toolkit"/> Resource Toolkit
+                </li>
             </ul>
         </div>
     </div>
@@ -35,12 +34,17 @@ error_reporting( 0 );
         });
 
         $('#leftArrowButton').click(function(){
-            var currentPageTag = $('#currentPageTag').html();
+            /*var currentPageTag = $('#currentPageTag').html();
             if(currentPageTag === 'Intro Two'){
                 window.location.replace("intro1.php");
             }else if(currentPageTag === 'Intro Three'){
                 window.location.replace("intro2.php");
-            }
+            }*/
+            window.location.replace('step6_5fullstatic.php');
+        });
+
+        $('#resourcetoolkit_intro_1_link').click(function(){
+          alert('tool kit for intro 1 clicked');
         });
 
     });//end document.ready function

@@ -1,6 +1,16 @@
 <?php
-  error_reporting( 0 );
+@session_start();
+if(empty($_SESSION['USER_ID'])){
+  header("Location: login.php");
+}
+
+if($_SESSION['USER_ROLE_CODE'] === '01A'){
+  if(empty($_SESSION['SUB_DISTRICT_ID'])){
+    header("Location: nosubdistrictselected.php");
+  }
+}
 ?>
+
     <!--to be replaced when the next button is clicked-->
     <div id="topcontain">
         <div id="titlearea">
@@ -22,9 +32,13 @@
     <?php
     require_once 'importjsscripts.php';
 ?>
+<div class="col-half left">
+    <h2>Edit Th Action</h2>
     <?php
-        require 'showformmanagementgrid.php';
+        //require 'showformmanagementgrid.php';
+        require_once 'editthactionmanagementform.php';
     ?>
+</div>
 <script type='text/javascript'>
     $(document).ready(function(){
 
