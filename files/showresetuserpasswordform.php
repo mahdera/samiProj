@@ -9,6 +9,18 @@
 <form>
     <table border="0" width="100%">
         <tr>
+            <td>First Name:</td>
+            <td><?php echo $userObj->first_name;?></td>
+        </tr>
+        <tr>
+            <td>Last Name:</td>
+            <td><?php echo $userObj->last_name;?></td>
+        </tr>
+        <tr>
+            <td>User Id:</td>
+            <td><?php echo $userObj->user_id;?></td>
+        </tr>
+        <tr>
             <td>Enter Password:</td>
             <td>
                 <input type="password" name="txtresetpassword" id="txtresetpassword"/>
