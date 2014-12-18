@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 12, 2014 at 03:13 PM
+-- Generation Time: Dec 18, 2014 at 01:25 PM
 -- Server version: 5.5.38
 -- PHP Version: 5.6.2
 
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 -- Database: `db_sami_proj`
 --
 drop database if exists db_sami_proj;
-create database db_sami_proj;
+create databaes db_sami_proj;
   use db_sami_proj;
   -- --------------------------------------------------------
 
@@ -29,19 +29,21 @@ create database db_sami_proj;
     `summary` text,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_assessment`
   --
 
   INSERT INTO `tbl_assessment` (`id`, `assessment_type`, `assessment_date`, `summary`, `modified_by`, `modification_date`) VALUES
-  (30, 'Ass 1', '2014-12-03', 'This is the summary info. updated. last edited by Bre.', 34, '2014-12-04 07:36:09'),
-  (31, 'Ass- Sami house', '2014-12-04', 'This is the summary info by Bre', 34, '2014-12-04 07:37:08'),
-  (34, 'Ass 1', '2014-12-04', 'This is the summary info by Wondisho', 34, '2014-12-04 07:56:05'),
+  (30, 'Ass 1', '2014-12-03', 'This is the summary info. updated. last edited by Bre. Buki', 34, '2014-12-13 08:18:43'),
+  (31, 'Ass- Sami house', '2014-12-04', 'This is the summary info by Bre. Mahi added something to it', 34, '2014-12-13 08:22:15'),
+  (34, 'Ass 1', '2014-12-04', 'This is the summary info by Wondisho - the great', 34, '2014-12-13 08:23:00'),
   (36, 'Ass 2', '2014-12-05', 'sdf', 34, '2014-12-05 08:51:14'),
-  (37, 'Ass 2', '2014-12-05', 'sdf', 34, '2014-12-05 08:51:14'),
-  (38, 'Ass 2', '2014-12-05', 'sdf', 34, '2014-12-05 08:51:14');
+  (37, 'Ass 2', '2014-12-05', 'sdf. Why is the summary similar?', 34, '2014-12-14 06:55:57'),
+  (38, 'Ass 2', '2014-12-05', 'sdf. This value is updated.', 34, '2014-12-13 22:48:32'),
+  (39, 'Ass 1', '2014-12-14', 'summary', 34, '2014-12-14 06:55:35'),
+  (40, 'Ass 1', '2014-12-14', 'summary', 34, '2014-12-14 06:55:35');
 
   -- --------------------------------------------------------
 
@@ -75,7 +77,7 @@ create database db_sami_proj;
     `th_id` bigint(20) NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_assessment_th`
@@ -91,7 +93,9 @@ create database db_sami_proj;
   (47, 34, 72, 34, '2014-12-04 07:56:05'),
   (48, 36, 74, 34, '2014-12-05 08:51:14'),
   (49, 36, 75, 34, '2014-12-05 08:51:14'),
-  (50, 36, 75, 34, '2014-12-05 08:51:14');
+  (50, 36, 75, 34, '2014-12-05 08:51:14'),
+  (51, 39, 77, 34, '2014-12-14 06:55:35'),
+  (52, 39, 78, 34, '2014-12-14 06:55:35');
 
   -- --------------------------------------------------------
 
@@ -129,7 +133,7 @@ create database db_sami_proj;
     `end_time` varchar(100) NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_event_calendar`
@@ -140,7 +144,8 @@ create database db_sami_proj;
   (3, 'another title', 'another body', '2014-12-10T08:00:00+01:00', '2014-12-10T08:30:00+01:00', 33, '2014-12-11 13:20:46'),
   (4, 'this is my plan for Friday', 'And this is the event detail that is going to take place on Friday. updated.', '2014-12-12T08:00:00+01:00', '2014-12-12T08:30:00+01:00', 33, '2014-12-11 13:59:00'),
   (5, 'I would like to....UPDATED', 'I would like to take a nap right now', '2014-12-11T14:00:00+01:00', '2014-12-11T14:30:00+01:00', 34, '2014-12-11 14:56:40'),
-  (6, 'This is the event', 'This is the body of the event', '2014-12-11T10:15:00+01:00', '2014-12-11T10:45:00+01:00', 33, '2014-12-11 22:07:29');
+  (6, 'This is the event', 'This is the body of the event, updated.', '2014-12-11T10:15:00+01:00', '2014-12-11T10:45:00+01:00', 33, '2014-12-14 09:28:43'),
+  (7, 'What a Day', 'This Saturday was amazing and I really enjoyed it.', '2014-12-13T09:15:00+01:00', '2014-12-13T09:45:00+01:00', 33, '2014-12-13 21:59:28');
 
   -- --------------------------------------------------------
 
@@ -200,22 +205,14 @@ create database db_sami_proj;
     `action_text` text,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_fn_action`
   --
 
   INSERT INTO `tbl_fn_action` (`id`, `fn_id`, `action_text`, `modified_by`, `modification_date`) VALUES
-  (40, 48, 'This is added by zele. Last updated by Mahder using Wondisho''s account.', 33, '2014-12-09 08:51:39'),
-  (41, 41, 'This is again added by zele. last updated by BRE!', 34, '2014-12-04 07:49:06'),
-  (42, 55, 'This fn action is added by Bre. I LOVE GIGI', 33, '2014-12-04 08:21:26'),
-  (43, 45, 'This FN action is added by wondisho!', 33, '2014-12-04 08:21:11'),
-  (44, 39, 'This is added. Last updated by Mahder now.', 34, '2014-12-09 08:31:08'),
-  (45, 47, 'Added again by Mahder using Wondisho''s account.', 34, '2014-12-09 08:31:34'),
-  (46, 43, 'Added for Ruka', 34, '2014-12-09 08:31:46'),
-  (47, 53, 'Added by Wondisho for Fhnction 10', 34, '2014-12-09 08:31:59'),
-  (48, 44, 'Added by Wondisho for Function 1', 34, '2014-12-09 08:32:11');
+  (1, 44, 'I am goin gto hit the bed', 44, '2014-12-17 23:02:47');
 
   -- --------------------------------------------------------
 
@@ -244,7 +241,7 @@ create database db_sami_proj;
   (41, 'Team\\''s Title Here', '2014-12-03', 'Team\\''s Plan Here', '1\\''s', '2\\''s', 29, '2014-12-03 16:57:15'),
   (42, 'title by zele', '2014-12-04', 'this is the plan by zele. last updated by Bre', 'q1', 'q2', 34, '2014-12-04 07:48:17'),
   (43, 'wondiso title', '2014-12-04', 'plan', '1', '2', 34, '2014-12-04 08:16:35'),
-  (44, 'jkh', '2014-12-05', 'kjhkj', 'jhgjhg', 'jhg', 34, '2014-12-05 08:57:45');
+  (44, 'jkh', '2014-12-05', 'kjhkj', 'jhgjhg', 'jhg. This is updated.', 44, '2014-12-18 06:51:58');
 
   -- --------------------------------------------------------
 
@@ -260,7 +257,7 @@ create database db_sami_proj;
     `column_value` text,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=167 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB AUTO_INCREMENT=175 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_form_1_q3`
@@ -287,14 +284,14 @@ create database db_sami_proj;
   (156, 43, 1, 2, '2', 34, '2014-12-04 08:16:35'),
   (157, 43, 1, 3, '3', 34, '2014-12-04 08:16:35'),
   (158, 43, 1, 4, '4', 34, '2014-12-04 08:16:35'),
-  (159, 44, 1, 1, '1', 34, '2014-12-05 08:57:45'),
-  (160, 44, 1, 2, '2', 34, '2014-12-05 08:57:45'),
-  (161, 44, 1, 3, '3', 34, '2014-12-05 08:57:45'),
-  (162, 44, 1, 4, '4', 34, '2014-12-05 08:57:45'),
-  (163, 44, 2, 1, '5', 34, '2014-12-05 08:57:45'),
-  (164, 44, 2, 2, '6', 34, '2014-12-05 08:57:45'),
-  (165, 44, 2, 3, '7', 34, '2014-12-05 08:57:45'),
-  (166, 44, 2, 4, '8', 34, '2014-12-05 08:57:45');
+  (167, 44, 1, 1, '1', 33, '2014-12-18 06:51:58'),
+  (168, 44, 1, 2, '2', 33, '2014-12-18 06:51:58'),
+  (169, 44, 1, 3, '3', 33, '2014-12-18 06:51:58'),
+  (170, 44, 1, 4, '4', 33, '2014-12-18 06:51:58'),
+  (171, 44, 2, 1, '5', 33, '2014-12-18 06:51:58'),
+  (172, 44, 2, 2, '6', 33, '2014-12-18 06:51:58'),
+  (173, 44, 2, 3, '7', 33, '2014-12-18 06:51:58'),
+  (174, 44, 2, 4, '8', 33, '2014-12-18 06:51:58');
 
   -- --------------------------------------------------------
 
@@ -310,7 +307,7 @@ create database db_sami_proj;
     `column_value` text,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB AUTO_INCREMENT=167 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_form_1_q4`
@@ -337,14 +334,14 @@ create database db_sami_proj;
   (148, 43, 1, 2, '6', 34, '2014-12-04 08:16:35'),
   (149, 43, 1, 3, '7', 34, '2014-12-04 08:16:35'),
   (150, 43, 1, 4, '8', 34, '2014-12-04 08:16:35'),
-  (151, 44, 1, 1, '9', 34, '2014-12-05 08:57:45'),
-  (152, 44, 1, 2, '10', 34, '2014-12-05 08:57:45'),
-  (153, 44, 1, 3, '11', 34, '2014-12-05 08:57:45'),
-  (154, 44, 1, 4, '12', 34, '2014-12-05 08:57:45'),
-  (155, 44, 2, 1, '13', 34, '2014-12-05 08:57:45'),
-  (156, 44, 2, 2, '14', 34, '2014-12-05 08:57:45'),
-  (157, 44, 2, 3, '15', 34, '2014-12-05 08:57:45'),
-  (158, 44, 2, 4, '16', 34, '2014-12-05 08:57:45');
+  (159, 44, 1, 1, '9', 33, '2014-12-18 06:51:58'),
+  (160, 44, 1, 2, '10', 33, '2014-12-18 06:51:58'),
+  (161, 44, 1, 3, '11', 33, '2014-12-18 06:51:58'),
+  (162, 44, 1, 4, '12', 33, '2014-12-18 06:51:58'),
+  (163, 44, 2, 1, '13', 33, '2014-12-18 06:51:58'),
+  (164, 44, 2, 2, '14', 33, '2014-12-18 06:51:58'),
+  (165, 44, 2, 3, '15', 33, '2014-12-18 06:51:58'),
+  (166, 44, 2, 4, '16', 33, '2014-12-18 06:51:58');
 
   -- --------------------------------------------------------
 
@@ -391,7 +388,7 @@ create database db_sami_proj;
   INSERT INTO `tbl_form_3` (`id`, `q3_1`, `modified_by`, `modification_date`) VALUES
   (11, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:13:35'),
   (15, 'form 3', 35, '2014-12-04 06:23:34'),
-  (16, 'Form 3 by wondisho', 34, '2014-12-04 08:17:02');
+  (16, 'Form 3 by wondisho', 44, '2014-12-18 06:41:18');
 
   -- --------------------------------------------------------
 
@@ -435,7 +432,7 @@ create database db_sami_proj;
   INSERT INTO `tbl_form_5` (`id`, `q5_1`, `modified_by`, `modification_date`) VALUES
   (9, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:13:38'),
   (12, 'This is form 5', 35, '2014-12-04 06:26:13'),
-  (13, 'This is form 5 by wondisho', 34, '2014-12-04 08:17:34');
+  (13, 'This is form 5 by wondisho. This better be working...', 44, '2014-12-18 07:03:41');
 
   -- --------------------------------------------------------
 
@@ -493,7 +490,7 @@ create database db_sami_proj;
     `q8_1` text NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_form_8`
@@ -502,7 +499,8 @@ create database db_sami_proj;
   INSERT INTO `tbl_form_8` (`id`, `q8_1`, `modified_by`, `modification_date`) VALUES
   (10, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:14:02'),
   (13, 'This''s Form 8', 35, '2014-12-04 06:26:52'),
-  (14, 'This is form 8 by wondisho', 34, '2014-12-04 08:18:09');
+  (14, 'This is form 8 by wondisho', 34, '2014-12-04 08:18:09'),
+  (15, 'hahaha. updated.', 34, '2014-12-14 07:09:42');
 
   -- --------------------------------------------------------
 
@@ -545,7 +543,6 @@ create database db_sami_proj;
 
   INSERT INTO `tbl_form_10` (`id`, `q10_1`, `modified_by`, `modification_date`) VALUES
   (9, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:14:05'),
-  (12, 'This''s is Form 10', 35, '2014-12-04 06:27:09'),
   (13, 'This is Form 10 added by Wondisho!', 33, '2014-12-04 08:10:22'),
   (14, 'Form 10 By Wondisho', 34, '2014-12-04 08:11:37'),
   (15, 'This is another form 10 by wondisho', 34, '2014-12-04 08:18:33'),
@@ -585,18 +582,7 @@ create database db_sami_proj;
     `fn_id` bigint(20) NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
-
-  --
-  -- Dumping data for table `tbl_goal_first_g1`
-  --
-
-  INSERT INTO `tbl_goal_first_g1` (`id`, `goal_first_th_id`, `g1`, `fn_id`, `modified_by`, `modification_date`) VALUES
-  (59, 61, 'g1', 44, 35, '2014-12-04 07:16:12'),
-  (60, 62, 'g1', 44, 35, '2014-12-04 07:15:55'),
-  (61, 63, 'g1', 43, 34, '2014-12-04 07:48:46'),
-  (62, 64, 'g1', 44, 33, '2014-12-04 08:20:15'),
-  (63, 65, 'jhg', 46, 34, '2014-12-05 08:47:37');
+  ) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=latin1;
 
   -- --------------------------------------------------------
 
@@ -611,23 +597,7 @@ create database db_sami_proj;
     `fn_id` bigint(20) NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=latin1;
-
-  --
-  -- Dumping data for table `tbl_goal_first_g1_obj_fn`
-  --
-
-  INSERT INTO `tbl_goal_first_g1_obj_fn` (`id`, `goal_first_g1_id`, `obj`, `fn_id`, `modified_by`, `modification_date`) VALUES
-  (68, 59, 'obj1', 45, 35, '2014-12-04 07:16:12'),
-  (69, 60, 'obj1', 53, 35, '2014-12-04 07:15:55'),
-  (70, 60, 'obj1.1', 52, 35, '2014-12-04 07:15:55'),
-  (71, 60, 'obj1.2', 41, 35, '2014-12-04 07:15:55'),
-  (72, 61, 'obj1', 38, 34, '2014-12-04 07:48:46'),
-  (73, 61, 'obj1.1', 45, 34, '2014-12-04 07:48:46'),
-  (74, 62, 'obj1', 53, 34, '2014-12-04 08:20:15'),
-  (75, 62, 'obj1.1', 45, 33, '2014-12-04 08:20:15'),
-  (76, 63, 'nv', 40, 34, '2014-12-05 08:47:37'),
-  (77, 63, 'n', 51, 34, '2014-12-05 08:47:37');
+  ) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=latin1;
 
   -- --------------------------------------------------------
 
@@ -642,18 +612,7 @@ create database db_sami_proj;
     `fn_id` bigint(20) NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
-
-  --
-  -- Dumping data for table `tbl_goal_first_g2`
-  --
-
-  INSERT INTO `tbl_goal_first_g2` (`id`, `goal_first_th_id`, `g2`, `fn_id`, `modified_by`, `modification_date`) VALUES
-  (59, 61, 'g2', 48, 35, '2014-12-04 07:16:12'),
-  (60, 62, 'g2', 45, 35, '2014-12-04 07:15:55'),
-  (61, 63, 'g2', 38, 34, '2014-12-04 07:48:46'),
-  (62, 64, 'g2', 46, 33, '2014-12-04 08:20:15'),
-  (63, 65, 'jhg', 51, 34, '2014-12-05 08:47:37');
+  ) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=latin1;
 
   -- --------------------------------------------------------
 
@@ -668,23 +627,7 @@ create database db_sami_proj;
     `fn_id` bigint(20) NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=latin1;
-
-  --
-  -- Dumping data for table `tbl_goal_first_g2_obj_fn`
-  --
-
-  INSERT INTO `tbl_goal_first_g2_obj_fn` (`id`, `goal_first_g2_id`, `obj`, `fn_id`, `modified_by`, `modification_date`) VALUES
-  (62, 59, 'obj2', 43, 35, '2014-12-04 07:16:12'),
-  (63, 60, 'obj2', 46, 35, '2014-12-04 07:15:55'),
-  (64, 60, 'obj2.1', 46, 35, '2014-12-04 07:15:55'),
-  (65, 60, 'obj2.2', 42, 35, '2014-12-04 07:15:55'),
-  (66, 61, 'obj2.1', 48, 34, '2014-12-04 07:48:46'),
-  (67, 61, 'obj2.2', 43, 34, '2014-12-04 07:48:46'),
-  (68, 62, 'obj2.1', 46, 33, '2014-12-04 08:20:15'),
-  (69, 62, 'obj2.3', 54, 33, '2014-12-04 08:20:15'),
-  (70, 63, 'mng', 43, 34, '2014-12-05 08:47:37'),
-  (71, 63, 'jgh', 52, 34, '2014-12-05 08:47:37');
+  ) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=latin1;
 
   -- --------------------------------------------------------
 
@@ -699,18 +642,7 @@ create database db_sami_proj;
     `fn_id` bigint(20) NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
-
-  --
-  -- Dumping data for table `tbl_goal_first_g3`
-  --
-
-  INSERT INTO `tbl_goal_first_g3` (`id`, `goal_first_th_id`, `g3`, `fn_id`, `modified_by`, `modification_date`) VALUES
-  (59, 61, 'g3', 47, 35, '2014-12-04 07:16:12'),
-  (60, 62, 'g3', 47, 35, '2014-12-04 07:15:55'),
-  (61, 63, 'g3', 52, 34, '2014-12-04 07:48:46'),
-  (62, 64, 'g3. Last updated from Edit Th action by Wondisho.', 48, 33, '2014-12-04 08:20:15'),
-  (63, 65, 'jhm', 38, 34, '2014-12-05 08:47:37');
+  ) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=latin1;
 
   -- --------------------------------------------------------
 
@@ -725,23 +657,7 @@ create database db_sami_proj;
     `fn_id` bigint(20) NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=latin1;
-
-  --
-  -- Dumping data for table `tbl_goal_first_g3_obj_fn`
-  --
-
-  INSERT INTO `tbl_goal_first_g3_obj_fn` (`id`, `goal_first_g3_id`, `obj`, `fn_id`, `modified_by`, `modification_date`) VALUES
-  (64, 59, 'obj3', 43, 35, '2014-12-04 07:16:12'),
-  (65, 60, 'obj3', 48, 35, '2014-12-04 07:15:55'),
-  (66, 60, 'obj3.1', 39, 35, '2014-12-04 07:15:55'),
-  (67, 60, 'obj3.2. How about updating you?', 55, 35, '2014-12-04 07:15:55'),
-  (68, 61, 'obj3.1', 53, 34, '2014-12-04 07:48:46'),
-  (69, 61, 'obj3.2', 39, 34, '2014-12-04 07:48:46'),
-  (70, 62, 'obj3.1', 52, 33, '2014-12-04 08:20:15'),
-  (71, 62, 'obj3.2. last updated by Wondisho.', 50, 33, '2014-12-04 08:20:15'),
-  (72, 63, 'jhg', 48, 34, '2014-12-05 08:47:37'),
-  (73, 63, 'jhg', 38, 34, '2014-12-05 08:47:37');
+  ) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=latin1;
 
   -- --------------------------------------------------------
 
@@ -755,18 +671,7 @@ create database db_sami_proj;
     `th_id` bigint(20) NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=latin1;
-
-  --
-  -- Dumping data for table `tbl_goal_first_th`
-  --
-
-  INSERT INTO `tbl_goal_first_th` (`id`, `goal_first_id`, `th_id`, `modified_by`, `modification_date`) VALUES
-  (61, 35, 66, 35, '2014-12-04 07:08:24'),
-  (62, 35, 67, 35, '2014-12-04 07:10:47'),
-  (63, 35, 69, 34, '2014-12-04 07:45:05'),
-  (64, 35, 73, 34, '2014-12-04 08:02:47'),
-  (65, 35, 68, 34, '2014-12-05 08:47:37');
+  ) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=latin1;
 
   -- --------------------------------------------------------
 
@@ -799,22 +704,7 @@ create database db_sami_proj;
     `fn_id` bigint(20) NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
-
-  --
-  -- Dumping data for table `tbl_goal_second_fn`
-  --
-
-  INSERT INTO `tbl_goal_second_fn` (`id`, `goal_second_id`, `fn_id`, `modified_by`, `modification_date`) VALUES
-  (3, 41, 41, 35, '2014-12-04 07:11:32'),
-  (4, 41, 48, 35, '2014-12-04 07:12:45'),
-  (5, 41, 55, 34, '2014-12-04 07:46:40'),
-  (6, 41, 45, 34, '2014-12-04 08:07:21'),
-  (7, 41, 44, 34, '2014-12-05 07:14:16'),
-  (8, 41, 53, 34, '2014-12-05 07:19:59'),
-  (9, 41, 43, 34, '2014-12-05 07:25:39'),
-  (10, 41, 47, 34, '2014-12-05 08:41:44'),
-  (11, 41, 39, 34, '2014-12-05 08:43:18');
+  ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
   -- --------------------------------------------------------
 
@@ -828,22 +718,7 @@ create database db_sami_proj;
     `g1` text NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
-
-  --
-  -- Dumping data for table `tbl_goal_second_g1`
-  --
-
-  INSERT INTO `tbl_goal_second_g1` (`id`, `goal_second_fn_id`, `g1`, `modified_by`, `modification_date`) VALUES
-  (3, 3, 'g1', 34, '2014-12-04 08:07:38'),
-  (4, 4, 'g1', 33, '2014-12-09 08:51:39'),
-  (5, 5, 'g1', 33, '2014-12-04 08:21:26'),
-  (6, 6, 'g1', 33, '2014-12-04 08:21:11'),
-  (7, 7, 'g1', 34, '2014-12-05 07:14:16'),
-  (8, 8, 'jhg', 34, '2014-12-05 07:19:59'),
-  (9, 9, 'gfh', 34, '2014-12-05 07:25:39'),
-  (10, 10, 'dflkj', 34, '2014-12-05 08:41:44'),
-  (11, 11, 'h', 34, '2014-12-05 08:43:18');
+  ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
   -- --------------------------------------------------------
 
@@ -857,30 +732,7 @@ create database db_sami_proj;
     `obj` text NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
-
-  --
-  -- Dumping data for table `tbl_goal_second_g1_obj`
-  --
-
-  INSERT INTO `tbl_goal_second_g1_obj` (`id`, `goal_second_g1_id`, `obj`, `modified_by`, `modification_date`) VALUES
-  (4, 3, 'obj1', 34, '2014-12-04 08:07:38'),
-  (5, 4, 'obj1.1', 34, '2014-12-09 08:51:39'),
-  (6, 4, 'obj1.2', 33, '2014-12-09 08:51:39'),
-  (7, 4, 'obj1.3', 33, '2014-12-09 08:51:39'),
-  (8, 5, 'obj1.1', 34, '2014-12-04 08:21:26'),
-  (9, 5, 'obj1.2', 33, '2014-12-04 08:21:26'),
-  (10, 6, 'obj1', 34, '2014-12-04 08:21:11'),
-  (11, 6, 'obj1.1', 33, '2014-12-04 08:21:11'),
-  (12, 7, 'obj1', 34, '2014-12-05 07:14:16'),
-  (13, 8, 'kjh', 34, '2014-12-05 07:19:59'),
-  (14, 9, 'hgf', 34, '2014-12-05 07:25:39'),
-  (15, 10, 'lkj', 34, '2014-12-05 08:41:44'),
-  (16, 10, 'jhg', 34, '2014-12-05 08:41:44'),
-  (17, 10, 'kjh', 34, '2014-12-05 08:41:44'),
-  (18, 11, 'jhg', 34, '2014-12-05 08:43:18'),
-  (19, 11, 'jh', 34, '2014-12-05 08:43:18'),
-  (20, 11, 'gjh', 34, '2014-12-05 08:43:18');
+  ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
   -- --------------------------------------------------------
 
@@ -894,22 +746,7 @@ create database db_sami_proj;
     `g2` text NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
-
-  --
-  -- Dumping data for table `tbl_goal_second_g2`
-  --
-
-  INSERT INTO `tbl_goal_second_g2` (`id`, `goal_second_fn_id`, `g2`, `modified_by`, `modification_date`) VALUES
-  (3, 3, 'g2', 33, '2014-12-04 08:07:38'),
-  (4, 4, 'g2', 33, '2014-12-09 08:51:39'),
-  (5, 5, 'g2', 33, '2014-12-04 08:21:26'),
-  (6, 6, 'g2', 33, '2014-12-04 08:21:11'),
-  (7, 7, 'g2', 34, '2014-12-05 07:14:16'),
-  (8, 8, 'jhg', 34, '2014-12-05 07:19:59'),
-  (9, 9, 'jhg', 34, '2014-12-05 07:25:39'),
-  (10, 10, 'jk', 34, '2014-12-05 08:41:44'),
-  (11, 11, 'ng', 34, '2014-12-05 08:43:18');
+  ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
   -- --------------------------------------------------------
 
@@ -923,28 +760,7 @@ create database db_sami_proj;
     `obj` text NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
-
-  --
-  -- Dumping data for table `tbl_goal_second_g2_obj`
-  --
-
-  INSERT INTO `tbl_goal_second_g2_obj` (`id`, `goal_second_g2_id`, `obj`, `modified_by`, `modification_date`) VALUES
-  (4, 3, 'obj2', 33, '2014-12-04 08:07:38'),
-  (5, 4, 'obj2.1', 33, '2014-12-09 08:51:39'),
-  (6, 4, 'obj2.2', 33, '2014-12-09 08:51:39'),
-  (7, 4, 'obj2.3', 33, '2014-12-09 08:51:39'),
-  (8, 5, 'obj2.1', 33, '2014-12-04 08:21:26'),
-  (9, 5, 'obj2.2', 33, '2014-12-04 08:21:26'),
-  (10, 6, 'obj2.1', 33, '2014-12-04 08:21:11'),
-  (11, 6, 'obj2.2', 33, '2014-12-04 08:21:11'),
-  (12, 7, 'obj2', 34, '2014-12-05 07:14:16'),
-  (13, 8, 'jhg', 34, '2014-12-05 07:19:59'),
-  (14, 9, 'jhg', 34, '2014-12-05 07:25:39'),
-  (15, 10, 'jhg', 34, '2014-12-05 08:41:44'),
-  (16, 11, 'jhg', 34, '2014-12-05 08:43:18'),
-  (17, 11, 'jhmg', 34, '2014-12-05 08:43:18'),
-  (18, 11, 'j', 34, '2014-12-05 08:43:18');
+  ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
   -- --------------------------------------------------------
 
@@ -958,22 +774,7 @@ create database db_sami_proj;
     `g3` text NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
-
-  --
-  -- Dumping data for table `tbl_goal_second_g3`
-  --
-
-  INSERT INTO `tbl_goal_second_g3` (`id`, `goal_second_fn_id`, `g3`, `modified_by`, `modification_date`) VALUES
-  (3, 3, 'g3', 33, '2014-12-04 08:07:38'),
-  (4, 4, 'g3', 33, '2014-12-09 08:51:39'),
-  (5, 5, 'g3', 33, '2014-12-04 08:21:26'),
-  (6, 6, 'g3', 33, '2014-12-04 08:21:11'),
-  (7, 7, 'g3', 34, '2014-12-05 07:14:16'),
-  (8, 8, 'ukjh', 34, '2014-12-05 07:19:59'),
-  (9, 9, 'jhg', 34, '2014-12-05 07:25:39'),
-  (10, 10, 'jhg', 34, '2014-12-05 08:41:44'),
-  (11, 11, 'hkjh', 34, '2014-12-05 08:43:18');
+  ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
   -- --------------------------------------------------------
 
@@ -987,33 +788,7 @@ create database db_sami_proj;
     `obj` text NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
-
-  --
-  -- Dumping data for table `tbl_goal_second_g3_obj`
-  --
-
-  INSERT INTO `tbl_goal_second_g3_obj` (`id`, `goal_second_g3_id`, `obj`, `modified_by`, `modification_date`) VALUES
-  (4, 3, 'obj3. last updated by Wondisho', 33, '2014-12-04 08:07:38'),
-  (5, 4, 'obj3.1', 33, '2014-12-09 08:51:39'),
-  (6, 4, 'obj3.2', 33, '2014-12-09 08:51:39'),
-  (7, 4, 'obj3.3', 33, '2014-12-09 08:51:39'),
-  (8, 5, 'obj3.1', 33, '2014-12-04 08:21:26'),
-  (9, 5, 'obj3.2', 33, '2014-12-04 08:21:26'),
-  (10, 6, 'obj3.1', 33, '2014-12-04 08:21:11'),
-  (11, 6, 'obj3.2. The last obj is updated by WONDISHO.', 33, '2014-12-04 08:21:11'),
-  (12, 7, 'obj3', 34, '2014-12-05 07:14:16'),
-  (13, 7, 'obj3.1', 34, '2014-12-05 07:14:16'),
-  (14, 7, 'obj3.2', 34, '2014-12-05 07:14:16'),
-  (15, 7, 'obj3.3', 34, '2014-12-05 07:14:16'),
-  (16, 8, 'kjh', 34, '2014-12-05 07:19:59'),
-  (17, 8, 'oiu', 34, '2014-12-05 07:19:59'),
-  (18, 9, 'jhg', 34, '2014-12-05 07:25:39'),
-  (19, 9, 'This is added.', 34, '2014-12-05 07:25:39'),
-  (20, 10, 'kjh', 34, '2014-12-05 08:41:44'),
-  (21, 11, 'kjh', 34, '2014-12-05 08:43:18'),
-  (22, 11, 'kjh', 34, '2014-12-05 08:43:18'),
-  (23, 11, 'jkh', 34, '2014-12-05 08:43:18');
+  ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
   -- --------------------------------------------------------
 
@@ -1046,7 +821,7 @@ create database db_sami_proj;
     `rs` text NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_risk`
@@ -1056,9 +831,10 @@ create database db_sami_proj;
   (24, 41, 'mg1', 'dr1', 'pr1', 'wa1', 'rs1', 22, '2014-11-22 23:03:03'),
   (25, 42, 'mg2', 'dr2', 'pr2', 'wa2', 'rs2', 22, '2014-11-22 23:03:23'),
   (35, 65, 'mg1', 'dr1', 'pr1', 'wa3', 'rs3', 29, '2014-12-03 16:48:20'),
-  (36, 66, 'mg1', 'dr1', 'pr1', 'wa2', 'rs4', 35, '2014-12-04 00:38:30'),
+  (36, 75, 'mg1', 'dr1', 'pr1', 'wa2', 'rs4', 34, '2014-12-13 08:28:39'),
   (37, 69, 'mg1', 'dr1', 'pr1', 'wa1', 'rs1', 34, '2014-12-04 07:43:15'),
-  (38, 73, 'mg1', 'dr1', 'pr1', 'wa1', 'rs1', 34, '2014-12-04 08:00:59');
+  (38, 73, 'mg1', 'dr1', 'pr1', 'wa1', 'rs1', 34, '2014-12-04 08:00:59'),
+  (39, 77, 'mg1', 'dr4', 'pr1', 'wa2', 'rs2', 34, '2014-12-14 07:03:55');
 
   -- --------------------------------------------------------
 
@@ -1074,7 +850,7 @@ create database db_sami_proj;
     `description` text NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` date NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_sub_district`
@@ -1082,12 +858,15 @@ create database db_sami_proj;
 
   INSERT INTO `tbl_sub_district` (`id`, `district_id`, `code`, `display_name`, `description`, `modified_by`, `modification_date`) VALUES
   (1, 1, 'First Sub District - FD i love u', 'First Sub District - FD i love u', '---', 33, '2014-12-12'),
-  (2, 1, 'Second Sub District - FD', 'Second Sub District - FD', '---', 0, '0000-00-00'),
+  (2, 1, 'Second Sub District - FD - updated. Final UPdate. I need to sleep', 'Second Sub District - FD - updated. Final UPdate. I need to sleep', '---', 33, '2014-12-15'),
   (3, 1, 'Sample Sub District - updated.', 'Sample Sub District - updated.', '---', 25, '2014-12-03'),
   (4, 1, 'My Other Sample Sub District Nov 11', 'My Other Sample Sub District Nov 11', '---', 33, '2014-12-11'),
   (5, 1, 'hi sub district', 'hi sub district', '---', 33, '2014-12-11'),
   (7, 1, '1247', '1247', '---', 33, '2014-12-12'),
-  (8, 1, '222', '222', '---', 33, '2014-12-11');
+  (8, 1, '222', '222', '---', 33, '2014-12-17'),
+  (9, 1, 'this is a new branch- final update. What the hell is wrong. 123', 'this is a new branch- final update. What the hell is wrong. 123', '---', 33, '2014-12-15'),
+  (13, 1, '111', '111', '---', 33, '2014-12-17'),
+  (14, 1, '333', '333', '---', 33, '2014-12-17');
 
   -- --------------------------------------------------------
 
@@ -1113,9 +892,9 @@ create database db_sami_proj;
 
   INSERT INTO `tbl_team` (`id`, `team_name`, `title`, `organization`, `email`, `phone`, `interest`, `modified_by`, `modification_date`) VALUES
   (1, 'TEam for Second Sub District', 'title of the team', 'organization of the team', 'email@gmail.com', '987987', 'Interest 2,Interest 5', 29, '2014-12-03 16:46:35'),
-  (3, 'Team name created by Zelalem. Last updated by Wondisho', 'This is the title of the team', 'this is the organization of the team', 'email@gmail.com', '97987987', 'Interest 1,Interest 2,Interest 6,', 34, '2014-12-04 07:55:20'),
+  (3, 'Team name created by Zelalem. Last updated by mahi', 'This is the title of the team', 'this is the organization of the team', 'email@gmail.com', '97987987', 'Interest 1,Interest 2,Interest 6,', 34, '2014-12-13 08:18:06'),
   (4, 'Team''s name by Bre', 'Title ', 'oganization ', 'breemail@gmail.com', '987987-000', 'Interest 1,', 34, '2014-12-04 07:35:17'),
-  (5, 'Team''s name by Wondisho', 'this is the title', 'organization', 'email@yahoo.com', '9875983743', 'Interest 5', 34, '2014-12-04 07:55:03');
+  (5, 'Team''s name by Wondisho', 'this is the title', 'organization', 'email@yahoo.com', '9875983743dflkd', 'Interest 5,', 34, '2014-12-14 06:54:56');
 
   -- --------------------------------------------------------
 
@@ -1142,7 +921,7 @@ create database db_sami_proj;
     `th_name` text NOT NULL,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_th`
@@ -1158,17 +937,20 @@ create database db_sami_proj;
   (55, 'Thlkdjfkdj', 22, '2014-11-28 14:46:06'),
   (56, 'jhgg', 22, '2014-11-28 14:47:18'),
   (65, 'First Th For Second District', 29, '2014-12-03 16:47:17'),
-  (66, 'Th1 created by Zele. Last updated by Bre and then wondisho', 34, '2014-12-04 07:59:25'),
-  (67, 'Th2 created by Zele. updated.', 34, '2014-12-04 07:36:09'),
-  (68, 'Th1 by bre', 34, '2014-12-04 07:37:08'),
-  (69, 'Th2 by bre', 34, '2014-12-04 07:37:08'),
-  (70, 'Th3 by bre', 34, '2014-12-04 07:37:08'),
-  (71, 'Th1 By Wondisho', 34, '2014-12-04 07:56:05'),
-  (72, 'Th2 By Wondisho', 34, '2014-12-04 07:56:05'),
+  (66, 'Th1 created by Zele. Last updated by Bre and then wondisho', 33, '2014-12-13 08:18:43'),
+  (67, 'Th2 created by Zele. updated.', 33, '2014-12-13 08:18:43'),
+  (68, 'Th1 by bre', 33, '2014-12-13 08:22:15'),
+  (69, 'Th2 by bre', 33, '2014-12-13 08:22:15'),
+  (70, 'Th3 by bre', 33, '2014-12-13 08:22:15'),
+  (71, 'Th1 By Wondisho', 33, '2014-12-13 08:23:00'),
+  (72, 'Th2 By Wondisho', 33, '2014-12-13 08:23:00'),
   (73, 'Final TH by wondisho', 34, '2014-12-04 08:00:08'),
   (74, 'sadf', 34, '2014-12-05 08:51:14'),
-  (75, 'sdf', 34, '2014-12-05 08:51:14'),
-  (76, 'sdf', 34, '2014-12-05 08:51:14');
+  (75, 'sdf - pefecto', 34, '2014-12-13 08:26:06'),
+  (76, 'sdf-123. Last Updated. again updated.', 34, '2014-12-14 07:03:20'),
+  (77, '1', 34, '2014-12-14 06:55:35'),
+  (78, '2', 34, '2014-12-14 06:55:35'),
+  (79, 'added th', 34, '2014-12-14 06:56:37');
 
   -- --------------------------------------------------------
 
@@ -1182,19 +964,7 @@ create database db_sami_proj;
     `action_text` text,
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
-
-  --
-  -- Dumping data for table `tbl_th_action`
-  --
-
-  INSERT INTO `tbl_th_action` (`id`, `th_id`, `action_text`, `modified_by`, `modification_date`) VALUES
-  (27, 43, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of UPDATED', 22, '2014-11-23 00:15:33'),
-  (28, 42, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of ', 22, '2014-11-23 00:06:20'),
-  (31, 69, 'This th action is added by Bre. last updated by Bre. Last updated by Wondisho!', 34, '2014-12-09 08:54:27'),
-  (32, 73, 'This TH action is added by District Admin Wondisho :)', 34, '2014-12-09 08:54:26'),
-  (33, 68, 'This is the action. This is updated by Mahder this morning. Love this.', 34, '2014-12-09 08:54:25'),
-  (34, 67, 'What the hell is going on... Last updated by Mahder using wondisho''s account', 34, '2014-12-09 08:53:33');
+  ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
   -- --------------------------------------------------------
 
@@ -1217,7 +987,7 @@ create database db_sami_proj;
     `modified_by` int(11) NOT NULL,
     `modification_date` datetime NOT NULL,
     `deleted` tinyint(1) NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_user`
@@ -1235,17 +1005,20 @@ create database db_sami_proj;
   (30, 'Tona', 'Biruk', 'tona@yahoo.com', 'tona', '202cb962ac59075b964b07152d234b70', '98786876', 'User', 'Blocked', '02', '02A', 2, '2014-12-03 23:48:49', 1),
   (31, 'Netsanet', 'Tadesse', 'netsanet.tadesse@gmail.com', 'netsanet', '202cb962ac59075b964b07152d234b70', '909809809', 'User', 'Blocked', '01', '01A', 2, '2014-12-03 23:46:20', 1),
   (32, 'Yelfign', 'Ejigu', 'aba@gmail.com', 'aba', '202cb962ac59075b964b07152d234b70', '0934893048', 'User', 'Blocked', '02', '02A', 2, '2014-12-03 23:49:03', 1),
-  (33, 'Wondwossen', 'Mulugeta', 'wondisho@yahoo.com', 'wondisho', '202cb962ac59075b964b07152d234b70', '0911607338', 'User', 'Active', '01', '01A', 2, '2014-12-03 23:51:48', 0),
-  (34, 'Berhanu', 'Teka', 'bre.teka@yahoo.com', 'bre', '202cb962ac59075b964b07152d234b70', '09876543', 'User', 'Active', '02', '02A', 2, '2014-12-03 23:54:41', 0),
-  (35, 'Zelalem', 'Yesigat', 'zelalem@gmail.com', 'zele', '202cb962ac59075b964b07152d234b70', '5714281901', 'User', 'Active', '02', '999', 33, '2014-12-11 21:33:34', 0),
+  (33, 'Wondwossen', 'Mulugeta', 'wondisho@yahoo.com', 'wondisho', '202cb962ac59075b964b07152d234b70', '0911607338', 'User', 'Active', '01', '01A', 33, '2014-12-16 08:12:32', 0),
+  (34, 'Berhanu', 'Teka', 'bre.teka@yahoo.com', 'bre', '202cb962ac59075b964b07152d234b70', '09876543', 'User', 'Active', '02', '02A', 33, '2014-12-16 06:49:59', 0),
+  (35, 'Zelalem', 'Yesigat', 'zelalem@gmail.com', 'zele', '202cb962ac59075b964b07152d234b70', '5714281901', 'User', 'Active', '02', '999', 33, '2014-12-16 06:47:49', 0),
   (36, 'Alemu', 'Aga', 'alemu@yahoo.com', 'alemu', '202cb962ac59075b964b07152d234b70', '0498594', 'User', 'Active', '01', '999', 33, '2014-12-11 22:51:42', 1),
   (37, 'Abdisa', 'Aga', 'abdisa@yahoo.com', 'abdisa', '202cb962ac59075b964b07152d234b70', '98798897', 'User', 'Active', '02', '02A', 33, '2014-12-11 21:20:11', 1),
   (38, 'Bemnet', 'Shemeles', 'bemenet@yahoo.com', 'bement', '202cb962ac59075b964b07152d234b70', '987987987', 'User', 'Active', '02', '999', 33, '2014-12-11 21:24:18', 1),
-  (39, 'Eyob', 'Delele', 'eyob@yahoo.com', 'eyob', '202cb962ac59075b964b07152d234b70', '343434', 'User', 'Active', '02', '02A', 34, '2014-12-12 06:39:09', 0),
+  (39, 'Eyob', 'Delele', 'eyob@yahoo.com', 'eyob', '202cb962ac59075b964b07152d234b70', '343434', 'User', 'Active', '02', '02A', 34, '2014-12-12 06:39:09', 1),
   (40, 'Betesegaw', 'Dereje', 'betese@yahoo.com', 'betese', '202cb962ac59075b964b07152d234b70', '094809384', 'User', 'Active', '02', '02A', 34, '2014-12-12 07:00:07', 0),
   (41, 'Samuel', 'Chisu', 'samichisu@yahoo.com', 'sami', '202cb962ac59075b964b07152d234b70', '098987', 'User', 'Active', '02', '02A', 33, '2014-12-12 07:12:15', 1),
   (42, 'Sami', 'Anbessa', 'samianbessa@yahoo.com', 'samia', '202cb962ac59075b964b07152d234b70', '09809809', 'User', 'Active', '02', '999', 33, '2014-12-12 07:12:58', 1),
-  (43, 'User Created', 'By Sami Chisu', 'usersami@chisu.com', 'samicu', '202cb962ac59075b964b07152d234b70', '0948598', 'User', 'Active', '02', '999', 41, '2014-12-12 07:37:01', 1);
+  (43, 'User Created', 'By Sami Chisu', 'usersami@chisu.com', 'samicu', '202cb962ac59075b964b07152d234b70', '0948598', 'User', 'Active', '02', '999', 41, '2014-12-12 07:37:01', 1),
+  (44, 'Andit', 'Setiyou', 'andit@gmail.com', 'andit', '202cb962ac59075b964b07152d234b70', 'ldkfjkj908', 'User', 'Active', '02', '999', 33, '2014-12-16 06:53:47', 0),
+  (45, 'Lela', 'Setiyou', 'lela@gmail.com', 'lela', '202cb962ac59075b964b07152d234b70', '(202) 374 313', 'User', 'Active', '01', '01A', 33, '2014-12-16 06:55:59', 0),
+  (46, 'Carima', 'Towson', 'carima@yahoo.com', 'carima', '202cb962ac59075b964b07152d234b70', '939393939393', 'User', 'Active', '01', '01A', 33, '2014-12-16 08:06:17', 0);
 
   -- --------------------------------------------------------
 
@@ -1257,7 +1030,7 @@ create database db_sami_proj;
     `id` int(11) NOT NULL,
     `district_id` int(11) NOT NULL,
     `user_id` int(11) NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_user_district`
@@ -1269,7 +1042,9 @@ create database db_sami_proj;
   (7, 1, 31),
   (8, 1, 22),
   (9, 1, 33),
-  (10, 1, 36);
+  (10, 1, 36),
+  (11, 1, 45),
+  (12, 1, 46);
 
   -- --------------------------------------------------------
 
@@ -1322,7 +1097,7 @@ create database db_sami_proj;
     `id` int(11) NOT NULL,
     `sub_district_id` int(11) NOT NULL,
     `user_id` int(11) NOT NULL
-  ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+  ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
   --
   -- Dumping data for table `tbl_user_sub_district`
@@ -1336,14 +1111,15 @@ create database db_sami_proj;
   (20, 1, 23),
   (21, 1, 30),
   (22, 1, 34),
-  (23, 1, 35),
   (24, 1, 37),
   (25, 3, 38),
   (26, 1, 39),
   (27, 1, 40),
   (28, 5, 41),
   (29, 5, 42),
-  (30, 5, 43);
+  (30, 5, 43),
+  (31, 1, 35),
+  (32, 1, 44);
 
   --
   -- Indexes for dumped tables
@@ -1485,7 +1261,7 @@ create database db_sami_proj;
   -- Indexes for table `tbl_goal_first_g2`
   --
   ALTER TABLE `tbl_goal_first_g2`
-  ADD PRIMARY KEY (`id`), ADD KEY `goal_first_id` (`goal_first_th_id`);
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `goal_first_th_id` (`goal_first_th_id`), ADD KEY `goal_first_id` (`goal_first_th_id`);
 
   --
   -- Indexes for table `tbl_goal_first_g2_obj_fn`
@@ -1497,7 +1273,7 @@ create database db_sami_proj;
   -- Indexes for table `tbl_goal_first_g3`
   --
   ALTER TABLE `tbl_goal_first_g3`
-  ADD PRIMARY KEY (`id`), ADD KEY `goal_first_id` (`goal_first_th_id`);
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `goal_first_th_id` (`goal_first_th_id`), ADD KEY `goal_first_id` (`goal_first_th_id`);
 
   --
   -- Indexes for table `tbl_goal_first_g3_obj_fn`
@@ -1509,7 +1285,7 @@ create database db_sami_proj;
   -- Indexes for table `tbl_goal_first_th`
   --
   ALTER TABLE `tbl_goal_first_th`
-  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `goal_first_id` (`goal_first_id`,`th_id`,`modified_by`), ADD KEY `tbl_goal_first_th_ibfk_2` (`th_id`), ADD KEY `tbl_goal_first_th_ibfk_3` (`modified_by`);
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `goal_first_id` (`goal_first_id`,`th_id`,`modified_by`), ADD UNIQUE KEY `th_id` (`th_id`), ADD KEY `tbl_goal_first_th_ibfk_2` (`th_id`), ADD KEY `tbl_goal_first_th_ibfk_3` (`modified_by`);
 
   --
   -- Indexes for table `tbl_goal_second`
@@ -1521,13 +1297,13 @@ create database db_sami_proj;
   -- Indexes for table `tbl_goal_second_fn`
   --
   ALTER TABLE `tbl_goal_second_fn`
-  ADD PRIMARY KEY (`id`), ADD KEY `tbl_goal_second_fn_ibfk_1` (`goal_second_id`), ADD KEY `tbl_goal_second_fn_ibfk_2` (`fn_id`), ADD KEY `tbl_goal_second_fn_ibfk_3` (`modified_by`);
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `fn_id` (`fn_id`), ADD KEY `tbl_goal_second_fn_ibfk_1` (`goal_second_id`), ADD KEY `tbl_goal_second_fn_ibfk_2` (`fn_id`), ADD KEY `tbl_goal_second_fn_ibfk_3` (`modified_by`);
 
   --
   -- Indexes for table `tbl_goal_second_g1`
   --
   ALTER TABLE `tbl_goal_second_g1`
-  ADD PRIMARY KEY (`id`), ADD KEY `goal_second_id` (`goal_second_fn_id`);
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `goal_second_fn_id` (`goal_second_fn_id`), ADD KEY `goal_second_id` (`goal_second_fn_id`);
 
   --
   -- Indexes for table `tbl_goal_second_g1_obj`
@@ -1539,7 +1315,7 @@ create database db_sami_proj;
   -- Indexes for table `tbl_goal_second_g2`
   --
   ALTER TABLE `tbl_goal_second_g2`
-  ADD PRIMARY KEY (`id`), ADD KEY `goal_second_id` (`goal_second_fn_id`);
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `goal_second_fn_id` (`goal_second_fn_id`), ADD KEY `goal_second_id` (`goal_second_fn_id`);
 
   --
   -- Indexes for table `tbl_goal_second_g2_obj`
@@ -1551,7 +1327,7 @@ create database db_sami_proj;
   -- Indexes for table `tbl_goal_second_g3`
   --
   ALTER TABLE `tbl_goal_second_g3`
-  ADD PRIMARY KEY (`id`), ADD KEY `goal_second_fn_id` (`goal_second_fn_id`);
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `goal_second_fn_id_2` (`goal_second_fn_id`), ADD KEY `goal_second_fn_id` (`goal_second_fn_id`);
 
   --
   -- Indexes for table `tbl_goal_second_g3_obj`
@@ -1605,7 +1381,7 @@ create database db_sami_proj;
   -- Indexes for table `tbl_user`
   --
   ALTER TABLE `tbl_user`
-  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `email` (`email`), ADD UNIQUE KEY `user_id` (`user_id`), ADD KEY `modified_by` (`modified_by`);
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `email` (`email`), ADD UNIQUE KEY `user_id` (`user_id`), ADD UNIQUE KEY `user_id_2` (`user_id`), ADD KEY `modified_by` (`modified_by`);
 
   --
   -- Indexes for table `tbl_user_district`
@@ -1639,7 +1415,7 @@ create database db_sami_proj;
   -- AUTO_INCREMENT for table `tbl_assessment`
   --
   ALTER TABLE `tbl_assessment`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
   --
   -- AUTO_INCREMENT for table `tbl_assessment_lookup`
   --
@@ -1649,7 +1425,7 @@ create database db_sami_proj;
   -- AUTO_INCREMENT for table `tbl_assessment_th`
   --
   ALTER TABLE `tbl_assessment_th`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=51;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
   --
   -- AUTO_INCREMENT for table `tbl_district`
   --
@@ -1659,7 +1435,7 @@ create database db_sami_proj;
   -- AUTO_INCREMENT for table `tbl_event_calendar`
   --
   ALTER TABLE `tbl_event_calendar`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
   --
   -- AUTO_INCREMENT for table `tbl_fn`
   --
@@ -1669,7 +1445,7 @@ create database db_sami_proj;
   -- AUTO_INCREMENT for table `tbl_fn_action`
   --
   ALTER TABLE `tbl_fn_action`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=49;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
   --
   -- AUTO_INCREMENT for table `tbl_form_1`
   --
@@ -1679,12 +1455,12 @@ create database db_sami_proj;
   -- AUTO_INCREMENT for table `tbl_form_1_q3`
   --
   ALTER TABLE `tbl_form_1_q3`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=167;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=175;
   --
   -- AUTO_INCREMENT for table `tbl_form_1_q4`
   --
   ALTER TABLE `tbl_form_1_q4`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=159;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=167;
   --
   -- AUTO_INCREMENT for table `tbl_form_2`
   --
@@ -1719,7 +1495,7 @@ create database db_sami_proj;
   -- AUTO_INCREMENT for table `tbl_form_8`
   --
   ALTER TABLE `tbl_form_8`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
   --
   -- AUTO_INCREMENT for table `tbl_form_9`
   --
@@ -1739,37 +1515,37 @@ create database db_sami_proj;
   -- AUTO_INCREMENT for table `tbl_goal_first_g1`
   --
   ALTER TABLE `tbl_goal_first_g1`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=64;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=66;
   --
   -- AUTO_INCREMENT for table `tbl_goal_first_g1_obj_fn`
   --
   ALTER TABLE `tbl_goal_first_g1_obj_fn`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=78;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=80;
   --
   -- AUTO_INCREMENT for table `tbl_goal_first_g2`
   --
   ALTER TABLE `tbl_goal_first_g2`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=64;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=66;
   --
   -- AUTO_INCREMENT for table `tbl_goal_first_g2_obj_fn`
   --
   ALTER TABLE `tbl_goal_first_g2_obj_fn`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=72;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=74;
   --
   -- AUTO_INCREMENT for table `tbl_goal_first_g3`
   --
   ALTER TABLE `tbl_goal_first_g3`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=64;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=66;
   --
   -- AUTO_INCREMENT for table `tbl_goal_first_g3_obj_fn`
   --
   ALTER TABLE `tbl_goal_first_g3_obj_fn`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=74;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=76;
   --
   -- AUTO_INCREMENT for table `tbl_goal_first_th`
   --
   ALTER TABLE `tbl_goal_first_th`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=66;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=68;
   --
   -- AUTO_INCREMENT for table `tbl_goal_second`
   --
@@ -1779,37 +1555,37 @@ create database db_sami_proj;
   -- AUTO_INCREMENT for table `tbl_goal_second_fn`
   --
   ALTER TABLE `tbl_goal_second_fn`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
   --
   -- AUTO_INCREMENT for table `tbl_goal_second_g1`
   --
   ALTER TABLE `tbl_goal_second_g1`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
   --
   -- AUTO_INCREMENT for table `tbl_goal_second_g1_obj`
   --
   ALTER TABLE `tbl_goal_second_g1_obj`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
   --
   -- AUTO_INCREMENT for table `tbl_goal_second_g2`
   --
   ALTER TABLE `tbl_goal_second_g2`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
   --
   -- AUTO_INCREMENT for table `tbl_goal_second_g2_obj`
   --
   ALTER TABLE `tbl_goal_second_g2_obj`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
   --
   -- AUTO_INCREMENT for table `tbl_goal_second_g3`
   --
   ALTER TABLE `tbl_goal_second_g3`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
   --
   -- AUTO_INCREMENT for table `tbl_goal_second_g3_obj`
   --
   ALTER TABLE `tbl_goal_second_g3_obj`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
   --
   -- AUTO_INCREMENT for table `tbl_responsibility`
   --
@@ -1819,12 +1595,12 @@ create database db_sami_proj;
   -- AUTO_INCREMENT for table `tbl_risk`
   --
   ALTER TABLE `tbl_risk`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=40;
   --
   -- AUTO_INCREMENT for table `tbl_sub_district`
   --
   ALTER TABLE `tbl_sub_district`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
   --
   -- AUTO_INCREMENT for table `tbl_team`
   --
@@ -1839,22 +1615,22 @@ create database db_sami_proj;
   -- AUTO_INCREMENT for table `tbl_th`
   --
   ALTER TABLE `tbl_th`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=77;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=80;
   --
   -- AUTO_INCREMENT for table `tbl_th_action`
   --
   ALTER TABLE `tbl_th_action`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=36;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
   --
   -- AUTO_INCREMENT for table `tbl_user`
   --
   ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=47;
   --
   -- AUTO_INCREMENT for table `tbl_user_district`
   --
   ALTER TABLE `tbl_user_district`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
   --
   -- AUTO_INCREMENT for table `tbl_user_level_lookup`
   --
@@ -1869,7 +1645,7 @@ create database db_sami_proj;
   -- AUTO_INCREMENT for table `tbl_user_sub_district`
   --
   ALTER TABLE `tbl_user_sub_district`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
   --
   -- Constraints for dumped tables
   --
@@ -2036,3 +1812,4 @@ create database db_sami_proj;
   ALTER TABLE `tbl_user_sub_district`
   ADD CONSTRAINT `tbl_user_sub_district_ibfk_1` FOREIGN KEY (`sub_district_id`) REFERENCES `tbl_sub_district` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `tbl_user_sub_district_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`) ON DELETE CASCADE;
+  

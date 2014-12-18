@@ -93,7 +93,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
 
-        showListOfForm1Records();
+        //showListOfForm1Records();
 
         $('txttitle').focus();
 

@@ -45,7 +45,7 @@ $('#leftArrowButton').click(function(){
 }else if(currentPageTag === 'Intro Three'){
 window.location.replace("intro2.php");
 }*/
-window.location.replace('step3_4fullstatic.php');
+window.location.replace('step3_3fullstatic.php');
 });
 
 });//end document.ready function

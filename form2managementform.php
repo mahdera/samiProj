@@ -1,6 +1,3 @@
-<?php
-error_reporting( 0 );
-?>
 <h2>Form 2</h2>
 <form>
     <table border="0" width="100%">
@@ -39,7 +36,7 @@ error_reporting( 0 );
 <script type="text/javascript">
     $(document).ready(function(){
 
-        showListOfForm2Records();
+        //showListOfForm2Records();
 
         $('#btnsaveform2').click(function(){
             var q2_1 = $('#q2_1').val();

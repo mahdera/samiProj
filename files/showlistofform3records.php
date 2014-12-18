@@ -14,12 +14,15 @@
 	$userObj = getUser($_SESSION['LOGGED_USER_ID']);
 	if($userObj->user_level == '02'){
 			$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-			$form3List = getAllForm3ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+			//$form3List = getAllForm3ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+			$form3List = getLatestForm3ModifiedByUsingUserLevelResultSet('02', $userSubDistrictObj->sub_district_id);
 	}else if($userObj->user_level == '01'){
 			$userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+			//var_dump($userObj);
 			if(!empty($userObj)){
 				$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-				$form3List = getAllForm3ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+				//$form3List = getAllForm3ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+				$form3List = getLatestForm3ModifiedByUsingUserLevelResultSet('02', $userSubDistrictObj->sub_district_id);
 			}
 	}
 	if(!empty($form3List) && mysql_num_rows($form3List)){
@@ -36,10 +39,10 @@
 			<tr>
 				<td><?php echo stripslashes($form3Row->q3_1);?></td>
 				<td align="middle">
-					<a href="#.php" class="form3EditLink" id="<?php echo $form3Row->id;?>"><img src="images/edit.png" border="0" align="absmiddle"/></a>
+					<a href="#.php" class="form3EditLink" id="<?php echo $form3Row->id;?>">Edit</a>
 				</td>
 				<td align="middle">
-					<a href="#.php" class="form3DeleteLink" id="<?php echo $form3Row->id;?>"><img src="images/delete.png" border="0" align="absmiddle"/></a>
+					<a href="#.php" class="form3DeleteLink" id="<?php echo $form3Row->id;?>">Delete</a>
 				</td>
 			</tr>
 			<?php

@@ -129,11 +129,29 @@
       $query = null;
       try{
         if($userLevel == '02'){
-          $query = "select tbl_form_1.* from tbl_form_1, tbl_user_sub_district where tbl_form_1.modified_by = " .
-          "tbl_user_sub_district.user_id and tbl_user_sub_district.sub_district_id = $divisionId order by tbl_form_1.modification_date desc limit 0,1";
-          $result = read($query);
+          $query = "select tbl_form_1.* from tbl_form_1, tbl_user_sub_district where " .
+          "tbl_form_1.modified_by = tbl_user_sub_district.user_id and " .
+          "tbl_user_sub_district.sub_district_id = $divisionId order by modification_date desc limit 0,1";
+          $result = read($query);          
           $resultRow = mysql_fetch_object($result);
           return $resultRow;
+        }else if($userLevel == '01'){
+          //code goes here for future need...
+        }
+      }catch(Exception $ex){
+        $ex->getMessage();
+      }
+    }
+
+    function getLatestForm1ModifiedByUserUsingLevelResultSet($userLevel, $divisionId){
+      $query = null;
+      try{
+        if($userLevel == '02'){
+          $query = "select tbl_form_1.* from tbl_form_1, tbl_user_sub_district where " .
+          "tbl_form_1.modified_by = tbl_user_sub_district.user_id and " .
+          "tbl_user_sub_district.sub_district_id = $divisionId order by modification_date desc limit 0,1";
+          $result = read($query);
+          return $result;
         }else if($userLevel == '01'){
           //code goes here for future need...
         }

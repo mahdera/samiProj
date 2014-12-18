@@ -8,7 +8,9 @@
             <tr style="background:#fff">
                 <td><a href="#.php" id="showForm1Link">Form 1</a></td>
                 <td align="middle">
-                    <a href="#.php">Edit</a> | <a href="#.php" id="hideForm1Link">Close</a>
+                    <a href="#.php" id="editForm1Link">Edit</a>
+                    |
+                    <a href="#.php" id="hideForm1Link">Close</a>
                 </td>
             </tr>
             <tr>
@@ -19,7 +21,7 @@
             <tr style="background:#fff">
                 <td><a href="#.php" id="showForm2Link">Form 2</a></td>
                 <td align="middle">
-                    <a href="#.php" id="">Edit</a>
+                    <a href="#.php" id="editForm2Link">Edit</a>
                     |
                     <a href="#.php" id="hideForm2Link">Close</a>
                 </td>
@@ -30,9 +32,10 @@
                 </td>
             </tr>
             <tr style="background:#fff">
-                <td>Form 3</td>
+                <td><a href="#.php" id="showForm3Link">Form 3</a></td>
                 <td align="middle">
-                    <a href="#.php" id="showForm3Link"><img src="images/open.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="hideForm3Link"><img src="images/close.png" border="0" align="absmiddle"/></a>
+                    <a href="#.php" id="editForm3Link">Edit</a>
+                    <a href="#.php" id="hideForm3Link">Close</a>
                 </td>
             </tr>
             <tr>
@@ -41,9 +44,11 @@
                 </td>
             </tr>
             <tr style="background:#fff">
-                <td>Form 4</td>
+                <td><a href="#.php" id="showForm4Link">Form 4</a></td>
                 <td align="middle">
-                    <a href="#.php" id="showForm4Link"><img src="images/open.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="hideForm4Link"><img src="images/close.png" border="0" align="absmiddle"/></a>
+                    <a href="#.php" id="editForm4Link">Edit</a>
+                    |
+                    <a href="#.php" id="hideForm4Link">Close</a>
                 </td>
             </tr>
             <tr>
@@ -52,9 +57,11 @@
                 </td>
             </tr>
             <tr style="background:#fff">
-                <td>Form 5</td>
+                <td><a href="#.php" id="showForm5Link">Form 5</a></td>
                 <td align="middle">
-                    <a href="#.php" id="showForm5Link"><img src="images/open.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="hideForm5Link"><img src="images/close.png" border="0" align="absmiddle"/></a>
+                    <a href="#.php" id="editForm5Link">Edit</a>
+                    |
+                    <a href="#.php" id="hideForm5Link">Close</a>
                 </td>
             </tr>
             <tr>
@@ -63,9 +70,11 @@
                 </td>
             </tr>
             <tr style="background:#fff">
-                <td>Form 6</td>
+                <td><a href="#.php" id="showForm6Link">Form 6</a></td>
                 <td align="middle">
-                    <a href="#.php" id="showForm6Link"><img src="images/open.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="hideForm6Link"><img src="images/close.png" border="0" align="absmiddle"/></a>
+                    <a href="#.php" id="editForm6Link">Edit</a>
+                    |
+                    <a href="#.php" id="hideForm6Link">Close</a>
                 </td>
             </tr>
             <tr>
@@ -74,9 +83,11 @@
                 </td>
             </tr>
             <tr style="background:#fff">
-                <td>Form 7</td>
+                <td><a href="#.php" id="showForm7Link">Form 7</a></td>
                 <td align="middle">
-                    <a href="#.php" id="showForm7Link"><img src="images/open.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="hideForm7Link"><img src="images/close.png" border="0" align="absmiddle"/></a>
+                    <a href="#.php" id="editForm7Link">Edit</a>
+                    |
+                    <a href="#.php" id="hideForm7Link">Close</a>
                 </td>
             </tr>
             <tr>
@@ -85,9 +96,11 @@
                 </td>
             </tr>
             <tr style="background:#fff">
-                <td>Form 8</td>
+                <td><a href="#.php" id="showForm8Link">Form 8</a></td>
                 <td align="middle">
-                    <a href="#.php" id="showForm8Link"><img src="images/open.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="hideForm8Link"><img src="images/close.png" border="0" align="absmiddle"/></a>
+                    <a href="#.php" id="editForm8Link">Edit</a>
+                    |
+                    <a href="#.php" id="hideForm8Link">Close</a>
                 </td>
             </tr>
             <tr>
@@ -96,9 +109,11 @@
                 </td>
             </tr>
             <tr style="background:#fff">
-                <td>Form 9</td>
+                <td><a href="#.php" id="showForm9Link">Form 9</a></td>
                 <td align="middle">
-                    <a href="#.php" id="showForm9Link"><img src="images/open.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="hideForm9Link"><img src="images/close.png" border="0" align="absmiddle"/></a>
+                    <a href="#.php" id="editForm9Link">Edit</a>
+                    |
+                    <a href="#.php" id="hideForm9Link">Close</a>
                 </td>
             </tr>
             <tr>
@@ -107,9 +122,11 @@
                 </td>
             </tr>
             <tr style="background:#fff">
-                <td>Form 10</td>
+                <td><a href="#.php" id="showForm10Link">Form 10</a></td>
                 <td align="middle">
-                    <a href="#.php" id="showForm10Link"><img src="images/open.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="hideForm10Link"><img src="images/close.png" border="0" align="absmiddle"/></a>
+                    <a href="#.php" id="editForm10Link">Edit</a>
+                    |
+                    <a href="#.php" id="hideForm10Link">Close</a>
                 </td>
             </tr>
             <tr>
@@ -125,45 +142,86 @@
             $('#form1Div').load('form1managementform.php');
         });
 
+        $('#editForm1Link').click(function(){
+            $('#form1Div').load('files/showlistofform1records.php');
+        });
+
         $('#showForm2Link').click(function(){
             $('#form2Div').load('form2managementform.php');
+        });
+
+        $('#editForm2Link').click(function(){
+            $('#form2Div').load('files/showlistofform2records.php');
         });
 
         $('#showForm3Link').click(function(){
             $('#form3Div').load('form3managementform.php');
         });
 
+        $('#editForm3Link').click(function(){
+            $('#form3Div').load('files/showlistofform3records.php');
+        });
+
         $('#showForm4Link').click(function(){
             $('#form4Div').load('form4managementform.php');
+        });
+
+        $('#editForm4Link').click(function(){
+          $('#form4Div').load('files/showlistofform4records.php');
         });
 
         $('#showForm5Link').click(function(){
             $('#form5Div').load('form5managementform.php');
         });
 
+        $('#editForm5Link').click(function(){
+          $('#form5Div').load('files/showlistofform5records.php');
+        });
+
         $('#showForm6Link').click(function(){
             $('#form6Div').load('form6managementform.php');
+        });
+
+        $('#editForm6Link').click(function(){
+          $('#form6Div').load('files/showlistofform6records.php');
         });
 
         $('#showForm7Link').click(function(){
             $('#form7Div').load('form7managementform.php');
         });
 
+        $('#editForm7Link').click(function(){
+          $('#form7Div').load('files/showlistofform7records.php');
+        });
+
         $('#showForm8Link').click(function(){
             $('#form8Div').load('form8managementform.php');
+        });
+
+        $('#editForm8Link').click(function(){
+          $('#form8Div').load('files/showlistofform8records.php');
         });
 
         $('#showForm9Link').click(function(){
             $('#form9Div').load('form9managementform.php');
         });
 
+        $('#editForm9Link').click(function(){
+          $('#form9Div').load('files/showlistofform9records.php');
+        });
+
         $('#showForm10Link').click(function(){
             $('#form10Div').load('form10managementform.php');
+        });
+
+        $('#editForm10Link').click(function(){
+          $('#form10Div').load('files/showlistofform10records.php');
         });
 
         $('#hideForm1Link').click(function(){
             $('#form1Div').html('');
         });
+
 
         $('#hideForm2Link').click(function(){
             $('#form2Div').html('');
