@@ -12,12 +12,14 @@
 	$userObj = getUser($_SESSION['LOGGED_USER_ID']);
 	if($userObj->user_level == '02'){
 		$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-		$form10List = getAllForm10ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+		//$form10List = getAllForm10ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+		$form10List = getLatestForm10ModifiedByUsingUserLevelResultSet('02', $userSubDistrictObj->sub_district_id);
 	}else if($userObj->user_level == '01'){
 		$userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
 		if(!empty($userObj)){
 			$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-			$form10List = getAllForm10ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+			//$form10List = getAllForm10ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+			$form10List = getLatestForm10ModifiedByUsingUserLevelResultSet('02', $userSubDistrictObj->sub_district_id);
 		}
 	}
 	//$form10List = getAllForm10sModifiedBy($_SESSION['LOGGED_USER_ID']);
@@ -35,10 +37,10 @@
 			<tr>
 				<td><?php echo $form10Row->q10_1;?></td>
 				<td align="middle">
-					<a href="#.php" class="form10EditLink" id="<?php echo $form10Row->id;?>"><img src="images/edit.png" border="0" align="absmiddle"/></a>
+					<a href="#.php" class="form10EditLink" id="<?php echo $form10Row->id;?>">Edit</a>
 				</td>
 				<td align="middle">
-					<a href="#.php" class="form10DeleteLink" id="<?php echo $form10Row->id;?>"><img src="images/delete.png" border="0" align="absmiddle"/></a>
+					<a href="#.php" class="form10DeleteLink" id="<?php echo $form10Row->id;?>">Delete</a>
 				</td>
 			</tr>
 			<?php
@@ -71,7 +73,19 @@
 		$('.form10DeleteLink').click(function(){
 			if(window.confirm('Are you sure you want to delete this record?')){
 				var id = $(this).attr('id');
-				$('#form10ManagementDetailDiv').load('files/deletethisform10.php?id='+id);
+				//$('#form10ManagementDetailDiv').load('files/deletethisform10.php?id='+id);
+				dataString = "id="+id;
+				$.ajax({
+					url: 'files/deletethisform10.php',
+					data: dataString,
+					type:'GET',
+					success:function(response){
+						$('#form10Div').html(response);
+					},
+					error:function(error){
+						alert(error);
+					}
+				});
 			}
 		});
 	});//end document.ready function

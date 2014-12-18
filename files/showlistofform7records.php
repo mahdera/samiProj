@@ -12,12 +12,14 @@
 	$userObj = getUser($_SESSION['LOGGED_USER_ID']);
 	if($userObj->user_level == '02'){
 		$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-		$form7List = getAllForm7ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+		//$form7List = getAllForm7ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+		$form7List = getLatestForm7ModifiedByUsingUserLevelResultSet('02', $userSubDistrictObj->sub_district_id);
 	}else if($userObj->user_level == '01'){
 		$userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
 		if(!empty($userObj)){
 			$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-			$form7List = getAllForm7ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+			//$form7List = getAllForm7ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+			$form7List = getLatestForm7ModifiedByUsingUserLevelResultSet('02', $userSubDistrictObj->sub_district_id);
 		}
 	}
 	//$form7List = getAllForm7sModifiedBy($_SESSION['LOGGED_USER_ID']);
@@ -35,10 +37,10 @@
 			<tr>
 				<td><?php echo stripslashes($form7Row->q7_1);?></td>
 				<td align="middle">
-					<a href="#.php" class="form7EditLink" id="<?php echo $form7Row->id;?>"><img src="images/edit.png" border="0" align="absmiddle"/></a>
+					<a href="#.php" class="form7EditLink" id="<?php echo $form7Row->id;?>">Edit</a>
 				</td>
 				<td align="middle">
-					<a href="#.php" class="form7DeleteLink" id="<?php echo $form7Row->id;?>"><img src="images/delete.png" border="0" align="absmiddle"/></a>
+					<a href="#.php" class="form7DeleteLink" id="<?php echo $form7Row->id;?>">Delete</a>
 				</td>
 			</tr>
 			<?php
@@ -71,7 +73,19 @@
 		$('.form7DeleteLink').click(function(){
 			if(window.confirm('Are you sure you want to delete this record?')){
 				var id = $(this).attr('id');
-				$('#form7ManagementDetailDiv').load('files/deletethisform7.php?id='+id);
+				//$('#form7ManagementDetailDiv').load('files/deletethisform7.php?id='+id);
+				dataString = "id="+id;
+				$.ajax({
+					url: 'files/deletethisform7.php',
+					data: dataString,
+					type:'GET',
+					success:function(response){
+						$('#form7Div').html(response);
+					},
+					error:function(error){
+						alert(error);
+					}
+				});
 			}
 		});
 	});//end document.ready function

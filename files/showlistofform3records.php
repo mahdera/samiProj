@@ -75,7 +75,19 @@
 		$('.form3DeleteLink').click(function(){
 			if(window.confirm('Are you sure you want to delete this record?')){
 				var id = $(this).attr('id');
-				$('#form3ManagementDetailDiv').load('files/deletethisform3.php?id='+id);
+				//$('#form3ManagementDetailDiv').load('files/deletethisform3.php?id='+id);
+				dataString = "id="+id;
+				$.ajax({
+					url: 'files/deletethisform3.php',
+					data: dataString,
+					type:'GET',
+					success:function(response){
+						$('#form3Div').html(response);
+					},
+					error:function(error){
+						alert(error);
+					}
+				});
 			}
 		});
 	});//end document.ready function

@@ -14,8 +14,8 @@ SET time_zone = "+00:00";
 -- Database: `db_sami_proj`
 --
 drop database if exists db_sami_proj;
-create databaes db_sami_proj;
-  use db_sami_proj;
+create database db_sami_proj;
+use db_sami_proj;
   -- --------------------------------------------------------
 
   --
@@ -1812,4 +1812,3 @@ create databaes db_sami_proj;
   ALTER TABLE `tbl_user_sub_district`
   ADD CONSTRAINT `tbl_user_sub_district_ibfk_1` FOREIGN KEY (`sub_district_id`) REFERENCES `tbl_sub_district` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `tbl_user_sub_district_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`) ON DELETE CASCADE;
-  

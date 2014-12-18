@@ -73,7 +73,19 @@
 		$('.form6DeleteLink').click(function(){
 			if(window.confirm('Are you sure you want to delete this record?')){
 				var id = $(this).attr('id');
-				$('#form6ManagementDetailDiv').load('files/deletethisform6.php?id='+id);
+				//$('#form6ManagementDetailDiv').load('files/deletethisform6.php?id='+id);
+				dataString = "id="+id;
+				$.ajax({
+					url: 'files/deletethisform6.php',
+					data: dataString,
+					type:'GET',
+					success:function(response){
+						$('#form6Div').html(response);
+					},
+					error:function(error){
+						alert(error);
+					}
+				});
 			}
 		});
 	});//end document.ready function

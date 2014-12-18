@@ -77,7 +77,19 @@ if(!empty($form2List) && mysql_num_rows($form2List)){
 		$('.form2DeleteLink').click(function(){
 			if(window.confirm('Are you sure you want to delete this record?')){
 				var id = $(this).attr('id');
-				$('#form2ManagementDetailDiv').load('files/deletethisform2.php?id='+id);
+				//$('#form2ManagementDetailDiv').load('files/deletethisform2.php?id='+id);
+				dataString = "id="+id;
+				$.ajax({
+					url: 'files/deletethisform2.php',
+					data: dataString,
+					type:'GET',
+					success:function(response){
+						$('#form2Div').html(response);
+					},
+					error:function(error){
+						alert(error);
+					}
+				});
 			}
 		});
 	});//end document.ready function

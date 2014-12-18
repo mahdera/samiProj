@@ -133,4 +133,23 @@
         $ex->getMessage();
       }
     }
+
+    function checkIfForm2RecordIsAlreadyEntered($userLevel, $divisionId){
+      try{
+        $query = null;
+        $cnt = 0;
+        if($userLevel == '02'){
+          $query = "select count(*) as cnt from tbl_form_2, tbl_user_sub_district where " .
+          "tbl_form_2.modified_by = tbl_user_sub_district.user_id and " .
+          "tbl_user_sub_district.sub_district_id = $divisionId";
+          //echo $query;
+          $result = read($query);
+          $resultRow = mysql_fetch_object($result);
+          $cnt = $resultRow->cnt;
+          return $cnt;
+        }
+      }catch(Exception $ex){
+        $ex->getMessage();
+      }
+    }
 ?>

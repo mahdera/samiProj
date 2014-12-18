@@ -31,6 +31,7 @@
     function deleteForm1($id){
         try{
             $query = "delete from tbl_form_1 where id = $id";
+            //echo $query;
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -77,6 +78,25 @@
         }catch(Exception $ex){
           $ex->getMessage();
         }
+    }
+
+    function checkIfForm1RecordIsAlreadyEntered($userLevel, $divisionId){
+      try{
+        $query = null;
+        $cnt = 0;
+        if($userLevel == '02'){
+          $query = "select count(*) as cnt from tbl_form_1, tbl_user_sub_district where " .
+          "tbl_form_1.modified_by = tbl_user_sub_district.user_id and " .
+          "tbl_user_sub_district.sub_district_id = $divisionId";
+          //echo $query;
+          $result = read($query);
+          $resultRow = mysql_fetch_object($result);
+          $cnt = $resultRow->cnt;
+          return $cnt;
+        }
+      }catch(Exception $ex){
+        $ex->getMessage();
+      }
     }
 
     function getForm1($id){
@@ -132,7 +152,7 @@
           $query = "select tbl_form_1.* from tbl_form_1, tbl_user_sub_district where " .
           "tbl_form_1.modified_by = tbl_user_sub_district.user_id and " .
           "tbl_user_sub_district.sub_district_id = $divisionId order by modification_date desc limit 0,1";
-          $result = read($query);          
+          $result = read($query);
           $resultRow = mysql_fetch_object($result);
           return $resultRow;
         }else if($userLevel == '01'){

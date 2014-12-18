@@ -1,5 +1,5 @@
 <?php
-	session_start();
+	@session_start();
 	?>
 	<h2>Form 1 Records</h2>
 	<?php
@@ -81,7 +81,19 @@ if(!empty($form1List) && mysql_num_rows($form1List)){
 		$('.form1DeleteLink').click(function(){
 			if(window.confirm('Are you sure you want to delete this record?')){
 				var id = $(this).attr('id');
-				$('#form1ManagementDetailDiv').load('files/deletethisform1.php?id='+id);
+				//$('#form1Div').load('files/deletethisform1.php?id='+id);
+				var dataString = "id="+id;
+				$.ajax({
+					url: 'files/deletethisform1.php',
+					data: dataString,
+					type:'GET',
+					success:function(response){
+						$('#form1Div').html(response);
+					},
+					error:function(error){
+						alert(error);
+					}
+				});
 			}
 		});
 	});//end document.ready function

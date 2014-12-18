@@ -1,5 +1,23 @@
 <?php
-  //error_reporting( 0 );
+  session_start();
+  require_once 'files/form1.php';
+  require_once 'files/user.php';
+  require_once 'files/usersubdistrict.php';
+
+  $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+  //check if tbl_form_1 has record by any member of the sub district members of the logged in user...
+  if($userObj->user_level == '02'){
+    $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+    $isForm1AlreadyFilled = checkIfForm1RecordIsAlreadyEntered('02', $userSubDistrictObj->sub_district_id);
+  }else if($userObj->user_level == '01'){
+    $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+    if(!empty($userObj)){
+      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+      $isForm1AlreadyFilled = checkIfForm1RecordIsAlreadyEntered('02', $userSubDistrictObj->sub_district_id);
+    }
+  }
+
+  if(!$isForm1AlreadyFilled){
 ?>
 <h2>Form 1</h2>
 <form style="background:white" id="form1Entry">
@@ -89,6 +107,13 @@
         </tr>
     </table>
 </form>
+<?php
+}else{
+  ?>
+  <div class="notify notify-yellow"><span class="symbol icon-info"></span> Record already exists in database.</div>
+  <?php
+}
+?>
 <div id="form1ManagementDetailDiv"></div>
 <script type="text/javascript">
     $(document).ready(function(){

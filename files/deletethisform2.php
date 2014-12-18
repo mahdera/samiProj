@@ -2,5 +2,5 @@
 	$id = $_GET['id'];
 	require_once 'form2.php';
 	deleteForm2($id);
-	require 'showlistofform2records.php';
 ?>
+<div class="notify notify-green"><span class="symbol icon-tick"></span> Record Deleted Successfully</div>
