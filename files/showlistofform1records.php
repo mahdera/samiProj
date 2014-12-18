@@ -77,7 +77,7 @@ if(!empty($form1List) && mysql_num_rows($form1List)){
 		});
 
 		$('.form1DeleteLink').click(function(){
-			if(window.confirm('Are you sure you want to delete this form1 record?')){
+			if(window.confirm('Are you sure you want to delete this record?')){
 				var id = $(this).attr('id');
 				$('#form1ManagementDetailDiv').load('files/deletethisform1.php?id='+id);
 			}

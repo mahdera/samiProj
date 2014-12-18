@@ -1,7 +1,7 @@
 <h1>Add Th</h1>
-<a href="#.php" id="showThManagementFormLinkId">Show Form</a>
+<a href="#.php" id="showThManagementFormLinkId">Show</a>
 |
-<a href="#.php" id="hideThManagementFormLinkId">Hide Form</a>
+<a href="#.php" id="hideThManagementFormLinkId">Hide</a>
 <form id="thManagementForm">
     <fieldset>
       <legend>Add Th Form</legend>

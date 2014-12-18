@@ -50,6 +50,7 @@
                         $ctr=1;
                         while($riskRow = mysql_fetch_object($riskList)){
                             //$thObj = getTh($riskRow->th_id);
+                            $thObj = $riskRow;
                             ?>
                             <tr>
                                 <td><?php echo $riskRow->th_name;//echo stripslashes($thObj->th_name);?></td>
@@ -63,7 +64,7 @@
                                         $thSelected = false;
                                         $chkName = "chk_" . $ctr;
                                         for($i=0; $i<count($selectedThIdArray); $i++){
-                                          if($selectedThIdArray[$i] === $riskRow->th_id){
+                                          if($selectedThIdArray[$i] === $riskRow->id){
                                             $thSelected = true;
                                             //break;
                                           }

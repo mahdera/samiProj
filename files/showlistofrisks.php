@@ -86,7 +86,7 @@
 
         $('.riskDeleteLink').click(function(){
             var id = $(this).attr('id');
-            if(window.confirm('Are you sure you want to delete this risk record?')){
+            if(window.confirm('Are you sure you want to delete this record?')){
                 var dataString = "id="+id;
                 $.ajax({
                     url: 'files/deleterisk.php',

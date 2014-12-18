@@ -18,4 +18,4 @@
       }
     }
 ?>
-<div class="notify notify-green"><span class="symbol icon-tick"></span> Fn Action Updated Successfully!</div>
+<div class="notify notify-green"><span class="symbol icon-tick"></span> Updated Successfully</div>

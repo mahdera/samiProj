@@ -56,7 +56,7 @@ error_reporting( 0 );
                     type:'POST',
                     success:function(response){
                         //alert('Form Two Saved Successfully!');
-                        $('#form2Div').html('<div class="notify notify-green"><span class="symbol icon-tick"></span> Form Tow Saved Successfully!</div>');
+                        $('#form2Div').html('<div class="notify notify-green"><span class="symbol icon-tick"></span> Saved Successfully</div>');
                         clearInputFields();
                         showListOfForm2Records();
                     },

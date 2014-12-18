@@ -69,7 +69,7 @@
 		});
 
 		$('.form4DeleteLink').click(function(){
-			if(window.confirm('Are you sure you want to delete this form4 record?')){
+			if(window.confirm('Are you sure you want to delete this record?')){
 				var id = $(this).attr('id');
 				$('#form4ManagementDetailDiv').load('files/deletethisform4.php?id='+id);
 			}

@@ -34,7 +34,7 @@
                     type:'POST',
                     success:function(response){
                         //alert('Form 10 Saved Successfully!');
-                        $('#form10Div').html('<div class="notify notify-green"><span class="symbol icon-tick"></span> Form Ten Saved Successfully!</div>');
+                        $('#form10Div').html('<div class="notify notify-green"><span class="symbol icon-tick"></span> Saved Successfully</div>');
                         clearInputFields();
                         showListOfForm10Records();
                     },

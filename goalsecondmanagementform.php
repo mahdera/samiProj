@@ -30,9 +30,9 @@
     //var_dump($fnIdArray);
 ?>
 <div class="col-half left">
-<a href="#.php" id="showGoalSecondManagementFormLinkId">Show Form</a>
+<a href="#.php" id="showGoalSecondManagementFormLinkId">Show</a>
 |
-<a href="#.php" id="hideGoalSecondManagementFormLinkId">Hide Form</a>
+<a href="#.php" id="hideGoalSecondManagementFormLinkId">Hide</a>
 <form id="goalSecondManagementForm">
   <fieldset>
     <legend>Add Goal Second</legend>
@@ -135,7 +135,7 @@
 
     $(document).ready(function(){
 
-        $('#goalSecondManagementForm').show();
+        $('#goalSecondManagementForm').hide();
 
         $('#showGoalSecondManagementFormLinkId').click(function(){
             $('#goalSecondManagementForm').show('slow');

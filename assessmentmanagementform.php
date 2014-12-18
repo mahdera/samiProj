@@ -1,7 +1,7 @@
 <h1>Add Assessment</h1>
-<a href="#.php" id="showAssessmentManagementFormLinkId">Show Form</a>
+<a href="#.php" id="showAssessmentManagementFormLinkId">Show</a>
 |
-<a href="#.php" id="hideAssessmentManagementFormLinkId">Hide Form</a>
+<a href="#.php" id="hideAssessmentManagementFormLinkId">Hide</a>
 <div id="assessmentManagementDiv">
     <?php
         require_once 'showassessmentaddform.php';

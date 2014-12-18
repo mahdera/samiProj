@@ -41,12 +41,12 @@
                         $editLinkId = $thActionRow->id;
                         $editDivId = "editActionTextDiv" . $thActionRow->id;
                         $deleteLinkId = $thActionRow->id;
-                    ?>
-                    <a href="#.php" id="<?php echo $editLinkId;?>" class="closeThActionLink"><img src="images/close.png" border="0" align="absmiddle"/></a>
+                    ?>                   
+                    <a href="#.php" id="<?php echo $editLinkId;?>" class="editThActionLink">Edit</a>
                     |
-                    <a href="#.php" id="<?php echo $editLinkId;?>" class="editThActionLink"><img src="images/edit.png" border="0" align="absmiddle"/></a>
+                    <a href="#.php" id="<?php echo $deleteLinkId;?>" class="deleteThActionLink">Delete</a>
                     |
-                    <a href="#.php" id="<?php echo $deleteLinkId;?>" class="deleteThActionLink"><img src="images/delete.png" border="0" align="absmiddle"/></a>
+                    <a href="#.php" id="<?php echo $editLinkId;?>" class="closeThActionLink">Close</a>
                 </td>
             </tr>
             <tr>

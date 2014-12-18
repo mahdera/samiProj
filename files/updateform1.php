@@ -79,4 +79,4 @@
 			}
 	}//end for loop
 ?>
-<div class="notify notify-green"><span class="symbol icon-tick"></span> Form1 Updated Successfully!</div>
+<div class="notify notify-green"><span class="symbol icon-tick"></span> Updated Successfully</div>

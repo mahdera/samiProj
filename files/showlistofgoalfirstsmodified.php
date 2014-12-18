@@ -34,9 +34,8 @@
         <table border="1" width="100%" rules="all">
             <tr style="background: #CCC">
                 <td width="20%">Th</td>
-                <td>Action</td>
-                <td>Edit</td>
-                <td>Delete</td>
+                <td></td>
+
             </tr>
             <?php
                 $ctr=1;
@@ -48,19 +47,18 @@
                         if(true){
                             ?>
                             <tr>
-                                <td><?php echo stripslashes($thObj->th_name);?></td>
-                                <td align="middle">
-                                    <a href="#.php" id="<?php echo $thObj->id;?>" class="openActionFormClass"><img src="images/open.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="<?php echo $goalFirstThRow->th_id;?>" class="closeActionFormClass"><img src="images/close.png" border="0" align="absmiddle"/></a>
-                                </td>
-                                <td align="middle">
-                                    <a href="#.php" id="<?php echo $goalFirstThRow->th_id;?>" class="openGoalFirstDetailForEditClass"><img src="images/edit.png" border="0" align="absmiddle"/></a>
-                                </td>
-                                <td align="middle">
-                                    <a href="#.php" id="<?php echo $goalFirstThRow->id;?>" class="deleteGoalFirstDetailClass"><img src="images/delete.png" border="0" align="absmiddle"/></a>
+                                <td width="50%"><?php echo stripslashes($thObj->th_name);?></td>
+                                <td align="right">
+
+                                    <a href="#.php" id="<?php echo $goalFirstThRow->th_id;?>" class="openGoalFirstDetailForEditClass">Edit</a>
+                                    |
+                                    <a href="#.php" id="<?php echo $goalFirstThRow->id;?>" class="deleteGoalFirstDetailClass">Delete</a>
+                                    |
+                                    <a href="#.php" id="<?php echo $goalFirstThRow->th_id;?>" class="closeActionFormClass">Close</a>
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="4">
+                                <td colspan="2">
                                     <div id="<?php echo $divId;?>"></div>
                                 </td>
                             </tr>
@@ -102,7 +100,7 @@
         });
 
         $('.deleteGoalFirstDetailClass').click(function(){
-          if(window.confirm('Are you sure you want to delete this goal first record?')){
+          if(window.confirm('Are you sure you want to delete this record?')){
             var idVal = $(this).attr('id');
             var divId = "subDetailDiv";
             var dataString = "goalFirstThId=" + idVal;

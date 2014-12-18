@@ -73,7 +73,7 @@ if(!empty($form2List) && mysql_num_rows($form2List)){
 		});
 
 		$('.form2DeleteLink').click(function(){
-			if(window.confirm('Are you sure you want to delete this form2 record?')){
+			if(window.confirm('Are you sure you want to delete this record?')){
 				var id = $(this).attr('id');
 				$('#form2ManagementDetailDiv').load('files/deletethisform2.php?id='+id);
 			}

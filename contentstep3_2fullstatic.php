@@ -36,19 +36,41 @@ $(document).ready(function(){
     if(currentPageTag === 'Step 1-1'){
     $('#step1Content').load('showstep1_2content.php');
   }*/
-  window.location.replace('step3_3fullstatic.php');
+  //window.location.replace('step3_3fullstatic.php');
   //come back to this and do it with Array version...
-  /*var selectedCheckBoxesIdDataString = "";
+  var selectedCheckBoxesIdDataString = "";
   var ctr = 1;
   $('input:checkbox.checkBoxSelection').each(function () {
-    var checkBoxName = "thCheckBox" + ctr;
     if( this.checked ){
+      var checkBoxName = "thCheckBox" + ctr;
       selectedCheckBoxesIdDataString += checkBoxName +"="+ $(this).val()+"&";
       ctr++;
     }
   });
   selectedCheckBoxesIdDataString+="ctr="+(ctr-1);
-  $('#step3Content').load('showstep3_3content.php?'+selectedCheckBoxesIdDataString);*/
+  //alert(selectedCheckBoxesIdDataString);
+  //$('#step3Content').load('showstep3_3content.php?'+selectedCheckBoxesIdDataString);
+  //now i will have to use ajax to load the session that gets initialized with the selected datastring
+  $.ajax({
+    url: 'files/loadselectedths.php',
+    data: selectedCheckBoxesIdDataString,
+    type:'POST',
+    success:function(response){
+      if(ctr === 1){
+        //th selection drop down should be empty...
+        window.location.replace('step3_3fullstatic.php');
+      }else{
+        window.location.replace('step3_3fullstatic.php');
+      }
+      alert(data);
+    },
+    error:function(error){
+      alert(error);
+    }
+  });
+
+
+
 });
 
 $('#leftArrowButton').click(function(){

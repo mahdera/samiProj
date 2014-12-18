@@ -31,8 +31,8 @@ error_reporting( 0 );
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        //alert('Form Three Saved Successfully!');
-                        $('#form3Div').html('<div class="notify notify-green"><span class="symbol icon-tick"></span> Form Three Saved Successfully!</div>');
+                        //alert('Saved Successfully');
+                        $('#form3Div').html('<div class="notify notify-green"><span class="symbol icon-tick"></span> Saved Successfully</div>');
                         clearInputFields();
                         showListOfForm3Records();
                     },

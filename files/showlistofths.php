@@ -60,14 +60,13 @@
 
         $('.editThLink').click(function(){
             var id = $(this).attr('id');
-            var divId = "thEditDiv" + id;
-            alert(divId);
+            var divId = "thEditDiv" + id;            
             $('#'+divId).load('files/showeditfieldsofth.php?id='+id);
         });
 
         $('.deleteThLink').click(function(){
             var id = $(this).attr('id');
-            if(window.confirm('Are you sure you want to delete this Th?')){
+            if(window.confirm('Are you sure you want to delete this record?')){
                 var dataString = "id="+id;
                 $.ajax({
                     url: 'files/deleteth.php',

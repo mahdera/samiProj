@@ -3,7 +3,7 @@
 ?>
 <div id="step_row">
     <div id="step_title">
-        <h2>Process</h2>
+        <h2>Planning Process</h2>
     </div>
     <div id="steps">
         <ul>

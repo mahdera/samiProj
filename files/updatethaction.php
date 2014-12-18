@@ -97,4 +97,4 @@
         }
     }
 ?>
-<div class="notify notify-green"><span class="symbol icon-tick"></span> Goal First Updated Successfully!</div>
+<div class="notify notify-green"><span class="symbol icon-tick"></span> Updated Successfully</div>

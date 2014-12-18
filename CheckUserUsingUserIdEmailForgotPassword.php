@@ -11,7 +11,7 @@
         //update the password for this user using email address and send
         updateUserPasswordUsingEmail($userIdEmail, $randomValue);
         //now send the email to the user...
-        $from = "mahderalem@gmail.com";
+        $from = "samsonaklilu@gmail.com";
         $headers = "From: $from\r\n";
         $headers .= "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type: text/html; charset=iso-8859-1" . "\r\n";

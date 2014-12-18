@@ -69,7 +69,7 @@
 		});
 
 		$('.form8DeleteLink').click(function(){
-			if(window.confirm('Are you sure you want to delete this form8 record?')){
+			if(window.confirm('Are you sure you want to delete this record?')){
 				var id = $(this).attr('id');
 				$('#form8ManagementDetailDiv').load('files/deletethisform8.php?id='+id);
 			}

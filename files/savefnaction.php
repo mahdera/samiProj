@@ -19,4 +19,4 @@
 
 
 ?>
-<div class="notify notify-green"><span class="symbol icon-tick"></span> Fn Action Saved Successfully!</div>
+<div class="notify notify-green"><span class="symbol icon-tick"></span> Saved Successfully</div>

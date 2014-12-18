@@ -12,6 +12,7 @@
     require_once 'goalsecondfn.php';
 
     $fnId = $_GET['fn_id'];
+    //echo $fnId;
     $buttonId = "updateGoalSecondButton" . $fnId;
     $goalSecondFnRow = getGoalSecondFnUsingFnId($fnId);
     $goalSecondFnId = $goalSecondFnRow->id;

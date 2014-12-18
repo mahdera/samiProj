@@ -73,7 +73,7 @@
                             ?>
                         <li><a href="#.php" id="accountManagementLink">My Account</a></li>
                         <li><a href="mycalendar.php">Calendar</a></li>
-                        <li><a href="step1.php">Process</a></li>
+                        <li><a href="step1.php">Planning Process</a></li>
                         <li><a href="#" id="reportManagementLink">My Report</a></li>
                         <!--<li><a href="#.php" id="contentManagementLink">Content</a></li>-->
                         <li><a href="#.php" id="userManagementLink">User</a></li>
@@ -90,7 +90,7 @@
                         <li><a href="#.php"><?php echo $fullName;?>, <?php echo $userRole . " - " . $userLevel;?> logged in</a></li>
                         <li><a href="#.php" id="accountManagementLink">My Account</a></li>
                         <li><a href="mycalendar.php">Calendar</a></li>
-                        <li><a href="step1.php">Process</a></li>
+                        <li><a href="step1.php">Planning Process</a></li>
                         <li><a href="#" id="reportManagementLink">My Report</a></li>
                         <li><a href="#" id="logoutLink">Logout</a></li>
                     </ul>

@@ -18,5 +18,5 @@
 ?>
 <div class="notify notify-green">
 	<span class="symbol icon-tick"></span>
-	 	Th Action Saved Successfully!
+	 	Saved Successfully
 </div>

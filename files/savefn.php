@@ -14,4 +14,4 @@
       saveFn($fnName, $_SESSION['LOGGED_USER_ID'],0);
     }
 ?>
-<div class="notify notify-green"><span class="symbol icon-tick"></span> Fn saved successfully!</div>
+<div class="notify notify-green"><span class="symbol icon-tick"></span> Saved Successfully</div>

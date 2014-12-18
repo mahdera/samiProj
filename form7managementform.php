@@ -33,7 +33,7 @@ error_reporting( 0 );
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        //alert('Form Seven Saved Successfully!');
+                        //alert('Saved Successfully');
                         $('#form7Div').html('<div class="notify notify-green"><span class="symbol icon-tick"></span> Form Serven Saved Successfully!</div>');
                         clearInputFields();
                         showListOfForm7Records();

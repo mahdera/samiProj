@@ -198,8 +198,8 @@
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        //alert('Form One Saved Successfully!');
-                        $('#form1Div').html('<div class="notify notify-green"><span class="symbol icon-tick"></span> Form One Saved Successfully!</div>');
+                        //alert('Saved Successfully');
+                        $('#form1Div').html('<div class="notify notify-green"><span class="symbol icon-tick"></span> Saved Successfully</div>');
                         //clearFormInputFields(q3NumItems, q4NumItems);
                         showListOfForm1Records();
                     },

@@ -33,8 +33,8 @@ error_reporting( 0 );
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        //alert('Form Four Saved Successfully!');
-                        $('#form4Div').html('<div class="notify notify-green"><span class="symbol icon-tick"></span> Form Four Saved Successfully!</div>');
+                        //alert('Saved Successfully');
+                        $('#form4Div').html('<div class="notify notify-green"><span class="symbol icon-tick"></span> Saved Successfully</div>');
                         clearInputFields();
                         showListOfForm4Records();
                     },

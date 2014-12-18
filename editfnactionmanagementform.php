@@ -36,17 +36,17 @@
             <tr>
                 <td><?php echo stripslashes($fnObj->fn_name);?></td>
                 <td><?php echo stripslashes($fnActionRow->action_text);?></td>
-                <td align="middle">
+                <td align="right">
                     <?php
                         $editLinkId = $fnActionRow->id;
                         $editDivId = "editActionTextDiv" . $fnActionRow->id;
                         $deleteLinkId = $fnActionRow->id;
-                    ?>
-                    <a href="#.php" id="<?php echo $editLinkId;?>" class="closeFnActionLinkId"><img src="images/close.png" border="0" align="absmiddle"/></a>
+                    ?>                     
+                    <a href="#.php" id="<?php echo $editLinkId;?>" class="editFnActionLinkId">Edit</a>
                     |
-                    <a href="#.php" id="<?php echo $editLinkId;?>" class="editFnActionLinkId"><img src="images/edit.png" border="0" align="absmiddle"/></a>
+                    <a href="#.php" id="<?php echo $deleteLinkId;?>" class="deleteFnActionLinkId">Delete</a>
                     |
-                    <a href="#.php" id="<?php echo $deleteLinkId;?>" class="deleteFnActionLinkId"><img src="images/delete.png" border="0" align="absmiddle"/></a>
+                    <a href="#.php" id="<?php echo $editLinkId;?>" class="closeFnActionLinkId">Close</a>
                 </td>
             </tr>
             <tr>

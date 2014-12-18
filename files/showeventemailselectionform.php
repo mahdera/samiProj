@@ -58,7 +58,7 @@
                 });
                 selectedCheckBoxesIdDataString+="ctr="+(ctr-1);
                 if(ctr === 1){
-                    alert("You need to select at least one th value!");
+                    alert("You need to select at least one value!");
                 }else{
                 	var message = $('#textareashare').val();
                     var dataString = selectedCheckBoxesIdDataString+"&message="+message;

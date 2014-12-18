@@ -10,7 +10,7 @@ error_reporting( 0 );
   if ($user != null){
         $userId = $user->user_id;
         $fullName = $user->first_name." ".$user->last_name;
-        $emailFrom = "mahderalem@gmail.com";
+        $emailFrom = "samsonaklilu@gmail.com";
         $subject = "Your System User Id";
         $emailMessage = "
         <html>

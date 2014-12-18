@@ -35,9 +35,7 @@
 <table border="1" width="100%" rules="all">
     <tr style="background: #ccc">
         <td>Fn</td>
-        <td>Action</td>
-        <td>Edit</td>
-        <td>Delete</td>
+        <td></td>
     </tr>
     <?php
         $ctr=1;
@@ -51,18 +49,16 @@
                 ?>
                     <tr>
                         <td width="20%"><?php echo stripslashes($fnObj->fn_name);?></td>
-                        <td align="middle">
-                            <a href="#.php" id="<?php echo $fnObj->id;?>" class="openActionFormClass"><img src="images/open.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="<?php echo $fnObj->id;?>" class="closeActionFormClass"><img src="images/close.png" border="0" align="absmiddle"/></a>
-                        </td>
-                        <td align="middle">
-                            <a href="#.php" id="<?php echo $fnObj->id;?>" class="editGoalSecondLink"><img src="images/edit.png" border="0" align="absmiddle"/></a>
-                        </td>
-                        <td align="middle">
-                            <a href="#.php" id="<?php echo $goalSecondFnRow->id;?>" class="deleteGoalSecondLink"><img src="images/delete.png" border="0" align="absmiddle"/></a>
+                        <td align="right">
+                            <a href="#.php" id="<?php echo $fnObj->id;?>" class="editGoalSecondLink">Edit</a>
+                            |
+                            <a href="#.php" id="<?php echo $goalSecondFnRow->id;?>" class="deleteGoalSecondLink">Delete</a>
+                            |
+                            <a href="#.php" id="<?php echo $fnObj->id;?>" class="closeActionFormClass">Close</a>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="4">
+                        <td colspan="2">
                             <div id="<?php echo $divId;?>"></div>
                         </td>
                     </tr>
@@ -100,7 +96,7 @@
         });
 
         $('.deleteGoalSecondLink').click(function(){
-            if(window.confirm('Are you sure you want to delete this goal second record?')){
+            if(window.confirm('Are you sure you want to delete this record?')){
               var idVal = $(this).attr('id');
               var divId = "subDetailDiv";
               var dataString = "goalSecondFnId=" + idVal;

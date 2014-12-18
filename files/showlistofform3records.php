@@ -70,7 +70,7 @@
 		});
 
 		$('.form3DeleteLink').click(function(){
-			if(window.confirm('Are you sure you want to delete this form3 record?')){
+			if(window.confirm('Are you sure you want to delete this record?')){
 				var id = $(this).attr('id');
 				$('#form3ManagementDetailDiv').load('files/deletethisform3.php?id='+id);
 			}

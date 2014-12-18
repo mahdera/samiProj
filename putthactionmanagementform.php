@@ -30,8 +30,7 @@
         <table border="1" width="100%" rules="all">
             <tr style="background: #CCC">
                 <td width="20%">Th</td>
-                <td>Action</td>
-                <td>View/Edit/Delete</td>
+                <td></td>
             </tr>
             <?php
                 $ctr=1;
@@ -43,16 +42,17 @@
                         if(true){
                             ?>
                             <tr>
-                                <td><?php echo $thObj->th_name;?></td>
-                                <td align="middle">
-                                    <a href="#.php" id="<?php echo $thObj->id;?>" class="openActionFormClass"><img src="images/open.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="<?php echo $thObj->id;?>" class="closeActionFormClass"><img src="images/close.png" border="0" align="absmiddle"/></a>
-                                </td>
-                                <td align="middle">
-                                  <!--<a href="#.php" id="<?php //echo $thObj->id;?>" class="viewThActionLink">View</a> | --><a href="#.php" id="<?php echo $thObj->id;?>" class="editThActionLink"><img src="images/edit.png" border="0" align="absmiddle"/></a> | <a href="#.php" id="<?php echo $thObj->id;?>" class="deleteThActionLink"><img src="images/delete.png" border="0" align="absmiddle"/></a>
+                                <td width="50%"><a href="#.php" id="<?php echo $thObj->id;?>" class="openActionFormClass"><?php echo $thObj->th_name;?></a></td>
+                                <td align="right">
+                                  <a href="#.php" id="<?php echo $thObj->id;?>" class="editThActionLink">Edit</a>
+                                  |
+                                  <a href="#.php" id="<?php echo $thObj->id;?>" class="deleteThActionLink">Delete</a>
+                                  |
+                                  <a href="#.php" id="<?php echo $thObj->id;?>" class="closeActionFormClass">Close</a>
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="3">
+                                <td colspan="2">
                                     <div id="<?php echo $divId;?>"></div>
                                 </td>
                             </tr>

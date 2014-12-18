@@ -150,7 +150,7 @@
 </form>
 <?php
 }else{
-    echo '<div class="notify notify-yellow"><span class="symbol icon-excl"></span> You Already Added Action to this Fn Record!</div>';
+    echo '<div class="notify notify-yellow"><span class="symbol icon-excl"></span> You Already Added Record!</div>';
 }
 ?>
 <script type="text/javascript">

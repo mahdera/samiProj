@@ -8,6 +8,11 @@
 
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
     $fnList = null;
+    $selectedThIdArray = null;
+
+    if(isset($_SESSION['SELECTED_THS'])){
+      $selectedThIdArray = $_SESSION['SELECTED_THS'];
+    }
 
     if($userObj->user_level == '02'){
         $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
@@ -21,9 +26,9 @@
     }
 ?>
 <h1>Add Goal First</h1>
-<a href="#.php" id="showGoalFirstManagementFormLinkId">Show Form</a>
+<a href="#.php" id="showGoalFirstManagementFormLinkId">Show</a>
 |
-<a href="#.php" id="hideGoalFirstManagementFormLinkId">Hide Form</a>
+<a href="#.php" id="hideGoalFirstManagementFormLinkId">Hide</a>
 <form id="goalFirstManagementForm">
   <fieldset>
     <legend>Add Goal First Form</legend>
@@ -33,16 +38,16 @@
                 <div id="thDuplicationErrorDiv"></div>
             </td>
         </tr>
-        <tr>
+        <tr style="background: red">
             <td width="20%">Th:</td>
             <td>
                 <select name="slctth" id="slctth" style="width: 100%">
                     <option value="" selected="selected">--Select--</option>
                     <?php
                         //loop the array instead...
-                        if(@$selectedThIdArray == NULL){
+                        if($selectedThIdArray == NULL){
                           if($userObj->user_level == '02'){
-                              $thList = getAllThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                              $thList = null;//getAllThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
                           }else if($userObj->user_level == '01'){
                               $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
                               $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
@@ -65,14 +70,14 @@
                 </select>
             </td>
         </tr>
-        <tr>
+        <tr style="background: red">
             <td width="20%">G1:</td>
             <td>
                 <!--<input type="text" name="txtg1" id="txtg1" size="70"/>-->
                 <textarea name="txtg1" id="txtg1" style="width:100%" rows="4"></textarea>
             </td>
         </tr>
-        <tr>
+        <tr style="background: red">
             <td width="20%">Fn:</td>
             <td>
                 <select name="slctg1fn" id="slctg1fn" style="width: 95%" class="fnDropDown">
@@ -100,7 +105,7 @@
                 <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="g1fn"><img src="images/spin.png" border="0" align="absmiddle"/></a>
             </td>
         </tr>
-        <tr>
+        <tr style="background: red">
             <td colspan="2">
                 <div id="g1fnOtherDiv"></div>
             </td>
@@ -108,7 +113,7 @@
         <tr>
             <td colspan="2">
                 <table border="0" width="100%" style="background: #fff">
-                    <tr>
+                    <tr style="background: red">
                         <td width="20%">Obj:</td>
                         <td>
                             <!--<input type="text" id="txtg1obj1" name="txtg1obj1" class="g1Obj" size="70"/>-->
@@ -151,7 +156,7 @@
                 </table>
             </td>
         </tr>
-        <tr>
+        <tr style="background: red">
             <td colspan="2">
                 <div id="g1fnObjOtherDiv"></div>
             </td>
@@ -381,7 +386,7 @@
 
     $(document).ready(function(){
 
-        $('#goalFirstManagementForm').show();
+        $('#goalFirstManagementForm').hide();
 
         $('#showGoalFirstManagementFormLinkId').click(function(){
             $('#goalFirstManagementForm').show('slow');

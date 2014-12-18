@@ -55,7 +55,7 @@ if($_SESSION['USER_ROLE_CODE'] === '01A'){
                 });
                 selectedCheckBoxesIdDataString+="ctr="+(ctr-1);
                 /*if(ctr === 1){
-                    $('#errorDiv').html('<div class="notify notify-red"><span class="symbol icon-error"></span> You need to select at least one th value!</div>');
+                    $('#errorDiv').html('<div class="notify notify-red"><span class="symbol icon-error"></span> You need to select at least one value!</div>');
                     var divLoc = $('#errorDiv').offset();
                     $('html, body').animate({scrollTop: divLoc.top}, "slow");
                 }else*/{

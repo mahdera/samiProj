@@ -23,9 +23,9 @@
     //$thList = getAllThsModifiedBy($_SESSION['LOGGED_USER_ID']);
 ?>
 <h1>Add Risk</h1>
-<a href="#.php" id="showRiskManagementFormLinkId">Show Form</a>
+<a href="#.php" id="showRiskManagementFormLinkId">Show</a>
 |
-<a href="#.php" id="hideRiskManagementFormLinkId">Hide Form</a>
+<a href="#.php" id="hideRiskManagementFormLinkId">Hide</a>
 <form id="riskManagementForm">
     <fieldset>
       <legend>Add Risk Form</legend>
