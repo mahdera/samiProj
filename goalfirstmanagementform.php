@@ -53,11 +53,13 @@
                               $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
                               $thList = getAllThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
                           }
-                          while($thObj = mysql_fetch_object($thList)){
-                            ?>
-                                <option value="<?php echo $thObj->id;?>"><?php echo $thObj->th_name;?></option>
-                            <?php
-                          }//end while loop
+                          if(!empty($thList)){
+                            while($thObj = mysql_fetch_object($thList)){
+                              ?>
+                                  <option value="<?php echo $thObj->id;?>"><?php echo $thObj->th_name;?></option>
+                              <?php
+                            }//end while loop
+                          }
                         }else{
                           for($i=0; $i < count($selectedThIdArray); $i++){
                               $thObj = getTh($selectedThIdArray[$i]);
