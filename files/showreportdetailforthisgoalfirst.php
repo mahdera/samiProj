@@ -43,7 +43,7 @@
 	$goalFirstId = $goalFirstObj->id;
 	$goalFirstG1Id;
 	?>
-	<div id="printReportDiv" style="display:none">
+	<div>
 	<?php
 	//now get a form1 obj modified by the logged in user and modification date same as that of the goal first...
 	//$form1Obj = getLatestForm1ModifiedByUser($_SESSION['LOGGED_USER_ID']);
@@ -62,7 +62,7 @@
 
 		if($form1Obj){
 		?>
-		<div id="printReportDiv">
+		<div id="printReportDiv" style="display: none">
 		<table border="0" width="100%">
 			<tr>
 				<td colspan="2">

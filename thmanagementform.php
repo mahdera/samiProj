@@ -27,6 +27,10 @@
 
         $('#thManagementForm').show();
 
+        $('html, body').animate({
+          'scrollTop' : $("#thManagementForm").position().top
+        });
+
         $('#showThManagementFormLinkId').click(function(){
             $('#thManagementForm').show('slow');
         });

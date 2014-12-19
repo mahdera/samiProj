@@ -19,7 +19,7 @@
   </div><!-- /col-half --><!-- /col-half -->
   <div class="col-half left">
     <?php
-    require_once 'importjsscripts.php';
+      require_once 'importjsscripts.php';
     ?>
   </div> <!-- /content -->
   <div class="col-half left">

@@ -60,10 +60,10 @@
                                     ?>
                                 </td>
                                 <td align="middle">
-                                    <a href="#.php" class="teamEditLink" id="<?php echo $teamRow->id;?>"><img src="images/edit.png" align="absmiddle" border="0"/></a>
+                                    <a href="#.php" class="teamEditLink" id="<?php echo $teamRow->id;?>">Edit</a>
                                 </td>
                                 <td align="middle">
-                                    <a href="#.php" class="teamDeleteLink" id="<?php echo $teamRow->id;?>"><img src="images/delete.png"/ align="absmiddle" border="0"/></a>
+                                    <a href="#.php" class="teamDeleteLink" id="<?php echo $teamRow->id;?>">Delete</a>
                                 </td>
                             </tr>
                             <?php
@@ -83,6 +83,9 @@
     $(document).ready(function(){
         $('.teamEditLink').click(function(){
             var id = $(this).attr('id');
+            $('html, body').animate({
+              'scrollTop' : $("#teamEditDiv").position().top
+            });
             $('#teamEditDiv').load('files/showeditfieldsofthisteam.php?id='+id);
         });
 

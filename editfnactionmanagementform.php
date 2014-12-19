@@ -1,10 +1,9 @@
 <?php
-    //error_reporting( 0 );
     require_once 'files/fnaction.php';
     require_once 'files/fn.php';
     require_once 'files/user.php';
     require_once 'files/usersubdistrict.php';
-    //$fnActionList = getAllFnActionsModifiedBy($_SESSION['LOGGED_USER_ID']);
+    @session_start();
     $fnActionList = null;
 
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
@@ -41,7 +40,7 @@
                         $editLinkId = $fnActionRow->id;
                         $editDivId = "editActionTextDiv" . $fnActionRow->id;
                         $deleteLinkId = $fnActionRow->id;
-                    ?>                     
+                    ?>
                     <a href="#.php" id="<?php echo $editLinkId;?>" class="editFnActionLinkId">Edit</a>
                     |
                     <a href="#.php" id="<?php echo $deleteLinkId;?>" class="deleteFnActionLinkId">Delete</a>

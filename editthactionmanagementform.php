@@ -4,6 +4,8 @@
     require_once 'files/user.php';
     require_once 'files/usersubdistrict.php';
 
+    @session_start();
+
     $thActionList = null;
 
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);

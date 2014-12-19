@@ -29,9 +29,9 @@
                           <tr>
                               <td><?php echo $branchRow->display_name;?></td>
                               <td align="middle">
-                                  <a href="#.php" id="<?php echo $branchRow->id;?>" class="editBranchClass"><img src="images/edit.png" border="0" align="absmiddle"/></a>
+                                  <a href="#.php" id="<?php echo $branchRow->id;?>" class="editBranchClass">Edit</a>
                                   |
-                                  <a href="#.php" id="<?php echo $branchRow->id;?>" class="deleteBranchClass"><img src="images/delete.png" border="0" align="absmiddle"/></a>
+                                  <a href="#.php" id="<?php echo $branchRow->id;?>" class="deleteBranchClass">Delete</a>
                               </td>
                           </tr>
                           <?php

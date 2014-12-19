@@ -269,7 +269,8 @@
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        $('#'+divId).html(response);
+                        //$('#'+divId).html(response);
+                        $('#innerActionDiv').load('editfnactionmanagementform.php');
                     },
                     error:function(error){
                         alert(error);

@@ -1,6 +1,3 @@
-<?php
-  //error_reporting( 0 );
-?>
 <h1>Add Team</h1>
 <a href="#.php" id="showTeamManagementFormLinkId">Show</a>
 |

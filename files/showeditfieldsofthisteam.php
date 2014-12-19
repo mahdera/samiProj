@@ -184,7 +184,7 @@
     </table>
 </form>
 <script type="text/javascript">
-    $(document).ready(function(){
+    $(document).ready(function(){      
 
         $('#btnupdate').click(function(){
             var id = "<?php echo $id;?>";

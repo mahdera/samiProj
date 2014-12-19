@@ -1,5 +1,4 @@
 <?php
-    //session_start();
     //now search a user using the userId from the session and check if the user
     //is an admin or not and depending on the value the menu bar will change
     //accordingly...
@@ -9,6 +8,7 @@
     require_once 'files/subdistrict.php';
     require_once 'files/userdistrict.php';
     require_once 'files/district.php';
+    @session_start();
 
     $userObj = null;
     $fullName = null;

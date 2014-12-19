@@ -36,8 +36,8 @@
             ?>
                 <tr>
                     <td><?php echo stripslashes($thRow->th_name); ?></td>
-                    <td align="middle"><a href="#.php" id="<?php echo $thRow->id;?>" class="editThLink"><img src="images/edit.png" border="0" align="absmiddle"/></a></td>
-                    <td align="middle"><a href="#.php" id="<?php echo $thRow->id;?>" class="deleteThLink"><img src="images/delete.png" border="0" align="absmiddle"/></a></td>
+                    <td align="middle"><a href="#.php" id="<?php echo $thRow->id;?>" class="editThLink">Edit</a></td>
+                    <td align="middle"><a href="#.php" id="<?php echo $thRow->id;?>" class="deleteThLink">Delete</a></td>
                 </tr>
                 <tr>
                     <td colspan="3">
@@ -60,7 +60,7 @@
 
         $('.editThLink').click(function(){
             var id = $(this).attr('id');
-            var divId = "thEditDiv" + id;            
+            var divId = "thEditDiv" + id;
             $('#'+divId).load('files/showeditfieldsofth.php?id='+id);
         });
 

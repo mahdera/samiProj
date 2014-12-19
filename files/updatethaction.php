@@ -98,4 +98,4 @@
     }
 ?>
 <div class="notify notify-green"><span class="symbol icon-tick"></span> Updated Successfully</div>
-<?php require_once 'editthactionmanagementform.php';?>
+<?php require_once '../editthactionmanagementform.php';?>
