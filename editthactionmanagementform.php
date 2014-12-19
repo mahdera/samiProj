@@ -12,6 +12,7 @@
       //$fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
       $thActionList = getAllThActionsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
     }else if($userObj->user_level == '01'){
+      //echo $_SESSION['SUB_DISTRICT_ID'];
       $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
       if(!empty($userObject)){
         $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
@@ -41,7 +42,7 @@
                         $editLinkId = $thActionRow->id;
                         $editDivId = "editActionTextDiv" . $thActionRow->id;
                         $deleteLinkId = $thActionRow->id;
-                    ?>                   
+                    ?>
                     <a href="#.php" id="<?php echo $editLinkId;?>" class="editThActionLink">Edit</a>
                     |
                     <a href="#.php" id="<?php echo $deleteLinkId;?>" class="deleteThActionLink">Delete</a>

@@ -40,10 +40,10 @@
             updateGoalFirstG1($goalFirstG1Id, $goalFirstThId, $txtG1Val, $slctFn1Val, $_SESSION['LOGGED_USER_ID']);
             updateGoalFirstG1ObjFn($goalFirstG1ObjHiddenIdVal, $goalFirstG1Id, $goalFirstG1ObjVal, $goalFirstG1FnVal, $_SESSION['LOGGED_USER_ID']);
         }else if($userObj->user_level == '01'){
-            $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-            if(!empty($userObj)){
-              updateGoalFirstG1($goalFirstG1Id, $goalFirstThId, $txtG1Val, $slctFn1Val, $userObj->id);
-              updateGoalFirstG1ObjFn($goalFirstG1ObjHiddenIdVal, $goalFirstG1Id, $goalFirstG1ObjVal, $goalFirstG1FnVal, $userObj->id);
+            $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+            if(!empty($userObject)){
+              updateGoalFirstG1($goalFirstG1Id, $goalFirstThId, $txtG1Val, $slctFn1Val, $userObject->id);
+              updateGoalFirstG1ObjFn($goalFirstG1ObjHiddenIdVal, $goalFirstG1Id, $goalFirstG1ObjVal, $goalFirstG1FnVal, $userObject->id);
             }
         }
     }
@@ -60,10 +60,10 @@
             updateGoalFirstG2($goalFirstG2Id, $goalFirstThId, $txtG2Val, $slctFn2Val, $_SESSION['LOGGED_USER_ID']);
             updateGoalFirstG2ObjFn($goalFirstG2ObjHiddenIdVal, $goalFirstG2Id, $goalFirstG2ObjVal, $goalFirstG2FnVal, $_SESSION['LOGGED_USER_ID']);
         }else if($userObj->user_level == '01'){
-            $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-            if(!empty($userObj)){
-              updateGoalFirstG2($goalFirstG2Id, $goalFirstThId, $txtG2Val, $slctFn2Val, $userObj->id);
-              updateGoalFirstG2ObjFn($goalFirstG2ObjHiddenIdVal, $goalFirstG2Id, $goalFirstG2ObjVal, $goalFirstG2FnVal, $userObj->id);
+            $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+            if(!empty($userObject)){
+              updateGoalFirstG2($goalFirstG2Id, $goalFirstThId, $txtG2Val, $slctFn2Val, $userObject->id);
+              updateGoalFirstG2ObjFn($goalFirstG2ObjHiddenIdVal, $goalFirstG2Id, $goalFirstG2ObjVal, $goalFirstG2FnVal, $userObject->id);
             }
         }
     }
@@ -80,10 +80,10 @@
             updateGoalFirstG3($goalFirstG3Id, $goalFirstThId, $txtG3Val, $slctFn3Val, $_SESSION['LOGGED_USER_ID']);
             updateGoalFirstG3ObjFn($goalFirstG3ObjHiddenIdVal, $goalFirstG3Id, $goalFirstG3ObjVal, $goalFirstG3FnVal, $_SESSION['LOGGED_USER_ID']);
         }else if($userObj->user_level == '01'){
-            $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-            if(!empty($userObj)){
-              updateGoalFirstG3($goalFirstG3Id, $goalFirstThId, $txtG3Val, $slctFn3Val, $userObj->id);
-              updateGoalFirstG3ObjFn($goalFirstG3ObjHiddenIdVal, $goalFirstG3Id, $goalFirstG3ObjVal, $goalFirstG3FnVal, $userObj->id);
+            $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+            if(!empty($userObject)){
+              updateGoalFirstG3($goalFirstG3Id, $goalFirstThId, $txtG3Val, $slctFn3Val, $userObject->id);
+              updateGoalFirstG3ObjFn($goalFirstG3ObjHiddenIdVal, $goalFirstG3Id, $goalFirstG3ObjVal, $goalFirstG3FnVal, $userObject->id);
             }
         }
     }
@@ -91,10 +91,11 @@
     if($userObj->user_level == '02'){
         updateThAction($thActionId, $thEditActionText, $_SESSION['LOGGED_USER_ID']);
     }else if($userObj->user_level == '01'){
-        $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-        if(!empty($userObj)){
-          updateThAction($thActionId, $thEditActionText, $userObj->id);
+        $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+        if(!empty($userObject)){
+          updateThAction($thActionId, $thEditActionText, $userObject->id);
         }
     }
 ?>
 <div class="notify notify-green"><span class="symbol icon-tick"></span> Updated Successfully</div>
+<?php require_once 'editthactionmanagementform.php';?>

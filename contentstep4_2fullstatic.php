@@ -21,6 +21,7 @@
     <?php
       require_once 'importjsscripts.php';
     ?>
+  </div>
   <!--end to be replaced content-->
 </div> <!-- /content -->
 <script type='text/javascript'>

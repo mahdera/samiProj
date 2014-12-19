@@ -57,6 +57,7 @@
           $query = "select tbl_th_action.* from tbl_th_action, tbl_user_sub_district where " .
           "tbl_th_action.modified_by = tbl_user_sub_district.user_id and " .
           "tbl_user_sub_district.sub_district_id = $divisionId order by modification_date desc";
+          //echo $query;
         }else if($userLevel == 'Zone Level'){
           $query = "select tbl_goal_first_th.* from tbl_goal_first_th, tbl_user_zone " .
           "where tbl_goal_first_th.modified_by = tbl_user_zone.user_id and " .

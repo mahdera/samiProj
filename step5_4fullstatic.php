@@ -37,7 +37,7 @@ if($_SESSION['USER_ROLE_CODE'] === '01A'){
       ?>
     </div>
     <?php
-    require 'footer.php';
+      require 'footer.php';
     ?>
   </div>
   <?php

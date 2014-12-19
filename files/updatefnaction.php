@@ -37,9 +37,11 @@
           updateGoalSecondG1($goalSecondG1Id, $goalSecondFnId, $txtG1Val, $_SESSION['LOGGED_USER_ID']);
           updateGoalSecondG1Obj($goalSecondG1ObjHiddenIdVal, $goalSecondG1Id, $goalSecondG1ObjVal, $_SESSION['LOGGED_USER_ID']);
         }else if($userObj->user_level == '01'){
-          $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-          updateGoalSecondG1($goalSecondG1Id, $goalSecondFnId, $txtG1Val, $userObj->id);
-          updateGoalSecondG1Obj($goalSecondG1ObjHiddenIdVal, $goalSecondG1Id, $goalSecondG1ObjVal, $userObj->id);
+          $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+          if(!empty($userObject)){
+            updateGoalSecondG1($goalSecondG1Id, $goalSecondFnId, $txtG1Val, $userObject->id);
+            updateGoalSecondG1Obj($goalSecondG1ObjHiddenIdVal, $goalSecondG1Id, $goalSecondG1ObjVal, $userObject->id);
+          }
         }
     }
 
@@ -53,9 +55,11 @@
           updateGoalSecondG2($goalSecondG2Id, $goalSecondFnId, $txtG2Val, $_SESSION['LOGGED_USER_ID']);
           updateGoalSecondG2Obj($goalSecondG2ObjHiddenIdVal, $goalSecondG2Id, $goalSecondG2ObjVal, $_SESSION['LOGGED_USER_ID']);
         }else if($userObj->user_level == '01'){
-          $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-          updateGoalSecondG2($goalSecondG2Id, $goalSecondFnId, $txtG2Val, $userObj->id);
-          updateGoalSecondG2Obj($goalSecondG2ObjHiddenIdVal, $goalSecondG2Id, $goalSecondG2ObjVal, $userObj->id);
+          $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+          if(!empty($userObject)){
+            updateGoalSecondG2($goalSecondG2Id, $goalSecondFnId, $txtG2Val, $userObject->id);
+            updateGoalSecondG2Obj($goalSecondG2ObjHiddenIdVal, $goalSecondG2Id, $goalSecondG2ObjVal, $userObject->id);
+          }
         }
     }
 
@@ -69,9 +73,11 @@
           updateGoalSecondG3($goalSecondG3Id, $goalSecondFnId, $txtG3Val, $_SESSION['LOGGED_USER_ID']);
           updateGoalSecondG3Obj($goalSecondG3ObjHiddenIdVal, $goalSecondG3Id, $goalSecondG3ObjVal, $_SESSION['LOGGED_USER_ID']);
         }else if($userObj->user_level == '01'){
-          $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-          updateGoalSecondG3($goalSecondG3Id, $goalSecondFnId, $txtG3Val, $userObj->id);
-          updateGoalSecondG3Obj($goalSecondG3ObjHiddenIdVal, $goalSecondG3Id, $goalSecondG3ObjVal, $userObj->id);
+          $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+          if(!empty($userObject)){
+            updateGoalSecondG3($goalSecondG3Id, $goalSecondFnId, $txtG3Val, $userObject->id);
+            updateGoalSecondG3Obj($goalSecondG3ObjHiddenIdVal, $goalSecondG3Id, $goalSecondG3ObjVal, $userObject->id);
+          }
         }
     }
 
@@ -79,8 +85,10 @@
     if($userObj->user_level == '02'){
       updateFnAction($fnActionId, $fnEditActionText, $_SESSION['LOGGED_USER_ID']);
     }else if($userObj->user_level == '01'){
-      $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-      updateFnAction($fnActionId, $fnEditActionText, $userObj->id);
+      $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+      if(!empty($userObject)){
+        updateFnAction($fnActionId, $fnEditActionText, $userObject->id);
+      }
     }
 ?>
 <div class="notify notify-green"><span class="symbol icon-tick"></span> Updated Successfully</div>

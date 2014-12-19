@@ -24,11 +24,13 @@
   </div> <!-- /content -->
   <div class="col-half left">
     <h2>Edit Th Action</h2>
-    <?php
-    //require 'showformmanagementgrid.php';
-    require_once 'editthactionmanagementform.php';
-    ?>
+    <div id="innerActionDiv">
+      <?php
+        require_once 'editthactionmanagementform.php';
+      ?>
+    </div>
   </div>
+</div>
   <script type='text/javascript'>
   $(document).ready(function(){
 
