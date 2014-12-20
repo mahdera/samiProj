@@ -1,5 +1,6 @@
 <div class="col-half left">
-  <h1>Th Check Boxes</h1>
+  <h1><a href="#.php" id="eddyMurphyLink">Th Check Boxes</a></h1>
+  <div id="selectCheckBoxDiv">
     <?php
         require_once 'risk.php';
         require_once 'th.php';
@@ -95,3 +96,13 @@
         }
 ?>
 </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#selectCheckBoxDiv').hide();
+
+    $('#eddyMurphyLink').click(function(){
+      $('#selectCheckBoxDiv').show('slow');
+    });
+  });//end document.ready function
+</script>

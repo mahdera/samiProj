@@ -74,6 +74,7 @@
                         clearFormInputFields();
                         $('#assessmentManagementDiv').load('showassessmentaddform.php');
                         showListOfAssessments();
+                        $('#assessmentManagementForm').hide('hide');
                     },
                     error:function(error){
                         alert(error);

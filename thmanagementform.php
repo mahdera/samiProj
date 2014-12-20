@@ -54,6 +54,7 @@
                     success:function(response){
                         clearFormInputField();
                         showListOfThs();
+                        $('#thManagementForm').hide('slow');
                     },
                     error:function(error){
                         alert(error);

@@ -1,4 +1,5 @@
-<h1>Th Action</h1>
+<h1><a href="#.php" id="thShowLinkId">Th Action</a></h1>
+<div id="thActionShowDiv">
 <?php
     require_once 'files/th.php';
     require_once 'files/thaction.php';
@@ -70,9 +71,12 @@
     }
 ?>
 <hr/>
+</div>
 <div id="subDetailDiv"></div>
 <script type="text/javascript">
     $(document).ready(function(){
+
+      $('#thActionShowDiv').hide();
 
         $('.openActionFormClass').click(function(){
             var idVal = $(this).attr('id');
@@ -108,6 +112,10 @@
             if(window.confirm('Are you sure you want to delete this record?')){
               $('#' + divId).load('files/deletethactionforthisth.php?thId='+idVal);
             }
+        });
+
+        $('#thShowLinkId').click(function(){
+          $('#thActionShowDiv').show('show');
         });
 
     });//end document.ready function

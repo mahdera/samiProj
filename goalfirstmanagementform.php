@@ -500,6 +500,7 @@
                         success:function(response){
                             clearFormInputField();
                             showListOfGoalFirsts();
+                            $('#goalFirstManagementForm').hide('slow');
                         },
                         error:function(error){
                             alert(error);

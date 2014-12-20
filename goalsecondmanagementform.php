@@ -231,6 +231,7 @@
                         success:function(response){
                             clearFormInputField();
                             showListOfGoalSeconds();
+                            $('#goalSecondManagementForm').hide('slow');
                         },
                         error:function(error){
                             alert(error);

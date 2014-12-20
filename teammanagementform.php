@@ -122,6 +122,7 @@
                     success:function(response){
                         clearFormInputFields();
                         showListOfTeams();
+                        $('#teamManagementForm').hide('slow');
                     },
                     error:function(error){
                         alert(error);
