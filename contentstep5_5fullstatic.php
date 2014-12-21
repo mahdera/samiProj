@@ -2,7 +2,7 @@
   <!--to be replaced when the next button is clicked-->
   <div id="topcontain">
     <div id="titlearea">
-      <h1 id='currentPageTag'>Step 5-4</h1>
+      <h1 id='currentPageTag'>Step 5-5</h1>
       <h2></h2>
       <h3></h3>
     </div>
@@ -20,7 +20,6 @@
   <div class="col-half left">
     <?php
     //require 'editfnactionmanagementform.php';
-    require 'showformmanagementgrid.php';
     require_once 'importjsscripts.php';
     ?>
   </div>
@@ -34,7 +33,7 @@ $(document).ready(function(){
     if(currentPageTag === 'Step 1-1'){
     $('#step1Content').load('showstep1_2content.php');
   }*/
-  window.location.replace('step5_5fullstatic.php');
+  window.location.replace('step6.php');
 });
 
 $('#leftArrowButton').click(function(){
@@ -44,7 +43,7 @@ $('#leftArrowButton').click(function(){
 }else if(currentPageTag === 'Intro Three'){
 window.location.replace("intro2.php");
 }*/
-window.location.replace('step5_3fullstatic.php');
+window.location.replace('step5_4fullstatic.php');
 });
 
 });//end document.ready function

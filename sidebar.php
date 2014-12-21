@@ -42,6 +42,7 @@
             <li><a href="step5_2fullstatic.php" id="step5_2MenuLink">Step 5-2</a></li>
             <li><a href="step5_3fullstatic.php" id="step5_3MenuLink">Step 5-3</a></li>
             <li><a href="step5_4fullstatic.php" id="step5_4MenuLink">Step 5-4</a></li>
+            <li><a href="step5_5fullstatic.php" id="step5_5MenuLink">Step 5-5</a></li>
         </ul>
         <h3 class="clicker" id="stepSixMenuLink">Step 6</h3>
         <ul class="reveal">
