@@ -37,13 +37,23 @@
             $fnObj = getFn($goalSecondFnRow->fn_id);
             $countVal = 0;
             $divId = "actionDiv" . $fnObj->id;
-            //$countVal = doesThisFnAlreadyActionFilledForIt($fnObj->id);
+            $countVal = doesThisFnAlreadyActionFilledForIt($fnObj->id);
             if(true){
                 ?>
                     <tr>
-                        <td width="20%"><a href="#.php" id="<?php echo $fnObj->id;?>" class="openActionFormClass"><?php echo stripslashes($fnObj->fn_name);?></a></td>
+                        <td width="20%"><?php echo stripslashes($fnObj->fn_name);?></td>
                         <td align="right">
-                          <a href="#.php" id="<?php echo $fnObj->id;?>" class="editFnActionLink">Edit</a>
+                          <?php
+                            if($countVal == 0){
+                              ?>
+                                <a href="#.php" id="<?php echo $fnObj->id;?>" class="openActionFormClass">Add</a>
+                              <?php
+                            }else{
+                              ?>
+                                <a href="#.php" id="<?php echo $fnObj->id;?>" class="editFnActionLink">Edit</a>
+                              <?php
+                            }
+                          ?>
                           |
                           <a href="#.php" id="<?php echo $fnObj->id;?>" class="deleteFnActionLink">Delete</a>
                           |

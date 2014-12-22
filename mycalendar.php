@@ -46,10 +46,10 @@
                         <label for="title">Title: </label><input type="text" name="title" />
                       </li>
                       <li>
-                        <label for="body">Body: </label><textarea name="body"></textarea>
+                        <label for="location">Location: </label><textarea name="location"></textarea>
                       </li>
                       <li>
-                        <label for="location">Location: </label><textarea name="location"></textarea>
+                        <label for="body">Body: </label><textarea name="body"></textarea>
                       </li>
                     </ul>
                   </form>

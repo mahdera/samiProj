@@ -61,7 +61,7 @@
 
     function doesThisFnAlreadyActionFilledForIt($fnId){
         try{
-            $query = "select count(*) as cnt from tbl_fn_action where fn_id = $fnId";
+            $query = "select count(*) as cnt from tbl_fn_action where fn_id = $fnId";            
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow->cnt;

@@ -20,7 +20,7 @@
         <p>
           <div class="messagepop pop">
             <a class="close">x</a>
-            Sami, here goes the content you want to appear as a popup! Put it inside the div element<!--this is the text that you want to show in the popup-->
+            Sami, here goes the <a href="report_static.php" target="_blank">REPORT</a> you want to appear as a popup! Put it inside the div element<!--this is the text that you want to show in the popup-->
           </div>
           <a href="#." id="popup1">Click me to see the popup in Action!</a><!--make sure to create other id...if you have another popup its id should be popup2...etc-->
         </p>
