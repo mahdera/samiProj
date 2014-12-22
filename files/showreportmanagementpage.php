@@ -45,12 +45,13 @@ if($_SESSION['USER_ROLE_CODE'] === '01A'){
 			<?php
 				while($uploadedDocRow = mysql_fetch_object($uploadedDocResult)){
 					$pathVar = "files/uploaded_files/thumbnail/" . $uploadedDocRow->file_name;
+					$imgPathVar = "files/uploaded_files/" . $uploadedDocRow->file_name;
 					?>
 						<tr>
 							<td><img src="<?php echo $pathVar;?>" border="0" align="absmiddle"/></td>
 							<td><?php echo $uploadedDocRow->file_name;?></td>
 							<td><?php echo $uploadedDocRow->upload_date;?></td>
-							<td><a href="<?php echo $pathVar;?>">Download</a></td>
+							<td><a href="<?php echo $imgPathVar;?>">Download</a></td>
 						</tr>
 					<?php
 				}//end while loop

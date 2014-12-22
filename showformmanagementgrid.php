@@ -10,8 +10,8 @@
     ?>
     <a href="#" style="a:hover{text-decoration:underline}">Upload Doc</a>
     <!-- Bootstrap CSS Toolkit styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <!--<link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">-->
     <div>
       <!-- Button to select & upload files -->
       <span class="btn btn-success fileinput-button">
@@ -24,7 +24,7 @@
       <ul id="files"></ul>
 
       <!-- Load jQuery and the necessary widget JS files to enable file upload -->
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+      <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
       <script src="js/jquery.ui.widget.js"></script>
       <script src="js/jquery.iframe-transport.js"></script>
       <script src="js/jquery.fileupload.js"></script>
