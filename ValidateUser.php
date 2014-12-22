@@ -1,4 +1,4 @@
-<?php  
+<?php
   session_start();
   //get the userid and password from the login box...
   $userId = $_POST['username'];

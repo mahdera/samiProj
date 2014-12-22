@@ -15,6 +15,7 @@ if($_SESSION['USER_ROLE_CODE'] === '01A'){
 	require_once 'th.php';
 	require_once 'user.php';
 	require_once 'usersubdistrict.php';
+	require_once 'uploadeddocument.php';
 
 	$userObj = getUser($_SESSION['LOGGED_USER_ID']);
 	$goalFirstList = null;
@@ -30,10 +31,40 @@ if($_SESSION['USER_ROLE_CODE'] === '01A'){
 		}
 	}
 
+	$uploadedDocResult = getAllUploadedDocuments();
+	if( !empty($uploadedDocResult) ){
+		?>
+		<h2>Downloads</h2>
+		<table border="0" width="100%">
+			<tr style="background: #eee">
+				<td>Thumbnail</td>
+				<td>File Name</td>
+				<td>Upload Date</td>
+				<td>Download</td>
+			</tr>
+			<?php
+				while($uploadedDocRow = mysql_fetch_object($uploadedDocResult)){
+					$pathVar = "files/uploaded_files/thumbnail/" . $uploadedDocRow->file_name;
+					?>
+						<tr>
+							<td><img src="<?php echo $pathVar;?>" border="0" align="absmiddle"/></td>
+							<td><?php echo $uploadedDocRow->file_name;?></td>
+							<td><?php echo $uploadedDocRow->upload_date;?></td>
+							<td><a href="<?php echo $pathVar;?>">Download</a></td>
+						</tr>
+					<?php
+				}//end while loop
+			?>
+		</table>
+		<?php
+	}
+
+
 	//$goalFirstList = getAllGoalFirstsModifiedBy($_SESSION['LOGGED_USER_ID']);
 	$loggedInUserObj = getUserUsingTheUserId($_SESSION['LOGGED_USER_ID']);
 	if( !empty($goalFirstList) && ($loggedInUserObj->member_type !== 'Admin') ){
 		?>
+		<h2>Reports</h2>
 		<table border="0" width="100%">
 			<tr style="background:#eee">
 				<td>Goal First Record</td>

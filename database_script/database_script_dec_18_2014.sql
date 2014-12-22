@@ -33,6 +33,7 @@ create database db_sami_proj;
     `modification_date` datetime NOT NULL
   ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
 
+
   --
   -- Dumping data for table `tbl_assessment`
   --
@@ -1025,6 +1026,15 @@ create database db_sami_proj;
   (31, 1, 35),
   (32, 1, 44);
 
+  create table tbl_uploaded_document(
+    id bigint auto_increment,
+    file_name varchar(70) not null,
+    uploaded_by int not null,
+    upload_date datetime not null,
+    primary key(id),
+    foreign key(uploaded_by) references tbl_user(id)
+  );
+
   --
   -- Indexes for dumped tables
   --
@@ -1716,4 +1726,3 @@ create database db_sami_proj;
   ALTER TABLE `tbl_user_sub_district`
   ADD CONSTRAINT `tbl_user_sub_district_ibfk_1` FOREIGN KEY (`sub_district_id`) REFERENCES `tbl_sub_district` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `tbl_user_sub_district_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id`) ON DELETE CASCADE;
-  

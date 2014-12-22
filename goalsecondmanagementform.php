@@ -35,8 +35,7 @@
   <tr>
     <td style="vertical-align:top">Fn:</td>
     <td>
-      <select name="slctfn" id="slctfn" style="width: 100%">
-        <option value="" selected="selected">--Select--</option>
+      <select name="slctfn" id="slctfn" style="width: 100%;height:200px" multiple="multiple" style="font-weight:bolder;font-size:10pt">
         <?php
         foreach ($fnIdArray as $fnId) {
           $fnObj = getFn($fnId);
@@ -137,13 +136,16 @@
     $(document).ready(function(){
 
         $('#goalSecondManagementForm').hide();
+        //$('#subDetailDiv').hide();
 
         $('#showGoalSecondManagementFormLinkId').click(function(){
             $('#goalSecondManagementForm').show('slow');
+            //$('#subDetailDiv').show('slow');
         });
 
         $('#hideGoalSecondManagementFormLinkId').click(function(){
             $('#goalSecondManagementForm').hide('slow');
+            //$('#subDetailDiv').hide('slow');
         });
 
         showListOfGoalSeconds();
@@ -160,8 +162,12 @@
                         $('#fnDuplicationErrorDiv').html(response);
                         if(response !== ""){
                           $('#btnsave').hide();
+                          $('#goalSecondManagementForm').hide('slow');
+                          //$('#subDetailDiv').hide('slow');
                         }else{
                           $('#btnsave').show();
+                          $('#goalSecondManagementForm').show('slow');
+                          //$('#subDetailDiv').show('slow');
                         }
                     },
                     error:function(error){

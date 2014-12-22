@@ -362,16 +362,16 @@
     $(document).ready(function(){
 
         $('#goalFirstManagementForm').hide();
-        $('#subDetailDiv').hide();
+        //$('#subDetailDiv').hide();
 
         $('#showGoalFirstManagementFormLinkId').click(function(){
             $('#goalFirstManagementForm').show('slow');
-            $('#subDetailDiv').show('slow');
+            //$('#subDetailDiv').show('slow');
         });
 
         $('#hideGoalFirstManagementFormLinkId').click(function(){
             $('#goalFirstManagementForm').hide('slow');
-            $('#subDetailDiv').hide('slow');
+            //$('#subDetailDiv').hide('slow');
         });
 
         showListOfGoalFirsts();
@@ -389,11 +389,11 @@
                         if(response !== ""){
                           $('#btnsave').hide();
                           $('#goalFirstManagementForm').hide('slow');
-                          $('#subDetailDiv').hide('slow');
+                          //$('#subDetailDiv').hide('slow');
                         }else{
                           $('#btnsave').show();
                           $('#goalFirstManagementForm').show('slow');
-                          $('#subDetailDiv').show('slow');
+                          //$('#subDetailDiv').show('slow');
                         }
                     },
                     error:function(error){

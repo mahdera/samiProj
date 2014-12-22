@@ -1,7 +1,71 @@
-<h1>Form Management</h1>
-<form style="padding-right:25px">
+<?php
+  //session_start();
+  $theUserId = $_SESSION['INDIVIDUAL_INT_USER_ID'];
+  $loggedInUserObj = getUser($theUserId);
+  $loggedInUserRole = $loggedInUserObj->user_role;
+?>
+    <h1>Form Management</h1>
+    <?php
+    if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == '01A'){
+    ?>
+    <a href="#" style="a:hover{text-decoration:underline}">Upload Doc</a>
+    <!-- Bootstrap CSS Toolkit styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <div>
+      <!-- Button to select & upload files -->
+      <span class="btn btn-success fileinput-button">
+        <span>Select files...</span>
+        <!-- The file input field used as target for the file upload widget -->
+        <input id="fileupload" type="file" name="files[]" multiple>
+      </span>
+      <!-- The list of files uploaded -->
+      <p>Files uploaded:</p>
+      <ul id="files"></ul>
+
+      <!-- Load jQuery and the necessary widget JS files to enable file upload -->
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+      <script src="js/jquery.ui.widget.js"></script>
+      <script src="js/jquery.iframe-transport.js"></script>
+      <script src="js/jquery.fileupload.js"></script>
+      <!-- JavaScript used to call the fileupload widget to upload files -->
+      <script>
+        // When the server is ready...
+        $(function () {
+          'use strict';
+
+          // Define the url to send the image data to
+          var url = 'files/files.php';
+
+          // Call the fileupload widget and set some parameters
+          $('#fileupload').fileupload({
+            url: url,
+            dataType: 'json',
+            done: function (e, data) {
+              // Add each uploaded file name to the #files list
+              $.each(data.result.files, function (index, file) {
+                $('<li/>').text(file.name).appendTo('#files');
+              });
+            },
+            progressall: function (e, data) {
+              // Update the progress bar while files are being uploaded
+              var progress = parseInt(data.loaded / data.total * 100, 10);
+              $('#progress .bar').css(
+                'width',
+                progress + '%'
+              );
+            }
+          });
+        });
+      </script>
+    </div>
+<?php
+ }
+?>
+
+<form style="padding-right:25px;">
     <table border="0" width="100%">
-            <tr style="background: #fff">
+            <tr style="background: #eee">
                 <td>Form</td>
                 <td>Action</td>
             </tr>
