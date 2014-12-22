@@ -29,49 +29,62 @@
 <a href="#.php" id="showGoalFirstManagementFormLinkId">Show</a>
 |
 <a href="#.php" id="hideGoalFirstManagementFormLinkId">Hide</a>
+<table border="0" width="100%">
+  <tr>
+    <td colspan="2">
+      <div id="thDuplicationErrorDiv"></div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <h3>Please Select Th Below</h3>
+    </td>
+  </tr>
+  <tr>
+    <td style="vertical-align:top !important">Th:</td>
+    <td>
+      <select name="slctth" id="slctth" style="width: 100%;height:200px;font-weight:bolder;font-size:10pt" multiple="multiple">
+        <!--<option value="" selected="selected">--Select--</option>-->
+        <?php
+        //loop the array instead...
+        if($selectedThIdArray == NULL){
+          if($userObj->user_level == '02'){
+            $thList = null;//getAllThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+          }else if($userObj->user_level == '01'){
+            $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+            $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+            $thList = getAllThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+          }
+          if(!empty($thList)){
+            while($thObj = mysql_fetch_object($thList)){
+              ?>
+              <option value="<?php echo $thObj->id;?>"><?php echo $thObj->th_name;?></option>
+              <?php
+            }//end while loop
+          }
+        }else{
+          for($i=0; $i < count($selectedThIdArray); $i++){
+            $thObj = getTh($selectedThIdArray[$i]);
+            ?>
+            <option value="<?php echo $thObj->id;?>"><?php echo $thObj->th_name;?></option>
+            <?php
+          }//end for loop
+        }
+        ?>
+      </select>
+    </td>
+  </tr>
+</table>
 <form id="goalFirstManagementForm">
   <fieldset>
     <legend>Add Goal First Form</legend>
     <table border="0" width="100%">
-        <tr>
-            <td colspan="2">
-                <div id="thDuplicationErrorDiv"></div>
-            </td>
-        </tr>
-        <tr style="background: red">
+        <!--<tr style="background: red">
             <td width="20%">Th:</td>
             <td>
-                <select name="slctth" id="slctth" style="width: 100%">
-                    <option value="" selected="selected">--Select--</option>
-                    <?php
-                        //loop the array instead...
-                        if($selectedThIdArray == NULL){
-                          if($userObj->user_level == '02'){
-                              $thList = null;//getAllThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
-                          }else if($userObj->user_level == '01'){
-                              $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-                              $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-                              $thList = getAllThsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
-                          }
-                          if(!empty($thList)){
-                            while($thObj = mysql_fetch_object($thList)){
-                              ?>
-                                  <option value="<?php echo $thObj->id;?>"><?php echo $thObj->th_name;?></option>
-                              <?php
-                            }//end while loop
-                          }
-                        }else{
-                          for($i=0; $i < count($selectedThIdArray); $i++){
-                              $thObj = getTh($selectedThIdArray[$i]);
-                              ?>
-                                  <option value="<?php echo $thObj->id;?>"><?php echo $thObj->th_name;?></option>
-                              <?php
-                          }//end for loop
-                        }
-                    ?>
-                </select>
+
             </td>
-        </tr>
+        </tr>-->
         <tr style="background: red">
             <td width="20%">G1:</td>
             <td>
@@ -128,14 +141,6 @@
                             <select name="slctg1fn1" id="slctg1fn1" style="width: 95%" class="fnDropDown">
                                 <option value="" selected="selected">--Select--</option>
                                 <?php
-                                    //$fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
-                                    /*if($userObj->user_level == 'Zone Level'){
-                                        $userZoneObj = getZoneInfoForUser($userObj->id);
-                                        $fnList = getAllFnsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
-                                    }else if($userObj->user_level == 'Branch Level'){
-                                        $userBranchObj = getBranchInfoForUser($userObj->id);
-                                        $fnList = getAllFnsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
-                                    }*/
                                     if($userObj->user_level == '02'){
                                       $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
                                       $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
@@ -183,14 +188,6 @@
                 <select name="slctg2fn" id="slctg2fn" style="width: 95%" class="fnDropDown">
                     <option value="" selected="selected">--Select--</option>
                     <?php
-                        //$fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
-                        /*if($userObj->user_level == 'District Level'){
-                            $userZoneObj = getDistrictInfoForUser($userObj->id);
-                            $fnList = getAllFnsModifiedByUsingUserLevel('District Level', $userZoneObj->zone_id);
-                        }else if($userObj->user_level == 'Sub District Level'){
-                            $userBranchObj = getBranchInfoForUser($userObj->id);
-                            $fnList = getAllFnsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
-                        }*/
                         if($userObj->user_level == '02'){
                           $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
                           $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
@@ -231,14 +228,6 @@
                             <select name="slctg2fn1" id="slctg2fn1" style="width: 95%" class="fnDropDown">
                                 <option value="" selected="selected">--Select--</option>
                                 <?php
-                                    //$fnList = getAllFnsModifiedByThisUser($_SESSION['LOGGED_USER_ID']);
-                                    /*if($userObj->user_level == 'Zone Level'){
-                                        $userZoneObj = getZoneInfoForUser($userObj->id);
-                                        $fnList = getAllFnsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
-                                    }else if($userObj->user_level == 'Branch Level'){
-                                        $userBranchObj = getBranchInfoForUser($userObj->id);
-                                        $fnList = getAllFnsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
-                                    }*/
                                     if($userObj->user_level == '02'){
                                       $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
                                       $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
@@ -276,7 +265,6 @@
         <tr>
             <td width="20%">G3:</td>
             <td>
-                <!--<input type="text" name="txtg3" id="txtg3" size="70"/>-->
                 <textarea name="txtg3" id="txtg3" style="width:100%" rows="4"></textarea>
             </td>
         </tr>
@@ -294,13 +282,6 @@
                           $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
                           $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
                         }
-                        /*if($userObj->user_level == 'Zone Level'){
-                            $userZoneObj = getZoneInfoForUser($userObj->id);
-                            $fnList = getAllFnsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
-                        }else if($userObj->user_level == 'Branch Level'){
-                            $userBranchObj = getBranchInfoForUser($userObj->id);
-                            $fnList = getAllFnsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
-                        }*/
                         while($fnRow = mysql_fetch_object($fnList)){
                             ?>
                                 <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
@@ -323,7 +304,6 @@
                     <tr>
                         <td width="20%">Obj:</td>
                         <td>
-                            <!--<input type="text" id="txtg3obj1" name="txtg3obj1" class="g3Obj" size="70"/>-->
                             <textarea name="txtg3obj1" id="txtg3obj1" style="width:100%" rows="4" class="g3Obj"></textarea>
                         </td>
                     </tr>
@@ -341,13 +321,6 @@
                                       $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
                                       $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
                                     }
-                                    /*if($userObj->user_level == 'Zone Level'){
-                                        $userZoneObj = getZoneInfoForUser($userObj->id);
-                                        $fnList = getAllFnsModifiedByUsingUserLevel('Zone Level', $userZoneObj->zone_id);
-                                    }else if($userObj->user_level == 'Branch Level'){
-                                        $userBranchObj = getBranchInfoForUser($userObj->id);
-                                        $fnList = getAllFnsModifiedByUsingUserLevel('Branch Level', $userBranchObj->branch_id);
-                                    }*/
                                     while($fnRow = mysql_fetch_object($fnList)){
                                         ?>
                                             <option value="<?php echo $fnRow->id;?>"><?php echo $fnRow->fn_name;?></option>
@@ -389,13 +362,16 @@
     $(document).ready(function(){
 
         $('#goalFirstManagementForm').hide();
+        $('#subDetailDiv').hide();
 
         $('#showGoalFirstManagementFormLinkId').click(function(){
             $('#goalFirstManagementForm').show('slow');
+            $('#subDetailDiv').show('slow');
         });
 
         $('#hideGoalFirstManagementFormLinkId').click(function(){
             $('#goalFirstManagementForm').hide('slow');
+            $('#subDetailDiv').hide('slow');
         });
 
         showListOfGoalFirsts();
@@ -412,8 +388,12 @@
                         $('#thDuplicationErrorDiv').html(response);
                         if(response !== ""){
                           $('#btnsave').hide();
+                          $('#goalFirstManagementForm').hide('slow');
+                          $('#subDetailDiv').hide('slow');
                         }else{
                           $('#btnsave').show();
+                          $('#goalFirstManagementForm').show('slow');
+                          $('#subDetailDiv').show('slow');
                         }
                     },
                     error:function(error){

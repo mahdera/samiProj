@@ -26,31 +26,39 @@
 <a href="#.php" id="showGoalSecondManagementFormLinkId">Show</a>
 |
 <a href="#.php" id="hideGoalSecondManagementFormLinkId">Hide</a>
+<table border="0" width="100%">
+  <tr>
+    <td colspan="2">
+      <div id="fnDuplicationErrorDiv"></div>
+    </td>
+  </tr>
+  <tr>
+    <td style="vertical-align:top">Fn:</td>
+    <td>
+      <select name="slctfn" id="slctfn" style="width: 100%">
+        <option value="" selected="selected">--Select--</option>
+        <?php
+        foreach ($fnIdArray as $fnId) {
+          $fnObj = getFn($fnId);
+          ?>
+          <option value="<?php echo $fnId;?>"><?php echo $fnObj->fn_name;?></option>
+          <?php
+        }//end foreach loop...
+        ?>
+      </select>
+    </td>
+  </tr>
+</table>
 <form id="goalSecondManagementForm">
   <fieldset>
     <legend>Add Goal Second</legend>
     <table border="0" width="100%">
-        <tr>
-            <td colspan="2">
-                <div id="fnDuplicationErrorDiv"></div>
-            </td>
-        </tr>
-        <tr>
+        <!--<tr>
             <td>Fn:</td>
             <td>
-                <select name="slctfn" id="slctfn" style="width: 100%">
-                    <option value="" selected="selected">--Select--</option>
-                    <?php
-                        foreach ($fnIdArray as $fnId) {
-                            $fnObj = getFn($fnId);
-                            ?>
-                                <option value="<?php echo $fnId;?>"><?php echo $fnObj->fn_name;?></option>
-                            <?php
-                        }//end foreach loop...
-                    ?>
-                </select>
+
             </td>
-        </tr>
+        </tr>-->
         <tr>
             <td width="20%">G1:</td>
             <td>
