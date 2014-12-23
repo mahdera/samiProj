@@ -58,10 +58,7 @@ if(!$isForm9AlreadyFilled){
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        //alert("Saved Successfully");
-                        $('#form9Div').html('<div class="notify notify-green"><span class="symbol icon-tick"></span> Saved Successfully</div>');
-                        clearInputFields();
-                        showListOfForm9Records();
+                        $('#innerDivToRefresh').load('showformmanagementgrid.php');
                     },
                     error:function(error){
                         alert(error);

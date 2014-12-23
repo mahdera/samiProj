@@ -236,7 +236,7 @@
                     goalSecondG3ObjHiddenIdControlName+"="+goalSecondG3ObjHiddenIdVal;
                 }
 
-                var divId = "goalSecondDetailDiv" + fnId;
+                var divId = "actionDiv" + fnId;
 
                 $.ajax({
                     url: 'files/updategoalsecond.php',

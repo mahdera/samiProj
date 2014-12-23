@@ -80,10 +80,7 @@ if(!$isForm2AlreadyFilled){
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        //alert('Form Two Saved Successfully!');
-                        $('#form2Div').html('<div class="notify notify-green"><span class="symbol icon-tick"></span> Saved Successfully</div>');
-                        clearInputFields();
-                        showListOfForm2Records();
+                        $('#innerDivToRefresh').load('showformmanagementgrid.php');
                     },
                     error:function(error){
                         alert(error);

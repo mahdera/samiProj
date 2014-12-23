@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	?>
+?>
 	<h2>Form 10 Records</h2>
 	<?php
 	//get all form2 values created by the session owner user...

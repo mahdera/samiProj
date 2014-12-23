@@ -1,5 +1,7 @@
 <?php
-  //session_start();
+  @session_start();
+  require_once 'files/user.php';
+  require_once 'files/formhelper.php';
   $theUserId = $_SESSION['INDIVIDUAL_INT_USER_ID'];
   $loggedInUserObj = getUser($theUserId);
   $loggedInUserRole = $loggedInUserObj->user_role;
@@ -8,57 +10,56 @@
     <?php
     if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == '01A'){
     ?>
-    <a href="#" style="a:hover{text-decoration:underline}">Upload Doc</a>
     <!-- Bootstrap CSS Toolkit styles -->
     <!--<link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">-->
-    <div>
-      <!-- Button to select & upload files -->
-      <span class="btn btn-success fileinput-button">
-        <span>Select files...</span>
-        <!-- The file input field used as target for the file upload widget -->
-        <input id="fileupload" type="file" name="files[]" multiple>
-      </span>
-      <!-- The list of files uploaded -->
-      <p>Files uploaded:</p>
-      <ul id="files"></ul>
+    <?php require_once 'importjsscripts.php';?>
 
-      <!-- Load jQuery and the necessary widget JS files to enable file upload -->
-      <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
-      <script src="js/jquery.ui.widget.js"></script>
-      <script src="js/jquery.iframe-transport.js"></script>
-      <script src="js/jquery.fileupload.js"></script>
-      <!-- JavaScript used to call the fileupload widget to upload files -->
-      <script>
+    <div>
+        <!-- Button to select & upload files -->
+        <span class="btn btn-success fileinput-button">
+            <span><a href="#.php">Select files...</a></span>
+            <!-- The file input field used as target for the file upload widget -->
+            <input id="fileupload" type="file" name="files[]" multiple>
+        </span>
+        <!-- The list of files uploaded -->
+        <p>Files uploaded:</p>
+        <ul id="files"></ul>
+
+
+        <!-- JavaScript used to call the fileupload widget to upload files -->
+        <script type="text/javascript">
         // When the server is ready...
         $(function () {
-          'use strict';
+        'use strict';
 
-          // Define the url to send the image data to
-          var url = 'files/files.php';
+        // Define the url to send the image data to
+        var url = 'files/files.php';
 
-          // Call the fileupload widget and set some parameters
-          $('#fileupload').fileupload({
-            url: url,
-            dataType: 'json',
-            done: function (e, data) {
-              // Add each uploaded file name to the #files list
-              $.each(data.result.files, function (index, file) {
-                $('<li/>').text(file.name).appendTo('#files');
-              });
-            },
-            progressall: function (e, data) {
-              // Update the progress bar while files are being uploaded
-              var progress = parseInt(data.loaded / data.total * 100, 10);
-              $('#progress .bar').css(
-                'width',
-                progress + '%'
-              );
-            }
-          });
-        });
-      </script>
+        // Call the fileupload widget and set some parameters
+        //$('#uploadLinkId').click(function(){
+            $('#fileupload').fileupload({
+                url: url,
+                dataType: 'json',
+                done: function (e, data) {
+                    // Add each uploaded file name to the #files list
+                    $.each(data.result.files, function (index, file) {
+                        $('<li/>').text(file.name).appendTo('#files');
+                    });
+                },
+                progressall: function (e, data) {
+                    // Update the progress bar while files are being uploaded
+                    var progress = parseInt(data.loaded / data.total * 100, 10);
+                    $('#progress .bar').css(
+                        'width',
+                        progress + '%'
+                    );
+                }
+            });
+        });//end link click function
+        </script>
     </div>
+
 <?php
  }
 ?>
@@ -67,13 +68,27 @@
     <table border="0" width="100%">
             <tr style="background: #eee">
                 <td>Form</td>
-                <td>Action</td>
+                <td>
+
+                </td>
             </tr>
             <tr style="background:#fff">
-                <td><a href="#.php" id="showForm1Link">Form 1</a></td>
+                <td>Form 1</td>
                 <td align="middle">
+                    <?php
+                    $countVal = doesThisFormAlreadyHasRecordAttachedToIt(1);
+                    if($countVal == 0){
+                    ?>
+                    <a href="#.php" id="showForm1Link">Add</a>
+                    |
+                    <?php
+                    }else{
+                    ?>
                     <a href="#.php" id="editForm1Link">Edit</a>
                     |
+                    <?php
+                    }
+                    ?>
                     <a href="#.php" id="hideForm1Link">Close</a>
                 </td>
             </tr>
@@ -83,10 +98,22 @@
                 </td>
             </tr>
             <tr style="background:#fff">
-                <td><a href="#.php" id="showForm2Link">Form 2</a></td>
+                <td>Form 2</td>
                 <td align="middle">
+                    <?php
+                    $countVal = doesThisFormAlreadyHasRecordAttachedToIt(2);
+                    if($countVal == 0){
+                    ?>
+                    <a href="#.php" id="showForm2Link">Add</a>
+                    |
+                    <?php
+                    }else{
+                    ?>
                     <a href="#.php" id="editForm2Link">Edit</a>
                     |
+                    <?php
+                    }
+                    ?>
                     <a href="#.php" id="hideForm2Link">Close</a>
                 </td>
             </tr>
@@ -96,9 +123,22 @@
                 </td>
             </tr>
             <tr style="background:#fff">
-                <td><a href="#.php" id="showForm3Link">Form 3</a></td>
+                <td>Form 3</td>
                 <td align="middle">
+                    <?php
+                    $countVal = doesThisFormAlreadyHasRecordAttachedToIt(3);
+                    if($countVal == 0){
+                    ?>
+                    <a href="#.php" id="showForm3Link">Add</a>
+                    |
+                    <?php
+                    }else{
+                    ?>
                     <a href="#.php" id="editForm3Link">Edit</a>
+                    |
+                    <?php
+                    }
+                    ?>
                     <a href="#.php" id="hideForm3Link">Close</a>
                 </td>
             </tr>
@@ -108,10 +148,22 @@
                 </td>
             </tr>
             <tr style="background:#fff">
-                <td><a href="#.php" id="showForm4Link">Form 4</a></td>
+                <td>Form 4</td>
                 <td align="middle">
+                    <?php
+                    $countVal = doesThisFormAlreadyHasRecordAttachedToIt(4);
+                    if($countVal == 0){
+                    ?>
+                    <a href="#.php" id="showForm4Link">Add</a>
+                    |
+                    <?php
+                    }else{
+                    ?>
                     <a href="#.php" id="editForm4Link">Edit</a>
                     |
+                    <?php
+                    }
+                    ?>
                     <a href="#.php" id="hideForm4Link">Close</a>
                 </td>
             </tr>
@@ -121,10 +173,22 @@
                 </td>
             </tr>
             <tr style="background:#fff">
-                <td><a href="#.php" id="showForm5Link">Form 5</a></td>
+                <td>Form 5</td>
                 <td align="middle">
+                    <?php
+                    $countVal = doesThisFormAlreadyHasRecordAttachedToIt(5);
+                    if($countVal == 0){
+                    ?>
+                    <a href="#.php" id="showForm5Link">Add</a>
+                    |
+                    <?php
+                    }else{
+                    ?>
                     <a href="#.php" id="editForm5Link">Edit</a>
                     |
+                    <?php
+                    }
+                    ?>
                     <a href="#.php" id="hideForm5Link">Close</a>
                 </td>
             </tr>
@@ -134,10 +198,22 @@
                 </td>
             </tr>
             <tr style="background:#fff">
-                <td><a href="#.php" id="showForm6Link">Form 6</a></td>
+                <td>Form 6</td>
                 <td align="middle">
+                    <?php
+                    $countVal = doesThisFormAlreadyHasRecordAttachedToIt(6);
+                    if($countVal == 0){
+                    ?>
+                    <a href="#.php" id="showForm6Link">Add</a>
+                    |
+                    <?php
+                    }else{
+                    ?>
                     <a href="#.php" id="editForm6Link">Edit</a>
                     |
+                    <?php
+                    }
+                    ?>
                     <a href="#.php" id="hideForm6Link">Close</a>
                 </td>
             </tr>
@@ -147,10 +223,22 @@
                 </td>
             </tr>
             <tr style="background:#fff">
-                <td><a href="#.php" id="showForm7Link">Form 7</a></td>
+                <td>Form 7</td>
                 <td align="middle">
+                    <?php
+                    $countVal = doesThisFormAlreadyHasRecordAttachedToIt(7);
+                    if($countVal == 0){
+                    ?>
+                    <a href="#.php" id="showForm7Link">Add</a>
+                    |
+                    <?php
+                    }else{
+                    ?>
                     <a href="#.php" id="editForm7Link">Edit</a>
                     |
+                    <?php
+                    }
+                    ?>
                     <a href="#.php" id="hideForm7Link">Close</a>
                 </td>
             </tr>
@@ -160,10 +248,22 @@
                 </td>
             </tr>
             <tr style="background:#fff">
-                <td><a href="#.php" id="showForm8Link">Form 8</a></td>
+                <td>Form 8</td>
                 <td align="middle">
+                    <?php
+                    $countVal = doesThisFormAlreadyHasRecordAttachedToIt(8);
+                    if($countVal == 0){
+                    ?>
+                    <a href="#.php" id="showForm8Link">Add</a>
+                    |
+                    <?php
+                    }else{
+                    ?>
                     <a href="#.php" id="editForm8Link">Edit</a>
                     |
+                    <?php
+                    }
+                    ?>
                     <a href="#.php" id="hideForm8Link">Close</a>
                 </td>
             </tr>
@@ -173,10 +273,22 @@
                 </td>
             </tr>
             <tr style="background:#fff">
-                <td><a href="#.php" id="showForm9Link">Form 9</a></td>
+                <td>Form 9</td>
                 <td align="middle">
+                    <?php
+                        $countVal = doesThisFormAlreadyHasRecordAttachedToIt(9);
+                        if($countVal == 0){
+                    ?>
+                    <a href="#.php" id="showForm9Link">Add</a>
+                    |
+                    <?php
+                    }else{
+                    ?>
                     <a href="#.php" id="editForm9Link">Edit</a>
                     |
+                    <?php
+                    }
+                    ?>
                     <a href="#.php" id="hideForm9Link">Close</a>
                 </td>
             </tr>
@@ -186,10 +298,22 @@
                 </td>
             </tr>
             <tr style="background:#fff">
-                <td><a href="#.php" id="showForm10Link">Form 10</a></td>
+                <td>Form 10</td>
                 <td align="middle">
-                    <a href="#.php" id="editForm10Link">Edit</a>
-                    |
+                    <?php
+                        $countVal = doesThisFormAlreadyHasRecordAttachedToIt(10);
+                        if($countVal == 0){
+                    ?>
+                        <a href="#.php" id="showForm10Link">Add</a>
+                        |
+                    <?php
+                        }else{
+                    ?>
+                        <a href="#.php" id="editForm10Link">Edit</a>
+                        |
+                    <?php
+                        }
+                    ?>
                     <a href="#.php" id="hideForm10Link">Close</a>
                 </td>
             </tr>
@@ -207,7 +331,8 @@
         });
 
         $('#editForm1Link').click(function(){
-            $('#form1Div').load('files/showlistofform1records.php');
+            //$('#form1Div').load('files/showlistofform1records.php');
+            $('#form1Div').load('files/showform1editfields_modified.php');
         });
 
         $('#showForm2Link').click(function(){
@@ -215,7 +340,8 @@
         });
 
         $('#editForm2Link').click(function(){
-            $('#form2Div').load('files/showlistofform2records.php');
+            //$('#form2Div').load('files/showlistofform2records.php');
+            $('#form2Div').load('files/showform2editfields_modified.php');
         });
 
         $('#showForm3Link').click(function(){
@@ -223,7 +349,8 @@
         });
 
         $('#editForm3Link').click(function(){
-            $('#form3Div').load('files/showlistofform3records.php');
+            //$('#form3Div').load('files/showlistofform3records.php');
+            $('#form3Div').load('files/showform3editfields_modified.php');
         });
 
         $('#showForm4Link').click(function(){
@@ -231,7 +358,8 @@
         });
 
         $('#editForm4Link').click(function(){
-          $('#form4Div').load('files/showlistofform4records.php');
+          //$('#form4Div').load('files/showlistofform4records.php');
+          $('#form4Div').load('files/showform4editfields_modified.php');
         });
 
         $('#showForm5Link').click(function(){
@@ -239,7 +367,8 @@
         });
 
         $('#editForm5Link').click(function(){
-          $('#form5Div').load('files/showlistofform5records.php');
+          //$('#form5Div').load('files/showlistofform5records.php');
+          $('#form5Div').load('files/showform5editfields_modified.php');
         });
 
         $('#showForm6Link').click(function(){
@@ -247,7 +376,8 @@
         });
 
         $('#editForm6Link').click(function(){
-          $('#form6Div').load('files/showlistofform6records.php');
+          //$('#form6Div').load('files/showlistofform6records.php');
+          $('#form6Div').load('files/showform6editfields_modified.php');
         });
 
         $('#showForm7Link').click(function(){
@@ -255,7 +385,8 @@
         });
 
         $('#editForm7Link').click(function(){
-          $('#form7Div').load('files/showlistofform7records.php');
+          //$('#form7Div').load('files/showlistofform7records.php');
+          $('#form7Div').load('files/showform7editfields_modified.php');
         });
 
         $('#showForm8Link').click(function(){
@@ -263,7 +394,8 @@
         });
 
         $('#editForm8Link').click(function(){
-          $('#form8Div').load('files/showlistofform8records.php');
+          //$('#form8Div').load('files/showlistofform8records.php');
+          $('#form8Div').load('files/showform8editfields_modified.php');
         });
 
         $('#showForm9Link').click(function(){
@@ -271,7 +403,8 @@
         });
 
         $('#editForm9Link').click(function(){
-          $('#form9Div').load('files/showlistofform9records.php');
+          //$('#form9Div').load('files/showlistofform9records.php');
+          $('#form9Div').load('files/showform9editfields_modified.php');
         });
 
         $('#showForm10Link').click(function(){
@@ -279,7 +412,8 @@
         });
 
         $('#editForm10Link').click(function(){
-          $('#form10Div').load('files/showlistofform10records.php');
+          //$('#form10Div').load('files/showlistofform10records.php');
+          $('#form10Div').load('files/showform10editfields_modified.php');
         });
 
         $('#hideForm1Link').click(function(){

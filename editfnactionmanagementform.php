@@ -60,9 +60,6 @@
 </div>
 <?php
 }else{
-  ?>
-    <!--<div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>-->
-  <?php
   require_once 'files/showlistofgoalsecondsmodified.php';
 }
 ?>
@@ -78,6 +75,7 @@
         $('.editFnActionLinkId').click(function(){
             var id = $(this).attr('id');
             var editDivId = "editActionTextDiv" + id;
+            //alert(editDivId);
             $('#'+editDivId).load('files/showeditfnactionform.php?id='+id);
         });
 

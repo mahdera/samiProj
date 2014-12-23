@@ -34,22 +34,11 @@
   $(document).ready(function(){
 
     $('#rightArrowButton').click(function(){
-      /*var currentPageTag = $('#currentPageTag').html();
-      if(currentPageTag === 'Step 1-1'){
-      $('#step1Content').load('showstep1_2content.php');
-    }*/
-    window.location.replace('step4_4fullstatic.php');
-  });
+        window.location.replace('step4_4fullstatic.php');
+    });
 
-  $('#leftArrowButton').click(function(){
-    /*var currentPageTag = $('#currentPageTag').html();
-    if(currentPageTag === 'Intro Two'){
-    window.location.replace("intro1.php");
-  }else if(currentPageTag === 'Intro Three'){
-  window.location.replace("intro2.php");
-}*/
-  window.location.replace('step4_2fullstatic.php');
-});
-
+    $('#leftArrowButton').click(function(){
+      window.location.replace('step4_2fullstatic.php');
+    });
 });//end document.ready function
 </script>

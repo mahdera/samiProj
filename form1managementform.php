@@ -223,10 +223,7 @@
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        //alert('Saved Successfully');
-                        $('#form1Div').html('<div class="notify notify-green"><span class="symbol icon-tick"></span> Saved Successfully</div>');
-                        //clearFormInputFields(q3NumItems, q4NumItems);
-                        showListOfForm1Records();
+                        $('#innerDivToRefresh').load('showformmanagementgrid.php');
                     },
                     error:function(error){
                         alert(error);

@@ -58,10 +58,7 @@ if(!$isForm8AlreadyFilled){
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        //alert('Saved Successfully');
-                        $('#form8Div').html('<div class="notify notify-green"><span class="symbol icon-tick"></span> Saved Successfully</div>');
-                        clearInputFields();
-                        showListOfForm8Records();
+                        $('#innerDivToRefresh').load('showformmanagementgrid.php');
                     },
                     error:function(error){
                         alert(error);

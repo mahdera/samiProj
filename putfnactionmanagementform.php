@@ -58,8 +58,14 @@
                               <?php
                             }
                           ?>
+                          <?php
+                            if($countVal != 0){
+                          ?>
                           |
                           <a href="#.php" id="<?php echo $fnObj->id;?>" class="deleteFnActionLink">Delete</a>
+                          <?php
+                            }
+                          ?>
                           |
                           <a href="#.php" id="<?php echo $fnObj->id;?>" class="closeActionFormClass">Close</a>
                         </td>

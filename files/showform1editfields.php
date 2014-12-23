@@ -9,7 +9,7 @@
 	$dateControlName = "datepicker" . $id;
 	$planControlName = "textareaplan" . $id;
 	$q1ControlName = "textareaq1" . $id;
-  $q2ControlName = "textareaq2" . $id;
+  	$q2ControlName = "textareaq2" . $id;
 	$buttonId = "btnupdateform1" . $id;
 ?>
 <form style="background:white">
@@ -190,8 +190,7 @@
                 data: dataString,
                 type:'POST',
                 success:function(response){
-                    //$('#'+divId).html(response);
-										$('#form1Div').load('files/showlistofform1records.php');
+					$('#innerDivToRefresh').load('showformmanagementgrid.php');
                 },
                 error:function(error){
                     alert(error);

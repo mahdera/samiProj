@@ -1,6 +1,23 @@
 <?php
-	$id = $_GET['id'];
+	session_start();
 	require_once 'form10.php';
+	$userObj = getUser($_SESSION['LOGGED_USER_ID']);
+	if($userObj->user_level == '02'){
+		$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+		//$form10List = getAllForm10ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+		$form10List = getLatestForm10ModifiedByUsingUserLevelResultSet('02', $userSubDistrictObj->sub_district_id);
+	}else if($userObj->user_level == '01'){
+		$userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+		if(!empty($userObj)){
+			$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+			//$form10List = getAllForm10ModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+			$form10List = getLatestForm10ModifiedByUsingUserLevelResultSet('02', $userSubDistrictObj->sub_district_id);
+		}
+	}
+	//$form10List = getAllForm10sModifiedBy($_SESSION['LOGGED_USER_ID']);
+	if(!empty($form10List) && mysql_num_rows($form10List)){
+	$formRow = mysql_fetch_object($form10List);
+	$id = $formRow->id;
 	$form10Obj = getForm10($id);
 	//define the control names in here...
 	$q101TextAreaControlName = "q10_1" . $id;
@@ -21,9 +38,12 @@
         </tr>
     </table>
 </form>
+<?php
+}//end empty checker if condition
+?>
 <script type="text/javascript">
 	$(document).ready(function(){
-		var id = "<?php echo $id;?>";
+		var id = 1;//"<?php //echo $id;?>";
 		var buttonId = "btnupdateform10" + id;
 
 		$('#'+buttonId).click(function(){

@@ -57,8 +57,14 @@
                                       <?php
                                     }
                                   ?>
+                                  <?php
+                                    if($countVal != 0){
+                                  ?>
                                   |
                                   <a href="#.php" id="<?php echo $thObj->id;?>" class="deleteThActionLink">Delete</a>
+                                  <?php
+                                    }
+                                  ?>
                                   |
                                   <a href="#.php" id="<?php echo $thObj->id;?>" class="closeActionFormClass">Close</a>
                                 </td>

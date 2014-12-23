@@ -57,11 +57,8 @@ if(!$isForm10AlreadyFilled){
                     url: 'files/saveform10.php',
                     data: dataString,
                     type:'POST',
-                    success:function(response){
-                        //alert('Form 10 Saved Successfully!');
-                        $('#form10Div').html('<div class="notify notify-green"><span class="symbol icon-tick"></span> Saved Successfully</div>');
-                        clearInputFields();
-                        showListOfForm10Records();
+                    success:function(response){                        
+                        $('#innerDivToRefresh').load('showformmanagementgrid.php');
                     },
                     error:function(error){
                         alert(error);

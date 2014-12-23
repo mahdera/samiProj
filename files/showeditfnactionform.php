@@ -13,7 +13,7 @@
 
     $fnActionId = $_GET['id'];
     $fnActionObj = getFnAction($fnActionId);
-    $fnEditActionText = "fnEditActionText" . $fnActionId;
+    $fnEditActionText = "editActionTextDiv" . $fnActionId;
     $buttonId = "updateFnActionButton" . $fnActionId;
     $goalSecondFnRow = getGoalSecondFnUsingFnId($fnActionObj->fn_id);
     //$goalSecondFnRow = getGoalSecondUsingFnId($fnActionObj->fn_id);
@@ -269,8 +269,7 @@
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        //$('#'+divId).html(response);
-                        $('#innerActionDiv').load('editfnactionmanagementform.php');
+                        $('#goalSecondDivToRefresh').load('editfnactionmanagementform.php');
                     },
                     error:function(error){
                         alert(error);
