@@ -99,7 +99,7 @@
 </div>
 <script type="text/javascript">
   $(document).ready(function(){
-    $('#selectCheckBoxDiv').hide();
+    $('#selectCheckBoxDiv').show();
 
     $('#eddyMurphyLink').click(function(){
       $('#selectCheckBoxDiv').show('slow');

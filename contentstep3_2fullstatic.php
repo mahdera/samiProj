@@ -31,12 +31,8 @@
 <script type='text/javascript'>
 $(document).ready(function(){
 
-  $('#rightArrowButton').click(function(){
-    /*var currentPageTag = $('#currentPageTag').html();
-    if(currentPageTag === 'Step 1-1'){
-    $('#step1Content').load('showstep1_2content.php');
-  }*/
-  //window.location.replace('step3_3fullstatic.php');
+  $('#rightArrowButton').click(function(){    
+
   //come back to this and do it with Array version...
   var selectedCheckBoxesIdDataString = "";
   var ctr = 1;
@@ -48,8 +44,7 @@ $(document).ready(function(){
     }
   });
   selectedCheckBoxesIdDataString+="ctr="+(ctr-1);
-  //alert(selectedCheckBoxesIdDataString);
-  //$('#step3Content').load('showstep3_3content.php?'+selectedCheckBoxesIdDataString);
+
   //now i will have to use ajax to load the session that gets initialized with the selected datastring
   $.ajax({
     url: 'files/loadselectedths.php',
@@ -74,13 +69,7 @@ $(document).ready(function(){
 });
 
 $('#leftArrowButton').click(function(){
-  /*var currentPageTag = $('#currentPageTag').html();
-  if(currentPageTag === 'Intro Two'){
-  window.location.replace("intro1.php");
-}else if(currentPageTag === 'Intro Three'){
-window.location.replace("intro2.php");
-}*/
-window.location.replace('step3.php');
+    window.location.replace('step3.php');
 });
 
 });//end document.ready function

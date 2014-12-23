@@ -177,4 +177,26 @@
             $ex->getMessage();
         }
     }
+
+    function doesThisFnHasGoalSecondSavedForIt($fnId){
+        try{
+            $query = "select count(*) as cnt from tbl_goal_second_fn where fn_id = $fnId";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow->cnt;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
+
+    function getGoalSecondFnForThisFn($fnId){
+        try{
+            $query = "select * from tbl_goal_second_fn where fn_id = $fnId";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
 ?>

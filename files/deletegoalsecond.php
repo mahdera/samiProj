@@ -1,16 +1,13 @@
-<?php
-  $goalSecondFnId = $_POST['goalSecondFnId'];
+<?php  
   require_once 'goalsecondfn.php';
   require_once 'fnaction.php';
-  @$goalSecondFnObj = getGoalSecondFn($goalSecondFnId);
+  $fnId = $_POST['fnId'];
+  $goalSecondFnObj = getGoalSecondFnForThisFn($fnId);
   if(!empty($goalSecondFnObj)){
-    deleteFnActionForFn($goalSecondFnObj->fn_id);
-    deleteGoalSecondFn($goalSecondFnId);
+    deleteFnActionForFn($fnId);
+    deleteGoalSecondFn($goalSecondFnObj->id);
   }else{
-    deleteGoalSecondFn($goalSecondFnId);
+    deleteGoalSecondFn($goalSecondFnObj->id);
   }
 ?>
-  <div class="notify notify-green"><span class="symbol icon-tick"></span> Goal Second Deleted Successfully!</div>
-  <?php
-  require_once 'showlistofgoalsecondsmodified.php';
-?>
+<div class="notify notify-green"><span class="symbol icon-tick"></span> Goal Second Deleted Successfully!</div>

@@ -85,7 +85,6 @@
     ?>
 </table>
 
-<hr/>
 <div id="subDetailDiv"></div>
 <script type="text/javascript">
 
@@ -118,6 +117,11 @@
     $('.openGoalFirstDetailForEditClass').click(function(){
       var idVal = $(this).attr('id');
       var divId = "goalFirstDetailDiv" + idVal;
+      var selectedThIdArray = <?php echo json_encode($selectedThIdArray);?>;
+      for(var i=0; i<selectedThIdArray.length;i++){
+          var clearDivId = "goalFirstDetailDiv" + selectedThIdArray[i];
+          $('#'+clearDivId).html('');
+      }//end for...loop
       $('#' + divId).load('files/showgoalfirstdetailhereforedit.php?thId='+idVal);
     });
 
@@ -130,7 +134,7 @@
           url: 'files/deletegoalfirst.php',
           data: dataString,
           type:'POST',
-          success:function(response){            
+          success:function(response){
             $('#goalFirstDivToRefresh').load('goalfirstmanagmentform_modified.php');
           },
           error:function(error){

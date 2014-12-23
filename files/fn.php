@@ -92,6 +92,99 @@
         }
     }
 
+    function getAllFilteredSelectedThFnIds($selectedThIdArray){
+        //var_dump($selectedThIdArray);
+        $ctr = 0;
+        $fnIdArray = array();
+        $query = null;
+        try{
+            for($i=0; $i<count($selectedThIdArray); $i++){
+                $loopQuery = "select * from tbl_goal_first_th where th_id = " . $selectedThIdArray[$i];
+                //echo $query;
+                $goalFirstThResult = read($loopQuery);
+                //this is for goal_first_g1 tables...
+                while($goalFirstThResultRow = mysql_fetch_object($goalFirstThResult)){
+                    $query = "select * from tbl_goal_first_g1 where goal_first_th_id = " . $goalFirstThResultRow->id;
+                    $goalFirstG1Result = read($query);
+                    while($goalFirstG1ResultRow = mysql_fetch_object($goalFirstG1Result)){
+                        $fnIdArray[$ctr] = $goalFirstG1ResultRow->fn_id;
+                        $ctr++;
+                        $query = "select * from tbl_goal_first_g1_obj_fn where goal_first_g1_id = " . $goalFirstG1ResultRow->id;
+                        $goalFirstG1ObjFnResult = read($query);
+                        while($goalFirstG1ObjFnResultRow = mysql_fetch_object($goalFirstG1ObjFnResult)){
+                            $fnIdArray[$ctr] = $goalFirstG1ObjFnResultRow->fn_id;
+                            $ctr++;
+                        }//end inner most while loop
+                    }//end inner while loop
+                }//end outer while loop
+                ///end goal_first_g1 table fetching queries...
+
+                //this is for goal_first_g2 tables...
+                $goalFirstThResult = read($loopQuery);
+                while($goalFirstThResultRow = mysql_fetch_object($goalFirstThResult)){
+                    $query = "select * from tbl_goal_first_g2 where goal_first_th_id = " . $goalFirstThResultRow->id;
+                    $goalFirstG2Result = read($query);
+                    while($goalFirstG2ResultRow = mysql_fetch_object($goalFirstG2Result)){
+                        $fnIdArray[$ctr] = $goalFirstG2ResultRow->fn_id;
+                        $ctr++;
+                        $query = "select * from tbl_goal_first_g2_obj_fn where goal_first_g2_id = " . $goalFirstG2ResultRow->id;
+                        $goalFirstG2ObjFnResult = read($query);
+                        while($goalFirstG2ObjFnResultRow = mysql_fetch_object($goalFirstG2ObjFnResult)){
+                            $fnIdArray[$ctr] = $goalFirstG2ObjFnResultRow->fn_id;
+                            $ctr++;
+                        }//end inner most while loop
+                    }//end inner while loop
+                }//end outer while loop
+                ///end goal_first_g2 table fetching queries...
+
+                //this is for goal_first_g3 tables...
+                $goalFirstThResult = read($loopQuery);
+                while($goalFirstThResultRow = mysql_fetch_object($goalFirstThResult)){
+                    $query = "select * from tbl_goal_first_g3 where goal_first_th_id = " . $goalFirstThResultRow->id;
+                    $goalFirstG3Result = read($query);
+                    while($goalFirstG3ResultRow = mysql_fetch_object($goalFirstG3Result)){
+                        $fnIdArray[$ctr] = $goalFirstG3ResultRow->fn_id;
+                        $ctr++;
+                        $query = "select * from tbl_goal_first_g3_obj_fn where goal_first_g3_id = " . $goalFirstG3ResultRow->id;
+                        $goalFirstG3ObjFnResult = read($query);
+                        while($goalFirstG3ObjFnResultRow = mysql_fetch_object($goalFirstG3ObjFnResult)){
+                            $fnIdArray[$ctr] = $goalFirstG3ObjFnResultRow->fn_id;
+                            $ctr++;
+                        }//end inner most while loop
+                    }//end inner while loop
+                }//end outer while loop
+                ///end goal_first_g3 table fetching queries...
+
+            }//end for...loop
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+
+        //before returning the array i need to check if there are duplicates and
+        //leave out the duplicates...
+        $fnIdArrayFiltered = array();
+
+        //now check if the element already exists in the second newly created array
+        $elementExists = false;
+        for($i=0; $i<count($fnIdArray); $i++){
+            for($j=0; $j<count($fnIdArrayFiltered);$j++){
+                if($fnIdArray[$i] == $fnIdArrayFiltered[$j]){
+                    $elementExists = true;
+                    break;
+                }
+            }
+            //now check here and if safe add element to fnIdArrayFiltered array...
+            if($elementExists == false){
+                $currentArrayIndex = count($fnIdArrayFiltered);
+                $fnIdArrayFiltered[$currentArrayIndex] = $fnIdArray[$i];
+            }
+            $elementExists = false;
+        }//end for $i loop eliminating repeating function_id works perfectly...
+        //var_dump($fnIdArrayFiltered);
+        return $fnIdArrayFiltered;
+        //return $fnIdArray;
+    }
+
     function getAllFilteredLatestFnIdsEnteredByUserUsingUserLevel($userLevel, $divisionId){
         $ctr = 0;
         $fnIdArray = array();

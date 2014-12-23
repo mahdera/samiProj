@@ -42,7 +42,7 @@ if($_SESSION['USER_ROLE_CODE'] === '01A'){
   </div>
   <?php
   require 'sidebar.php';
-  require 'importjsscripts.php';
+  //require 'importjsscripts.php';
   ?>
 </body>
 </html>
