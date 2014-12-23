@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    @session_start();
     require_once 'goalfirst.php';
     require_once 'goalfirstg1.php';
     require_once 'goalfirstg1objfn.php';
@@ -86,6 +86,7 @@
 
     if($userObj->user_level == '01'){
         $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+        //var_dump($userObject);
         /////HERE I NEED TO THINK AND WORK CONTINUES FROM HERE....
         //fetch the value just saved using the thId
         if(!empty($userObject)){

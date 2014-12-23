@@ -21,10 +21,12 @@
       require_once 'importjsscripts.php';
   ?>
   <div class="col-half left">
-  <?php
-      //require 'goalfirstmanagementform.php';
-      require 'goalfirstmanagmentform_modified.php';
-  ?>
+    <div id="goalFirstDivToRefresh">
+      <?php
+          //require 'goalfirstmanagementform.php';
+          require 'goalfirstmanagmentform_modified.php';
+      ?>
+    </div>
   </div>
   <!--end to be replaced content-->
 </div> <!-- /content -->

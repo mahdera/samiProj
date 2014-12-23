@@ -482,6 +482,7 @@
                         goalFirstG3FnVal+"&"+goalFirstG3ObjHiddenIdControlName+"="+goalFirstG3ObjHiddenIdVal;
                 }
 
+                var divId = "goalFirstDetailDiv" + thId;
 
                 $.ajax({
                     url: 'files/updategoalfirst.php',

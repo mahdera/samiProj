@@ -1,15 +1,14 @@
 <?php
-  $goalFirstThId = $_POST['goalFirstThId'];
+  //$goalFirstThId = $_POST['goalFirstThId'];
+  $thId = $_POST['thId'];
   require_once 'goalfirstth.php';
   require_once 'thaction.php';
-  $goalFirstThObj = getGoalFirstTh($goalFirstThId);
+  //$goalFirstThObj = getGoalFirstTh($goalFirstThId);
+  $goalFirstThObj = getGoalFirstThForTh($thId);  
   //delete th action table also...
   if(!empty($goalFirstThObj)){
-    deleteThActionForTh($goalFirstThObj->th_id);
-    deleteGoalFirstTh($goalFirstThId);
+    deleteThActionForTh($thId);
+    deleteGoalFirstTh($goalFirstThObj->id);
   }
 ?>
-    <div class="notify notify-green"><span class="symbol icon-tick"></span> Deleted Successfully</div>
-  <?php
-  require_once 'showlistofgoalfirstsmodified.php';
-?>
+<div class="notify notify-green"><span class="symbol icon-tick"></span> Deleted Successfully</div>

@@ -28,17 +28,17 @@
     $fnOtherDivId = "fnOtherG3ObjFn" . ($numItems + 1);
     $idForSpinner = "g3fn" . ($numItems + 1);
 ?>
-<tr id="<?php echo $trRowId;?>" class="added">
+<tr id="<?php echo $trRowId;?>" class="added" style="background: #C6E2FF">
     <td colspan="2">
         <table border="0" width="100%" style="background: #fff">
-            <tr>
+            <tr style="background: #C6E2FF">
                 <td width="20%">Obj:</td>
                 <td>
                     <!--<input type="text" id="<?php /*echo $objControlName;*/?>" name="<?php /*echo $objControlName;*/?>" class="g3Obj" size="70"/>-->
                     <textarea name="<?php echo $objControlName;?>" id="<?php echo $objControlName;?>" class="g3Obj" style="width:100%" rows="4"></textarea>
                 </td>
             </tr>
-            <tr>
+            <tr style="background: #C6E2FF">
                 <td width="20%">Fn:</td>
                 <td>
                     <select name="<?php echo $fnSelectControlName;?>" id="<?php echo $fnSelectControlName;?>" style="width: 95%" onchange="showOtherFnDataEntryForm(this.value, '<?php echo $fnOtherDivId;?>', <?php echo $numItems + 1;?>);">
@@ -55,7 +55,7 @@
                     <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $idForSpinner;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
                 </td>
             </tr>
-            <tr>
+            <tr style="background: #C6E2FF">
                 <td colspan="2">
                     <div id="<?php echo $fnOtherDivId;?>"></div>
                 </td>

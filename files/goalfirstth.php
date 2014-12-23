@@ -4,6 +4,7 @@
     function saveGoalFirstTh($goalFirstId, $thId, $modifiedBy){
         try{
             $query = "insert into tbl_goal_first_th values(0, $goalFirstId, $thId, $modifiedBy, NOW())";
+            echo $query;
             save($query);
         }catch(Exception $ex){
             $ex->getMessage();
@@ -22,6 +23,7 @@
     function deleteGoalFirstTh($id){
         try{
             $query = "delete from tbl_goal_first_th where id = $id";
+            echo $query;
             save($query);
         }catch(Exception $ex){
             $ex->getMessage();
@@ -180,7 +182,7 @@
         }
     }
 
-    function doesThisThHasGoalFirstSavedForIt($thId){      
+    function doesThisThHasGoalFirstSavedForIt($thId){
       try{
         $query = "select count(*) as cnt from tbl_goal_first_th where th_id = $thId";
         $result = read($query);
@@ -189,5 +191,16 @@
       }catch(Exception $ex){
         $ex->getMessage();
       }
+    }
+
+    function getGoalFirstThForTh($thId){
+        try{
+            $query = "select * from tbl_goal_first_th where th_id = $thId";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
     }
 ?>
