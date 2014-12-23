@@ -179,4 +179,15 @@
             $ex->getMessage();
         }
     }
+
+    function doesThisThHasGoalFirstSavedForIt($thId){      
+      try{
+        $query = "select count(*) as cnt from tbl_goal_first_th where th_id = $thId";
+        $result = read($query);
+        $resultRow = mysql_fetch_object($result);
+        return $resultRow->cnt;
+      }catch(Exception $ex){
+        $ex->getMessage();
+      }
+    }
 ?>

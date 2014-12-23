@@ -22,7 +22,8 @@
   ?>
   <div class="col-half left">
   <?php
-      require 'goalfirstmanagementform.php';
+      //require 'goalfirstmanagementform.php';
+      require 'goalfirstmanagmentform_modified.php';
   ?>
   </div>
   <!--end to be replaced content-->
