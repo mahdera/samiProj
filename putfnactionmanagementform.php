@@ -1,6 +1,10 @@
+<?php
+  @session_start();
+?>
 <h1><a href="#.php" id="kevinHeartLink">Fn Action</a></h1>
 <div id="fnActionShowDiv">
 <?php
+    require_once 'importjsscripts.php';
     //first grab all fn record from the database...
     require_once 'files/fn.php';
     require_once 'files/fnaction.php';
@@ -78,3 +82,67 @@
 }
 ?>
 </div>
+<div id="subDetailDiv"></div>
+<hr/>
+<script type="text/javascript">
+$(document).ready(function(){
+
+  //$('#fnActionShowDiv').hide();
+
+  $('#kevinHeartLink').click(function(){
+    $('#fnActionShowDiv').hide('slow');
+  });
+
+  $('.openActionFormClass').click(function(){
+    var idVal = $(this).attr('id');
+    //now create the div element using the id you got in here...
+    var divId = "actionDiv" + idVal;
+
+    $('#' + divId).load('files/showputfnactionform.php?fn_id='+idVal);
+  });
+
+  $('.closeActionFormClass').click(function(){
+    var idVal = $(this).attr('id');
+    var divId = "actionDiv" + idVal;
+    $('#' + divId).html('');
+  });
+
+  $('.viewFnActionLink').click(function(){
+    var idVal = $(this).attr('id');
+    var divId = "actionDiv" + idVal;
+    $('#' + divId).load('files/showlistoffnactiontextsforfn.php?fnId='+idVal);
+  });
+
+  $('.editFnActionLink').click(function(){
+    var idVal = $(this).attr('id');
+    var divId = "actionDiv" + idVal;
+    //$('#' + divId).load('files/showlistoffnactiontextsforfnforedit.php?fnId='+idVal);
+    $('#' + divId).load('files/showeditfieldsofthisfnaction.php?fnId='+idVal);
+  });
+
+  $('.deleteFnActionLink').click(function(){
+    var idVal = $(this).attr('id');
+    var divId = "actionDiv" + idVal;
+
+    if(window.confirm('Are you sure you want to delete this record?')){
+      //$('#' + divId).load('files/deletefnactionforthisfn.php?fnId='+idVal);
+      //$('#innerDivToRefresh').load('putfnactionmanagementform.php');
+      var dataString = "fnId="+idVal;
+      $.ajax({
+        url: 'files/deletefnactionforthisfn.php',
+        data: dataString,
+        type:'GET',
+        success:function(response){
+          $('#innerDivToRefresh').load('putfnactionmanagementform.php');
+          //$('#'+divId).html(response);
+        },
+        error:function(error){
+          alert(error);
+        }
+      });
+    }
+    //$('#' + divId).load('files/showlistoffnactiontextsforfnfordelete.php?fnId='+idVal);
+  });
+
+});//end document.ready function
+</script>

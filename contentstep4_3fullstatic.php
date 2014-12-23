@@ -1,4 +1,4 @@
-a<div class="content" id='step1Content'>
+<div class="content" id='step1Content'>
   <!--to be replaced when the next button is clicked-->
   <div id="topcontain">
     <div id="titlearea">
@@ -19,9 +19,15 @@ a<div class="content" id='step1Content'>
   </div><!-- /col-half col-half -->
   <div class="col-half left">
     <?php
-    require_once 'importjsscripts.php';
-    require 'putthactionmanagementform.php';
+      require_once 'importjsscripts.php';
     ?>
+
+    <div id="innerDivToRefresh">
+        <?php
+          require 'putthactionmanagementform.php';
+        ?>
+    </div>
+
   </div>
   </div> <!-- /content -->
   <script type='text/javascript'>

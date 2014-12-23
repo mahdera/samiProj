@@ -51,7 +51,8 @@
               data: dataString,
               type:'POST',
               success:function(response){
-                  $('#'+divId).html(response);
+                  //$('#'+divId).html(response);
+                  $('#innerDivToRefresh').load('putthactionmanagementform.php');
               },
               error:function(error){
                   alert(error);

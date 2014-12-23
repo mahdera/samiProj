@@ -200,7 +200,8 @@
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        $('#'+divId).html(response);
+                        $('#innerDivToRefresh').load('putthactionmanagementform.php');
+                        //$('#'+divId).html(response);
                     },
                     error:function(error){
                         alert(error);

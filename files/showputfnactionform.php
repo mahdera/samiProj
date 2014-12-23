@@ -172,7 +172,8 @@
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        $('#'+divId).html(response);
+                        //$('#'+divId).html(response);
+                        $('#innerDivToRefresh').load('putfnactionmanagementform.php');
                     },
                     error:function(error){
                         alert(error);

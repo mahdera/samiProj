@@ -1,3 +1,6 @@
+<?php
+  @session_start();
+?>
 <h1><a href="#.php" id="thShowLinkId">Th Action</a></h1>
 <div id="thActionShowDiv">
 <?php
@@ -23,8 +26,6 @@
         }
     }
 
-    //$goalFirstThList = getAllGoalFirstThsModifiedBy($_SESSION['LOGGED_USER_ID']);
-    //this will have to be like all goalFirsts then filter out the ths in the goal first list
 
     if(!empty($goalFirstThList) && mysql_num_rows($goalFirstThList)){
         ?>
@@ -39,13 +40,23 @@
                         $thObj = getTh($goalFirstThRow->th_id);
                         $countVal = 0;
                         $divId = "actionDiv" . $thObj->id;
-                        //$countVal = doesThisThAlreadyActionFilledForIt($thObj->id);
+                        $countVal = doesThisThAlreadyActionFilledForIt($thObj->id);
                         if(true){
                             ?>
                             <tr>
-                                <td width="50%"><a href="#.php" id="<?php echo $thObj->id;?>" class="openActionFormClass"><?php echo $thObj->th_name;?></a></td>
+                                <td width="50%"><?php echo $thObj->th_name;?></td>
                                 <td align="right">
-                                  <a href="#.php" id="<?php echo $thObj->id;?>" class="editThActionLink">Edit</a>
+                                  <?php
+                                    if($countVal == 0){
+                                      ?>
+                                        <a href="#.php" id="<?php echo $thObj->id;?>" class="openActionFormClass">Add</a>
+                                      <?php
+                                    }else{
+                                      ?>
+                                        <a href="#.php" id="<?php echo $thObj->id;?>" class="editThActionLink">Edit</a>
+                                      <?php
+                                    }
+                                  ?>
                                   |
                                   <a href="#.php" id="<?php echo $thObj->id;?>" class="deleteThActionLink">Delete</a>
                                   |
@@ -76,7 +87,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
 
-      $('#thActionShowDiv').hide();
+      //$('#thActionShowDiv').hide();
 
         $('.openActionFormClass').click(function(){
             var idVal = $(this).attr('id');
@@ -110,7 +121,20 @@
             var divId = "actionDiv" + idVal;
             //$('#' + divId).load('files/showlistofthactiontextsforthfordelete.php?thId='+idVal);
             if(window.confirm('Are you sure you want to delete this record?')){
-              $('#' + divId).load('files/deletethactionforthisth.php?thId='+idVal);
+              //$('#' + divId).load('files/deletethactionforthisth.php?thId='+idVal);
+              var dataString = "thId="+idVal;
+              $.ajax({
+                url: 'files/deletethactionforthisth.php',
+                data: dataString,
+                type:'GET',
+                success:function(response){
+                  $('#innerDivToRefresh').load('putthactionmanagementform.php');
+                  //$('#'+divId).html(response);
+                },
+                error:function(error){
+                  alert(error);
+                }
+              });
             }
         });
 

@@ -21,9 +21,11 @@
       require_once 'importjsscripts.php';
   ?>
   <div class="col-half left">
-    <?php
-      require 'putfnactionmanagementform.php';
-    ?>
+    <div id="innerDivToRefresh">
+      <?php
+        require 'putfnactionmanagementform.php';
+      ?>
+    </div>
   </div>
   <!--end to be replaced content-->
 </div> <!-- /content -->
