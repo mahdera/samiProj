@@ -13,7 +13,7 @@
 
     $fnActionId = $_GET['id'];
     $fnActionObj = getFnAction($fnActionId);
-    $fnEditActionText = "editActionTextDiv" . $fnActionId;
+    $fnEditActionControl = "textareaeditfnaction" . $fnActionId;
     $buttonId = "updateFnActionButton" . $fnActionId;
     $goalSecondFnRow = getGoalSecondFnUsingFnId($fnActionObj->fn_id);
     //$goalSecondFnRow = getGoalSecondUsingFnId($fnActionObj->fn_id);
@@ -171,7 +171,7 @@
                 Fn Action:
             </td>
             <td>
-                <textarea rows="3" style="width:100%" name="<?php echo $fnEditActionText;?>" id="<?php echo $fnEditActionText;?>"><?php echo $fnActionObj->action_text;?></textarea>
+                <textarea rows="3" style="width:100%" name="<?php echo $fnEditActionControl;?>" id="<?php echo $fnEditActionControl;?>"><?php echo $fnActionObj->action_text;?></textarea>
             </td>
         </tr>
     </table>
@@ -206,6 +206,7 @@
 
         $('#'+buttonId).click(function(){
             var divId = "editActionTextDiv" + fnActionId;
+            var fnEditActionControl = "textareaeditfnaction" + fnActionId;
             //get the counter values for each g1 g2 and g3 now define the control names...
             var goalSecondG1ObjControlName = null;
             var goalSecondG2ObjControlName = null;
@@ -218,7 +219,7 @@
             var txtG1Val = $('#' + g1ControlName).val();
             var txtG2Val = $('#' + g2ControlName).val();
             var txtG3Val = $('#' + g3ControlName).val();
-            var fnEditActionTextVal = $('#' + fnEditActionText).val();
+            var fnEditActionTextVal = $('#' + fnEditActionControl).val();
             //now grab the ids here
             var goalSecondG1Id = "<?php echo $goalSecondG1Id;?>";
             var goalSecondG2Id = "<?php echo $goalSecondG2Id;?>";
