@@ -45,7 +45,7 @@ if(!empty($form1List) && mysql_num_rows($form1List)){
             <tr>
                 <td>Date:</td>
                 <td>
-                    <input type="text" id="<?php echo $dateControlName;?>" name="<?php echo $dateControlName;?>" value="<?php echo stripslashes($form1Obj->form_date);?>"/>
+                    <input type="text" id="<?php echo $dateControlName;?>" name="<?php echo $dateControlName;?>" value="<?php echo stripslashes($form1Obj->form_date);?>" class="datePickerWidget"/>
                 </td>
             </tr>
             <tr>
@@ -85,9 +85,15 @@ if(!empty($form1List) && mysql_num_rows($form1List)){
                             if($colCount == 1){
                                 echo "<tr class='$q3RowClass'>";
                                 }if($colCount < 4){
+                                    if($colCount == 2){
                                     ?>
-                                    <td><input type="text" name="<?php echo $textBoxId;?>" id="<?php echo $textBoxId;?>" value="<?php echo stripslashes($form1Q3Row->column_value);?>"/></td>
+                                        <td><input type="text" name="<?php echo $textBoxId;?>" id="<?php echo $textBoxId;?>" value="<?php echo stripslashes($form1Q3Row->column_value);?>" class="datePickerWidget"/></td>
                                     <?php
+                                    }else{
+                                    ?>
+                                        <td><input type="text" name="<?php echo $textBoxId;?>" id="<?php echo $textBoxId;?>" value="<?php echo stripslashes($form1Q3Row->column_value);?>"/></td>
+                                    <?php
+                                    }
                                 }if($colCount == 4){
                                     ?>
                                     <td><input type="text" name="<?php echo $textBoxId;?>" id="<?php echo $textBoxId;?>" value="<?php echo stripslashes($form1Q3Row->column_value);?>"/></td>
@@ -120,9 +126,15 @@ if(!empty($form1List) && mysql_num_rows($form1List)){
                                 if($colCount == 1){
                                     echo "<tr class='$q4RowClass'>";
                                     }if($colCount < 4){
+                                        if($colCount == 3){
                                         ?>
-                                        <td><input type="text" name="<?php echo $textBoxId;?>" id="<?php echo $textBoxId;?>" value="<?php echo $form1Q4Row->column_value;?>"/></td>
+                                            <td><input type="text" name="<?php echo $textBoxId;?>" id="<?php echo $textBoxId;?>" value="<?php echo $form1Q4Row->column_value;?>" class="datePickerWidget"/></td>
                                         <?php
+                                        }else{
+                                        ?>
+                                            <td><input type="text" name="<?php echo $textBoxId;?>" id="<?php echo $textBoxId;?>" value="<?php echo $form1Q4Row->column_value;?>"/></td>
+                                        <?php
+                                        }
                                     }if($colCount == 4){
                                         ?>
                                         <td><input type="text" name="<?php echo $textBoxId;?>" id="<?php echo $textBoxId;?>" value="<?php echo $form1Q4Row->column_value;?>"/></td>
@@ -155,10 +167,17 @@ if(!empty($form1List) && mysql_num_rows($form1List)){
         var q3RowClass = "thRowQ3Edit" + id;
         var q4RowClass = "thRowQ4Edit" + id;
 
+        var dateControlName = "datepicker" + id;
+
+        $('.datePickerWidget').datepicker({
+            dateFormat: "yy-mm-dd",
+            changeMonth: true,//this option for allowing user to select month
+            changeYear: true //this option for allowing user to select from year range
+        });
+
         $('#'+buttonId).click(function(){
             var divId = "form1EditDiv" + id;
             var titleControlName = "txttitle" + id;
-            var dateControlName = "datepicker" + id;
             var planControlName = "textareaplan" + id;
             var q1ControlName = "textareaq1" + id;
             var q2ControlName = "textareaq2" + id;

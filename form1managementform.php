@@ -19,6 +19,7 @@
 
   if(!$isForm1AlreadyFilled){
 ?>
+<?php require_once 'importjsscripts.php';?>
 <h2>Form 1</h2>
 <form style="background:white" id="form1Entry">
     <table border="0" width="100%">
@@ -31,7 +32,7 @@
         <tr>
             <td>Date:</td>
             <td>
-                <input type="text" id="datepicker" />
+                <input type="text" id="datepicker" class="datePickerWidget"/>
             </td>
         </tr>
         <tr>
@@ -69,7 +70,7 @@
                     </tr>
                     <tr id="thRowQ31" class="thInputRowQ3">
                         <td><input type="text" name="txtrowq311" id="txtrowq311" /></td>
-                        <td><input type="text" name="txtrowq312" id="txtrowq312" /></td>
+                        <td><input type="text" name="txtrowq312" id="txtrowq312" class="datePickerWidget"/></td>
                         <td><input type="text" name="txtrowq313" id="txtrowq313" /></td>
                         <td><input type="text" name="txtrowq314" id="txtrowq314" /></td>
                     </tr>
@@ -94,7 +95,7 @@
                     <tr id="thRowQ41" class="thInputRowQ4">
                         <td><input type="text" name="txtrowq411" id="txtrowq411" /></td>
                         <td><input type="text" name="txtrowq412" id="txtrowq412" /></td>
-                        <td><input type="text" name="txtrowq413" id="txtrowq413" /></td>
+                        <td><input type="text" name="txtrowq413" id="txtrowq413" class="datePickerWidget"/></td>
                         <td><input type="text" name="txtrowq414" id="txtrowq414" /></td>
                     </tr>
                 </table>
@@ -116,13 +117,12 @@
 ?>
 <div id="form1ManagementDetailDiv"></div>
 <script type="text/javascript">
-    $(document).ready(function(){
 
-        //showListOfForm1Records();
+    $(document).ready(function(){        
 
         $('txttitle').focus();
 
-        $( "#datepicker" ).datepicker({
+        $('.datePickerWidget').datepicker({
             dateFormat: "yy-mm-dd",
             changeMonth: true,//this option for allowing user to select month
             changeYear: true //this option for allowing user to select from year range
@@ -134,8 +134,9 @@
             var textBoxCol2Id = "txtrowq3"+(numRows+1)+2;
             var textBoxCol3Id = "txtrowq3"+(numRows+1)+3;
             var textBoxCol4Id = "txtrowq3"+(numRows+1)+4;
-            var newRow = $("<tr id='thRowQ3"+((numRows)+1)+"' class='thInputRowQ3'><td><input type='text' name='"+textBoxCol1Id+"' id='"+textBoxCol1Id+"'/></td><td><input type='text' name='"+textBoxCol2Id+"' id='"+textBoxCol2Id+"'/></td><td><input type='text' name='"+textBoxCol3Id+"' id='"+textBoxCol3Id+"'/></td><td><input type='text' name='"+textBoxCol4Id+"' id='"+textBoxCol4Id+"'/></td></tr>");
+            var newRow = $("<tr id='thRowQ3"+((numRows)+1)+"' class='thInputRowQ3'><td><input type='text' name='"+textBoxCol1Id+"' id='"+textBoxCol1Id+"'/></td><td><input type='text' name='"+textBoxCol2Id+"' id='"+textBoxCol2Id+"' class='datePickerWidget'/></td><td><input type='text' name='"+textBoxCol3Id+"' id='"+textBoxCol3Id+"'/></td><td><input type='text' name='"+textBoxCol4Id+"' id='"+textBoxCol4Id+"'/></td></tr>");
             $('#thRowQ3'+(numRows)).after(newRow);
+            $('#'+textBoxCol2Id).on('click', $('#'+textBoxCol2Id).datepicker({dateFormat: "yy-mm-dd",changeMonth: true,changeYear: true }) );
         });
 
         $('#removeRowsQ3Link').click(function(){
@@ -152,8 +153,9 @@
             var textBoxCol2Id = "txtrowq4"+(numRows+1)+2;
             var textBoxCol3Id = "txtrowq4"+(numRows+1)+3;
             var textBoxCol4Id = "txtrowq4"+(numRows+1)+4;
-            var newRow = $("<tr id='thRowQ4"+((numRows)+1)+"' class='thInputRowQ4'><td><input type='text' name='"+textBoxCol1Id+"' id='"+textBoxCol1Id+"'/></td><td><input type='text' name='"+textBoxCol2Id+"' id='"+textBoxCol2Id+"'/></td><td><input type='text' name='"+textBoxCol3Id+"' id='"+textBoxCol3Id+"'/></td><td><input type='text' name='"+textBoxCol4Id+"' id='"+textBoxCol4Id+"'/></td></tr>");
+            var newRow = $("<tr id='thRowQ4"+((numRows)+1)+"' class='thInputRowQ4'><td><input type='text' name='"+textBoxCol1Id+"' id='"+textBoxCol1Id+"'/></td><td><input type='text' name='"+textBoxCol2Id+"' id='"+textBoxCol2Id+"'/></td><td><input type='text' name='"+textBoxCol3Id+"' id='"+textBoxCol3Id+"' class='datePickerWidget'/></td><td><input type='text' name='"+textBoxCol4Id+"' id='"+textBoxCol4Id+"'/></td></tr>");
             $('#thRowQ4'+(numRows)).after(newRow);
+            $('#'+textBoxCol3Id).on('click', $('#'+textBoxCol3Id).datepicker({dateFormat: "yy-mm-dd",changeMonth: true,changeYear: true }) );
         });
 
 

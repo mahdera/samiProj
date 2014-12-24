@@ -20,6 +20,7 @@ if($_SESSION['USER_ROLE_CODE'] === '01A'){
   <script type='text/javascript' src="js/jquery-1.11.1.js"></script>
   <!-- for the datetime picker -->
   <script type="text/javascript" src="js/jquery-ui.js"></script>
+  <script type="text/javascript" src="js/jquery.iframe.transport.js"></script>
   <link href="css/jquery-ui.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
   <link rel="stylesheet" href="css/slidebars.css">

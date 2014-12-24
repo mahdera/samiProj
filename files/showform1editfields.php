@@ -12,6 +12,7 @@
   	$q2ControlName = "textareaq2" . $id;
 	$buttonId = "btnupdateform1" . $id;
 ?>
+<?php require_once 'importjsscripts.php';?>
 <form style="background:white">
     <table border="0" width="100%" style="padding:5px">
         <tr>
@@ -123,7 +124,16 @@
 </form>
 <script type="text/javascript">
     $(document).ready(function(){
+
         var id = "<?php echo $id;?>";
+		var dateControlName = "datepicker" + id;
+
+		$('#'+dateControlName).datepicker({
+			dateFormat: "yy-mm-dd",
+			changeMonth: true,//this option for allowing user to select month
+			changeYear: true //this option for allowing user to select from year range
+		});
+
         var buttonId = "btnupdateform1" + id;
 				var q3RowClass = "thRowQ3Edit" + id;
 				var q4RowClass = "thRowQ4Edit" + id;
@@ -131,7 +141,6 @@
         $('#'+buttonId).click(function(){
             var divId = "form1EditDiv" + id;
             var titleControlName = "txttitle" + id;
-            var dateControlName = "datepicker" + id;
             var planControlName = "textareaplan" + id;
             var q1ControlName = "textareaq1" + id;
             var q2ControlName = "textareaq2" + id;

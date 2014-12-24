@@ -1,5 +1,8 @@
 <?php
   @session_start();
+  if(empty($_SESSION['USER_ID'])){
+      header("Location: login.php");
+  }
   require_once 'files/user.php';
   require_once 'files/formhelper.php';
   $theUserId = $_SESSION['INDIVIDUAL_INT_USER_ID'];
