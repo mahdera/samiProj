@@ -177,16 +177,18 @@
 
 
         $('#txtemail').blur(function(){
+          $('#errorDiv').html('');
           var email = $('#txtemail').val();
-          var txt = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-          if (!txt.test(email)) {
-            alert('Please enter a valid email address!');
-            $('#txtemail').focus();
-            $('#btncreateuser').hide();
-            return false;
+          if(email !== ''){
+            var txt = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if (!txt.test(email)) {
+              $('#errorDiv').html('<div class="notify notify-red"><span class="symbol icon-error"></span> Please enter a valid email address!</div>');
+              $('#btncreateuser').hide();
+              return false;
+            }else{
+              $('#btncreateuser').show();
+            }
           }
-
-          //alert(email);
 
           if(email !== ""){
               //now check if there are duplicates...
@@ -197,9 +199,8 @@
                 type:'POST',
                 success:function(response){
                   if(response != 0){
-                    alert('The email address "'+email+'" already exists. Please use another email address!');
-                    $('#txtemail').val('');
-                    $('#txtemail').focus();
+                    $('#errorDiv').html('<div class="notify notify-red"><span class="symbol icon-error"></span> The email address \"'+email+'\" already exits. Please use another email address!</div>');
+                    //$('#txtemail').focus();
                     $('#btncreateuser').hide();
                   }else{
                     $('#btncreateuser').show();
@@ -211,7 +212,7 @@
               });
           }
 
-        });
+        });//end email blur function
 
 
         $('#btncreateuser').click(function(){

@@ -20,6 +20,11 @@
 <form>
     <table border="1" width="100%" rules="all">
         <tr>
+          <td colspan="2">
+            <div id="errorDiv"></div>
+          </td>
+        </tr>
+        <tr>
             <td>First Name:</td>
             <td>
                 <input type="text" name="txteditfirstname" id="txteditfirstname" value="<?php echo stripslashes($userObj->first_name);?>"/>
@@ -438,6 +443,44 @@
                 }
             }
         });
+
+        $('#txteditemail').blur(function(){
+          $('#errorDiv').html('');
+          var email = $('#txteditemail').val();
+          if(email !== ''){
+            var txt = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if (!txt.test(email)) {
+              $('#errorDiv').html('<div class="notify notify-red"><span class="symbol icon-error"></span> Please enter a valid email address!</div>');
+              $('#btnupdate').hide();
+              return false;
+            }else{
+              $('#btnupdate').show();
+            }
+          }
+
+          if(email !== ""){
+            //now check if there are duplicates...
+            var dataString = "email="+email;
+            $.ajax({
+              url: 'files/isthereausersavedwiththisemailaddress.php',
+              data: dataString,
+              type:'POST',
+              success:function(response){
+                if(response != 0){
+                  $('#errorDiv').html('<div class="notify notify-red"><span class="symbol icon-error"></span> The email address \"'+email+'\" already exits. Please use another email address!</div>');
+                  //$('#txteditemail').focus();
+                  $('#btnupdate').hide();
+                }else{
+                  $('#btnupdate').show();
+                }
+              },
+              error:function(error){
+                alert(error);
+              }
+            });
+          }
+
+        });//end email blur function
 
     });//end document.ready function
 </script>
