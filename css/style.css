@@ -218,7 +218,8 @@ ul.sq {
 }
 #listdiv a {
     color:#ccc;
-    font-size: .8em;
+    /*font-size: .8em !important;*/
+    font-size: 10pt;
     font-weight:bold;
 }
 #listdiv a:hover {

@@ -149,6 +149,18 @@
         }
       }
 
+      public static function getAllEventsModifiedByUsingUserLevel($userLevel, $divisionId){
+          try{
+              $query = "SELECT tbl_event_calendar.id as eId, title, body, DATE_FORMAT(start_time, '%Y-%m-%dT%H:%i' ) AS startTime, DATE_FORMAT(end_time, '%Y-%m-%dT%H:%i' ) AS endTime, location FROM tbl_event_calendar, " .
+              "tbl_user_sub_district WHERE tbl_event_calendar.modified_by = tbl_user_sub_district.user_id and tbl_user_sub_district.sub_district_id = $divisionId ORDER BY start_time DESC";
+              //echo $query;
+              $result = DBConnection::read($query);
+              return $result;
+          }catch(Exception $ex){
+              $ex->getMessage();
+          }
+      }
+
       public static function getAllEventsForUser($userId){
         try{
           $query = "SELECT id, title, body, DATE_FORMAT(start_time, '%Y-%m-%dT%H:%i' ) AS startTime, DATE_FORMAT(end_time, '%Y-%m-%dT%H:%i' ) AS endTime, location FROM tbl_event_calendar WHERE modified_by = $userId ORDER BY start_time DESC";

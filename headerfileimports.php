@@ -1,4 +1,4 @@
-<link rel='stylesheet' type='text/css' href='event_calendar/libs/css/smoothness/jquery-ui-1.8rc3.custom.css' />
+<!--<link rel='stylesheet' type='text/css' href='event_calendar/libs/css/smoothness/jquery-ui-1.8rc3.custom.css' />-->
 <link rel='stylesheet' type='text/css' href='event_calendar/css/jquery.weekcalendar.css' />
 <link rel='stylesheet' type='text/css' href='event_calendar/css/calendar.css' />
 <link rel='stylesheet' type='text/css' href='event_calendar/css/reset.css' />
