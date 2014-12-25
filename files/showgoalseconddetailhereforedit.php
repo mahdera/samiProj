@@ -180,7 +180,7 @@
         goalSecondG3Ctr--;
 
         $('#'+buttonId).click(function(){
-            var divId = "actionDiv" + fnId;
+            var divId = "goalSecondDetailDiv" + fnId;
             //get the counter values for each g1 g2 and g3 now define the control names...
             var goalSecondG1ObjControlName = null;
             var goalSecondG2ObjControlName = null;
@@ -236,8 +236,8 @@
                     goalSecondG3ObjHiddenIdControlName+"="+goalSecondG3ObjHiddenIdVal;
                 }
 
-                var divId = "actionDiv" + fnId;
-
+                //var divId = "actionDiv" + fnId;
+                //alert(divId);
                 $.ajax({
                     url: 'files/updategoalsecond.php',
                     data: dataString,
