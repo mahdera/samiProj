@@ -61,7 +61,7 @@
 
     function doesThisFnAlreadyActionFilledForIt($fnId){
         try{
-            $query = "select count(*) as cnt from tbl_fn_action where fn_id = $fnId";            
+            $query = "select count(*) as cnt from tbl_fn_action where fn_id = $fnId";
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow->cnt;
@@ -145,4 +145,14 @@
         $ex->getMessage();
       }
     }
+
+    function updateFnActionForFn($fnId, $actionText){
+        try{
+            $query = "update tbl_fn_action set action_text = '$actionText' where fn_id = $fnId";
+            save($query);
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
+
 ?>

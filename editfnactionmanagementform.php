@@ -18,7 +18,7 @@
         $fnActionList = getAllFnActionsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
       }
     }
-    if(!empty($fnActionList) && mysql_num_rows($fnActionList)){
+    if(/*!empty($fnActionList) && mysql_num_rows($fnActionList)*/false){
 ?>
 <div id="fnActionDetailDiv">
 <table border="1" width="100%" rules="all">
@@ -60,7 +60,7 @@
 </div>
 <?php
 }else{
-  require_once 'files/showlistofgoalsecondsmodified.php';
+    require_once 'files/showlistofgoalsecondsmodifiedforedit_fnaction.php';
 }
 ?>
 <script type="text/javascript">

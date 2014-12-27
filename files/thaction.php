@@ -144,4 +144,13 @@
         $ex->getMessage();
       }
     }
+
+    function updateThActionForTh($thId, $actionText){
+        try{
+            $query = "update tbl_th_action set action_text = '$actionText' where th_id = $thId";
+            save($query);
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
 ?>

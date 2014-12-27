@@ -8,6 +8,7 @@
     require_once 'goalfirstg3objfn.php';
     require_once 'user.php';
     require_once 'usersubdistrict.php';
+    require_once 'thaction.php';
 
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
 
@@ -25,6 +26,8 @@
     $goalFirstG2Ctr = $_POST['goalFirstG2Ctr'];
     $goalFirstG3Ctr = $_POST['goalFirstG3Ctr'];
     $goalFirstThId = $_POST['goalFirstThId'];
+    $thActionControlName = "textareathaction" . $thId;
+    @$thActionVal = $_POST[$thActionControlName];
 
     for($i=1; $i<=$goalFirstG1Ctr; $i++){
         $goalFirstG1ObjControlName = "edittxtgoalfirstg1obj" . $thId . $i;
@@ -84,6 +87,11 @@
             updateGoalFirstG3ObjFn($goalFirstG3ObjHiddenIdVal, $goalFirstG3Id, $goalFirstG3ObjVal, $goalFirstG3FnVal, $userObj->id);
           }
         }
+    }
+
+    //now update the th action in here...
+    if(doesThisThAlreadyActionFilledForIt($thId)){
+        updateThActionForTh($thId, $thActionVal);
     }
 ?>
 <div class="notify notify-green"><span class="symbol icon-tick"></span> Updated Successfully</div>

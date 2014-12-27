@@ -9,6 +9,7 @@
     require_once 'goalsecondfn.php';
     require_once 'user.php';
     require_once 'usersubdistrict.php';
+    require_once 'fnaction.php';
 
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
 
@@ -26,6 +27,8 @@
     $goalSecondG1Ctr = $_POST['goalSecondG1Ctr'];
     $goalSecondG2Ctr = $_POST['goalSecondG2Ctr'];
     $goalSecondG3Ctr = $_POST['goalSecondG3Ctr'];
+    $fnActionControlName = "textareafnaction" . $fnId;
+    @$fnActionVal = $_POST[$fnActionControlName];
 
     for($i=1; $i<=$goalSecondG1Ctr; $i++){
         $goalSecondG1ObjControlName = "edittxtgoalsecondg1obj" . $fnId . $i;
@@ -79,6 +82,11 @@
             updateGoalSecondG3Obj($goalSecondG3ObjHiddenIdVal, $goalSecondG3Id, $goalSecondG3ObjVal, $userObj->id);
           }
         }
+    }
+
+    //now update the th action in here...
+    if(doesThisFnAlreadyActionFilledForIt($fnId)){
+        updateFnActionForFn($fnId, $fnActionVal);
     }
 ?>
 <div class="notify notify-green"><span class="symbol icon-tick"></span> Updated Successfully</div>

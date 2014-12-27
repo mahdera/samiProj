@@ -22,7 +22,7 @@
       }
     }
     //$thActionList = getAllThActionsModifiedBy($_SESSION['LOGGED_USER_ID']);
-    if( !empty($thActionList) && mysql_num_rows($thActionList) ){
+    if( /*!empty($thActionList) && mysql_num_rows($thActionList)*/false ){
 ?>
 <div id="thActionDetailDiv">
 <table border="1" width="100%" rules="all">
@@ -67,7 +67,7 @@
   ?>
     <!--<div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>-->
   <?php
-  require_once 'files/showlistofgoalfirstsmodified.php';
+  require_once 'files/showlistofgoalfirstsmodifiedforedit_thaction.php';
 }
 ?>
 <script type="text/javascript">
