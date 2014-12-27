@@ -3,7 +3,7 @@
 
   function saveUploadedDocuments($fileName, $modifiedBy){
     try{
-      $query = "insert into tbl_uploaded_document values(0, '$fileName', $modifiedBy, NOW() )";      
+      $query = "insert into tbl_uploaded_document values(0, '$fileName', $modifiedBy, NOW() )";
       save($query);
     }catch(Exception $ex){
       $ex->getMessage();
