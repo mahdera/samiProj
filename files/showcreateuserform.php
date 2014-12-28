@@ -117,15 +117,21 @@
                     <?php
                       if($loggedInUserRole == '01A'){
                     ?>
-                      <option value="01A">District Administrator</option>
-                      <option value="02A">Sub District Administrator</option>
-                      <option value="999">Sub District User</option>
+                       <option value="01A">District Administrator</option>
+                       <option value="02A">Sub District Administrator</option>
+                       <option value="999">Sub District User</option>
                       <!--<option value="">Sub District User (Read-Only)</option>-->
                     <?php
-                      }else{
+                    }else if($loggedInUserObj->member_type == 'Admin'){
                     ?>
-                      <option value="02A">Sub District Administrator</option>
-                      <option value="999">Sub District User</option>
+                        <option value="01A">District Administrator</option>
+                        <option value="02A">Sub District Administrator</option>
+                        <option value="999">Sub District User</option>
+                    <?php
+                    }else{
+                    ?>
+                        <option value="02A">Sub District Administrator</option>
+                        <option value="999">Sub District User</option>
                     <?php
                       }
                     ?>
@@ -366,7 +372,7 @@
         $('#slctuserrole').change(function(){
           var userRole = $(this).val();
           var loggedInUserRole = "<?php echo $loggedInUserRole;?>";
-          if(loggedInUserRole == '01A'){
+          if(loggedInUserRole == '01A' || loggedInUserRole == 'root'){
             if(userRole !== ""){
               if(userRole == "01A"){
                 $('#subDistrictRow').hide();

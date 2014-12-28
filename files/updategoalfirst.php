@@ -27,7 +27,9 @@
     $goalFirstG3Ctr = $_POST['goalFirstG3Ctr'];
     $goalFirstThId = $_POST['goalFirstThId'];
     $thActionControlName = "textareathaction" . $thId;
-    @$thActionVal = $_POST[$thActionControlName];
+    if(isset($_POST[$thActionControlName])){
+        $thActionVal = $_POST[$thActionControlName];
+    }
 
     for($i=1; $i<=$goalFirstG1Ctr; $i++){
         $goalFirstG1ObjControlName = "edittxtgoalfirstg1obj" . $thId . $i;
@@ -90,7 +92,7 @@
     }
 
     //now update the th action in here...
-    if(doesThisThAlreadyActionFilledForIt($thId)){
+    if( isset($_POST[$thActionControlName]) ){
         updateThActionForTh($thId, $thActionVal);
     }
 ?>

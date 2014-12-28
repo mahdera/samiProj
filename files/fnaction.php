@@ -70,6 +70,18 @@
         }
     }
 
+    function doesThisFnAlreadyActionFilledForItUsingDivision($fnId, $divisionId){
+        try{
+            $query = "select count(*) as cnt from tbl_fn_action, tbl_user_sub_district where fn_id = $fnId and " .
+            "tbl_fn_action.modified_by = tbl_user_sub_district.user_id and tbl_user_sub_district.sub_district_id = $divisionId";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow->cnt;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
+
     function doesThisFnAlreadyActionFilledForItByUser($fnId, $modifiedBy){
         try{
             $query = "select count(*) as cnt from tbl_fn_action where fn_id = $fnId and modified_by = $modifiedBy";
@@ -126,6 +138,19 @@
       }
     }
 
+    function getFnActionUsingDivision($fnId, $divisionId){
+        try{
+            $query = "select tbl_fn_action.* from tbl_fn_action, tbl_user_sub_district where " .
+            "tbl_fn_action.modified_by = tbl_user_sub_district.user_id and " .
+            "tbl_user_sub_district.sub_district_id = $divisionId and fn_id = $fnId";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
+
     function getFnActionForFn($fnId){
       try{
         $query = "select * from tbl_fn_action where fn_id = $fnId order by modification_date limit 0,1";
@@ -135,6 +160,19 @@
       }catch(Exception $ex){
         $ex->getMessage();
       }
+    }
+
+    function getFnActionForFnUsingDivision($fnId, $divisionId){
+        try{
+            $query = "select tbl_fn_action.* from tbl_fn_action, tbl_user_sub_district where " .
+            "tbl_fn_action.modified_by = tbl_user_sub_district.user_id and " .
+            "tbl_user_sub_district.sub_district_id = $divisionId and fn_id = $fnId";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
     }
 
     function deleteFnActionForFn($fnId){

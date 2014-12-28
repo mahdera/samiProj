@@ -10,11 +10,26 @@
     require_once 'fnaction.php';
     require_once 'fn.php';
     require_once 'goalsecondfn.php';
+    require_once 'user.php';
+    require_once 'usersubdistrict.php';
 
     $fnId = $_GET['fn_id'];
+    $userObj = getUser($_SESSION['LOGGED_USER_ID']);
     //echo $fnId;
     $buttonId = "updateGoalSecondButton" . $fnId;
-    $goalSecondFnRow = getGoalSecondFnUsingFnId($fnId);
+    $goalSecondFnRow = null;
+
+    if($userObj->user_level == '02'){
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+        $goalSecondFnRow = getGoalSecondFnUsingFnIdAndDivision($fnId, $userSubDistrictObj->sub_district_id);
+    }else if($userObj->user_level == '01'){
+        $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+        if(!empty($userObject)){
+            $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+            $goalSecondFnRow = getGoalSecondFnUsingFnIdAndDivision($fnId, $userSubDistrictObj->sub_district_id);
+        }
+    }
+
     $goalSecondFnId = $goalSecondFnRow->id;
     $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
     $goalSecondG1ObjId;

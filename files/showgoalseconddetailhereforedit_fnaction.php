@@ -10,11 +10,30 @@ require_once 'goalsecondg3obj.php';
 require_once 'fnaction.php';
 require_once 'fn.php';
 require_once 'goalsecondfn.php';
+require_once 'user.php';
+require_once 'usersubdistrict.php';
+
+$userObj = getUser($_SESSION['LOGGED_USER_ID']);
 
 $fnId = $_GET['fn_id'];
 //echo $fnId;
 $buttonId = "updateGoalSecondButton" . $fnId;
-$goalSecondFnRow = getGoalSecondFnUsingFnId($fnId);
+$goalSecondFnRow = null;//getGoalSecondFnUsingFnId($fnId);
+$divisionId = null;
+
+if($userObj->user_level == '02'){
+    $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+    $divisionId = $userSubDistrictObj->sub_district_id;
+    $goalSecondFnRow = getGoalSecondFnUsingFnIdAndDivision($fnId, $divisionId);
+}else if($userObj->user_level == '01'){
+    $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+    if(!empty($userObject)){
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+        $divisionId = $userSubDistrictObj->sub_district_id;
+        $goalSecondFnRow = getGoalSecondFnUsingFnIdAndDivision($fnId, $divisionId);
+    }
+}
+
 $goalSecondFnId = $goalSecondFnRow->id;
 $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
 $goalSecondG1ObjId;
@@ -158,12 +177,12 @@ $fnActionControlName = "textareafnaction" . $fnId;
             }//end empty checking inner if condition
         }//end if empty checking condition
 
-        if(doesThisFnAlreadyActionFilledForIt($fnId)){
-            $fnAction = getFnActionForFn($fnId);
+        if( doesThisFnAlreadyActionFilledForItUsingDivision($fnId, $divisionId) ){
+            $fnAction = getFnActionForFnUsingDivision($fnId, $divisionId);
             ?>
             <tr>
                 <td></td>
-                <td>fn Action:</td>
+                <td>Fn Action:</td>
                 <td>
                     <textarea name="<?php echo $fnActionControlName;?>" id="<?php echo $fnActionControlName;?>" style="width:100%" rows="4"><?php echo $fnAction->action_text;?></textarea>
                 </td>

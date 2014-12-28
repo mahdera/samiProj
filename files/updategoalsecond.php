@@ -28,7 +28,9 @@
     $goalSecondG2Ctr = $_POST['goalSecondG2Ctr'];
     $goalSecondG3Ctr = $_POST['goalSecondG3Ctr'];
     $fnActionControlName = "textareafnaction" . $fnId;
-    @$fnActionVal = $_POST[$fnActionControlName];
+    if( isset($_POST[$fnActionControlName]) ){
+        $fnActionVal = $_POST[$fnActionControlName];
+    }
 
     for($i=1; $i<=$goalSecondG1Ctr; $i++){
         $goalSecondG1ObjControlName = "edittxtgoalsecondg1obj" . $fnId . $i;
@@ -85,7 +87,7 @@
     }
 
     //now update the th action in here...
-    if(doesThisFnAlreadyActionFilledForIt($fnId)){
+    if( isset($_POST[$fnActionControlName]) ){
         updateFnActionForFn($fnId, $fnActionVal);
     }
 ?>

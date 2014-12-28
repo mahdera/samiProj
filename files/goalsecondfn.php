@@ -99,6 +99,19 @@
         }
     }
 
+    function getGoalSecondFnUsingFnIdAndDivision($fnId, $divisionId){
+        try{
+            $query = "select tbl_goal_second_fn.* from tbl_goal_second_fn, tbl_user_sub_district where " .
+            "tbl_goal_second_fn.modified_by = tbl_user_sub_district.user_id and " .
+            "tbl_user_sub_district.sub_district_id = $divisionId and tbl_goal_second_fn.fn_id = $fnId";            
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
+
     function getAllGoalSecondFnsForGoalSecond($goalSecondId){
         try{
             $query = "select * from tbl_goal_second_fn where goal_second_id = $goalSecondId";
@@ -181,6 +194,18 @@
     function doesThisFnHasGoalSecondSavedForIt($fnId){
         try{
             $query = "select count(*) as cnt from tbl_goal_second_fn where fn_id = $fnId";
+            $result = read($query);
+            $resultRow = mysql_fetch_object($result);
+            return $resultRow->cnt;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
+
+    function doesThisFnHasGoalSecondSavedForItInThisSubDistrict($fnId, $divisionId){
+        try{
+            $query = "select count(*) as cnt from tbl_goal_second_fn, tbl_user_sub_district where fn_id = $fnId and tbl_goal_second_fn.modified_by = " .
+            "tbl_user_sub_district.user_id and tbl_user_sub_district.sub_district_id = $divisionId";
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow->cnt;

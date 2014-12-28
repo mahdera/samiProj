@@ -15,9 +15,9 @@ if($userObj->user_level == '02'){
     $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
     $fnIdArray = getAllFilteredLatestFnIdsEnteredByUserUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
 }else if($userObj->user_level == '01'){
-    $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-    if(!empty($userObj)){
-        $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+    $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+    if(!empty($userObject)){
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
         //$fnIdArray = getAllFilteredLatestFnIdsEnteredByUserUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
         $fnIdArray = getAllFilteredSelectedThFnIds($_SESSION['SELECTED_THS']);
     }
@@ -41,7 +41,21 @@ if($userObj->user_level == '02'){
                 <td width="60%"><?php echo $fnObj->fn_name;?></td>
                 <td>
                     <?php
-                    if(!doesThisFnHasGoalSecondSavedForIt($fnObj->id)){
+                    //now i need to check who the logged in user is
+                    $doesThisFnHasGoalSecondSavedForItInThisSubDistrict = 0;
+                    if($userObj->user_level == '02'){
+                        $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                        $doesThisFnHasGoalSecondSavedForItInThisSubDistrict = doesThisFnHasGoalSecondSavedForItInThisSubDistrict($fnObj->id, $userSubDistrictObj->sub_district_id);
+                    }else if($userObj->user_level == '01'){
+                        $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+                        if(!empty($userObject)){
+                            $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+                            $doesThisFnHasGoalSecondSavedForItInThisSubDistrict = doesThisFnHasGoalSecondSavedForItInThisSubDistrict($fnObj->id, $userSubDistrictObj->sub_district_id);
+                        }
+                    }
+
+
+                    if(!$doesThisFnHasGoalSecondSavedForItInThisSubDistrict){
                         ?>
                             <a href="#.php" id="<?php echo $fnObj->id;?>" class="addGoalSecondDetailClass">Add</a>
                         <?php
@@ -52,7 +66,7 @@ if($userObj->user_level == '02'){
                     }
                     ?>
                     <?php
-                    if(doesThisFnHasGoalSecondSavedForIt($fnObj->id)){
+                    if($doesThisFnHasGoalSecondSavedForItInThisSubDistrict){
                         ?>
                         |
                             <a href="#.php" id="<?php echo $fnObj->id;?>" class="deleteGoalSecondDetailClass">Delete</a>
@@ -97,6 +111,7 @@ if($userObj->user_level == '02'){
 
         $('.addGoalSecondDetailClass').click(function(){
             var idVal = $(this).attr('id');
+            alert('fn id: '+idVal);
             var divId = "goalSecondDetailDiv" + idVal;
             var fnIdArray = <?php echo json_encode($fnIdArray);?>;
             for(var i=0; i<fnIdArray.length;i++){

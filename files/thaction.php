@@ -76,6 +76,7 @@
     function getThAction($id){
         try{
             $query = "select * from tbl_th_action where id = $id";
+            //echo $query;
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;

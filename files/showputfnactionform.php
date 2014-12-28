@@ -1,6 +1,7 @@
 <?php
     session_start();
     $fn_id = $_GET['fn_id'];
+    $fnId = $fn_id;
     require_once 'goalsecond.php';
     require_once 'goalsecondg1.php';
     require_once 'goalsecondg1obj.php';
@@ -12,20 +13,43 @@
     require_once 'fn.php';
     require_once 'goalsecondfn.php';
     require_once 'user.php';
+    require_once 'usersubdistrict.php';
 
-    //$fnActionId = $_GET['fn_id'];
-    //$fnActionObj = getFnAction($fnActionId);
+    $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+
     $fnEditActionText = "fnEditActionText" . $fn_id;
     $buttonId = "updateFnActionButton" . $fn_id;
-    $goalSecondFnRow = getGoalSecondFnUsingFnId($fn_id);
+    //$goalSecondFnRow = getGoalSecondFnUsingFnId($fn_id);
+    $goalSecondFnRow = null;
+
+    if($userObj->user_level == '02'){
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+        $goalSecondFnRow = getGoalSecondFnUsingFnIdAndDivision($fnId, $userSubDistrictObj->sub_district_id);
+    }else if($userObj->user_level == '01'){
+        $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+        if(!empty($userObject)){
+            $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+            $goalSecondFnRow = getGoalSecondFnUsingFnIdAndDivision($fnId, $userSubDistrictObj->sub_district_id);
+        }
+    }
     $goalSecondFnId = $goalSecondFnRow->id;
     $fnObj = getFn($fn_id);
     $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
     //now I got all the result set read from the database...lets do the iteration thing now...
     $fn = getFn($fn_id);
     $countVal=0;
-    //@$countVal = doesThisFnAlreadyActionFilledForItByUser($fn_id,$_SESSION['LOGGED_USER_ID']);
-    @$countVal = doesThisFnAlreadyActionFilledForIt($fn_id);
+
+    if($userObj->user_level == '02'){
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+        $countVal = doesThisFnAlreadyActionFilledForItUsingDivision($fnObj->id, $userSubDistrictObj->sub_district_id);
+    }else if($userObj->user_level == '01'){
+        $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+        if(!empty($userObject)){
+            $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+            $countVal = doesThisFnAlreadyActionFilledForItUsingDivision($fnObj->id, $userSubDistrictObj->sub_district_id);
+        }
+    }
+
 
     if($countVal == 0){
 ?>

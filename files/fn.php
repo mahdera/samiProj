@@ -195,12 +195,6 @@
                 $query = "select tbl_goal_first_g1.* from tbl_goal_first_g1, tbl_user_sub_district where " .
                 "tbl_goal_first_g1.modified_by = tbl_user_sub_district.user_id and " .
                 "tbl_user_sub_district.sub_district_id = $divisionId order by modification_date desc";
-            }else if($userLevel == 'Zone Level'){
-                $query = "select tbl_goal_first_g1.* from tbl_goal_first_g1, tbl_user_zone " .
-                "where tbl_goal_first_g1.modified_by = tbl_user_zone.user_id and " .
-                "tbl_user_zone.zone_id = $divisionId  UNION select tbl_goal_first_g1.* from tbl_goal_first_g1, tbl_user_branch, tbl_branch " .
-                "where tbl_goal_first_g1.modified_by = tbl_user_branch.user_id and ".
-                "tbl_user_branch.branch_id = tbl_branch.id and tbl_branch.zone_id = $divisionId order by modification_date desc";
             }
             $result = read($query);
             while($resultRow = mysql_fetch_object($result)){
@@ -212,12 +206,6 @@
                 $query = "select tbl_goal_first_g1_obj_fn.* from tbl_goal_first_g1_obj_fn, tbl_user_sub_district where " .
                 "tbl_goal_first_g1_obj_fn.modified_by = tbl_user_sub_district.user_id and " .
                 "tbl_user_sub_district.sub_district_id = $divisionId order by modification_date desc";
-            }else if($userLevel == 'Zone Level'){
-                $query = "select tbl_goal_first_g1_obj_fn.* from tbl_goal_first_g1_obj_fn, tbl_user_zone " .
-                "where tbl_goal_first_g1_obj_fn.modified_by = tbl_user_zone.user_id and " .
-                "tbl_user_zone.zone_id = $divisionId  UNION select tbl_goal_first_g1_obj_fn.* from tbl_goal_first_g1_obj_fn, tbl_user_branch, tbl_branch " .
-                "where tbl_goal_first_g1_obj_fn.modified_by = tbl_user_branch.user_id and ".
-                "tbl_user_branch.branch_id = tbl_branch.id and tbl_branch.zone_id = $divisionId order by modification_date desc";
             }
             //$query = "select * from tbl_goal_first_g1_obj_fn where modified_by = $modifiedBy order by modification_date desc";
             $result = read($query);
@@ -230,12 +218,6 @@
                 $query = "select tbl_goal_first_g2.* from tbl_goal_first_g2, tbl_user_sub_district where " .
                 "tbl_goal_first_g2.modified_by = tbl_user_sub_district.user_id and " .
                 "tbl_user_sub_district.sub_district_id = $divisionId order by modification_date desc";
-            }else if($userLevel == 'Zone Level'){
-                $query = "select tbl_goal_first_g2.* from tbl_goal_first_g2, tbl_user_zone " .
-                "where tbl_goal_first_g2.modified_by = tbl_user_zone.user_id and " .
-                "tbl_user_zone.zone_id = $divisionId  UNION select tbl_goal_first_g2.* from tbl_goal_first_g2, tbl_user_branch, tbl_branch " .
-                "where tbl_goal_first_g2.modified_by = tbl_user_branch.user_id and ".
-                "tbl_user_branch.branch_id = tbl_branch.id and tbl_branch.zone_id = $divisionId order by modification_date desc";
             }
             //$query = "select * from tbl_goal_first_g2 where modified_by = $modifiedBy order by modification_date desc";
             $result = read($query);
@@ -248,12 +230,6 @@
                 $query = "select tbl_goal_first_g2_obj_fn.* from tbl_goal_first_g2_obj_fn, tbl_user_sub_district where " .
                 "tbl_goal_first_g2_obj_fn.modified_by = tbl_user_sub_district.user_id and " .
                 "tbl_user_sub_district.sub_district_id = $divisionId order by modification_date desc";
-            }else if($userLevel == 'Zone Level'){
-                $query = "select tbl_goal_first_g2_obj_fn.* from tbl_goal_first_g2_obj_fn, tbl_user_zone " .
-                "where tbl_goal_first_g2_obj_fn.modified_by = tbl_user_zone.user_id and " .
-                "tbl_user_zone.zone_id = $divisionId  UNION select tbl_goal_first_g2_obj_fn.* from tbl_goal_first_g2_obj_fn, tbl_user_branch, tbl_branch " .
-                "where tbl_goal_first_g2_obj_fn.modified_by = tbl_user_branch.user_id and ".
-                "tbl_user_branch.branch_id = tbl_branch.id and tbl_branch.zone_id = $divisionId order by modification_date desc";
             }
             //$query = "select * from tbl_goal_first_g2_obj_fn where modified_by = $modifiedBy order by modification_date desc";
             $result = read($query);
@@ -266,12 +242,6 @@
                 $query = "select tbl_goal_first_g3.* from tbl_goal_first_g3, tbl_user_sub_district where " .
                 "tbl_goal_first_g3.modified_by = tbl_user_sub_district.user_id and " .
                 "tbl_user_sub_district.sub_district_id = $divisionId order by modification_date desc";
-            }else if($userLevel == 'Zone Level'){
-                $query = "select tbl_goal_first_g3.* from tbl_goal_first_g3, tbl_user_zone " .
-                "where tbl_goal_first_g3.modified_by = tbl_user_zone.user_id and " .
-                "tbl_user_zone.zone_id = $divisionId  UNION select tbl_goal_first_g3.* from tbl_goal_first_g3, tbl_user_branch, tbl_branch " .
-                "where tbl_goal_first_g3.modified_by = tbl_user_branch.user_id and ".
-                "tbl_user_branch.branch_id = tbl_branch.id and tbl_branch.zone_id = $divisionId order by modification_date desc";
             }
             //$query = "select * from tbl_goal_first_g3 where modified_by = $modifiedBy order by modification_date desc";
             $result = read($query);
@@ -284,12 +254,6 @@
                 $query = "select tbl_goal_first_g3_obj_fn.* from tbl_goal_first_g3_obj_fn, tbl_user_sub_district where " .
                 "tbl_goal_first_g3_obj_fn.modified_by = tbl_user_sub_district.user_id and " .
                 "tbl_user_sub_district.sub_district_id = $divisionId order by modification_date desc";
-            }else if($userLevel == 'Zone Level'){
-                $query = "select tbl_goal_first_g3_obj_fn.* from tbl_goal_first_g3_obj_fn, tbl_user_zone " .
-                "where tbl_goal_first_g3_obj_fn.modified_by = tbl_user_zone.user_id and " .
-                "tbl_user_zone.zone_id = $divisionId  UNION select tbl_goal_first_g3_obj_fn.* from tbl_goal_first_g3_obj_fn, tbl_user_branch, tbl_branch " .
-                "where tbl_goal_first_g3_obj_fn.modified_by = tbl_user_branch.user_id and ".
-                "tbl_user_branch.branch_id = tbl_branch.id and tbl_branch.zone_id = $divisionId order by modification_date desc";
             }
             //$query = "select * from tbl_goal_first_g3_obj_fn where modified_by = $modifiedBy order by modification_date desc";
             $result = read($query);
