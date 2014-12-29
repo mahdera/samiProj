@@ -20,6 +20,7 @@
     $fnEditActionText = "fnEditActionText" . $fnId;
     $buttonId = "updateFnActionButton" . $fnId;
     $goalSecondFnRow = null;//getGoalSecondFnUsingFnId($fnId);
+    $goalSecondId = null;
 
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
     //echo $fnId;
@@ -29,17 +30,18 @@
     if($userObj->user_level == '02'){
         $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
         $goalSecondFnRow = getGoalSecondFnUsingFnIdAndDivision($fnId, $userSubDistrictObj->sub_district_id);
-        $fnActionObj = getFnActionUsingDivision($fnId, $userSubDistrictObj->sub_district_id);
+        $fnActionObj = getFnActionUsingDivision($fnId, $goalSecondFnRow->goal_second_id, $userSubDistrictObj->sub_district_id);
     }else if($userObj->user_level == '01'){
         $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
         if(!empty($userObject)){
             $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
             $goalSecondFnRow = getGoalSecondFnUsingFnIdAndDivision($fnId, $userSubDistrictObj->sub_district_id);
-            $fnActionObj = getFnActionUsingDivision($fnId, $userSubDistrictObj->sub_district_id);
+            $fnActionObj = getFnActionUsingDivision($fnId, $goalSecondFnRow->goal_second_id, $userSubDistrictObj->sub_district_id);
         }
     }
 
     $goalSecondFnId = $goalSecondFnRow->id;
+    $goalSecondId = $goalSecondFnRow->goal_second_id;
     $fnObj = getFn($fnId);
     $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
     //now I got all the result set read from the database...lets do the iteration thing now...
@@ -192,11 +194,14 @@
       var fnActionId = "<?php echo $fnActionId;?>";
       var buttonId = "btnupdatefnaction" + fnActionId;
       var fnId = "<?php echo $fnId;?>";
+      var goalSecondId = <?php echo $goalSecondId;?>;
+
       $('#'+buttonId).click(function(){
         var fnActionControlName = "textareafnactionedit" + fnActionId;
         var updatedText = $('#'+fnActionControlName).val();
         if(updatedText !== ''){
-          var dataString = "updatedText="+encodeURIComponent(updatedText)+"&fnActionId="+fnActionId;
+          var dataString = "updatedText="+encodeURIComponent(updatedText)+"&fnActionId="+fnActionId+
+          "&goalSecondId="+goalSecondId;
           var divId = "actionDiv" + fnId;
           $.ajax({
               url: 'files/updatethisfnaction.php',

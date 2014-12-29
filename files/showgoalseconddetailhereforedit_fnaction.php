@@ -35,6 +35,7 @@ if($userObj->user_level == '02'){
 }
 
 $goalSecondFnId = $goalSecondFnRow->id;
+$goalSecondId = $goalSecondFnRow->goal_second_id;
 $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
 $goalSecondG1ObjId;
 $goalSecondG2Id;
@@ -177,8 +178,8 @@ $fnActionControlName = "textareafnaction" . $fnId;
             }//end empty checking inner if condition
         }//end if empty checking condition
 
-        if( doesThisFnAlreadyActionFilledForItUsingDivision($fnId, $divisionId) ){
-            $fnAction = getFnActionForFnUsingDivision($fnId, $divisionId);
+        if( doesThisFnAlreadyActionFilledForItUsingDivision($fnId, $goalSecondId, $divisionId) ){
+            $fnAction = getFnActionForFnUsingDivision($fnId, $goalSecondId, $divisionId);
             ?>
             <tr>
                 <td></td>

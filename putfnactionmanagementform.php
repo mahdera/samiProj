@@ -44,12 +44,12 @@
 
             if($userObj->user_level == '02'){
                 $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-                $countVal = doesThisFnAlreadyActionFilledForItUsingDivision($fnObj->id, $userSubDistrictObj->sub_district_id);
+                $countVal = doesThisFnAlreadyActionFilledForItUsingDivision($fnObj->id, $goalSecondFnRow->goal_second_id, $userSubDistrictObj->sub_district_id);
             }else if($userObj->user_level == '01'){
                 $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
                 if(!empty($userObject)){
                     $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
-                    $countVal = doesThisFnAlreadyActionFilledForItUsingDivision($fnObj->id, $userSubDistrictObj->sub_district_id);
+                    $countVal = doesThisFnAlreadyActionFilledForItUsingDivision($fnObj->id, $goalSecondFnRow->goal_second_id, $userSubDistrictObj->sub_district_id);
                 }
             }
 

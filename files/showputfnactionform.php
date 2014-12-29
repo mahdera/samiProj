@@ -33,6 +33,7 @@
         }
     }
     $goalSecondFnId = $goalSecondFnRow->id;
+    $goalSecondId = $goalSecondFnRow->goal_second_id;
     $fnObj = getFn($fn_id);
     $fnIdArray = getAllFilteredLatestFnIdsEnteredByUser($_SESSION['LOGGED_USER_ID']);
     //now I got all the result set read from the database...lets do the iteration thing now...
@@ -41,12 +42,12 @@
 
     if($userObj->user_level == '02'){
         $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-        $countVal = doesThisFnAlreadyActionFilledForItUsingDivision($fnObj->id, $userSubDistrictObj->sub_district_id);
+        $countVal = doesThisFnAlreadyActionFilledForItUsingDivision($fnObj->id, $goalSecondFnRow->goal_second_id, $userSubDistrictObj->sub_district_id);
     }else if($userObj->user_level == '01'){
         $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
         if(!empty($userObject)){
             $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
-            $countVal = doesThisFnAlreadyActionFilledForItUsingDivision($fnObj->id, $userSubDistrictObj->sub_district_id);
+            $countVal = doesThisFnAlreadyActionFilledForItUsingDivision($fnObj->id, $goalSecondFnRow->goal_second_id, $userSubDistrictObj->sub_district_id);
         }
     }
 
@@ -183,11 +184,12 @@
         var textAreaId = "fnAction_" + fnId;
         var buttonId = "fnAddAction_" + fnId;
         var divId = "actionDiv" + fnId;
+        var goalSecondId = <?php echo $goalSecondId;?>
 
         $('#'+buttonId).click(function(){
             //now get the value from the textarea...
             var textAreaValue = $('#'+textAreaId).val();
-            var dataString = "fnId="+fnId+"&textAreaValue="+textAreaValue;
+            var dataString = "fnId="+fnId+"&textAreaValue="+textAreaValue+"&goalSecondId="+goalSecondId;
             //alert(dataString);
             //now save this part and update the div about the status of the save transaction
             if(textAreaValue !== ''){
@@ -196,7 +198,6 @@
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        //$('#'+divId).html(response);
                         $('#innerDivToRefresh').load('putfnactionmanagementform.php');
                     },
                     error:function(error){

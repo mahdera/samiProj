@@ -8,13 +8,14 @@
 
     $updatedText = addslashes($_POST['updatedText']);
     $fnActionId = $_POST['fnActionId'];
+    $goalSecondId = $_POST['goalSecondId'];
 
     if($userObj->user_level == '02'){
-      updateFnAction($fnActionId, $updatedText, $_SESSION['LOGGED_USER_ID']);
+      updateFnAction($fnActionId, $updatedText, $goalSecondId, $_SESSION['LOGGED_USER_ID']);
     }else if($userObj->user_level == '01'){
       $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
       if(!empty($userObject)){
-        updateFnAction($fnActionId, $updatedText, $userObject->id);
+        updateFnAction($fnActionId, $updatedText, $goalSecondId, $userObject->id);
       }
     }
 ?>

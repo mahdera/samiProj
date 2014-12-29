@@ -2,6 +2,7 @@
     session_start();
     $fnId = addslashes($_POST['fnId']);
     $textAreaValue = addslashes($_POST['textAreaValue']);
+    $goalSecondId = $_POST['goalSecondId'];
 
     require_once 'fnaction.php';
     require_once 'user.php';
@@ -11,10 +12,10 @@
       $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
       //saveTeam($name, $title, $organization, $email, $phone, rtrim($interest, ','), $userObject->id);
       if(!empty($userObject)){
-        saveFnAction($fnId, $textAreaValue, $userObject->id);
+        saveFnAction($fnId, $textAreaValue, $goalSecondId, $userObject->id);
       }
     }else{
-      saveFnAction($fnId, $textAreaValue, $_SESSION['LOGGED_USER_ID']);
+      saveFnAction($fnId, $textAreaValue, $goalSecondId, $_SESSION['LOGGED_USER_ID']);
     }
 
 

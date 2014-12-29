@@ -43,7 +43,7 @@
 	$goalFirstId = $goalFirstObj->id;
 	$goalFirstG1Id;
 	?>
-	<div>
+	<div style="display: none">
 	<?php
 	//now get a form1 obj modified by the logged in user and modification date same as that of the goal first...
 	//$form1Obj = getLatestForm1ModifiedByUser($_SESSION['LOGGED_USER_ID']);

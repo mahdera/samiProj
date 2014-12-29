@@ -1,18 +1,19 @@
 <?php
     require_once 'dbconnection.php';
 
-    function saveFnAction($fnId, $actionText, $modifiedBy){
+    function saveFnAction($fnId, $actionText, $goalSecondId, $modifiedBy){
         try{
-            $query = "insert into tbl_fn_action values(0, $fnId, '$actionText', $modifiedBy, NOW())";
+            $query = "insert into tbl_fn_action values(0, $fnId, '$actionText', $goalSecondId, $modifiedBy, NOW())";
+            echo $query;
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
         }
     }
 
-    function updateFnAction($id, $actionText, $modifiedBy){
+    function updateFnAction($id, $actionText, $goalSecondId, $modifiedBy){
         try{
-            $query = "update tbl_fn_action set action_text = '$actionText', modified_by = $modifiedBy, modification_date = NOW() where id = $id";
+            $query = "update tbl_fn_action set action_text = '$actionText', goal_second_id = $goalSecondId, modified_by = $modifiedBy, modification_date = NOW() where id = $id";
             save($query);
         } catch (Exception $ex) {
             $ex->getMessage();
@@ -70,10 +71,11 @@
         }
     }
 
-    function doesThisFnAlreadyActionFilledForItUsingDivision($fnId, $divisionId){
+    function doesThisFnAlreadyActionFilledForItUsingDivision($fnId, $goalSecondId, $divisionId){
         try{
             $query = "select count(*) as cnt from tbl_fn_action, tbl_user_sub_district where fn_id = $fnId and " .
-            "tbl_fn_action.modified_by = tbl_user_sub_district.user_id and tbl_user_sub_district.sub_district_id = $divisionId";
+            "tbl_fn_action.modified_by = tbl_user_sub_district.user_id and tbl_user_sub_district.sub_district_id = $divisionId and " .
+            "tbl_fn_action.goal_second_id = $goalSecondId";
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow->cnt;
@@ -138,11 +140,12 @@
       }
     }
 
-    function getFnActionUsingDivision($fnId, $divisionId){
+    function getFnActionUsingDivision($fnId, $goalSecondId, $divisionId){
         try{
             $query = "select tbl_fn_action.* from tbl_fn_action, tbl_user_sub_district where " .
             "tbl_fn_action.modified_by = tbl_user_sub_district.user_id and " .
-            "tbl_user_sub_district.sub_district_id = $divisionId and fn_id = $fnId";
+            "tbl_user_sub_district.sub_district_id = $divisionId and fn_id = $fnId and " .
+            "tbl_fn_action.goal_second_id = $goalSecondId";
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;
@@ -162,11 +165,12 @@
       }
     }
 
-    function getFnActionForFnUsingDivision($fnId, $divisionId){
+    function getFnActionForFnUsingDivision($fnId, $goalSecondId, $divisionId){
         try{
             $query = "select tbl_fn_action.* from tbl_fn_action, tbl_user_sub_district where " .
             "tbl_fn_action.modified_by = tbl_user_sub_district.user_id and " .
-            "tbl_user_sub_district.sub_district_id = $divisionId and fn_id = $fnId";
+            "tbl_user_sub_district.sub_district_id = $divisionId and fn_id = $fnId and " .
+            "tbl_fn_action.goal_second_id = $goalSecondId";            
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;
