@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Generation Time: Dec 28, 2014 at 07:16 PM
+-- Generation Time: Dec 29, 2014 at 02:00 AM
 -- Server version: 5.5.38
 -- PHP Version: 5.6.2
 
@@ -13,11 +13,11 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_sami_proj`
 --
+
+-- --------------------------------------------------------
 drop database if exists db_sami_proj;
 create database db_sami_proj;
     use db_sami_proj;
-    -- --------------------------------------------------------
-
     --
     -- Table structure for table `tbl_assessment`
     --
@@ -29,7 +29,7 @@ create database db_sami_proj;
         `summary` text,
         `modified_by` int(11) NOT NULL,
         `modification_date` datetime NOT NULL
-    ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
     -- --------------------------------------------------------
 
@@ -40,7 +40,7 @@ create database db_sami_proj;
     CREATE TABLE `tbl_assessment_lookup` (
         `id` int(11) NOT NULL,
         `value` varchar(70) NOT NULL
-    ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
     -- --------------------------------------------------------
 
@@ -54,7 +54,7 @@ create database db_sami_proj;
         `th_id` bigint(20) NOT NULL,
         `modified_by` int(11) NOT NULL,
         `modification_date` datetime NOT NULL
-    ) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
     -- --------------------------------------------------------
 
@@ -155,19 +155,18 @@ create database db_sami_proj;
         `id` bigint(20) NOT NULL,
         `fn_id` bigint(20) NOT NULL,
         `action_text` text,
+        `goal_second_id` int(11) NOT NULL,
         `modified_by` int(11) NOT NULL,
         `modification_date` datetime NOT NULL
-    ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+    ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
     --
     -- Dumping data for table `tbl_fn_action`
     --
 
-    INSERT INTO `tbl_fn_action` (`id`, `fn_id`, `action_text`, `modified_by`, `modification_date`) VALUES
-    (7, 57, 'This action text is added by Tele at 12:49:58. This is updated by Yefi. Yes!!', 50, '2014-12-28 09:39:30'),
-    (8, 67, 'Holla bre, this is zele. Hi zol, this is bre writing this text value. Last updated by Wondisho.\nSystem.exit(0);', 50, '2014-12-28 09:39:19'),
-    (9, 58, 'Fn action added by Wondisho.\nLast updated by Wondisho!!!for function 2', 50, '2014-12-28 09:39:43'),
-    (10, 57, 'This action text is added by Tele at 12:49:58. This is updated by Yefi. Yes!!', 52, '2014-12-28 13:01:41');
+    INSERT INTO `tbl_fn_action` (`id`, `fn_id`, `action_text`, `goal_second_id`, `modified_by`, `modification_date`) VALUES
+    (11, 57, 'This is th action for zele function 1. zola man is in Ethiopia! working perfect so far.', 44, 52, '2014-12-28 19:34:41'),
+    (12, 57, 'This is th action for zele function 1. zola man is in Ethiopia! working perfect so far.', 43, 50, '2014-12-28 19:40:53');
 
     -- --------------------------------------------------------
 
@@ -184,7 +183,7 @@ create database db_sami_proj;
         `q2` text NOT NULL,
         `modified_by` int(11) NOT NULL,
         `modification_date` datetime NOT NULL
-    ) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
     -- --------------------------------------------------------
 
@@ -200,7 +199,7 @@ create database db_sami_proj;
         `column_value` text,
         `modified_by` int(11) NOT NULL,
         `modification_date` datetime NOT NULL
-    ) ENGINE=InnoDB AUTO_INCREMENT=195 DEFAULT CHARSET=latin1;
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
     -- --------------------------------------------------------
 
@@ -216,7 +215,7 @@ create database db_sami_proj;
         `column_value` text,
         `modified_by` int(11) NOT NULL,
         `modification_date` datetime NOT NULL
-    ) ENGINE=InnoDB AUTO_INCREMENT=187 DEFAULT CHARSET=latin1;
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
     -- --------------------------------------------------------
 
@@ -232,7 +231,7 @@ create database db_sami_proj;
         `q2_4` text NOT NULL,
         `modified_by` int(11) NOT NULL,
         `modification_date` datetime NOT NULL
-    ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
     -- --------------------------------------------------------
 
@@ -245,7 +244,7 @@ create database db_sami_proj;
         `q3_1` text NOT NULL,
         `modified_by` int(11) NOT NULL,
         `modification_date` datetime NOT NULL
-    ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
     -- --------------------------------------------------------
 
@@ -258,7 +257,7 @@ create database db_sami_proj;
         `q4_1` text NOT NULL,
         `modified_by` int(11) NOT NULL,
         `modification_date` datetime NOT NULL
-    ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
     -- --------------------------------------------------------
 
@@ -271,7 +270,7 @@ create database db_sami_proj;
         `q5_1` text NOT NULL,
         `modified_by` int(11) NOT NULL,
         `modification_date` datetime NOT NULL
-    ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
     -- --------------------------------------------------------
 
@@ -284,7 +283,7 @@ create database db_sami_proj;
         `q6_1` text NOT NULL,
         `modified_by` int(11) NOT NULL,
         `modification_date` datetime NOT NULL
-    ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
     -- --------------------------------------------------------
 
@@ -297,7 +296,7 @@ create database db_sami_proj;
         `q7_1` text NOT NULL,
         `modified_by` int(11) NOT NULL,
         `modification_date` datetime NOT NULL
-    ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
     -- --------------------------------------------------------
 
@@ -310,7 +309,7 @@ create database db_sami_proj;
         `q8_1` text NOT NULL,
         `modified_by` int(11) NOT NULL,
         `modification_date` datetime NOT NULL
-    ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
     -- --------------------------------------------------------
 
@@ -323,7 +322,7 @@ create database db_sami_proj;
         `q9_1` text NOT NULL,
         `modified_by` int(11) NOT NULL,
         `modification_date` datetime NOT NULL
-    ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
     -- --------------------------------------------------------
 
@@ -336,7 +335,7 @@ create database db_sami_proj;
         `q10_1` text NOT NULL,
         `modified_by` int(11) NOT NULL,
         `modification_date` datetime NOT NULL
-    ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
     -- --------------------------------------------------------
 
@@ -588,10 +587,10 @@ create database db_sami_proj;
     --
 
     INSERT INTO `tbl_goal_second_g1` (`id`, `goal_second_fn_id`, `g1`, `modified_by`, `modification_date`) VALUES
-    (24, 24, 'G1 for function 1 by zele. updated by zele', 51, '2014-12-28 12:01:39'),
+    (24, 24, 'G1 for function 1 by zele. updated by zele', 50, '2014-12-28 19:41:16'),
     (25, 25, 'G1 for FN 1 By Bre', 50, '2014-12-28 09:41:15'),
     (26, 26, 'G1 added by Wondisho for Function 2', 50, '2014-12-28 09:40:59'),
-    (27, 28, 'G1  for Function 1 by Tele', 52, '2014-12-28 13:11:07');
+    (27, 28, 'G1  for Function 1 by Tele', 52, '2014-12-28 19:37:01');
 
     -- --------------------------------------------------------
 
@@ -612,10 +611,10 @@ create database db_sami_proj;
     --
 
     INSERT INTO `tbl_goal_second_g1_obj` (`id`, `goal_second_g1_id`, `obj`, `modified_by`, `modification_date`) VALUES
-    (33, 24, 'Obj 1 for function 1 by zele', 51, '2014-12-28 12:01:39'),
+    (33, 24, 'Obj 1 for function 1 by zele', 50, '2014-12-28 19:41:16'),
     (34, 25, 'Obj1 for FN 1 By Bre', 50, '2014-12-28 09:41:15'),
     (35, 26, 'Obj1 added by Wondisho.for Function 2', 50, '2014-12-28 09:40:59'),
-    (36, 27, 'Obj1  for Function 1 by Tele', 52, '2014-12-28 13:11:07');
+    (36, 27, 'Obj1  for Function 1 by Tele', 52, '2014-12-28 19:37:01');
 
     -- --------------------------------------------------------
 
@@ -636,10 +635,10 @@ create database db_sami_proj;
     --
 
     INSERT INTO `tbl_goal_second_g2` (`id`, `goal_second_fn_id`, `g2`, `modified_by`, `modification_date`) VALUES
-    (24, 24, 'G2 for function 1 by zele', 51, '2014-12-28 12:01:39'),
+    (24, 24, 'G2 for function 1 by zele', 49, '2014-12-28 19:41:16'),
     (25, 25, 'G2 for FN 1 By Bre', 49, '2014-12-28 09:41:15'),
     (26, 26, 'G2 added by Wondisho.for Function 2', 49, '2014-12-28 09:40:59'),
-    (27, 28, 'G2  for Function 1 by Tele', 52, '2014-12-28 13:11:07');
+    (27, 28, 'G2  for Function 1 by Tele', 52, '2014-12-28 19:37:01');
 
     -- --------------------------------------------------------
 
@@ -660,10 +659,10 @@ create database db_sami_proj;
     --
 
     INSERT INTO `tbl_goal_second_g2_obj` (`id`, `goal_second_g2_id`, `obj`, `modified_by`, `modification_date`) VALUES
-    (31, 24, 'Obj2 for function 1 by zele', 51, '2014-12-28 12:01:39'),
+    (31, 24, 'Obj2 for function 1 by zele', 49, '2014-12-28 19:41:16'),
     (32, 25, 'Obj2 for FN 1 By Bre', 49, '2014-12-28 09:41:15'),
     (33, 26, 'Obj3 added by Wondisho.for Function 2', 49, '2014-12-28 09:40:59'),
-    (34, 27, 'Obj2  for Function 1 by Tele', 52, '2014-12-28 13:11:07');
+    (34, 27, 'Obj2  for Function 1 by Tele', 52, '2014-12-28 19:37:01');
 
     -- --------------------------------------------------------
 
@@ -684,10 +683,10 @@ create database db_sami_proj;
     --
 
     INSERT INTO `tbl_goal_second_g3` (`id`, `goal_second_fn_id`, `g3`, `modified_by`, `modification_date`) VALUES
-    (24, 24, 'G3 for function 1 by zele', 51, '2014-12-28 12:01:39'),
+    (24, 24, 'G3 for function 1 by zele', 49, '2014-12-28 19:41:16'),
     (25, 25, 'G3 for FN 1 By Bre', 49, '2014-12-28 09:41:15'),
     (26, 26, 'G3 added by Wondisho.for Function 2', 49, '2014-12-28 09:40:59'),
-    (27, 28, 'G3  for Function 1 by Tele Holla Tele', 52, '2014-12-28 13:11:07');
+    (27, 28, 'G3  for Function 1 by Tele Holla Tele', 52, '2014-12-28 19:37:01');
 
     -- --------------------------------------------------------
 
@@ -708,10 +707,10 @@ create database db_sami_proj;
     --
 
     INSERT INTO `tbl_goal_second_g3_obj` (`id`, `goal_second_g3_id`, `obj`, `modified_by`, `modification_date`) VALUES
-    (36, 24, 'Obj3 for function 1 by zele. Updated from Ethiopia.', 51, '2014-12-28 12:01:39'),
+    (36, 24, 'Obj3 for function 1 by zele. Updated from Ethiopia.', 49, '2014-12-28 19:41:16'),
     (37, 25, 'Obj3 for FN 1 By Bre', 49, '2014-12-28 09:41:15'),
     (38, 26, 'Obj3 added by Wondisho.for Function 2', 49, '2014-12-28 09:40:59'),
-    (39, 27, 'Obj3  for Function 1 by Tele. Updated by TELE!!', 52, '2014-12-28 13:11:07');
+    (39, 27, 'Obj3  for Function 1 by Tele. Updated by TELE!!', 52, '2014-12-28 19:37:01');
 
     -- --------------------------------------------------------
 
@@ -744,7 +743,7 @@ create database db_sami_proj;
         `rs` text NOT NULL,
         `modified_by` int(11) NOT NULL,
         `modification_date` datetime NOT NULL
-    ) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
     -- --------------------------------------------------------
 
@@ -787,7 +786,7 @@ create database db_sami_proj;
         `interest` text NOT NULL,
         `modified_by` int(11) NOT NULL,
         `modification_date` datetime NOT NULL
-    ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
     -- --------------------------------------------------------
 
@@ -845,7 +844,7 @@ create database db_sami_proj;
         `file_name` varchar(70) NOT NULL,
         `uploaded_by` int(11) NOT NULL,
         `upload_date` datetime NOT NULL
-    ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
     -- --------------------------------------------------------
 
@@ -1256,17 +1255,17 @@ create database db_sami_proj;
     -- AUTO_INCREMENT for table `tbl_assessment`
     --
     ALTER TABLE `tbl_assessment`
-    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
+    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
     --
     -- AUTO_INCREMENT for table `tbl_assessment_lookup`
     --
     ALTER TABLE `tbl_assessment_lookup`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
     --
     -- AUTO_INCREMENT for table `tbl_assessment_th`
     --
     ALTER TABLE `tbl_assessment_th`
-    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
+    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
     --
     -- AUTO_INCREMENT for table `tbl_district`
     --
@@ -1286,67 +1285,67 @@ create database db_sami_proj;
     -- AUTO_INCREMENT for table `tbl_fn_action`
     --
     ALTER TABLE `tbl_fn_action`
-    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
     --
     -- AUTO_INCREMENT for table `tbl_form_1`
     --
     ALTER TABLE `tbl_form_1`
-    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=47;
+    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
     --
     -- AUTO_INCREMENT for table `tbl_form_1_q3`
     --
     ALTER TABLE `tbl_form_1_q3`
-    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=195;
+    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
     --
     -- AUTO_INCREMENT for table `tbl_form_1_q4`
     --
     ALTER TABLE `tbl_form_1_q4`
-    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=187;
+    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
     --
     -- AUTO_INCREMENT for table `tbl_form_2`
     --
     ALTER TABLE `tbl_form_2`
-    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
     --
     -- AUTO_INCREMENT for table `tbl_form_3`
     --
     ALTER TABLE `tbl_form_3`
-    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
     --
     -- AUTO_INCREMENT for table `tbl_form_4`
     --
     ALTER TABLE `tbl_form_4`
-    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
     --
     -- AUTO_INCREMENT for table `tbl_form_5`
     --
     ALTER TABLE `tbl_form_5`
-    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
     --
     -- AUTO_INCREMENT for table `tbl_form_6`
     --
     ALTER TABLE `tbl_form_6`
-    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
     --
     -- AUTO_INCREMENT for table `tbl_form_7`
     --
     ALTER TABLE `tbl_form_7`
-    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
     --
     -- AUTO_INCREMENT for table `tbl_form_8`
     --
     ALTER TABLE `tbl_form_8`
-    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
     --
     -- AUTO_INCREMENT for table `tbl_form_9`
     --
     ALTER TABLE `tbl_form_9`
-    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
     --
     -- AUTO_INCREMENT for table `tbl_form_10`
     --
     ALTER TABLE `tbl_form_10`
-    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
     --
     -- AUTO_INCREMENT for table `tbl_goal_first`
     --
@@ -1436,7 +1435,7 @@ create database db_sami_proj;
     -- AUTO_INCREMENT for table `tbl_risk`
     --
     ALTER TABLE `tbl_risk`
-    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=40;
+    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
     --
     -- AUTO_INCREMENT for table `tbl_sub_district`
     --
@@ -1446,7 +1445,7 @@ create database db_sami_proj;
     -- AUTO_INCREMENT for table `tbl_team`
     --
     ALTER TABLE `tbl_team`
-    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
     --
     -- AUTO_INCREMENT for table `tbl_th`
     --
@@ -1461,7 +1460,7 @@ create database db_sami_proj;
     -- AUTO_INCREMENT for table `tbl_uploaded_document`
     --
     ALTER TABLE `tbl_uploaded_document`
-    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+    MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
     --
     -- AUTO_INCREMENT for table `tbl_user`
     --
