@@ -72,7 +72,58 @@
             <tr style="background: #eee">
                 <td>Form</td>
                 <td>
+                    <?php
+                        require_once 'files/user.php';
+                        require_once 'files/usersubdistrict.php';
+                        require_once 'files/uploadeddocument.php';
 
+                        $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+                        $goalFirstList = null;
+                        $uploadedDocResult = null;
+
+                        if($userObj->user_level == '02'){
+                            $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                            //$goalFirstList = getAllGoalFirstsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                            $uploadedDocResult = getAllUploadedDocumentsInDivision($userSubDistrictObj->sub_district_id);
+                        }else if($userObj->user_level == '01'){
+                            $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+                            if(!empty($userObj)){
+                                $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                                //$goalFirstList = getAllGoalFirstsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+                                //now get the DISTRICT info of this logged in Admin user...
+                                $uploadedDocResult = getAllUploadedDocumentsBy($_SESSION['LOGGED_USER_ID']);
+                            }
+                        }
+
+                        //$uploadedDocResult = getAllUploadedDocuments();
+                        if( !empty($uploadedDocResult) ){
+                            ?>
+                            <h2>Downloads</h2>
+                            <table border="0" width="100%">
+                                <tr style="background: #ccc">
+                                    <td>Thumbnail</td>
+                                    <td>File Name</td>
+                                    <td>Upload Date</td>
+                                    <td>Download</td>
+                                </tr>
+                                <?php
+                                while($uploadedDocRow = mysql_fetch_object($uploadedDocResult)){
+                                    $pathVar = "files/uploaded_files/thumbnail/" . $uploadedDocRow->file_name;
+                                    $imgPathVar = "files/uploaded_files/" . $uploadedDocRow->file_name;
+                                    ?>
+                                    <tr>
+                                        <td><img src="<?php echo $pathVar;?>" border="0" align="absmiddle"/></td>
+                                        <td><?php echo $uploadedDocRow->file_name;?></td>
+                                        <td><?php echo $uploadedDocRow->upload_date;?></td>
+                                        <td><a href="<?php echo $imgPathVar;?>">Download</a></td>
+                                    </tr>
+                                    <?php
+                                }//end while loop
+                                ?>
+                            </table>
+                            <?php
+                        }
+                    ?>
                 </td>
             </tr>
             <tr style="background:#fff">

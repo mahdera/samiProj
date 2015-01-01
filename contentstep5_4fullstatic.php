@@ -25,8 +25,7 @@
   <div class="col-half left">
       <?php require_once 'importjsscripts.php';?>
     <div id="innerDivToRefresh">
-        <?php
-            //require 'editfnactionmanagementform.php';
+        <?php            
             require 'showformmanagementgrid.php';
         ?>
     </div>
