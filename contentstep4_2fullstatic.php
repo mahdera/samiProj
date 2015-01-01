@@ -25,25 +25,13 @@
   <!--end to be replaced content-->
 </div> <!-- /content -->
 <script type='text/javascript'>
-$(document).ready(function(){
+    $(document).ready(function(){
+      $('#rightArrowButton').click(function(){
+          window.location.replace('step4_3fullstatic.php');
+      });
 
-  $('#rightArrowButton').click(function(){
-    /*var currentPageTag = $('#currentPageTag').html();
-    if(currentPageTag === 'Step 1-1'){
-    $('#step1Content').load('showstep1_2content.php');
-  }*/
-  window.location.replace('step4_3fullstatic.php');
-});
-
-$('#leftArrowButton').click(function(){
-  /*var currentPageTag = $('#currentPageTag').html();
-  if(currentPageTag === 'Intro Two'){
-  window.location.replace("intro1.php");
-}else if(currentPageTag === 'Intro Three'){
-window.location.replace("intro2.php");
-}*/
-window.location.replace('step4.php');
-});
-
-});//end document.ready function
+      $('#leftArrowButton').click(function(){
+          window.location.replace('step4.php');
+      });
+    });//end document.ready function
 </script>

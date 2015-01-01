@@ -51,7 +51,7 @@ if(!$isForm5AlreadyFilled){
         $('#btnsaveform5').click(function(){
             var q5_1 = $('#q5_1').val();
 
-            if(true){
+            if(q5_1 !== ""){
                 var dataString = "q5_1="+q5_1;
                 $.ajax({
                     url: 'files/saveform5.php',

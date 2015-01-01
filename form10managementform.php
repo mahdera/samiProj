@@ -51,13 +51,13 @@ if(!$isForm10AlreadyFilled){
         $('#btnsaveform10').click(function(){
             var q10_1 = $('#q10_1').val();
 
-            if(true){
+            if(q10_1 !== ""){
                 var dataString = "q10_1="+q10_1;
                 $.ajax({
                     url: 'files/saveform10.php',
                     data: dataString,
                     type:'POST',
-                    success:function(response){                        
+                    success:function(response){
                         $('#innerDivToRefresh').load('showformmanagementgrid.php');
                     },
                     error:function(error){

@@ -49,7 +49,7 @@ if(!$isForm3AlreadyFilled){
         $('#btnsaveform3').click(function(){
             var q3_1 = $('#q3_1').val();
 
-            if(true){
+            if(q3_1 !== ""){
                 var dataString = "q3_1="+q3_1;
                 $.ajax({
                     url: 'files/saveform3.php',

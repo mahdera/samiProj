@@ -29,6 +29,10 @@ if($userObj->user_level == '02'){
     }
 }
 
+$fnIdArray = array();
+$fnIdArray = getAllFilteredSelectedThFnIds($_SESSION['SELECTED_THS']);
+//var_dump($fnIdArray);
+
 //$goalSecondFnList = getAllGoalSecondFnsModifiedBy($_SESSION['LOGGED_USER_ID']);
 if(!empty($goalSecondFnList) && mysql_num_rows($goalSecondFnList)){
     ?>
@@ -44,8 +48,8 @@ if(!empty($goalSecondFnList) && mysql_num_rows($goalSecondFnList)){
             $divExt = $goalSecondFnRow->modified_by ."_". $fnObj->id;
             $countVal = 0;
             $divId = "actionDiv" . $fnObj->id;
-            //$countVal = doesThisFnAlreadyActionFilledForIt($fnObj->id);
-            if(true){
+            $countVal = doesThisFnAlreadyActionFilledForIt($fnObj->id);
+            if($countVal && in_array($fnObj->id, $fnIdArray)){
                 ?>
                 <tr>
                     <td width="20%"><?php echo stripslashes($fnObj->fn_name);?></td>

@@ -501,6 +501,8 @@ $thActionControlName = "textareathaction" . $thId;
                     goalFirstG3FnVal+"&"+goalFirstG3ObjHiddenIdControlName+"="+goalFirstG3ObjHiddenIdVal;
                 }
 
+                dataString += "&g1AddedItems=0&g2AddedItems=0&g3AddedItems=0";
+
                 var divId = "actionDiv" + thId;
 
                 $.ajax({

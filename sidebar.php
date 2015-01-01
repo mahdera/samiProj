@@ -88,7 +88,7 @@
         <?php require 'sidebars/toolkit_step_3_3.php';?>
         <?php require 'sidebars/toolkit_step_3_4.php';?>
         <?php require 'sidebars/toolkit_step_4_1.php';?>
-        <?php require 'sidebars/toolkit_step_4_2.php';?>
+        <?php require 'sidebars/toolkit_step_4_2.php';?><!--this is the line sami is looking-->
         <?php require 'sidebars/toolkit_step_4_3.php';?>
         <?php require 'sidebars/toolkit_step_4_4.php';?>
         <?php require 'sidebars/toolkit_step_5_1.php';?>

@@ -43,8 +43,8 @@ if(!empty($goalFirstThList) && mysql_num_rows($goalFirstThList)){
             $thObj = getTh($goalFirstThRow->th_id);
             $countVal = 0;
             $divId = "actionDiv" . $goalFirstThRow->th_id;
-            //$countVal = doesThisThAlreadyActionFilledForIt($thObj->id);
-            if(true){
+            $countVal = doesThisThAlreadyActionFilledForIt($thObj->id);
+            if($countVal){
                 ?>
                 <tr>
                     <td width="50%"><?php echo stripslashes($thObj->th_name);?></td>

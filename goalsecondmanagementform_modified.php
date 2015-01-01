@@ -35,6 +35,7 @@ if($userObj->user_level == '02'){
         //var_dump($fnIdArray);
         for($i=0; $i < count($fnIdArray); $i++){
             $fnObj = getFn($fnIdArray[$i]);
+            if($fnObj->fn_name != 'None'){
             $divId = "goalSecondDetailDiv" . $fnObj->id;
             ?>
             <tr>
@@ -83,6 +84,7 @@ if($userObj->user_level == '02'){
                 </td>
             </tr>
             <?php
+            }//end fn checking if condition
         }//end for...loop
     ?>
 </table>
@@ -111,7 +113,7 @@ if($userObj->user_level == '02'){
 
         $('.addGoalSecondDetailClass').click(function(){
             var idVal = $(this).attr('id');
-            alert('fn id: '+idVal);
+            //alert('fn id: '+idVal);
             var divId = "goalSecondDetailDiv" + idVal;
             var fnIdArray = <?php echo json_encode($fnIdArray);?>;
             for(var i=0; i<fnIdArray.length;i++){

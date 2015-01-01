@@ -23,7 +23,6 @@
   <div class="col-half left">
       <div id="goalSecondDivToRefresh">
         <?php
-            //require_once 'goalsecondmanagementform.php';
             require_once 'goalsecondmanagementform_modified.php';
         ?>
       </div>

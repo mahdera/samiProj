@@ -23,6 +23,11 @@ if(!$isForm2AlreadyFilled){
 <form>
     <table border="0" width="100%">
         <tr>
+            <td colspan="2">
+                <div id="errorDiv"></div>
+            </td>
+        </tr>
+        <tr>
             <td>Q2.1:</td>
             <td>
                 <textarea name="q2_1" id="q2_1" style="width: 100%" rows="3"></textarea>
@@ -72,7 +77,7 @@ if(!$isForm2AlreadyFilled){
             var q2_3 = $('#q2_3').val();
             var q2_4 = $('#q2_4').val();
 
-            if(true){
+            if(q2_1 !== "" && q2_2 !== "" && q2_3 !== "" && q2_4 !== ""){
                 var dataString = "q2_1="+q2_1+"&q2_2="+q2_2+"&q2_3="+q2_3+
                         "&q2_4="+q2_4;
                 $.ajax({
@@ -87,7 +92,7 @@ if(!$isForm2AlreadyFilled){
                     }
                 });
             }else{
-                alert("Please enter all the input fields");
+                alert("Please enter all fields");
             }
         });
 

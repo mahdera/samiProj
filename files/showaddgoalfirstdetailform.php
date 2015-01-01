@@ -367,7 +367,7 @@ $('#btnsave').click(function(){
           url: 'files/savegoalfirst.php',
           data: dataString,
           type:'POST',
-          success:function(response){            
+          success:function(response){
             $('#goalFirstDivToRefresh').load('goalfirstmanagmentform_modified.php');
           },
           error:function(error){
