@@ -23,15 +23,13 @@ if($_SESSION['USER_ROLE_CODE'] === '01A'){
 
 	if($userObj->user_level == '02'){
 		$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-		$goalFirstList = getAllGoalFirstsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
-		$uploadedDocResult = getAllUploadedDocumentsInDivision($userSubDistrictObj->sub_district_id);
+		//$goalFirstList = getAllGoalFirstsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+		$uploadedDocResult = getAllUploadedDocumentsForSubDistrict($userSubDistrictObj->sub_district_id);
 	}else if($userObj->user_level == '01'){
 		$userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
 		if(!empty($userObj)){
 			$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-			$goalFirstList = getAllGoalFirstsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
-			//now get the DISTRICT info of this logged in Admin user...
-			$uploadedDocResult = getAllUploadedDocumentsBy($_SESSION['LOGGED_USER_ID']);
+			$uploadedDocResult = getAllUploadedDocumentsForSubDistrict($_SESSION['SUB_DISTRICT_ID']);
 		}
 	}
 

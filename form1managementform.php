@@ -177,7 +177,7 @@
             var q4NumRows = $('.thInputRowQ4').length;
             var dataString = "";
 
-            if(formDate !== ""){
+            if(formDate !== "" && title !== "" && plan !== "" && q1 !== "" && q2 !== ""){
                 dataString += "title="+encodeURIComponent(title)+"&formDate="+
                         formDate+"&plan="+encodeURIComponent(plan)+
                         "&q1="+encodeURIComponent(q1)+"&q2="+encodeURIComponent(q2)+
@@ -231,6 +231,8 @@
                         alert(error);
                     }
                 });
+            }else{
+                alert('Please enter the input data values!');
             }
 
         });//end button.click function

@@ -477,7 +477,7 @@ class UploadHandler
       }
       //right here store metadata info to the database...
       require_once 'uploadeddocument.php';
-      saveUploadedDocuments($name, $_SESSION['LOGGED_USER_ID']);
+      saveUploadedDocuments($name, $_SESSION['LOGGED_USER_ID'], $_SESSION['SUB_DISTRICT_ID']);
       return $name;
     }
 
