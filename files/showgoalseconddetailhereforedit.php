@@ -55,14 +55,12 @@
                 $goalSecondG1Id = $goalSecondG1Row->id;
             ?>
                 <tr>
-                    <td width="1%"></td>
-                    <td width="10%">G1</td>
+                    <td width="20%">G1</td>
                     <td>
                         <?php
                           $g1ControlName = "edittxtg1" . $fnId;
                         ?>
-                        <!--<input type="text" name="<?php //echo $g1ControlName;?>" id="<?php //echo $g1ControlName;?>" value="<?php //echo $goalSecondG1Row->g1;?>" size="70"/>-->
-                        <textarea name="<?php echo $g1ControlName;?>" id="<?php echo $g1ControlName;?>" style="width:100%" rows="4"><?php echo $goalSecondG1Row->g1;?></textarea>
+                        <textarea name="<?php echo $g1ControlName;?>" id="<?php echo $g1ControlName;?>" style="width:100%" rows="4" class="g1Obj"><?php echo $goalSecondG1Row->g1;?></textarea>
                     </td>
                 </tr>
             <?php
@@ -74,10 +72,8 @@
                         $goalSecondG1ObjHiddenIdControlName = "hiddengoalsecondg1objid" . $fnId . $goalSecondG1Ctr;
                         ?>
                             <tr>
-                                <td></td>
                                 <td>Obj</td>
                                 <td>
-                                    <!--<input type="text" name="" id="" value="" size="70"/>-->
                                     <textarea name="<?php echo $goalSecondG1ObjControlName;?>" id="<?php echo $goalSecondG1ObjControlName;?>" style="width:100%" rows="4"><?php echo $goalSecondG1ObjRow->obj;?></textarea>
                                     <input type="hidden" name="<?php echo $goalSecondG1ObjHiddenIdControlName;?>" id="<?php echo $goalSecondG1ObjHiddenIdControlName;?>" value="<?php echo $goalSecondG1ObjId;?>"/>
                                 </td>
@@ -88,6 +84,12 @@
                 }//end empty checking inner if condition
             }//end if empty checking condition
         ?>
+        <tr id="addMoreG1Obj">
+            <td colspan="2" align="right">
+                <a href="#.php" id="addMoreG1ObjLink">[Add More]</a> |
+                <a href="#.php" id="removeG1ObjThRowLink">[Remove]</a>
+            </td>
+        </tr>
     </table>
 
     <table border="0" width="100%" style="padding:5px">
@@ -97,14 +99,12 @@
                 $goalSecondG2Id = $goalSecondG2Row->id;
             ?>
                 <tr>
-                    <td width="1%"></td>
-                    <td width="10%">G2</td>
+                    <td width="20%">G2</td>
                     <td>
                         <?php
                           $g2ControlName = "edittxtg2" . $fnId;
                         ?>
-                        <!--<input type="text" name="" id="" value="" size="70"/>-->
-                        <textarea name="<?php echo $g2ControlName;?>" id="<?php echo $g2ControlName;?>" style="width:100%" rows="4"><?php echo $goalSecondG2Row->g2;?></textarea>
+                        <textarea name="<?php echo $g2ControlName;?>" id="<?php echo $g2ControlName;?>" style="width:100%" rows="4" class="g2Obj"><?php echo $goalSecondG2Row->g2;?></textarea>
                     </td>
                 </tr>
             <?php
@@ -116,10 +116,8 @@
                         $goalSecondG2ObjHiddenIdControlName = "hiddengoalsecondg2objid" . $fnId . $goalSecondG2Ctr;
                         ?>
                             <tr>
-                                <td></td>
                                 <td>Obj</td>
                                 <td>
-                                    <!--<input type="text" name="" id="" value="" size="70"/>-->
                                     <textarea name="<?php echo $goalSecondG2ObjControlName;?>" id="<?php echo $goalSecondG2ObjControlName;?>" style="width:100%" rows="4"><?php echo $goalSecondG2ObjRow->obj;?></textarea>
                                     <input type="hidden" name="<?php echo $goalSecondG2ObjHiddenIdControlName;?>" id="<?php echo $goalSecondG2ObjHiddenIdControlName;?>" value="<?php echo $goalSecondG2ObjId;?>"/>
                                 </td>
@@ -130,6 +128,12 @@
                 }//end empty checking inner if condition
             }//end if empty checking condition
         ?>
+        <tr id="addMoreG2Obj">
+            <td colspan="2" align="right">
+                <a href="#.php" id="addMoreG2ObjLink">[Add More]</a> |
+                <a href="#.php" id="removeG2ObjThRowLink">[Remove]</a>
+            </td>
+        </tr>
     </table>
 
     <table border="0" width="100%" style="padding:5px">
@@ -139,14 +143,12 @@
                 $goalSecondG3Id = $goalSecondG3Row->id;
             ?>
                 <tr>
-                    <td width="1%"></td>
-                    <td width="10%">G3</td>
+                    <td width="20%">G3</td>
                     <td>
                         <?php
                           $g3ControlName = "edittxtg3" . $fnId;
                         ?>
-                        <!--<input type="text" name="" id="" value="" size="70"/>-->
-                        <textarea name="<?php echo $g3ControlName;?>" id="<?php echo $g3ControlName;?>" style="width:100%" rows="4"><?php echo $goalSecondG3Row->g3;?></textarea>
+                        <textarea name="<?php echo $g3ControlName;?>" id="<?php echo $g3ControlName;?>" style="width:100%" rows="4" class="g3Obj"><?php echo $goalSecondG3Row->g3;?></textarea>
                     </td>
                 </tr>
             <?php
@@ -158,10 +160,8 @@
                         $goalSecondG3ObjHiddenIdControlName = "hiddengoalsecondg3objid" . $fnId . $goalSecondG3Ctr;
                         ?>
                             <tr>
-                                <td></td>
                                 <td>Obj</td>
                                 <td>
-                                    <!--<input type="text" name="" id="" value="" size="70"/>-->
                                     <textarea name="<?php echo $goalSecondG3ObjControlName;?>" id="<?php echo $goalSecondG3ObjControlName;?>" style="width:100%" rows="4"><?php echo $goalSecondG3ObjRow->obj;?></textarea>
                                     <input type="hidden" name="<?php echo $goalSecondG3ObjHiddenIdControlName;?>" id="<?php echo $goalSecondG3ObjHiddenIdControlName;?>" value="<?php echo $goalSecondG3ObjId;?>"/>
                                 </td>
@@ -172,6 +172,12 @@
                 }//end empty checking inner if condition
             }//end if empty checking condition
         ?>
+        <tr id="addMoreG3Obj">
+            <td colspan="2" align="right">
+                <a href="#.php" id="addMoreG3ObjLink">[Add More]</a> |
+                <a href="#.php" id="removeG3ObjThRowLink">[Remove]</a>
+            </td>
+        </tr>
     </table>
 
     <table border="0" width="100%">
@@ -231,6 +237,22 @@
                     goalSecondG1ObjHiddenIdControlName+"="+goalSecondG1ObjHiddenIdVal;
                 }
 
+                var howManyg1ObjAddedItems = $('.g1Obj').length;
+                if(howManyg1ObjAddedItems != 0){
+                    for(var i=2; i<=(howManyg1ObjAddedItems+1); i++){
+                        var g1ObjControlName = "txtg1obj"+i;
+                        //now get the values...
+                        var g1ObjVal = $('#'+g1ObjControlName).val();
+                        //now append the values to the dataString...
+                        dataString += "&"+g1ObjControlName+"="+g1ObjVal+"&g1AddedItems="+
+                        howManyg1ObjAddedItems;
+
+                    }//end for loop
+                }else{
+                    dataString += "&g1AddedItems=0";
+                }
+
+
                 for(var j=1; j<=goalSecondG2Ctr; j++){
                     var goalSecondG2ObjControlName = "edittxtgoalsecondg2obj" + fnId + j;
                     var goalSecondG2ObjHiddenIdControlName = "hiddengoalsecondg2objid" + fnId + j;
@@ -241,6 +263,21 @@
                     goalSecondG2ObjHiddenIdControlName+"="+goalSecondG2ObjHiddenIdVal;
                 }
 
+                var howManyg2ObjAddedItems = $('.g2Obj').length;
+                if(howManyg2ObjAddedItems != 0){
+                    for(var i=2; i<=(howManyg2ObjAddedItems+1); i++){
+                        var g2ObjControlName = "txtg2obj"+i;
+                        //now get the values...
+                        var g2ObjVal = $('#'+g2ObjControlName).val();
+                        //now append the values to the dataString...
+                        dataString += "&"+g2ObjControlName+"="+g2ObjVal+"&g2AddedItems="+
+                        howManyg2ObjAddedItems;
+
+                    }//end for loop
+                }else{
+                    dataString += "&g2AddedItems=0";
+                }
+
                 for(var k=1; k<=goalSecondG3Ctr; k++){
                     var goalSecondG3ObjControlName = "edittxtgoalsecondg3obj" + fnId + k;
                     var goalSecondG3ObjHiddenIdControlName = "hiddengoalsecondg3objid" + fnId + k;
@@ -249,6 +286,21 @@
                     //append it to the dataString variable...
                     dataString += "&"+goalSecondG3ObjControlName+"="+goalSecondG3ObjVal+"&"+
                     goalSecondG3ObjHiddenIdControlName+"="+goalSecondG3ObjHiddenIdVal;
+                }
+
+                var howManyg3ObjAddedItems = $('.g3Obj').length;
+                if(howManyg3ObjAddedItems != 0){
+                    for(var i=2; i<=(howManyg3ObjAddedItems+1); i++){
+                        var g3ObjControlName = "txtg3obj"+i;
+                        //now get the values...
+                        var g3ObjVal = $('#'+g3ObjControlName).val();
+                        //now append the values to the dataString...
+                        dataString += "&"+g3ObjControlName+"="+g3ObjVal+"&g3AddedItems="+
+                        howManyg3ObjAddedItems;
+
+                    }//end for loop
+                }else{
+                    dataString += "&g3AddedItems=0";
                 }
 
                 //var divId = "actionDiv" + fnId;
@@ -268,5 +320,88 @@
                 alert("You need to enter the fn action text!");
             }
         });
+
+        ///the line below are added by Mahder in my own house....new features...
+        $('#addMoreG1ObjLink').click(function(){
+            var numItems = $('.g1Obj').length;
+            var dataString = "numItems="+numItems;
+
+            $.ajax({
+                url: 'files/showmoreg1objform.php',
+                data: dataString,
+                type:'POST',
+                success:function(response){
+                    var trId = "addMoreG1Obj";// + numItems;
+                    $('#' + trId).after(response);
+                },
+                error:function(error){
+                    alert(error);
+                }
+            });
+
+        });
+
+        $('#addMoreG2ObjLink').click(function(){
+            var numItems = $('.g2Obj').length;
+            var dataString = "numItems="+numItems;
+
+            $.ajax({
+                url: 'files/showmoreg2objform.php',
+                data: dataString,
+                type:'POST',
+                success:function(response){
+                    var trId = "addMoreG2Obj";// + numItems;
+                    $('#' + trId).after(response);
+                },
+                error:function(error){
+                    alert(error);
+                }
+            });
+
+        });
+
+        $('#addMoreG3ObjLink').click(function(){
+            var numItems = $('.g3Obj').length;
+            var dataString = "numItems="+numItems;
+
+            $.ajax({
+                url: 'files/showmoreg3objform.php',
+                data: dataString,
+                type:'POST',
+                success:function(response){
+                    var trId = "addMoreG3Obj";// + numItems;
+                    $('#' + trId).after(response);
+                },
+                error:function(error){
+                    alert(error);
+                }
+            });
+
+        });
+
+        $('#removeG1ObjThRowLink').click(function(){
+            var numItems = $('.g1Obj').length;
+            if(numItems > 1){
+                var thRowId = 'addMoreG1Obj'+numItems;
+                $('#'+thRowId).remove();
+            }
+        });
+
+        $('#removeG2ObjThRowLink').click(function(){
+            var numItems = $('.g2Obj').length;
+            if(numItems > 1){
+                var thRowId = 'addMoreG2Obj'+numItems;
+                $('#'+thRowId).remove();
+            }
+        });
+
+        $('#removeG3ObjThRowLink').click(function(){
+            var numItems = $('.g3Obj').length;
+            if(numItems > 1){
+                var thRowId = 'addMoreG3Obj'+numItems;
+                $('#'+thRowId).remove();
+            }
+        });
+        /////end addition of new feature./////
     });//end document.ready fucntion
 </script>

@@ -278,7 +278,9 @@ $fnActionControlName = "textareafnaction" . $fnId;
                 }
 
                 var divId = "actionDiv" + fnId;
-                //alert(divId);
+
+                dataString += "&g1AddedItems=0&g2AddedItems=0&g3AddedItems=0";
+
                 $.ajax({
                     url: 'files/updategoalsecond.php',
                     data: dataString,

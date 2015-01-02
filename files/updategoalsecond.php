@@ -12,6 +12,7 @@
     require_once 'fnaction.php';
 
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
+    $userObject = null;
 
     $fnId = $_POST['fnId'];
     $txtG1Val = addslashes($_POST['txtG1Val']);
@@ -32,23 +33,44 @@
         $fnActionVal = $_POST[$fnActionControlName];
     }
 
+    ///refine the code as just added to the goal second management screen...
+    if($userObj->user_level == '02'){
+        $userObject = $userObj;
+    }else if($userObj->user_level == '01'){
+        $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+    }
+
     for($i=1; $i<=$goalSecondG1Ctr; $i++){
         $goalSecondG1ObjControlName = "edittxtgoalsecondg1obj" . $fnId . $i;
         $goalSecondG1ObjHiddenIdControlName = "hiddengoalsecondg1objid" . $fnId . $i;
         $goalSecondG1ObjVal = addslashes($_POST["$goalSecondG1ObjControlName"]);
         $goalSecondG1ObjHiddenIdVal = $_POST["$goalSecondG1ObjHiddenIdControlName"];
         //now update the data value...
-        if($userObj->user_level == '02'){
+        /*if($userObj->user_level == '02'){
           updateGoalSecondG1($goalSecondG1Id, $goalSecondFnId, $txtG1Val, $_SESSION['LOGGED_USER_ID']);
           updateGoalSecondG1Obj($goalSecondG1ObjHiddenIdVal, $goalSecondG1Id, $goalSecondG1ObjVal, $_SESSION['LOGGED_USER_ID']);
         }else if($userObj->user_level == '01'){
           $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-          if(!empty($userObj)){
-            updateGoalSecondG1($goalSecondG1Id, $goalSecondFnId, $txtG1Val, $userObj->id);
-            updateGoalSecondG1Obj($goalSecondG1ObjHiddenIdVal, $goalSecondG1Id, $goalSecondG1ObjVal, $userObj->id);
-          }
-        }
+          if(!empty($userObj)){*/
+            updateGoalSecondG1($goalSecondG1Id, $goalSecondFnId, $txtG1Val, $userObject->id);
+            updateGoalSecondG1Obj($goalSecondG1ObjHiddenIdVal, $goalSecondG1Id, $goalSecondG1ObjVal, $userObject->id);
+          /*}
+      }*/
     }
+
+    $g1AddedItems = intval($_POST['g1AddedItems']);
+    if($g1AddedItems != 0){
+        for($i=2; $i<=($g1AddedItems + 1); $i++){
+            $g1ObjControlName = "txtg1obj" . $i;
+            //now get the values...
+            $g1ObjVal = null;
+            $g1ObjVal = $_POST["$g1ObjControlName"];
+            //now save this record to the database...
+            //echo $g1ObjVal;
+            if($g1ObjVal != "undefined")
+                saveGoalSecondG1Obj($goalSecondG1Id, $g1ObjVal, $userObject->id);
+        }//end for...loop
+    }//end if condition
 
     for($j=1; $j<=$goalSecondG2Ctr; $j++){
         $goalSecondG2ObjControlName = "edittxtgoalsecondg2obj" . $fnId . $j;
@@ -56,17 +78,30 @@
         $goalSecondG2ObjVal = addslashes($_POST["$goalSecondG2ObjControlName"]);
         $goalSecondG2ObjHiddenIdVal = $_POST["$goalSecondG2ObjHiddenIdControlName"];
         //now update the data value...
-        if($userObj->user_level == '02'){
+        /*if($userObj->user_level == '02'){
           updateGoalSecondG2($goalSecondG2Id, $goalSecondFnId, $txtG2Val, $_SESSION['LOGGED_USER_ID']);
           updateGoalSecondG2Obj($goalSecondG2ObjHiddenIdVal, $goalSecondG2Id, $goalSecondG2ObjVal, $_SESSION['LOGGED_USER_ID']);
         }else if($userObj->user_level == '01'){
           $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-          if(!empty($userObj)){
-            updateGoalSecondG2($goalSecondG2Id, $goalSecondFnId, $txtG2Val, $userObj->id);
-            updateGoalSecondG2Obj($goalSecondG2ObjHiddenIdVal, $goalSecondG2Id, $goalSecondG2ObjVal, $userObj->id);
-          }
-        }
+          if(!empty($userObj)){*/
+            updateGoalSecondG2($goalSecondG2Id, $goalSecondFnId, $txtG2Val, $userObject->id);
+            updateGoalSecondG2Obj($goalSecondG2ObjHiddenIdVal, $goalSecondG2Id, $goalSecondG2ObjVal, $userObject->id);
+          /*}
+      }*/
     }
+
+    $g2AddedItems = intval($_POST['g2AddedItems']);
+    if($g2AddedItems != 0){
+        for($i=2; $i<=($g2AddedItems + 1); $i++){
+            $g2ObjControlName = "txtg2obj" . $i;
+            //now get the values...
+            $g2ObjVal = null;
+            $g2ObjVal = $_POST["$g2ObjControlName"];
+            //now save this record to the database...
+            if($g2ObjVal != "undefined")
+                saveGoalSecondG2Obj($goalSecondG2Id, $g2ObjVal, $userObject->id);
+        }//end for...loop
+    }//end if condition
 
     for($k=1; $k<=$goalSecondG3Ctr; $k++){
         $goalSecondG3ObjControlName = "edittxtgoalsecondg3obj" . $fnId . $k;
@@ -74,17 +109,30 @@
         $goalSecondG3ObjVal = addslashes($_POST["$goalSecondG3ObjControlName"]);
         $goalSecondG3ObjHiddenIdVal = $_POST["$goalSecondG3ObjHiddenIdControlName"];
         //now update the data value...
-        if($userObj->user_level == '02'){
+        /*if($userObj->user_level == '02'){
           updateGoalSecondG3($goalSecondG3Id, $goalSecondFnId, $txtG3Val, $_SESSION['LOGGED_USER_ID']);
           updateGoalSecondG3Obj($goalSecondG3ObjHiddenIdVal, $goalSecondG3Id, $goalSecondG3ObjVal, $_SESSION['LOGGED_USER_ID']);
         }else if($userObj->user_level == '01'){
           $userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-          if(!empty($userObj)){
-            updateGoalSecondG3($goalSecondG3Id, $goalSecondFnId, $txtG3Val, $userObj->id);
-            updateGoalSecondG3Obj($goalSecondG3ObjHiddenIdVal, $goalSecondG3Id, $goalSecondG3ObjVal, $userObj->id);
-          }
-        }
+          if(!empty($userObj)){*/
+            updateGoalSecondG3($goalSecondG3Id, $goalSecondFnId, $txtG3Val, $userObject->id);
+            updateGoalSecondG3Obj($goalSecondG3ObjHiddenIdVal, $goalSecondG3Id, $goalSecondG3ObjVal, $userObject->id);
+          /*}
+      }*/
     }
+
+    $g3AddedItems = intval($_POST['g3AddedItems']);
+    if($g3AddedItems != 0){
+        for($i=2; $i<=($g3AddedItems + 1); $i++){
+            $g3ObjControlName = "txtg3obj" . $i;
+            //now get the values...
+            $g3ObjVal = null;
+            $g3ObjVal = $_POST["$g3ObjControlName"];
+            //now save this record to the database...
+            if($g3ObjVal != "undefined")
+                saveGoalSecondG3Obj($goalSecondG3Id, $g3ObjVal, $userObject->id);
+        }//end for...loop
+    }//end if condition
 
     //now update the th action in here...
     if( isset($_POST[$fnActionControlName]) ){
