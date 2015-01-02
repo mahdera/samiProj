@@ -13,13 +13,13 @@ $fnIdArray = array();
 
 if($userObj->user_level == '02'){
     $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-    $fnIdArray = getAllFilteredLatestFnIdsEnteredByUserUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    //$fnIdArray = getAllFilteredLatestFnIdsEnteredByUserUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    $fnIdArray = getAllFilteredSelectedThFnIds($_SESSION['SELECTED_THS'], $userSubDistrictObj->sub_district_id);
 }else if($userObj->user_level == '01'){
     $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
     if(!empty($userObject)){
         $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
-        //$fnIdArray = getAllFilteredLatestFnIdsEnteredByUserUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
-        $fnIdArray = getAllFilteredSelectedThFnIds($_SESSION['SELECTED_THS']);
+        $fnIdArray = getAllFilteredSelectedThFnIds($_SESSION['SELECTED_THS'], $_SESSION['SUB_DISTRICT_ID']);
     }
 }
 
@@ -32,7 +32,6 @@ if($userObj->user_level == '02'){
         <td>Actions</td>
     </tr>
     <?php
-        //var_dump($fnIdArray);
         for($i=0; $i < count($fnIdArray); $i++){
             $fnObj = getFn($fnIdArray[$i]);
             if($fnObj->fn_name != 'None'){

@@ -92,8 +92,7 @@
         }
     }
 
-    function getAllFilteredSelectedThFnIds($selectedThIdArray){
-        //var_dump($selectedThIdArray);
+    function getAllFilteredSelectedThFnIds($selectedThIdArray, $divisionId = null){
         $ctr = 0;
         $fnIdArray = array();
         $query = null;
@@ -156,6 +155,15 @@
                 ///end goal_first_g3 table fetching queries...
 
             }//end for...loop
+            //now get all functions in the selected sub district and find out which one is used in goal second table...
+            if($divisionId != null){
+                $query = "select fn_id from tbl_goal_second_fn, tbl_user_sub_district where tbl_goal_second_fn.modified_by = tbl_user_sub_district.user_id and tbl_user_sub_district.sub_district_id = $divisionId";
+                $resultSet = read($query);
+                while($resultRow = mysql_fetch_object($resultSet)){
+                    $fnIdArray[$ctr] = $resultRow->fn_id;
+                    $ctr++;
+                }//end while loop
+            }
         }catch(Exception $ex){
             $ex->getMessage();
         }
