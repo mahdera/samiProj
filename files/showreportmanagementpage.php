@@ -23,13 +23,14 @@ if($_SESSION['USER_ROLE_CODE'] === '01A'){
 
 	if($userObj->user_level == '02'){
 		$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-		//$goalFirstList = getAllGoalFirstsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+		$goalFirstList = getAllGoalFirstsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
 		$uploadedDocResult = getAllUploadedDocumentsForSubDistrict($userSubDistrictObj->sub_district_id);
 	}else if($userObj->user_level == '01'){
-		$userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
-		if(!empty($userObj)){
-			$userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+		$userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+		if(!empty($userObject)){
+			$userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
 			$uploadedDocResult = getAllUploadedDocumentsForSubDistrict($_SESSION['SUB_DISTRICT_ID']);
+			$goalFirstList = getAllGoalFirstsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
 		}
 	}
 
