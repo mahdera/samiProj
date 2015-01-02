@@ -69,15 +69,8 @@
         }
 
         function showListOfThs(){
-            $('#subDetailDiv').load('files/showlistofths.php');
+            $('#subDetailDiv').load('files/showlistofths.php', {noncache: new Date().getTime()});
         }
-
-        $('.editThLink').click(function(){
-          var id = $(this).attr('id');
-          var divId = "thEditDiv" + id;
-          alert(divId);
-          $('#'+divId).load('files/showeditfieldsofth.php?id='+id);
-        });
 
     });//end document.ready function
 </script>

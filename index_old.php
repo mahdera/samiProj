@@ -55,87 +55,87 @@ and open the template in the editor.
     $(document).ready(function(){
 
         $('#teamManagementLink').click(function(){
-            $('#mainDetailDiv').load('teammanagementform.php');
+            $('#mainDetailDiv').load('teammanagementform.php', {noncache: new Date().getTime()});
         });
 
         $('#responsibilityManagementLink').click(function(){
-            $('#mainDetailDiv').load('responsibilitymanagementform.php');
+            $('#mainDetailDiv').load('responsibilitymanagementform.php', {noncache: new Date().getTime()});
         });
 
         $('#assessmentManagementLink').click(function(){
-            $('#mainDetailDiv').load('assessmentmanagementform.php');
+            $('#mainDetailDiv').load('assessmentmanagementform.php', {noncache: new Date().getTime()});
         });
 
         $('#thManagementLink').click(function(){
-            $('#mainDetailDiv').load('thmanagementform.php');
+            $('#mainDetailDiv').load('thmanagementform.php', {noncache: new Date().getTime()});
         });
 
         $('#riskManagementLink').click(function(){
-            $('#mainDetailDiv').load('riskmanagementform.php');
+            $('#mainDetailDiv').load('riskmanagementform.php', {noncache: new Date().getTime()});
         });
 
         $('#goalFirstManagementLink').click(function(){
-            $('#mainDetailDiv').load('goalfirstmanagementform.php');
+            $('#mainDetailDiv').load('goalfirstmanagementform.php', {noncache: new Date().getTime()});
         });
 
         $('#goalSecondManagementLink').click(function(){
-            $('#mainDetailDiv').load('goalsecondmanagementform.php');
+            $('#mainDetailDiv').load('goalsecondmanagementform.php', {noncache: new Date().getTime()});
         });
 
         $('#putThActionManagementLink').click(function(){
-            $('#mainDetailDiv').load('putthactionmanagementform.php');
+            $('#mainDetailDiv').load('putthactionmanagementform.php', {noncache: new Date().getTime()});
         });
 
         $('#putFnActionManagementLink').click(function(){
-            $('#mainDetailDiv').load('putfnactionmanagementform.php');
+            $('#mainDetailDiv').load('putfnactionmanagementform.php', {noncache: new Date().getTime()});
         });
 
         $('#editThActionManagementLink').click(function(){
-            $('#mainDetailDiv').load('editthactionmanagementform.php');
+            $('#mainDetailDiv').load('editthactionmanagementform.php', {noncache: new Date().getTime()});
         });
 
         $('#editFnActionManagementLink').click(function(){
-            $('#mainDetailDiv').load('editfnactionmanagementform.php');
+            $('#mainDetailDiv').load('editfnactionmanagementform.php', {noncache: new Date().getTime()});
         });
 
         $('#form1ManagementLink').click(function(){
-            $('#mainDetailDiv').load('form1managementform.php');
+            $('#mainDetailDiv').load('form1managementform.php', {noncache: new Date().getTime()});
         });
 
         $('#form2ManagementLink').click(function(){
-            $('#mainDetailDiv').load('form2managementform.php');
+            $('#mainDetailDiv').load('form2managementform.php', {noncache: new Date().getTime()});
         });
 
         $('#form3ManagementLink').click(function(){
-            $('#mainDetailDiv').load('form3managementform.php');
+            $('#mainDetailDiv').load('form3managementform.php', {noncache: new Date().getTime()});
         });
 
         $('#form4ManagementLink').click(function(){
-            $('#mainDetailDiv').load('form4managementform.php');
+            $('#mainDetailDiv').load('form4managementform.php', {noncache: new Date().getTime()});
         });
 
         $('#form5ManagementLink').click(function(){
-            $('#mainDetailDiv').load('form5managementform.php');
+            $('#mainDetailDiv').load('form5managementform.php', {noncache: new Date().getTime()});
         });
 
         $('#form6ManagementLink').click(function(){
-            $('#mainDetailDiv').load('form6managementform.php');
+            $('#mainDetailDiv').load('form6managementform.php', {noncache: new Date().getTime()});
         });
 
         $('#form7ManagementLink').click(function(){
-            $('#mainDetailDiv').load('form7managementform.php');
+            $('#mainDetailDiv').load('form7managementform.php', {noncache: new Date().getTime()});
         });
 
         $('#form8ManagementLink').click(function(){
-            $('#mainDetailDiv').load('form8managementform.php');
+            $('#mainDetailDiv').load('form8managementform.php', {noncache: new Date().getTime()});
         });
 
         $('#form9ManagementLink').click(function(){
-            $('#mainDetailDiv').load('form9managementform.php');
+            $('#mainDetailDiv').load('form9managementform.php', {noncache: new Date().getTime()});
         });
 
         $('#form10ManagementLink').click(function(){
-            $('#mainDetailDiv').load('form10managementform.php');
+            $('#mainDetailDiv').load('form10managementform.php', {noncache: new Date().getTime()});
         });
 
         $('#reportManagementLink').click(function(){});

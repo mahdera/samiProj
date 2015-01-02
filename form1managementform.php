@@ -118,7 +118,7 @@
 <div id="form1ManagementDetailDiv"></div>
 <script type="text/javascript">
 
-    $(document).ready(function(){        
+    $(document).ready(function(){
 
         $('txttitle').focus();
 
@@ -225,7 +225,7 @@
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        $('#innerDivToRefresh').load('showformmanagementgrid.php');
+                        $('#innerDivToRefresh').load('showformmanagementgrid.php', {noncache: new Date().getTime()});
                     },
                     error:function(error){
                         alert(error);
@@ -241,7 +241,7 @@
         }
 
         function showListOfForm1Records(){
-            $('#form1ManagementDetailDiv').load('files/showlistofform1records.php');
+            $('#form1ManagementDetailDiv').load('files/showlistofform1records.php', {noncache: new Date().getTime()});
         }
 
     });//end document.ready function

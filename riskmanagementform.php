@@ -166,7 +166,7 @@
         });
 
         function showListOfRisks(){
-            $('#subDetailDiv').load('files/showlistofrisks.php');
+            $('#subDetailDiv').load('files/showlistofrisks.php', {noncache: new Date().getTime()});
         }
 
         function clearFormInputFields(){

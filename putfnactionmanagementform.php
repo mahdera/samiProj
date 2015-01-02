@@ -115,7 +115,7 @@ $(document).ready(function(){
     //now create the div element using the id you got in here...
     var divId = "actionDiv" + idVal;
 
-    $('#' + divId).load('files/showputfnactionform.php?fn_id='+idVal);
+    $('#' + divId).load('files/showputfnactionform.php?fn_id='+idVal, {noncache: new Date().getTime()});
   });
 
   $('.closeActionFormClass').click(function(){
@@ -127,14 +127,14 @@ $(document).ready(function(){
   $('.viewFnActionLink').click(function(){
     var idVal = $(this).attr('id');
     var divId = "actionDiv" + idVal;
-    $('#' + divId).load('files/showlistoffnactiontextsforfn.php?fnId='+idVal);
+    $('#' + divId).load('files/showlistoffnactiontextsforfn.php?fnId='+idVal, {noncache: new Date().getTime()});
   });
 
   $('.editFnActionLink').click(function(){
     var idVal = $(this).attr('id');
     var divId = "actionDiv" + idVal;
     //$('#' + divId).load('files/showlistoffnactiontextsforfnforedit.php?fnId='+idVal);
-    $('#' + divId).load('files/showeditfieldsofthisfnaction.php?fnId='+idVal);
+    $('#' + divId).load('files/showeditfieldsofthisfnaction.php?fnId='+idVal, {noncache: new Date().getTime()});
   });
 
   $('.deleteFnActionLink').click(function(){
@@ -150,15 +150,14 @@ $(document).ready(function(){
         data: dataString,
         type:'GET',
         success:function(response){
-          $('#innerDivToRefresh').load('putfnactionmanagementform.php');
+          $('#innerDivToRefresh').load('putfnactionmanagementform.php', {noncache: new Date().getTime()});
           //$('#'+divId).html(response);
         },
         error:function(error){
           alert(error);
         }
       });
-    }
-    //$('#' + divId).load('files/showlistoffnactiontextsforfnfordelete.php?fnId='+idVal);
+    }    
   });
 
 });//end document.ready function

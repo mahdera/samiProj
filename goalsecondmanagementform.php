@@ -267,7 +267,7 @@
         }
 
         function showListOfGoalSeconds(){
-            $('#subDetailDiv').load('files/showlistofgoalsecondsmodified.php');
+            $('#subDetailDiv').load('files/showlistofgoalsecondsmodified.php', {noncache: new Date().getTime()});
         }
 
         $('#addMoreG1ObjLink').click(function(){

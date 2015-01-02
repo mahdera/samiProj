@@ -502,13 +502,13 @@
         }
 
         function showListOfGoalFirsts(){
-            $('#subDetailDiv').load('files/showlistofgoalfirstsmodified.php');
+            $('#subDetailDiv').load('files/showlistofgoalfirstsmodified.php', {noncache: new Date().getTime()});
         }
 
         $('#slctg1fn').change(function(){
             var fnVal = $(this).val();
             if(fnVal === "other"){
-                $('#g1fnOtherDiv').load('files/showotherfnentryform.php');
+                $('#g1fnOtherDiv').load('files/showotherfnentryform.php', {noncache: new Date().getTime()});
             }else{
                 $('#g1fnOtherDiv').html('');
             }
@@ -517,7 +517,7 @@
         $('#slctg1fn1').change(function(){
             var fnVal = $(this).val();
             if(fnVal === "other"){
-                $('#g1fnObjOtherDiv').load('files/showotherfnentryformforg1fn1.php');
+                $('#g1fnObjOtherDiv').load('files/showotherfnentryformforg1fn1.php', {noncache: new Date().getTime()});
             }else{
                 $('#g1fnObjOtherDiv').html('');
             }
@@ -526,7 +526,7 @@
         $('#slctg2fn').change(function(){
             var fnVal = $(this).val();
             if(fnVal === "other"){
-                $('#g2fnOtherDiv').load('files/showg2otherfnentryform.php');
+                $('#g2fnOtherDiv').load('files/showg2otherfnentryform.php', {noncache: new Date().getTime()});
             }else{
                 $('#g2fnOtherDiv').html('');
             }
@@ -535,7 +535,7 @@
         $('#slctg2fn1').change(function(){
             var fnVal = $(this).val();
             if(fnVal === "other"){
-                $('#g2fnObjOtherDiv').load('files/showg2otherfnentryformg2fn1.php');
+                $('#g2fnObjOtherDiv').load('files/showg2otherfnentryformg2fn1.php', {noncache: new Date().getTime()});
             }else{
                 $('#g2fnObjOtherDiv').html('');
             }
@@ -544,7 +544,7 @@
         $('#slctg3fn').change(function(){
             var fnVal = $(this).val();
             if(fnVal === "other"){
-                $('#g3fnOtherDiv').load('files/showg3otherfnentryform.php');
+                $('#g3fnOtherDiv').load('files/showg3otherfnentryform.php', {noncache: new Date().getTime()});
             }else{
                 $('#g3fnOtherDiv').html('');
             }
@@ -553,7 +553,7 @@
         $('#slctg3fn1').change(function(){
             var fnVal = $(this).val();
             if(fnVal === "other"){
-                $('#g3fnObjOtherDiv').load('files/showg3otherfnentryformg3fn1.php');
+                $('#g3fnObjOtherDiv').load('files/showg3otherfnentryformg3fn1.php', {noncache: new Date().getTime()});
             }else{
                 $('#g3fnObjOtherDiv').html('');
             }

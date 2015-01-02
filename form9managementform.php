@@ -58,7 +58,7 @@ if(!$isForm9AlreadyFilled){
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        $('#innerDivToRefresh').load('showformmanagementgrid.php');
+                        $('#innerDivToRefresh').load('showformmanagementgrid.php', {noncache: new Date().getTime()});
                     },
                     error:function(error){
                         alert(error);
@@ -74,7 +74,7 @@ if(!$isForm9AlreadyFilled){
         }
 
         function showListOfForm9Records(){
-            $('#form9ManagementDetailDiv').load('files/showlistofform9records.php');
+            $('#form9ManagementDetailDiv').load('files/showlistofform9records.php', {noncache: new Date().getTime()});
         }
 
     });//end document.ready function

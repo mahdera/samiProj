@@ -33,13 +33,7 @@
             }
         });
 
-        $('#leftArrowButton').click(function(){
-            /*var currentPageTag = $('#currentPageTag').html();
-            if(currentPageTag === 'Intro Two'){
-                window.location.replace("intro1.php");
-            }else if(currentPageTag === 'Intro Three'){
-                window.location.replace("intro2.php");
-            }*/
+        $('#leftArrowButton').click(function(){            
             window.location.replace('step6_5fullstatic.php');
         });
 

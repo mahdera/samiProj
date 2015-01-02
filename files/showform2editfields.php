@@ -58,7 +58,7 @@
                 type:'POST',
                 success:function(response){
                     //$('#'+divId).html(response);
-										$('#form2Div').load('files/showlistofform2records.php');
+										$('#form2Div').load('files/showlistofform2records.php', {noncache: new Date().getTime()});
                 },
                 error:function(error){
                     alert(error);

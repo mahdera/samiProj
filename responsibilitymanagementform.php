@@ -97,7 +97,7 @@
         }
 
         function showListOfResponsibilities(){
-            $('#subDetailDiv').load('files/showlistofresponsibilities.php');
+            $('#subDetailDiv').load('files/showlistofresponsibilities.php', {noncache: new Date().getTime()});
         }
 
     });//end document.ready function

@@ -23,18 +23,10 @@
     $(document).ready(function(){
 
         $('#rightArrowButton').click(function(){
-            /*var currentPageTag = $('#currentPageTag').html();
-            if(currentPageTag === 'Step 3-1'){
-                $('#step3Content').load('showstep3_2content.php');
-            }*/
             window.location.replace('step3_2fullstatic.php');
         });
 
-        $('#leftArrowButton').click(function(){
-            /*var currentPageTag = $('#currentPageTag').html();
-            if(currentPageTag === 'Step 3-1'){
-                window.location.replace("step2.php");
-            }*/
+        $('#leftArrowButton').click(function(){            
             window.location.replace('step2_4fullstatic.php');
         });
 

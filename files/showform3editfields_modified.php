@@ -64,7 +64,7 @@ if(!empty($form3List) && mysql_num_rows($form3List)){
                 data: dataString,
                 type:'POST',
                 success:function(response){
-                    $('#innerDivToRefresh').load('showformmanagementgrid.php');
+                    $('#innerDivToRefresh').load('showformmanagementgrid.php', {noncache: new Date().getTime()});
                 },
                 error:function(error){
                     alert(error);

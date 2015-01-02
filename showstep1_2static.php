@@ -33,7 +33,7 @@ if($_SESSION['USER_ROLE_CODE'] === '01A'){
       <?php
       require 'menurow.php';
       require 'steprowstep1.php';
-      require 'contentstep1_2.php';      
+      require 'contentstep1_2.php';
       ?>
     </div>
     <?php

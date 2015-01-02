@@ -59,7 +59,7 @@ if($_SESSION['USER_ROLE_CODE'] === '01A'){
                     var divLoc = $('#errorDiv').offset();
                     $('html, body').animate({scrollTop: divLoc.top}, "slow");
                 }else*/{
-                    $('#step3Content').load('showstep3_3content.php?'+selectedCheckBoxesIdDataString);
+                    $('#step3Content').load('showstep3_3content.php?'+selectedCheckBoxesIdDataString, {noncache: new Date().getTime()});
                 }
             }
         });

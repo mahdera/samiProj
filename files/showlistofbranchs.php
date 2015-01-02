@@ -58,7 +58,7 @@
       $('.editBranchClass').click(function(){
           var idVal = $(this).attr('id');
           var divId = "branchEditDiv" + idVal;
-          $('#'+divId).load('files/showeditfieldsofbranch.php?branchId='+idVal);
+          $('#'+divId).load('files/showeditfieldsofbranch.php?branchId='+idVal, {noncache: new Date().getTime()});
       });
 
       $('.deleteBranchClass').click(function(){
@@ -72,7 +72,7 @@
             type:'POST',
             success:function(response){
               //$('#branchManagementDiv').load('files/showlistofbranchsfordelete.php');
-              $('#branchManagementDiv').load('files/showlistofbranchs.php');
+              $('#branchManagementDiv').load('files/showlistofbranchs.php', {noncache: new Date().getTime()});
             },
             error:function(error){
               alert(error);

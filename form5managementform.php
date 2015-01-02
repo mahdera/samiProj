@@ -58,7 +58,7 @@ if(!$isForm5AlreadyFilled){
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        $('#innerDivToRefresh').load('showformmanagementgrid.php');
+                        $('#innerDivToRefresh').load('showformmanagementgrid.php', {noncache: new Date().getTime()});
                     },
                     error:function(error){
                         alert(error);
@@ -74,7 +74,7 @@ if(!$isForm5AlreadyFilled){
         }
 
         function showListOfForm5Records(){
-            $('#form5ManagementDetailDiv').load('files/showlistofform5records.php');
+            $('#form5ManagementDetailDiv').load('files/showlistofform5records.php', {noncache: new Date().getTime()});
         }
 
     });//end document.ready function

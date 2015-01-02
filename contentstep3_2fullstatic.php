@@ -31,7 +31,7 @@
 <script type='text/javascript'>
 $(document).ready(function(){
 
-  $('#rightArrowButton').click(function(){    
+  $('#rightArrowButton').click(function(){
 
   //come back to this and do it with Array version...
   var selectedCheckBoxesIdDataString = "";
@@ -56,8 +56,7 @@ $(document).ready(function(){
         window.location.replace('step3_3fullstatic.php');
       }else{
         window.location.replace('step3_3fullstatic.php');
-      }
-      alert(data);
+      }      
     },
     error:function(error){
       alert(error);

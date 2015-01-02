@@ -61,7 +61,7 @@
         $('.editThLink').click(function(){
             var id = $(this).attr('id');
             var divId = "thEditDiv" + id;
-            $('#'+divId).load('files/showeditfieldsofth.php?id='+id);
+            $('#'+divId).load('files/showeditfieldsofth.php?id='+id, {noncache: new Date().getTime()});
         });
 
         $('.deleteThLink').click(function(){
@@ -83,7 +83,7 @@
         });
 
         function showListOfThs(){
-            $('#subDetailDiv').load('files/showlistofths.php');
+            $('#subDetailDiv').load('files/showlistofths.php', {noncache: new Date().getTime()});
         }
 
     });//end document.ready function

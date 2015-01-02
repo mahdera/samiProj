@@ -99,7 +99,7 @@
             var idVal = $(this).attr('id');
             //now create the div element using the id you got in here...
             var divId = "actionDiv" + idVal;
-            $('#' + divId).load('files/showputthactionform.php?thId='+idVal);
+            $('#' + divId).load('files/showputthactionform.php?thId='+idVal, {noncache: new Date().getTime()});
         });
 
         $('.closeActionFormClass').click(function(){
@@ -112,14 +112,14 @@
             var idVal = $(this).attr('id');
             var divId = "actionDiv" + idVal;
             //$('#' + divId).load('files/showlistofthactiontextsforth.php?thId='+idVal);
-            $('#' + divId).load('files/showeditfieldsofthisthaction.php?thId='+idVal);
+            $('#' + divId).load('files/showeditfieldsofthisthaction.php?thId='+idVal, {noncache: new Date().getTime()});
         });
 
         $('.editThActionLink').click(function(){
             var idVal = $(this).attr('id');
             var divId = "actionDiv" + idVal;
             //$('#' + divId).load('files/showlistofthactiontextsforth.php?thId='+idVal);
-            $('#' + divId).load('files/showeditfieldsofthisthaction.php?thId='+idVal);
+            $('#' + divId).load('files/showeditfieldsofthisthaction.php?thId='+idVal, {noncache: new Date().getTime()});
         });
 
         $('.deleteThActionLink').click(function(){
@@ -134,7 +134,7 @@
                 data: dataString,
                 type:'GET',
                 success:function(response){
-                  $('#innerDivToRefresh').load('putthactionmanagementform.php');
+                  $('#innerDivToRefresh').load('putthactionmanagementform.php', {noncache: new Date().getTime()});
                   //$('#'+divId).html(response);
                 },
                 error:function(error){

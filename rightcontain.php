@@ -105,23 +105,23 @@
         var userRoleCode = "<?php echo $userRoleCode;?>";
         if(userRoleCode === '01A'){
           var districtId = "<?php echo $districtId;?>";
-          $('#subDistrictSelectionDiv').load('files/showlistofsubdistrictsfoundinthisdistrict.php?districtId='+districtId);
+          $('#subDistrictSelectionDiv').load('files/showlistofsubdistrictsfoundinthisdistrict.php?districtId='+districtId, {noncache: new Date().getTime()});
         }
 
         $('#contentManagementLink').click(function(){
-            $('.content').load('files/showcontentmanagementlist.php');
+            $('.content').load('files/showcontentmanagementlist.php', {noncache: new Date().getTime()});
         });
 
         $('#userManagementLink').click(function(){
-            $('.content').load('files/showusermanagementlist.php');
+            $('.content').load('files/showusermanagementlist.php', {noncache: new Date().getTime()});
         });
 
         $('#accountManagementLink').click(function(){
-            $('.content').load('files/showmyaccountinnermenu.php');
+            $('.content').load('files/showmyaccountinnermenu.php', {noncache: new Date().getTime()});
         });
 
         $('#reportManagementLink').click(function(){
-            $('.content').load('files/showreportmanagementpage.php');
+            $('.content').load('files/showreportmanagementpage.php', {noncache: new Date().getTime()});
         });
 
         $('#logoutLink').click(function(){

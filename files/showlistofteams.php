@@ -86,7 +86,7 @@
             $('html, body').animate({
               'scrollTop' : $("#teamEditDiv").position().top
             });
-            $('#teamEditDiv').load('files/showeditfieldsofthisteam.php?id='+id);
+            $('#teamEditDiv').load('files/showeditfieldsofthisteam.php?id='+id, {noncache: new Date().getTime()} );
         });
 
         $('.teamDeleteLink').click(function(){
@@ -108,7 +108,7 @@
         });
 
         function showListOfTeams(){
-            $('#subDetailDiv').load('files/showlistofteams.php');
+            $('#subDetailDiv').load('files/showlistofteams.php', {noncache: new Date().getTime()});
         }
     });//end document.ready function
 </script>

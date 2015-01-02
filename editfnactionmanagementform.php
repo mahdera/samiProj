@@ -76,13 +76,13 @@
             var id = $(this).attr('id');
             var editDivId = "editActionTextDiv" + id;
             //alert(editDivId);
-            $('#'+editDivId).load('files/showeditfnactionform.php?id='+id);
+            $('#'+editDivId).load('files/showeditfnactionform.php?id='+id, {noncache: new Date().getTime()});
         });
 
         $('.deleteFnActionLinkId').click(function(){
             if(window.confirm('Are you sure you want to delete this Fn Action Record?')){
               var id = $(this).attr('id');
-              $('#fnActionDetailDiv').load('files/deletefnactionform.php?fnActionId='+id);
+              $('#fnActionDetailDiv').load('files/deletefnactionform.php?fnActionId='+id, {noncache: new Date().getTime()});
             }
         });
 

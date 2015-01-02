@@ -28,15 +28,14 @@
         $('#rightArrowButton').click(function(){
             var currentPageTag = $('#currentPageTag').html();
             if(currentPageTag === 'Step 6-6'){
-                //$('#step6Content').load('showstep6_6content.php');
-                //going no where
+                //nothing here
             }
         });
 
         $('#leftArrowButton').click(function(){
             var currentPageTag = $('#currentPageTag').html();
             if(currentPageTag === 'Step 6-6'){
-                $('#step6Content').load('showstep6_5content.php');
+                $('#step6Content').load('showstep6_5content.php', {noncache: new Date().getTime()});
             }
         });
 

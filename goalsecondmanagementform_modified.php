@@ -102,7 +102,7 @@ if($userObj->user_level == '02'){
                 var clearDivId = "goalSecondDetailDiv" + fnIdArray[i];
                 $('#'+clearDivId).html('');
             }//end for...loop
-            $('#' + divId).load('files/showgoalseconddetailhereforedit.php?fn_id='+idVal);
+            $('#' + divId).load('files/showgoalseconddetailhereforedit.php?fn_id='+idVal, {noncache: new Date().getTime()});
         });
 
         $('.closeActionFormClass').click(function(){
@@ -120,7 +120,7 @@ if($userObj->user_level == '02'){
                 var clearDivId = "goalSecondDetailDiv" + fnIdArray[i];
                 $('#'+clearDivId).html('');
             }//end for...loop
-            $('#'+divId).load('files/showaddgoalseconddetailform.php?fnId='+idVal);
+            $('#'+divId).load('files/showaddgoalseconddetailform.php?fnId='+idVal, {noncache: new Date().getTime()});
         });
 
         $('.deleteGoalSecondDetailClass').click(function(){
@@ -132,7 +132,7 @@ if($userObj->user_level == '02'){
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        $('#goalSecondDivToRefresh').load('goalsecondmanagementform_modified.php');
+                        $('#goalSecondDivToRefresh').load('goalsecondmanagementform_modified.php', {noncache: new Date().getTime()});
                     },
                     error:function(error){
                         alert(error);

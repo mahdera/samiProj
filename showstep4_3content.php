@@ -41,14 +41,14 @@ if($_SESSION['USER_ROLE_CODE'] === '01A'){
         $('#rightArrowButton').click(function(){
             var currentPageTag = $('#currentPageTag').html();
             if(currentPageTag === 'Step 4-3'){
-                $('#step4Content').load('showstep4_4content.php');
+                $('#step4Content').load('showstep4_4content.php', {noncache: new Date().getTime()});
             }
         });
 
         $('#leftArrowButton').click(function(){
             var currentPageTag = $('#currentPageTag').html();
             if(currentPageTag === 'Step 4-3'){
-                $('#step4Content').load('showstep4_2content.php');
+                $('#step4Content').load('showstep4_2content.php', {noncache: new Date().getTime()});
             }
         });
 

@@ -81,13 +81,13 @@
         $('.editThActionLink').click(function(){
             var id = $(this).attr('id');
             var editDivId = "editActionTextDiv" + id;
-            $('#'+editDivId).load('files/showeditthactionform.php?thId='+id);
+            $('#'+editDivId).load('files/showeditthactionform.php?thId='+id, {noncache: new Date().getTime()});
         });
 
         $('.deleteThActionLink').click(function(){
             if(window.confirm('Are you sure you want to delete this Th Action Record?')){
                 var id = $(this).attr('id');
-                $('#thActionDetailDiv').load('files/deletethactionform.php?thActionId='+id);
+                $('#thActionDetailDiv').load('files/deletethactionform.php?thActionId='+id, {noncache: new Date().getTime()});
             }
         });
     });//end document.ready function

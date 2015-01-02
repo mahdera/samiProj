@@ -58,7 +58,7 @@ if(!$isForm6AlreadyFilled){
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        $('#innerDivToRefresh').load('showformmanagementgrid.php');
+                        $('#innerDivToRefresh').load('showformmanagementgrid.php', {noncache: new Date().getTime()});
                     },
                     error:function(error){
                         alert(error);
@@ -74,7 +74,7 @@ if(!$isForm6AlreadyFilled){
         }
 
         function showListOfForm6Records(){
-            $('#form6ManagementDetailDiv').load('files/showlistofform6records.php');
+            $('#form6ManagementDetailDiv').load('files/showlistofform6records.php', {noncache: new Date().getTime()});
         }
 
     });//end document.ready function

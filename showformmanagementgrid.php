@@ -381,93 +381,93 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('#showForm1Link').click(function(){
-            $('#form1Div').load('form1managementform.php');
+            $('#form1Div').load('form1managementform.php', {noncache: new Date().getTime()});
         });
 
         $('#editForm1Link').click(function(){
             //$('#form1Div').load('files/showlistofform1records.php');
-            $('#form1Div').load('files/showform1editfields_modified.php');
+            $('#form1Div').load('files/showform1editfields_modified.php', {noncache: new Date().getTime()});
         });
 
         $('#showForm2Link').click(function(){
-            $('#form2Div').load('form2managementform.php');
+            $('#form2Div').load('form2managementform.php', {noncache: new Date().getTime()});
         });
 
         $('#editForm2Link').click(function(){
             //$('#form2Div').load('files/showlistofform2records.php');
-            $('#form2Div').load('files/showform2editfields_modified.php');
+            $('#form2Div').load('files/showform2editfields_modified.php', {noncache: new Date().getTime()});
         });
 
         $('#showForm3Link').click(function(){
-            $('#form3Div').load('form3managementform.php');
+            $('#form3Div').load('form3managementform.php', {noncache: new Date().getTime()});
         });
 
         $('#editForm3Link').click(function(){
             //$('#form3Div').load('files/showlistofform3records.php');
-            $('#form3Div').load('files/showform3editfields_modified.php');
+            $('#form3Div').load('files/showform3editfields_modified.php', {noncache: new Date().getTime()});
         });
 
         $('#showForm4Link').click(function(){
-            $('#form4Div').load('form4managementform.php');
+            $('#form4Div').load('form4managementform.php', {noncache: new Date().getTime()});
         });
 
         $('#editForm4Link').click(function(){
           //$('#form4Div').load('files/showlistofform4records.php');
-          $('#form4Div').load('files/showform4editfields_modified.php');
+          $('#form4Div').load('files/showform4editfields_modified.php', {noncache: new Date().getTime()});
         });
 
         $('#showForm5Link').click(function(){
-            $('#form5Div').load('form5managementform.php');
+            $('#form5Div').load('form5managementform.php', {noncache: new Date().getTime()});
         });
 
         $('#editForm5Link').click(function(){
           //$('#form5Div').load('files/showlistofform5records.php');
-          $('#form5Div').load('files/showform5editfields_modified.php');
+          $('#form5Div').load('files/showform5editfields_modified.php', {noncache: new Date().getTime()});
         });
 
         $('#showForm6Link').click(function(){
-            $('#form6Div').load('form6managementform.php');
+            $('#form6Div').load('form6managementform.php', {noncache: new Date().getTime()});
         });
 
         $('#editForm6Link').click(function(){
           //$('#form6Div').load('files/showlistofform6records.php');
-          $('#form6Div').load('files/showform6editfields_modified.php');
+          $('#form6Div').load('files/showform6editfields_modified.php', {noncache: new Date().getTime()});
         });
 
         $('#showForm7Link').click(function(){
-            $('#form7Div').load('form7managementform.php');
+            $('#form7Div').load('form7managementform.php', {noncache: new Date().getTime()});
         });
 
         $('#editForm7Link').click(function(){
           //$('#form7Div').load('files/showlistofform7records.php');
-          $('#form7Div').load('files/showform7editfields_modified.php');
+          $('#form7Div').load('files/showform7editfields_modified.php', {noncache: new Date().getTime()});
         });
 
         $('#showForm8Link').click(function(){
-            $('#form8Div').load('form8managementform.php');
+            $('#form8Div').load('form8managementform.php', {noncache: new Date().getTime()});
         });
 
         $('#editForm8Link').click(function(){
           //$('#form8Div').load('files/showlistofform8records.php');
-          $('#form8Div').load('files/showform8editfields_modified.php');
+          $('#form8Div').load('files/showform8editfields_modified.php', {noncache: new Date().getTime()});
         });
 
         $('#showForm9Link').click(function(){
-            $('#form9Div').load('form9managementform.php');
+            $('#form9Div').load('form9managementform.php', {noncache: new Date().getTime()});
         });
 
         $('#editForm9Link').click(function(){
           //$('#form9Div').load('files/showlistofform9records.php');
-          $('#form9Div').load('files/showform9editfields_modified.php');
+          $('#form9Div').load('files/showform9editfields_modified.php', {noncache: new Date().getTime()});
         });
 
         $('#showForm10Link').click(function(){
-            $('#form10Div').load('form10managementform.php');
+            $('#form10Div').load('form10managementform.php', {noncache: new Date().getTime()});
         });
 
         $('#editForm10Link').click(function(){
           //$('#form10Div').load('files/showlistofform10records.php');
-          $('#form10Div').load('files/showform10editfields_modified.php');
+          $('#form10Div').load('files/showform10editfields_modified.php', {noncache: new Date().getTime()});
         });
 
         $('#hideForm1Link').click(function(){

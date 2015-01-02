@@ -58,7 +58,7 @@ if(!$isForm10AlreadyFilled){
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        $('#innerDivToRefresh').load('showformmanagementgrid.php');
+                        $('#innerDivToRefresh').load('showformmanagementgrid.php', {noncache: new Date().getTime()});
                     },
                     error:function(error){
                         alert(error);
@@ -74,7 +74,7 @@ if(!$isForm10AlreadyFilled){
         }
 
         function showListOfForm10Records(){
-            $('#form10ManagementDetailDiv').load('files/showlistofform10records.php');
+            $('#form10ManagementDetailDiv').load('files/showlistofform10records.php', {noncache: new Date().getTime()});
         }
 
     });//end document.ready function

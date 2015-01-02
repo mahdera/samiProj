@@ -143,7 +143,7 @@
         }
 
         function showListOfTeams(){
-            $('#subDetailDiv').load('files/showlistofteams.php');
+            $('#subDetailDiv').load('files/showlistofteams.php', {noncache: new Date().getTime()});
         }
 
     });//end document.ready function

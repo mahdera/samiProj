@@ -94,7 +94,7 @@
       var idVal = $(this).attr('id');
       //now create the div element using the id you got in here...
       var divId = "actionDiv" + idVal;
-      $('#' + divId).load('files/showgoalfirstdetailhere.php?thId='+idVal);
+      $('#' + divId).load('files/showgoalfirstdetailhere.php?thId='+idVal, {noncache: new Date().getTime()});
     });
 
     $('.closeActionFormClass').click(function(){
@@ -111,7 +111,7 @@
         var clearDivId = "goalFirstDetailDiv" + selectedThIdArray[i];
         $('#'+clearDivId).html('');
       }//end for...loop
-      $('#'+divId).load('files/showaddgoalfirstdetailform.php?thId='+idVal);
+      $('#'+divId).load('files/showaddgoalfirstdetailform.php?thId='+idVal, {noncache: new Date().getTime()});
     });
 
     $('.openGoalFirstDetailForEditClass').click(function(){
@@ -122,7 +122,7 @@
           var clearDivId = "goalFirstDetailDiv" + selectedThIdArray[i];
           $('#'+clearDivId).html('');
       }//end for...loop
-      $('#' + divId).load('files/showgoalfirstdetailhereforedit.php?thId='+idVal);
+      $('#' + divId).load('files/showgoalfirstdetailhereforedit.php?thId='+idVal, {noncache: new Date().getTime()});
     });
 
     $('.deleteGoalFirstDetailClass').click(function(){
@@ -135,7 +135,7 @@
           data: dataString,
           type:'POST',
           success:function(response){
-            $('#goalFirstDivToRefresh').load('goalfirstmanagmentform_modified.php');
+            $('#goalFirstDivToRefresh').load('goalfirstmanagmentform_modified.php', {noncache: new Date().getTime()});
           },
           error:function(error){
             alert(error);

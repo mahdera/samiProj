@@ -43,45 +43,6 @@
                 <input type="text" name="txtphonenumber" id="txtphonenumber"/>
             </td>
         </tr>
-        <!--<tr>
-            <td><font color='red'>*</font> Member Type:</td>
-            <td>
-                <select name="slctmembertype" id="slctmembertype" style="width: 100%">
-                    <option value="User" selected="selected">User</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td><font color='red'>*</font> User Status:</td>
-            <td>
-                <select name="slctuserstatus" id="slctuserstatus" style="width: 100%">
-                    <option value="Pending" selected="selected">Pending</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td><font color='red'>*</font> User Level:</td>
-            <td>
-                <select name="slctuserlevel" id="slctuserlevel" style="width:100%">
-                    <option value="" selected="selected">--Select--</option>
-                    <option value="01">District Level</option>
-                    <option value="02">Sub District Level</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td><font color="red">*</font> User Role:</td>
-            <td>
-                <div id="userLevelDiv">
-                    <select name="slctuserrole" id="slctuserrole" style="width:100%">
-                        <option value="" selected="selected">--Select--</option>
-                        <option value="01A">District Admin</option>
-                        <option value="02A">Sub District Admin</option>
-                        <option value="999">User</option>
-                    </select>
-                </div>
-            </td>
-        </tr>-->
         <tr>
           <td><font color="red">*</font> User Role:</td>
           <td>
@@ -111,22 +72,7 @@
               ?>
             </select>
           </td>
-        </tr>
-        <!--<tr id="zoneRow">
-            <td><font color='red'>*</font> District:</td>
-            <td>
-                <select name="slctzone" id="slctzone" style="width:100%">
-                    <option value="" selected="selected">--Select--</option>
-                    <?php
-                        /*while($zoneRow = mysql_fetch_object($zoneList)){
-                            ?>
-                              <option value="<?php echo $zoneRow->id;?>"><?php echo $zoneRow->display_name;?></option>
-                            <?php
-                        }//end while loop*/
-                    ?>
-                </select>
-            </td>
-        </tr>-->
+        </tr>        
         <tr>
             <td colspan="2" align="right">
                 <input type="button" value="Create User" id="btncreateuser"/>

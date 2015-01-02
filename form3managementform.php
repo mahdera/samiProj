@@ -56,7 +56,7 @@ if(!$isForm3AlreadyFilled){
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        $('#innerDivToRefresh').load('showformmanagementgrid.php');
+                        $('#innerDivToRefresh').load('showformmanagementgrid.php', {noncache: new Date().getTime()});
                     },
                     error:function(error){
                         alert(error);
@@ -68,7 +68,7 @@ if(!$isForm3AlreadyFilled){
         });
 
         function showListOfForm3Records(){
-            $('#form3ManagementDetailDiv').load('files/showlistofform3records.php');
+            $('#form3ManagementDetailDiv').load('files/showlistofform3records.php', {noncache: new Date().getTime()});
         }
 
         function clearInputFields(){

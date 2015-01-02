@@ -72,7 +72,7 @@
                     type:'POST',
                     success:function(response){
                         clearFormInputFields();
-                        $('#assessmentManagementDiv').load('showassessmentaddform.php');
+                        $('#assessmentManagementDiv').load('showassessmentaddform.php', {noncache: new Date().getTime()} );
                         showListOfAssessments();
                         $('#assessmentManagementForm').hide('hide');
                     },
@@ -95,7 +95,7 @@
         }
 
         function showListOfAssessments(){
-            $('#subDetailDiv').load('files/showlistofassessments.php');
+            $('#subDetailDiv').load('files/showlistofassessments.php', {noncache: new Date().getTime()});
         }
 
     });//end document.ready function

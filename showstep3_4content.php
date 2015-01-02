@@ -54,7 +54,7 @@ if($_SESSION['USER_ROLE_CODE'] === '01A'){
         $('#leftArrowButton').click(function () {
             var currentPageTag = $('#currentPageTag').html();
             if (currentPageTag === 'Step 3-4') {
-                $('#step3Content').load('showstep3_3content.php');
+                $('#step3Content').load('showstep3_3content.php', {noncache: new Date().getTime()});
             }
         });
 
