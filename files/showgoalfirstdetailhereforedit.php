@@ -74,7 +74,7 @@
                             $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
                           }
                         ?>
-                        <select name="<?php echo $fn1ControlName;?>" id="<?php echo $fn1ControlName;?>" style="width:100%">
+                        <select name="<?php echo $fn1ControlName;?>" id="<?php echo $fn1ControlName;?>" style="width:95%" class="functionSelect">
                             <option value="" selected="selected">--Option--</option>
                             <?php
                                 while($fnRow = mysql_fetch_object($fnList)){
@@ -89,7 +89,16 @@
                                     }
                                 }//end while loop
                             ?>
+                            <option value="other">other</option>
                         </select>
+                        <?php $spinId = "editslctfn1" . $thId;?>
+                        <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $spinId;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
+                    </td>
+                </tr>
+                <tr style="background: #fff">
+                    <td colspan="2">
+                        <?php $fnOtherDiv = $fn1ControlName . "Div";?>
+                        <div id="<?php echo $fnOtherDiv;?>"></div>
                     </td>
                 </tr>
                 <?php
@@ -115,7 +124,7 @@
                             <tr>
                                 <td width="20%">Fn</td>
                                 <td>
-                                    <select name="<?php echo $goalFirstG1FnControlName;?>" id="<?php echo $goalFirstG1FnControlName;?>" style="width:100%">
+                                    <select name="<?php echo $goalFirstG1FnControlName;?>" id="<?php echo $goalFirstG1FnControlName;?>" style="width:95%" class="functionSelect">
                                         <option value="">--Select--</option>
                                         <?php
                                             if($userObj->user_level == '02'){
@@ -138,7 +147,16 @@
                                                 }
                                             }//end foreach loop
                                         ?>
+                                        <option value="other">other</option>
                                     </select>
+                                    <?php $spinId = $goalFirstG1FnControlName;?>
+                                    <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $spinId;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
+                                </td>
+                            </tr>
+                            <tr style="background: #fff">
+                                <td colspan="2">
+                                    <?php $fnOtherDiv = $goalFirstG1FnControlName . "Div";?>
+                                    <div id="<?php echo $fnOtherDiv;?>"></div>
                                 </td>
                             </tr>
                             <?php
@@ -150,12 +168,12 @@
             }//end empty checking for goalFirstG1List
 
             ?>
-            <tr style="background: #C6E2FF">
+            <tr style="background: #fff">
                 <td colspan="2">
                     <div id="g1fnObjOtherDiv"></div>
                 </td>
             </tr>
-            <tr id="addMoreG1ObjFn" style="background: #C6E2FF">
+            <tr id="addMoreG1ObjFn" style="background: #fff">
                 <td colspan="2" align="right">
                     <a href="#.php" id="addMoreG1ObjFnLink">[Add More]</a> |
                     <a href="#.php" id="removeG1ThRowLink">[Remove]</a>
@@ -188,7 +206,7 @@
                         <?php
                           $fn2ControlName = "editslctfn2" . $thId;
                         ?>
-                        <select name="<?php echo $fn2ControlName;?>" id="<?php echo $fn2ControlName;?>" style="width:100%">
+                        <select name="<?php echo $fn2ControlName;?>" id="<?php echo $fn2ControlName;?>" style="width:95%" class="functionSelect">
                             <option value="">--Select--</option>
                             <?php
                                 //$fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
@@ -212,7 +230,16 @@
                                     }
                                 }//end while loop
                             ?>
+                            <option value="other">other</option>
                         </select>
+                        <?php $spinId = $fn2ControlName;?>
+                        <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $spinId;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
+                    </td>
+                </tr>
+                <tr style="background: #fff">
+                    <td colspan="2">
+                        <?php $fnOtherDiv = $fn2ControlName . "Div";?>
+                        <div id="<?php echo $fnOtherDiv;?>"></div>
                     </td>
                 </tr>
                 <?php
@@ -237,7 +264,7 @@
                             <tr>
                                 <td width="20%">Fn</td>
                                 <td>
-                                    <select name="<?php echo $goalFirstG2FnControlName;?>" id="<?php echo $goalFirstG2FnControlName;?>" style="width:100%">
+                                    <select name="<?php echo $goalFirstG2FnControlName;?>" id="<?php echo $goalFirstG2FnControlName;?>" style="width:95%" class="functionSelect">
                                     <option value="">--Select--</option>
                                     <?php
                                         //$fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
@@ -261,7 +288,16 @@
                                             }
                                         }//end while loop
                                     ?>
+                                    <option value="other">other</option>
                                     </select>
+                                    <?php $spinId = $goalFirstG2FnControlName;?>
+                                    <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $spinId;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
+                                </td>
+                            </tr>
+                            <tr style="background: #fff">
+                                <td colspan="2">
+                                    <?php $fnOtherDiv = $goalFirstG2FnControlName . "Div";?>
+                                    <div id="<?php echo $fnOtherDiv;?>"></div>
                                 </td>
                             </tr>
                             <?php
@@ -305,7 +341,7 @@
                         <?php
                           $fn3ControlName = "editslctfn3" . $thId;
                         ?>
-                        <select name="<?php echo $fn3ControlName;?>" id="<?php echo $fn3ControlName;?>" style="width:100%">
+                        <select name="<?php echo $fn3ControlName;?>" id="<?php echo $fn3ControlName;?>" style="width:95%" class="functionSelect">
                             <option value="">--Select--</option>
                             <?php
                                 //$fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
@@ -329,7 +365,16 @@
                                     }
                                 }//end foreach loop
                             ?>
+                            <option value="other">other</option>
                         </select>
+                        <?php $spinId = $fn3ControlName;?>
+                        <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $spinId;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
+                    </td>
+                </tr>
+                <tr style="background: #fff">
+                    <td colspan="2">
+                        <?php $fnOtherDiv = $fn3ControlName . "Div";?>
+                        <div id="<?php echo $fnOtherDiv;?>"></div>
                     </td>
                 </tr>
                 <?php
@@ -354,7 +399,7 @@
                             <tr>
                                 <td width="20%">Fn</td>
                                 <td>
-                                    <select name="<?php echo $goalFirstG3FnControlName;?>" id="<?php echo $goalFirstG3FnControlName;?>" style="width:100%">
+                                    <select name="<?php echo $goalFirstG3FnControlName;?>" id="<?php echo $goalFirstG3FnControlName;?>" style="width:95%" class="functionSelect">
                                         <option value="">--Select--</option>
                                         <?php
                                             //$fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
@@ -378,7 +423,16 @@
                                                 }
                                             }//end foreach loop
                                         ?>
+                                        <option value="other">other</option>
                                     </select>
+                                    <?php $spinId = $goalFirstG3FnControlName;?>
+                                    <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $spinId;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
+                                </td>
+                            </tr>
+                            <tr style="background: #fff">
+                                <td colspan="2">
+                                    <?php $fnOtherDiv = $goalFirstG3FnControlName . "Div";?>
+                                    <div id="<?php echo $fnOtherDiv;?>"></div>
                                 </td>
                             </tr>
                             <?php
@@ -389,7 +443,7 @@
                 <?php
             }//end empty checking for goalFirstG1List
             ?>
-            <tr id="addMoreG3ObjFn" style="background: #C6E2FF">
+            <tr id="addMoreG3ObjFn" style="background: #fff">
                 <td colspan="2" align="right">
                     <a href="#.php" id="addMoreG3ObjFnLink">[Add More]</a> |
                     <a href="#.php" id="removeG3ThRowLink">[Remove]</a>
@@ -642,6 +696,40 @@
                 $('#'+thRowId).remove();
             }
         });
+
+
+        $('.functionSelect').change(function(){
+            var idVal = $(this).attr('id');
+            var divId = idVal + "Div";
+            var fnVal = $(this).val();
+            if(fnVal === "other"){
+                $('#'+divId).load('files/showgeneralotherfnentryform.php?divId='+encodeURIComponent(divId));
+            }else{
+                $('#'+divId).html('');
+            }
+        });
+
+
+        $('.fnRefreshSpin').click(function(){
+            var idVal = $(this).attr('id');
+            var selectControlName = idVal;
+            //alert(selectControlName);
+            //first clear the current contents...
+            jQuery('#'+selectControlName).children().remove();
+            //now you have the control name defined in here, reload the content again...
+            $.getJSON('files/reloadfunctionselectcontrolwithlatestdata.php', function(data) {
+                console.log("succ");
+            })
+
+            .done(function( data ) {
+                $.each( data.functions, function( i, item ) {
+                    //console.log(item.fnName);
+                    jQuery('#'+selectControlName).append("<option value='"+item.fnId+"'>"+item.fnName+"</option>");
+                });
+                jQuery('#'+selectControlName).append("<option value='other'>other</option>");
+            });
+        });
+
 
     });//end document.ready fucntion
 </script>
