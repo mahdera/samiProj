@@ -30,8 +30,19 @@ if($userObj->user_level == '02'){
 }
 
 $fnIdArray = array();
-$fnIdArray = getAllFilteredSelectedThFnIds($_SESSION['SELECTED_THS']);
+//$fnIdArray = getAllFilteredSelectedThFnIds($_SESSION['SELECTED_THS']);
 //var_dump($fnIdArray);
+if($userObj->user_level == '02'){
+    $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+    //$fnIdArray = getAllFilteredLatestFnIdsEnteredByUserUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
+    $fnIdArray = getAllFilteredSelectedThFnIds($_SESSION['SELECTED_THS'], $userSubDistrictObj->sub_district_id);
+}else if($userObj->user_level == '01'){
+    $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+    if(!empty($userObject)){
+        $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+        $fnIdArray = getAllFilteredSelectedThFnIds($_SESSION['SELECTED_THS'], $_SESSION['SUB_DISTRICT_ID']);
+    }
+}
 
 //$goalSecondFnList = getAllGoalSecondFnsModifiedBy($_SESSION['LOGGED_USER_ID']);
 if(!empty($goalSecondFnList) && mysql_num_rows($goalSecondFnList)){
