@@ -105,6 +105,16 @@
         }
     }
 
+    function getTopFnActionsForThisFn($fnId){
+        try{
+            $query = "select * from tbl_fn_action where fn_id = $fnId order by modification_date desc limit 0,1";
+            $result = read($query);
+            return $result;
+        }catch(Exception $ex){
+            $ex->getMessage();
+        }
+    }
+
 
     function getAllFnActionsForThisFnModifiedBy($fnId, $modifiedBy){
         try{
@@ -170,7 +180,7 @@
             $query = "select tbl_fn_action.* from tbl_fn_action, tbl_user_sub_district where " .
             "tbl_fn_action.modified_by = tbl_user_sub_district.user_id and " .
             "tbl_user_sub_district.sub_district_id = $divisionId and fn_id = $fnId and " .
-            "tbl_fn_action.goal_second_id = $goalSecondId";            
+            "tbl_fn_action.goal_second_id = $goalSecondId";
             $result = read($query);
             $resultRow = mysql_fetch_object($result);
             return $resultRow;

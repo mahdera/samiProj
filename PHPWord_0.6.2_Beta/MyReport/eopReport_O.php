@@ -125,11 +125,25 @@ $section->addTextBreak(2);
             //$table->addCell(2000, $styleCell)->addText('Date of Change', $fontStyle);
             //$table->addCell(2000, $styleCell)->addText('Name', $fontStyle);
             $table->addCell(2000, $styleCell)->addText('Summary of Change', $fontStyle);
- 		if($form1Obj){
+ 		    if($form1Obj){
   				//--tab;e----------------------------------------------------
 				// Add table
 
-				$form1Q3List = getAllForm1Q3ForThisForm1($form1Obj->id);
+                //$section->addTitle('1.4 Record of Distribution', 3);
+                //$table = $section->addTable('myOwnTableStyle');
+                // Add row
+                //$table->addRow(900);
+                // Add cells
+                //$table->addCell(2000, $styleCell)->addText('Title and name of person receiving the plan', $fontStyle);
+                $form1Q3List = getAllForm1Q3ForThisForm1($form1Obj->id);
+                $colCount = 1;
+                while($form1Q3Row = mysql_fetch_object($form1Q3List)){
+                    //$textBoxId = "txtrowq4" . $form1Q4Row->row . $form1Q4Row->col;
+                    $table->addCell(2000)->addText($form1Q3Row->column_value);
+                    $colCount++;
+                }
+
+				/*$form1Q3List = getAllForm1Q3ForThisForm1($form1Obj->id);
 				$colCount = 1;
 				while($form1Q3Row = mysql_fetch_object($form1Q3List)){
 						$textBoxId = "txtrowq3" . $form1Q3Row->row . $form1Q3Row->col;
@@ -147,24 +161,25 @@ $section->addTextBreak(2);
 							<?php
 							$colCount = 0;
 							echo "</tr>";
-						}*/
+						}
 						$colCount++;
-				}//end while loop
+				}//end while loop*/
+
  				//--table-------------------------------------------------------
 
-                $section->addTitle('1.4 Record of Distribution', 3);
+                    $section->addTitle('1.4 Record of Distribution', 3);
                     $table = $section->addTable('myOwnTableStyle');
                     // Add row
                     $table->addRow(900);
                     // Add cells
                     $table->addCell(2000, $styleCell)->addText('Title and name of person receiving the plan', $fontStyle);
-    					$form1Q4List = getAllForm1Q4ForThisForm1($form1Obj->id);
-    					$colCount = 1;
-    					while($form1Q4Row = mysql_fetch_object($form1Q4List)){
-    							$textBoxId = "txtrowq4" . $form1Q4Row->row . $form1Q4Row->col;
-                                $table->addCell(2000)->addText($form1Q4Row->column_value);
-                                $colCount++;
-                                }
+					$form1Q4List = getAllForm1Q4ForThisForm1($form1Obj->id);
+					$colCount = 1;
+					while($form1Q4Row = mysql_fetch_object($form1Q4List)){
+							$textBoxId = "txtrowq4" . $form1Q4Row->row . $form1Q4Row->col;
+                            $table->addCell(2000)->addText($form1Q4Row->column_value);
+                            $colCount++;
+                    }
                 }//end for1obj checking if condition
                 //----------------------------------------------------------------------------------------------
  				//$form2Obj = getForm2ModifiedByUserOnThisDate($_SESSION['LOGGED_USER_ID'], $goalFirstObj->modification_date);
@@ -340,7 +355,27 @@ $section->addTextBreak(2);
     //---------------------------------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------------------------------
-                 $section->addTitle('Functional Annexes', 1)  ;
+                 $fnIdArray = array();
+                 $section->addTitle('Functional Annexes', 1);
+                 //Here I need to call that majic function...
+                 if($userObj->user_level == '02'){
+                     $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+                     $fnIdArray = getAllFilteredSelectedThFnIds($_SESSION['SELECTED_THS'], $userSubDistrictObj->sub_district_id);
+                 }else if($userObj->user_level == '01'){
+                     $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+                     if(!empty($userObject)){
+                         $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+                         $fnIdArray = getAllFilteredSelectedThFnIds($_SESSION['SELECTED_THS'], $_SESSION['SUB_DISTRICT_ID']);
+                     }
+                 }
+
+                 for($i=0; $i<count($fnIdArray); $i++){
+                     //for each fnId, get the fn action text
+                     $fnActionResult = getTopFnActionsForThisFn($fnIdArray[$i]);
+                     while($fnActionRow = mysql_fetch_object($fnActionResult)){
+                         $section->addText($fnActionRow->action_text);
+                     }//end while loop
+                 }//end for loop
 
       //---------------------------------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------------------------------
@@ -467,24 +502,23 @@ $section->addTextBreak(2);
 						while($goalSecondFnRow = mysql_fetch_object($goalSecondFnList)){
 								$fnObj = getFn($goalSecondFnRow->fn_id);
                                 $section->addTitle($fnObj->fn_name, 2) ;
-																		$goalSecondG1Row = getGoalSecondG1ForGoalSecondFnId($goalSecondFnRow->id);
-																		if(!empty($goalSecondG1Row)){
-																				$goalSecondG1Id = $goalSecondG1Row->id;
-                                                                                $section->addTitle('Goal 1 (Before):', 3) ;
-                                                                                $section->addText($goalSecondG1Row->g1) ;
+    								$goalSecondG1Row = getGoalSecondG1ForGoalSecondFnId($goalSecondFnRow->id);
+    								if(!empty($goalSecondG1Row)){
+    										$goalSecondG1Id = $goalSecondG1Row->id;
+                                            $section->addTitle('Goal 1 (Before):', 3) ;
+                                            $section->addText($goalSecondG1Row->g1) ;
 
-																				$goalSecondG1ObjList = getAllGoalSecondG1ObjsForThisGoalSecondG1Id($goalSecondG1Id);
-																				if(!empty($goalSecondG1ObjList)){
-																						while($goalSecondG1ObjRow = mysql_fetch_object($goalSecondG1ObjList)){
-																								$goalSecondG1ObjId = $goalSecondG1ObjRow->id;
+    										$goalSecondG1ObjList = getAllGoalSecondG1ObjsForThisGoalSecondG1Id($goalSecondG1Id);
+    										if(!empty($goalSecondG1ObjList)){
+    												while($goalSecondG1ObjRow = mysql_fetch_object($goalSecondG1ObjList)){
+    														$goalSecondG1ObjId = $goalSecondG1ObjRow->id;
 
-                                                                                                $section->addTitle('Objectives', 4) ;
-                                                                                                $section->addText($goalSecondG1ObjRow->obj);
+                                                            $section->addTitle('Objectives', 4) ;
+                                                            $section->addText($goalSecondG1ObjRow->obj);
 
-																						}//end while loop
-																				}//end empty checking inner if condition
-																		}//end if empty checking condition
-
+    												}//end while loop
+    										}//end empty checking inner if condition
+    								}//end if empty checking condition
                             }
                 }
 

@@ -83,7 +83,7 @@ if($_SESSION['USER_ROLE_CODE'] === '01A'){
 						<td>Record</td>
 						<td><?php echo $goalFirstRow->modification_date;?></td>
 						<td>
-							<a href="PHPWord_0.6.2_Beta/MyReport/eopReport_O.php?id=<?php echo $goalFirstRow->id;?>" target="_blank" class="showReportLink" id="<?php echo $goalFirstRow->id;?>">Show Report</a>
+							<a href="PHPWord_0.6.2_Beta/MyReport/eopReport_O.php?id=<?php echo $goalFirstRow->id;?>" target="_blank" class="showReportLink" id="<?php echo $goalFirstRow->id;?>">Download Report</a>
 						</td>
 					</tr>
 					<?php
@@ -99,7 +99,7 @@ if($_SESSION['USER_ROLE_CODE'] === '01A'){
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.showReportLink').click(function(){
-			var id = $(this).attr('id');
+			//var id = $(this).attr('id');
 			//$('#reportDetailDiv').load('files/showreportdetailforthisgoalfirst.php?id='+id);
 			//$('#reportDetailDiv').load('PHPW');
 		});
