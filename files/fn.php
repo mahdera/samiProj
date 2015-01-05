@@ -92,6 +92,7 @@
         }
     }
 
+    /*This is a very important function...Make sure you have it included in you version*/
     function getAllFilteredSelectedThFnIds($selectedThIdArray, $divisionId = null){
         $ctr = 0;
         $fnIdArray = array();

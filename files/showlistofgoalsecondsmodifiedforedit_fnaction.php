@@ -1,5 +1,8 @@
 <?php
 @session_start();
+if(empty($_SESSION['USER_ID'])){
+    header("Location: login.php");
+}
 ?>
 <h2>Goal Second List</h2>
 <?php
@@ -77,14 +80,14 @@ if(!empty($goalSecondFnList) && mysql_num_rows($goalSecondFnList)){
                     </td>
                 </tr>
                 <?php
-            }
+            }//end Fn action checker....
         }//end while loop
         ?>
     </table>
     <?php
 }else{
     ?>
-    <div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>
+        <div class="notify notify-yellow"><span class="symbol icon-info"></span> No record found!</div>
     <?php
 }
 ?>

@@ -52,8 +52,7 @@ $thActionControlName = "textareathaction" . $thId;
         if(!empty($goalFirstG1Row)){
             ?>
             <tr>
-                <td width="5%"></td>
-                <td width="5%">G1</td>
+                <td width="20%">G1</td>
                 <td>
                     <?php
                     $g1ControlName = "edittxtg1" . $thId;
@@ -62,8 +61,7 @@ $thActionControlName = "textareathaction" . $thId;
                 </td>
             </tr>
             <tr>
-                <td width="5%"></td>
-                <td width="5%">Fn</td>
+                <td width="20%">Fn</td>
                 <td>
                     <?php
                     $fn1ControlName = "editslctfn1" . $thId;
@@ -77,7 +75,7 @@ $thActionControlName = "textareathaction" . $thId;
                         $fnList = getAllFnsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
                     }
                     ?>
-                    <select name="<?php echo $fn1ControlName;?>" id="<?php echo $fn1ControlName;?>" style="width:100%">
+                    <select name="<?php echo $fn1ControlName;?>" id="<?php echo $fn1ControlName;?>" style="width:95%" class="functionSelect">
                         <option value="" selected="selected">--Option--</option>
                         <?php
                         while($fnRow = mysql_fetch_object($fnList)){
@@ -92,7 +90,16 @@ $thActionControlName = "textareathaction" . $thId;
                             }
                         }//end while loop
                         ?>
+                        <option value="other">other</option>
                     </select>
+                    <?php $spinId = "editslctfn1" . $thId;?>
+                    <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $spinId;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
+                </td>
+            </tr>
+            <tr style="background: #fff">
+                <td colspan="2">
+                    <?php $fnOtherDiv = $fn1ControlName . "Div";?>
+                    <div id="<?php echo $fnOtherDiv;?>"></div>
                 </td>
             </tr>
             <?php
@@ -108,19 +115,17 @@ $thActionControlName = "textareathaction" . $thId;
                     $goalFirstG1ObjHiddenIdControlName = "hiddengoalfirstg1objid" . $thId . $goalFirstG1Ctr;
                     ?>
                     <tr>
-                        <td width="5%"></td>
-                        <td width="5%">Obj</td>
+                        <td width="20%">Obj</td>
                         <td>
                             <!--<input type="text" name="<?php //echo $goalFirstG1ObjControlName;?>" id="<?php //echo $goalFirstG1ObjControlName;?>" value="<?php //echo $goalFirstG1ObjFnRow->obj;?>" size="70"/>-->
-                            <textarea name="<?php echo $goalFirstG1ObjControlName;?>" id="<?php echo $goalFirstG1ObjControlName;?>" style="width:100%" rows="4"><?php echo $goalFirstG1ObjFnRow->obj;?></textarea>
+                            <textarea name="<?php echo $goalFirstG1ObjControlName;?>" id="<?php echo $goalFirstG1ObjControlName;?>" style="width:100%" rows="4" class="g1Obj"><?php echo $goalFirstG1ObjFnRow->obj;?></textarea>
                             <input type="hidden" name="<?php echo $goalFirstG1ObjHiddenIdControlName;?>" id="<?php echo $goalFirstG1ObjHiddenIdControlName;?>" value="<?php echo $goalFirstG1ObjFnId;?>"/>
                         </td>
                     </tr>
                     <tr>
-                        <td width="5%"></td>
-                        <td width="5%">Fn</td>
+                        <td width="20%">Fn</td>
                         <td>
-                            <select name="<?php echo $goalFirstG1FnControlName;?>" id="<?php echo $goalFirstG1FnControlName;?>" style="width:100%">
+                            <select name="<?php echo $goalFirstG1FnControlName;?>" id="<?php echo $goalFirstG1FnControlName;?>" style="width:95%%" class="functionSelect">
                                 <option value="">--Select--</option>
                                 <?php
                                 if($userObj->user_level == '02'){
@@ -143,7 +148,16 @@ $thActionControlName = "textareathaction" . $thId;
                                     }
                                 }//end foreach loop
                                 ?>
+                                <option value="other">other</option>
                             </select>
+                            <?php $spinId = $goalFirstG1FnControlName;?>
+                            <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $spinId;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
+                        </td>
+                    </tr>
+                    <tr style="background: #fff">
+                        <td colspan="2">
+                            <?php $fnOtherDiv = $goalFirstG1FnControlName . "Div";?>
+                            <div id="<?php echo $fnOtherDiv;?>"></div>
                         </td>
                     </tr>
                     <?php
@@ -155,6 +169,17 @@ $thActionControlName = "textareathaction" . $thId;
         }//end empty checking for goalFirstG1List
 
         ?>
+        <tr style="background: #fff">
+            <td colspan="2">
+                <div id="g1fnObjOtherDiv"></div>
+            </td>
+        </tr>
+        <tr id="addMoreG1ObjFn" style="background: #fff">
+            <td colspan="2" align="right">
+                <a href="#.php" id="addMoreG1ObjFnLink">[Add More]</a> |
+                <a href="#.php" id="removeG1ThRowLink">[Remove]</a>
+            </td>
+        </tr>
     </table>
     <!--doing the samething for goalfirstg2...-->
     <table border="0" width="100%" style="padding:5px">
@@ -167,8 +192,7 @@ $thActionControlName = "textareathaction" . $thId;
             $goalFirstG2Id = $goalFirstG2Row->id;
             ?>
             <tr>
-                <td width="5%"></td>
-                <td width="5%">G2</td>
+                <td width="20%">G2</td>
                 <td>
                     <?php
                     $g2ControlName = "edittxtg2" . $thId;
@@ -178,13 +202,12 @@ $thActionControlName = "textareathaction" . $thId;
                 </td>
             </tr>
             <tr>
-                <td width="5%"></td>
-                <td width="5%">Fn</td>
+                <td width="20%">Fn</td>
                 <td>
                     <?php
                     $fn2ControlName = "editslctfn2" . $thId;
                     ?>
-                    <select name="<?php echo $fn2ControlName;?>" id="<?php echo $fn2ControlName;?>" style="width:100%">
+                    <select name="<?php echo $fn2ControlName;?>" id="<?php echo $fn2ControlName;?>" style="width:95%" class="functionSelect">
                         <option value="">--Select--</option>
                         <?php
                         //$fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
@@ -208,7 +231,16 @@ $thActionControlName = "textareathaction" . $thId;
                             }
                         }//end while loop
                         ?>
+                        <option value="other">other</option>
                     </select>
+                    <?php $spinId = $fn2ControlName;?>
+                    <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $spinId;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
+                </td>
+            </tr>
+            <tr style="background: #fff">
+                <td colspan="2">
+                    <?php $fnOtherDiv = $fn2ControlName . "Div";?>
+                    <div id="<?php echo $fnOtherDiv;?>"></div>
                 </td>
             </tr>
             <?php
@@ -223,19 +255,17 @@ $thActionControlName = "textareathaction" . $thId;
                     $goalFirstG2ObjHiddenIdControlName = "hiddengoalfirstg2objid" . $thId . $goalFirstG2Ctr;
                     ?>
                     <tr>
-                        <td width="5%"></td>
-                        <td width="5%">Obj</td>
+                        <td width="20%">Obj</td>
                         <td>
                             <!--<input type="text" name="<?php //echo $goalFirstG2ObjControlName;?>" id="<?php //echo $goalFirstG2ObjControlName;?>" value="<?php //echo $goalFirstG2ObjFnRow->obj;?>" size="70"/>-->
-                            <textarea name="<?php echo $goalFirstG2ObjControlName;?>" id="<?php echo $goalFirstG2ObjControlName;?>" style="width:100%" rows="4"><?php echo $goalFirstG2ObjFnRow->obj;?></textarea>
+                            <textarea name="<?php echo $goalFirstG2ObjControlName;?>" id="<?php echo $goalFirstG2ObjControlName;?>" style="width:100%" rows="4" class="g2Obj"><?php echo $goalFirstG2ObjFnRow->obj;?></textarea>
                             <input type="hidden" name="<?php echo $goalFirstG2ObjHiddenIdControlName;?>" id="<?php echo $goalFirstG2ObjHiddenIdControlName;?>" value="<?php echo $goalFirstG2ObjFnId;?>"/>
                         </td>
                     </tr>
                     <tr>
-                        <td width="5%"></td>
-                        <td width="5%">Fn</td>
+                        <td width="20%">Fn</td>
                         <td>
-                            <select name="<?php echo $goalFirstG2FnControlName;?>" id="<?php echo $goalFirstG2FnControlName;?>" style="width:100%">
+                            <select name="<?php echo $goalFirstG2FnControlName;?>" id="<?php echo $goalFirstG2FnControlName;?>" style="width:95%" class="functionSelect">
                                 <option value="">--Select--</option>
                                 <?php
                                 //$fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
@@ -259,7 +289,16 @@ $thActionControlName = "textareathaction" . $thId;
                                     }
                                 }//end while loop
                                 ?>
+                                <option value="other">other</option>
                             </select>
+                            <?php $spinId = $goalFirstG2FnControlName;?>
+                            <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $spinId;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
+                        </td>
+                    </tr>
+                    <tr style="background: #fff">
+                        <td colspan="2">
+                            <?php $fnOtherDiv = $goalFirstG2FnControlName . "Div";?>
+                            <div id="<?php echo $fnOtherDiv;?>"></div>
                         </td>
                     </tr>
                     <?php
@@ -271,6 +310,12 @@ $thActionControlName = "textareathaction" . $thId;
         }//end empty checking for goalFirstG1List
 
         ?>
+        <tr id="addMoreG2ObjFn">
+            <td colspan="2" align="right">
+                <a href="#.php" id="addMoreG2ObjFnLink">[Add More]</a> |
+                <a href="#.php" id="removeG2ThRowLink">[Remove]</a>
+            </td>
+        </tr>
     </table>
     <!--doing the samething for goalfirstg3...-->
     <table border="0" width="100%" style="padding:5px">
@@ -283,24 +328,22 @@ $thActionControlName = "textareathaction" . $thId;
             //$fn_row = getFn($goalFirstG3Row->fn_id);
             ?>
             <tr>
-                <td width="5%"></td>
-                <td width="5%">G3</td>
+                <td width="20%">G3</td>
                 <td>
                     <?php
                     $g3ControlName = "edittxtg3" . $thId;
                     ?>
-                    <!--<input type="text" name="<?php //echo $g3ControlName;?>" id="<?php //echo $g3ControlName;?>" value="<?php echo $goalFirstG3Row->g3;?>" size="70"/>-->
+                    <!--<input type="text" name="<?php //echo $g3ControlName;?>" id="<?php //echo $g3ControlName;?>" value="<?php //echo $goalFirstG3Row->g3;?>" size="70"/>-->
                     <textarea name="<?php echo $g3ControlName;?>" id="<?php echo $g3ControlName;?>" style="width:100%" rows="4"><?php echo $goalFirstG3Row->g3;?></textarea>
                 </td>
             </tr>
             <tr>
-                <td width="5%"></td>
-                <td width="5%">Fn</td>
+                <td width="20%">Fn</td>
                 <td>
                     <?php
                     $fn3ControlName = "editslctfn3" . $thId;
                     ?>
-                    <select name="<?php echo $fn3ControlName;?>" id="<?php echo $fn3ControlName;?>" style="width:100%">
+                    <select name="<?php echo $fn3ControlName;?>" id="<?php echo $fn3ControlName;?>" style="width:95%" class="functionSelect">
                         <option value="">--Select--</option>
                         <?php
                         //$fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
@@ -324,7 +367,16 @@ $thActionControlName = "textareathaction" . $thId;
                             }
                         }//end foreach loop
                         ?>
+                        <option value="other">other</option>
                     </select>
+                    <?php $spinId = $fn3ControlName;?>
+                    <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $spinId;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
+                </td>
+            </tr>
+            <tr style="background: #fff">
+                <td colspan="2">
+                    <?php $fnOtherDiv = $fn3ControlName . "Div";?>
+                    <div id="<?php echo $fnOtherDiv;?>"></div>
                 </td>
             </tr>
             <?php
@@ -339,19 +391,17 @@ $thActionControlName = "textareathaction" . $thId;
                     $goalFirstG3ObjHiddenIdControlName = "hiddengoalfirstg3objid" . $thId . $goalFirstG3Ctr;
                     ?>
                     <tr>
-                        <td width="5%"></td>
-                        <td width="5%">Obj</td>
+                        <td width="20%">Obj</td>
                         <td>
                             <!--<input type="text" name="<?php echo $goalFirstG3ObjControlName;?>" id="<?php //echo $goalFirstG3ObjControlName;?>" value="<?php //echo $goalFirstG3ObjFnRow->obj;?>" size="70"/>-->
-                            <textarea name="<?php echo $goalFirstG3ObjControlName;?>" id="<?php echo $goalFirstG3ObjControlName;?>" style="width:100%" rows="4"><?php echo $goalFirstG3ObjFnRow->obj;?></textarea>
+                            <textarea name="<?php echo $goalFirstG3ObjControlName;?>" id="<?php echo $goalFirstG3ObjControlName;?>" style="width:100%" rows="4" class="g3Obj"><?php echo $goalFirstG3ObjFnRow->obj;?></textarea>
                             <input type="hidden" name="<?php echo $goalFirstG3ObjHiddenIdControlName;?>" id="<?php echo $goalFirstG3ObjHiddenIdControlName;?>" value="<?php echo $goalFirstG3ObjFnId;?>"/>
                         </td>
                     </tr>
                     <tr>
-                        <td width="5%"></td>
-                        <td width="5%">Fn</td>
+                        <td width="20%">Fn</td>
                         <td>
-                            <select name="<?php echo $goalFirstG3FnControlName;?>" id="<?php echo $goalFirstG3FnControlName;?>" style="width:100%">
+                            <select name="<?php echo $goalFirstG3FnControlName;?>" id="<?php echo $goalFirstG3FnControlName;?>" style="width:95%" class="functionSelect">
                                 <option value="">--Select--</option>
                                 <?php
                                 //$fnList = getAllFunctionsEnteredByThisUser($_SESSION['LOGGED_USER_ID']);
@@ -375,7 +425,16 @@ $thActionControlName = "textareathaction" . $thId;
                                     }
                                 }//end foreach loop
                                 ?>
+                                <option value="other">other</option>
                             </select>
+                            <?php $spinId = $goalFirstG3FnControlName;?>
+                            <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $spinId;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
+                        </td>
+                    </tr>
+                    <tr style="background: #fff">
+                        <td colspan="2">
+                            <?php $fnOtherDiv = $goalFirstG3FnControlName . "Div";?>
+                            <div id="<?php echo $fnOtherDiv;?>"></div>
                         </td>
                     </tr>
                     <?php
@@ -383,13 +442,18 @@ $thActionControlName = "textareathaction" . $thId;
                 }//end while loop
             }//end if condition for goalFirstG1ObjFnList
             ?>
+            <tr id="addMoreG3ObjFn" style="background: #fff">
+                <td colspan="2" align="right">
+                    <a href="#.php" id="addMoreG3ObjFnLink">[Add More]</a> |
+                    <a href="#.php" id="removeG3ThRowLink">[Remove]</a>
+                </td>
+            </tr>
             <?php
             if(doesThisThAlreadyActionFilledForIt($thId)){
                 $thAction = getThActionForTh($thId);
                 ?>
                 <tr>
-                    <td width="5%"></td>
-                    <td width="5%">Th Action:</td>
+                    <td width="20%">Th Action:</td>
                     <td>
                         <textarea name="<?php echo $thActionControlName;?>" id="<?php echo $thActionControlName;?>" style="width:100%" rows="4"><?php echo $thAction->action_text;?></textarea>
                     </td>
@@ -477,6 +541,24 @@ $thActionControlName = "textareathaction" . $thId;
                     goalFirstG1FnVal+"&"+goalFirstG1ObjHiddenIdControlName+"="+goalFirstG1ObjHiddenIdVal;
                 }
 
+                //now this line of code is added for the new functionality at Sami's house...
+                var howManyg1ObjFnAddedItems = $('.g1Obj').length;
+                if(howManyg1ObjFnAddedItems != 0){
+                    for(var i=2; i<=(howManyg1ObjFnAddedItems+1); i++){
+                        var g1ObjControlName = "txtg1obj"+i;
+                        var g1FnControlName = "slctg1fn"+i;
+                        //now get the values...
+                        var g1ObjVal = $('#'+g1ObjControlName).val();
+                        var g1FnVal = $('#'+g1FnControlName).val();
+                        //now append the values to the dataString...
+                        dataString += "&"+g1ObjControlName+"="+g1ObjVal+"&"+g1FnControlName+"="+g1FnVal+
+                        "&g1AddedItems="+howManyg1ObjFnAddedItems;
+
+                    }//end for loop
+                }else{
+                    dataString += "&g1AddedItems=0";
+                }
+
                 for(var j=1; j<=goalFirstG2Ctr; j++){
                     var goalFirstG2ObjControlName = "edittxtgoalfirstg2obj" + thId + j;
                     var goalFirstG2FnControlName = "editslctgoalfirstg2fn" + thId + j;
@@ -487,6 +569,24 @@ $thActionControlName = "textareathaction" . $thId;
                     //append it to the dataString variable...
                     dataString += "&"+goalFirstG2ObjControlName+"="+goalFirstG2ObjVal+"&"+goalFirstG2FnControlName+"="+
                     goalFirstG2FnVal+"&"+goalFirstG2ObjHiddenIdControlName+"="+goalFirstG2ObjHiddenIdVal;
+                }
+
+                //now this line of code is added for the new functionality at Sami's house...
+                var howManyg2ObjFnAddedItems = $('.g2Obj').length;
+                if(howManyg2ObjFnAddedItems != 0){
+                    for(var i=2; i<=(howManyg2ObjFnAddedItems+1); i++){
+                        var g2ObjControlName = "txtg2obj"+i;
+                        var g2FnControlName = "slctg2fn"+i;
+                        //now get the values...
+                        var g2ObjVal = $('#'+g2ObjControlName).val();
+                        var g2FnVal = $('#'+g2FnControlName).val();
+                        //now append the values to the dataString...
+                        dataString += "&"+g2ObjControlName+"="+g2ObjVal+"&"+g2FnControlName+"="+g2FnVal+
+                        "&g2AddedItems="+howManyg2ObjFnAddedItems;
+
+                    }//end for loop
+                }else{
+                    dataString += "&g2AddedItems=0";
                 }
 
                 for(var k=1; k<=goalFirstG3Ctr; k++){
@@ -501,7 +601,23 @@ $thActionControlName = "textareathaction" . $thId;
                     goalFirstG3FnVal+"&"+goalFirstG3ObjHiddenIdControlName+"="+goalFirstG3ObjHiddenIdVal;
                 }
 
-                dataString += "&g1AddedItems=0&g2AddedItems=0&g3AddedItems=0";
+                //now this line of code is added for the new functionality at Sami's house...
+                var howManyg3ObjFnAddedItems = $('.g3Obj').length;
+                if(howManyg3ObjFnAddedItems != 0){
+                    for(var i=2; i<=(howManyg3ObjFnAddedItems+1); i++){
+                        var g3ObjControlName = "txtg3obj"+i;
+                        var g3FnControlName = "slctg3fn"+i;
+                        //now get the values...
+                        var g3ObjVal = $('#'+g3ObjControlName).val();
+                        var g3FnVal = $('#'+g3FnControlName).val();
+                        //now append the values to the dataString...
+                        dataString += "&"+g3ObjControlName+"="+g3ObjVal+"&"+g3FnControlName+"="+g3FnVal+
+                        "&g3AddedItems="+howManyg3ObjFnAddedItems;
+
+                    }//end for loop
+                }else{
+                    dataString += "&g3AddedItems=0";
+                }
 
                 var divId = "actionDiv" + thId;
 
@@ -520,5 +636,121 @@ $thActionControlName = "textareathaction" . $thId;
                 alert("You need to enter the th action text!");
             }
         });
+
+
+        //Newly added functionality...
+        $('#addMoreG1ObjFnLink').click(function(){
+            var numItems = $('.g1Obj').length;
+            //alert(numItems);
+            var dataString = "numItems="+numItems;
+
+            $.ajax({
+                url: 'files/showmoreg1objfnform.php',
+                data: dataString,
+                type:'POST',
+                success:function(response){
+                    var trId = "addMoreG1ObjFn";// + numItems;
+                    $('#'+trId).after(response);
+                },
+                error:function(error){
+                    alert(error);
+                }
+            });
+        });
+
+        $('#removeG1ThRowLink').click(function(){
+            var numItems = $('.g1Obj').length;
+            if(numItems > 1){
+                var thRowId = 'addMoreG1ObjFn'+numItems;
+                $('#'+thRowId).remove();
+            }
+        });
+
+        $('#addMoreG2ObjFnLink').click(function(){
+            var numItems = $('.g2Obj').length;
+            var dataString = "numItems="+numItems;
+
+            $.ajax({
+                url: 'files/showmoreg2objfnform.php',
+                data: dataString,
+                type:'POST',
+                success:function(response){
+                    var trId = "addMoreG2ObjFn";// + numItems;
+                    $('#' + trId).after(response);
+                },
+                error:function(error){
+                    alert(error);
+                }
+            });
+        });
+
+        $('#removeG2ThRowLink').click(function(){
+            var numItems = $('.g2Obj').length;
+            if(numItems > 1){
+                var thRowId = 'addMoreG2ObjFn'+numItems;
+                $('#'+thRowId).remove();
+            }
+        });
+
+        $('#addMoreG3ObjFnLink').click(function(){
+            var numItems = $('.g3Obj').length;
+            var dataString = "numItems="+numItems;
+
+            $.ajax({
+                url: 'files/showmoreg3objfnform.php',
+                data: dataString,
+                type:'POST',
+                success:function(response){
+                    var trId = "addMoreG3ObjFn";// + numItems;
+                    $('#'+trId).after(response);
+                },
+                error:function(error){
+                    alert(error);
+                }
+            });
+        });
+
+        $('#removeG3ThRowLink').click(function(){
+            var numItems = $('.g3Obj').length;
+            if(numItems > 1){
+                var thRowId = 'addMoreG3ObjFn'+numItems;
+                $('#'+thRowId).remove();
+            }
+        });
+
+
+        $('.functionSelect').change(function(){
+            var idVal = $(this).attr('id');
+            var divId = idVal + "Div";
+            var fnVal = $(this).val();
+            if(fnVal === "other"){
+                $('#'+divId).load('files/showgeneralotherfnentryform.php?divId='+encodeURIComponent(divId));
+            }else{
+                $('#'+divId).html('');
+            }
+        });
+
+
+        $('.fnRefreshSpin').click(function(){
+            var idVal = $(this).attr('id');
+            var selectControlName = idVal;
+            //alert(selectControlName);
+            //first clear the current contents...
+            jQuery('#'+selectControlName).children().remove();
+            //now you have the control name defined in here, reload the content again...
+            $.getJSON('files/reloadfunctionselectcontrolwithlatestdata.php', function(data) {
+                console.log("succ");
+            })
+
+            .done(function( data ) {
+                $.each( data.functions, function( i, item ) {
+                    //console.log(item.fnName);
+                    jQuery('#'+selectControlName).append("<option value='"+item.fnId+"'>"+item.fnName+"</option>");
+                });
+                jQuery('#'+selectControlName).append("<option value='other'>other</option>");
+            });
+        });
+
+
     });//end document.ready fucntion
 </script>

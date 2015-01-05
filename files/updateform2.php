@@ -4,6 +4,7 @@
 	$q21Value = addslashes($_POST['q21Value']);
 	$q22Value = addslashes($_POST['q22Value']);
 	$q23Value = addslashes($_POST['q23Value']);
+	$q24Value = addslashes($_POST['q24Value']);
 	require_once 'form2.php';
 	require_once 'user.php';
 	require_once 'usersubdistrict.php';
@@ -15,7 +16,7 @@
 	}else if($userObj->user_level == '01'){
 		$userObj = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
 		if(!empty($userObj)){
-			updateForm2($id, $q21Value, $q22Value, $q23Value, "", $userObj->id);
+			updateForm2($id, $q21Value, $q22Value, $q23Value, $q24Value, $userObj->id);
 		}
 	}
 ?>

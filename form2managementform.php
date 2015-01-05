@@ -45,7 +45,7 @@ if(!$isForm2AlreadyFilled){
                 <textarea name="q2_3" id="q2_3" style="width: 100%" rows="3"></textarea>
             </td>
         </tr>
-        <tr style="visibility:hidden">
+        <tr>
             <td>Q2.4:</td>
             <td>
                 <textarea name="q2_4" id="q2_4" style="width: 100%" rows="3"></textarea>
