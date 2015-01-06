@@ -95,6 +95,7 @@
         <?php require 'sidebars/toolkit_step_5_2.php';?>
         <?php require 'sidebars/toolkit_step_5_3.php';?>
         <?php require 'sidebars/toolkit_step_5_4.php';?>
+        <?php require 'sidebars/toolkit_step_5_5.php';?>
         <?php require 'sidebars/toolkit_step_6_1.php';?>
         <?php require 'sidebars/toolkit_step_6_2.php';?>
         <?php require 'sidebars/toolkit_step_6_3.php';?>
@@ -432,6 +433,32 @@
               $('#toolkitStep5_3').hide();
               $('#slidecontent2').show();
               $('#toolkitStep5_4').show();
+          }else if(idVal == 'step5_5'){
+                $('#toolkitIntroOne').hide();
+                $('#toolkitIntroTwo').hide();
+                $('#toolkitIntroThree').hide();
+                $('#toolkitStep1_1').hide();
+                $('#toolkitStep1_2').hide();
+                $('#toolkitStep1_3').hide();
+                $('#toolkitStep1_4').hide();
+                $('#toolkitStep2_1').hide();
+                $('#toolkitStep2_2').hide();
+                $('#toolkitStep2_3').hide();
+                $('#toolkitStep2_4').hide();
+                $('#toolkitStep3_1').hide();
+                $('#toolkitStep3_2').hide();
+                $('#toolkitStep3_3').hide();
+                $('#toolkitStep3_4').hide();
+                $('#toolkitStep4_1').hide();
+                $('#toolkitStep4_2').hide();
+                $('#toolkitStep4_3').hide();
+                $('#toolkitStep4_4').hide();
+                $('#toolkitStep5_1').hide();
+                $('#toolkitStep5_2').hide();
+                $('#toolkitStep5_3').hide();
+                $('#toolkitStep5_4').hide();
+                $('#slidecontent2').show();
+                $('#toolkitStep5_5').show();
             }else if(idVal == 'step6_1'){
               $('#toolkitIntroOne').hide();
               $('#toolkitIntroTwo').hide();
@@ -456,6 +483,7 @@
               $('#toolkitStep5_2').hide();
               $('#toolkitStep5_3').hide();
               $('#toolkitStep5_4').hide();
+              $('#toolkitStep5_5').hide();
               $('#slidecontent2').show();
               $('#toolkitStep6_1').show();
             }else if(idVal == 'step6_2'){
@@ -482,6 +510,7 @@
               $('#toolkitStep5_2').hide();
               $('#toolkitStep5_3').hide();
               $('#toolkitStep5_4').hide();
+              $('#toolkitStep5_5').hide();
               $('#toolkitStep6_1').hide();
               $('#slidecontent2').show();
               $('#toolkitStep6_2').show();
@@ -509,6 +538,7 @@
               $('#toolkitStep5_2').hide();
               $('#toolkitStep5_3').hide();
               $('#toolkitStep5_4').hide();
+              $('#toolkitStep5_5').hide();
               $('#toolkitStep6_1').hide();
               $('#toolkitStep6_2').hide();
               $('#slidecontent2').show();
@@ -537,6 +567,7 @@
               $('#toolkitStep5_2').hide();
               $('#toolkitStep5_3').hide();
               $('#toolkitStep5_4').hide();
+              $('#toolkitStep5_5').hide();
               $('#toolkitStep6_1').hide();
               $('#toolkitStep6_2').hide();
               $('#toolkitStep6_3').hide();
@@ -566,6 +597,7 @@
               $('#toolkitStep5_2').hide();
               $('#toolkitStep5_3').hide();
               $('#toolkitStep5_4').hide();
+              $('#toolkitStep5_5').hide();
               $('#toolkitStep6_1').hide();
               $('#toolkitStep6_2').hide();
               $('#toolkitStep6_3').hide();

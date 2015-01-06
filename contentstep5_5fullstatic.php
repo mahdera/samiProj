@@ -8,7 +8,7 @@
     </div>
     <div id="resourcearea">
       <ul>
-        <li class="sb-toggle-right" id="step5_4"><img src="images/resource_icon.png" alt="Resource Toolkit" /> Resource Toolkit</li>
+        <li class="sb-toggle-right" id="step5_5"><img src="images/resource_icon.png" alt="Resource Toolkit" /> Resource Toolkit</li>
       </ul>
     </div>
   </div>
@@ -32,7 +32,7 @@ $(document).ready(function(){
   window.location.replace('step6.php');
 });
 
-$('#leftArrowButton').click(function(){  
+$('#leftArrowButton').click(function(){
 window.location.replace('step5_4fullstatic.php');
 });
 

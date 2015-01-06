@@ -34,7 +34,7 @@ if($_SESSION['USER_ROLE_CODE'] === '01A'){
 		}
 	}
 
-	//$uploadedDocResult = getAllUploadedDocuments();
+	$uploadedDocResult = getAllUploadedDocuments();
 	if( !empty($uploadedDocResult) ){
 		?>
 		<h2>Downloads</h2>
@@ -84,7 +84,7 @@ if($_SESSION['USER_ROLE_CODE'] === '01A'){
 						<td><?php echo $goalFirstRow->modification_date;?></td>
 						<td>
 							<!--<a href="PHPWord_0.6.2_Beta/MyReport/eopReport_O.php?id=<?php echo $goalFirstRow->id;?>" target="_blank" class="showReportLink" id="<?php echo $goalFirstRow->id;?>">Download Report</a>-->
-							<a href="PHPWord_0.6.2_Beta/MyReport/finalReport.php?id=<?php echo $goalFirstRow->id;?>" target="_blank" class="showReportLink" id="<?php echo $goalFirstRow->id;?>">Download Report</a>
+							<a href="PHPWord/MyReport/finalReport.php?id=<?php echo $goalFirstRow->id;?>" target="_blank" class="showReportLink" id="<?php echo $goalFirstRow->id;?>">Download Report</a>
 						</td>
 					</tr>
 					<?php
