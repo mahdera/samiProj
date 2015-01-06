@@ -22,8 +22,7 @@
   ?>
   <div class="col-half left">
     <div id="goalFirstDivToRefresh">
-      <?php
-          //require 'goalfirstmanagementform.php';
+      <?php          
           require 'goalfirstmanagmentform_modified.php';
       ?>
     </div>
@@ -37,7 +36,7 @@ $(document).ready(function(){
   window.location.replace('step3_4fullstatic.php');
 });
 
-$('#leftArrowButton').click(function(){  
+$('#leftArrowButton').click(function(){
 window.location.replace('step3_2fullstatic.php');
 });
 

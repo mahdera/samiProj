@@ -50,7 +50,7 @@
     }
 
     if(is_numeric($dateDifference)){
-        if($dateDifference > 180){
+        if($dateDifference > 730){//two years...as per Sami's suggestion.
             //last created goalFirst record is older than 6 months...hence create new...
             $_SESSION['GOAL_FIRST_STATUS'] = 'create';
         }else{

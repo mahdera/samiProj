@@ -56,7 +56,7 @@ $(document).ready(function(){
         window.location.replace('step3_3fullstatic.php');
       }else{
         window.location.replace('step3_3fullstatic.php');
-      }      
+      }
     },
     error:function(error){
       alert(error);

@@ -90,10 +90,10 @@ $thActionControlName = "textareathaction" . $thId;
                             }
                         }//end while loop
                         ?>
-                        <option value="other">other</option>
+                        <!--<option value="other">other</option>-->
                     </select>
                     <?php $spinId = "editslctfn1" . $thId;?>
-                    <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $spinId;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
+                    <a href="#.php" style="display:none" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $spinId;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
                 </td>
             </tr>
             <tr style="background: #fff">
@@ -148,10 +148,10 @@ $thActionControlName = "textareathaction" . $thId;
                                     }
                                 }//end foreach loop
                                 ?>
-                                <option value="other">other</option>
+                                <!--<option value="other">other</option>-->
                             </select>
                             <?php $spinId = $goalFirstG1FnControlName;?>
-                            <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $spinId;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
+                            <a href="#.php" style="display:none;" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $spinId;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
                         </td>
                     </tr>
                     <tr style="background: #fff">
@@ -174,7 +174,7 @@ $thActionControlName = "textareathaction" . $thId;
                 <div id="g1fnObjOtherDiv"></div>
             </td>
         </tr>
-        <tr id="addMoreG1ObjFn" style="background: #fff">
+        <tr id="addMoreG1ObjFn" style="background: #fff;display:none;">
             <td colspan="2" align="right">
                 <a href="#.php" id="addMoreG1ObjFnLink">[Add More]</a> |
                 <a href="#.php" id="removeG1ThRowLink">[Remove]</a>
@@ -231,10 +231,10 @@ $thActionControlName = "textareathaction" . $thId;
                             }
                         }//end while loop
                         ?>
-                        <option value="other">other</option>
+                        <!--<option value="other">other</option>-->
                     </select>
                     <?php $spinId = $fn2ControlName;?>
-                    <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $spinId;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
+                    <a href="#.php" style="display:none;" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $spinId;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
                 </td>
             </tr>
             <tr style="background: #fff">
@@ -289,10 +289,10 @@ $thActionControlName = "textareathaction" . $thId;
                                     }
                                 }//end while loop
                                 ?>
-                                <option value="other">other</option>
+                                <!--<option value="other">other</option>-->
                             </select>
                             <?php $spinId = $goalFirstG2FnControlName;?>
-                            <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $spinId;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
+                            <a href="#.php" style="display:none;" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $spinId;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
                         </td>
                     </tr>
                     <tr style="background: #fff">
@@ -310,7 +310,7 @@ $thActionControlName = "textareathaction" . $thId;
         }//end empty checking for goalFirstG1List
 
         ?>
-        <tr id="addMoreG2ObjFn">
+        <tr id="addMoreG2ObjFn" style="display:none">
             <td colspan="2" align="right">
                 <a href="#.php" id="addMoreG2ObjFnLink">[Add More]</a> |
                 <a href="#.php" id="removeG2ThRowLink">[Remove]</a>
@@ -367,10 +367,10 @@ $thActionControlName = "textareathaction" . $thId;
                             }
                         }//end foreach loop
                         ?>
-                        <option value="other">other</option>
+                        <!--<option value="other">other</option>-->
                     </select>
                     <?php $spinId = $fn3ControlName;?>
-                    <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $spinId;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
+                    <a href="#.php" style="display:none;" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $spinId;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
                 </td>
             </tr>
             <tr style="background: #fff">
@@ -425,10 +425,10 @@ $thActionControlName = "textareathaction" . $thId;
                                     }
                                 }//end foreach loop
                                 ?>
-                                <option value="other">other</option>
+                                <!--<option value="other">other</option>-->
                             </select>
                             <?php $spinId = $goalFirstG3FnControlName;?>
-                            <a href="#.php" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $spinId;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
+                            <a href="#.php" style="display:none;" class="fnRefreshSpin" title="Refresh Fn list" id="<?php echo $spinId;?>"><img src="images/spin.png" border="0" align="absmiddle"/></a>
                         </td>
                     </tr>
                     <tr style="background: #fff">
@@ -442,7 +442,7 @@ $thActionControlName = "textareathaction" . $thId;
                 }//end while loop
             }//end if condition for goalFirstG1ObjFnList
             ?>
-            <tr id="addMoreG3ObjFn" style="background: #fff">
+            <tr id="addMoreG3ObjFn" style="background: #fff; display:none;">
                 <td colspan="2" align="right">
                     <a href="#.php" id="addMoreG3ObjFnLink">[Add More]</a> |
                     <a href="#.php" id="removeG3ThRowLink">[Remove]</a>
