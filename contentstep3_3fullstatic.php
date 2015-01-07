@@ -22,7 +22,7 @@
   ?>
   <div class="col-half left">
     <div id="goalFirstDivToRefresh">
-      <?php          
+      <?php
           require 'goalfirstmanagmentform_modified.php';
       ?>
     </div>

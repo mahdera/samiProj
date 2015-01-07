@@ -6,11 +6,20 @@
   require_once 'files/goalfirstth.php';
 
   $fnList = null;
-  $selectedThIdArray = null;
+  $selectedThIdArray = array();
   @session_start();
-  if(isset($_SESSION['SELECTED_THS'])){
-    $selectedThIdArray = $_SESSION['SELECTED_THS'];
+
+  if($userObj->user_level == '02'){
+      $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+      $selectedThIdArray = getAllFilteredSelectedThIds($_SESSION['SELECTED_THS'], $userSubDistrictObj->sub_district_id);
+  }else if($userObj->user_level == '01'){
+      $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
+      if(!empty($userObject)){
+          $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+          $selectedThIdArray = getAllFilteredSelectedThIds($_SESSION['SELECTED_THS'], $_SESSION['SUB_DISTRICT_ID']);
+      }
   }
+
 ?>
 <h1>Goal First Management</h1>
 <!--here comes the table that sami wanted so very much -->
@@ -20,20 +29,34 @@
       <td>Actions</td>
     </tr>
     <?php
-      if(!empty($thList)){
+      if(/*!empty($thList)*/false){
         while($thObj = mysql_fetch_object($thList)){
           $divId = "goalFirstDetailDiv" . $thObj->id;
           ?>
             <tr>
               <td><?php echo $thObj->th_name;?></td>
               <td>
-                  Add
+                  <?php
+                    if(!doesThisThHasGoalFirstSavedForIt($thObj->id)){
+                  ?>
+                    <a href="#.php" id="<?php echo $thObj->id;?>" class="addGoalFirstDetailClass">Add</a>
+                  <?php
+                  }else{
+                  ?>
+                    <a href="#.php" id="<?php echo $thObj->id;?>" class="openGoalFirstDetailForEditClass">Edit</a>
+                  <?php
+                  }
+                  ?>
+                  <?php
+                    if(doesThisThHasGoalFirstSavedForIt($thObj->id)){
+                  ?>
                   |
-                  Edit
+                    <a href="#.php" id="<?php echo $thObj->id;?>" class="deleteGoalFirstDetailClass">Delete</a>
+                  <?php
+                  }
+                  ?>
                   |
-                  Delete
-                  |
-                  Close
+                <a href="#.php" id="<?php echo $thObj->id;?>" class="closeActionFormClass">Close</a>
               </td>
             </tr>
             <tr>
