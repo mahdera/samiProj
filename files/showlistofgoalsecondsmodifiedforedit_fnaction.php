@@ -33,16 +33,18 @@ if($userObj->user_level == '02'){
 }
 
 $fnIdArray = array();
+$subDistrictId = null;
 //$fnIdArray = getAllFilteredSelectedThFnIds($_SESSION['SELECTED_THS']);
 //var_dump($fnIdArray);
 if($userObj->user_level == '02'){
     $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
-    //$fnIdArray = getAllFilteredLatestFnIdsEnteredByUserUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
-    $fnIdArray = getAllFilteredSelectedThFnIds($_SESSION['SELECTED_THS'], $userSubDistrictObj->sub_district_id);
+    $subDistrictId = $userSubDistrictObj->sub_district_id;
+    $fnIdArray = getAllFilteredSelectedThFnIds($_SESSION['SELECTED_THS'], $subDistrictId);
 }else if($userObj->user_level == '01'){
     $userObject = getUserFromThisSubDistrictWithStatus($_SESSION['SUB_DISTRICT_ID'], 'Active');
     if(!empty($userObject)){
         $userSubDistrictObj = getSubDistrictInfoForUser($userObject->id);
+        $subDistrictId = $_SESSION['SUB_DISTRICT_ID'];
         $fnIdArray = getAllFilteredSelectedThFnIds($_SESSION['SELECTED_THS'], $_SESSION['SUB_DISTRICT_ID']);
     }
 }
@@ -62,7 +64,7 @@ if(!empty($goalSecondFnList) && mysql_num_rows($goalSecondFnList)){
             $divExt = $goalSecondFnRow->modified_by ."_". $fnObj->id;
             $countVal = 0;
             $divId = "actionDiv" . $fnObj->id;
-            $countVal = doesThisFnAlreadyActionFilledForIt($fnObj->id);
+            $countVal = doesThisFnAlreadyActionFilledForItUsingDivision($fnObj->id, $goalSecondFnRow->goal_second_id, $subDistrictId);
             if($countVal && in_array($fnObj->id, $fnIdArray)){
                 ?>
                 <tr>

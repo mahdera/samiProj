@@ -72,6 +72,7 @@
         }
     }
 
+    /*This function is a life saver....*/
     function doesThisFnAlreadyActionFilledForItUsingDivision($fnId, $goalSecondId, $divisionId){
         try{
             $query = "select count(*) as cnt from tbl_fn_action, tbl_user_sub_district where fn_id = $fnId and " .
