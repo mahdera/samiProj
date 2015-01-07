@@ -210,22 +210,19 @@
             "where tbl_goal_first_th.modified_by = tbl_user_sub_district.user_id and " .
             "tbl_user_sub_district.sub_district_id = $divisionId";
             $result = read($query);
+
             //now filter for duplication
             while($resultRow = mysql_fetch_object($result)){
                 if(in_array($resultRow->th_id , $selectedThIdArray)){
                     //do nothing...
                 }else{
                     //meaning the element is not in the array so add it to the existing array
-                    $len = count($selectedThIdArray);
-                    if($len == 0)
-                        $selectedThIdArray[$len] = $resultRow->th_id;
-                    else
-                        $selectedThIdArray[($len-1)] = $resultRow->th_id;
+                    array_push($selectedThIdArray, $resultRow->th_id);
                 }
             }//end while loop
         }catch(Exception $ex){
             $ex->getMessage();
-        }        
+        }
         return $selectedThIdArray;
     }
 ?>
