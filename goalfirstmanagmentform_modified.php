@@ -5,9 +5,12 @@
   require_once 'files/usersubdistrict.php';
   require_once 'files/goalfirstth.php';
 
+  @session_start();
+
+  $userObj = getUser($_SESSION['LOGGED_USER_ID']);
   $fnList = null;
   $selectedThIdArray = array();
-  @session_start();
+
 
   if($userObj->user_level == '02'){
       $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
