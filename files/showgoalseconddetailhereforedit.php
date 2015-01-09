@@ -48,7 +48,7 @@
     $goalSecondG3ObjHiddenIdControlName=null;
 ?>
 <form>
-    <table border="0" width="100%" style="padding:5px">
+    <table border="0" width="100%" style="padding:5px" id="goalFirstG1ObjTable">
         <?php
             $goalSecondG1Row = getGoalSecondG1ForGoalSecondFnId($goalSecondFnId);
             if(!empty($goalSecondG1Row)){
@@ -92,7 +92,7 @@
         </tr>
     </table>
 
-    <table border="0" width="100%" style="padding:5px">
+    <table border="0" width="100%" style="padding:5px" id="goalFirstG2ObjTable">
         <?php
             $goalSecondG2Row = getGoalSecondG2ForGoalSecondFnId($goalSecondFnId);
             if(!empty($goalSecondG2Row)){
@@ -136,7 +136,7 @@
         </tr>
     </table>
 
-    <table border="0" width="100%" style="padding:5px">
+    <table border="0" width="100%" style="padding:5px" id="goalFirstG3ObjTable">
         <?php
             $goalSecondG3Row = getGoalSecondG3ForGoalSecondFnId($goalSecondFnId);
             if(!empty($goalSecondG3Row)){
@@ -331,8 +331,9 @@
                 data: dataString,
                 type:'POST',
                 success:function(response){
-                    var trId = "addMoreG1Obj";// + numItems;
-                    $('#' + trId).after(response);
+                    //var trId = "addMoreG1Obj";// + numItems;
+                    //$('#' + trId).after(response);
+                    $('#goalFirstG1ObjTable tr:last').after(response);
                 },
                 error:function(error){
                     alert(error);
@@ -350,8 +351,9 @@
                 data: dataString,
                 type:'POST',
                 success:function(response){
-                    var trId = "addMoreG2Obj";// + numItems;
-                    $('#' + trId).after(response);
+                    //var trId = "addMoreG2Obj";// + numItems;
+                    //$('#' + trId).after(response);
+                    $('#goalFirstG2ObjTable tr:last').after(response);
                 },
                 error:function(error){
                     alert(error);
@@ -369,8 +371,9 @@
                 data: dataString,
                 type:'POST',
                 success:function(response){
-                    var trId = "addMoreG3Obj";// + numItems;
-                    $('#' + trId).after(response);
+                    //var trId = "addMoreG3Obj";// + numItems;
+                    //$('#' + trId).after(response);
+                    $('#goalFirstG3ObjTable tr:last').after(response);
                 },
                 error:function(error){
                     alert(error);

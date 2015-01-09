@@ -42,7 +42,7 @@
     $userObj = getUser($_SESSION['LOGGED_USER_ID']);
 ?>
 <form>
-    <table border="0" width="100%" style="padding:5px">
+    <table border="0" width="100%" style="padding:5px" id="g1ObjTable">
             <?php
             $goalFirstG1Row = getGoalFirstG1ForGoalFirstThId($goalFirstThRow->id);
             $goalFirstG1Id = $goalFirstG1Row->id;
@@ -181,7 +181,7 @@
             </tr>
         </table>
         <!--doing the samething for goalfirstg2...-->
-        <table border="0" width="100%" style="padding:5px">
+        <table border="0" width="100%" style="padding:5px" id="g2ObjTable">
             <?php
             $goalFirstG2Row = getGoalFirstG2ForGoalFirstThId($goalFirstThRow->id);
             //$goalFirstG2Row = getGoalFirstG2ForGoalFirst($goalFirstRow->id);
@@ -316,7 +316,7 @@
             </tr>
         </table>
         <!--doing the samething for goalfirstg3...-->
-        <table border="0" width="100%" style="padding:5px">
+        <table border="0" width="100%" style="padding:5px" id="g3ObjTable">
             <?php
             $goalFirstG3Row = getGoalFirstG3ForGoalFirstThId($goalFirstThRow->id);
             //$goalFirstG3Row = getGoalFirstG3ForGoalFirst($goalFirstRow->id);
@@ -628,8 +628,9 @@
                 data: dataString,
                 type:'POST',
                 success:function(response){
-                    var trId = "addMoreG1ObjFn";// + numItems;
-                    $('#'+trId).after(response);
+                    //var trId = "addMoreG1ObjFn";// + numItems;
+                    //$('#'+trId).after(response);
+                    $('#g1ObjTable tr:last').after(response);
                 },
                 error:function(error){
                     alert(error);
@@ -654,8 +655,9 @@
                 data: dataString,
                 type:'POST',
                 success:function(response){
-                    var trId = "addMoreG2ObjFn";// + numItems;
-                    $('#' + trId).after(response);
+                    //var trId = "addMoreG2ObjFn";// + numItems;
+                    //$('#' + trId).after(response);
+                    $('#g2ObjTable tr:last').after(response);
                 },
                 error:function(error){
                     alert(error);
@@ -680,8 +682,9 @@
                 data: dataString,
                 type:'POST',
                 success:function(response){
-                    var trId = "addMoreG3ObjFn";// + numItems;
-                    $('#'+trId).after(response);
+                    //var trId = "addMoreG3ObjFn";// + numItems;
+                    //$('#'+trId).after(response);
+                    $('#g3ObjTable tr:last').after(response);
                 },
                 error:function(error){
                     alert(error);
