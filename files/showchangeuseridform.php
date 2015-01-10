@@ -2,6 +2,11 @@
 <form>
     <table border="1" width="100%" rules="all">
         <tr>
+            <td colspan="2">
+                <div id="errorDiv"></div>
+            </td>
+        </tr>
+        <tr>
             <td>Enter Current User-Id:</td>
             <td>
                 <input type="text" name="txtcurrentuserid" id="txtcurrentuserid"/>
@@ -50,5 +55,32 @@
             }
 
         });
+
+        $('#txtnewuserid').focusout(function(){
+            var userId = $(this).val();
+            if(userId != ""){
+                var dataString = "userId="+userId;
+                $.ajax({
+                    url: 'files/checkifthisuseridisalreadytaken.php',
+                    data: dataString,
+                    type:'POST',
+                    success:function(response){
+                        if(response == 'Taken'){
+                            $('#errorDiv').html("<div class='notify notify-red'><span class='symbol icon-error'></span> This User ID is already taken!</div>");
+                            $('#txtnewuserid').focus();
+                            $('#btnchange').hide();
+                        }else{
+                            $('#errorDiv').html('');
+                            $('#btnchange').show();
+                        }
+                        //$('#errorDiv').html(response);
+                    },
+                    error:function(error){
+                        alert(error);
+                    }
+                });
+            }
+        });
+
     });//end document.ready function
 </script>
