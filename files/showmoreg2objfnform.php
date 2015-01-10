@@ -64,6 +64,7 @@
     </td>
 </tr>
 <script type="text/javascript">
+
     function showOtherFnDataEntryForm(val, divId, uniqueVal){
         if(val === 'other'){
             //now insert the fn data entry form here...
@@ -74,7 +75,10 @@
     }
 
     $(document).ready(function(){
-        $('.fnRefreshSpin').click(function(){
+        var numItems = <?php echo $numItems;?>;
+        var spinnerId = "g2fn" + (numItems + 1);
+
+        $('#'+spinnerId).click(function(){
             var idVal = $(this).attr('id');
             var selectControlName = "slct" + idVal;
             //first clear the current contents...

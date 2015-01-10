@@ -286,7 +286,7 @@
                     type:'POST',
                     success:function(response){
                         $('#createUserDiv').html('');
-                        $('.content').load('files/showusermanagementlist.php');
+                        $('.content').load('files/showusermanagementlist.php',{noncache: new Date().getTime()});
                     },
                     error:function(error){
                         alert(error);

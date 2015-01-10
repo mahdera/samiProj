@@ -74,7 +74,10 @@
     }
 
     $(document).ready(function(){
-        $('.fnRefreshSpin').click(function(){
+        var numItems = <?php echo $numItems;?>;
+        var spinnerId = "g3fn" + (numItems + 1);
+
+        $('#'+spinnerId).click(function(){//.fnRefreshSpin
             var idVal = $(this).attr('id');
             var selectControlName = "slct" + idVal;
             //first clear the current contents...

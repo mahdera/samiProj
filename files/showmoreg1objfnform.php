@@ -63,17 +63,21 @@
     </td>
 </tr>
 <script type="text/javascript">
+
     function showOtherFnDataEntryForm(val, divId, uniqueVal){
         if(val === 'other'){
             //now insert the fn data entry form here...
-            $('#'+divId).load('files/showotherfnentryformforuniqueval.php?uniqueVal='+uniqueVal);
+            $('#'+divId).load('files/showotherfnentryformforuniqueval.php?uniqueVal='+uniqueVal, {noncache: new Date().getTime()});
         }else{
             $('#'+divId).html('');
         }
     }
 
     $(document).ready(function(){
-        $('.fnRefreshSpin').click(function(){
+        var numItems = <?php echo $numItems;?>;
+        var spinnerId = "g1fn" + (numItems + 1);
+
+        $('#'+spinnerId).click(function(){
             var idVal = $(this).attr('id');
             var selectControlName = "slct" + idVal;
             //first clear the current contents...
@@ -85,7 +89,7 @@
 
             .done(function( data ) {
                   $.each( data.functions, function( i, item ) {
-                      //console.log(item.fnName);
+                      console.log(item.fnName);
                       jQuery('#'+selectControlName).append("<option value='"+item.fnId+"'>"+item.fnName+"</option>");
                   });
                   jQuery('#'+selectControlName).append("<option value='other'>other</option>");

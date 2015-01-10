@@ -601,6 +601,8 @@
 
                 var divId = "goalFirstDetailDiv" + thId;
 
+                alert(dataString);
+
                 $.ajax({
                     url: 'files/updategoalfirst.php',
                     data: dataString,
@@ -706,7 +708,7 @@
             var divId = idVal + "Div";
             var fnVal = $(this).val();
             if(fnVal === "other"){
-                $('#'+divId).load('files/showgeneralotherfnentryform.php?divId='+encodeURIComponent(divId));
+                $('#'+divId).load('files/showgeneralotherfnentryform.php?divId='+encodeURIComponent(divId),{noncache: new Date().getTime()});
             }else{
                 $('#'+divId).html('');
             }
