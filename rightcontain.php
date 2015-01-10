@@ -77,7 +77,7 @@
                         <li><a href="#" id="reportManagementLink">My Report</a></li>
                         <!--<li><a href="#.php" id="contentManagementLink">Content</a></li>-->
                         <li><a href="#.php" id="userManagementLink">User</a></li>
-                        <li><a href="#" id="logoutLink">Logout</a></li>
+                        <li><a href="#.php" id="logoutLink">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -101,6 +101,7 @@
 ?>
 <script type="text/javascript">
     $(document).ready(function(){
+        //alert('here is the case...');
         //first load all the sub-districts available in the user's district
         var userRoleCode = "<?php echo $userRoleCode;?>";
         if(userRoleCode === '01A'){
@@ -128,7 +129,7 @@
             var txt = 'Are you sure you want to logout?';
 
             $.prompt(txt,{
-        					buttons:{Logout:true, Cancel:false},
+        					buttons:{"Logout":true, "Cancel":false},
         					close: function(e,v,m,f){
 
         						if(v){

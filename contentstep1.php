@@ -60,7 +60,7 @@
             window.location.replace('step1_2fullstatic.php');
         });
 
-        $('#leftArrowButton').click(function(){            
+        $('#leftArrowButton').click(function(){
             window.location.replace('intro3.php');
         });
 

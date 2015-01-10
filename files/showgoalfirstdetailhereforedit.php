@@ -601,7 +601,7 @@
 
                 var divId = "goalFirstDetailDiv" + thId;
 
-                alert(dataString);
+                //alert(dataString);
 
                 $.ajax({
                     url: 'files/updategoalfirst.php',

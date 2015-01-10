@@ -1,0 +1,14 @@
+#event_edit_container{
+	overflow-y: auto !important;
+	overflow-x:hidden;
+	margin: auto;
+	width:98%;
+}
+
+.fc-day-grid-container{
+	
+	overflow-x:hidden;
+	overflow-y: auto !important;
+	position:relative;
+	width:100%;
+}
