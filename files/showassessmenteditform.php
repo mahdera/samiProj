@@ -130,7 +130,7 @@
                 data: dataString,
                 type:'POST',
                 success:function(response){
-                    $('#subDetailDiv').load('files/showlistofassessments.php');
+                    $('#subDetailDiv').load('files/showlistofassessments.php',{noncache: new Date().getTime()});
                     $('#'+divId).html(response);
                 },
                 error:function(error){

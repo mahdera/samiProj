@@ -528,7 +528,7 @@
                     type:'POST',
                     success:function(response){
                         //$('#'+divId).html(response);
-                        $('#innerActionDiv').load('editthactionmanagementform.php');
+                        $('#innerActionDiv').load('editthactionmanagementform.php',{noncache: new Date().getTime()});
                     },
                     error:function(error){
                         alert(error);

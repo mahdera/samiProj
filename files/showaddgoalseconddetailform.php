@@ -139,7 +139,7 @@
                             data: dataString,
                             type:'POST',
                             success:function(response){
-                                $('#goalSecondDivToRefresh').load('goalsecondmanagementform_modified.php');
+                                $('#goalSecondDivToRefresh').load('goalsecondmanagementform_modified.php',{noncache: new Date().getTime()});
                             },
                             error:function(error){
                                 alert(error);

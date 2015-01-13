@@ -67,7 +67,7 @@
 		$('.form7EditLink').click(function(){
 			var id = $(this).attr('id');
 			var divId = "form7EditDiv" + id;
-			$('#'+divId).load('files/showform7editfields.php?id='+id);
+			$('#'+divId).load('files/showform7editfields.php?id='+id,{noncache: new Date().getTime()});
 		});
 
 		$('.form7DeleteLink').click(function(){

@@ -103,7 +103,7 @@
         $('.showG1FnDetailLink').click(function(){
             var id = $(this).attr('id');
             var divId = "g1FnDetailDiv" + id;
-            $('#'+divId).load('files/showg1fndetail.php?id='+id);
+            $('#'+divId).load('files/showg1fndetail.php?id='+id,{noncache: new Date().getTime()});
         });
 
         $('.hideG1FnDetailLink').click(function(){
@@ -116,7 +116,7 @@
         $('.showG2FnDetailLink').click(function(){
             var id = $(this).attr('id');
             var divId = "g2FnDetailDiv" + id;
-            $('#'+divId).load('files/showg2fndetail.php?id='+id);
+            $('#'+divId).load('files/showg2fndetail.php?id='+id,{noncache: new Date().getTime()});
         });
 
         $('.hideG2FnDetailLink').click(function(){
@@ -129,7 +129,7 @@
         $('.showG3FnDetailLink').click(function(){
             var id = $(this).attr('id');
             var divId = "g3FnDetailDiv" + id;
-            $('#'+divId).load('files/showg3fndetail.php?id='+id);
+            $('#'+divId).load('files/showg3fndetail.php?id='+id,{noncache: new Date().getTime()});
         });
 
         $('.hideG3FnDetailLink').click(function(){

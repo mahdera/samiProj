@@ -67,7 +67,7 @@
     function showOtherFnDataEntryForm(val, divId, uniqueVal){
         if(val === 'other'){
             //now insert the fn data entry form here...
-            $('#'+divId).load('files/showotherfnentryformforuniqueval.php?uniqueVal='+uniqueVal, {noncache: new Date().getTime()});
+            $('#'+divId).load('files/showotherfnentryformforuniqueval.php?uniqueVal='+uniqueVal, {noncache: new Date().getTime()} );
         }else{
             $('#'+divId).html('');
         }

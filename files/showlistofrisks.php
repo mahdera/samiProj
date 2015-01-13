@@ -81,7 +81,7 @@
         $('.riskEditLink').click(function(){
             var id = $(this).attr('id');
             var divId = "riskEditDiv" + id;
-            $('#'+divId).load('files/showeditfiedlsofrisk.php?id='+id);
+            $('#'+divId).load('files/showeditfiedlsofrisk.php?id='+id,{noncache: new Date().getTime()});
         });
 
         $('.riskDeleteLink').click(function(){
@@ -103,7 +103,7 @@
         });
 
         function showListOfRisks(){
-            $('#subDetailDiv').load('files/showlistofrisks.php');
+            $('#subDetailDiv').load('files/showlistofrisks.php',{noncache: new Date().getTime()});
         }
 
     });//end document.ready function

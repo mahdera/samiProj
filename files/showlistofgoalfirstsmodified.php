@@ -84,7 +84,7 @@
             var idVal = $(this).attr('id');
             //now create the div element using the id you got in here...
             var divId = "actionDiv" + idVal;
-            $('#' + divId).load('files/showgoalfirstdetailhere.php?thId='+idVal);
+            $('#' + divId).load('files/showgoalfirstdetailhere.php?thId='+idVal,{noncache: new Date().getTime()});
         });
 
         $('.closeActionFormClass').click(function(){
@@ -96,7 +96,7 @@
         $('.openGoalFirstDetailForEditClass').click(function(){
             var idVal = $(this).attr('id');
             var divId = "actionDiv" + idVal;
-            $('#' + divId).load('files/showgoalfirstdetailhereforedit.php?thId='+idVal);
+            $('#' + divId).load('files/showgoalfirstdetailhereforedit.php?thId='+idVal,{noncache: new Date().getTime()});
         });
 
         $('.deleteGoalFirstDetailClass').click(function(){

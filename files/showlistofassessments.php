@@ -11,7 +11,7 @@
         //require_once 'userzone.php';
         $userObj = getUser($_SESSION['LOGGED_USER_ID']);
         $assessmentList = null;
-        
+
         if($userObj->user_level == '02'){
             $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
             $assessmentList = getAllAssessmentsModifiedByUsingUserLevel('02', $userSubDistrictObj->sub_district_id);
@@ -85,7 +85,7 @@
         $('.editAssessmentLink').click(function(){
             var id = $(this).attr('id');
             var divId = "assessmentEditDiv" + id;
-            $('#'+divId).load('files/showassessmenteditform.php?id='+id);
+            $('#'+divId).load('files/showassessmenteditform.php?id='+id,{noncache: new Date().getTime()});
         });
 
         $('.deleteAssessmentLink').click(function(){
@@ -107,7 +107,7 @@
         });
 
         function showListOfAssessments(){
-            $('#subDetailDiv').load('files/showlistofassessments.php');
+            $('#subDetailDiv').load('files/showlistofassessments.php',{noncache: new Date().getTime()});
         }
 
     });//end document.ready function

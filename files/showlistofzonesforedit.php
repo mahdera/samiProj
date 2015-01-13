@@ -45,7 +45,7 @@
         $('.editZoneClass').click(function(){
             var idVal = $(this).attr('id');
             var divId = "zoneEditDiv" + idVal;
-            $('#'+divId).load('files/showeditfieldsofzone.php?zoneId='+idVal);
+            $('#'+divId).load('files/showeditfieldsofzone.php?zoneId='+idVal,{noncache: new Date().getTime()});
         });
     });//end document.ready function
 </script>

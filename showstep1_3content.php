@@ -36,14 +36,14 @@
         $('#rightArrowButton').click(function(){
             var currentPageTag = $('#currentPageTag').html();
             if(currentPageTag === 'Step 1-3'){
-                $('#step1Content').load('showstep1_4content.php');
+                $('#step1Content').load('showstep1_4content.php', {noncache: new Date().getTime()});
             }
         });
 
         $('#leftArrowButton').click(function(){
             var currentPageTag = $('#currentPageTag').html();
             if(currentPageTag === 'Step 1-3'){
-                $('#step1Content').load('showstep1_2content.php');
+                $('#step1Content').load('showstep1_2content.php', {noncache: new Date().getTime()});
             }
         });
 

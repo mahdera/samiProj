@@ -270,7 +270,7 @@
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        $('#goalSecondDivToRefresh').load('editfnactionmanagementform.php');
+                        $('#goalSecondDivToRefresh').load('editfnactionmanagementform.php',{noncache: new Date().getTime()});
                     },
                     error:function(error){
                         alert(error);

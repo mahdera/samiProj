@@ -203,7 +203,7 @@
               type:'POST',
               success:function(response){
                   //$('#'+divId).html(response);
-                  $('#innerDivToRefresh').load('putthactionmanagementform.php');
+                  $('#innerDivToRefresh').load('putthactionmanagementform.php',{noncache: new Date().getTime()});
               },
               error:function(error){
                   alert(error);

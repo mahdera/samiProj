@@ -41,7 +41,7 @@
                     type:'POST',
                     success:function(response){
                         $('#'+divId).html(response);
-                        $('#subDetailDiv').load('files/showlistofths.php');
+                        $('#subDetailDiv').load('files/showlistofths.php',{noncache: new Date().getTime()});
                     },
                     error:function(error){
                         alert(error);

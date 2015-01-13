@@ -200,7 +200,7 @@
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        $('#innerDivToRefresh').load('putthactionmanagementform.php');
+                        $('#innerDivToRefresh').load('putthactionmanagementform.php',{noncache: new Date().getTime()});
                         //$('#'+divId).html(response);
                     },
                     error:function(error){

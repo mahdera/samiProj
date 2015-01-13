@@ -56,7 +56,7 @@
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        $('#branchManagementDiv').load('files/showlistofbranchsfordelete.php');
+                        $('#branchManagementDiv').load('files/showlistofbranchsfordelete.php',{noncache: new Date().getTime()});
                     },
                     error:function(error){
                         alert(error);

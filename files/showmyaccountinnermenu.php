@@ -11,11 +11,11 @@
     $(document).ready(function(){
 
         $('#changeMyUserIdLink').click(function(){
-            $('#myAccountDiv').load('files/showchangeuseridform.php');
+            $('#myAccountDiv').load('files/showchangeuseridform.php',{noncache: new Date().getTime()});
         });
 
         $('#changeMyPasswordLink').click(function(){
-            $('#myAccountDiv').load('files/showchangepasswordform.php');
+            $('#myAccountDiv').load('files/showchangepasswordform.php',{noncache: new Date().getTime()});
         });
 
     });//end document.ready function

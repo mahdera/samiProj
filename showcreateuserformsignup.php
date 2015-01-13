@@ -72,7 +72,7 @@
               ?>
             </select>
           </td>
-        </tr>        
+        </tr>
         <tr>
             <td colspan="2" align="right">
                 <input type="button" value="Create User" id="btncreateuser"/>

@@ -56,7 +56,7 @@
         $('.editLink').click(function(){
             var id = $(this).attr('id');
             var divId = "responsibilityEditDiv" + id;
-            $('#'+divId).load('files/showresponsibilityeditform.php?id='+id);
+            $('#'+divId).load('files/showresponsibilityeditform.php?id='+id,{noncache: new Date().getTime()});
         });
 
     });//end document.ready function

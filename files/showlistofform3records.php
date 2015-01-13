@@ -69,7 +69,7 @@
 		$('.form3EditLink').click(function(){
 			var id = $(this).attr('id');
 			var divId = "form3EditDiv" + id;
-			$('#'+divId).load('files/showform3editfields.php?id='+id);
+			$('#'+divId).load('files/showform3editfields.php?id='+id,{noncache: new Date().getTime()});
 		});
 
 		$('.form3DeleteLink').click(function(){

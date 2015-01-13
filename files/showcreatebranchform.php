@@ -54,7 +54,7 @@
                     success:function(response){
                         //$('#branchManagementDiv').html(response);
                         $('#duplicationErrorDiv').html(response);
-                        $('#branchManagementDiv').load('files/showlistofbranchs.php');
+                        $('#branchManagementDiv').load('files/showlistofbranchs.php',{noncache: new Date().getTime()});
                     },
                     error:function(error){
                         alert(error);

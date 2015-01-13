@@ -50,7 +50,7 @@
                     <tr>
                         <td width="20%"><?php echo stripslashes($fnObj->fn_name);?></td>
                         <td align="right">
-                            <a href="#.php" id="<?php echo $fnObj->id;?>" class="editGoalSecondLink">Edit</a>                            
+                            <a href="#.php" id="<?php echo $fnObj->id;?>" class="editGoalSecondLink">Edit</a>
                             <!--<a href="#.php" id="<?php echo $goalSecondFnRow->id;?>" class="deleteGoalSecondLink">Delete</a>-->
                             |
                             <a href="#.php" id="<?php echo $fnObj->id;?>" class="closeActionFormClass">Close</a>
@@ -79,7 +79,7 @@
         $('.openActionFormClass').click(function(){
             var idVal = $(this).attr('id');
             var divId = "actionDiv" + idVal;
-            $('#' + divId).load('files/showgoalseconddetailhere.php?fn_id='+idVal);
+            $('#' + divId).load('files/showgoalseconddetailhere.php?fn_id='+idVal,{noncache: new Date().getTime()});
         });
 
         $('.closeActionFormClass').click(function(){
@@ -91,7 +91,7 @@
         $('.editGoalSecondLink').click(function(){
             var idVal = $(this).attr('id');
             var divId = "actionDiv" + idVal;
-            $('#' + divId).load('files/showgoalseconddetailhereforedit.php?fn_id='+idVal);
+            $('#' + divId).load('files/showgoalseconddetailhereforedit.php?fn_id='+idVal,{noncache: new Date().getTime()});
         });
 
         $('.deleteGoalSecondLink').click(function(){

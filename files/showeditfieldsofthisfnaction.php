@@ -208,7 +208,7 @@
               data: dataString,
               type:'POST',
               success:function(response){
-                $('#innerDivToRefresh').load('putfnactionmanagementform.php');
+                $('#innerDivToRefresh').load('putfnactionmanagementform.php',{noncache: new Date().getTime()});
                   //$('#'+divId).html(response);
               },
               error:function(error){

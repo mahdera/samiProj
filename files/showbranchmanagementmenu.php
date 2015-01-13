@@ -12,20 +12,20 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('#createBranchLinkId').click(function(){
-          $('#branchManagementDiv').load('files/showcreatebranchform.php');
+          $('#branchManagementDiv').load('files/showcreatebranchform.php',{noncache: new Date().getTime()});
           $('#duplicationErrorDiv').html('');
         });
 
         $('#viewBranchLinkId').click(function(){
-          $('#branchManagementDiv').load('files/showlistofbranchs.php');
+          $('#branchManagementDiv').load('files/showlistofbranchs.php',{noncache: new Date().getTime()});
         });
 
         $('#editBranchLinkId').click(function(){
-          $('#branchManagementDiv').load('files/showlistofbranchsforedit.php');
+          $('#branchManagementDiv').load('files/showlistofbranchsforedit.php',{noncache: new Date().getTime()});
         });
 
         $('#deleteBranchLinkId').click(function(){
-          $('#branchManagementDiv').load('files/showlistofbranchsfordelete.php');
+          $('#branchManagementDiv').load('files/showlistofbranchsfordelete.php',{noncache: new Date().getTime()});
         });
     });//end document.ready function
 </script>

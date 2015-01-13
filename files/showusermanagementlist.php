@@ -147,7 +147,7 @@
             $('html, body').animate({
               'scrollTop' : $("#createUserDiv").position().top
             });
-            $('#createUserDiv').load('files/showcreateuserform.php');
+            $('#createUserDiv').load('files/showcreateuserform.php',{noncache: new Date().getTime()});
             $('#branchManagementDiv').html('');
             $('#duplicationErrorDiv').html('');
         });
@@ -157,7 +157,7 @@
             $('html, body').animate({
               'scrollTop' : $("#createUserDiv").position().top
             });
-            $('#createUserDiv').load('files/showresetuserpasswordform.php?id='+id);
+            $('#createUserDiv').load('files/showresetuserpasswordform.php?id='+id,{noncache: new Date().getTime()});
             $('#branchManagementDiv').html('');
             $('#duplicationErrorDiv').html('');
         });
@@ -167,7 +167,7 @@
             $('html, body').animate({
               'scrollTop' : $("#createUserDiv").position().top
             });
-            $('#createUserDiv').load('files/showmodifyuserprofileform.php?id='+id);
+            $('#createUserDiv').load('files/showmodifyuserprofileform.php?id='+id,{noncache: new Date().getTime()});
             $('#branchManagementDiv').html('');
             $('#duplicationErrorDiv').html('');
         });
@@ -175,7 +175,7 @@
         $('.softDeleteLink').click(function(){
             if(window.confirm('Are you sure you want to delete this user?')){
                 var id = $(this).attr('id');
-                $('.content').load('files/softdeletedthisuser.php?id='+id);
+                $('.content').load('files/softdeletedthisuser.php?id='+id,{noncache: new Date().getTime()});
             }
         });
 
@@ -183,7 +183,7 @@
             $('html, body').animate({
               'scrollTop' : $("#createUserDiv").position().top
             });
-            $('#createUserDiv').load('files/editdistrictfordistrictadminform.php');
+            $('#createUserDiv').load('files/editdistrictfordistrictadminform.php',{noncache: new Date().getTime()});
             $('#branchManagementDiv').html('');
             $('#duplicationErrorDiv').html('');
         });
@@ -192,7 +192,7 @@
             $('html, body').animate({
               'scrollTop' : $("#createUserDiv").position().top
             });
-            $('#createUserDiv').load('files/showzonemanagementmenu.php');
+            $('#createUserDiv').load('files/showzonemanagementmenu.php',{noncache: new Date().getTime()});
             $('#branchManagementDiv').html('');
             $('#duplicationErrorDiv').html('');
         });
@@ -201,8 +201,8 @@
             $('html, body').animate({
               'scrollTop' : $("#createUserDiv").position().top
             });
-            $('#createUserDiv').load('files/showbranchmanagementmenu.php');
-            $('#branchManagementDiv').load('files/showlistofbranchs.php');
+            $('#createUserDiv').load('files/showbranchmanagementmenu.php',{noncache: new Date().getTime()});
+            $('#branchManagementDiv').load('files/showlistofbranchs.php',{noncache: new Date().getTime()});
             $('#duplicationErrorDiv').html('');
         });
 

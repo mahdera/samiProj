@@ -75,7 +75,7 @@ if(!empty($form1List) && mysql_num_rows($form1List)){
 		$('.form1EditLink').click(function(){
 			var id = $(this).attr('id');
 			var divId = "form1EditDiv" + id;
-			$('#'+divId).load('files/showform1editfields.php?id='+id);
+			$('#'+divId).load('files/showform1editfields.php?id='+id,{noncache: new Date().getTime()});
 		});
 
 		$('.form1DeleteLink').click(function(){

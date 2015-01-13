@@ -38,7 +38,7 @@
                 type:'POST',
                 success:function(response){
                     //$('#'+divId).html(response);
-										$('#form3Div').load('files/showlistofform3records.php');
+										$('#form3Div').load('files/showlistofform3records.php',{noncache: new Date().getTime()});
                 },
                 error:function(error){
                     alert(error);

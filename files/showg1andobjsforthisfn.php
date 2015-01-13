@@ -97,7 +97,7 @@
         $('.showG1ObjDetailLink').click(function(){
             var id = $(this).attr('id');
             var divId = "g1ObjDetailDiv" + id;
-            $('#'+divId).load('files/showg1objdetail.php?id='+id);
+            $('#'+divId).load('files/showg1objdetail.php?id='+id,{noncache: new Date().getTime()});
         });
 
         $('.hideG1ObjDetailLink').click(function(){
@@ -110,7 +110,7 @@
         $('.showG2ObjDetailLink').click(function(){
             var id = $(this).attr('id');
             var divId = "g2ObjDetailDiv" + id;
-            $('#'+divId).load('files/showg2objdetail.php?id='+id);
+            $('#'+divId).load('files/showg2objdetail.php?id='+id,{noncache: new Date().getTime()});
         });
 
         $('.hideG2ObjDetailLink').click(function(){
@@ -123,7 +123,7 @@
         $('.showG3ObjDetailLink').click(function(){
             var id = $(this).attr('id');
             var divId = "g3ObjDetailDiv" + id;
-            $('#'+divId).load('files/showg3objdetail.php?id='+id);
+            $('#'+divId).load('files/showg3objdetail.php?id='+id,{noncache: new Date().getTime()});
         });
 
         $('.hideG3ObjDetailLink').click(function(){

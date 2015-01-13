@@ -38,7 +38,7 @@
                 type:'POST',
                 success:function(response){
                     //$('#'+divId).html(response);
-										$('#form4Div').load('files/showlistofform4records.php');
+										$('#form4Div').load('files/showlistofform4records.php',{noncache: new Date().getTime()});
                 },
                 error:function(error){
                     alert(error);

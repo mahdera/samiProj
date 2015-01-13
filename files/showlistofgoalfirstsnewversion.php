@@ -39,7 +39,7 @@
         $('.showThDetailsLink').click(function(){
             var id = $(this).attr('id');
             var divId = "thEditDiv" + id;
-            $('#'+divId).load('files/showg1andfnsforthisth.php?id='+id);
+            $('#'+divId).load('files/showg1andfnsforthisth.php?id='+id,{noncache: new Date().getTime()});
         });
 
         $('.hideThDetailsLink').click(function(){

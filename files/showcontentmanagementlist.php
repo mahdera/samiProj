@@ -34,7 +34,7 @@
   $(document).ready(function(){
     $('#btnshowdatasource').click(function(){
       var dataSource = $('#slctdatasource').val();
-      $('#dataSourceDetailDiv').load('files/showdatasourcedetailforthisdatasource.php?dataSource='+dataSource);
+      $('#dataSourceDetailDiv').load('files/showdatasourcedetailforthisdatasource.php?dataSource='+dataSource,{noncache: new Date().getTime()});
     });
   });//end document.ready function
 </script>

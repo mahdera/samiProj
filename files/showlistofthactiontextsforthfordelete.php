@@ -47,7 +47,7 @@
         var idVal = $(this).attr('id');
         var thId = "<?php echo $thId;?>";
         var divId = "actionDiv" + thId;
-        $('#' + divId).load('files/deletethisthaction.php?thActionId='+idVal);
+        $('#' + divId).load('files/deletethisthaction.php?thActionId='+idVal,{noncache: new Date().getTime()});
       }
     });
   });//end document.ready function

@@ -55,7 +55,7 @@
         var thId = "<?php echo $thId;?>";
         var idVal = $(this).attr('id');
         var divId = "editThisThActionDiv" + idVal;
-        $('#' + divId).load('files/showeditfieldsofthisthaction.php?thActionId='+idVal+'&thId='+thId);
+        $('#' + divId).load('files/showeditfieldsofthisthaction.php?thActionId='+idVal+'&thId='+thId,{noncache: new Date().getTime()});
     });
   });//end document.ready function
 </script>

@@ -54,7 +54,7 @@
         var fnId = "<?php echo $fnId;?>";
         var idVal = $(this).attr('id');
         var divId = "editThisFnActionDiv" + idVal;
-        $('#' + divId).load('files/showeditfieldsofthisfnaction.php?fnActionId='+idVal+"&fnId="+fnId);
+        $('#' + divId).load('files/showeditfieldsofthisfnaction.php?fnActionId='+idVal+"&fnId="+fnId,{noncache: new Date().getTime()});
     });
   });//end document.ready function
 </script>

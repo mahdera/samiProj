@@ -77,7 +77,7 @@
                 success:function(response){
                     $('#'+divId).html(response);
                     $('#branchManagementDiv').html('');
-                    $('#branchManagementDiv').load('files/showlistofbranchs.php');
+                    $('#branchManagementDiv').load('files/showlistofbranchs.php',{noncache: new Date().getTime()});
                 },
                 error:function(error){
                     alert(error);

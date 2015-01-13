@@ -319,7 +319,7 @@
                 type:'POST',
                 success:function(response){
                     $('#'+divId).html(response);
-                    $('#subDetailDiv').load('files/showlistofrisks.php');
+                    $('#subDetailDiv').load('files/showlistofrisks.php',{noncache: new Date().getTime()});
                 },
                 error:function(error){
                     alert(error);

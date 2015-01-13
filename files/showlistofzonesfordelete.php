@@ -39,7 +39,7 @@
                     data: dataString,
                     type:'POST',
                     success:function(response){
-                        $('#zoneManagementDiv').load('files/showlistofzonesfordelete.php');
+                        $('#zoneManagementDiv').load('files/showlistofzonesfordelete.php',{noncache: new Date().getTime()});
                     },
                     error:function(error){
                         alert(error);

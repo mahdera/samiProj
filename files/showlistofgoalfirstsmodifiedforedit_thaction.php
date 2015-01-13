@@ -84,7 +84,7 @@ if(!empty($goalFirstThList) && mysql_num_rows($goalFirstThList)){
             var idVal = $(this).attr('id');
             //now create the div element using the id you got in here...
             var divId = "actionDiv" + idVal;
-            $('#' + divId).load('files/showgoalfirstdetailhere.php?thId='+idVal);
+            $('#' + divId).load('files/showgoalfirstdetailhere.php?thId='+idVal,{noncache: new Date().getTime()});
         });
 
         $('.closeActionFormClass').click(function(){
@@ -97,7 +97,7 @@ if(!empty($goalFirstThList) && mysql_num_rows($goalFirstThList)){
             var idVal = $(this).attr('id');
             var divId = "actionDiv" + idVal;
             //alert(divId);
-            $('#' + divId).load('files/showgoalfirstdetailhereforedit_thaction.php?thId='+idVal);
+            $('#' + divId).load('files/showgoalfirstdetailhereforedit_thaction.php?thId='+idVal,{noncache: new Date().getTime()});
         });
 
         $('.deleteGoalFirstDetailClass').click(function(){

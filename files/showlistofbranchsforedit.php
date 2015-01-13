@@ -60,7 +60,7 @@
         $('.editBranchClass').click(function(){
             var idVal = $(this).attr('id');
             var divId = "branchEditDiv" + idVal;
-            $('#'+divId).load('files/showeditfieldsofbranch.php?branchId='+idVal);
+            $('#'+divId).load('files/showeditfieldsofbranch.php?branchId='+idVal,{noncache: new Date().getTime()});
         });
     });//end document.ready function
 </script>
