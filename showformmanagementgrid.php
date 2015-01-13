@@ -12,6 +12,12 @@
     <h1>Form Management</h1>
     <?php
     if($loggedInUserObj->member_type == 'User' /*&& $loggedInUserObj->user_role == '01A'*/){
+        if(isset($_SESSION['SUB_DISTRICT_ID'])){
+            //do nothing the sub district id is already initialized.
+        }else{
+            $userSubDistrictObj = getSubDistrictInfoForUser($userObj->id);
+            $_SESSION['SUB_DISTRICT_ID'] = $userSubDistrictObj->sub_district_id;
+        }
     ?>
     <!-- Bootstrap CSS Toolkit styles -->
     <!--<link rel="stylesheet" href="css/bootstrap.min.css">
