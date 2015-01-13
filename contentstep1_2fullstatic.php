@@ -26,7 +26,7 @@ $(document).ready(function(){
     window.location.replace('step1_3fullstatic.php');
   });
 
-  $('#leftArrowButton').click(function(){    
+  $('#leftArrowButton').click(function(){
     window.location.replace('step1.php');
   });
 

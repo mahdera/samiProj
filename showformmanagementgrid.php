@@ -11,7 +11,7 @@
 ?>
     <h1>Form Management</h1>
     <?php
-    if($loggedInUserObj->member_type == 'User' && $loggedInUserObj->user_role == '01A'){
+    if($loggedInUserObj->member_type == 'User' /*&& $loggedInUserObj->user_role == '01A'*/){
     ?>
     <!-- Bootstrap CSS Toolkit styles -->
     <!--<link rel="stylesheet" href="css/bootstrap.min.css">

@@ -2,7 +2,7 @@
 <a href="#.php" id="showTeamManagementFormLinkId">Show</a>
 |
 <a href="#.php" id="hideTeamManagementFormLinkId">Hide</a>
-
+<div>
 <form id="teamManagementForm">
     <fieldset>
     <legend>Add Team Form</legend>
@@ -71,8 +71,8 @@
     </table>
   </fieldset>
 </form>
-
-<hr/>
+</div>
+<!--<hr/>-->
 
 <div id="subDetailDiv"></div>
 
