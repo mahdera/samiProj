@@ -3,3 +3,7 @@ php:
   - 5.5
   - 5.4
   - hhvm
+
+install:
+  - ./bin/ci/install_dependencies.sh
+  - php vendor/vendors.php
